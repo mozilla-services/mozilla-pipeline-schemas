@@ -3,21 +3,148 @@
     "type": "object",
     "properties": {
       "addons": {
-        "type": "object"
+        "type": "object",
+        "properties": {
+
+        }
       },
       "build": {
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "applicationId": "string",
+          "applicationName": "string",
+          "architecture": "string",
+          "architecturesInBinary": "string",
+          "buildId": "string",
+          "hotfixVersion": "string",
+          "version": "string",
+          "vendor": "string",
+          "platformVersion": "string",
+          "xpcomAbi": "string"
+        },
+        "required": ["applicationId", "applicationName", "architecture",
+                     "buildId", "hotfixVersion", "version", "vendor",
+                     "platformVersion", "xpcomAbi"]
       },
       "partner": {
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "distributionId": "string",
+          "distributionVersion": "string",
+          "partnerId": "string",
+          "distributor": "string",
+          "distributorChannel": "string",
+          "partnerNames": "array"
+        }
       },
       "profile": {
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "creationDate": "number",
+          "resetDate": "number"
+        }
+      },
+      "settings": {
+        "type": "object",
+        "properties": {
+          "blocklistEnabled": "boolean",
+          "isDefaultBrowser": "boolean",
+          "defaultSearchEngine": "string",
+          "defaultSearchEngineData": {
+            "type": "object",
+            "properties": {
+              "name": "string",
+              "loadPath": "string",
+              "submissionURL": "string"
+            }
+          },
+          "e10sEnabled": "boolean",
+          "locale": "string",
+          "telemetryEnabled": "boolean",
+          "update": {
+            "type": "object",
+            "properties": {
+              "autoDownload": "boolean",
+              "channel": "string",
+              "enabled": "boolean"
+            }
+          },
+          "userPrefs": {
+            "type": "object"
+          }
+        }
       },
       "system": {
-        "type": "object"
-      }
-    },
-    "required": ["addons", "build", "partner", "profile", "settings", "system"]
+        "type": "object",
+        "properties": {
+          "cpu": {
+            "type": "object",
+            "properties": {
+              "count": "number",
+              "vendor": "string",
+              "family": "string",
+              "model": "string",
+              "stepping": "string",
+              "extensions": "array"
+            }
+          },
+          "device": {
+            "model": "string",
+            "manufacturer": "string",
+            "hardware": "string",
+            "isTablet": "boolean"
+          },
+          "gfx": {
+            "type": "object",
+            "properties": {
+              "D2DEnabled": "boolean",
+              "DWriteEnabled": "boolean",
+              "adapters": "array",
+              "monitors": "array"
+            }
+          },
+          "hdd": {
+            "type": "object",
+            "properties": {
+              "profile": {
+                "type": "object",
+                "properties": {
+                  "model": "string",
+                  "revision": "string"
+                }
+              },
+              "binary": {
+                "type": "object",
+                "properties": {
+                  "model": "string",
+                  "revision": "string"
+                }
+              },
+              "system": {
+                "type": "object",
+                "properties": {
+                  "model": "string",
+                  "revision": "string"
+                }
+              }
+            }
+          },
+          "isWow64": "boolean",
+          "memoryMB": "number",
+          "os": {
+            "type": "object",
+            "properties": {
+              "name": "string",
+              "version": "string",
+              "kernelVersion": "string",
+              "servicePackMajor": "number",
+              "servicePackMinor": "number",
+              "locale": "string"
+            }
+          }
+        }
+      },
+      "required": ["addons", "build", "partner", "profile", "settings", "system"]
+    }
   }
 }
