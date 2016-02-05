@@ -1,0 +1,718 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "name": "main",
+  "properties": {
+    "application": {
+      "type": "object",
+      "properties": {
+        "architecture": {
+          "type": "string"
+        },
+        "buildId": {
+          "type": "string",
+          "pattern": "^\\d{14}$"
+        },
+        "channel": {
+          "type": "string",
+          "enum": ["nightly", "aurora", "beta", "release"]
+        },
+        "name": {
+          "type": "string"
+        },
+        "platformVersion": {
+          "type": "string",
+          "pattern": "^\\d{2}\\."
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d{2}\\."
+        },
+        "vendor": {
+          "type": "string"
+        },
+        "xpcomAbi": {
+          "type": "string"
+        }
+      },
+      "required": ["architecture", "buildId", "channel", "name", "platformVersion", "version",  "vendor", "xpcomAbi"],
+      "additionalProperties": false
+    },
+    "clientId": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    },
+    "environment": {
+      "properties": {
+        "addons": {
+          "type": "object",
+          "properties": {
+            "activeAddons": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/addon"
+              }
+            },
+            "active Experiment": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "branch": {
+                  "type": "string"
+                }
+              }
+            },
+            "activeGMPlugins": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/gmPlugin"
+              }
+            },
+            "activePlugins": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/plugin"
+              }
+            },
+            "persona": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "theme": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "blocklisted": {
+                  "type": "boolean"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "userDisabled": {
+                  "type": "boolean"
+                },
+                "appDisabled": {
+                  "type": "boolean"
+                },
+                "version": {
+                  "type": "string"
+                },
+                "scope": {
+                  "type": "integer"
+                },
+                "foreignInstall": {
+                  "type": "boolean"
+                },
+                "hasBinaryComponents": {
+                  "type": "boolean"
+                },
+                "installDay": {
+                  "type": "integer"
+                },
+                "updateDay": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            }
+          }
+        },
+        "build": {
+          "type": "object",
+          "properties": {
+            "applicationId": {
+              "type": "string"
+            },
+            "applicationName": {
+              "type": "string"
+            },
+            "architecture": {
+              "type": "string"
+            },
+            "architecturesInBinary": {
+              "type": "string"
+            },
+            "buildId": {
+              "type": "string",
+              "pattern": "^\\d{14}$"
+            },
+            "hotfixVersion": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string",
+              "pattern": "^\\d{2}\\."
+            },
+            "vendor": {
+              "type": "string"
+            },
+            "platformVersion": {
+              "type": "string",
+              "pattern": "^\\d{2}\\."
+            },
+            "xpcomAbi": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "applicationId",
+            "applicationName",
+            "architecture",
+            "buildId",
+            "version",
+            "vendor",
+            "platformVersion",
+            "xpcomAbi"
+          ]
+        },
+        "partner": {
+          "type": "object",
+          "properties": {
+            "distributionId": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "distributionVersion": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "partnerId": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "distributor": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "distributorChannel": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "partnerNames": {
+              "type": [
+                "array",
+                "object"
+              ]
+            }
+          }
+        },
+        "profile": {
+          "type": "object",
+          "properties": {
+            "creationDate": {
+              "type": "number"
+            },
+            "resetDate": {
+              "type": "number"
+            }
+          }
+        },
+        "settings": {
+          "type": "object",
+          "properties": {
+            "blocklistEnabled": {
+              "type": "boolean"
+            },
+            "isDefaultBrowser": {
+              "type": "boolean"
+            },
+            "defaultSearchEngine": {
+              "type": "string"
+            },
+            "defaultSearchEngineData": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "loadPath": {
+                  "type": "string"
+                },
+                "submissionURL": {
+                  "type": "string"
+                }
+              }
+            },
+            "e10sEnabled": {
+              "type": "boolean"
+            },
+            "locale": {
+              "type": "string"
+            },
+            "telemetryEnabled": {
+              "type": "boolean"
+            },
+            "update": {
+              "type": "object",
+              "properties": {
+                "autoDownload": {
+                  "type": "boolean"
+                },
+                "channel": {
+                  "type": "string",
+                  "enum": [
+                    "nightly",
+                    "aurora",
+                    "beta",
+                    "main"
+                  ]
+                },
+                "enabled": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "userPrefs": {
+              "type": "object"
+            }
+          }
+        },
+        "system": {
+          "type": "object",
+          "properties": {
+            "cpu": {
+              "type": "object",
+              "properties": {
+                "cores": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 2048
+                },
+                "count": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 1024
+                },
+                "extensions": {
+                  "type": "array"
+                },
+                "family": {
+                  "type": "integer"
+                },
+                "l2cacheKB": {
+                  "type": "number"
+                },
+                "l3cacheKB": {
+                  "type": "number"
+                },
+                "model": {
+                  "type": "integer"
+                },
+                "speedMHz": {
+                  "type": "number"
+                },
+                "stepping": {
+                  "type": "integer"
+                },
+                "vendor": {
+                  "type": "string"
+                }
+              }
+            },
+            "device": {
+              "model": {
+                "type": "string"
+              },
+              "manufacturer": {
+                "type": "string"
+              },
+              "hardware": {
+                "type": "string"
+              },
+              "isTablet": {
+                "type": "boolean"
+              }
+            },
+            "gfx": {
+              "type": "object",
+              "properties": {
+                "D2DEnabled": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "DWriteEnabled": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "adapters": {
+                  "type": "array"
+                },
+                "monitors": {
+                  "type": [
+                    "array",
+                    "object"
+                  ]
+                }
+              }
+            },
+            "hdd": {
+              "type": "object",
+              "properties": {
+                "profile": {
+                  "type": "object",
+                  "properties": {
+                    "model": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "revision": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "binary": {
+                  "type": "object",
+                  "properties": {
+                    "model": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "revision": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "system": {
+                  "type": "object",
+                  "properties": {
+                    "model": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "revision": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "isWow64": {
+              "type": "boolean"
+            },
+            "memoryMB": {
+              "type": "number"
+            },
+            "os": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "version": {
+                  "type": "string"
+                },
+                "kernelVersion": {
+                  "type": "string"
+                },
+                "servicePackMajor": {
+                  "type": "number"
+                },
+                "servicePackMinor": {
+                  "type": "number"
+                },
+                "locale": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "addons",
+        "build",
+        "partner",
+        "profile",
+        "settings",
+        "system"
+      ]
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+    },
+    "meta": {
+      "type": "object"
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "addonDetails": {
+          "type": "object",
+          "properties": {}
+        },
+        "addonHistograms": {
+          "type": "object",
+          "properties": {}
+        },
+        "childPayloads": {
+          "type": "array"
+        },
+        "chromeHangs": {
+          "type": "object",
+          "properties": {}
+        },
+        "fileIOReports": {
+          "type": "object",
+          "properties": {}
+        },
+        "histograms": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/histogram"
+          }
+        },
+        "info": {
+          "type": "object",
+          "properties": {}
+        },
+        "keyedHistograms": {
+          "type": "object",
+          "additionalProperties": {
+            "additionalProperties": {
+              "$ref": "#/definitions/histogram"
+            }
+          }
+        },
+        "lateWrites": {
+          "type": "object",
+          "properties": {}
+        },
+        "log": {
+          "type": [
+            "array",
+            "object"
+          ]
+        },
+        "simpleMeasurements": {
+          "type": "object",
+          "properties": {}
+        },
+        "slowSQL": {
+          "type": "object",
+          "properties": {}
+        },
+        "slowSQLStartup": {
+          "type": "object",
+          "properties": {}
+        },
+        "threadHangStats": {
+          "type": [
+            "array",
+            "object"
+          ]
+        },
+        "UIMeasurements": {
+          "type": [
+            "array",
+            "object"
+          ]
+        },
+        "ver": {
+          "type": "integer"
+        },
+        "webrtc": {
+          "type": "object",
+          "properties": {}
+        }
+      }
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "main"
+      ]
+    },
+    "version": {
+      "type": "number",
+      "minimum": 4,
+      "maximum": 4
+    }
+  },
+  "required": [
+    "application",
+    "creationDate",
+    "id",
+    "version"
+  ],
+  "definitions": {
+    "addon": {
+      "type": "object",
+      "properties": {
+        "blocklisted": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "userDisabled": {
+          "type": "boolean"
+        },
+        "appDisabled": {
+          "type": "boolean"
+        },
+        "version": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "integer"
+        },
+        "type": {
+          "type": "string"
+        },
+        "foreignInstall": {
+          "type": [
+            "integer",
+            "boolean"
+          ]
+        },
+        "hasBinaryComponents": {
+          "type": "boolean"
+        },
+        "installDay": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "updateDay": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "signedState": {
+          "type": "integer"
+        }
+      }
+    },
+    "histogram": {
+      "type": "object",
+      "properties": {
+        "bucket_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "histogram_type": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "log_sum": {
+          "type": "number",
+          "minimum": 0
+        },
+        "log_sum_squares": {
+          "type": "number",
+          "minimum": 0
+        },
+        "range": {
+          "type": "array"
+        },
+        "sum": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sum_squares_hi": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sum_squares_lo": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "values": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    "gmPlugin": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "userDisabled": {
+          "type": "boolean"
+        },
+        "applyBackgroundUpdates": {
+          "type": [
+            "integer",
+            "boolean"
+          ]
+        }
+      }
+    },
+    "plugin": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "blocklisted": {
+          "type": "boolean"
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "clicktoplay": {
+          "type": "boolean"
+        },
+        "mimeTypes": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "updateDay": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}
