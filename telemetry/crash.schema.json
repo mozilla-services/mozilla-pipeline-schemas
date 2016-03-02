@@ -4,14 +4,13 @@
   "name": "main",
   "properties": {
     "application": {
-      "type": "object",
+"type": "object",
       "properties": {
         "architecture": {
           "type": "string"
         },
         "buildId": {
-          "type": "string",
-          "pattern": "^[0-9]{10}"
+          "$ref": "#/definitions/buildId"
         },
         "channel": {
           "type": "string",
@@ -27,15 +26,11 @@
         },
         "platformVersion": {
           "type": "string",
-          "pattern": "^[0-9]{3}\\."
+          "pattern": "^[0-9]{2}\\."
         },
         "version": {
           "type": "string",
-          "pattern": "^[0-9]{3}\\."
-        },
-        "displayVersion": {
-          "type": "string",
-          "pattern": "^[0-9]{3}\\."
+          "pattern": "^[0-9]{2}\\."
         },
         "vendor": {
           "type": "string"
@@ -57,8 +52,7 @@
       "additionalProperties": false
     },
     "clientId": {
-      "type": "string",
-      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+      "$ref": "#/definitions/UUID4"
     },
     "creationDate": {
       "type": "string",
@@ -173,14 +167,14 @@
             },
             "version": {
               "type": "string",
-              "pattern": "^[0-9]{3}\\."
+              "pattern": "^[0-9]{2}\\."
             },
             "vendor": {
               "type": "string"
             },
             "platformVersion": {
               "type": "string",
-              "pattern": "^[0-9]{3}\\."
+              "pattern": "^[0-9]{2}\\."
             },
             "xpcomAbi": {
               "type": "string"
@@ -312,45 +306,45 @@
         "system": {
           "type": "object",
           "properties": {
-            "cpu": {
-              "type": "object",
-              "properties": {
-                "cores": {
-                  "type": ["integer", "null"],
-                  "minimum": 1,
-                  "maximum": 2048
-                },
-                "count": {
-                  "type": "integer",
-                  "minimum": 1,
-                  "maximum": 1024
-                },
-                "extensions": {
-                  "type": "array"
-                },
-                "family": {
-                  "type": ["integer", "null"]
-                },
-                "l2cacheKB": {
-                  "type": ["number", "null"]
-                },
-                "l3cacheKB": {
-                  "type": ["number", "null"]
-                },
-                "model": {
-                  "type": ["integer", "null"]
-                },
-                "speedMHz": {
-                  "type": ["number", "null"]
-                },
-                "stepping": {
-                  "type": ["integer", "null"]
-                },
-                "vendor": {
-                  "type": ["string", "null"]
+              "cpu": {
+                "type": "object",
+                "properties": {
+                  "cores": {
+                    "type": ["integer", "null"],
+                    "minimum": 1,
+                    "maximum": 2048
+                  },
+                  "count": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 1024
+                  },
+                  "extensions": {
+                    "type": "array"
+                  },
+                  "family": {
+                    "type": ["integer", "null"]
+                  },
+                  "l2cacheKB": {
+                    "type": ["number", "null"]
+                  },
+                  "l3cacheKB": {
+                    "type": ["number", "null"]
+                  },
+                  "model": {
+                    "type": ["integer", "null"]
+                  },
+                  "speedMHz": {
+                    "type": ["number", "null"]
+                  },
+                  "stepping": {
+                    "type": ["integer", "null"]
+                  },
+                  "vendor": {
+                    "type": ["string", "null"]
+                  }
                 }
-              }
-            },
+              },
             "device": {
               "model": {
                 "type": "string"
@@ -488,8 +482,7 @@
       ]
     },
     "id": {
-      "type": "string",
-      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+      "$ref": "#/definitions/UUID4"
     },
     "meta": {
       "type": "object"
@@ -497,105 +490,79 @@
     "payload": {
       "type": "object",
       "properties": {
-        "addonDetails": {
+        "crashDate": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "hasCrashEnvironment": {
+          "type": "boolean"
+        },
+        "metadata": {
           "type": "object",
-          "properties": {}
-        },
-        "addonHistograms": {
-          "type": "object",
-          "properties": {}
-        },
-        "childPayloads": {
-          "type": "array"
-        },
-        "chromeHangs": {
-          "type": "object",
-          "properties": {}
-        },
-        "fileIOReports": {
-          "type": ["object", "null"],
-          "properties": {}
-        },
-        "histograms": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/histogram"
-          }
-        },
-        "info": {
-          "type": "object",
-          "properties": {}
-        },
-        "keyedHistograms": {
-          "type": "object",
-          "additionalProperties": {
-            "additionalProperties": {
-              "$ref": "#/definitions/histogram"
+          "properties": {
+            "AvailablePageFile": {
+              "type": "string"
+            },
+            "AvailablePhysicalMemory": {
+              "type": "string"
+            },
+            "AvailableVirtualMemory": {
+              "type": "string"
+            },
+            "BuildID": {
+              "type": "string"
+            },
+            "IsGarbageCollecting": {
+              "type": "string"
+            },
+            "ProductID": {
+              "type": "string"
+            },
+            "ProductName": {
+              "type": "string"
+            },
+            "ReleaseChannel": {
+              "type": "string"
+            },
+            "SecondsSinceLastCrash": {
+              "type": "string"
+            },
+            "SystemMemoryUsePercentage": {
+              "type": "string"
+            },
+            "TotalPageFile": {
+              "type": "string"
+            },
+            "TotalPhysicalMemory": {
+              "type": "string"
+            },
+            "TotalVirtualMemory": {
+              "type": "string"
+            },
+            "Version": {
+              "type": "string"
             }
           }
         },
-        "lateWrites": {
-          "type": "object",
-          "properties": {}
-        },
-        "log": {
-          "type": [
-            "array",
-            "object"
-          ]
-        },
-        "simpleMeasurements": {
-          "type": "object",
-          "properties": {}
-        },
-        "slowSQL": {
-          "type": "object",
-          "properties": {}
-        },
-        "slowSQLStartup": {
-          "type": "object",
-          "properties": {}
-        },
-        "threadHangStats": {
-          "type": [
-            "array",
-            "object"
-          ]
-        },
-        "UIMeasurements": {
-          "type": [
-            "array",
-            "object"
-          ]
-        },
-        "ver": {
-          "type": "integer"
-        },
-        "webrtc": {
-          "type": "object",
-          "properties": {}
+        "version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1
         }
       }
     },
     "type": {
       "type": "string",
       "enum": [
-        "main",
-        "saved-session"
+        "crash"
       ]
     },
     "version": {
       "type": "number",
-      "minimum": 4,
+      "minimum": 1,
       "maximum": 4
     }
   },
-  "required": [
-    "application",
-    "creationDate",
-    "id",
-    "version"
-  ],
   "definitions": {
     "addon": {
       "type": "object",
@@ -646,45 +613,9 @@
         }
       }
     },
-    "histogram": {
-      "type": "object",
-      "properties": {
-        "bucket_count": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "histogram_type": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "log_sum": {
-          "type": "number",
-          "minimum": 0
-        },
-        "log_sum_squares": {
-          "type": "number",
-          "minimum": 0
-        },
-        "range": {
-          "type": "array"
-        },
-        "sum": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "sum_squares_hi": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "sum_squares_lo": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "values": {
-          "type": "object"
-        }
-      },
-      "additionalProperties": false
+    "buildId": {
+      "type": "string",
+      "pattern": "^[0-9]{10}"
     },
     "gmPlugin": {
       "type": "object",
@@ -734,6 +665,10 @@
           "type": "integer"
         }
       }
+    },
+    "UUID4": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
     }
   }
 }
