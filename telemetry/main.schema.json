@@ -387,13 +387,25 @@
                   ]
                 },
                 "adapters": {
-                  "type": "array"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/adapter"
+                  }
                 },
                 "monitors": {
                   "type": [
                     "array",
                     "object"
-                  ]
+                  ],
+                  "items": {
+                    "$ref": "#/definitions/monitor"
+                  }
+                },
+                "features": {
+                  "type": "object",
+                  "items": {
+                    "$ref": "#/definitions/features"
+                  }
                 }
               }
             },
@@ -652,6 +664,90 @@
         }
       }
     },
+    "adapter": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": ["string", "null"]
+        },
+        "vendorID": {
+          "type": "string"
+        },
+        "deviceID": {
+          "type": "string"
+        },
+        "subsysID": {
+          "type": ["string", "null"]
+        },
+        "RAM": {
+          "type": ["integer", "null"]
+        },
+        "driver": {
+          "type": ["string", "null"]
+        },
+        "driverVersion": {
+          "type": ["string", "null"]
+        },
+        "driverDate": {
+          "type": ["string", "null"]
+        },
+        "GPUActive": {
+          "type": "boolean"
+        }
+      }
+    },
+    "features": {
+      "type": "object",
+      "properties": {
+        "compositor": {
+          "type": "string"
+        },
+        "d2d": {
+          "type": ["object", "null"],
+          "items": {
+            "$ref": "#/definitions/feature"
+          }
+        },
+        "d3d11": {
+          "type": ["object", "null"],
+          "items": {
+            "$ref": "#/definitions/feature"
+          }
+        },
+        "opengl": {
+          "type": ["object", "null"],
+          "items": {
+            "$ref": "#/definitions/feature"
+          }
+        },
+        "webgl": {
+          "type": ["object", "null"],
+          "items": {
+            "$ref": "#/definitions/feature"
+          }
+        }
+      }
+    },
+    "feature": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": ["string", "null"]
+        },
+        "failureId": {
+          "type": ["string", "null"]
+        },
+        "version": {
+          "type": ["string", "null"]
+        },
+        "warp": {
+          "type": ["boolean", "null"]
+        },
+        "textureSharing": {
+          "type": ["boolean", "null"]
+        }
+      }
+    },
     "histogram": {
       "type": "object",
       "properties": {
@@ -706,6 +802,26 @@
             "integer",
             "boolean"
           ]
+        }
+      }
+    },
+    "monitor": {
+      "type": "object",
+      "properties": {
+        "screenWidth": {
+          "type": "integer"
+        },
+        "screenHeight": {
+          "type": "integer"
+        },
+        "refreshRate": {
+          "type": "number"
+        },
+        "pseudoDisplay": {
+          "type": "boolean"
+        },
+        "scale": {
+          "type": "number"
         }
       }
     },
