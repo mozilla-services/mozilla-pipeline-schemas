@@ -540,6 +540,28 @@
             "$ref": "#/definitions/histogram"
           }
         },
+        "processes": {
+          "type": "object",
+          "properties": {
+            "parent": {
+              "type": "object",
+              "properties": {
+                "scalars": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "#/definitions/scalar"
+                  }
+                }
+              },
+              "required": [
+                "scalars"
+              ]
+            }
+          },
+          "required": [
+            "parent"
+          ]
+        },
         "info": {
           "type": "object",
           "properties": {}
@@ -787,6 +809,9 @@
         }
       },
       "additionalProperties": false
+    },
+    "scalar": {
+      "type": ["integer", "string"]
     },
     "gmPlugin": {
       "type": "object",
