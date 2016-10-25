@@ -556,6 +556,12 @@
                   "additionalProperties": {
                     "$ref": "#/definitions/scalar"
                   }
+                },
+                "keyedScalars": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "#/definitions/keyedScalar"
+                  }
                 }
               },
               "required": [
@@ -816,7 +822,13 @@
       "additionalProperties": false
     },
     "scalar": {
-      "type": ["integer", "string"]
+      "type": ["integer", "string", "boolean"]
+    },
+    "keyedScalar": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/scalar"
+      }
     },
     "gmPlugin": {
       "type": "object",
