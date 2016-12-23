@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "shield-study doc_type schema",
+  "description": "Shield Study State",
+  "properties": {
+    "version": {
+      "type": "integer",
+      "title": "Version schema.  Will be 3",
+      "enum": [
+        3
+      ]
+    },
+    "study_name": {
+      "type": "string",
+      "minLength": 1,
+      "title": "Study_name schema.",
+      "description": "Name of a particular study.  Usually the addon_id."
+    },
+    "branch": {
+      "type": "string",
+      "minLength": 1,
+      "title": "Branch schema.",
+      "description": "Which branch (variation) of the study the user has."
+    },
+    "addon_version": {
+      "type": "string",
+      "minLength": 1,
+      "title": "Addon_version schema.",
+      "description": "Semantic version of the addon."
+    },
+    "shield_version": {
+      "type": "string",
+      "minLength": 1,
+      "title": "Shield_version schema.",
+      "description": "Which version of the shield-studies-addon-utils."
+    },
+    "data": {
+      "type": "object",
+      "title": "Shield-Study 'data' property.",
+      "description": "Shield Study State",
+      "properties": {
+        "study_state": {
+          "type": "string",
+          "title": "Study_state schema.",
+          "description": "message about the most recent state of the study.",
+          "enum": [
+            "enter",
+            "exit",
+            "installed",
+            "ineligible",
+            "expired",
+            "user-disable",
+            "ended-positive",
+            "ended-neutral",
+            "ended-negative",
+            "active"
+          ]
+        },
+        "study_state_fullname": {
+          "type": "string",
+          "title": "Study_state_fullname schema.",
+          "description": "Second part of name of state, if any.  Study-specific for study-defined endings."
+        },
+        "details": {
+          "type": "object",
+          "title": "Details schema.",
+          "description": "Map(string, string) of details about the state, if needed.",
+          "properties": {},
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "study_state"
+      ]
+    }
+  },
+  "required": [
+    "version",
+    "study_name",
+    "branch",
+    "addon_version",
+    "shield_version",
+    "data"
+  ]
+}
