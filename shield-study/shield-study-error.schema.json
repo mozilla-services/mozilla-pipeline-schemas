@@ -1,0 +1,104 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "shield-study-error doc_type schema",
+  "description": "Notify, group and count some kinds of errors from shield studies.",
+  "properties": {
+    "version": {
+      "type": "integer",
+      "title": "Version schema.  Will be 3",
+      "enum": [
+        3
+      ]
+    },
+    "study_name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Name of a particular study.  Usually the addon_id."
+    },
+    "branch": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Which branch (variation) of the study the user has."
+    },
+    "addon_version": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Semantic version of the addon."
+    },
+    "shield_version": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Which version of the shield-studies-addon-utils."
+    },
+    "data": {
+      "type": "object",
+      "title": "Shield-Study-Error 'data' field",
+      "description": "Notify, group and count some kinds of errors from shield studies.",
+      "properties": {
+        "message": {
+          "type": "string",
+          "minLength": 1,
+          "title": "Message schema.",
+          "description": "String of an error message."
+        },
+        "attributes": {
+          "type": "object",
+          "description": "Additional Groupable Fields, sent as Map(String, String).",
+          "properties": {},
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "error": {
+          "type": "object",
+          "description": "(Future use), things like tracebacks.",
+          "properties": {},
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "error_source": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Where did the error originate.",
+          "enum": [
+            "addon",
+            "shield",
+            "firefox",
+            "unknown"
+          ]
+        },
+        "error_id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Short name for an error, for easy counting."
+        },
+        "severity": {
+          "type": "string",
+          "minLength": 1,
+          "description": "An explanation about the purpose of this instance.",
+          "enum": [
+            "debug",
+            "info",
+            "warn",
+            "fatal",
+            "impossible"
+          ]
+        }
+      },
+      "required": [
+        "error_id",
+        "error_source"
+      ]
+    }
+  },
+  "required": [
+    "version",
+    "study_name",
+    "branch",
+    "addon_version",
+    "shield_version",
+    "data"
+  ]
+}
