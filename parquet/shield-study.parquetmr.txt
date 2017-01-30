@@ -1,0 +1,75 @@
+message shield-study {
+    required group application {
+        required binary architecture (UTF8);
+        required binary buildId (UTF8);
+        required binary channel (UTF8);
+        required binary name (UTF8);
+        required binary platformVersion (UTF8);
+        required binary version (UTF8);
+    }
+    required binary clientId (UTF8);
+    required binary creationDate (UTF8);
+    required group environment {
+        required group system {
+            optional group os {
+                optional binary name (UTF8);
+                optional binary version (UTF8);
+                optional binary locale (UTF8);
+            }
+        }
+        required group profile {
+            optional binary creationDate (UTF8);
+            optional binary resetDate (UTF8);
+        }
+        required group settings {
+            optional boolean blocklistEnabled;
+            optional boolean isDefaultBrowser;
+            optional binary defaultSearchEngine (UTF8);
+            optional group defaultSearchEngineData {
+                optional binary name (UTF8);
+                optional binary loadPath (UTF8);
+                optional binary submissionURL (UTF8);
+                optional binary origin (UTF8);
+            }
+            optional boolean e10sEnabled;
+            optional binary e10sCohort (UTF8);
+            optional binary locale (UTF8);
+            optional boolean telemetryEnabled;
+            optional group update {
+                optional boolean autoDownload;
+                optional binary channel (UTF8);
+                optional boolean enabled;
+            }
+        }
+    }
+    required binary id (UTF8);
+    required binary type (UTF8);
+    required binary version (UTF8);
+    required group payload {
+        required int64 version;
+        required binary study_name (UTF8);
+        required binary branch (UTF8);
+        required binary addon_version (UTF8);
+        required binary shield_version (UTF8);
+        optional boolean testing;
+        required group data {
+            required binary study_state (UTF8);
+            optional binary study_state_fullname (UTF8);
+            optional group attributes (MAP) {
+                repeated group key_value {
+                    required binary key (UTF8);
+                    required binary value (UTF8);
+                }
+            }
+        }
+        required binary type (UTF8);
+    }
+    required group metadata {
+        required int64 Timestamp;
+        required binary submissionDate (UTF8);
+        required binary Date (UTF8);
+        required binary normalizedChannel (UTF8);
+        required binary geoCountry (UTF8);
+        required binary geoCity (UTF8);
+    }
+}
