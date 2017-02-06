@@ -69,7 +69,7 @@
                 "$ref": "#/definitions/addon"
               }
             },
-            "active Experiment": {
+            "activeExperiment": {
               "type": "object",
               "properties": {
                 "id": {
@@ -267,7 +267,7 @@
               "type": "boolean"
             },
             "isDefaultBrowser": {
-              "type": "boolean"
+              "type": ["boolean", "null"]
             },
             "defaultSearchEngine": {
               "type": "string"
@@ -494,6 +494,15 @@
                 "servicePackMinor": {
                   "type": "number"
                 },
+                "windowsBuildNumber": {
+                  "type": "number"
+                },
+                "windowsUBR": {
+                  "type": ["number", "null"]
+                },
+                "installYear": {
+                  "type": "number"
+                },
                 "locale": {
                   "type": "string"
                 }
@@ -505,7 +514,6 @@
       "required": [
         "build",
         "partner",
-        "profile",
         "settings",
         "system"
       ]
@@ -549,63 +557,13 @@
           "type": "object",
           "properties": {
             "parent": {
-              "type": "object",
-              "properties": {
-                "scalars": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "$ref": "#/definitions/scalar"
-                  }
-                },
-                "keyedScalars": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "$ref": "#/definitions/keyedScalar"
-                  }
-                }
-              },
-              "required": [
-                "scalars"
+              "allOf": [
+                {"$ref": "#/definitions/processData"},
+                {"required": ["scalars"]}
               ]
             },
-            "content": {
-              "type": "object",
-              "properties": {
-                "histograms": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "$ref": "#/definitions/histogram"
-                  }
-                },
-                "keyedHistograms": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "additionalProperties": {
-                      "$ref": "#/definitions/histogram"
-                    }
-                  }
-                }
-              }
-            },
-            "gpu": {
-              "type": "object",
-              "properties": {
-                "histograms": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "$ref": "#/definitions/histogram"
-                  }
-                },
-                "keyedHistograms": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "additionalProperties": {
-                      "$ref": "#/definitions/histogram"
-                    }
-                  }
-                }
-              }
-            }
+            "content": {"$ref": "#/definitions/processData"},
+            "gpu": {"$ref": "#/definitions/processData"}
           },
           "required": [
             "parent"
@@ -683,6 +641,7 @@
     "application",
     "creationDate",
     "id",
+    "type",
     "version"
   ],
   "definitions": {
@@ -732,6 +691,9 @@
         },
         "signedState": {
           "type": "integer"
+        },
+        "isSystem": {
+          "type": "boolean"
         }
       }
     },
@@ -795,6 +757,14 @@
           "type": ["object", "null"],
           "items": {
             "$ref": "#/definitions/feature"
+          }
+        },
+        "gpuProcess": {
+          "type": ["object", "null"],
+          "properties": {
+            "status": {
+              "type": ["string", "null"]
+            }
           }
         }
       }
@@ -866,6 +836,72 @@
       "type": "object",
       "additionalProperties": {
         "$ref": "#/definitions/scalar"
+      }
+    },
+    "event": {
+      "type": "array",
+      "items": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": ["string", "null"]
+        },
+        {
+          "type": ["object", "null"]
+        }
+      ],
+      "minItems": 4,
+      "maxItems": 6
+    },
+    "processData": {
+      "type": "object",
+      "properties": {
+        "scalars": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/scalar"
+          }
+        },
+        "keyedScalars": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/keyedScalar"
+          }
+        },
+        "histograms": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/histogram"
+          }
+        },
+        "keyedHistograms": {
+          "type": "object",
+          "additionalProperties": {
+            "additionalProperties": {
+              "$ref": "#/definitions/histogram"
+            }
+          }
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/event"
+          }
+        },
+        "gc": {
+          "type": "object"
+        }
       }
     },
     "gmPlugin": {
