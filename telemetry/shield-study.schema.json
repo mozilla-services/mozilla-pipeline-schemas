@@ -7,6 +7,208 @@
         "application": {
             "type": "object",
             "properties": {
+                "addons": {
+                    "type": "object",
+                    "properties": {
+                        "activeAddons": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "object",
+                                "properties": {
+                                    "blocklisted": {
+                                        "type": "boolean"
+                                    },
+                                    "description": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "userDisabled": {
+                                        "type": [
+                                            "boolean",
+                                            "integer"
+                                        ]
+                                    },
+                                    "appDisabled": {
+                                        "type": "boolean"
+                                    },
+                                    "version": {
+                                        "type": [
+                                            "string",
+                                            "number"
+                                        ]
+                                    },
+                                    "scope": {
+                                        "type": "integer"
+                                    },
+                                    "type": {
+                                        "type": "string"
+                                    },
+                                    "foreignInstall": {
+                                        "type": [
+                                            "integer",
+                                            "boolean"
+                                        ]
+                                    },
+                                    "hasBinaryComponents": {
+                                        "type": "boolean"
+                                    },
+                                    "installDay": {
+                                        "type": [
+                                            "integer",
+                                            "null"
+                                        ],
+                                        "minimum": 0
+                                    },
+                                    "updateDay": {
+                                        "type": "integer",
+                                        "minimum": 0
+                                    },
+                                    "signedState": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        },
+                        "active Experiment": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "branch": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "activeGMPlugins": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "object",
+                                "properties": {
+                                    "version": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "userDisabled": {
+                                        "type": "boolean"
+                                    },
+                                    "applyBackgroundUpdates": {
+                                        "type": [
+                                            "integer",
+                                            "boolean"
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "activePlugins": {
+                            "type": [
+                                "array",
+                                "object"
+                            ],
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "version": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "blocklisted": {
+                                        "type": "boolean"
+                                    },
+                                    "disabled": {
+                                        "type": "boolean"
+                                    },
+                                    "clicktoplay": {
+                                        "type": "boolean"
+                                    },
+                                    "mimeTypes": {
+                                        "type": [
+                                            "array",
+                                            "object"
+                                        ],
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "updateDay": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        },
+                        "persona": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "theme": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "blocklisted": {
+                                    "type": "boolean"
+                                },
+                                "description": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "userDisabled": {
+                                    "type": "boolean"
+                                },
+                                "appDisabled": {
+                                    "type": "boolean"
+                                },
+                                "version": {
+                                    "type": "string"
+                                },
+                                "scope": {
+                                    "type": "integer"
+                                },
+                                "foreignInstall": {
+                                    "type": [
+                                        "boolean",
+                                        "integer"
+                                    ]
+                                },
+                                "hasBinaryComponents": {
+                                    "type": "boolean"
+                                },
+                                "installDay": {
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ],
+                                    "minimum": 0
+                                },
+                                "updateDay": {
+                                    "type": "integer",
+                                    "minimum": 0
+                                }
+                            }
+                        }
+                    }
+                },
                 "architecture": {
                     "type": "string"
                 },
@@ -138,11 +340,7 @@
                     }
                 }
             },
-            "required": [
-                "system",
-                "profile",
-                "settings"
-            ]
+            "required": []
         },
         "id": {
             "type": "string",

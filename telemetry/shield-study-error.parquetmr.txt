@@ -1,5 +1,39 @@
 message shield-study-error {
     required group application {
+        optional group addons {
+            optional group activeAddons (MAP) {
+                repeated group key_value {
+                    required binary key (UTF8);
+                    required binary value (UTF8);
+                }
+            }
+            optional group active Experiment {
+                optional binary id (UTF8);
+                optional binary branch (UTF8);
+            }
+            optional group activeGMPlugins (MAP) {
+                repeated group key_value {
+                    required binary key (UTF8);
+                    required binary value (UTF8);
+                }
+            }
+            optional binary activePlugins (UTF8);
+            optional binary persona (UTF8);
+            optional group theme {
+                optional binary id (UTF8);
+                optional boolean blocklisted;
+                optional binary description (UTF8);
+                optional binary name (UTF8);
+                optional boolean userDisabled;
+                optional boolean appDisabled;
+                optional binary version (UTF8);
+                optional int64 scope;
+                optional binary foreignInstall (UTF8);
+                optional boolean hasBinaryComponents;
+                optional binary installDay (UTF8);
+                optional int64 updateDay;
+            }
+        }
         required binary architecture (UTF8);
         required binary buildId (UTF8);
         required binary channel (UTF8);
@@ -10,18 +44,18 @@ message shield-study-error {
     required binary clientId (UTF8);
     required binary creationDate (UTF8);
     optional group environment {
-        required group system {
+        optional group system {
             optional group os {
                 optional binary name (UTF8);
                 optional binary version (UTF8);
                 optional binary locale (UTF8);
             }
         }
-        required group profile {
+        optional group profile {
             optional binary creationDate (UTF8);
             optional binary resetDate (UTF8);
         }
-        required group settings {
+        optional group settings {
             optional boolean blocklistEnabled;
             optional boolean isDefaultBrowser;
             optional binary defaultSearchEngine (UTF8);
