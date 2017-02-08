@@ -68,7 +68,7 @@
                 "$ref": "#/definitions/addon"
               }
             },
-            "active Experiment": {
+            "activeExperiment": {
               "type": "object",
               "properties": {
                 "id": {
@@ -245,11 +245,28 @@
         "settings": {
           "type": "object",
           "properties": {
+            "attribution": {
+              "type": "object",
+              "properties": {
+                "source": {
+                  "type": "string"
+                },
+                "medium": {
+                  "type": "string"
+                },
+                "campaign": {
+                  "type": "string"
+                },
+                "content": {
+                  "type": "string"
+                }
+              }
+            },
             "blocklistEnabled": {
               "type": "boolean"
             },
             "isDefaultBrowser": {
-              "type": "boolean"
+              "type": ["boolean", "null"]
             },
             "defaultSearchEngine": {
               "type": "string"
@@ -265,11 +282,17 @@
                 },
                 "submissionURL": {
                   "type": "string"
+                },
+                "origin": {
+                  "type": "string"
                 }
               }
             },
             "e10sEnabled": {
               "type": "boolean"
+            },
+            "e10sCohort": {
+              "type": "string"
             },
             "locale": {
               "type": "string"
@@ -299,45 +322,45 @@
         "system": {
           "type": "object",
           "properties": {
-              "cpu": {
-                "type": "object",
-                "properties": {
-                  "cores": {
-                    "type": ["integer", "null"],
-                    "minimum": 1,
-                    "maximum": 2048
-                  },
-                  "count": {
-                    "type": "integer",
-                    "minimum": 1,
-                    "maximum": 1024
-                  },
-                  "extensions": {
-                    "type": "array"
-                  },
-                  "family": {
-                    "type": ["integer", "null"]
-                  },
-                  "l2cacheKB": {
-                    "type": ["number", "null"]
-                  },
-                  "l3cacheKB": {
-                    "type": ["number", "null"]
-                  },
-                  "model": {
-                    "type": ["integer", "null"]
-                  },
-                  "speedMHz": {
-                    "type": ["number", "null"]
-                  },
-                  "stepping": {
-                    "type": ["integer", "null"]
-                  },
-                  "vendor": {
-                    "type": ["string", "null"]
-                  }
+            "cpu": {
+              "type": "object",
+              "properties": {
+                "cores": {
+                  "type": ["integer", "null"],
+                  "minimum": 1,
+                  "maximum": 2048
+                },
+                "count": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 1024
+                },
+                "extensions": {
+                  "type": "array"
+                },
+                "family": {
+                  "type": ["integer", "null"]
+                },
+                "l2cacheKB": {
+                  "type": ["number", "null"]
+                },
+                "l3cacheKB": {
+                  "type": ["number", "null"]
+                },
+                "model": {
+                  "type": ["integer", "null"]
+                },
+                "speedMHz": {
+                  "type": ["number", "null"]
+                },
+                "stepping": {
+                  "type": ["integer", "null"]
+                },
+                "vendor": {
+                  "type": ["string", "null"]
                 }
-              },
+              }
+            },
             "device": {
               "model": {
                 "type": "string"
@@ -368,13 +391,25 @@
                   ]
                 },
                 "adapters": {
-                  "type": "array"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/adapter"
+                  }
                 },
                 "monitors": {
                   "type": [
                     "array",
                     "object"
-                  ]
+                  ],
+                  "items": {
+                    "$ref": "#/definitions/monitor"
+                  }
+                },
+                "features": {
+                  "type": "object",
+                  "items": {
+                    "$ref": "#/definitions/features"
+                  }
                 }
               }
             },
@@ -458,6 +493,15 @@
                 "servicePackMinor": {
                   "type": "number"
                 },
+                "windowsBuildNumber": {
+                  "type": "number"
+                },
+                "windowsUBR": {
+                  "type": ["number", "null"]
+                },
+                "installYear": {
+                  "type": "number"
+                },
                 "locale": {
                   "type": "string"
                 }
@@ -469,7 +513,6 @@
       "required": [
         "build",
         "partner",
-        "profile",
         "settings",
         "system"
       ]
@@ -603,6 +646,101 @@
         },
         "signedState": {
           "type": "integer"
+        },
+        "isSystem": {
+          "type": "boolean"
+        }
+      }
+    },
+    "adapter": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": ["string", "null"]
+        },
+        "vendorID": {
+          "type": ["string", "null"]
+        },
+        "deviceID": {
+          "type": ["string", "null"]
+        },
+        "subsysID": {
+          "type": ["string", "null"]
+        },
+        "RAM": {
+          "type": ["integer", "null"]
+        },
+        "driver": {
+          "type": ["string", "null"]
+        },
+        "driverVersion": {
+          "type": ["string", "null"]
+        },
+        "driverDate": {
+          "type": ["string", "null"]
+        },
+        "GPUActive": {
+          "type": "boolean"
+        }
+      }
+    },
+    "features": {
+      "type": "object",
+      "properties": {
+        "compositor": {
+          "type": "string"
+        },
+        "d2d": {
+          "type": ["object", "null"],
+          "items": {
+            "$ref": "#/definitions/feature"
+          }
+        },
+        "d3d11": {
+          "type": ["object", "null"],
+          "items": {
+            "$ref": "#/definitions/feature"
+          }
+        },
+        "opengl": {
+          "type": ["object", "null"],
+          "items": {
+            "$ref": "#/definitions/feature"
+          }
+        },
+        "webgl": {
+          "type": ["object", "null"],
+          "items": {
+            "$ref": "#/definitions/feature"
+          }
+        },
+        "gpuProcess": {
+          "type": ["object", "null"],
+          "properties": {
+            "status": {
+              "type": ["string", "null"]
+            }
+          }
+        }
+      }
+    },
+    "feature": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": ["string", "null"]
+        },
+        "failureId": {
+          "type": ["string", "null"]
+        },
+        "version": {
+          "type": ["string", "null"]
+        },
+        "warp": {
+          "type": ["boolean", "null"]
+        },
+        "textureSharing": {
+          "type": ["boolean", "null"]
         }
       }
     },
@@ -624,6 +762,26 @@
             "integer",
             "boolean"
           ]
+        }
+      }
+    },
+    "monitor": {
+      "type": "object",
+      "properties": {
+        "screenWidth": {
+          "type": "integer"
+        },
+        "screenHeight": {
+          "type": "integer"
+        },
+        "refreshRate": {
+          "type": "number"
+        },
+        "pseudoDisplay": {
+          "type": "boolean"
+        },
+        "scale": {
+          "type": "number"
         }
       }
     },
