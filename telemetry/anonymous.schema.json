@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "name": "anonymous",
+  "properties": {
+    "application": {
+      "type": "object",
+      "properties": {
+        "architecture": {
+          "type": "string"
+        },
+        "buildId": {
+          "type": "string",
+          "pattern": "^[0-9]{10}"
+        },
+        "channel": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "platformVersion": {
+          "type": "string",
+          "pattern": "^[0-9]{2,3}\\."
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^[0-9]{2,3}\\."
+        },
+        "displayVersion": {
+          "type": "string",
+          "pattern": "^[0-9]{2,3}\\."
+        },
+        "vendor": {
+          "type": "string"
+        },
+        "xpcomAbi": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "architecture",
+        "buildId",
+        "channel",
+        "name",
+        "platformVersion",
+        "version",
+        "vendor",
+        "xpcomAbi"
+      ],
+      "additionalProperties": false
+    },
+    "creationDate": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{3}Z$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+    },
+    "meta": {
+      "type": "object"
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "client": {
+          "type": "object",
+        }
+      }
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "anonymous"
+      ]
+    },
+    "version": {
+      "type": "number",
+      "minimum": 4,
+      "maximum": 4
+    }
+  },
+  "required": [
+    "payload"
+  ]
+}
