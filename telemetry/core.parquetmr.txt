@@ -1,0 +1,30 @@
+message core {
+    required int64 v;
+    required binary clientId (UTF8);
+    required int64 seq;
+    required binary locale (UTF8);
+    required binary os (UTF8);
+    required binary osversion (UTF8);
+    required binary device (UTF8);
+    required binary arch (UTF8);
+    optional int64 profileDate;
+    optional binary defaultSearch (UTF8);
+    optional binary distributionId (UTF8);
+    optional binary created (UTF8);
+    optional int64 tz;
+    optional int64 sessions;
+    optional int64 durations;
+    optional group searches (MAP) {
+        repeated group key_value {
+            required binary key (UTF8);
+            required binary value (UTF8);
+        }
+    }
+    optional group experiments (LIST) {
+        repeated group list {
+            required binary element (UTF8);
+        }
+    }
+    optional int64 flashUsage;
+    optional binary campaign (UTF8);
+}
