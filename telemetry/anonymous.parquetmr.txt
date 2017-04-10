@@ -12,11 +12,15 @@ message anonymous {
     }
     optional binary creationDate (UTF8);
     optional binary id (UTF8);
-    optional group meta {
+    optional group meta (MAP) {
+        repeated group key_value {
+            required binary key (UTF8);
+            required binary value (UTF8);
+        }
     }
     required group payload {
         optional binary client (UTF8);
     }
     optional binary type (UTF8);
-    optional double version;
+    optional int64 version;
 }
