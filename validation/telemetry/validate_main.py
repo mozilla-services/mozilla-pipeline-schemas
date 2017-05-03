@@ -3,9 +3,9 @@ from jsonschema import validate, ValidationError
 
 LOCAL = os.path.dirname(__file__)
 SAMPLE_PING_PATH = os.path.join(LOCAL, 'sample_v4_ping.json')
-MAIN_SCHEMA_PATH = os.path.join(LOCAL, '../../telemetry/main.schema.json')
+MAIN_SCHEMA_PATH = os.path.join(LOCAL, '../../schemas/telemetry/main/main.4.schema.json')
 MODULES_PING_PATHS = [os.path.join(LOCAL, 'modules_v1_ping_linux.json'), os.path.join(LOCAL, 'modules_v1_ping_windows.json')]
-MODULES_SCHEMA_PATH = os.path.join(LOCAL, '../../telemetry/modules.schema.json')
+MODULES_SCHEMA_PATH = os.path.join(LOCAL, '../../schemas/telemetry/modules/modules.4.schema.json')
 
 class Test_validate(unittest.TestCase):
 
