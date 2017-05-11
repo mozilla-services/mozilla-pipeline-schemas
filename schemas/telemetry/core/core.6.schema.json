@@ -1,74 +1,88 @@
 {
-  "$schema" : "http://json-schema.org/draft-04/schema#",
-  "type" : "object",
-  "title" : "core",
-  "properties" : {
-    "v" : {
-      "type" : "integer",
-      "enum" : [ 6 ]
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "properties": {
+        "arch": {
+            "type": "string"
+        },
+        "campaign": {
+            "type": "string"
+        },
+        "clientId": {
+            "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+            "type": "string"
+        },
+        "created": {
+            "type": "string"
+        },
+        "defaultSearch": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "device": {
+            "type": "string"
+        },
+        "distributionId": {
+            "type": "string"
+        },
+        "durations": {
+            "type": "integer"
+        },
+        "experiments": {
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "flashUsage": {
+            "type": "integer"
+        },
+        "locale": {
+            "type": "string"
+        },
+        "os": {
+            "type": "string"
+        },
+        "osversion": {
+            "type": "string"
+        },
+        "profileDate": {
+            "type": "integer"
+        },
+        "searches": {
+            "additionalProperties": {
+                "type": "integer"
+            },
+            "type": "object"
+        },
+        "seq": {
+            "minimum": 0,
+            "type": "integer"
+        },
+        "sessions": {
+            "type": "integer"
+        },
+        "tz": {
+            "type": "integer"
+        },
+        "v": {
+            "enum": [
+                6
+            ],
+            "type": "integer"
+        }
     },
-    "clientId" : {
-      "type" : "string",
-      "pattern" : "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
-    },
-    "seq" : {
-      "type" : "integer",
-      "minimum" : 0
-    },
-    "locale" : {
-      "type" : "string"
-    },
-    "os" : {
-      "type" : "string"
-    },
-    "osversion" : {
-      "type" : "string"
-    },
-    "device" : {
-      "type" : "string"
-    },
-    "arch" : {
-      "type" : "string"
-    },
-    "profileDate" : {
-      "type" : "integer"
-    },
-    "defaultSearch" : {
-      "type" : ["string", "null"]
-    },
-    "distributionId" : {
-      "type" : "string"
-    },
-    "created" : {
-      "type" : "string"
-    },
-    "tz" : {
-      "type" : "integer"
-    },
-    "sessions" : {
-      "type" : "integer"
-    },
-    "durations" : {
-      "type" : "integer"
-    },
-    "searches" : {
-      "type" : "object",
-      "additionalProperties": {
-        "type": "integer"
-      }
-    },
-    "experiments" : {
-      "type" : "array",
-      "items" : {
-        "type" : "string"
-      }
-    },
-    "flashUsage" : {
-      "type" : "integer"
-    },
-    "campaign": {
-        "type": "string"
-    }
-  },
-  "required" : ["v", "clientId", "seq", "arch", "device", "locale", "os", "osversion"]
+    "required": [
+        "v",
+        "clientId",
+        "seq",
+        "arch",
+        "device",
+        "locale",
+        "os",
+        "osversion"
+    ],
+    "title": "core",
+    "type": "object"
 }

@@ -1,0 +1,133 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "name": "main",
+  "properties": {
+    "application": {
+      "type": "object",
+      "properties": {
+        "architecture": {
+          "type": "string"
+        },
+        "buildId": {
+          "$ref": "#/definitions/buildId"
+        },
+        "channel": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "platformVersion": {
+          "type": "string",
+          "pattern": "^[0-9]{2}\\."
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^[0-9]{2}\\."
+        },
+        "displayVersion": {
+          "type": "string",
+          "pattern": "^[0-9]{2,3}\\."
+        },
+        "vendor": {
+          "type": "string"
+        },
+        "xpcomAbi": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "architecture",
+        "buildId",
+        "channel",
+        "name",
+        "platformVersion",
+        "version",
+        "vendor",
+        "xpcomAbi"
+      ],
+      "additionalProperties": false
+    },
+    "clientId": {
+      "type": ["string", "null"],
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+    },
+    "creationDate": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{3}Z$"
+    },
+    "environment": __ENVIRONMENT__,
+    "id": {
+      "$ref": "#/definitions/UUID4"
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1
+        },
+        "modules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/module"
+          }
+        }
+      }
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "modules"
+      ]
+    },
+    "version": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 4
+    }
+  },
+  "required": [
+    "application",
+    "creationDate",
+    "id",
+    "type",
+    "version",
+    "payload"
+  ],
+  "definitions": {
+    __ADDON_DEFN__,
+    __ADAPTER_DEFN__,
+    __FEATURES_DEFN__,
+    __GMPLUGIN_DEFN__,
+    __MONITOR_DEFN__,
+    __PLUGIN_DEFN__,
+    "module": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "debugName": {
+          "type": ["string", "null"]
+        },
+        "version": {
+          "type": ["string", "null"]
+        },
+        "debugID": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "buildId": {
+      "type": "string",
+      "pattern": "^[0-9]{10}"
+    },
+    "UUID4": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+    }
+  }
+}

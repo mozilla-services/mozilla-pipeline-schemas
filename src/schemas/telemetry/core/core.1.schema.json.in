@@ -1,0 +1,41 @@
+{
+  "$schema" : "http://json-schema.org/draft-04/schema#",
+  "type" : "object",
+  "title" : "core",
+  "properties" : {
+    "v" : {
+      "type" : "integer",
+      "enum" : [ 1 ]
+    },
+    "clientId" : {
+      "type" : "string",
+      "pattern" : "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+    },
+    "seq" : {
+      "type" : "integer",
+      "minimum" : 0
+    },
+    "locale" : {
+      "type" : "string"
+    },
+    "os" : {
+      "type" : "string"
+    },
+    "osversion" : {
+      "type" : "string"
+    },
+    "device" : {
+      "type" : "string"
+    },
+    "arch" : {
+      "type" : "string"
+    },
+    "experiments" : {
+      "type" : "array",
+      "items" : {
+        "type" : "string"
+      }
+    }
+  },
+  "required" : ["v", "clientId", "seq", "arch", "device", "locale", "os", "osversion"]
+}
