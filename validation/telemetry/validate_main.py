@@ -35,6 +35,12 @@ class Test_validate(unittest.TestCase):
         for path in MODULES_PING_PATHS:
             self.do_test_ping(MODULES_SCHEMA_PATH, path)
 
+    def test_new_profile(self):
+        SAMPLE_PING_PATH = os.path.join(LOCAL, 'new-profile_v4_ping.json')
+        SCHEMA_PATH =\
+            os.path.join(LOCAL, '../../schemas/telemetry/new-profile/new-profile.4.schema.json')
+        self.do_test_ping(SCHEMA_PATH, SAMPLE_PING_PATH)
+
 
 if __name__ == '__main__':
     unittest.main()
