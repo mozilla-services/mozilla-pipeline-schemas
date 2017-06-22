@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "focus-event",
+  "properties": {
+    "v": {
+      "type": "integer",
+      "minimum": 1
+    },
+    @TELEMETRY_CLIENTID_1_JSON@,
+    "seq": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "locale": {
+      "type": "string"
+    },
+    "os": {
+      "type": "string"
+    },
+    "osversion": {
+      "type": "string"
+    },
+    "created": {
+      "type": "integer"
+    },
+    "tz": {
+      "type": "integer"
+    },
+    "settings": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+          ],
+        "minItems": 4,
+        "maxItems": 6
+      }
+    }
+  },
+  "required": [ "v", "clientId", "seq", "locale", "os", "osversion", "created", "settings", "events" ]
+}
