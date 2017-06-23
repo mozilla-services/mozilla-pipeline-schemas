@@ -43,7 +43,7 @@ foreach(ITEM IN ITEMS ${SCHEMAS})
     # NOTE the artifacts are written back into the source repository (see the README)
     if(ITEM MATCHES "\\.json$") # pretty print
       configure_file("${CMAKE_SOURCE_DIR}/templates/${ITEM}" "${CMAKE_BINARY_DIR}/tmp.json" @ONLY)
-      execute_process(COMMAND ${JQ_EXE} . RESULT_VARIABLE JQ_RV INPUT_FILE "${CMAKE_BINARY_DIR}/tmp.json" OUTPUT_FILE "${CMAKE_SOURCE_DIR}/schemas/${ITEM}")
+      execute_process(COMMAND ${JQ_EXE} --sort-keys . RESULT_VARIABLE JQ_RV INPUT_FILE "${CMAKE_BINARY_DIR}/tmp.json" OUTPUT_FILE "${CMAKE_SOURCE_DIR}/schemas/${ITEM}")
       if(NOT JQ_RV EQUAL 0)
         message(FATAL_ERROR "invalid JSON ${ITEM}")
       endif()

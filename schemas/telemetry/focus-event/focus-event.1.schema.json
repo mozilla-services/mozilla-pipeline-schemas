@@ -1,45 +1,15 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "title": "focus-event",
   "properties": {
-    "v": {
-      "type": "integer",
-      "minimum": 1
-    },
     "clientId": {
-      "type": "string",
-      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
-    },
-    "seq": {
-      "type": "integer",
-      "minimum": 0
-    },
-    "locale": {
-      "type": "string"
-    },
-    "os": {
-      "type": "string"
-    },
-    "osversion": {
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
       "type": "string"
     },
     "created": {
       "type": "integer"
     },
-    "tz": {
-      "type": "integer"
-    },
-    "settings": {
-      "type": "object",
-      "additionalProperties": {
-        "type": "string"
-      }
-    },
     "events": {
-      "type": "array",
       "items": {
-        "type": "array",
         "items": [
           {
             "type": "integer"
@@ -57,15 +27,43 @@
             "type": "string"
           },
           {
-            "type": "object",
             "additionalProperties": {
               "type": "string"
-            }
+            },
+            "type": "object"
           }
         ],
+        "maxItems": 6,
         "minItems": 4,
-        "maxItems": 6
-      }
+        "type": "array"
+      },
+      "type": "array"
+    },
+    "locale": {
+      "type": "string"
+    },
+    "os": {
+      "type": "string"
+    },
+    "osversion": {
+      "type": "string"
+    },
+    "seq": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "settings": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "type": "object"
+    },
+    "tz": {
+      "type": "integer"
+    },
+    "v": {
+      "minimum": 1,
+      "type": "integer"
     }
   },
   "required": [
@@ -78,5 +76,7 @@
     "created",
     "settings",
     "events"
-  ]
+  ],
+  "title": "focus-event",
+  "type": "object"
 }

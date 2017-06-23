@@ -1,21 +1,42 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "title": "core",
   "properties": {
-    "v": {
-      "type": "integer",
-      "enum": [
-        2
-      ]
+    "arch": {
+      "type": "string"
+    },
+    "campaign": {
+      "type": "string"
     },
     "clientId": {
-      "type": "string",
-      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "type": "string"
     },
-    "seq": {
-      "type": "integer",
-      "minimum": 0
+    "created": {
+      "type": "string"
+    },
+    "defaultSearch": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "device": {
+      "type": "string"
+    },
+    "distributionId": {
+      "type": "string"
+    },
+    "durations": {
+      "type": "integer"
+    },
+    "experiments": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "flashUsage": {
+      "type": "integer"
     },
     "locale": {
       "type": "string"
@@ -26,53 +47,30 @@
     "osversion": {
       "type": "string"
     },
-    "device": {
-      "type": "string"
-    },
-    "arch": {
-      "type": "string"
-    },
-    "experiments": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
     "profileDate": {
       "type": "integer"
     },
-    "defaultSearch": {
-      "type": [
-        "string",
-        "null"
-      ]
+    "searches": {
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "type": "object"
     },
-    "distributionId": {
-      "type": "string"
-    },
-    "created": {
-      "type": "string"
-    },
-    "tz": {
+    "seq": {
+      "minimum": 0,
       "type": "integer"
     },
     "sessions": {
       "type": "integer"
     },
-    "durations": {
+    "tz": {
       "type": "integer"
     },
-    "searches": {
-      "type": "object",
-      "additionalProperties": {
-        "type": "integer"
-      }
-    },
-    "flashUsage": {
+    "v": {
+      "enum": [
+        2
+      ],
       "type": "integer"
-    },
-    "campaign": {
-      "type": "string"
     }
   },
   "required": [
@@ -84,5 +82,7 @@
     "locale",
     "os",
     "osversion"
-  ]
+  ],
+  "title": "core",
+  "type": "object"
 }

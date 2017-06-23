@@ -1,37 +1,35 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "title": "anonymous",
   "properties": {
     "application": {
-      "type": "object",
+      "additionalProperties": false,
       "properties": {
         "architecture": {
           "type": "string"
         },
         "buildId": {
-          "type": "string",
-          "pattern": "^[0-9]{10}"
+          "pattern": "^[0-9]{10}",
+          "type": "string"
         },
         "channel": {
+          "type": "string"
+        },
+        "displayVersion": {
+          "pattern": "^[0-9]{2,3}\\.",
           "type": "string"
         },
         "name": {
           "type": "string"
         },
         "platformVersion": {
-          "type": "string",
-          "pattern": "^[0-9]{2,3}\\."
-        },
-        "version": {
-          "type": "string",
-          "pattern": "^[0-9]{2,3}\\."
-        },
-        "displayVersion": {
-          "type": "string",
-          "pattern": "^[0-9]{2,3}\\."
+          "pattern": "^[0-9]{2,3}\\.",
+          "type": "string"
         },
         "vendor": {
+          "type": "string"
+        },
+        "version": {
+          "pattern": "^[0-9]{2,3}\\.",
           "type": "string"
         },
         "xpcomAbi": {
@@ -48,37 +46,39 @@
         "vendor",
         "xpcomAbi"
       ],
-      "additionalProperties": false
+      "type": "object"
     },
     "creationDate": {
-      "type": "string",
-      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{3}Z$"
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{3}Z$",
+      "type": "string"
     },
     "id": {
-      "type": "string",
-      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "type": "string"
     },
     "payload": {
-      "type": "object",
       "properties": {
         "client": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "type": {
-      "type": "string",
       "enum": [
         "anonymous"
-      ]
+      ],
+      "type": "string"
     },
     "version": {
-      "type": "integer",
+      "maximum": 4,
       "minimum": 4,
-      "maximum": 4
+      "type": "integer"
     }
   },
   "required": [
     "payload"
-  ]
+  ],
+  "title": "anonymous",
+  "type": "object"
 }

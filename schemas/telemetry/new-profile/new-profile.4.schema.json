@@ -1,37 +1,35 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "title": "new-profile",
   "properties": {
     "application": {
-      "type": "object",
+      "additionalProperties": false,
       "properties": {
         "architecture": {
           "type": "string"
         },
         "buildId": {
-          "type": "string",
-          "pattern": "^[0-9]{10}"
+          "pattern": "^[0-9]{10}",
+          "type": "string"
         },
         "channel": {
+          "type": "string"
+        },
+        "displayVersion": {
+          "pattern": "^[0-9]{2,3}\\.",
           "type": "string"
         },
         "name": {
           "type": "string"
         },
         "platformVersion": {
-          "type": "string",
-          "pattern": "^[0-9]{2,3}\\."
-        },
-        "version": {
-          "type": "string",
-          "pattern": "^[0-9]{2,3}\\."
-        },
-        "displayVersion": {
-          "type": "string",
-          "pattern": "^[0-9]{2,3}\\."
+          "pattern": "^[0-9]{2,3}\\.",
+          "type": "string"
         },
         "vendor": {
+          "type": "string"
+        },
+        "version": {
+          "pattern": "^[0-9]{2,3}\\.",
           "type": "string"
         },
         "xpcomAbi": {
@@ -48,27 +46,27 @@
         "vendor",
         "xpcomAbi"
       ],
-      "additionalProperties": false
+      "type": "object"
     },
     "clientId": {
-      "type": "string",
-      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "type": "string"
     },
     "creationDate": {
-      "type": "string",
-      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{3}Z$"
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{3}Z$",
+      "type": "string"
     },
     "environment": {
       "properties": {
         "addons": {
-          "type": "object",
           "properties": {
             "activeAddons": {
-              "type": "object",
               "additionalProperties": {
                 "addon": {
-                  "type": "object",
                   "properties": {
+                    "appDisabled": {
+                      "type": "boolean"
+                    },
                     "blocklisted": {
                       "type": "boolean"
                     },
@@ -77,30 +75,6 @@
                         "string",
                         "null"
                       ]
-                    },
-                    "name": {
-                      "type": "string"
-                    },
-                    "userDisabled": {
-                      "type": [
-                        "boolean",
-                        "integer"
-                      ]
-                    },
-                    "appDisabled": {
-                      "type": "boolean"
-                    },
-                    "version": {
-                      "type": [
-                        "string",
-                        "number"
-                      ]
-                    },
-                    "scope": {
-                      "type": "integer"
-                    },
-                    "type": {
-                      "type": "string"
                     },
                     "foreignInstall": {
                       "type": [
@@ -112,104 +86,127 @@
                       "type": "boolean"
                     },
                     "installDay": {
+                      "minimum": 0,
                       "type": [
                         "integer",
                         "null"
-                      ],
-                      "minimum": 0
+                      ]
                     },
-                    "updateDay": {
-                      "type": "integer",
-                      "minimum": 0
+                    "isSystem": {
+                      "type": "boolean"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "scope": {
+                      "type": "integer"
                     },
                     "signedState": {
                       "type": "integer"
                     },
-                    "isSystem": {
-                      "type": "boolean"
-                    }
-                  }
-                }
-              }
-            },
-            "activeExperiment": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "branch": {
-                  "type": "string"
-                }
-              }
-            },
-            "activeGMPlugins": {
-              "type": "object",
-              "additionalProperties": {
-                "gmPlugin": {
-                  "type": "object",
-                  "properties": {
+                    "type": {
+                      "type": "string"
+                    },
+                    "updateDay": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "userDisabled": {
+                      "type": [
+                        "boolean",
+                        "integer"
+                      ]
+                    },
                     "version": {
                       "type": [
                         "string",
-                        "null"
+                        "number"
                       ]
-                    },
-                    "userDisabled": {
-                      "type": "boolean"
-                    },
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "activeExperiment": {
+              "properties": {
+                "branch": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "activeGMPlugins": {
+              "additionalProperties": {
+                "gmPlugin": {
+                  "properties": {
                     "applyBackgroundUpdates": {
                       "type": [
                         "integer",
                         "boolean"
                       ]
-                    }
-                  }
-                }
-              }
-            },
-            "activePlugins": {
-              "type": [
-                "array",
-                "object"
-              ],
-              "items": {
-                "plugin": {
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "type": "string"
                     },
-                    "version": {
-                      "type": "string"
-                    },
-                    "description": {
-                      "type": "string"
-                    },
-                    "blocklisted": {
+                    "userDisabled": {
                       "type": "boolean"
                     },
-                    "disabled": {
+                    "version": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "activePlugins": {
+              "items": {
+                "plugin": {
+                  "properties": {
+                    "blocklisted": {
                       "type": "boolean"
                     },
                     "clicktoplay": {
                       "type": "boolean"
                     },
+                    "description": {
+                      "type": "string"
+                    },
+                    "disabled": {
+                      "type": "boolean"
+                    },
                     "mimeTypes": {
+                      "items": {
+                        "type": "string"
+                      },
                       "type": [
                         "array",
                         "object"
-                      ],
-                      "items": {
-                        "type": "string"
-                      }
+                      ]
+                    },
+                    "name": {
+                      "type": "string"
                     },
                     "updateDay": {
                       "type": "integer"
+                    },
+                    "version": {
+                      "type": "string"
                     }
-                  }
+                  },
+                  "type": "object"
                 }
-              }
+              },
+              "type": [
+                "array",
+                "object"
+              ]
             },
             "persona": {
               "type": [
@@ -218,10 +215,9 @@
               ]
             },
             "theme": {
-              "type": "object",
               "properties": {
-                "id": {
-                  "type": "string"
+                "appDisabled": {
+                  "type": "boolean"
                 },
                 "blocklisted": {
                   "type": "boolean"
@@ -232,21 +228,6 @@
                     "null"
                   ]
                 },
-                "name": {
-                  "type": "string"
-                },
-                "userDisabled": {
-                  "type": "boolean"
-                },
-                "appDisabled": {
-                  "type": "boolean"
-                },
-                "version": {
-                  "type": "string"
-                },
-                "scope": {
-                  "type": "integer"
-                },
                 "foreignInstall": {
                   "type": [
                     "boolean",
@@ -256,23 +237,39 @@
                 "hasBinaryComponents": {
                   "type": "boolean"
                 },
+                "id": {
+                  "type": "string"
+                },
                 "installDay": {
+                  "minimum": 0,
                   "type": [
                     "integer",
                     "null"
-                  ],
-                  "minimum": 0
+                  ]
+                },
+                "name": {
+                  "type": "string"
+                },
+                "scope": {
+                  "type": "integer"
                 },
                 "updateDay": {
-                  "type": "integer",
-                  "minimum": 0
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "userDisabled": {
+                  "type": "boolean"
+                },
+                "version": {
+                  "type": "string"
                 }
-              }
+              },
+              "type": "object"
             }
-          }
+          },
+          "type": "object"
         },
         "build": {
-          "type": "object",
           "properties": {
             "applicationId": {
               "type": "string"
@@ -287,8 +284,8 @@
               "type": "string"
             },
             "buildId": {
-              "type": "string",
-              "pattern": "^[0-9]{10}"
+              "pattern": "^[0-9]{10}",
+              "type": "string"
             },
             "hotfixVersion": {
               "type": [
@@ -296,16 +293,16 @@
                 "null"
               ]
             },
-            "version": {
-              "type": "string",
-              "pattern": "^[0-9]{2,3}\\."
+            "platformVersion": {
+              "pattern": "^[0-9]{2,3}\\.",
+              "type": "string"
             },
             "vendor": {
               "type": "string"
             },
-            "platformVersion": {
-              "type": "string",
-              "pattern": "^[0-9]{2,3}\\."
+            "version": {
+              "pattern": "^[0-9]{2,3}\\.",
+              "type": "string"
             },
             "xpcomAbi": {
               "type": "string"
@@ -320,10 +317,10 @@
             "vendor",
             "platformVersion",
             "xpcomAbi"
-          ]
+          ],
+          "type": "object"
         },
         "partner": {
-          "type": "object",
           "properties": {
             "distributionId": {
               "type": [
@@ -332,12 +329,6 @@
               ]
             },
             "distributionVersion": {
-              "type": [
-                "string",
-                "null"
-              ]
-            },
-            "partnerId": {
               "type": [
                 "string",
                 "null"
@@ -355,16 +346,22 @@
                 "null"
               ]
             },
+            "partnerId": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
             "partnerNames": {
               "type": [
                 "array",
                 "object"
               ]
             }
-          }
+          },
+          "type": "object"
         },
         "profile": {
-          "type": "object",
           "properties": {
             "creationDate": {
               "type": "number"
@@ -372,29 +369,58 @@
             "resetDate": {
               "type": "number"
             }
-          }
+          },
+          "type": "object"
         },
         "settings": {
-          "type": "object",
           "properties": {
             "attribution": {
-              "type": "object",
               "properties": {
-                "source": {
-                  "type": "string"
-                },
-                "medium": {
-                  "type": "string"
-                },
                 "campaign": {
                   "type": "string"
                 },
                 "content": {
                   "type": "string"
+                },
+                "medium": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
                 }
-              }
+              },
+              "type": "object"
             },
             "blocklistEnabled": {
+              "type": "boolean"
+            },
+            "defaultSearchEngine": {
+              "type": "string"
+            },
+            "defaultSearchEngineData": {
+              "properties": {
+                "loadPath": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "name": {
+                  "type": "string"
+                },
+                "origin": {
+                  "type": "string"
+                },
+                "submissionURL": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "e10sCohort": {
+              "type": "string"
+            },
+            "e10sEnabled": {
               "type": "boolean"
             },
             "isDefaultBrowser": {
@@ -403,43 +429,24 @@
                 "null"
               ]
             },
-            "defaultSearchEngine": {
-              "type": "string"
-            },
-            "defaultSearchEngineData": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string"
-                },
-                "loadPath": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
-                },
-                "submissionURL": {
-                  "type": "string"
-                },
-                "origin": {
-                  "type": "string"
-                }
-              }
-            },
-            "e10sEnabled": {
-              "type": "boolean"
-            },
-            "e10sCohort": {
-              "type": "string"
-            },
             "locale": {
               "type": "string"
+            },
+            "sandbox": {
+              "properties": {
+                "effectiveContentProcessLevel": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                }
+              },
+              "type": "object"
             },
             "telemetryEnabled": {
               "type": "boolean"
             },
             "update": {
-              "type": "object",
               "properties": {
                 "autoDownload": {
                   "type": "boolean"
@@ -450,42 +457,31 @@
                 "enabled": {
                   "type": "boolean"
                 }
-              }
+              },
+              "type": "object"
             },
             "userPrefs": {
               "type": "object"
-            },
-            "sandbox": {
-              "type": "object",
+            }
+          },
+          "type": "object"
+        },
+        "system": {
+          "properties": {
+            "cpu": {
               "properties": {
-                "effectiveContentProcessLevel": {
+                "cores": {
+                  "maximum": 2048,
+                  "minimum": 1,
                   "type": [
                     "integer",
                     "null"
                   ]
-                }
-              }
-            }
-          }
-        },
-        "system": {
-          "type": "object",
-          "properties": {
-            "cpu": {
-              "type": "object",
-              "properties": {
-                "cores": {
-                  "type": [
-                    "integer",
-                    "null"
-                  ],
-                  "minimum": 1,
-                  "maximum": 2048
                 },
                 "count": {
-                  "type": "integer",
+                  "maximum": 1024,
                   "minimum": 1,
-                  "maximum": 1024
+                  "type": "integer"
                 },
                 "extensions": {
                   "type": "array"
@@ -532,24 +528,24 @@
                     "null"
                   ]
                 }
-              }
+              },
+              "type": "object"
             },
             "device": {
-              "model": {
-                "type": "string"
-              },
-              "manufacturer": {
-                "type": "string"
-              },
               "hardware": {
                 "type": "string"
               },
               "isTablet": {
                 "type": "boolean"
+              },
+              "manufacturer": {
+                "type": "string"
+              },
+              "model": {
+                "type": "string"
               }
             },
             "gfx": {
-              "type": "object",
               "properties": {
                 "D2DEnabled": {
                   "type": [
@@ -564,18 +560,19 @@
                   ]
                 },
                 "adapters": {
-                  "type": "array",
                   "items": {
                     "adapter": {
-                      "type": "object",
                       "properties": {
-                        "description": {
+                        "GPUActive": {
+                          "type": "boolean"
+                        },
+                        "RAM": {
                           "type": [
-                            "string",
+                            "integer",
                             "null"
                           ]
                         },
-                        "vendorID": {
+                        "description": {
                           "type": [
                             "string",
                             "null"
@@ -587,25 +584,7 @@
                             "null"
                           ]
                         },
-                        "subsysID": {
-                          "type": [
-                            "string",
-                            "null"
-                          ]
-                        },
-                        "RAM": {
-                          "type": [
-                            "integer",
-                            "null"
-                          ]
-                        },
                         "driver": {
-                          "type": [
-                            "string",
-                            "null"
-                          ]
-                        },
-                        "driverVersion": {
                           "type": [
                             "string",
                             "null"
@@ -617,56 +596,49 @@
                             "null"
                           ]
                         },
-                        "GPUActive": {
-                          "type": "boolean"
+                        "driverVersion": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "subsysID": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "vendorID": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
                         }
-                      }
+                      },
+                      "type": "object"
                     }
-                  }
-                },
-                "monitors": {
-                  "type": [
-                    "array",
-                    "object"
-                  ],
-                  "items": {
-                    "monitor": {
-                      "type": "object",
-                      "properties": {
-                        "screenWidth": {
-                          "type": "integer"
-                        },
-                        "screenHeight": {
-                          "type": "integer"
-                        },
-                        "refreshRate": {
-                          "type": "number"
-                        },
-                        "pseudoDisplay": {
-                          "type": "boolean"
-                        },
-                        "scale": {
-                          "type": "number"
-                        }
-                      }
-                    }
-                  }
+                  },
+                  "type": "array"
                 },
                 "features": {
-                  "type": "object",
                   "items": {
                     "feature": {
-                      "type": "object",
                       "properties": {
+                        "failureId": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
                         "status": {
                           "type": [
                             "string",
                             "null"
                           ]
                         },
-                        "failureId": {
+                        "textureSharing": {
                           "type": [
-                            "string",
+                            "boolean",
                             "null"
                           ]
                         },
@@ -681,41 +653,47 @@
                             "boolean",
                             "null"
                           ]
-                        },
-                        "textureSharing": {
-                          "type": [
-                            "boolean",
-                            "null"
-                          ]
                         }
-                      }
+                      },
+                      "type": "object"
                     }
-                  }
+                  },
+                  "type": "object"
+                },
+                "monitors": {
+                  "items": {
+                    "monitor": {
+                      "properties": {
+                        "pseudoDisplay": {
+                          "type": "boolean"
+                        },
+                        "refreshRate": {
+                          "type": "number"
+                        },
+                        "scale": {
+                          "type": "number"
+                        },
+                        "screenHeight": {
+                          "type": "integer"
+                        },
+                        "screenWidth": {
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": [
+                    "array",
+                    "object"
+                  ]
                 }
-              }
+              },
+              "type": "object"
             },
             "hdd": {
-              "type": "object",
               "properties": {
-                "profile": {
-                  "type": "object",
-                  "properties": {
-                    "model": {
-                      "type": [
-                        "string",
-                        "null"
-                      ]
-                    },
-                    "revision": {
-                      "type": [
-                        "string",
-                        "null"
-                      ]
-                    }
-                  }
-                },
                 "binary": {
-                  "type": "object",
                   "properties": {
                     "model": {
                       "type": [
@@ -729,10 +707,27 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "type": "object"
+                },
+                "profile": {
+                  "properties": {
+                    "model": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "revision": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "type": "object"
                 },
                 "system": {
-                  "type": "object",
                   "properties": {
                     "model": {
                       "type": [
@@ -746,9 +741,11 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "type": "object"
                 }
-              }
+              },
+              "type": "object"
             },
             "isWow64": {
               "type": "boolean"
@@ -757,18 +754,17 @@
               "type": "number"
             },
             "os": {
-              "type": "object",
               "properties": {
-                "name": {
-                  "type": "string"
-                },
-                "version": {
-                  "type": [
-                    "string",
-                    "integer"
-                  ]
+                "installYear": {
+                  "type": "number"
                 },
                 "kernelVersion": {
+                  "type": "string"
+                },
+                "locale": {
+                  "type": "string"
+                },
+                "name": {
                   "type": "string"
                 },
                 "servicePackMajor": {
@@ -776,6 +772,12 @@
                 },
                 "servicePackMinor": {
                   "type": "number"
+                },
+                "version": {
+                  "type": [
+                    "string",
+                    "integer"
+                  ]
                 },
                 "windowsBuildNumber": {
                   "type": "number"
@@ -785,16 +787,12 @@
                     "number",
                     "null"
                   ]
-                },
-                "installYear": {
-                  "type": "number"
-                },
-                "locale": {
-                  "type": "string"
                 }
-              }
+              },
+              "type": "object"
             }
-          }
+          },
+          "type": "object"
         }
       },
       "required": [
@@ -805,34 +803,34 @@
       ]
     },
     "id": {
-      "type": "string",
-      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "type": "string"
     },
     "payload": {
-      "type": "object",
       "properties": {
         "reason": {
-          "type": "string",
           "enum": [
             "shutdown",
             "startup"
-          ]
+          ],
+          "type": "string"
         }
       },
       "required": [
         "reason"
-      ]
+      ],
+      "type": "object"
     },
     "type": {
-      "type": "string",
       "enum": [
         "new-profile"
-      ]
+      ],
+      "type": "string"
     },
     "version": {
-      "type": "number",
+      "maximum": 4,
       "minimum": 4,
-      "maximum": 4
+      "type": "number"
     }
   },
   "required": [
@@ -844,5 +842,7 @@
     "payload",
     "type",
     "version"
-  ]
+  ],
+  "title": "new-profile",
+  "type": "object"
 }
