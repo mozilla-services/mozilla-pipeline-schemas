@@ -15,7 +15,7 @@ set(CPACK_RESOURCE_FILE_LICENSE  "${CMAKE_SOURCE_DIR}/LICENSE.txt")
 set(CPACK_RPM_PACKAGE_LICENSE    "MPLv2.0")
 
 find_program(JQ_EXE jq)
-if(JQ_EXE-NOTFOUND)
+if(NOT JQ_EXE)
   message(FATAL_ERROR "jq is required for output formatting")
 endif()
 
