@@ -1,21 +1,21 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "title": "core",
   "properties": {
-    "v": {
-      "type": "integer",
-      "enum": [
-        1
-      ]
+    "arch": {
+      "type": "string"
     },
     "clientId": {
-      "type": "string",
-      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "type": "string"
     },
-    "seq": {
-      "type": "integer",
-      "minimum": 0
+    "device": {
+      "type": "string"
+    },
+    "experiments": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
     },
     "locale": {
       "type": "string"
@@ -26,17 +26,15 @@
     "osversion": {
       "type": "string"
     },
-    "device": {
-      "type": "string"
+    "seq": {
+      "minimum": 0,
+      "type": "integer"
     },
-    "arch": {
-      "type": "string"
-    },
-    "experiments": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
+    "v": {
+      "enum": [
+        1
+      ],
+      "type": "integer"
     }
   },
   "required": [
@@ -48,5 +46,7 @@
     "locale",
     "os",
     "osversion"
-  ]
+  ],
+  "title": "core",
+  "type": "object"
 }

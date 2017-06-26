@@ -1,37 +1,35 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "name": "main",
   "properties": {
     "application": {
-      "type": "object",
+      "additionalProperties": false,
       "properties": {
         "architecture": {
           "type": "string"
         },
         "buildId": {
-          "type": "string",
-          "pattern": "^[0-9]{10}"
+          "pattern": "^[0-9]{10}",
+          "type": "string"
         },
         "channel": {
+          "type": "string"
+        },
+        "displayVersion": {
+          "pattern": "^[0-9]{2,3}\\.",
           "type": "string"
         },
         "name": {
           "type": "string"
         },
         "platformVersion": {
-          "type": "string",
-          "pattern": "^[0-9]{2,3}\\."
-        },
-        "version": {
-          "type": "string",
-          "pattern": "^[0-9]{2,3}\\."
-        },
-        "displayVersion": {
-          "type": "string",
-          "pattern": "^[0-9]{2,3}\\."
+          "pattern": "^[0-9]{2,3}\\.",
+          "type": "string"
         },
         "vendor": {
+          "type": "string"
+        },
+        "version": {
+          "pattern": "^[0-9]{2,3}\\.",
           "type": "string"
         },
         "xpcomAbi": {
@@ -48,52 +46,167 @@
         "vendor",
         "xpcomAbi"
       ],
-      "additionalProperties": false
+      "type": "object"
     },
     "clientId": {
-      "type": "string",
-      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "type": "string"
     },
     "creationDate": {
-      "type": "string",
-      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{3}Z$"
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{3}Z$",
+      "type": "string"
     },
     "environment": {
       "properties": {
         "addons": {
-          "type": "object",
           "properties": {
             "activeAddons": {
-              "type": "object",
               "additionalProperties": {
-                "$ref": "#/definitions/addon"
-              }
+                "addon": {
+                  "properties": {
+                    "appDisabled": {
+                      "type": "boolean"
+                    },
+                    "blocklisted": {
+                      "type": "boolean"
+                    },
+                    "description": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "foreignInstall": {
+                      "type": [
+                        "integer",
+                        "boolean"
+                      ]
+                    },
+                    "hasBinaryComponents": {
+                      "type": "boolean"
+                    },
+                    "installDay": {
+                      "minimum": 0,
+                      "type": [
+                        "integer",
+                        "null"
+                      ]
+                    },
+                    "isSystem": {
+                      "type": "boolean"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "scope": {
+                      "type": "integer"
+                    },
+                    "signedState": {
+                      "type": "integer"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "updateDay": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "userDisabled": {
+                      "type": [
+                        "boolean",
+                        "integer"
+                      ]
+                    },
+                    "version": {
+                      "type": [
+                        "string",
+                        "number"
+                      ]
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
             },
             "activeExperiment": {
-              "type": "object",
               "properties": {
-                "id": {
-                  "type": "string"
-                },
                 "branch": {
                   "type": "string"
+                },
+                "id": {
+                  "type": "string"
                 }
-              }
+              },
+              "type": "object"
             },
             "activeGMPlugins": {
-              "type": "object",
               "additionalProperties": {
-                "$ref": "#/definitions/gmPlugin"
-              }
+                "gmPlugin": {
+                  "properties": {
+                    "applyBackgroundUpdates": {
+                      "type": [
+                        "integer",
+                        "boolean"
+                      ]
+                    },
+                    "userDisabled": {
+                      "type": "boolean"
+                    },
+                    "version": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
             },
             "activePlugins": {
+              "items": {
+                "plugin": {
+                  "properties": {
+                    "blocklisted": {
+                      "type": "boolean"
+                    },
+                    "clicktoplay": {
+                      "type": "boolean"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "disabled": {
+                      "type": "boolean"
+                    },
+                    "mimeTypes": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": [
+                        "array",
+                        "object"
+                      ]
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "updateDay": {
+                      "type": "integer"
+                    },
+                    "version": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
               "type": [
                 "array",
                 "object"
-              ],
-              "items": {
-                "$ref": "#/definitions/plugin"
-              }
+              ]
             },
             "persona": {
               "type": [
@@ -102,10 +215,9 @@
               ]
             },
             "theme": {
-              "type": "object",
               "properties": {
-                "id": {
-                  "type": "string"
+                "appDisabled": {
+                  "type": "boolean"
                 },
                 "blocklisted": {
                   "type": "boolean"
@@ -116,21 +228,6 @@
                     "null"
                   ]
                 },
-                "name": {
-                  "type": "string"
-                },
-                "userDisabled": {
-                  "type": "boolean"
-                },
-                "appDisabled": {
-                  "type": "boolean"
-                },
-                "version": {
-                  "type": "string"
-                },
-                "scope": {
-                  "type": "integer"
-                },
                 "foreignInstall": {
                   "type": [
                     "boolean",
@@ -140,23 +237,39 @@
                 "hasBinaryComponents": {
                   "type": "boolean"
                 },
+                "id": {
+                  "type": "string"
+                },
                 "installDay": {
+                  "minimum": 0,
                   "type": [
                     "integer",
                     "null"
-                  ],
-                  "minimum": 0
+                  ]
+                },
+                "name": {
+                  "type": "string"
+                },
+                "scope": {
+                  "type": "integer"
                 },
                 "updateDay": {
-                  "type": "integer",
-                  "minimum": 0
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "userDisabled": {
+                  "type": "boolean"
+                },
+                "version": {
+                  "type": "string"
                 }
-              }
+              },
+              "type": "object"
             }
-          }
+          },
+          "type": "object"
         },
         "build": {
-          "type": "object",
           "properties": {
             "applicationId": {
               "type": "string"
@@ -171,8 +284,8 @@
               "type": "string"
             },
             "buildId": {
-              "type": "string",
-              "pattern": "^[0-9]{10}"
+              "pattern": "^[0-9]{10}",
+              "type": "string"
             },
             "hotfixVersion": {
               "type": [
@@ -180,16 +293,16 @@
                 "null"
               ]
             },
-            "version": {
-              "type": "string",
-              "pattern": "^[0-9]{2,3}\\."
+            "platformVersion": {
+              "pattern": "^[0-9]{2,3}\\.",
+              "type": "string"
             },
             "vendor": {
               "type": "string"
             },
-            "platformVersion": {
-              "type": "string",
-              "pattern": "^[0-9]{2,3}\\."
+            "version": {
+              "pattern": "^[0-9]{2,3}\\.",
+              "type": "string"
             },
             "xpcomAbi": {
               "type": "string"
@@ -204,10 +317,10 @@
             "vendor",
             "platformVersion",
             "xpcomAbi"
-          ]
+          ],
+          "type": "object"
         },
         "partner": {
-          "type": "object",
           "properties": {
             "distributionId": {
               "type": [
@@ -216,12 +329,6 @@
               ]
             },
             "distributionVersion": {
-              "type": [
-                "string",
-                "null"
-              ]
-            },
-            "partnerId": {
               "type": [
                 "string",
                 "null"
@@ -239,16 +346,22 @@
                 "null"
               ]
             },
+            "partnerId": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
             "partnerNames": {
               "type": [
                 "array",
                 "object"
               ]
             }
-          }
+          },
+          "type": "object"
         },
         "profile": {
-          "type": "object",
           "properties": {
             "creationDate": {
               "type": "number"
@@ -256,29 +369,58 @@
             "resetDate": {
               "type": "number"
             }
-          }
+          },
+          "type": "object"
         },
         "settings": {
-          "type": "object",
           "properties": {
             "attribution": {
-              "type": "object",
               "properties": {
-                "source": {
-                  "type": "string"
-                },
-                "medium": {
-                  "type": "string"
-                },
                 "campaign": {
                   "type": "string"
                 },
                 "content": {
                   "type": "string"
+                },
+                "medium": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
                 }
-              }
+              },
+              "type": "object"
             },
             "blocklistEnabled": {
+              "type": "boolean"
+            },
+            "defaultSearchEngine": {
+              "type": "string"
+            },
+            "defaultSearchEngineData": {
+              "properties": {
+                "loadPath": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "name": {
+                  "type": "string"
+                },
+                "origin": {
+                  "type": "string"
+                },
+                "submissionURL": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "e10sCohort": {
+              "type": "string"
+            },
+            "e10sEnabled": {
               "type": "boolean"
             },
             "isDefaultBrowser": {
@@ -287,43 +429,24 @@
                 "null"
               ]
             },
-            "defaultSearchEngine": {
-              "type": "string"
-            },
-            "defaultSearchEngineData": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string"
-                },
-                "loadPath": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
-                },
-                "submissionURL": {
-                  "type": "string"
-                },
-                "origin": {
-                  "type": "string"
-                }
-              }
-            },
-            "e10sEnabled": {
-              "type": "boolean"
-            },
-            "e10sCohort": {
-              "type": "string"
-            },
             "locale": {
               "type": "string"
+            },
+            "sandbox": {
+              "properties": {
+                "effectiveContentProcessLevel": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                }
+              },
+              "type": "object"
             },
             "telemetryEnabled": {
               "type": "boolean"
             },
             "update": {
-              "type": "object",
               "properties": {
                 "autoDownload": {
                   "type": "boolean"
@@ -334,31 +457,31 @@
                 "enabled": {
                   "type": "boolean"
                 }
-              }
+              },
+              "type": "object"
             },
             "userPrefs": {
               "type": "object"
             }
-          }
+          },
+          "type": "object"
         },
         "system": {
-          "type": "object",
           "properties": {
             "cpu": {
-              "type": "object",
               "properties": {
                 "cores": {
+                  "maximum": 2048,
+                  "minimum": 1,
                   "type": [
                     "integer",
                     "null"
-                  ],
-                  "minimum": 1,
-                  "maximum": 2048
+                  ]
                 },
                 "count": {
-                  "type": "integer",
+                  "maximum": 1024,
                   "minimum": 1,
-                  "maximum": 1024
+                  "type": "integer"
                 },
                 "extensions": {
                   "type": "array"
@@ -405,24 +528,24 @@
                     "null"
                   ]
                 }
-              }
+              },
+              "type": "object"
             },
             "device": {
-              "model": {
-                "type": "string"
-              },
-              "manufacturer": {
-                "type": "string"
-              },
               "hardware": {
                 "type": "string"
               },
               "isTablet": {
                 "type": "boolean"
+              },
+              "manufacturer": {
+                "type": "string"
+              },
+              "model": {
+                "type": "string"
               }
             },
             "gfx": {
-              "type": "object",
               "properties": {
                 "D2DEnabled": {
                   "type": [
@@ -437,50 +560,140 @@
                   ]
                 },
                 "adapters": {
-                  "type": "array",
                   "items": {
-                    "$ref": "#/definitions/adapter"
-                  }
+                    "adapter": {
+                      "properties": {
+                        "GPUActive": {
+                          "type": "boolean"
+                        },
+                        "RAM": {
+                          "type": [
+                            "integer",
+                            "null"
+                          ]
+                        },
+                        "description": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "deviceID": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "driver": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "driverDate": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "driverVersion": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "subsysID": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "vendorID": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "array"
+                },
+                "features": {
+                  "items": {
+                    "feature": {
+                      "properties": {
+                        "failureId": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "status": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "textureSharing": {
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "version": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "warp": {
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
                 },
                 "monitors": {
+                  "items": {
+                    "monitor": {
+                      "properties": {
+                        "pseudoDisplay": {
+                          "type": "boolean"
+                        },
+                        "refreshRate": {
+                          "type": "number"
+                        },
+                        "scale": {
+                          "type": "number"
+                        },
+                        "screenHeight": {
+                          "type": "integer"
+                        },
+                        "screenWidth": {
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
                   "type": [
                     "array",
                     "object"
-                  ],
-                  "items": {
-                    "$ref": "#/definitions/monitor"
-                  }
-                },
-                "features": {
-                  "type": "object",
-                  "items": {
-                    "$ref": "#/definitions/features"
-                  }
+                  ]
                 }
-              }
+              },
+              "type": "object"
             },
             "hdd": {
-              "type": "object",
               "properties": {
-                "profile": {
-                  "type": "object",
-                  "properties": {
-                    "model": {
-                      "type": [
-                        "string",
-                        "null"
-                      ]
-                    },
-                    "revision": {
-                      "type": [
-                        "string",
-                        "null"
-                      ]
-                    }
-                  }
-                },
                 "binary": {
-                  "type": "object",
                   "properties": {
                     "model": {
                       "type": [
@@ -494,10 +707,27 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "type": "object"
+                },
+                "profile": {
+                  "properties": {
+                    "model": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "revision": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "type": "object"
                 },
                 "system": {
-                  "type": "object",
                   "properties": {
                     "model": {
                       "type": [
@@ -511,9 +741,11 @@
                         "null"
                       ]
                     }
-                  }
+                  },
+                  "type": "object"
                 }
-              }
+              },
+              "type": "object"
             },
             "isWow64": {
               "type": "boolean"
@@ -522,18 +754,17 @@
               "type": "number"
             },
             "os": {
-              "type": "object",
               "properties": {
-                "name": {
-                  "type": "string"
-                },
-                "version": {
-                  "type": [
-                    "string",
-                    "integer"
-                  ]
+                "installYear": {
+                  "type": "number"
                 },
                 "kernelVersion": {
+                  "type": "string"
+                },
+                "locale": {
+                  "type": "string"
+                },
+                "name": {
                   "type": "string"
                 },
                 "servicePackMajor": {
@@ -541,6 +772,12 @@
                 },
                 "servicePackMinor": {
                   "type": "number"
+                },
+                "version": {
+                  "type": [
+                    "string",
+                    "integer"
+                  ]
                 },
                 "windowsBuildNumber": {
                   "type": "number"
@@ -550,16 +787,12 @@
                     "number",
                     "null"
                   ]
-                },
-                "installYear": {
-                  "type": "number"
-                },
-                "locale": {
-                  "type": "string"
                 }
-              }
+              },
+              "type": "object"
             }
-          }
+          },
+          "type": "object"
         }
       },
       "required": [
@@ -570,89 +803,275 @@
       ]
     },
     "id": {
-      "type": "string",
-      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "type": "string"
     },
     "payload": {
-      "type": "object",
       "properties": {
+        "UIMeasurements": {
+          "type": [
+            "array",
+            "object"
+          ]
+        },
         "addonDetails": {
-          "type": "object",
-          "properties": {}
+          "properties": {},
+          "type": "object"
         },
         "addonHistograms": {
-          "type": "object",
-          "properties": {}
+          "properties": {},
+          "type": "object"
         },
         "childPayloads": {
           "type": "array"
         },
         "chromeHangs": {
-          "type": "object",
-          "properties": {}
+          "properties": {},
+          "type": "object"
         },
         "fileIOReports": {
+          "properties": {},
           "type": [
             "object",
             "null"
-          ],
-          "properties": {}
-        },
-        "histograms": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/histogram"
-          }
-        },
-        "processes": {
-          "type": "object",
-          "properties": {
-            "parent": {
-              "allOf": [
-                {
-                  "$ref": "#/definitions/processData"
-                },
-                {
-                  "required": [
-                    "scalars"
-                  ]
-                }
-              ]
-            },
-            "content": {
-              "$ref": "#/definitions/processData"
-            },
-            "gpu": {
-              "$ref": "#/definitions/processData"
-            }
-          },
-          "required": [
-            "parent"
           ]
         },
+        "histograms": {
+          "additionalProperties": {
+            "histogram": {
+              "additionalProperties": false,
+              "properties": {
+                "bucket_count": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "histogram_type": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "log_sum": {
+                  "minimum": 0,
+                  "type": "number"
+                },
+                "log_sum_squares": {
+                  "minimum": 0,
+                  "type": "number"
+                },
+                "range": {
+                  "type": "array"
+                },
+                "sum": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "sum_squares_hi": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "sum_squares_lo": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "values": {
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
         "info": {
-          "type": "object",
           "properties": {
             "subsessionLength": {
+              "minimum": 0,
               "type": [
                 "integer",
                 "null"
-              ],
-              "minimum": 0
+              ]
             }
-          }
+          },
+          "type": "object"
         },
         "keyedHistograms": {
-          "type": "object",
           "additionalProperties": {
             "additionalProperties": {
-              "$ref": "#/definitions/histogram"
+              "processData": {
+                "properties": {
+                  "events": {
+                    "items": {
+                      "event": {
+                        "items": [
+                          {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          {
+                            "additionalProperties": {
+                              "type": "string"
+                            },
+                            "type": [
+                              "object",
+                              "null"
+                            ]
+                          }
+                        ],
+                        "maxItems": 6,
+                        "minItems": 4,
+                        "type": "array"
+                      }
+                    },
+                    "type": "array"
+                  },
+                  "gc": {
+                    "type": "object"
+                  },
+                  "histograms": {
+                    "additionalProperties": {
+                      "histogram": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "bucket_count": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "histogram_type": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "log_sum": {
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          "log_sum_squares": {
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          "range": {
+                            "type": "array"
+                          },
+                          "sum": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "sum_squares_hi": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "sum_squares_lo": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "values": {
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "keyedHistograms": {
+                    "additionalProperties": {
+                      "additionalProperties": {
+                        "histogram": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "bucket_count": {
+                              "minimum": 0,
+                              "type": "integer"
+                            },
+                            "histogram_type": {
+                              "minimum": 0,
+                              "type": "integer"
+                            },
+                            "log_sum": {
+                              "minimum": 0,
+                              "type": "number"
+                            },
+                            "log_sum_squares": {
+                              "minimum": 0,
+                              "type": "number"
+                            },
+                            "range": {
+                              "type": "array"
+                            },
+                            "sum": {
+                              "minimum": 0,
+                              "type": "integer"
+                            },
+                            "sum_squares_hi": {
+                              "minimum": 0,
+                              "type": "integer"
+                            },
+                            "sum_squares_lo": {
+                              "minimum": 0,
+                              "type": "integer"
+                            },
+                            "values": {
+                              "type": "object"
+                            }
+                          },
+                          "type": "object"
+                        }
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "keyedScalars": {
+                    "additionalProperties": {
+                      "keyedScalar": {
+                        "additionalProperties": {
+                          "scalar": {
+                            "type": [
+                              "integer",
+                              "string",
+                              "boolean"
+                            ]
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "scalars": {
+                    "additionalProperties": {
+                      "scalar": {
+                        "type": [
+                          "integer",
+                          "string",
+                          "boolean"
+                        ]
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              }
             }
-          }
+          },
+          "type": "object"
         },
         "lateWrites": {
-          "type": "object",
-          "properties": {}
+          "properties": {},
+          "type": "object"
         },
         "log": {
           "type": [
@@ -660,25 +1079,549 @@
             "object"
           ]
         },
+        "processes": {
+          "properties": {
+            "content": {
+              "processData": {
+                "properties": {
+                  "events": {
+                    "items": {
+                      "event": {
+                        "items": [
+                          {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          {
+                            "additionalProperties": {
+                              "type": "string"
+                            },
+                            "type": [
+                              "object",
+                              "null"
+                            ]
+                          }
+                        ],
+                        "maxItems": 6,
+                        "minItems": 4,
+                        "type": "array"
+                      }
+                    },
+                    "type": "array"
+                  },
+                  "gc": {
+                    "type": "object"
+                  },
+                  "histograms": {
+                    "additionalProperties": {
+                      "histogram": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "bucket_count": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "histogram_type": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "log_sum": {
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          "log_sum_squares": {
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          "range": {
+                            "type": "array"
+                          },
+                          "sum": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "sum_squares_hi": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "sum_squares_lo": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "values": {
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "keyedHistograms": {
+                    "additionalProperties": {
+                      "additionalProperties": {
+                        "histogram": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "bucket_count": {
+                              "minimum": 0,
+                              "type": "integer"
+                            },
+                            "histogram_type": {
+                              "minimum": 0,
+                              "type": "integer"
+                            },
+                            "log_sum": {
+                              "minimum": 0,
+                              "type": "number"
+                            },
+                            "log_sum_squares": {
+                              "minimum": 0,
+                              "type": "number"
+                            },
+                            "range": {
+                              "type": "array"
+                            },
+                            "sum": {
+                              "minimum": 0,
+                              "type": "integer"
+                            },
+                            "sum_squares_hi": {
+                              "minimum": 0,
+                              "type": "integer"
+                            },
+                            "sum_squares_lo": {
+                              "minimum": 0,
+                              "type": "integer"
+                            },
+                            "values": {
+                              "type": "object"
+                            }
+                          },
+                          "type": "object"
+                        }
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "keyedScalars": {
+                    "additionalProperties": {
+                      "keyedScalar": {
+                        "additionalProperties": {
+                          "scalar": {
+                            "type": [
+                              "integer",
+                              "string",
+                              "boolean"
+                            ]
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "scalars": {
+                    "additionalProperties": {
+                      "scalar": {
+                        "type": [
+                          "integer",
+                          "string",
+                          "boolean"
+                        ]
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              }
+            },
+            "gpu": {
+              "processData": {
+                "properties": {
+                  "events": {
+                    "items": {
+                      "event": {
+                        "items": [
+                          {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          {
+                            "additionalProperties": {
+                              "type": "string"
+                            },
+                            "type": [
+                              "object",
+                              "null"
+                            ]
+                          }
+                        ],
+                        "maxItems": 6,
+                        "minItems": 4,
+                        "type": "array"
+                      }
+                    },
+                    "type": "array"
+                  },
+                  "gc": {
+                    "type": "object"
+                  },
+                  "histograms": {
+                    "additionalProperties": {
+                      "histogram": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "bucket_count": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "histogram_type": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "log_sum": {
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          "log_sum_squares": {
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          "range": {
+                            "type": "array"
+                          },
+                          "sum": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "sum_squares_hi": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "sum_squares_lo": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "values": {
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "keyedHistograms": {
+                    "additionalProperties": {
+                      "additionalProperties": {
+                        "histogram": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "bucket_count": {
+                              "minimum": 0,
+                              "type": "integer"
+                            },
+                            "histogram_type": {
+                              "minimum": 0,
+                              "type": "integer"
+                            },
+                            "log_sum": {
+                              "minimum": 0,
+                              "type": "number"
+                            },
+                            "log_sum_squares": {
+                              "minimum": 0,
+                              "type": "number"
+                            },
+                            "range": {
+                              "type": "array"
+                            },
+                            "sum": {
+                              "minimum": 0,
+                              "type": "integer"
+                            },
+                            "sum_squares_hi": {
+                              "minimum": 0,
+                              "type": "integer"
+                            },
+                            "sum_squares_lo": {
+                              "minimum": 0,
+                              "type": "integer"
+                            },
+                            "values": {
+                              "type": "object"
+                            }
+                          },
+                          "type": "object"
+                        }
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "keyedScalars": {
+                    "additionalProperties": {
+                      "keyedScalar": {
+                        "additionalProperties": {
+                          "scalar": {
+                            "type": [
+                              "integer",
+                              "string",
+                              "boolean"
+                            ]
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "scalars": {
+                    "additionalProperties": {
+                      "scalar": {
+                        "type": [
+                          "integer",
+                          "string",
+                          "boolean"
+                        ]
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              }
+            },
+            "parent": {
+              "allOf": [
+                {
+                  "processData": {
+                    "properties": {
+                      "events": {
+                        "items": {
+                          "event": {
+                            "items": [
+                              {
+                                "minimum": 0,
+                                "type": "integer"
+                              },
+                              {
+                                "type": "string"
+                              },
+                              {
+                                "type": "string"
+                              },
+                              {
+                                "type": "string"
+                              },
+                              {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              {
+                                "additionalProperties": {
+                                  "type": "string"
+                                },
+                                "type": [
+                                  "object",
+                                  "null"
+                                ]
+                              }
+                            ],
+                            "maxItems": 6,
+                            "minItems": 4,
+                            "type": "array"
+                          }
+                        },
+                        "type": "array"
+                      },
+                      "gc": {
+                        "type": "object"
+                      },
+                      "histograms": {
+                        "additionalProperties": {
+                          "histogram": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "bucket_count": {
+                                "minimum": 0,
+                                "type": "integer"
+                              },
+                              "histogram_type": {
+                                "minimum": 0,
+                                "type": "integer"
+                              },
+                              "log_sum": {
+                                "minimum": 0,
+                                "type": "number"
+                              },
+                              "log_sum_squares": {
+                                "minimum": 0,
+                                "type": "number"
+                              },
+                              "range": {
+                                "type": "array"
+                              },
+                              "sum": {
+                                "minimum": 0,
+                                "type": "integer"
+                              },
+                              "sum_squares_hi": {
+                                "minimum": 0,
+                                "type": "integer"
+                              },
+                              "sum_squares_lo": {
+                                "minimum": 0,
+                                "type": "integer"
+                              },
+                              "values": {
+                                "type": "object"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "keyedHistograms": {
+                        "additionalProperties": {
+                          "additionalProperties": {
+                            "histogram": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "bucket_count": {
+                                  "minimum": 0,
+                                  "type": "integer"
+                                },
+                                "histogram_type": {
+                                  "minimum": 0,
+                                  "type": "integer"
+                                },
+                                "log_sum": {
+                                  "minimum": 0,
+                                  "type": "number"
+                                },
+                                "log_sum_squares": {
+                                  "minimum": 0,
+                                  "type": "number"
+                                },
+                                "range": {
+                                  "type": "array"
+                                },
+                                "sum": {
+                                  "minimum": 0,
+                                  "type": "integer"
+                                },
+                                "sum_squares_hi": {
+                                  "minimum": 0,
+                                  "type": "integer"
+                                },
+                                "sum_squares_lo": {
+                                  "minimum": 0,
+                                  "type": "integer"
+                                },
+                                "values": {
+                                  "type": "object"
+                                }
+                              },
+                              "type": "object"
+                            }
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "keyedScalars": {
+                        "additionalProperties": {
+                          "keyedScalar": {
+                            "additionalProperties": {
+                              "scalar": {
+                                "type": [
+                                  "integer",
+                                  "string",
+                                  "boolean"
+                                ]
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "scalars": {
+                        "additionalProperties": {
+                          "scalar": {
+                            "type": [
+                              "integer",
+                              "string",
+                              "boolean"
+                            ]
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                {
+                  "required": [
+                    "scalars"
+                  ]
+                }
+              ]
+            }
+          },
+          "required": [
+            "parent"
+          ],
+          "type": "object"
+        },
         "simpleMeasurements": {
-          "type": "object",
-          "properties": {}
+          "properties": {},
+          "type": "object"
         },
         "slowSQL": {
-          "type": "object",
-          "properties": {}
+          "properties": {},
+          "type": "object"
         },
         "slowSQLStartup": {
-          "type": "object",
-          "properties": {}
+          "properties": {},
+          "type": "object"
         },
         "threadHangStats": {
-          "type": [
-            "array",
-            "object"
-          ]
-        },
-        "UIMeasurements": {
           "type": [
             "array",
             "object"
@@ -688,22 +1631,22 @@
           "type": "integer"
         },
         "webrtc": {
-          "type": "object",
-          "properties": {}
+          "properties": {},
+          "type": "object"
         }
-      }
+      },
+      "type": "object"
     },
     "type": {
-      "type": "string",
       "enum": [
-        "main",
-        "saved-session"
-      ]
+        "main"
+      ],
+      "type": "string"
     },
     "version": {
-      "type": "number",
+      "maximum": 4,
       "minimum": 4,
-      "maximum": 4
+      "type": "number"
     }
   },
   "required": [
@@ -713,422 +1656,6 @@
     "type",
     "version"
   ],
-  "definitions": {
-    "addon": {
-      "type": "object",
-      "properties": {
-        "blocklisted": {
-          "type": "boolean"
-        },
-        "description": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "name": {
-          "type": "string"
-        },
-        "userDisabled": {
-          "type": [
-            "boolean",
-            "integer"
-          ]
-        },
-        "appDisabled": {
-          "type": "boolean"
-        },
-        "version": {
-          "type": [
-            "string",
-            "number"
-          ]
-        },
-        "scope": {
-          "type": "integer"
-        },
-        "type": {
-          "type": "string"
-        },
-        "foreignInstall": {
-          "type": [
-            "integer",
-            "boolean"
-          ]
-        },
-        "hasBinaryComponents": {
-          "type": "boolean"
-        },
-        "installDay": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 0
-        },
-        "updateDay": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "signedState": {
-          "type": "integer"
-        },
-        "isSystem": {
-          "type": "boolean"
-        }
-      }
-    },
-    "adapter": {
-      "type": "object",
-      "properties": {
-        "description": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "vendorID": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "deviceID": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "subsysID": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "RAM": {
-          "type": [
-            "integer",
-            "null"
-          ]
-        },
-        "driver": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "driverVersion": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "driverDate": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "GPUActive": {
-          "type": "boolean"
-        }
-      }
-    },
-    "features": {
-      "type": "object",
-      "properties": {
-        "compositor": {
-          "type": "string"
-        },
-        "d2d": {
-          "type": [
-            "object",
-            "null"
-          ],
-          "items": {
-            "$ref": "#/definitions/feature"
-          }
-        },
-        "d3d11": {
-          "type": [
-            "object",
-            "null"
-          ],
-          "items": {
-            "$ref": "#/definitions/feature"
-          }
-        },
-        "opengl": {
-          "type": [
-            "object",
-            "null"
-          ],
-          "items": {
-            "$ref": "#/definitions/feature"
-          }
-        },
-        "webgl": {
-          "type": [
-            "object",
-            "null"
-          ],
-          "items": {
-            "$ref": "#/definitions/feature"
-          }
-        },
-        "gpuProcess": {
-          "type": [
-            "object",
-            "null"
-          ],
-          "properties": {
-            "status": {
-              "type": [
-                "string",
-                "null"
-              ]
-            }
-          }
-        }
-      }
-    },
-    "feature": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "failureId": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "version": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "warp": {
-          "type": [
-            "boolean",
-            "null"
-          ]
-        },
-        "textureSharing": {
-          "type": [
-            "boolean",
-            "null"
-          ]
-        }
-      }
-    },
-    "histogram": {
-      "type": "object",
-      "properties": {
-        "bucket_count": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "histogram_type": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "log_sum": {
-          "type": "number",
-          "minimum": 0
-        },
-        "log_sum_squares": {
-          "type": "number",
-          "minimum": 0
-        },
-        "range": {
-          "type": "array"
-        },
-        "sum": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "sum_squares_hi": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "sum_squares_lo": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "values": {
-          "type": "object"
-        }
-      },
-      "additionalProperties": false
-    },
-    "scalar": {
-      "type": [
-        "integer",
-        "string",
-        "boolean"
-      ]
-    },
-    "keyedScalar": {
-      "type": "object",
-      "additionalProperties": {
-        "$ref": "#/definitions/scalar"
-      }
-    },
-    "event": {
-      "type": "array",
-      "items": [
-        {
-          "type": "integer",
-          "minimum": 0
-        },
-        {
-          "type": "string"
-        },
-        {
-          "type": "string"
-        },
-        {
-          "type": "string"
-        },
-        {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        {
-          "type": [
-            "object",
-            "null"
-          ],
-          "additionalProperties": {
-            "type": "string"
-          }
-        }
-      ],
-      "minItems": 4,
-      "maxItems": 6
-    },
-    "processData": {
-      "type": "object",
-      "properties": {
-        "scalars": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/scalar"
-          }
-        },
-        "keyedScalars": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/keyedScalar"
-          }
-        },
-        "histograms": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/histogram"
-          }
-        },
-        "keyedHistograms": {
-          "type": "object",
-          "additionalProperties": {
-            "additionalProperties": {
-              "$ref": "#/definitions/histogram"
-            }
-          }
-        },
-        "events": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/event"
-          }
-        },
-        "gc": {
-          "type": "object"
-        }
-      }
-    },
-    "gmPlugin": {
-      "type": "object",
-      "properties": {
-        "version": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "userDisabled": {
-          "type": "boolean"
-        },
-        "applyBackgroundUpdates": {
-          "type": [
-            "integer",
-            "boolean"
-          ]
-        }
-      }
-    },
-    "monitor": {
-      "type": "object",
-      "properties": {
-        "screenWidth": {
-          "type": "integer"
-        },
-        "screenHeight": {
-          "type": "integer"
-        },
-        "refreshRate": {
-          "type": "number"
-        },
-        "pseudoDisplay": {
-          "type": "boolean"
-        },
-        "scale": {
-          "type": "number"
-        }
-      }
-    },
-    "plugin": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "version": {
-          "type": "string"
-        },
-        "description": {
-          "type": "string"
-        },
-        "blocklisted": {
-          "type": "boolean"
-        },
-        "disabled": {
-          "type": "boolean"
-        },
-        "clicktoplay": {
-          "type": "boolean"
-        },
-        "mimeTypes": {
-          "type": [
-            "array",
-            "object"
-          ],
-          "items": {
-            "type": "string"
-          }
-        },
-        "updateDay": {
-          "type": "integer"
-        }
-      }
-    }
-  }
+  "title": "main",
+  "type": "object"
 }
