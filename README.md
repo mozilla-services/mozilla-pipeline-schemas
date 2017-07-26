@@ -44,6 +44,25 @@ schemas can be found here:
     make # this sets up the tests in the release directory
     ctest -V -C hindsight # loads all the schemas and tests the inputs in the validation directory against them
 
+## Releases
+
+* The master branch is the current release and is considered stable at all
+  times.
+* New versions can be released as frequently as every two weeks (our sprint
+  cycle). The only exception would be for a high priority patch.
+* New releases occur the day after the sprint finishes.
+  * The version in the dev branch is updated
+  * The changes are merged into master
+  * A new tag is created
+
+## Contributions
+
+* All pull requests must be made against the dev branch, direct commits to
+  master are not permitted.
+* All non trivial contributions should start with an issue being filed (if it is
+  a new feature please propose your design/approach before doing any work as not
+  all feature requests are accepted).
+
 ### Notes
 
 All schemas are generated from the 'templates' directory and written into the
