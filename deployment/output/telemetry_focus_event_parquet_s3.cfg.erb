@@ -1,0 +1,21 @@
+-- -*- lua -*-
+filename        = "s3_parquet.lua"
+message_matcher = 'Type == "telemetry" && Fields[docType] == "focus-event"'
+ticker_interval = 60
+preserve_data   = false
+
+parquet_schema_file = "<%= @schema_path %>/focus-event/focus-event.1.parquetmr.txt"
+
+metadata_group = "metadata"
+json_objects = {"Fields[submission]"}
+s3_path_dimensions = {
+    {name = "submission_date_s3", source = "Fields[submissionDate]"},
+    {name = "channel"		, source = "Fields[normalizedChannel]"},
+}
+
+batch_dir           = "<%= @s3_buffer_dir_disk %>/telemetry-focus-event-parquet/v1"
+max_writers         = 100
+max_rowgroup_size   = 10000
+max_file_size       = 1024 * 1024 * 300
+max_file_age        = <%= @max_file_age %>
+hive_compatible     = true

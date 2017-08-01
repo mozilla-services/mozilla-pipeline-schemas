@@ -3,7 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 cmake_minimum_required(VERSION 3.0)
-project(mozilla-pipeline-schemas VERSION 0.0.1 LANGUAGES NONE)
+project(mozilla-pipeline-schemas VERSION 0.0.3 LANGUAGES NONE)
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Mozilla data ingestion and data lake schemas")
 
 set(CPACK_PACKAGE_VERSION_MAJOR  ${PROJECT_VERSION_MAJOR})
@@ -66,4 +66,5 @@ add_test(NAME ${PROJECT_NAME}-hindsight COMMAND run.sh CONFIGURATIONS hindsight
 
 include(GNUInstallDirs)
 install(DIRECTORY "${CMAKE_SOURCE_DIR}/schemas/" DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/")
+install(DIRECTORY "${CMAKE_SOURCE_DIR}/deployment/" DESTINATION /etc/puppet/modules/pipeline/templates/hindsight)
 include(CPack)

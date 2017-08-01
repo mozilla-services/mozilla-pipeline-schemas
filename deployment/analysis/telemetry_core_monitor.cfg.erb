@@ -1,0 +1,37 @@
+-- -*- lua -*-
+filename = 'moz_telemetry_doctype_monitor.lua'
+docType = "core"
+message_matcher = 'Fields[docType] == "'.. docType .. '" && (Type == "telemetry" || Type == "telemetry.error" || Type == "telemetry.duplicate")'
+ticker_interval = 60
+preserve_data = true
+
+alert = {
+  disabled = false,
+  prefix = true,
+  throttle = 1440,
+  modules = {
+    email = {recipients = {"trink@mozilla.com", "mreid@mozilla.com", "whd@mozilla.com"}},
+  },
+
+  thresholds = {
+    release = {
+      volume = {
+        inactivity_timeout = 5,
+        percent_delta = 30,
+      },
+      size = {
+        average = 907,
+        percent_delta = 10,
+      },
+      ingestion_error = {
+        percent = 0.1,
+      },
+      duplicate = {
+        percent = 1,
+      },
+      shape = {
+        mindist = 4,
+      },
+    }
+  }
+}

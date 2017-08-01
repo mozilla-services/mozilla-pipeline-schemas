@@ -1,0 +1,22 @@
+-- -*- lua -*-
+filename        = "s3_parquet.lua"
+message_matcher = "Type == 'telemetry' && Fields[docType] == 'core'"
+ticker_interval = 60
+preserve_data   = false
+
+parquet_schema_file = "<%= @schema_path %>/core/core.9.parquetmr.txt"
+
+metadata_group = "metadata"
+json_objects = {"Fields[submission]"}
+s3_path_dimensions = {
+    {name = "submission_date_s3", source = "Fields[submissionDate]"},
+    {name = "app_name"		, source = "Fields[appName]"},
+    {name = "channel"		, source = "Fields[normalizedChannel]"},
+}
+
+batch_dir           = "<%= @s3_buffer_dir_disk %>/telemetry-core-parquet/v2"
+max_writers         = 100
+max_rowgroup_size   = 10000
+max_file_size       = 1024 * 1024 * 300
+max_file_age        = <%= @max_file_age %>
+hive_compatible     = true
