@@ -60,6 +60,7 @@ local metadata = {
     }
 
 function process_message()
+    cjson.decode_null(true)
     local version = read_message("EnvVersion")
     if version then
         local schema = schemas[version]
