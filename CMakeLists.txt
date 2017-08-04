@@ -3,7 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 cmake_minimum_required(VERSION 3.0)
-project(mozilla-pipeline-schemas VERSION 0.0.1 LANGUAGES NONE)
+project(mozilla-pipeline-schemas VERSION 0.0.3 LANGUAGES NONE)
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Mozilla data ingestion and data lake schemas")
 
 set(CPACK_PACKAGE_VERSION_MAJOR  ${PROJECT_VERSION_MAJOR})
@@ -37,18 +37,21 @@ endforeach()
 
 file(GLOB_RECURSE SCHEMAS LIST_DIRECTORIES FALSE RELATIVE "${CMAKE_SOURCE_DIR}/templates" "${CMAKE_SOURCE_DIR}/templates/*")
 foreach(ITEM IN ITEMS ${SCHEMAS})
-  string(REGEX MATCH "^include/" MATCH ${ITEM})
-  if(NOT MATCH)
+  if(NOT ITEM MATCHES "^include/" )
     message("generating: schemas/" ${ITEM})
     # NOTE the artifacts are written back into the source repository (see the README)
+    set(IN_FILE "${CMAKE_SOURCE_DIR}/templates/${ITEM}")
+    set(OUT_FILE "${CMAKE_SOURCE_DIR}/schemas/${ITEM}")
     if(ITEM MATCHES "\\.json$") # pretty print
-      configure_file("${CMAKE_SOURCE_DIR}/templates/${ITEM}" "${CMAKE_BINARY_DIR}/tmp.json" @ONLY)
-      execute_process(COMMAND ${JQ_EXE} --sort-keys . RESULT_VARIABLE JQ_RV INPUT_FILE "${CMAKE_BINARY_DIR}/tmp.json" OUTPUT_FILE "${CMAKE_SOURCE_DIR}/schemas/${ITEM}")
+      set(TMP_FILE "${OUT_FILE}.tmp")
+      configure_file(${IN_FILE} ${TMP_FILE} @ONLY)
+      execute_process(COMMAND ${JQ_EXE} --sort-keys . RESULT_VARIABLE JQ_RV INPUT_FILE ${TMP_FILE} OUTPUT_FILE ${OUT_FILE})
       if(NOT JQ_RV EQUAL 0)
-        message(FATAL_ERROR "invalid JSON ${ITEM}")
+        message(FATAL_ERROR "jq output error ${JQ_RV} ${ITEM}")
       endif()
+      file(REMOVE ${TMP_FILE}) # the tmp file is intentionally not removed on failure so it can be examined
     else()
-      configure_file("${CMAKE_SOURCE_DIR}/templates/${ITEM}" "${CMAKE_SOURCE_DIR}/schemas/${ITEM}" @ONLY)
+      configure_file(${IN_FILE} ${OUT_FILE} @ONLY)
     endif()
   endif()
 endforeach()

@@ -48,6 +48,10 @@
       ],
       "type": "object"
     },
+    "clientId": {
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "type": "string"
+    },
     "creationDate": {
       "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{3}Z$",
       "type": "string"
@@ -815,71 +819,35 @@
     },
     "payload": {
       "properties": {
-        "crashDate": {
-          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+        "reason": {
+          "enum": [
+            "ready"
+          ],
           "type": "string"
         },
-        "hasCrashEnvironment": {
-          "type": "boolean"
+        "targetBuildId": {
+          "pattern": "^[0-9]{10}",
+          "type": "string"
         },
-        "metadata": {
-          "properties": {
-            "AvailablePageFile": {
-              "type": "string"
-            },
-            "AvailablePhysicalMemory": {
-              "type": "string"
-            },
-            "AvailableVirtualMemory": {
-              "type": "string"
-            },
-            "BuildID": {
-              "type": "string"
-            },
-            "IsGarbageCollecting": {
-              "type": "string"
-            },
-            "ProductID": {
-              "type": "string"
-            },
-            "ProductName": {
-              "type": "string"
-            },
-            "ReleaseChannel": {
-              "type": "string"
-            },
-            "SecondsSinceLastCrash": {
-              "type": "string"
-            },
-            "SystemMemoryUsePercentage": {
-              "type": "string"
-            },
-            "TotalPageFile": {
-              "type": "string"
-            },
-            "TotalPhysicalMemory": {
-              "type": "string"
-            },
-            "TotalVirtualMemory": {
-              "type": "string"
-            },
-            "Version": {
-              "type": "string"
-            }
-          },
-          "type": "object"
+        "targetChannel": {
+          "type": "string"
         },
-        "version": {
-          "maximum": 1,
-          "minimum": 1,
-          "type": "integer"
+        "targetVersion": {
+          "pattern": "^[0-9]{2,3}\\.",
+          "type": "string"
         }
       },
+      "required": [
+        "reason",
+        "targetChannel",
+        "targetVersion",
+        "targetBuildId"
+      ],
       "type": "object"
     },
     "type": {
       "enum": [
-        "crash"
+        "update"
       ],
       "type": "string"
     },
@@ -889,6 +857,16 @@
       "type": "number"
     }
   },
-  "title": "crash",
+  "required": [
+    "application",
+    "clientId",
+    "creationDate",
+    "environment",
+    "id",
+    "payload",
+    "type",
+    "version"
+  ],
+  "title": "updates",
   "type": "object"
 }
