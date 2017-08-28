@@ -818,30 +818,61 @@
       "type": "string"
     },
     "payload": {
-      "properties": {
-        "reason": {
-          "enum": [
-            "ready"
-          ],
-          "type": "string"
+      "oneOf": [
+        {
+          "properties": {
+            "reason": {
+              "enum": [
+                "ready"
+              ],
+              "type": "string"
+            },
+            "targetBuildId": {
+              "pattern": "^[0-9]{10}",
+              "type": "string"
+            },
+            "targetChannel": {
+              "type": "string"
+            },
+            "targetVersion": {
+              "pattern": "^[0-9]{2,3}\\.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "reason",
+            "targetChannel",
+            "targetVersion",
+            "targetBuildId"
+          ]
         },
-        "targetBuildId": {
-          "pattern": "^[0-9]{10}",
-          "type": "string"
-        },
-        "targetChannel": {
-          "type": "string"
-        },
-        "targetVersion": {
-          "pattern": "^[0-9]{2,3}\\.",
-          "type": "string"
+        {
+          "properties": {
+            "previousBuildId": {
+              "pattern": "^[0-9]{10}",
+              "type": "string"
+            },
+            "previousChannel": {
+              "type": "string"
+            },
+            "previousVersion": {
+              "pattern": "^[0-9]{2,3}\\.",
+              "type": "string"
+            },
+            "reason": {
+              "enum": [
+                "success"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "reason",
+            "previousChannel",
+            "previousVersion",
+            "previousBuildId"
+          ]
         }
-      },
-      "required": [
-        "reason",
-        "targetChannel",
-        "targetVersion",
-        "targetBuildId"
       ],
       "type": "object"
     },

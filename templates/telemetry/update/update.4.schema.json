@@ -10,29 +10,56 @@
     @TELEMETRY_ID_1_JSON@,
     "payload": {
       "type": "object",
-      "properties": {
-        "reason": {
-          "type": "string",
-          "enum": [ "ready" ]
+      "oneOf": [{
+        "properties": {
+          "reason": {
+            "type": "string",
+            "enum": [ "ready" ]
+          },
+          "targetChannel": {
+            "type": "string"
+          },
+          "targetVersion": {
+            "type": "string",
+            "pattern": "^[0-9]{2,3}\\."
+          },
+          "targetBuildId": {
+            "type": "string",
+            "pattern": "^[0-9]{10}"
+          }
         },
-        "targetChannel": {
-          "type": "string"
+        "required": [
+          "reason",
+          "targetChannel",
+          "targetVersion",
+          "targetBuildId"
+         ]
+      }, {
+        "properties": {
+          "reason": {
+            "type": "string",
+            "enum": [ "success" ]
+          },
+          "previousChannel": {
+            "type": "string"
+          },
+          "previousVersion": {
+            "type": "string",
+            "pattern": "^[0-9]{2,3}\\."
+          },
+          "previousBuildId": {
+            "type": "string",
+            "pattern": "^[0-9]{10}"
+          }
         },
-        "targetVersion": {
-          "type": "string",
-          "pattern": "^[0-9]{2,3}\\."
-        },
-        "targetBuildId": {
-          "type": "string",
-          "pattern": "^[0-9]{10}"
-        }
-      },
-      "required": [
-        "reason",
-        "targetChannel",
-        "targetVersion",
-        "targetBuildId"
-       ]
+        "required": [
+          "reason",
+          "previousChannel",
+          "previousVersion",
+          "previousBuildId"
+         ]
+      }
+    ]
     },
     "type": {
       "type": "string",
