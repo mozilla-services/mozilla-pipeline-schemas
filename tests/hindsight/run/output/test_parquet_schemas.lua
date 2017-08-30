@@ -57,6 +57,9 @@ local metadata = {
     geoCountry = "US",
     geoCity = "San Jose",
     documentId = "5F8D1153-CD83-40BB-B535-00708B027548",
+    appBuildId = "20170711165157",
+    appName = "Firefox",
+    appUpdateChannel = "release",
     }
 
 function process_message()
