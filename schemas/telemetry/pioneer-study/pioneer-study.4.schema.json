@@ -2,34 +2,34 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "application": {
-      "type": "object",
+      "additionalProperties": false,
       "properties": {
         "architecture": {
           "type": "string"
         },
         "buildId": {
-          "type": "string",
-          "pattern": "^[0-9]{10}"
+          "pattern": "^[0-9]{10}",
+          "type": "string"
         },
         "channel": {
+          "type": "string"
+        },
+        "displayVersion": {
+          "pattern": "^[0-9]{2,3}\\.",
           "type": "string"
         },
         "name": {
           "type": "string"
         },
         "platformVersion": {
-          "type": "string",
-          "pattern": "^[0-9]{2,3}\\."
-        },
-        "version": {
-          "type": "string",
-          "pattern": "^[0-9]{2,3}\\."
-        },
-        "displayVersion": {
-          "type": "string",
-          "pattern": "^[0-9]{2,3}\\."
+          "pattern": "^[0-9]{2,3}\\.",
+          "type": "string"
         },
         "vendor": {
+          "type": "string"
+        },
+        "version": {
+          "pattern": "^[0-9]{2,3}\\.",
           "type": "string"
         },
         "xpcomAbi": {
@@ -45,8 +45,8 @@
         "version",
         "vendor",
         "xpcomAbi"
-        ],
-      "additionalProperties": false
+      ],
+      "type": "object"
     },
     "creationDate": {
       "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{3}Z$",

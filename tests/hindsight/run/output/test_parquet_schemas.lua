@@ -60,6 +60,10 @@ local metadata = {
     appBuildId = "20170711165157",
     appName = "Firefox",
     appUpdateChannel = "release",
+    -- required pioneer metadata
+    pioneerId = "11111111-1111-1111-1111-111111111111",
+    studyName = "foobar",
+    studyVersion = 1,
     }
 
 function process_message()
