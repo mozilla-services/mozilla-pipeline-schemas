@@ -66,4 +66,5 @@ add_test(NAME ${PROJECT_NAME}-hindsight COMMAND run.sh CONFIGURATIONS hindsight
 
 include(GNUInstallDirs)
 install(DIRECTORY "${CMAKE_SOURCE_DIR}/schemas/" DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/")
+install(DIRECTORY "${CMAKE_SOURCE_DIR}/deployment/" DESTINATION /etc/puppet/modules/pipeline/templates/hindsight)
 include(CPack)

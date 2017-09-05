@@ -1,0 +1,43 @@
+-- -*- lua -*-
+filename = 'moz_telemetry_doctype_monitor.lua'
+docType = "main"
+message_matcher = 'Fields[docType] == "'.. docType .. '" && (Type == "telemetry" || Type == "telemetry.error" || Type == "telemetry.duplicate")'
+ticker_interval = 60
+preserve_data = true
+
+alert = {
+  disabled = false,
+  prefix = true,
+  throttle = 1440,
+  modules = {
+    email = {recipients = {"trink@mozilla.com", "mreid@mozilla.com", "whd@mozilla.com"}},
+  },
+
+  thresholds = { -- map of normalized channel names
+    release = {
+      volume = {
+        inactivity_timeout = 5,
+        percent_delta = 30, -- optional
+      },
+      size = {
+        average = 15529,
+        percent_delta = 10,
+      },
+      ingestion_error = {
+        percent = 0.5,
+      },
+      duplicate = {
+        percent = 2,
+      },
+      shape = {
+        mindist = 4,
+      },
+      latency = {
+        hours = 24,     -- 1 - 192
+                        -- everything in the future is added to the first bucket
+                        -- everything in the past is added to the last bucket
+        percent = 33,   -- alerts if more than 33% of submission are greater than 24 hours latent
+      }
+    }
+  }
+}

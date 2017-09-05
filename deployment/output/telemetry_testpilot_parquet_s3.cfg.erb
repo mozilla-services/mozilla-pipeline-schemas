@@ -1,0 +1,20 @@
+-- -*- lua -*-
+filename        = "s3_parquet.lua"
+message_matcher = "Type == 'telemetry' && Fields[docType] == 'testpilot'"
+ticker_interval = 60
+preserve_data   = false
+
+parquet_schema_file = "<%= @schema_path %>/testpilot/testpilot.4.parquetmr.txt"
+
+metadata_group = "metadata"
+json_objects = {"Fields[submission]", "Fields[environment.system]"}
+s3_path_dimensions  = {
+    {name = "submission", source = "Fields[submissionDate]"},
+}
+
+batch_dir           = "<%= @s3_buffer_dir_disk %>/telemetry-testpilot-parquet/v1"
+max_writers         = 100
+max_rowgroup_size   = 10000
+max_file_size       = 1024 * 1024 * 300
+max_file_age        = <%= @max_file_age %>
+hive_compatible     = true

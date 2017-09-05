@@ -1,0 +1,25 @@
+-- -*- lua -*-
+filename        = "s3_parquet.lua"
+message_matcher = "Type == 'telemetry' && Fields[docType] == 'shield-study-error'"
+ticker_interval = 60
+preserve_data   = false
+
+parquet_schema_file = "<%= @schema_path %>/shield-study-error/shield-study-error.3.parquetmr.txt"
+
+metadata_group = "metadata"
+json_objects = {
+    "Fields[submission]",
+    "Fields[environment.profile]",
+    "Fields[environment.settings]",
+    "Fields[environment.system]",
+}
+s3_path_dimensions = {
+    {name = "submission", source = "Fields[submissionDate]"}
+}
+
+batch_dir           = "<%= @s3_buffer_dir_disk %>/telemetry-shield-study-error-parquet/v1"
+max_writers         = 100
+max_rowgroup_size   = 10000
+max_file_size       = 1024 * 1024 * 300
+max_file_age        = <%= @max_file_age %>
+hive_compatible     = true

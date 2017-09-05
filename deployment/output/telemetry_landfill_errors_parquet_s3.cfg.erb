@@ -1,0 +1,20 @@
+-- -*- lua -*-
+filename        = "s3_parquet.lua"
+message_matcher = "Logger == 'telemetry' && Type == 'telemetry.error'"
+preserve_data   = false
+ticker_interval = 60
+
+parquet_schema_file = "<%= @heka_schema_path %>/telemetry/landfill_errors.1.parquetmr.txt"
+
+metadata_group = nil
+json_objects = nil
+s3_path_dimensions  = {
+    {name = "submission", source = "Fields[submissionDate]"},
+}
+
+batch_dir           = "<%= @s3_buffer_dir_disk %>/telemetry-landfill-errors-parquet/v1"
+max_writers         = 100
+max_rowgroup_size   = 10000
+max_file_size       = 1024 * 1024 * 300
+max_file_age        = <%= @max_file_age %>
+hive_compatible     = true

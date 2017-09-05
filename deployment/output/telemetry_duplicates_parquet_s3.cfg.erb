@@ -1,0 +1,20 @@
+-- -*- lua -*-
+filename        = "s3_parquet.lua"
+message_matcher = "Type == 'telemetry.duplicate'"
+preserve_data   = false
+ticker_interval = 60
+
+parquet_schema_file = "<%= @heka_schema_path %>/telemetry/telemetry_duplicates.1.parquetmr.txt"
+
+metadata_group = nil
+json_objects = nil
+s3_path_dimensions  = {
+    {name = "submission_date_s3", source = "Timestamp", dateformat = "%Y%m%d"},
+}
+
+batch_dir           = "<%= @s3_buffer_dir_disk %>/telemetry-duplicates-parquet/v1"
+max_writers         = 5
+max_rowgroup_size   = 10000
+max_file_size       = 1024 * 1024 * 300
+max_file_age        = <%= @max_file_age %>
+hive_compatible     = true
