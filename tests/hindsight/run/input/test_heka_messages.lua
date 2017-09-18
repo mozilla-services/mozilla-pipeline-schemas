@@ -9,7 +9,7 @@
 local messages = {
     {
         Type = "telemetry.error",
-        EnvVersion = "heka.landfill_errors.1", -- schema specification for the test output
+        EnvVersion = "heka.telemetry_errors.1", -- schema specification for the test output
         Fields = {
             submissionDate = "20170622",
             docType = "main",
