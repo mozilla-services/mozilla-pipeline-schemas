@@ -9,7 +9,7 @@
 local messages = {
     {
         Type = "telemetry.error",
-        EnvVersion = "heka.landfill_errors.1", -- schema specification for the test output
+        EnvVersion = "heka.telemetry_errors.1", -- schema specification for the test output
         Fields = {
             submissionDate = "20170622",
             docType = "main",
@@ -37,6 +37,15 @@ local messages = {
             normalizedChannel = "release",
             geoCountry = "US",
             geoCity = "San Jose"
+        }
+    },
+    {
+        Type = "moz_ingest",
+        EnvVersion = "heka.moz_ingest_uri_errors.1",
+        Fields = {
+            DecodeErrorType = "uri",
+            DecodeError = "invalid uri",
+            uri = "/foobar"
         }
     }
 }
