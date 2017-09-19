@@ -38,6 +38,15 @@ local messages = {
             geoCountry = "US",
             geoCity = "San Jose"
         }
+    },
+    {
+        Type = "moz_ingest",
+        EnvVersion = "heka.moz_ingest_uri_errors.1",
+        Fields = {
+            DecodeErrorType = "uri",
+            DecodeError = "invalid uri",
+            uri = "/foobar"
+        }
     }
 }
 
