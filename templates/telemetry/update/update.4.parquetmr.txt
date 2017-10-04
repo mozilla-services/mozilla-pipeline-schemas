@@ -1,6 +1,9 @@
 message update {
   required binary id (UTF8);
   required binary clientId (UTF8);
+  required group application {
+    required binary displayVersion (UTF8);
+  }
   required group metadata {
     required int64  Timestamp;
     optional binary Date (UTF8);
@@ -16,7 +19,6 @@ message update {
       required binary architecture (UTF8);
       required binary version (UTF8);
       required binary buildId (UTF8);
-      required binary displayVersion (UTF8);
       required binary vendor (UTF8);
       optional binary hotfixVersion (UTF8);
     }
@@ -57,10 +59,8 @@ message update {
     optional binary targetChannel (UTF8);
     optional binary targetVersion (UTF8);
     optional binary targetBuildId (UTF8);
-    optional binary targetDisplayVersion (UTF8);
     optional binary previousChannel (UTF8);
     optional binary previousVersion (UTF8);
     optional binary previousBuildId (UTF8);
-    optional binary previousDisplayVersion (UTF8);
   }
 }
