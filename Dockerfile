@@ -4,30 +4,23 @@ MAINTAINER Mozilla Corporation Telemetry Pipeline team
 # Install the appropriate software
 RUN yum -y update; yum clean all
 RUN yum -y install epel-release; yum clean all
-RUN yum -y install git gcc gcc-c++ cmake3 jq make boost-devel openssl-devel flex bison libtool; yum clean all
+RUN yum -y install wget gcc gcc-c++ cmake3 jq make; yum clean all
 
-WORKDIR /git
+WORKDIR /downloads
 
 # Lua Sandbox
-RUN git clone https://github.com/mozilla-services/lua_sandbox.git
-RUN cd lua_sandbox; mkdir release; cd release; cmake3 -DCMAKE_BUILD_TYPE=release ..; make; make install
-
-# hindsight
-RUN git clone https://github.com/mozilla-services/hindsight.git
-RUN cd hindsight; mkdir release; cd release; cmake3 -DCMAKE_BUILD_TYPE=release ..; make; make install
-
-# parquet-ccp
-RUN git clone https://github.com/apache/parquet-cpp.git
-RUN cd parquet-cpp; cmake3 .; make; make install
-
-# luasandbox-extensions
-RUN git clone https://github.com/mozilla-services/lua_sandbox_extensions.git
-RUN cd lua_sandbox_extensions; mkdir release; cd release; cmake3 -DCMAKE_BUILD_TYPE=release -DEXT_lpeg=on -DEXT_lfs=on -DEXT_heka=on -DEXT_rjson=on -DEXT_cjson=on ..; make; make install
+RUN wget https://hsadmin.trink.com/packages/centos7/sprintAug21.tgz https://hsadmin.trink.com/packages/centos7/external/parquet-cpp-0.0.1-Linux.rpm
+RUN tar xf sprintAug21.tgz
+RUN yum -y install luasandbox-1* hindsight-0* luasandbox-lfs* luasandbox-lpeg* luasandbox-rjson* luasandbox-cjson* luasandbox-parquet* parquet-cpp*; yum clean all
 
 COPY . /app
+
 RUN rm -fr release/; mkdir release/
+
 WORKDIR /app/release
 
-RUN cmake3 ..; make
+RUN ln -s /usr/bin/cmake3 /usr/bin/cmake
+RUN cmake ..; make
+RUN ln -s /tmp hindsight/output
 
 CMD    ["ctest3", "-V", "-C", "hindsight"]
