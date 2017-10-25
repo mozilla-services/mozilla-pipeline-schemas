@@ -15,7 +15,7 @@ RUN tar xf sprintAug21.tgz; yum -y install luasandbox-1* luasandbox-parquet* par
 # New version for everything else
 RUN wget https://hsadmin.trink.com/packages/centos7/all.tgz
 RUN tar xf all.tgz
-RUN yum -y install luasandbox-1* hindsight-0.14.4* luasandbox-lfs* luasandbox-lpeg* luasandbox-rjson* luasandbox-cjson*; yum clean all
+RUN yum -y install luasandbox-1* hindsight-0* luasandbox-lfs* luasandbox-lpeg* luasandbox-rjson* luasandbox-cjson*; yum clean all
 
 COPY . /app
 
