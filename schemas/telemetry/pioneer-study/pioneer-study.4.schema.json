@@ -72,17 +72,24 @@
           "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
           "type": "string"
         },
+        "schemaName": {
+          "description": "Name of a schema used for validation of the encryptedData",
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^\\S+$",
+          "type": "string"
+        },
+        "schemaVersion": {
+          "description": "Integer version number of the schema",
+          "minimum": 1,
+          "type": "integer"
+        },
         "studyName": {
           "description": "Name of a particular study. Usually the addon_id.",
           "maxLength": 100,
           "minLength": 1,
           "pattern": "^\\S+$",
           "type": "string"
-        },
-        "studyVersion": {
-          "description": "Integer version of the schema used by the study.",
-          "minimum": 1,
-          "type": "integer"
         }
       },
       "required": [
@@ -90,7 +97,8 @@
         "encryptionKeyId",
         "pioneerId",
         "studyName",
-        "studyVersion"
+        "schemaName",
+        "schemaVersion"
       ],
       "title": "pioneer-study",
       "type": "object"
