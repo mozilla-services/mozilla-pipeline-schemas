@@ -29,6 +29,15 @@ local function load_doctypes(namespace, path, schemas)
                     schemas[string.format("%s.%s.%s", namespace, schema, version)] = parser.load_parquet_schema(ps)
                 end
             end
+        elseif mode == "file" then
+            local schema, version = dn:match("(.+)%.(%d+)%.parquetmr.txt$")
+            if schema then
+                print("loading", fqdn)
+                local fh = assert(io.input(fqdn))
+                local ps = fh:read("*a")
+                fh:close()
+                schemas[string.format("%s.%s.%s", namespace, schema, version)] = parser.load_parquet_schema(ps)
+            end
         end
     end
 end

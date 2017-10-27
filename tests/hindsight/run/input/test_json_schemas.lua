@@ -33,6 +33,12 @@ local function load_doctypes(namespace, path, schemas)
                     schemas[string.format("%s.%s.%s", namespace, schema, version)] = rjson.parse_schema(js)
                 end
             end
+        elseif mode == "file" then -- accept the new flattened generic ingestion directories
+            local schema, version = dn:match("(.+)%.(%d+)%.schema.json$")
+            if schema then
+                local js = read_file(fqdn)
+                schemas[string.format("%s.%s.%s", namespace, schema, version)] = rjson.parse_schema(js)
+            end
         end
     end
 end
