@@ -29,19 +29,7 @@ message mobile_event {
   }
   required group events (LIST) {
     repeated group list {
-      required group element (TUPLE) {
-        required int64 timestamp;
-        required binary category (UTF8);
-        required binary method (UTF8);
-        required binary object (UTF8);
-        optional binary value (UTF8);
-        optional group extra (MAP) {
-          repeated group key_value {
-            required binary key (UTF8);
-            optional binary value (UTF8);
-          }
-        }
-      }
+      required group element @COMMON_EVENT_1_TXT@
     }
   }
 }
