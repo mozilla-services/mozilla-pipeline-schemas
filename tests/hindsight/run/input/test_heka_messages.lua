@@ -47,16 +47,6 @@ local messages = {
             DecodeError = "invalid uri",
             uri = "/foobar"
         }
-    },
-    {
-        Type = "payload_size",
-        EnvVersion = "heka.payload_size.1",
-        Fields = {
-            build = "20170518000419",
-            channel = "release",
-            docType = "main",
-            size = 4242
-        }
     }
 }
 
