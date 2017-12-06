@@ -73,6 +73,9 @@ local metadata = {
     pioneerId = "11111111-1111-1111-1111-111111111111",
     studyName = "foobar",
     studyVersion = 1,
+    -- required mobile-event metadata
+    appVersion = "1.0.0",
+    sampleId = 1
     }
 
 function process_message()
@@ -108,4 +111,3 @@ end
 function timer_event()
 
 end
-
