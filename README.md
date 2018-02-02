@@ -44,6 +44,14 @@ schemas can be found here:
     make # this sets up the tests in the release directory
     ctest -V -C hindsight # loads all the schemas and tests the inputs in the validation directory against them
 
+### Running Tests via Docker
+
+    # build the container with the pipeline schemas
+    docker build -t mps .
+
+    # run the tests
+    docker run mps
+
 ## Releases
 
 * The master branch is the current release and is considered stable at all
