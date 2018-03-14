@@ -11,7 +11,10 @@ RUN yum -y update && \
         jq \
         make \
         wget \
+        python-pip \
     && yum clean all
+
+RUN pip install jsonschema
 
 WORKDIR /downloads
 
@@ -37,4 +40,4 @@ WORKDIR /app/release
 
 RUN ln -s /usr/bin/cmake3 /usr/bin/cmake; cmake ..; make
 
-CMD ["ctest3", "-V", "-C", "hindsight"]
+CMD python test_schema_format.py ../schemas && ctest3 -V -C hindsight
