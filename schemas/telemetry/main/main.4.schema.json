@@ -869,7 +869,62 @@
         },
         "histograms": {
           "additionalProperties": {
-            "histogram": {
+            "additionalProperties": false,
+            "properties": {
+              "bucket_count": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "histogram_type": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "log_sum": {
+                "minimum": 0,
+                "type": "number"
+              },
+              "log_sum_squares": {
+                "minimum": 0,
+                "type": "number"
+              },
+              "range": {
+                "type": "array"
+              },
+              "sum": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "sum_squares_hi": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "sum_squares_lo": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "values": {
+                "type": "object"
+              }
+            },
+            "type": "object"
+          },
+          "type": "object"
+        },
+        "info": {
+          "properties": {
+            "subsessionLength": {
+              "minimum": 0,
+              "type": [
+                "integer",
+                "null"
+              ]
+            }
+          },
+          "type": "object"
+        },
+        "keyedHistograms": {
+          "additionalProperties": {
+            "additionalProperties": {
               "additionalProperties": false,
               "properties": {
                 "bucket_count": {
@@ -912,288 +967,6 @@
           },
           "type": "object"
         },
-        "info": {
-          "properties": {
-            "subsessionLength": {
-              "minimum": 0,
-              "type": [
-                "integer",
-                "null"
-              ]
-            }
-          },
-          "type": "object"
-        },
-        "keyedHistograms": {
-          "additionalProperties": {
-            "additionalProperties": {
-              "processData": {
-                "properties": {
-                  "events": {
-                    "items": {
-                      "event": {
-                        "items": [
-                          {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          {
-                            "type": "string"
-                          },
-                          {
-                            "type": "string"
-                          },
-                          {
-                            "type": "string"
-                          },
-                          {
-                            "type": [
-                              "string",
-                              "null"
-                            ]
-                          },
-                          {
-                            "additionalProperties": {
-                              "type": [
-                                "string",
-                                "null"
-                              ]
-                            },
-                            "type": [
-                              "object",
-                              "null"
-                            ]
-                          }
-                        ],
-                        "maxItems": 6,
-                        "minItems": 4,
-                        "type": "array"
-                      }
-                    },
-                    "type": "array"
-                  },
-                  "gc": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "random": {
-                        "items": {
-                          "additionalProperties": {
-                            "type": [
-                              "number",
-                              "string",
-                              "null",
-                              "boolean"
-                            ]
-                          },
-                          "maxProperties": 25,
-                          "properties": {
-                            "slices": {
-                              "items": {
-                                "additionalProperties": {
-                                  "type": [
-                                    "number",
-                                    "string",
-                                    "null",
-                                    "boolean"
-                                  ]
-                                },
-                                "maxProperties": 15,
-                                "properties": {
-                                  "times": {
-                                    "maxProperties": 65,
-                                    "type": "object"
-                                  }
-                                },
-                                "type": "object"
-                              },
-                              "maxItems": 4,
-                              "type": "array"
-                            },
-                            "totals": {
-                              "maxProperties": 65,
-                              "type": "object"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "maxItems": 2,
-                        "type": "array"
-                      },
-                      "worst": {
-                        "items": {
-                          "additionalProperties": {
-                            "type": [
-                              "number",
-                              "string",
-                              "null",
-                              "boolean"
-                            ]
-                          },
-                          "maxProperties": 25,
-                          "properties": {
-                            "slices": {
-                              "items": {
-                                "additionalProperties": {
-                                  "type": [
-                                    "number",
-                                    "string",
-                                    "null",
-                                    "boolean"
-                                  ]
-                                },
-                                "maxProperties": 15,
-                                "properties": {
-                                  "times": {
-                                    "maxProperties": 65,
-                                    "type": "object"
-                                  }
-                                },
-                                "type": "object"
-                              },
-                              "maxItems": 4,
-                              "type": "array"
-                            },
-                            "totals": {
-                              "maxProperties": 65,
-                              "type": "object"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "maxItems": 2,
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "histograms": {
-                    "additionalProperties": {
-                      "histogram": {
-                        "additionalProperties": false,
-                        "properties": {
-                          "bucket_count": {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          "histogram_type": {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          "log_sum": {
-                            "minimum": 0,
-                            "type": "number"
-                          },
-                          "log_sum_squares": {
-                            "minimum": 0,
-                            "type": "number"
-                          },
-                          "range": {
-                            "type": "array"
-                          },
-                          "sum": {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          "sum_squares_hi": {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          "sum_squares_lo": {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          "values": {
-                            "type": "object"
-                          }
-                        },
-                        "type": "object"
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "keyedHistograms": {
-                    "additionalProperties": {
-                      "additionalProperties": {
-                        "histogram": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "bucket_count": {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            "histogram_type": {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            "log_sum": {
-                              "minimum": 0,
-                              "type": "number"
-                            },
-                            "log_sum_squares": {
-                              "minimum": 0,
-                              "type": "number"
-                            },
-                            "range": {
-                              "type": "array"
-                            },
-                            "sum": {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            "sum_squares_hi": {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            "sum_squares_lo": {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            "values": {
-                              "type": "object"
-                            }
-                          },
-                          "type": "object"
-                        }
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "keyedScalars": {
-                    "additionalProperties": {
-                      "keyedScalar": {
-                        "additionalProperties": {
-                          "scalar": {
-                            "type": [
-                              "integer",
-                              "string",
-                              "boolean"
-                            ]
-                          }
-                        },
-                        "type": "object"
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "scalars": {
-                    "additionalProperties": {
-                      "scalar": {
-                        "type": [
-                          "integer",
-                          "string",
-                          "boolean"
-                        ]
-                      }
-                    },
-                    "type": "object"
-                  }
-                },
-                "type": "object"
-              }
-            }
-          },
-          "type": "object"
-        },
         "lateWrites": {
           "properties": {},
           "type": "object"
@@ -1207,587 +980,315 @@
         "processes": {
           "properties": {
             "content": {
-              "processData": {
-                "properties": {
-                  "events": {
-                    "items": {
-                      "event": {
-                        "items": [
-                          {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          {
-                            "type": "string"
-                          },
-                          {
-                            "type": "string"
-                          },
-                          {
-                            "type": "string"
-                          },
-                          {
-                            "type": [
-                              "string",
-                              "null"
-                            ]
-                          },
-                          {
-                            "additionalProperties": {
-                              "type": [
-                                "string",
-                                "null"
-                              ]
-                            },
-                            "type": [
-                              "object",
-                              "null"
-                            ]
-                          }
-                        ],
-                        "maxItems": 6,
-                        "minItems": 4,
-                        "type": "array"
+              "properties": {
+                "events": {
+                  "items": {
+                    "items": [
+                      {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      {
+                        "additionalProperties": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "type": [
+                          "object",
+                          "null"
+                        ]
                       }
-                    },
+                    ],
+                    "maxItems": 6,
+                    "minItems": 4,
                     "type": "array"
                   },
-                  "gc": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "random": {
-                        "items": {
-                          "additionalProperties": {
-                            "type": [
-                              "number",
-                              "string",
-                              "null",
-                              "boolean"
-                            ]
-                          },
-                          "maxProperties": 25,
-                          "properties": {
-                            "slices": {
-                              "items": {
-                                "additionalProperties": {
-                                  "type": [
-                                    "number",
-                                    "string",
-                                    "null",
-                                    "boolean"
-                                  ]
-                                },
-                                "maxProperties": 15,
-                                "properties": {
-                                  "times": {
-                                    "maxProperties": 65,
-                                    "type": "object"
-                                  }
-                                },
-                                "type": "object"
-                              },
-                              "maxItems": 4,
-                              "type": "array"
-                            },
-                            "totals": {
-                              "maxProperties": 65,
-                              "type": "object"
-                            }
-                          },
-                          "type": "object"
+                  "type": "array"
+                },
+                "gc": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "random": {
+                      "items": {
+                        "additionalProperties": {
+                          "type": [
+                            "number",
+                            "string",
+                            "null",
+                            "boolean"
+                          ]
                         },
-                        "maxItems": 2,
-                        "type": "array"
-                      },
-                      "worst": {
-                        "items": {
-                          "additionalProperties": {
-                            "type": [
-                              "number",
-                              "string",
-                              "null",
-                              "boolean"
-                            ]
-                          },
-                          "maxProperties": 25,
-                          "properties": {
-                            "slices": {
-                              "items": {
-                                "additionalProperties": {
-                                  "type": [
-                                    "number",
-                                    "string",
-                                    "null",
-                                    "boolean"
-                                  ]
-                                },
-                                "maxProperties": 15,
-                                "properties": {
-                                  "times": {
-                                    "maxProperties": 65,
-                                    "type": "object"
-                                  }
-                                },
-                                "type": "object"
-                              },
-                              "maxItems": 4,
-                              "type": "array"
-                            },
-                            "totals": {
-                              "maxProperties": 65,
-                              "type": "object"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "maxItems": 2,
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "histograms": {
-                    "additionalProperties": {
-                      "histogram": {
-                        "additionalProperties": false,
+                        "maxProperties": 25,
                         "properties": {
-                          "bucket_count": {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          "histogram_type": {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          "log_sum": {
-                            "minimum": 0,
-                            "type": "number"
-                          },
-                          "log_sum_squares": {
-                            "minimum": 0,
-                            "type": "number"
-                          },
-                          "range": {
+                          "slices": {
+                            "items": {
+                              "additionalProperties": {
+                                "type": [
+                                  "number",
+                                  "string",
+                                  "null",
+                                  "boolean"
+                                ]
+                              },
+                              "maxProperties": 15,
+                              "properties": {
+                                "times": {
+                                  "maxProperties": 65,
+                                  "type": "object"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "maxItems": 4,
                             "type": "array"
                           },
-                          "sum": {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          "sum_squares_hi": {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          "sum_squares_lo": {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          "values": {
+                          "totals": {
+                            "maxProperties": 65,
                             "type": "object"
                           }
                         },
                         "type": "object"
-                      }
+                      },
+                      "maxItems": 2,
+                      "type": "array"
                     },
-                    "type": "object"
-                  },
-                  "keyedHistograms": {
-                    "additionalProperties": {
-                      "additionalProperties": {
-                        "histogram": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "bucket_count": {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            "histogram_type": {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            "log_sum": {
-                              "minimum": 0,
-                              "type": "number"
-                            },
-                            "log_sum_squares": {
-                              "minimum": 0,
-                              "type": "number"
-                            },
-                            "range": {
-                              "type": "array"
-                            },
-                            "sum": {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            "sum_squares_hi": {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            "sum_squares_lo": {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            "values": {
-                              "type": "object"
-                            }
-                          },
-                          "type": "object"
-                        }
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "keyedScalars": {
-                    "additionalProperties": {
-                      "keyedScalar": {
+                    "worst": {
+                      "items": {
                         "additionalProperties": {
-                          "scalar": {
-                            "type": [
-                              "integer",
-                              "string",
-                              "boolean"
-                            ]
+                          "type": [
+                            "number",
+                            "string",
+                            "null",
+                            "boolean"
+                          ]
+                        },
+                        "maxProperties": 25,
+                        "properties": {
+                          "slices": {
+                            "items": {
+                              "additionalProperties": {
+                                "type": [
+                                  "number",
+                                  "string",
+                                  "null",
+                                  "boolean"
+                                ]
+                              },
+                              "maxProperties": 15,
+                              "properties": {
+                                "times": {
+                                  "maxProperties": 65,
+                                  "type": "object"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "maxItems": 4,
+                            "type": "array"
+                          },
+                          "totals": {
+                            "maxProperties": 65,
+                            "type": "object"
                           }
                         },
+                        "type": "object"
+                      },
+                      "maxItems": 2,
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
+                "histograms": {
+                  "additionalProperties": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "bucket_count": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "histogram_type": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "log_sum": {
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      "log_sum_squares": {
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      "range": {
+                        "type": "array"
+                      },
+                      "sum": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "sum_squares_hi": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "sum_squares_lo": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "values": {
                         "type": "object"
                       }
                     },
                     "type": "object"
                   },
-                  "scalars": {
+                  "type": "object"
+                },
+                "keyedHistograms": {
+                  "additionalProperties": {
                     "additionalProperties": {
-                      "scalar": {
-                        "type": [
-                          "integer",
-                          "string",
-                          "boolean"
-                        ]
-                      }
+                      "additionalProperties": false,
+                      "properties": {
+                        "bucket_count": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "histogram_type": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "log_sum": {
+                          "minimum": 0,
+                          "type": "number"
+                        },
+                        "log_sum_squares": {
+                          "minimum": 0,
+                          "type": "number"
+                        },
+                        "range": {
+                          "type": "array"
+                        },
+                        "sum": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "sum_squares_hi": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "sum_squares_lo": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "values": {
+                          "type": "object"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                },
+                "keyedScalars": {
+                  "additionalProperties": {
+                    "additionalProperties": {
+                      "type": [
+                        "integer",
+                        "string",
+                        "boolean"
+                      ]
                     },
                     "type": "object"
-                  }
+                  },
+                  "type": "object"
                 },
-                "type": "object"
-              }
+                "scalars": {
+                  "additionalProperties": {
+                    "type": [
+                      "integer",
+                      "string",
+                      "boolean"
+                    ]
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
             },
             "gpu": {
-              "processData": {
-                "properties": {
-                  "events": {
-                    "items": {
-                      "event": {
-                        "items": [
-                          {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          {
-                            "type": "string"
-                          },
-                          {
-                            "type": "string"
-                          },
-                          {
-                            "type": "string"
-                          },
-                          {
-                            "type": [
-                              "string",
-                              "null"
-                            ]
-                          },
-                          {
-                            "additionalProperties": {
-                              "type": [
-                                "string",
-                                "null"
-                              ]
-                            },
-                            "type": [
-                              "object",
-                              "null"
-                            ]
-                          }
-                        ],
-                        "maxItems": 6,
-                        "minItems": 4,
-                        "type": "array"
-                      }
-                    },
-                    "type": "array"
-                  },
-                  "gc": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "random": {
-                        "items": {
-                          "additionalProperties": {
-                            "type": [
-                              "number",
-                              "string",
-                              "null",
-                              "boolean"
-                            ]
-                          },
-                          "maxProperties": 25,
-                          "properties": {
-                            "slices": {
-                              "items": {
-                                "additionalProperties": {
-                                  "type": [
-                                    "number",
-                                    "string",
-                                    "null",
-                                    "boolean"
-                                  ]
-                                },
-                                "maxProperties": 15,
-                                "properties": {
-                                  "times": {
-                                    "maxProperties": 65,
-                                    "type": "object"
-                                  }
-                                },
-                                "type": "object"
-                              },
-                              "maxItems": 4,
-                              "type": "array"
-                            },
-                            "totals": {
-                              "maxProperties": 65,
-                              "type": "object"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "maxItems": 2,
-                        "type": "array"
+              "properties": {
+                "events": {
+                  "items": {
+                    "items": [
+                      {
+                        "minimum": 0,
+                        "type": "integer"
                       },
-                      "worst": {
-                        "items": {
-                          "additionalProperties": {
-                            "type": [
-                              "number",
-                              "string",
-                              "null",
-                              "boolean"
-                            ]
-                          },
-                          "maxProperties": 25,
-                          "properties": {
-                            "slices": {
-                              "items": {
-                                "additionalProperties": {
-                                  "type": [
-                                    "number",
-                                    "string",
-                                    "null",
-                                    "boolean"
-                                  ]
-                                },
-                                "maxProperties": 15,
-                                "properties": {
-                                  "times": {
-                                    "maxProperties": 65,
-                                    "type": "object"
-                                  }
-                                },
-                                "type": "object"
-                              },
-                              "maxItems": 4,
-                              "type": "array"
-                            },
-                            "totals": {
-                              "maxProperties": 65,
-                              "type": "object"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "maxItems": 2,
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "histograms": {
-                    "additionalProperties": {
-                      "histogram": {
-                        "additionalProperties": false,
-                        "properties": {
-                          "bucket_count": {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          "histogram_type": {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          "log_sum": {
-                            "minimum": 0,
-                            "type": "number"
-                          },
-                          "log_sum_squares": {
-                            "minimum": 0,
-                            "type": "number"
-                          },
-                          "range": {
-                            "type": "array"
-                          },
-                          "sum": {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          "sum_squares_hi": {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          "sum_squares_lo": {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          "values": {
-                            "type": "object"
-                          }
-                        },
-                        "type": "object"
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "keyedHistograms": {
-                    "additionalProperties": {
-                      "additionalProperties": {
-                        "histogram": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "bucket_count": {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            "histogram_type": {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            "log_sum": {
-                              "minimum": 0,
-                              "type": "number"
-                            },
-                            "log_sum_squares": {
-                              "minimum": 0,
-                              "type": "number"
-                            },
-                            "range": {
-                              "type": "array"
-                            },
-                            "sum": {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            "sum_squares_hi": {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            "sum_squares_lo": {
-                              "minimum": 0,
-                              "type": "integer"
-                            },
-                            "values": {
-                              "type": "object"
-                            }
-                          },
-                          "type": "object"
-                        }
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "keyedScalars": {
-                    "additionalProperties": {
-                      "keyedScalar": {
-                        "additionalProperties": {
-                          "scalar": {
-                            "type": [
-                              "integer",
-                              "string",
-                              "boolean"
-                            ]
-                          }
-                        },
-                        "type": "object"
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "scalars": {
-                    "additionalProperties": {
-                      "scalar": {
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "string"
+                      },
+                      {
                         "type": [
-                          "integer",
                           "string",
-                          "boolean"
+                          "null"
+                        ]
+                      },
+                      {
+                        "additionalProperties": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "type": [
+                          "object",
+                          "null"
                         ]
                       }
-                    },
-                    "type": "object"
-                  }
+                    ],
+                    "maxItems": 6,
+                    "minItems": 4,
+                    "type": "array"
+                  },
+                  "type": "array"
                 },
-                "type": "object"
-              }
-            },
-            "parent": {
-              "allOf": [
-                {
-                  "processData": {
-                    "properties": {
-                      "events": {
-                        "items": {
-                          "event": {
-                            "items": [
-                              {
-                                "minimum": 0,
-                                "type": "integer"
-                              },
-                              {
-                                "type": "string"
-                              },
-                              {
-                                "type": "string"
-                              },
-                              {
-                                "type": "string"
-                              },
-                              {
-                                "type": [
-                                  "string",
-                                  "null"
-                                ]
-                              },
-                              {
-                                "additionalProperties": {
-                                  "type": [
-                                    "string",
-                                    "null"
-                                  ]
-                                },
-                                "type": [
-                                  "object",
-                                  "null"
-                                ]
-                              }
-                            ],
-                            "maxItems": 6,
-                            "minItems": 4,
-                            "type": "array"
-                          }
+                "gc": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "random": {
+                      "items": {
+                        "additionalProperties": {
+                          "type": [
+                            "number",
+                            "string",
+                            "null",
+                            "boolean"
+                          ]
                         },
-                        "type": "array"
-                      },
-                      "gc": {
-                        "additionalProperties": false,
+                        "maxProperties": 25,
                         "properties": {
-                          "random": {
+                          "slices": {
                             "items": {
                               "additionalProperties": {
                                 "type": [
@@ -1797,41 +1298,41 @@
                                   "boolean"
                                 ]
                               },
-                              "maxProperties": 25,
+                              "maxProperties": 15,
                               "properties": {
-                                "slices": {
-                                  "items": {
-                                    "additionalProperties": {
-                                      "type": [
-                                        "number",
-                                        "string",
-                                        "null",
-                                        "boolean"
-                                      ]
-                                    },
-                                    "maxProperties": 15,
-                                    "properties": {
-                                      "times": {
-                                        "maxProperties": 65,
-                                        "type": "object"
-                                      }
-                                    },
-                                    "type": "object"
-                                  },
-                                  "maxItems": 4,
-                                  "type": "array"
-                                },
-                                "totals": {
+                                "times": {
                                   "maxProperties": 65,
                                   "type": "object"
                                 }
                               },
                               "type": "object"
                             },
-                            "maxItems": 2,
+                            "maxItems": 4,
                             "type": "array"
                           },
-                          "worst": {
+                          "totals": {
+                            "maxProperties": 65,
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "maxItems": 2,
+                      "type": "array"
+                    },
+                    "worst": {
+                      "items": {
+                        "additionalProperties": {
+                          "type": [
+                            "number",
+                            "string",
+                            "null",
+                            "boolean"
+                          ]
+                        },
+                        "maxProperties": 25,
+                        "properties": {
+                          "slices": {
                             "items": {
                               "additionalProperties": {
                                 "type": [
@@ -1841,174 +1342,398 @@
                                   "boolean"
                                 ]
                               },
-                              "maxProperties": 25,
+                              "maxProperties": 15,
                               "properties": {
-                                "slices": {
-                                  "items": {
-                                    "additionalProperties": {
-                                      "type": [
-                                        "number",
-                                        "string",
-                                        "null",
-                                        "boolean"
-                                      ]
-                                    },
-                                    "maxProperties": 15,
-                                    "properties": {
-                                      "times": {
-                                        "maxProperties": 65,
-                                        "type": "object"
-                                      }
-                                    },
-                                    "type": "object"
-                                  },
-                                  "maxItems": 4,
-                                  "type": "array"
-                                },
-                                "totals": {
+                                "times": {
                                   "maxProperties": 65,
                                   "type": "object"
                                 }
                               },
                               "type": "object"
                             },
-                            "maxItems": 2,
+                            "maxItems": 4,
                             "type": "array"
-                          }
-                        },
-                        "type": "object"
-                      },
-                      "histograms": {
-                        "additionalProperties": {
-                          "histogram": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "bucket_count": {
-                                "minimum": 0,
-                                "type": "integer"
-                              },
-                              "histogram_type": {
-                                "minimum": 0,
-                                "type": "integer"
-                              },
-                              "log_sum": {
-                                "minimum": 0,
-                                "type": "number"
-                              },
-                              "log_sum_squares": {
-                                "minimum": 0,
-                                "type": "number"
-                              },
-                              "range": {
-                                "type": "array"
-                              },
-                              "sum": {
-                                "minimum": 0,
-                                "type": "integer"
-                              },
-                              "sum_squares_hi": {
-                                "minimum": 0,
-                                "type": "integer"
-                              },
-                              "sum_squares_lo": {
-                                "minimum": 0,
-                                "type": "integer"
-                              },
-                              "values": {
-                                "type": "object"
-                              }
-                            },
+                          },
+                          "totals": {
+                            "maxProperties": 65,
                             "type": "object"
                           }
                         },
                         "type": "object"
                       },
-                      "keyedHistograms": {
-                        "additionalProperties": {
-                          "additionalProperties": {
-                            "histogram": {
-                              "additionalProperties": false,
-                              "properties": {
-                                "bucket_count": {
-                                  "minimum": 0,
-                                  "type": "integer"
-                                },
-                                "histogram_type": {
-                                  "minimum": 0,
-                                  "type": "integer"
-                                },
-                                "log_sum": {
-                                  "minimum": 0,
-                                  "type": "number"
-                                },
-                                "log_sum_squares": {
-                                  "minimum": 0,
-                                  "type": "number"
-                                },
-                                "range": {
-                                  "type": "array"
-                                },
-                                "sum": {
-                                  "minimum": 0,
-                                  "type": "integer"
-                                },
-                                "sum_squares_hi": {
-                                  "minimum": 0,
-                                  "type": "integer"
-                                },
-                                "sum_squares_lo": {
-                                  "minimum": 0,
-                                  "type": "integer"
-                                },
-                                "values": {
-                                  "type": "object"
-                                }
-                              },
-                              "type": "object"
-                            }
-                          }
-                        },
-                        "type": "object"
+                      "maxItems": 2,
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
+                "histograms": {
+                  "additionalProperties": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "bucket_count": {
+                        "minimum": 0,
+                        "type": "integer"
                       },
-                      "keyedScalars": {
-                        "additionalProperties": {
-                          "keyedScalar": {
-                            "additionalProperties": {
-                              "scalar": {
-                                "type": [
-                                  "integer",
-                                  "string",
-                                  "boolean"
-                                ]
-                              }
-                            },
-                            "type": "object"
-                          }
-                        },
-                        "type": "object"
+                      "histogram_type": {
+                        "minimum": 0,
+                        "type": "integer"
                       },
-                      "scalars": {
-                        "additionalProperties": {
-                          "scalar": {
-                            "type": [
-                              "integer",
-                              "string",
-                              "boolean"
-                            ]
-                          }
-                        },
+                      "log_sum": {
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      "log_sum_squares": {
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      "range": {
+                        "type": "array"
+                      },
+                      "sum": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "sum_squares_hi": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "sum_squares_lo": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "values": {
                         "type": "object"
                       }
                     },
                     "type": "object"
-                  }
+                  },
+                  "type": "object"
                 },
-                {
-                  "required": [
-                    "scalars"
-                  ]
+                "keyedHistograms": {
+                  "additionalProperties": {
+                    "additionalProperties": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "bucket_count": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "histogram_type": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "log_sum": {
+                          "minimum": 0,
+                          "type": "number"
+                        },
+                        "log_sum_squares": {
+                          "minimum": 0,
+                          "type": "number"
+                        },
+                        "range": {
+                          "type": "array"
+                        },
+                        "sum": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "sum_squares_hi": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "sum_squares_lo": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "values": {
+                          "type": "object"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                },
+                "keyedScalars": {
+                  "additionalProperties": {
+                    "additionalProperties": {
+                      "type": [
+                        "integer",
+                        "string",
+                        "boolean"
+                      ]
+                    },
+                    "type": "object"
+                  },
+                  "type": "object"
+                },
+                "scalars": {
+                  "additionalProperties": {
+                    "type": [
+                      "integer",
+                      "string",
+                      "boolean"
+                    ]
+                  },
+                  "type": "object"
                 }
-              ]
+              },
+              "type": "object"
+            },
+            "parent": {
+              "properties": {
+                "events": {
+                  "items": {
+                    "items": [
+                      {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      {
+                        "additionalProperties": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "type": [
+                          "object",
+                          "null"
+                        ]
+                      }
+                    ],
+                    "maxItems": 6,
+                    "minItems": 4,
+                    "type": "array"
+                  },
+                  "type": "array"
+                },
+                "gc": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "random": {
+                      "items": {
+                        "additionalProperties": {
+                          "type": [
+                            "number",
+                            "string",
+                            "null",
+                            "boolean"
+                          ]
+                        },
+                        "maxProperties": 25,
+                        "properties": {
+                          "slices": {
+                            "items": {
+                              "additionalProperties": {
+                                "type": [
+                                  "number",
+                                  "string",
+                                  "null",
+                                  "boolean"
+                                ]
+                              },
+                              "maxProperties": 15,
+                              "properties": {
+                                "times": {
+                                  "maxProperties": 65,
+                                  "type": "object"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "maxItems": 4,
+                            "type": "array"
+                          },
+                          "totals": {
+                            "maxProperties": 65,
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "maxItems": 2,
+                      "type": "array"
+                    },
+                    "worst": {
+                      "items": {
+                        "additionalProperties": {
+                          "type": [
+                            "number",
+                            "string",
+                            "null",
+                            "boolean"
+                          ]
+                        },
+                        "maxProperties": 25,
+                        "properties": {
+                          "slices": {
+                            "items": {
+                              "additionalProperties": {
+                                "type": [
+                                  "number",
+                                  "string",
+                                  "null",
+                                  "boolean"
+                                ]
+                              },
+                              "maxProperties": 15,
+                              "properties": {
+                                "times": {
+                                  "maxProperties": 65,
+                                  "type": "object"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "maxItems": 4,
+                            "type": "array"
+                          },
+                          "totals": {
+                            "maxProperties": 65,
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "maxItems": 2,
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
+                "histograms": {
+                  "additionalProperties": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "bucket_count": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "histogram_type": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "log_sum": {
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      "log_sum_squares": {
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      "range": {
+                        "type": "array"
+                      },
+                      "sum": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "sum_squares_hi": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "sum_squares_lo": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "values": {
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "object"
+                },
+                "keyedHistograms": {
+                  "additionalProperties": {
+                    "additionalProperties": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "bucket_count": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "histogram_type": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "log_sum": {
+                          "minimum": 0,
+                          "type": "number"
+                        },
+                        "log_sum_squares": {
+                          "minimum": 0,
+                          "type": "number"
+                        },
+                        "range": {
+                          "type": "array"
+                        },
+                        "sum": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "sum_squares_hi": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "sum_squares_lo": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "values": {
+                          "type": "object"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                },
+                "keyedScalars": {
+                  "additionalProperties": {
+                    "additionalProperties": {
+                      "type": [
+                        "integer",
+                        "string",
+                        "boolean"
+                      ]
+                    },
+                    "type": "object"
+                  },
+                  "type": "object"
+                },
+                "scalars": {
+                  "additionalProperties": {
+                    "type": [
+                      "integer",
+                      "string",
+                      "boolean"
+                    ]
+                  },
+                  "type": "object"
+                }
+              },
+              "required": [
+                "scalars"
+              ],
+              "type": "object"
             }
           },
           "required": [
