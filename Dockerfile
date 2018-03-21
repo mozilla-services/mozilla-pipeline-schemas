@@ -40,4 +40,4 @@ WORKDIR /app/release
 
 RUN ln -s /usr/bin/cmake3 /usr/bin/cmake; cmake ..; make
 
-CMD python test_schema_format.py ../schemas && ctest3 -V -C hindsight
+CMD ctest3 -V -C hindsight
