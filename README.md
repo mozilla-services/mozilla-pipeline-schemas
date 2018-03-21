@@ -82,7 +82,9 @@ To run the tests:
 
 All schemas are generated from the 'templates' directory and written into the
 'schemas' directory (i.e., the artifacts are generated/saved back into the
-repository). The reason for this is twofold:
+repository) and validated against the [draft 4 schema](http://json-schema.org/draft-04/schema)
+a [copy](https://github.com/mozilla-services/mozilla-pipeline-schemas/blob/master/tests/hindsight/jsonschema.4.json)
+of which resides in the 'tests' directory. The reason for this is twofold:
 
 1. It lets us easily see and refer to complete schemas as they are actually used.
 This means that the schemas can be referenced directly in bugs and such,

@@ -6,56 +6,54 @@
         "activeAddons": {
           "type": "object",
           "additionalProperties": {
-            "addon": {
-              "type": "object",
-              "properties": {
-                "blocklisted": {
-                  "type": "boolean"
-                },
-                "description": {
-                  "type": [ "string", "null" ]
-                },
-                "name": {
-                  "type": "string"
-                },
-                "userDisabled": {
-                  "type": [ "boolean", "integer" ]
-                },
-                "appDisabled": {
-                  "type": "boolean"
-                },
-                "version": {
-                  "type": [ "string", "number" ]
-                },
-                "scope": {
-                  "type": "integer"
-                },
-                "type": {
-                  "type": "string"
-                },
-                "foreignInstall": {
-                  "type": [
-                    "integer",
-                    "boolean"
-                    ]
-                },
-                "hasBinaryComponents": {
-                  "type": "boolean"
-                },
-                "installDay": {
-                  "type": [ "integer", "null" ],
-                  "minimum": 0
-                },
-                "updateDay": {
-                  "type": "integer",
-                  "minimum": 0
-                },
-                "signedState": {
-                  "type": "integer"
-                },
-                "isSystem": {
-                  "type": "boolean"
-                }
+            "type": "object",
+            "properties": {
+              "blocklisted": {
+                "type": "boolean"
+              },
+              "description": {
+                "type": [ "string", "null" ]
+              },
+              "name": {
+                "type": "string"
+              },
+              "userDisabled": {
+                "type": [ "boolean", "integer" ]
+              },
+              "appDisabled": {
+                "type": "boolean"
+              },
+              "version": {
+                "type": [ "string", "number" ]
+              },
+              "scope": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "string"
+              },
+              "foreignInstall": {
+                "type": [
+                  "integer",
+                  "boolean"
+                  ]
+              },
+              "hasBinaryComponents": {
+                "type": "boolean"
+              },
+              "installDay": {
+                "type": [ "integer", "null" ],
+                "minimum": 0
+              },
+              "updateDay": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "signedState": {
+                "type": "integer"
+              },
+              "isSystem": {
+                "type": "boolean"
               }
             }
           }
@@ -74,21 +72,19 @@
         "activeGMPlugins": {
           "type": "object",
           "additionalProperties": {
-            "gmPlugin": {
-              "type": "object",
-              "properties": {
-                "version": {
-                  "type": [ "string", "null" ]
-                },
-                "userDisabled": {
-                  "type": "boolean"
-                },
-                "applyBackgroundUpdates": {
-                  "type": [
-                    "integer",
-                    "boolean"
-                    ]
-                }
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": [ "string", "null" ]
+              },
+              "userDisabled": {
+                "type": "boolean"
+              },
+              "applyBackgroundUpdates": {
+                "type": [
+                  "integer",
+                  "boolean"
+                  ]
               }
             }
           }
@@ -96,36 +92,34 @@
         "activePlugins": {
           "type": [ "array", "object" ],
           "items": {
-            "plugin": {
-              "type": "object",
-              "properties": {
-                "name": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "version": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "blocklisted": {
+                "type": "boolean"
+              },
+              "disabled": {
+                "type": "boolean"
+              },
+              "clicktoplay": {
+                "type": "boolean"
+              },
+              "mimeTypes": {
+                "type": [ "array", "object" ],
+                "items": {
                   "type": "string"
-                },
-                "version": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                },
-                "blocklisted": {
-                  "type": "boolean"
-                },
-                "disabled": {
-                  "type": "boolean"
-                },
-                "clicktoplay": {
-                  "type": "boolean"
-                },
-                "mimeTypes": {
-                  "type": [ "array", "object" ],
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "updateDay": {
-                  "type": "integer"
                 }
+              },
+              "updateDay": {
+                "type": "integer"
               }
             }
           }
@@ -420,17 +414,20 @@
           }
         },
         "device": {
-          "model": {
-            "type": "string"
-          },
-          "manufacturer": {
-            "type": "string"
-          },
-          "hardware": {
-            "type": "string"
-          },
-          "isTablet": {
-            "type": "boolean"
+          "type": "object",
+          "properties": {
+            "model": {
+              "type": "string"
+            },
+            "manufacturer": {
+              "type": "string"
+            },
+            "hardware": {
+              "type": "string"
+            },
+            "isTablet": {
+              "type": "boolean"
+            }
           }
         },
         "gfx": {
@@ -451,88 +448,111 @@
             "adapters": {
               "type": "array",
               "items": {
-                "adapter": {
-                  "type": "object",
-                  "properties": {
-                    "description": {
-                      "type": [ "string", "null" ]
-                    },
-                    "vendorID": {
-                      "type": [ "string", "null" ]
-                    },
-                    "deviceID": {
-                      "type": [ "string", "null" ]
-                    },
-                    "subsysID": {
-                      "type": [ "string", "null" ]
-                    },
-                    "RAM": {
-                      "type": [ "integer", "null" ]
-                    },
-                    "driver": {
-                      "type": [ "string", "null" ]
-                    },
-                    "driverVersion": {
-                      "type": [ "string", "null" ]
-                    },
-                    "driverDate": {
-                      "type": [ "string", "null" ]
-                    },
-                    "GPUActive": {
-                      "type": "boolean"
-                    }
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": [ "string", "null" ]
+                  },
+                  "vendorID": {
+                    "type": [ "string", "null" ]
+                  },
+                  "deviceID": {
+                    "type": [ "string", "null" ]
+                  },
+                  "subsysID": {
+                    "type": [ "string", "null" ]
+                  },
+                  "RAM": {
+                    "type": [ "integer", "null" ]
+                  },
+                  "driver": {
+                    "type": [ "string", "null" ]
+                  },
+                  "driverVersion": {
+                    "type": [ "string", "null" ]
+                  },
+                  "driverDate": {
+                    "type": [ "string", "null" ]
+                  },
+                  "GPUActive": {
+                    "type": "boolean"
                   }
                 }
               }
             },
             "monitors": {
-              "type": [
-                "array",
-                "object"
-                ],
+              "type": ["array", "object"],
               "items": {
-                "monitor": {
-                  "type": "object",
-                  "properties": {
-                    "screenWidth": {
-                      "type": "integer"
-                    },
-                    "screenHeight": {
-                      "type": "integer"
-                    },
-                    "refreshRate": {
-                      "type": "number"
-                    },
-                    "pseudoDisplay": {
-                      "type": "boolean"
-                    },
-                    "scale": {
-                      "type": "number"
-                    }
+                "type": "object",
+                "properties": {
+                  "screenWidth": {
+                    "type": "integer"
+                  },
+                  "screenHeight": {
+                    "type": "integer"
+                  },
+                  "refreshRate": {
+                    "type": "number"
+                  },
+                  "pseudoDisplay": {
+                    "type": "boolean"
+                  },
+                  "scale": {
+                    "type": "number"
                   }
                 }
               }
             },
             "features": {
               "type": "object",
-              "items": {
-                "feature": {
+              "properties": {
+                "compositor": {
+                  "type": [ "string", "null" ]
+                },
+                "d3d11": {
                   "type": "object",
                   "properties": {
                     "status": {
                       "type": [ "string", "null" ]
                     },
-                    "failureId": {
-                      "type": [ "string", "null" ]
-                    },
                     "version": {
-                      "type": [ "string", "null" ]
+                      "type": [ "number", "null" ]
                     },
                     "warp": {
                       "type": [ "boolean", "null" ]
                     },
+                    "blacklisted": {
+                      "type": [ "boolean", "null" ]
+                    },
                     "textureSharing": {
                       "type": [ "boolean", "null" ]
+                    }
+                  }
+                },
+                "d2d": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": [ "string", "null" ]
+                    },
+                    "version": {
+                      "type": [ "string", "null" ]
+                    }
+                  }
+                },
+                "gpuProcess": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": [ "string", "null" ]
+                    }
+                  }
+                },
+                "advancedLayers": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": [ "string", "null" ]
                     }
                   }
                 }
@@ -635,22 +655,25 @@
           }
         },
         "sec": {
-          "antivirus": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "antispyware": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "firewall": {
-            "type": "array",
-            "items": {
-              "type": "string"
+          "type": "object",
+          "properties": {
+            "antivirus": {
+              "type": [ "array", "null" ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "antispyware": {
+              "type": [ "array", "null" ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "firewall": {
+              "type": [ "array", "null" ],
+              "items": {
+                "type": "string"
+              }
             }
           }
         }
