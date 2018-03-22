@@ -75,13 +75,21 @@ function process_message()
         local mode = lfs.attributes(fqdn, "mode")
         if mode == "directory" and not namespace:match("^%.") then
             for fn in lfs.dir(fqdn) do
-                local schema, version, test  = fn:match("(.+)%.(%d+)%.(%w+)%.json$")
+                local schema, version, test, outcome = fn:match("(.+)%.(%d+)%.([%w_]+)%.(pass).json$")
+                if not schema then
+                    schema, version, test, outcome = fn:match("(.+)%.(%d+)%.([%w_]+)%.(fail).json$")
+                end
                 if schema then
                     local fqfn = string.format("%s/%s", fqdn, fn)
                     local json = read_file(fqfn)
                     doc:parse(json, nil, nil, true)
+
                     local ok, err = doc:validate(schemas[string.format("%s.%s.%s", namespace, schema, version)])
-                    if not ok then error(err) end
+                    if outcome == "pass" then
+                        if not ok then error(err) end
+                    else -- "fail"
+                        if ok then error(string.format("Validation should not have passed: %s", fn)) end
+                    end
 
                     msg.Type = namespace
                     msg.Fields.docType = schema

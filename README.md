@@ -46,6 +46,13 @@ schemas can be found here:
 
 ### Running Tests via Docker
 
+The tests expect example pings to be in the `validation/<namespace>/` subdirectory, with files named
+in the form `<ping type>.<version>.<test name>.pass.json` for documents expected to be valid, or
+`<ping type>.<version>.<test name>.fail.json` for documents expected to fail validation.
+The `test name` should match the pattern `[0-9a-zA-Z_]+`
+
+To run the tests:
+
     # build the container with the pipeline schemas
     docker build -t mps .
 
