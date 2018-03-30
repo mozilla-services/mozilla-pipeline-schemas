@@ -21,6 +21,10 @@ end
 
 
 local function load_doctypes(namespace, path, schemas)
+    local doc = rjson.parse("{}")
+    local js = read_file("jsonschema.4.json")
+    local jsonschema = rjson.parse_schema(js)
+
     for dn in lfs.dir(path) do -- iterate the schema diretories
         local fqdn = string.format("%s/%s", path, dn)
         local mode = lfs.attributes(fqdn, "mode")
@@ -30,13 +34,19 @@ local function load_doctypes(namespace, path, schemas)
                 if schema then
                     local fqfn = string.format("%s/%s", fqdn, fn)
                     local js = read_file(fqfn)
+                    doc:parse(js, true)
+                    local ok, err = doc:validate(jsonschema)
+                    if not ok then error(string.format("schema: %s error: %s", fqfn, err)) end
                     schemas[string.format("%s.%s.%s", namespace, schema, version)] = rjson.parse_schema(js)
                 end
             end
         elseif mode == "file" then -- accept the new flattened generic ingestion directories
             local schema, version = dn:match("(.+)%.(%d+)%.schema.json$")
             if schema then
-                local js = read_file(fqdn)
+                js = read_file(fqdn)
+                doc:parse(js, true)
+                local ok, err = doc:validate(jsonschema)
+                if not ok then error(string.format("schema: %s error: %s", fqfn, err)) end
                 schemas[string.format("%s.%s.%s", namespace, schema, version)] = rjson.parse_schema(js)
             end
         end
@@ -82,7 +92,7 @@ function process_message()
                 if schema then
                     local fqfn = string.format("%s/%s", fqdn, fn)
                     local json = read_file(fqfn)
-                    doc:parse(json, nil, nil, true)
+                    doc:parse(json, true)
 
                     local ok, err = doc:validate(schemas[string.format("%s.%s.%s", namespace, schema, version)])
                     if outcome == "pass" then
