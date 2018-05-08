@@ -3,22 +3,22 @@
   "title": "hgpush",
   "properties": {
     "changesetID": {
-      "description": "The 40 char hex ID of the changeset. See https://www.mercurial-scm.org/wiki/ChangeSetID",
+      "description": "The 40 char hex ID of the changeset. See https://www.mercurial-scm.org/wiki/ChangeSetID.",
       "type": "string",
       "pattern": "[a-f0-9]{40}"
     },
     "reviewSystemUsed": {
-      "description": "Which code review system was used to review this changeset?",
-      "type": "string",
-      "enum": ["bmo", "mozreview", "phabricator", "unknown", "not_applicable"]
+      "description": "A string labelling the code review system used to review this changeset.  Possible values include (but are not limited to): 'mozreview', 'phabricator', 'bmo', 'unknown', and 'not_applicable'.",
+      "type": "string"
     },
     "repository": {
-      "description": "The URL of the repository the changeset was pushed to",
+      "description": "The URL of the repository the changeset was pushed to.",
       "type": "string"
     },
     "pushDate": {
-      "description": "Integer UNIX timestamp of when the push to the repository occurred, as recorded by the repository pushlog",
-      "type": "integer"
+      "description": "Timestamp, in Unix time (seconds since the Unix epoch), of when the push to the repository occurred.  This value is obtained from the original repository pushlog.",
+      "type": "integer",
+      "minimum": 0
     }
   },
   "required": [ "changesetID", "reviewSystemUsed", "repository" ],
