@@ -18,6 +18,15 @@ schemas are used for direct to parquet output; some examples of Parquet-MR
 schemas can be found here:
 [Parquet Schema Examples](https://mozilla-services.github.io/lua_sandbox_extensions/parquet/io_modules/lpeg/parquet.html)
 
+## Adding a new schema
+
+- Create the JSON Schema in the `templates` directory first. Make use of common schema components from the `templates/include` directory where possible, including things like the telemetry `environment`, `clientId`, `application` block, or UUID patterns. The filename should be `templates/<namespace>/<doctype>/<doctype>.<version>.schema.json`.
+- If the data will be saved in parquet form, also add a Parquet-MR schema at `templates/<namespace>/<doctype>/<doctype>.<version>.parquetmr.txt`.
+- Build the rendered schemas using the instructions below, and check those artifacts (in the `schemas` directory) in to the git repo as well. See the rationale for this in the "Notes" section below.
+- Add one or more example JSON documents to the `validation` directory.
+- Run the tests via Docker using the instructions below.
+- Once all tests pass, submit a PR to the github repository against the `dev` branch.
+
 ## Build
 
 ### Prerequisites
@@ -33,16 +42,6 @@ schemas can be found here:
     cd release
 
     cmake ..  # this is the build process (the schemas are built with cmake templates)
-    cpack -G TGZ # (DEB|RPM|ZIP)
-
-    # Integration Tests (run on schema-test EC2 instance)
-      # If running locally
-        # The following RPM's must be installed:
-          # luasandbox, hindsight, luasandbox-lfs, luasandbox-lpeg, luasandbox-rjson, luasandbox-cjson, luasandbox-parquet
-        # The following external libraries must be installed
-          # parquet-cpp
-    make # this sets up the tests in the release directory
-    ctest -V -C hindsight # loads all the schemas and tests the inputs in the validation directory against them
 
 ### Running Tests via Docker
 
@@ -59,6 +58,21 @@ To run the tests:
     # run the tests
     docker run mps
 
+### Packaging and integration tests (optional)
+
+Follow the CMake Build Instructions above, then:
+
+    cpack -G TGZ # (DEB|RPM|ZIP)
+
+    # Integration Tests (run on schema-test EC2 instance)
+      # If running locally
+        # The following RPM's must be installed:
+          # luasandbox, hindsight, luasandbox-lfs, luasandbox-lpeg, luasandbox-rjson, luasandbox-cjson, luasandbox-parquet
+        # The following external libraries must be installed
+          # parquet-cpp
+    make # this sets up the tests in the release directory
+    ctest -V -C hindsight # loads all the schemas and tests the inputs in the validation directory against them
+
 ## Releases
 
 * The master branch is the current release and is considered stable at all
@@ -72,8 +86,8 @@ To run the tests:
 
 ## Contributions
 
-* All pull requests must be made against the dev branch, direct commits to
-  master are not permitted.
+* All pull requests must be made against the `dev` branch, direct commits to
+  `master` are not permitted.
 * All non trivial contributions should start with an issue being filed (if it is
   a new feature please propose your design/approach before doing any work as not
   all feature requests are accepted).
