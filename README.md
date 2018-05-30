@@ -24,7 +24,7 @@ schemas can be found here:
 - If the data will be saved in parquet form, also add a Parquet-MR schema at `templates/<namespace>/<doctype>/<doctype>.<version>.parquetmr.txt`.
 - Build the rendered schemas using the instructions below, and check those artifacts (in the `schemas` directory) in to the git repo as well. See the rationale for this in the "Notes" section below.
 - Add one or more example JSON documents to the `validation` directory.
-- Run the tests via Docker using the instructions below.
+- Run the tests (either via Docker or directly) using the instructions below.
 - Once all tests pass, submit a PR to the github repository against the `dev` branch.
 
 ## Build
