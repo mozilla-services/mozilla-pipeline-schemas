@@ -3,10 +3,7 @@
   "title": "frecency-update",
   "type": "object",
   "properties": {
-    "client_id": {
-      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
-      "type": "string"
-    },
+    @TELEMETRY_CLIENTID_1_JSON@,
     "type": {
       "enum": [
         "frecency-update"
@@ -14,6 +11,9 @@
     },
     "payload": {
       "properties": {
+        "loss": {
+          "type": "number"
+        },
         "model_version": {
           "type": "number"
         },
@@ -21,16 +21,13 @@
           "type": "number",
           "minimum": 0
         },
-        "rank_selected": {
-          "type": "number",
-          "minimum": 0
-        },
         "num_suggestions_displayed": {
           "type": "number",
           "minimum": 1
         },
-        "loss": {
-          "type": "number"
+        "rank_selected": {
+          "type": "number",
+          "minimum": 0
         },
         "update": {
           "type": "array",
@@ -42,18 +39,18 @@
         }
       },
       "required": [
-        "model_version",
         "loss",
+        "model_version",
         "num_chars_typed",
-        "rank_selected",
         "num_suggestions_displayed",
+        "rank_selected",
         "update"
       ]
     }
   },
   "required": [
-    "type",
     "client_id",
-    "payload"
+    "payload",
+    "type"
   ]
 }
