@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "frecency_update",
+  "type": "object",
+  "properties": {
+    "client_id": {
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "type": "string"
+    },
+    "type": {
+      "enum": [
+        "frecency_update"
+      ]
+    },
+    "payload": {
+      "properties": {
+        "model_version": {
+          "type": "number"
+        },
+        "num_chars_typed": {
+          "type": "number",
+          "minimum": 0
+        },
+        "rank_selected": {
+          "type": "number",
+          "minimum": 0
+        },
+        "num_suggestions_displayed": {
+          "type": "number",
+          "minimum": 1
+        },
+        "loss": {
+          "type": "number"
+        },
+        "update": {
+          "type": "array",
+          "minItems": 18,
+          "maxItems": 18,
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "required": [
+        "model_version",
+        "loss",
+        "num_chars_typed",
+        "rank_selected",
+        "num_suggestions_displayed",
+        "update"
+      ]
+    }
+  },
+  "required": [
+    "type",
+    "client_id",
+    "payload"
+  ]
+}
