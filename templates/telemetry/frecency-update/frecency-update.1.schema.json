@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "frecency-update",
+  "type": "object",
+  "properties": {
+    @TELEMETRY_CLIENTID_1_JSON@,
+    "type": {
+      "enum": [
+        "frecency-update"
+      ]
+    },
+    "payload": {
+      "properties": {
+        "loss": {
+          "type": "number"
+        },
+        "model_version": {
+          "type": "number"
+        },
+        "num_chars_typed": {
+          "type": "number",
+          "minimum": 0
+        },
+        "num_suggestions_displayed": {
+          "type": "number",
+          "minimum": 1
+        },
+        "rank_selected": {
+          "type": "number",
+          "minimum": 0
+        },
+        "update": {
+          "type": "array",
+          "minItems": 18,
+          "maxItems": 18,
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "required": [
+        "loss",
+        "model_version",
+        "num_chars_typed",
+        "num_suggestions_displayed",
+        "rank_selected",
+        "update"
+      ]
+    }
+  },
+  "required": [
+    "clientId",
+    "payload",
+    "type"
+  ]
+}

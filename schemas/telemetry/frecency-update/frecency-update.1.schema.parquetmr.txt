@@ -1,0 +1,16 @@
+message frecency-update {
+  required binary clientId (UTF8);
+  required binary type (UTF8);
+  required group payload {
+    required int32 model_version;
+    required float loss;
+    required int32 num_chars_typed;
+    required int32 rank_selected;
+    required int32 num_suggestions_displayed;
+    required group update (LIST) {
+      repeated group list {
+        required float element;
+      }
+    }
+  }
+}
