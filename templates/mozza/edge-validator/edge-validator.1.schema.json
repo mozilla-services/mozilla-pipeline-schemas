@@ -1,0 +1,39 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "results": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "object",
+                "properties": {
+                    "error_count": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "error_rate": {
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 100.0
+                    },
+                    "errors": {
+                        "type": ["object", "null"],
+                        "additionalProperties": {
+                            "type": "integer"
+                        }
+                    },
+                    "time": {
+                        "type": "number",
+                        "minimum": 0.0
+                    },
+                    "total": {
+                        "type": "integer",
+                        "minimum": 1
+                    }
+                },
+                "required": ["error_count", "error_rate", "errors", "time", "total"]
+            }
+        }
+    },
+    "required": ["results"]
+}
