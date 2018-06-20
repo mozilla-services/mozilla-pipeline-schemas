@@ -1,0 +1,14 @@
+message edge-validator {
+    required group results {
+        required int32 error_count;
+        required float32 error_rate;
+        opetional group errors (MAP) {
+            repeated group key_value {
+                required binary key (UTF8);
+                required int32 value;
+            }
+        }
+        required float32 time;
+        required int32 total;
+    }
+}
