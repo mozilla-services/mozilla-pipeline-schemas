@@ -11,6 +11,12 @@
     },
     "payload": {
       "properties": {
+        "frecency_scores": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
         "loss": {
           "type": "number"
         },
@@ -29,21 +35,26 @@
           "type": "number",
           "minimum": 0
         },
+        "study_variation": {
+          "type": "string"
+        },
         "update": {
           "type": "array",
-          "minItems": 18,
-          "maxItems": 18,
+          "minItems": 22,
+          "maxItems": 22,
           "items": {
             "type": "number"
           }
         }
       },
       "required": [
+        "frecency_scores",
         "loss",
         "model_version",
         "num_chars_typed",
         "num_suggestions_displayed",
         "rank_selected",
+        "study_variation",
         "update"
       ]
     }
