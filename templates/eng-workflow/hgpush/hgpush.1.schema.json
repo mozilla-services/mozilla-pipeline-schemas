@@ -7,6 +7,28 @@
       "type": "string",
       "pattern": "[a-f0-9]{40}"
     },
+    "diffstat": {
+      "description": "Statistics about files changed by this changeset.  Similar to running 'hg diff --stat'.  Maybe be null if diffstats were not computed.",
+      "additionalProperties": false,
+      "properties": {
+        "additions": {
+          "description": "The number of lines added by this changeset.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "changedFiles": {
+          "description": "The number of files modified by this changeset.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "deletions": {
+          "description": "The number of lines removed by this changeset.",
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "type": ["object", "null"]
+    },
     "landingSystem": {
       "description": "A string labelling the automated system used to land this changeset in this repository.  May be empty.",
       "type": ["string", "null"]

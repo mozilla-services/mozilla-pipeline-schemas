@@ -8,5 +8,10 @@ message hgpush {
   required binary reviewSystemUsed (UTF8);
   required binary repository (UTF8);
   optional binary landingSystem (UTF8);
+  optional group diffstat {
+    required int64 additions;
+    required int64 changedFiles;
+    required int64 deletions;
+  }
   optional int64 pushDate;
 }
