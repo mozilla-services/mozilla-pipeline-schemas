@@ -56,7 +56,7 @@ To run the tests:
     docker build -t mps .
 
     # run the tests
-    docker run mps
+    docker run --rm mps
 
 ### Packaging and integration tests (optional)
 
