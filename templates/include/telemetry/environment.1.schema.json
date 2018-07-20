@@ -212,6 +212,9 @@
           "type": "string",
           "pattern": "^[0-9]{2,3}\\."
         },
+        "updaterAvailable": {
+          "type": "boolean"
+        },
         "xpcomAbi": {
           "type": "string"
         }
@@ -293,6 +296,9 @@
     "settings": {
       "type": "object",
       "properties": {
+        "addonCompatibilityCheckEnabled": {
+          "type": "boolean"
+        },
         "attribution": {
           "type": "object",
           "properties": {
@@ -336,6 +342,9 @@
             }
           }
         },
+        "searchCohort": {
+          "type": ["string", "null"]
+        },
         "e10sEnabled": {
           "type": "boolean"
         },
@@ -378,6 +387,9 @@
     "system": {
       "type": "object",
       "properties": {
+        "appleModelId": {
+          "type": [ "string", "null" ]
+        },
         "cpu": {
           "type": "object",
           "properties": {
@@ -392,7 +404,10 @@
               "maximum": 1024
             },
             "extensions": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "family": {
               "type": [ "integer", "null" ]
@@ -625,6 +640,9 @@
         },
         "memoryMB": {
           "type": "number"
+        },
+        "virtualMaxMB": {
+          "type": ["number", "null"]
         },
         "os": {
           "type": "object",
