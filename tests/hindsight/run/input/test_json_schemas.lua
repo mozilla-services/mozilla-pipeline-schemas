@@ -75,7 +75,24 @@ function process_message()
         Payload = nil,
         Fields = {
             docType = nil,
-            sourceVersion = 0
+            sourceVersion = 0,
+            creationTimestamp = 5678,
+            submissionDate = "20170621",
+            Date = "Wed, 21 Jun 2017 19:59:56 GMT",
+            normalizedChannel = "release",
+            geoCountry = "US",
+            geoCity = "San Jose",
+            documentId = "5F8D1153-CD83-40BB-B535-00708B027548",
+            appBuildId = "20170711165157",
+            appName = "Firefox",
+            appUpdateChannel = "release",
+            -- required pioneer metadata
+            pioneerId = "11111111-1111-1111-1111-111111111111",
+            studyName = "foobar",
+            studyVersion = 1,
+            -- required mobile-event metadata
+            appVersion = "1.0.0",
+            sampleId = 1
         }
     }
 
