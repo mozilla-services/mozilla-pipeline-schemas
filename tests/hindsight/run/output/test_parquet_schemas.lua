@@ -13,6 +13,10 @@ require "parquet"
 require "string"
 local parser = require "lpeg.parquet"
 
+local metadata_group  = read_config("metadata_group")
+local metadata_prefix = read_config("metadata_prefix")
+local hive_compatible = read_config("hive_compatible")
+
 local function load_doctypes(namespace, path, schemas)
     for dn in lfs.dir(path) do -- iterate the schema diretories
         local fqdn = string.format("%s/%s", path, dn)
@@ -26,7 +30,11 @@ local function load_doctypes(namespace, path, schemas)
                     local fh = assert(io.input(fqfn))
                     local ps = fh:read("*a")
                     fh:close()
-                    schemas[string.format("%s.%s.%s", namespace, schema, version)] = parser.load_parquet_schema(ps)
+                    local found_group
+                    if ps:find("group%s+" .. metadata_group) then found_group = metadata_group end
+                    local found_prefix
+                    if ps:find(metadata_prefix, nil, true) then found_prefix = metadata_prefix end
+                    schemas[string.format("%s.%s.%s", namespace, schema, version)] = {parser.load_parquet_schema(ps, hive_compatible, found_group, found_prefix)}
                 end
             end
         elseif mode == "file" then
@@ -36,7 +44,11 @@ local function load_doctypes(namespace, path, schemas)
                 local fh = assert(io.input(fqdn))
                 local ps = fh:read("*a")
                 fh:close()
-                schemas[string.format("%s.%s.%s", namespace, schema, version)] = parser.load_parquet_schema(ps)
+                local found_group
+                if ps:find("group%s+" .. metadata_group) then found_group = metadata_group end
+                local found_prefix
+                if ps:find(metadata_prefix, nil, true) then found_prefix = metadata_prefix end
+                schemas[string.format("%s.%s.%s", namespace, schema, version)] = {parser.load_parquet_schema(ps, hive_compatible, found_group, found_prefix)}
             end
         end
     end
@@ -57,27 +69,6 @@ end
 
 
 local schemas = load_schemas("../../schemas")
-local metadata = {
-    Timestamp = 1234,
-    creationTimestamp = 5678,
-    submissionDate = "20170621",
-    Date = "Wed, 21 Jun 2017 19:59:56 GMT",
-    normalizedChannel = "release",
-    geoCountry = "US",
-    geoCity = "San Jose",
-    documentId = "5F8D1153-CD83-40BB-B535-00708B027548",
-    appBuildId = "20170711165157",
-    appName = "Firefox",
-    appUpdateChannel = "release",
-    -- required pioneer metadata
-    pioneerId = "11111111-1111-1111-1111-111111111111",
-    studyName = "foobar",
-    studyVersion = 1,
-    -- required mobile-event metadata
-    appVersion = "1.0.0",
-    sampleId = 1
-    }
-
 function process_message()
     cjson.decode_null(true)
     local version = read_message("EnvVersion")
@@ -86,7 +77,7 @@ function process_message()
         if not schema then return 0 end
 
         print("writing", version)
-        local writer = parquet.writer("output/" .. version, schema)
+        local writer = parquet.writer("output/" .. version, schema[1])
         writer:dissect_message()
         writer:close()
     else
@@ -98,9 +89,9 @@ function process_message()
         if not schema then return 0 end
 
         print("writing", name)
-        local writer = parquet.writer("output/" .. name, schema)
+        local writer = parquet.writer("output/" .. name, schema[1])
         local json = cjson.decode(read_message("Payload"))
-        json.metadata = metadata
+        if schema[2] then schema[2](json) end
         writer:dissect_record(json)
         writer:close()
     end
