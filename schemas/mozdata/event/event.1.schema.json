@@ -1,0 +1,130 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "oneOf": [
+    {
+      "properties": {
+        "apiCall": {
+          "enum": [
+            "listRDDs",
+            "list_rdds"
+          ]
+        }
+      },
+      "required": [
+        "sourcesJson"
+      ]
+    },
+    {
+      "properties": {
+        "apiCall": {
+          "enum": [
+            "listTables",
+            "list_tables"
+          ]
+        }
+      }
+    },
+    {
+      "properties": {
+        "apiCall": {
+          "enum": [
+            "readRDD",
+            "read_rdd"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "sourcesJson"
+      ]
+    },
+    {
+      "properties": {
+        "apiCall": {
+          "enum": [
+            "readTable",
+            "read_table"
+          ]
+        }
+      },
+      "required": [
+        "tableName"
+      ]
+    },
+    {
+      "properties": {
+        "apiCall": {
+          "enum": [
+            "sql"
+          ]
+        }
+      },
+      "required": [
+        "query"
+      ]
+    },
+    {
+      "properties": {
+        "apiCall": {
+          "enum": [
+            "writeTable",
+            "write_table"
+          ]
+        }
+      },
+      "required": [
+        "detectedUri",
+        "tableName"
+      ]
+    }
+  ],
+  "properties": {
+    "adHocTablesDir": {
+      "type": "string"
+    },
+    "apiCall": {
+      "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "detectedUri": {
+      "type": "string"
+    },
+    "detectedVersion": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "partition": {
+      "type": "string"
+    },
+    "query": {
+      "type": "string"
+    },
+    "sourcesJson": {
+      "type": "string"
+    },
+    "sqlTableName": {
+      "type": "string"
+    },
+    "tableName": {
+      "type": "string"
+    },
+    "uri": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "apiVersion"
+  ],
+  "title": "event",
+  "type": "object"
+}
