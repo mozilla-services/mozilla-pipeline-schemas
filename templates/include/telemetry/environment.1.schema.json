@@ -36,7 +36,7 @@
                 "type": [
                   "integer",
                   "boolean"
-                  ]
+                ]
               },
               "hasBinaryComponents": {
                 "type": "boolean"
@@ -84,7 +84,7 @@
                 "type": [
                   "integer",
                   "boolean"
-                  ]
+                ]
               }
             }
           }
@@ -128,7 +128,7 @@
           "type": [
             "string",
             "null"
-            ]
+          ]
         },
         "theme": {
           "type": "object",
@@ -212,6 +212,9 @@
           "type": "string",
           "pattern": "^[0-9]{2,3}\\."
         },
+        "updaterAvailable": {
+          "type": "boolean"
+        },
         "xpcomAbi": {
           "type": "string"
         }
@@ -225,7 +228,7 @@
         "vendor",
         "platformVersion",
         "xpcomAbi"
-        ]
+      ]
     },
     "experiments": {
       "additionalProperties": {
@@ -245,37 +248,37 @@
           "type": [
             "string",
             "null"
-            ]
+          ]
         },
         "distributionVersion": {
           "type": [
             "string",
             "null"
-            ]
+          ]
         },
         "partnerId": {
           "type": [
             "string",
             "null"
-            ]
+          ]
         },
         "distributor": {
           "type": [
             "string",
             "null"
-            ]
+          ]
         },
         "distributorChannel": {
           "type": [
             "string",
             "null"
-            ]
+          ]
         },
         "partnerNames": {
           "type": [
             "array",
             "object"
-            ]
+          ]
         }
       }
     },
@@ -293,6 +296,9 @@
     "settings": {
       "type": "object",
       "properties": {
+        "addonCompatibilityCheckEnabled": {
+          "type": "boolean"
+        },
         "attribution": {
           "type": "object",
           "properties": {
@@ -336,6 +342,9 @@
             }
           }
         },
+        "searchCohort": {
+          "type": [ "string", "null" ]
+        },
         "e10sEnabled": {
           "type": "boolean"
         },
@@ -378,6 +387,9 @@
     "system": {
       "type": "object",
       "properties": {
+        "appleModelId": {
+          "type": [ "string", "null" ]
+        },
         "cpu": {
           "type": "object",
           "properties": {
@@ -392,7 +404,10 @@
               "maximum": 1024
             },
             "extensions": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "family": {
               "type": [ "integer", "null" ]
@@ -441,13 +456,13 @@
               "type": [
                 "boolean",
                 "null"
-                ]
+              ]
             },
             "DWriteEnabled": {
               "type": [
                 "boolean",
                 "null"
-                ]
+              ]
             },
             "adapters": {
               "type": "array",
@@ -485,7 +500,7 @@
               }
             },
             "monitors": {
-              "type": ["array", "object"],
+              "type": [ "array", "object" ],
               "items": {
                 "type": "object",
                 "properties": {
@@ -574,13 +589,13 @@
                   "type": [
                     "string",
                     "null"
-                    ]
+                  ]
                 },
                 "revision": {
                   "type": [
                     "string",
                     "null"
-                    ]
+                  ]
                 }
               }
             },
@@ -591,13 +606,13 @@
                   "type": [
                     "string",
                     "null"
-                    ]
+                  ]
                 },
                 "revision": {
                   "type": [
                     "string",
                     "null"
-                    ]
+                  ]
                 }
               }
             },
@@ -608,13 +623,13 @@
                   "type": [
                     "string",
                     "null"
-                    ]
+                  ]
                 },
                 "revision": {
                   "type": [
                     "string",
                     "null"
-                    ]
+                  ]
                 }
               }
             }
@@ -625,6 +640,9 @@
         },
         "memoryMB": {
           "type": "number"
+        },
+        "virtualMaxMB": {
+          "type": [ "number", "null" ]
         },
         "os": {
           "type": "object",
@@ -689,5 +707,5 @@
     "partner",
     "settings",
     "system"
-    ]
+  ]
 }
