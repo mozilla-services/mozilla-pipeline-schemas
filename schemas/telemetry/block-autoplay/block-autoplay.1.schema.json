@@ -122,26 +122,70 @@
               "properties": {
                 "promptResponse": {
                   "items": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "allowAutoplay": {
-                        "type": "boolean"
+                    "oneOf": [
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "allowAutoplay": {
+                            "type": "boolean"
+                          },
+                          "interact": {
+                            "enum": [
+                              "interact"
+                            ],
+                            "type": "string"
+                          },
+                          "pageId": {
+                            "type": "string"
+                          },
+                          "rememberCheckbox": {
+                            "type": "boolean"
+                          },
+                          "responseTime": {
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          "timestamp": {
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "pageId",
+                          "timestamp",
+                          "responseTime",
+                          "interact",
+                          "rememberCheckbox",
+                          "allowAutoplay"
+                        ]
                       },
-                      "pageId": {
-                        "type": "string"
-                      },
-                      "rememberCheckbox": {
-                        "type": "boolean"
-                      },
-                      "timestamp": {
-                        "type": "integer"
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "interact": {
+                            "enum": [
+                              "escape",
+                              "ignore"
+                            ],
+                            "type": "string"
+                          },
+                          "pageId": {
+                            "type": "string"
+                          },
+                          "responseTime": {
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          "timestamp": {
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "pageId",
+                          "timestamp",
+                          "responseTime",
+                          "interact"
+                        ]
                       }
-                    },
-                    "required": [
-                      "pageId",
-                      "timestamp",
-                      "rememberCheckbox",
-                      "allowAutoplay"
                     ],
                     "type": "object"
                   },

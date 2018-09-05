@@ -73,40 +73,86 @@
               ]
             },
             {
+              "additionalProperties": false,
               "properties": {
-                "type": {
-                  "type": "string",
-                  "enum": [ "prompt" ]
-                },
                 "promptResponse": {
                   "items": {
-                    "type": "object",
-                    "properties": {
-                      "allowAutoplay": {
-                        "type": "boolean"
+                    "oneOf": [
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "pageId": {
+                            "type": "string"
+                          },
+                          "timestamp": {
+                            "type": "integer"
+                          },
+                          "responseTime": {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          "interact": {
+                            "type": "string",
+                            "enum": [
+                              "interact"
+                            ]
+                          },
+                          "allowAutoplay": {
+                            "type": "boolean"
+                          },
+                          "rememberCheckbox": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "pageId",
+                          "timestamp",
+                          "responseTime",
+                          "interact",
+                          "rememberCheckbox",
+                          "allowAutoplay"
+                        ]
                       },
-                      "pageId": {
-                        "type": "string"
-                      },
-                      "rememberCheckbox": {
-                        "type": "boolean"
-                      },
-                      "timestamp": {
-                        "type": "integer"
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "pageId": {
+                            "type": "string"
+                          },
+                          "timestamp": {
+                            "type": "integer"
+                          },
+                          "responseTime": {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          "interact": {
+                            "type": "string",
+                            "enum": [
+                              "escape",
+                              "ignore"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "pageId",
+                          "timestamp",
+                          "responseTime",
+                          "interact"
+                        ]
                       }
-                    },
-                    "additionalProperties": false,
-                    "required": [
-                      "pageId",
-                      "timestamp",
-                      "rememberCheckbox",
-                      "allowAutoplay"
-                    ]
+                    ],
+                    "type": "object"
                   },
                   "type": "array"
+                },
+                "type": {
+                  "enum": [
+                    "prompt"
+                  ],
+                  "type": "string"
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "type",
                 "promptResponse"
