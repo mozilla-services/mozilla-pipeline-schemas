@@ -1,0 +1,19 @@
+message error-report {
+    required group results (MAP) {
+        repeated group key_value {
+            required binary key (UTF8);
+            required group value {
+                required int32 error_count;
+                required float error_rate;
+                optional group errors (MAP) {
+                    repeated group key_value {
+                        required binary key (UTF8);
+                        required int32 value;
+                    }
+                }
+                required float time;
+                required int32 total;
+            }
+        }
+    }
+}
