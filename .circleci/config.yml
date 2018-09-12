@@ -47,10 +47,38 @@ jobs:
       - store_artifacts:
           path: /app/test-reports
           destination: /app/test-results
+  publish-jar:
+    docker:
+      - image: maven:3.5.4-jdk-8
+    steps:
+      - checkout
+      - run:
+          name: Publish jar to ops-mavenrepo
+          command: |
+            apt-get update && apt-get install -y make
+            cd jar/ && make deploy
 
 workflows:
-    version: 2
-    build:
-        jobs:
+  version: 2
+  build:
+    jobs:
+      - test
+      - integrate
+      # We overwrite the SNAPSHOT jar on merges to master.
+      - publish-jar:
+          requires:
             - test
             - integrate
+          filters:
+            branches:
+              only: dev
+
+  tagged-publish:
+    jobs:
+      - publish-jar:
+          filters:
+            branches:
+              # Ignore all branches; this workflow should only run for tags.
+              ignore: /.*/
+            tags:
+              only: /.*/
