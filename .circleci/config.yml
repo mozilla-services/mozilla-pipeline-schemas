@@ -29,6 +29,9 @@ jobs:
       - setup_remote_docker
       - run:
           name: Run a comparison report
+          environment:
+            SOURCE_DATA_BUCKET: telemetry-parquet
+            SOURCE_DATA_PREFIX: sanitized-landfill-sample/v3
           command: |
             # Get the revisions for comparison. This will compare the tip of
             # the PR against the upstream mozilla:dev.
