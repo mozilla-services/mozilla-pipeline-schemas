@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "`shield-study-error` data used to notify, group and count some kinds of errors from shield studies.",
+  "properties": {
+    "addon_version": {
+      "description": "Semantic version of the addon.",
+      "maxLength": 100,
+      "minLength": 1,
+      "pattern": "^\\S+$",
+      "type": "string"
+    },
+    "branch": {
+      "description": "Which branch (variation) of the study the user has.",
+      "maxLength": 100,
+      "minLength": 1,
+      "pattern": "^\\S+$",
+      "type": "string"
+    },
+    "data": {
+      "description": "`shield-study-error` data used to notify, group and count some kinds of errors from shield studies.",
+      "properties": {
+        "attributes": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Map(string, string) of attributes.",
+          "properties": {},
+          "type": "object"
+        },
+        "error": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "(Future use), things like tracebacks.",
+          "properties": {},
+          "type": "object"
+        },
+        "error_id": {
+          "description": "between 1,100 chars, no spaces, unicode ok.",
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^\\S+$",
+          "type": "string"
+        },
+        "error_source": {
+          "description": "Where did the error originate.",
+          "enum": [
+            "addon",
+            "shield",
+            "firefox",
+            "unknown"
+          ],
+          "type": "string"
+        },
+        "message": {
+          "description": "String of an error message.",
+          "minLength": 1,
+          "title": "Message schema.",
+          "type": "string"
+        },
+        "severity": {
+          "description": "An explanation about the purpose of this instance.",
+          "enum": [
+            "debug",
+            "info",
+            "warn",
+            "fatal",
+            "impossible"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "error_id",
+        "error_source"
+      ],
+      "title": "Shield-Study-Error 'data' field",
+      "type": "object"
+    },
+    "shield_version": {
+      "description": "Which version of the shield-studies-addon-utils.",
+      "maxLength": 100,
+      "minLength": 1,
+      "pattern": "^\\S+$",
+      "type": "string"
+    },
+    "study_name": {
+      "description": "Name of a particular study.  Usually the addon_id.",
+      "maxLength": 100,
+      "minLength": 1,
+      "pattern": "^\\S+$",
+      "type": "string"
+    },
+    "testing": {
+      "description": "If `true`, this packet is a TESTING packet and can be safely ignored.",
+      "type": "boolean"
+    },
+    "type": {
+      "description": "doc_type, restated",
+      "enum": [
+        "shield-study-error"
+      ],
+      "type": "string"
+    },
+    "version": {
+      "enum": [
+        3
+      ],
+      "title": "Version schema.  Will be 3",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "version",
+    "study_name",
+    "branch",
+    "addon_version",
+    "shield_version",
+    "data",
+    "type"
+  ],
+  "title": "shield-study-error",
+  "type": "object"
+}

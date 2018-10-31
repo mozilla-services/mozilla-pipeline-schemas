@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "`shield-study` state and outcome data.",
+  "properties": {
+    "addon_version": {
+      "description": "Semantic version of the addon.",
+      "maxLength": 100,
+      "minLength": 1,
+      "pattern": "^\\S+$",
+      "type": "string"
+    },
+    "branch": {
+      "description": "Which branch (variation) of the study the user has.",
+      "maxLength": 100,
+      "minLength": 1,
+      "pattern": "^\\S+$",
+      "type": "string"
+    },
+    "data": {
+      "description": "`shield-study` state and outcome data.",
+      "properties": {
+        "attributes": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Map(string, string) of attributes.",
+          "properties": {},
+          "type": "object"
+        },
+        "study_state": {
+          "description": "message about the most recent state of the study.",
+          "enum": [
+            "enter",
+            "exit",
+            "installed",
+            "ineligible",
+            "expired",
+            "user-disable",
+            "ended-positive",
+            "ended-neutral",
+            "ended-negative",
+            "active"
+          ],
+          "type": "string"
+        },
+        "study_state_fullname": {
+          "description": "Second part of name of state, if any.  Study-specific for study-defined endings.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "study_state"
+      ],
+      "type": "object"
+    },
+    "shield_version": {
+      "description": "Which version of the shield-studies-addon-utils.",
+      "maxLength": 100,
+      "minLength": 1,
+      "pattern": "^\\S+$",
+      "type": "string"
+    },
+    "study_name": {
+      "description": "Name of a particular study.  Usually the addon_id.",
+      "maxLength": 100,
+      "minLength": 1,
+      "pattern": "^\\S+$",
+      "type": "string"
+    },
+    "testing": {
+      "description": "If `true`, this packet is a TESTING packet and can be safely ignored.",
+      "type": "boolean"
+    },
+    "type": {
+      "description": "doc_type, restated",
+      "enum": [
+        "shield-study"
+      ],
+      "type": "string"
+    },
+    "version": {
+      "enum": [
+        3
+      ],
+      "title": "Version schema.  Will be 3",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "version",
+    "study_name",
+    "branch",
+    "addon_version",
+    "shield_version",
+    "data",
+    "type"
+  ],
+  "title": "shield-study",
+  "type": "object"
+}
