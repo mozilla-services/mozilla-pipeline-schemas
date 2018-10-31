@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "`shield-study-addon` addon-specific probe data, with `attributes` sent as Map(s,s).",
+  "properties": {
+    "addon_version": {
+      "description": "Semantic version of the addon.",
+      "maxLength": 100,
+      "minLength": 1,
+      "pattern": "^\\S+$",
+      "type": "string"
+    },
+    "branch": {
+      "description": "Which branch (variation) of the study the user has.",
+      "maxLength": 100,
+      "minLength": 1,
+      "pattern": "^\\S+$",
+      "type": "string"
+    },
+    "data": {
+      "description": "`shield-study-addon` addon-specific probe data, with `attributes` sent as Map(s,s).",
+      "properties": {
+        "attributes": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Map(string, string) of attributes.",
+          "properties": {},
+          "type": "object"
+        }
+      },
+      "required": [
+        "attributes"
+      ],
+      "title": "Shield-Study-Addon 'data' field.",
+      "type": "object"
+    },
+    "shield_version": {
+      "description": "Which version of the shield-studies-addon-utils.",
+      "maxLength": 100,
+      "minLength": 1,
+      "pattern": "^\\S+$",
+      "type": "string"
+    },
+    "study_name": {
+      "description": "Name of a particular study.  Usually the addon_id.",
+      "maxLength": 100,
+      "minLength": 1,
+      "pattern": "^\\S+$",
+      "type": "string"
+    },
+    "testing": {
+      "description": "If `true`, this packet is a TESTING packet and can be safely ignored.",
+      "type": "boolean"
+    },
+    "type": {
+      "description": "doc_type, restated",
+      "enum": [
+        "shield-study-addon"
+      ],
+      "type": "string"
+    },
+    "version": {
+      "enum": [
+        3
+      ],
+      "title": "Version schema.  Will be 3",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "version",
+    "study_name",
+    "branch",
+    "addon_version",
+    "shield_version",
+    "data",
+    "type"
+  ],
+  "title": "shield-study-addon",
+  "type": "object"
+}
