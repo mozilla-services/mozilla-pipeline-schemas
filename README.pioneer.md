@@ -1,5 +1,7 @@
 # About Pioneer Schemas
 
+**Note:** If you are writing a Pioneer study using [`shield-studies-addon-utils`](https://github.com/mozilla/shield-studies-addon-utils/pull/263), you do not need to do anything special and data sent using `browser.study.sendTelemetry(payload)` should "just work", as long as the payload adheres to the [`shield-study-addon`](https://github.com/mozilla-services/mozilla-pipeline-schemas/blob/dev/templates/include/telemetry/shieldStudyAddonPayload.3.schema.json) schema.
+
 Pioneer studies send encrypted data, which is handled separately by the pipeline, and is stored apart from the main corpus of data with highly restricted access controls.
 
 The special handling of Pioneer data requires a slightly different approach compared with [other schemas](README.md#adding-a-new-schema).
