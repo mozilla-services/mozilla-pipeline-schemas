@@ -73,6 +73,17 @@ Follow the CMake Build Instructions above, then:
     make # this sets up the tests in the release directory
     ctest -V -C hindsight # loads all the schemas and tests the inputs in the validation directory against them
 
+The following docker command will generate a report against a sample of data from the ingestion system given proper credentials. Running this is recommended when making modifications to many schemas or during review.
+
+    docker run \
+        -e AWS_ACCESS_KEY_ID \
+        -e AWS_SECRET_ACCESS_KEY \
+        -v "$(pwd)":/app/mozilla-pipeline-schemas \
+        -it mozilla/edge-validator:latest \
+            make report
+
+It is also possible to directly compare between two revisions, refer to `.circleci/config.yml` for a reference. For more documentation, see [mozilla-services/edge-validator](https://github.com/mozilla-services/edge-validator).
+
 ## Releases
 
 * The master branch is the current release and is considered stable at all
