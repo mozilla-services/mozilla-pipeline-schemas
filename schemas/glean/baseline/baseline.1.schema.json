@@ -97,41 +97,45 @@
       ]
     },
     "events": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/base"
-        },
-        {
-          "additionalProperties": {
-            "additionalProperties": false,
-            "properties": {
-              "extra": {
-                "additionalProperties": {
-                  "type": "string"
-                },
-                "propertyNames": {
-                  "$ref": "#/definitions/very_short_id"
-                },
-                "type": "object"
-              },
-              "object": {
-                "$ref": "#/definitions/very_short_id"
-              },
-              "timestamp": {
-                "type": "integer"
-              },
-              "value": {
-                "type": "string"
-              }
+      "items": {
+        "items": [
+          {
+            "minimum": 0,
+            "type": "integer"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          {
+            "additionalProperties": {
+              "type": [
+                "string",
+                "null"
+              ]
             },
-            "required": [
-              "timestamp",
-              "object"
-            ],
-            "type": "object"
+            "type": [
+              "object",
+              "null"
+            ]
           }
-        }
-      ]
+        ],
+        "maxItems": 6,
+        "minItems": 4,
+        "type": "array"
+      },
+      "type": "array"
     },
     "experiments": {
       "additionalProperties": {
