@@ -1,0 +1,377 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "title": "Ping transport",
+  "description": "Schema for the ping content sent by Mozilla's glean telemetry SDK\n",
+  "$id": "moz://mozilla.org/schemas/glean/ping/1",
+  "definitions": {
+    "token": {
+      "type": "string",
+      "pattern": "^[A-Za-z_][A-Za-z0-9_\\.]*$"
+    },
+    "short_id": {
+      "allOf": [
+        @COMMON_SNAKECASE_1_JSON@,
+        {
+          "maxLength": 30
+        }
+      ]
+    },
+    "very_short_id": {
+      "allOf": [
+        @COMMON_SNAKECASE_1_JSON@,
+        {
+          "maxLength": 20
+        }
+      ]
+    },
+    "dot_separated_short_id": {
+      "type": "string",
+      "pattern": "^[a-z_][a-z0-9_]{0,29}\\.[a-z_][a-z0-9_]{0,29}$"
+    },
+    "base": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/definitions/dot_separated_short_id"
+      }
+    },
+    "histogram": {
+      "type": "object",
+      "properties": {
+        "range": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "number"
+          }
+        },
+        "bucket_count": {
+          "type": "integer"
+        },
+        "histogram_type": {
+          "enum": [
+            "linear",
+            "exponential"
+          ]
+        },
+        "values": {
+          "type": "object",
+          "propertyNames": {
+            "pattern": "[0-9]+"
+          },
+          "additionalProperties": {
+            "type": "integer"
+          }
+        },
+        "underflow": {
+          "type": "integer"
+        },
+        "overflow": {
+          "type": "integer"
+        }
+      }
+    },
+    "time_unit": {
+      "enum": [
+        "nanosecond",
+        "microsecond",
+        "millisecond",
+        "second",
+        "minute",
+        "hour",
+        "day"
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "enum": [
+        "moz://mozilla.org/schemas/glean/ping/1"
+      ]
+    },
+    "ping_info": {
+      "type": "object",
+      "properties": {
+        "ping_type": {
+          "$ref": "#/definitions/short_id"
+        },
+        "app_build": {
+          "type": "string"
+        },
+        "telemetry_sdk_build": {
+          "type": "string"
+        },
+        @TELEMETRY_CLIENTID_1_JSON@,
+        "seq": {
+          "type": "integer"
+        },
+        "start_time": {
+          "type": "string",
+          "format": "datetime"
+        },
+        "end_time": {
+          "type": "string",
+          "format": "datetime"
+        }
+      },
+      "required": [
+        "ping_type",
+        "app_build",
+        "telemetry_sdk_build",
+        "client_id",
+        "seq",
+        "start_time",
+        "end_time"
+      ]
+    },
+    "metrics": {
+      "properties": {
+        "boolean": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/base"
+            },
+            {
+              "additionalProperties": {
+                "type": "boolean"
+              }
+            }
+          ]
+        },
+        "string": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/base"
+            },
+            {
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "number": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/base"
+            },
+            {
+              "additionalProperties": {
+                "type": "number"
+              }
+            }
+          ]
+        },
+        "string_list": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/base"
+            },
+            {
+              "additionalProperties": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          ]
+        },
+        "enumeration": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/base"
+            },
+            {
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "counter": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/base"
+            },
+            {
+              "additionalProperties": {
+                "type": "integer"
+              }
+            }
+          ]
+        },
+        "timespan": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/base"
+            },
+            {
+              "additionalProperties": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": "integer"
+                  },
+                  "time_unit": {
+                    "$ref": "#/definitions/time_unit"
+                  }
+                },
+                "required": [
+                  "value",
+                  "time_unit"
+                ]
+              }
+            }
+          ]
+        },
+        "timing_distribution": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/base"
+            },
+            {
+              "additionalProperties": {
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/histogram"
+                  },
+                  {
+                    "properties": {
+                      "time_unit": {
+                        "$ref": "#/definitions/time_unit"
+                      }
+                    },
+                    "required": [
+                      "time_unit"
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "datetime": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/base"
+            },
+            {
+              "additionalProperties": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": "string",
+                    "format": "datetime"
+                  },
+                  "time_unit": {
+                    "$ref": "#/definitions/time_unit"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "use_counter": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/base"
+            },
+            {
+              "additionalProperties": {
+                "type": "object",
+                "properties": {
+                  "values": {
+                    "type": "object",
+                    "propertyNames": {
+                      "$ref": "#/definitions/short_id"
+                    },
+                    "additionalProperties": {
+                      "type": "integer"
+                    }
+                  },
+                  "denominator": {
+                    "type": "object",
+                    "name": {
+                      "$ref": "#/definitions/short_id"
+                    },
+                    "value": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "usage": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/base"
+            },
+            {
+              "additionalPropeties": {
+                "type": "boolean"
+              }
+            }
+          ]
+        },
+        "rate": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/base"
+            },
+            {
+              "additionalPropeties": {
+                "type": "integer"
+              }
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "events": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/base"
+        },
+        {
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "timestamp": {
+                "type": "integer"
+              },
+              "object": {
+                "$ref": "#/definitions/very_short_id"
+              },
+              "value": {
+                "type": "string"
+              },
+              "extra": {
+                "type": "object",
+                "propertyNames": {
+                  "$ref": "#/definitions/very_short_id"
+                },
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "timestamp",
+              "object"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "required": [
+    "ping_info"
+  ],
+  "additionalProperties": false
+}
