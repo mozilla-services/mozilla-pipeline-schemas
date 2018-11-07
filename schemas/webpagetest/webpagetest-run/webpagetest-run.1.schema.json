@@ -1,0 +1,156 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": true,
+  "description": "Web-performance metrics",
+  "properties": {
+    "appName": {
+      "type": "string"
+    },
+    "appUpdateChannel": {
+      "type": "string"
+    },
+    "connection": {
+      "type": "string"
+    },
+    "domain": {
+      "type": "string"
+    },
+    "pageMetrics": {
+      "additionalProperties": {
+        "properties": {
+          "firstView": {
+            "anyOf": [
+              {
+                "required": [
+                  "median"
+                ]
+              },
+              {
+                "required": [
+                  "standardDeviation"
+                ]
+              }
+            ],
+            "properties": {
+              "median": {
+                "type": "number"
+              },
+              "standardDeviation": {
+                "type": "number"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "required": [
+          "firstView"
+        ],
+        "type": "object"
+      },
+      "description": "metrics from the page, number of requests, sizes etc",
+      "type": "object"
+    },
+    "platform": {
+      "enum": [
+        "desktop",
+        "mobile"
+      ],
+      "type": "string"
+    },
+    "runId": {
+      "type": "integer"
+    },
+    "runner": {
+      "type": "string"
+    },
+    "sessionState": {
+      "enum": [
+        "auth",
+        "noAuth"
+      ],
+      "type": "string"
+    },
+    "technicalMetrics": {
+      "additionalProperties": {
+        "properties": {
+          "firstView": {
+            "anyOf": [
+              {
+                "required": [
+                  "median"
+                ]
+              },
+              {
+                "required": [
+                  "standardDeviation"
+                ]
+              }
+            ],
+            "properties": {
+              "median": {
+                "type": "number"
+              },
+              "standardDeviation": {
+                "type": "number"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "required": [
+          "firstView"
+        ],
+        "type": "object"
+      },
+      "description": "metrics reported by the browser, all the things from navigation timing api, time to first non blank etc",
+      "type": "object"
+    },
+    "visualMetrics": {
+      "additionalProperties": {
+        "properties": {
+          "firstView": {
+            "anyOf": [
+              {
+                "required": [
+                  "median"
+                ]
+              },
+              {
+                "required": [
+                  "standardDeviation"
+                ]
+              }
+            ],
+            "properties": {
+              "median": {
+                "type": "number"
+              },
+              "standardDeviation": {
+                "type": "number"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "required": [
+          "firstView"
+        ],
+        "type": "object"
+      },
+      "description": "metrics collected by analysing the video (start render, Speed Index, last visual change etc)",
+      "type": "object"
+    }
+  },
+  "required": [
+    "appName",
+    "appUpdateChannel",
+    "connection",
+    "domain",
+    "platform",
+    "runner",
+    "runId",
+    "sessionState"
+  ],
+  "title": "webpagetest-run",
+  "type": "object"
+}

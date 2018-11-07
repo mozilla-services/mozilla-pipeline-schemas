@@ -1,0 +1,37 @@
+message webpagetest-run {
+  required binary appName (UTF8);
+  required binary appUpdateChannel (UTF8);
+  required binary connection (UTF8);
+  required binary domain (UTF8);
+  required binary platform (UTF8);
+  required binary runner (UTF8);
+  required int32 runId;
+  required binary sessionState (UTF8);
+  optional group visualMetrics (MAP) {
+    repeated group key_value {
+      required binary key (UTF8);
+      required group value {
+        optional float median;
+        optional float standardDeviation;
+      }
+    }
+  }
+  optional group technicalMetrics (MAP) {
+    repeated group key_value {
+      required binary key (UTF8);
+      required group value {
+        optional float median;
+        optional float standardDeviation;
+      }
+    }
+  }
+  optional group pageMetrics (MAP) {
+    repeated group key_value {
+      required binary key (UTF8);
+      required group value {
+        optional float median;
+        optional float standardDeviation;
+      }
+    }
+  }
+}
