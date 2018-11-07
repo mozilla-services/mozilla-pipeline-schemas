@@ -30,19 +30,31 @@
       "type": "string",
       "enum": ["auth", "noAuth"]
     },
-    "visualMetrics": {
-      "description": "metrics collected by analysing the video (start render, Speed Index, last visual change etc)",
-      @WEBPAGETEST_METRICS_MAP_1_JSON@
-    },
-    "technicalMetrics": {
-      "description": "metrics reported by the browser, all the things from navigation timing api, time to first non blank etc",
-      @WEBPAGETEST_METRICS_MAP_1_JSON@
-    },
-    "pageMetrics": {
-      "description": "metrics from the page, number of requests, sizes etc",
-      @WEBPAGETEST_METRICS_MAP_1_JSON@
+    "metrics": {
+      "additionalProperties": {
+        "properties": {
+          "firstView": {
+            "properties": {
+              "median": {
+                "type": "number"
+              },
+              "standardDeviation": {
+                "type": "number"
+              }
+            },
+            "anyOf": [
+              {"required": ["median"]},
+              {"required": ["standardDeviation"]}
+            ],
+            "type": "object"
+          }
+        },
+        "required": ["firstView"],
+        "type": "object"
+      },
+      "type": "object"
     }
   },
-  "required": ["appName", "appUpdateChannel", "connection", "domain", "platform", "runner", "runId", "sessionState"],
+  "required": ["appName", "appUpdateChannel", "connection", "domain", "platform", "runner", "runId", "sessionState", "metrics"],
   "additionalProperties": true
 }

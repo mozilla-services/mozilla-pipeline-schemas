@@ -7,25 +7,7 @@ message webpagetest-run {
   required binary runner (UTF8);
   required int32 runId;
   required binary sessionState (UTF8);
-  optional group visualMetrics (MAP) {
-    repeated group key_value {
-      required binary key (UTF8);
-      required group value {
-        optional float median;
-        optional float standardDeviation;
-      }
-    }
-  }
-  optional group technicalMetrics (MAP) {
-    repeated group key_value {
-      required binary key (UTF8);
-      required group value {
-        optional float median;
-        optional float standardDeviation;
-      }
-    }
-  }
-  optional group pageMetrics (MAP) {
+  required group metrics (MAP) {
     repeated group key_value {
       required binary key (UTF8);
       required group value {
