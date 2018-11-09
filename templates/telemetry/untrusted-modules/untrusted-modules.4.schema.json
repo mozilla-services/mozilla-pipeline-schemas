@@ -17,11 +17,17 @@
                 "maxItems": 2,
                 "items": [
                   {
-                    "$comment": "// PDB filename, e.g. mozglue.pdb",
+                    "description": "The filename of the PDB symbol file",
+                    "examples": [
+                      "mozglue.pdb"
+                    ],
                     "type": "string"
                   },
                   {
-                    "$comment": "// DLL Debug ID, e.g. 2403397A44447F1E42C7089B974E2DD48",
+                    "description": "The debug ID of the DLL",
+                    "examples": [
+                      "2403397A44447F1E42C7089B974E2DD48"
+                    ],
                     "type": "string"
                   }
                 ]
@@ -30,21 +36,21 @@
             "stacks": {
               "type": "array",
               "items": {
-                "$comment": "// Stack object, an array of frames",
+                "description": "Stack object, an array of frames",
                 "type": "array",
                 "items": {
-                  "$comment": "// Frame tuple",
+                  "description": "Stack frame object, a tuple<int,int>",
                   "type": "array",
                   "minItems": 2,
                   "maxItems": 2,
                   "items": [
                     {
-                      "$comment": "// Module index",
+                      "description": "Module index, an index into the combinedStacks/memoryMap array",
                       "type": "number",
                       "minimum": 0
                     },
                     {
-                      "$comment": "// Module offset",
+                      "description": "Module offset, the RVA of the program counter for this stack frame.",
                       "type": "number",
                       "minimum": 0
                     }
