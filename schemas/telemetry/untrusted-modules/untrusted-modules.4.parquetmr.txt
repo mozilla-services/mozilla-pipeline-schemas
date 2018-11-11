@@ -174,10 +174,10 @@ message untrusted-modules {
         }
       }
     }
-    required group addons {
+    optional group addons {
       optional binary persona (UTF8);
-      required group theme {
-        required binary id (UTF8);
+      optional group theme {
+        optional binary id (UTF8);
         optional boolean blocklisted;
         optional binary description (UTF8);
         optional binary name (UTF8);
@@ -189,44 +189,44 @@ message untrusted-modules {
         optional int64 installDay (UINT_64);
         optional int64 updateDay (UINT_64);
       }
-      required group activeAddons (MAP) {
+      optional group activeAddons (MAP) {
         repeated group key_value {
           required binary key (UTF8);
           required group value {
-            required boolean blocklisted;
-            required binary name (UTF8);
+            optional boolean blocklisted;
+            optional binary name (UTF8);
             optional binary description (UTF8);
-            required boolean appDisabled;
-            required int64 scope;
-            required binary type (UTF8);
-            required boolean hasBinaryComponents;
-            required int64 installDay (UINT_64);
-            required int64 updateDay (UINT_64);
+            optional boolean appDisabled;
+            optional int64 scope;
+            optional binary type (UTF8);
+            optional boolean hasBinaryComponents;
+            optional int64 installDay (UINT_64);
+            optional int64 updateDay (UINT_64);
             optional int64 signedState;
-            required boolean isSystem;
+            optional boolean isSystem;
           }
         }
       }
-      required group activeGMPlugins (MAP) {
+      optional group activeGMPlugins (MAP) {
         repeated group key_value {
           required binary key (UTF8);
           required group value {
-            required binary version (UTF8);
-            required boolean userDisabled;
+            optional binary version (UTF8);
+            optional boolean userDisabled;
           }
         }
       }
-      required group activePlugins (LIST) {
+      optional group activePlugins (LIST) {
         repeated group list {
           required group element {
-            required binary name (UTF8);
-            required binary version (UTF8);
-            required binary description (UTF8);
-            required boolean blocklisted;
-            required boolean disabled;
-            required boolean clicktoplay;
-            required int64 updateDay;
-            required group mimeTypes (LIST) {
+            optional binary name (UTF8);
+            optional binary version (UTF8);
+            optional binary description (UTF8);
+            optional boolean blocklisted;
+            optional boolean disabled;
+            optional boolean clicktoplay;
+            optional int64 updateDay;
+            optional group mimeTypes (LIST) {
               repeated group list {
                 required binary element (UTF8);
               }
