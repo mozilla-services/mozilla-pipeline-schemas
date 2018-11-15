@@ -134,23 +134,24 @@
     },
     "experiments": {
       "additionalProperties": {
-        "items": [
-          {
+        "additionalProperties": false,
+        "properties": {
+          "branch": {
             "$ref": "#/definitions/short_id"
           },
-          {
-            "additionalProperties": {
-              "type": "string"
-            },
-            "propertyNames": {
-              "type": "string"
+          "extra": {
+            "properties": {
+              "type": {
+                "type": "string"
+              }
             },
             "type": "object"
           }
+        },
+        "required": [
+          "branch"
         ],
-        "maxItems": 2,
-        "minItems": 1,
-        "type": "array"
+        "type": "object"
       },
       "propertyNames": {
         "$ref": "#/definitions/short_id"
