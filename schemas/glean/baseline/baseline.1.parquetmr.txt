@@ -30,27 +30,27 @@ message baseline {
     optional group boolean (MAP) {
       repeated group key_value {
         required binary key (UTF8);
-        optional boolean value;
+        required boolean value;
       }
     }
     optional group string (MAP) {
       repeated group key_value {
         required binary key (UTF8);
-        optional binary value (UTF8);
+        required binary value (UTF8);
       }
     }
     optional group number (MAP) {
       repeated group key_value {
         required binary key (UTF8);
-        optional double value;
+        required double value;
       }
     }
     optional group string_list (MAP) {
       repeated group key_value {
         required binary key (UTF8);
-        optional group value (LIST) {
+        required group value (LIST) {
           repeated group list {
-            optional binary element (UTF8);
+            required binary element (UTF8);
           }
         }
       }
@@ -58,19 +58,19 @@ message baseline {
     optional group enumeration (MAP) {
       repeated group key_value {
         required binary key (UTF8);
-        optional binary value (UTF8);
+        required binary value (UTF8);
       }
     }
     optional group counter (MAP) {
       repeated group key_value {
         required binary key (UTF8);
-        optional int64 value;
+        required int64 value;
       }
     }
     optional group timespan (MAP) {
       repeated group key_value {
         required binary key (UTF8);
-        optional group value {
+        required group value {
           required int64 value;
           required binary time_unit (UTF8);
         }
@@ -79,14 +79,14 @@ message baseline {
     optional group timing_distribution (MAP) {
       repeated group key_value {
         required binary key (UTF8);
-        optional group value {
-          optional group range (TUPLE) {
+        required group value {
+          required group range (TUPLE) {
   required double lo;
   required double hi;
 }
-optional inte64 bucket_count;
+required inte64 bucket_count;
 optional binary histogram_type (UTF8);
-optional group values (MAP) {
+required group values (MAP) {
   repeated group key_value {
     required binary key (UTF8);
     optional int64 value;
@@ -102,8 +102,8 @@ optional int64 overflow;
     optional group datetime (MAP) {
       repeated group key_value {
         required binary key (UTF8);
-        optional group value {
-          optional binary value (UTF8)
+        required group value {
+          optional date value (UTF8)
           optional binary time_unit (UTF8);
         }
       }
@@ -111,11 +111,11 @@ optional int64 overflow;
     optional group use_counter (MAP) {
       repeated group key_value {
         required binary key (UTF8);
-        optional group value {
+        required group value {
           optional binary values (MAP) {
             repeated group key_value {
               required binary key (UTF8);
-              optional int64 value;
+              required int64 value;
             }
           }
           optional group denominator {
@@ -128,36 +128,53 @@ optional int64 overflow;
     optional group usage (MAP) {
       repeated group key_value {
         required binary key (UTF8);
-        optional boolean value;
+        required boolean value;
       }
     }
     optional group rate (MAP) {
       repeated group key_value {
         required binary key (UTF8);
-        optional int64 value;
+        required int64 value;
       }
     }
     optional group uuid (MAP) {
       repeated group key_value {
         required binary key (UTF8);
-        optional binary value (UTF8);
+        required binary value (UTF8);
       }
     }
   }
-  optional group events (MAP) {
+  optional group events (LIST) {
+    repeated group list {
+      required group element (TUPLE) {
+  required int64 timestamp;
+  required binary category (UTF8);
+  required binary method (UTF8);
+  required binary object (UTF8);
+  optional binary value (UTF8);
+  optional group extra (MAP) {
     repeated group key_value {
       required binary key (UTF8);
-      optional group value {
-        required int64 timestamp;
-        required binary object (UTF8);
-        optional binary value (UTF8);
-        optional group extra (MAP) {
-          repeated group key_value {
-            required binary key (UTF8);
-            optional binary value (UTF8);
-          }
-        }
+      optional binary value (UTF8);
+    }
+  }
+}
+
+    }
+  }
+  optional group experiments (MAP) {
+    repeated group key_value {
+      required binary key (UTF8);
+      required group value {
+        required binary branch (UTF8);
+	optional group extra (MAP) {
+	  repeated group key_value {
+	    required binary key (UTF8);
+	    required binary value (UTF8);
+	  }
+	}
       }
     }
   }
+}
 
