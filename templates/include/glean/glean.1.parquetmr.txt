@@ -1,8 +1,10 @@
 message baseline {
   required group metadata {
     optional binary EnvVersion (UTF8);
+    optional binary appUpdateChannel (UTF8);
     optional binary geoSubdivision1 (UTF8);
     optional binary geoSubdivision2 (UTF8);
+    optional binary normalizedChannel (UTF8);
     optional int32 Severity;
     required binary Host (UTF8);
     required binary Hostname (UTF8);
@@ -103,7 +105,7 @@ message baseline {
       repeated group key_value {
         required binary key (UTF8);
         required group value {
-          optional date value (UTF8);
+          optional binary value (UTF8);
           optional binary time_unit (UTF8);
         }
       }
@@ -112,7 +114,7 @@ message baseline {
       repeated group key_value {
         required binary key (UTF8);
         required group value {
-          optional binary values (MAP) {
+          optional group values (MAP) {
             repeated group key_value {
               required binary key (UTF8);
               required int64 value;
