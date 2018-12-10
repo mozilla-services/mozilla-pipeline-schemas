@@ -35,6 +35,7 @@ Note that Pioneer studies have a [slightly amended](README.pioneer.md) process.
 
 * CMake (3.0+) - http://cmake.org/cmake/resources/software.html
 * jq (1.5+) - https://github.com/stedolan/jq
+* parquetfmt (0.1+) - cargo install --git https://github.com/trink/parquetfmt
 
 ### CMake Build Instructions
 
