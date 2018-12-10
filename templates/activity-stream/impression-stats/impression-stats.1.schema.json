@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "impression-stats",
+  "properties": {
+    "action": {
+      "type": "string",
+      "pattern": "^activity_stream_impression_stats$"
+    },
+    "client_id": {
+      "type": "string",
+      "pattern": "^n/a$"
+    },
+    "session_id": {
+      "type": "string",
+      "pattern": "^n/a$"
+    },
+    "impression_id": {
+      "type": "string",
+      "pattern": "^\\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\}$"
+    },
+    "addon_version": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "release_channel": {
+      "type": "string"
+    },
+    "locale": {
+      "type": "string"
+    },
+    "topic": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "page": {
+      "type": "string",
+      "enum": [ "about:newtab", "about:home", "about:welcome", "unknown" ]
+    },
+    "region": {
+      "type": "string"
+    },
+    "profile_creation_date": {
+      "type": "integer"
+    },
+    "user_prefs": {
+      "type": "integer"
+    },
+    "click": {
+      "type": "integer"
+    },
+    "block": {
+      "type": "integer"
+    },
+    "pocket": {
+      "type": "integer"
+    },
+    "tiles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "pos": {
+            "type": "integer"
+          }
+        },
+        "required": [ "id" ]
+      }
+    }
+  },
+  "required": [
+    "impression_id",
+    "addon_version",
+    "locale",
+    "source",
+    "page",
+    "user_prefs",
+    "tiles"
+  ]
+}
