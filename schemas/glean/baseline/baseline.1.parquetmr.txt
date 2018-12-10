@@ -97,20 +97,19 @@ message baseline {
         required binary key (UTF8);
         required group value {
           required group range (TUPLE) {
-  required double lo;
-  required double hi;
-}
-required int64 bucket_count;
-optional binary histogram_type (UTF8);
-required group values (MAP) {
-  repeated group key_value {
-    required binary key (UTF8);
-    optional int64 value;
-  }
-}
-optional int64 underflow;
-optional int64 overflow;
-
+            required double lo;
+            required double hi;
+          }
+          required int64 bucket_count;
+          optional binary histogram_type (UTF8);
+          required group values (MAP) {
+            repeated group key_value {
+              required binary key (UTF8);
+              optional int64 value;
+            }
+          }
+          optional int64 underflow;
+          optional int64 overflow;
           required binary time_unit (UTF8);
         }
       }
@@ -163,21 +162,18 @@ optional int64 overflow;
   optional group events (LIST) {
     repeated group list {
       required group element (TUPLE) {
-  required int64 timestamp;
-  required binary category (UTF8);
-  required binary method (UTF8);
-  required binary object (UTF8);
-  optional binary value (UTF8);
-  optional group extra (MAP) {
-    repeated group key_value {
-      required binary key (UTF8);
-      optional binary value (UTF8);
+        required int64 timestamp;
+        required binary category (UTF8);
+        required binary method (UTF8);
+        required binary object (UTF8);
+        optional binary value (UTF8);
+        optional group extra (MAP) {
+          repeated group key_value {
+            required binary key (UTF8);
+            optional binary value (UTF8);
+          }
+        }
+      }
     }
   }
 }
-
-    }
-  }
-  
-}
-

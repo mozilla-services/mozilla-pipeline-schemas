@@ -19,8 +19,9 @@ RUN pip install jsonschema
 WORKDIR /downloads
 
 # Install hindsight and the luasandbox
-RUN wget -qO- https://hsadmin.trink.com/packages/centos7/all.tgz | tar xvz
-RUN wget https://hsadmin.trink.com/packages/centos7/external/parquet-cpp-1.3.1-1.x86_64.rpm
+RUN wget -qO- https://s3-us-west-2.amazonaws.com/net-mozaws-data-us-west-2-ops-ci-artifacts/mozilla-services/lua_sandbox_extensions/master/centos7/all.tgz | tar xvz
+RUN wget https://s3-us-west-2.amazonaws.com/net-mozaws-data-us-west-2-ops-ci-artifacts/mozilla-services/lua_sandbox_extensions/external/centos7/parquet-cpp-1.3.1-1.x86_64.rpm
+
 RUN yum -y install \
     hindsight-0* \
     luasandbox-1* \
@@ -33,6 +34,9 @@ RUN yum -y install \
     && yum clean all
 
 COPY . /app
+
+RUN wget -qO- parquetfmt https://github.com/trink/parquetfmt/releases/download/v0.1.0/parquetfmt-linux.tgz | tar xvz
+RUN cp parquetfmt /usr/bin/
 
 RUN rm -fr release/; mkdir release/
 
