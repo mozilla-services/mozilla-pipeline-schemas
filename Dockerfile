@@ -35,9 +35,6 @@ RUN yum -y install \
 
 COPY . /app
 
-RUN wget -qO- parquetfmt https://github.com/trink/parquetfmt/releases/download/v0.1.0/parquetfmt-linux.tgz | tar xvz
-RUN cp parquetfmt /usr/bin/
-
 RUN rm -fr release/; mkdir release/
 
 WORKDIR /app/release
