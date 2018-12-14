@@ -84,7 +84,17 @@ The following docker command will generate a report against a sample of data fro
         -it mozilla/edge-validator:latest \
             make report
 
-It is also possible to directly compare between two revisions, refer to `.circleci/config.yml` for a reference. For more documentation, see [mozilla-services/edge-validator](https://github.com/mozilla-services/edge-validator).
+Pushes to the main repo will trigger integration tests in CircleCI that directly
+compare the revision to the `dev` branch. These tests do not run for forked PRs
+in order to protect data and credentials, but reviewers can trigger tests to run
+by pushing the PR's revisions to a branch of the main repo. We provide a script for this:
+
+    # Before running, double check that the PR doesn't make any changes to
+    # .circleci/config.yml that could spill sensitive environment variables
+    # or data contents to the public CircleCI logs.
+    ./.github/push-to-trigger-integration <username>:<branchname>
+
+For details on how to compare two arbitrary revisions, refer to the `integration` job in `.circleci/config.yml`. For more documentation, see [mozilla-services/edge-validator](https://github.com/mozilla-services/edge-validator).
 
 ## Releases
 
