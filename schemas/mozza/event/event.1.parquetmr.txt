@@ -1,7 +1,7 @@
 message event {
   required group metadata {
     required binary documentId (UTF8);
-    required int64  Timestamp;
+    required int64 Timestamp;
     optional binary Date (UTF8);
     required binary geoCountry (UTF8);
     required binary geoCity (UTF8);
@@ -14,17 +14,16 @@ message event {
   optional binary request_uri (UTF8);
   required binary property (UTF8);
   required group event (TUPLE) {
-  required int64 timestamp;
-  required binary category (UTF8);
-  required binary method (UTF8);
-  required binary object (UTF8);
-  optional binary value (UTF8);
-  optional group extra (MAP) {
-    repeated group key_value {
-      required binary key (UTF8);
-      optional binary value (UTF8);
+    required int64 timestamp;
+    required binary category (UTF8);
+    required binary method (UTF8);
+    required binary object (UTF8);
+    optional binary value (UTF8);
+    optional group extra (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        optional binary value (UTF8);
+      }
     }
   }
-}
-
 }
