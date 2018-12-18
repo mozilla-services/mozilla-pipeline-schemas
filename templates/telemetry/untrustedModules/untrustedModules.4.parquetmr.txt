@@ -44,107 +44,107 @@ message untrusted-modules {
         optional int64 windowsBuildNumber;
         optional int64 servicePackMinor;
       }
-    }
-    optional group gfx {
-      optional group features {
-        optional group advancedLayers {
-          optional binary status (UTF8);
+      optional group gfx {
+        optional group features {
+          optional group advancedLayers {
+            optional binary status (UTF8);
+          }
+          optional group webrender {
+            optional binary status (UTF8);
+          }
+          optional group wrQualified {
+            optional binary status (UTF8);
+          }
+          optional binary compositor (UTF8);
+          optional group d3d11 {
+            optional binary status (UTF8);
+            optional boolean textureSharing;
+            optional int64 version;
+            optional boolean blacklisted;
+            optional boolean warp;
+          }
+          optional group gpuProcess {
+            optional binary status (UTF8);
+          }
+          optional group d2d {
+            optional binary status (UTF8);
+            optional binary version (UTF8);
+          }
         }
-        optional group webrender {
-          optional binary status (UTF8);
+        optional boolean DWriteEnabled;
+        optional boolean D2DEnabled;
+        optional binary ContentBackend (UTF8);
+        optional group adapters (LIST) {
+          repeated group list {
+            required group element {
+              optional binary description (UTF8);
+              optional binary vendorID (UTF8);
+              optional binary deviceID (UTF8);
+              optional binary subsysID (UTF8);
+              optional int64 RAM;
+              optional binary driver (UTF8);
+              optional binary driverVersion (UTF8);
+              optional binary driverDate (UTF8);
+              optional boolean GPUActive;
+            }
+          }
         }
-        optional group wrQualified {
-          optional binary status (UTF8);
-        }
-        optional binary compositor (UTF8);
-        optional group d3d11 {
-          optional binary status (UTF8);
-          optional boolean textureSharing;
-          optional int64 version;
-          optional boolean blacklisted;
-          optional boolean warp;
-        }
-        optional group gpuProcess {
-          optional binary status (UTF8);
-        }
-        optional group d2d {
-          optional binary status (UTF8);
-          optional binary version (UTF8);
-        }
-      }
-      optional boolean DWriteEnabled;
-      optional boolean D2DEnabled;
-      optional binary ContentBackend (UTF8);
-      optional group adapters (LIST) {
-        repeated group list {
-          required group element {
-            optional binary description (UTF8);
-            optional binary vendorID (UTF8);
-            optional binary deviceID (UTF8);
-            optional binary subsysID (UTF8);
-            optional int64 RAM;
-            optional binary driver (UTF8);
-            optional binary driverVersion (UTF8);
-            optional binary driverDate (UTF8);
-            optional boolean GPUActive;
+        optional group monitors (LIST) {
+          repeated group list {
+            required group element {
+              optional int64 refreshRate;
+              optional int64 screenHeight;
+              optional int64 screenWidth;
+              optional boolean pseudoDisplay;
+            }
           }
         }
       }
-      optional group monitors (LIST) {
-        repeated group list {
-          required group element {
-            optional int64 refreshRate;
-            optional int64 screenHeight;
-            optional int64 screenWidth;
-            optional boolean pseudoDisplay;
+      optional group sec {
+        optional group firewall (LIST) {
+          repeated group list {
+            required binary element (UTF8);
+          }
+        }
+        optional group antispyware (LIST) {
+          repeated group list {
+            required binary element (UTF8);
+          }
+        }
+        optional group antivirus (LIST) {
+          repeated group list {
+            required binary element (UTF8);
           }
         }
       }
-    }
-    optional group sec {
-      optional group firewall (LIST) {
-        repeated group list {
-          required binary element (UTF8);
+      optional group hdd {
+        optional group profile {
+          optional binary model (UTF8);
+          optional binary revision (UTF8);
+        }
+        optional group binary {
+          optional binary model (UTF8);
+          optional binary revision (UTF8);
+        }
+        optional group system {
+          optional binary model (UTF8);
+          optional binary revision (UTF8);
         }
       }
-      optional group antispyware (LIST) {
-        repeated group list {
-          required binary element (UTF8);
-        }
-      }
-      optional group antivirus (LIST) {
-        repeated group list {
-          required binary element (UTF8);
-        }
-      }
-    }
-    optional group hdd {
-      optional group profile {
-        optional binary model (UTF8);
-        optional binary revision (UTF8);
-      }
-      optional group binary {
-        optional binary model (UTF8);
-        optional binary revision (UTF8);
-      }
-      optional group system {
-        optional binary model (UTF8);
-        optional binary revision (UTF8);
-      }
-    }
-    optional group cpu {
-      optional int64 cores;
-      optional int64 count;
-      optional int64 family;
-      optional int64 l2cacheKB;
-      optional int64 l3cacheKB;
-      optional int64 model;
-      optional int64 speedMHz;
-      optional int64 stepping;
-      optional binary vendor (UTF8);
-      optional group extensions (LIST) {
-        repeated group list {
-          required binary element (UTF8);
+      optional group cpu {
+        optional int64 cores;
+        optional int64 count;
+        optional int64 family;
+        optional int64 l2cacheKB;
+        optional int64 l3cacheKB;
+        optional int64 model;
+        optional int64 speedMHz;
+        optional int64 stepping;
+        optional binary vendor (UTF8);
+        optional group extensions (LIST) {
+          repeated group list {
+            required binary element (UTF8);
+          }
         }
       }
     }
