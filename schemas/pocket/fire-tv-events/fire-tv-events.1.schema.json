@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "created": {
+      "type": "integer"
+    },
+    "device": {
+      "type": "string"
+    },
+    "events": {
+      "items": {
+        "items": [
+          {
+            "minimum": 0,
+            "type": "integer"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          {
+            "additionalProperties": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "type": [
+              "object",
+              "null"
+            ]
+          }
+        ],
+        "maxItems": 6,
+        "minItems": 4,
+        "type": "array"
+      },
+      "type": "array"
+    },
+    "locale": {
+      "type": "string"
+    },
+    "os": {
+      "type": "string"
+    },
+    "osversion": {
+      "type": "string"
+    },
+    "pocketId": {
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "type": "string"
+    },
+    "processStartTimestamp": {
+      "type": "integer"
+    },
+    "seq": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "v": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "v",
+    "pocketId",
+    "seq",
+    "locale",
+    "os",
+    "osversion",
+    "created",
+    "processStartTimestamp",
+    "events"
+  ],
+  "title": "mobile-event",
+  "type": "object"
+}

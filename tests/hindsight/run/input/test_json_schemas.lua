@@ -86,6 +86,7 @@ function process_message()
             appBuildId = "20170711165157",
             appName = "Firefox",
             appUpdateChannel = "release",
+            Host = "incoming.telemetry.mozilla.org",
             -- required pioneer metadata
             pioneerId = "11111111-1111-1111-1111-111111111111",
             studyName = "foobar",
