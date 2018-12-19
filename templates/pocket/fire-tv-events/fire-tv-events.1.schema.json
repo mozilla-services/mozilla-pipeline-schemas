@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "mobile-event",
+  @TELEMETRY_MOBILEEVENT_1_JSON@,
+  "properties": {
+    "v": {
+      "type": "integer"
+    },
+    "pocketId": {
+      "type": "string",
+      @COMMON_PATTERN_UUID_1_JSON@
+    },
+    "seq": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "locale": {
+      "type": "string"
+    },
+    "os": {
+      "type": "string"
+    },
+    "osversion": {
+      "type": "string"
+    },
+    "device": {
+      "type": "string"
+    },
+    "created": {
+      "type": "integer"
+    },
+    "processStartTimestamp": {
+      "type": "integer"
+    },
+    "events": {
+      "type": "array",
+      "items": @COMMON_EVENT_1_JSON@
+    }
+  },
+  "required": ["v", "pocketId", "seq", "locale", "os", "osversion", "created", "processStartTimestamp", "events"]
+}
