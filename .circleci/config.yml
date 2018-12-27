@@ -49,6 +49,16 @@ jobs:
             # Replace the container's submodule with the current state of this repo.
             cd .. && rm -r mozilla-pipeline-schemas && mv project mozilla-pipeline-schemas
 
+            # TEMPORARY: for validating changes in v1.3.1
+            # remove the cache
+            rm -r resources/data
+            rm resources/.metadata_cache
+            # update data folder
+            pipenv run \
+              python integration.py sync \
+                --data-bucket ${SOURCE_DATA_BUCKET} \
+                --data-prefix ${SOURCE_DATA_PREFIX}
+
             # Run the comparison report and store the artifacts for future viewing.
             pipenv run \
               python integration.py compare \
