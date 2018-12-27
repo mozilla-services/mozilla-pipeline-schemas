@@ -33,7 +33,7 @@ jobs:
             git fetch --all
       - setup_remote_docker
       - restore_cache:
-          key: mps-integration-data-v1
+          key: mps-integration-data-v2
       - run: &run_comparison
           name: Run a comparison report
           environment:
@@ -60,7 +60,7 @@ jobs:
       - save_cache: &save_cache
           paths:
             - ~/resources
-          key: mps-integration-data-v1-{{ epoch }}
+          key: mps-integration-data-v2-{{ epoch }}
   integrate-clean:
     executor: edge-validator
     steps:
