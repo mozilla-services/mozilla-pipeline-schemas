@@ -1,0 +1,434 @@
+{
+  "$id": "moz://mozilla.org/schemas/glean/ping/1",
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "additionalProperties": false,
+  "definitions": {
+    "base": {
+      "propertyNames": {
+        "$ref": "#/definitions/dot_separated_short_id"
+      },
+      "type": "object"
+    },
+    "dot_separated_short_id": {
+      "maxLength": 61,
+      "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
+      "type": "string"
+    },
+    "histogram": {
+      "properties": {
+        "bucket_count": {
+          "type": "integer"
+        },
+        "histogram_type": {
+          "enum": [
+            "linear",
+            "exponential"
+          ]
+        },
+        "overflow": {
+          "type": "integer"
+        },
+        "range": {
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "type": "array"
+        },
+        "underflow": {
+          "type": "integer"
+        },
+        "values": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "propertyNames": {
+            "pattern": "[0-9]+"
+          },
+          "type": "object"
+        }
+      },
+      "required": [
+        "range",
+        "bucket_count",
+        "values"
+      ],
+      "type": "object"
+    },
+    "short_id": {
+      "allOf": [
+        {
+          "pattern": "^[a-z_][a-z0-9_]*$",
+          "type": "string"
+        },
+        {
+          "maxLength": 30
+        }
+      ]
+    },
+    "time_unit": {
+      "enum": [
+        "nanosecond",
+        "microsecond",
+        "millisecond",
+        "second",
+        "minute",
+        "hour",
+        "day"
+      ]
+    },
+    "token": {
+      "pattern": "^[A-Za-z_][A-Za-z0-9_\\.]*$",
+      "type": "string"
+    },
+    "very_short_id": {
+      "allOf": [
+        {
+          "pattern": "^[a-z_][a-z0-9_]*$",
+          "type": "string"
+        },
+        {
+          "maxLength": 20
+        }
+      ]
+    }
+  },
+  "description": "Schema for the ping content sent by Mozilla's glean telemetry SDK\n",
+  "properties": {
+    "$schema": {
+      "enum": [
+        "moz://mozilla.org/schemas/glean/ping/1"
+      ]
+    },
+    "events": {
+      "items": {
+        "items": [
+          {
+            "minimum": 0,
+            "type": "integer"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          {
+            "additionalProperties": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "type": [
+              "object",
+              "null"
+            ]
+          }
+        ],
+        "maxItems": 6,
+        "minItems": 4,
+        "type": "array"
+      },
+      "type": "array"
+    },
+    "metrics": {
+      "additionalProperties": false,
+      "properties": {
+        "boolean": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/base"
+            },
+            {
+              "additionalProperties": {
+                "type": "boolean"
+              }
+            }
+          ]
+        },
+        "counter": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/base"
+            },
+            {
+              "additionalProperties": {
+                "type": "integer"
+              }
+            }
+          ]
+        },
+        "datetime": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/base"
+            },
+            {
+              "additionalProperties": {
+                "properties": {
+                  "time_unit": {
+                    "$ref": "#/definitions/time_unit"
+                  },
+                  "value": {
+                    "format": "datetime",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          ]
+        },
+        "enumeration": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/base"
+            },
+            {
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "number": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/base"
+            },
+            {
+              "additionalProperties": {
+                "type": "number"
+              }
+            }
+          ]
+        },
+        "rate": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/base"
+            },
+            {
+              "additionalPropeties": {
+                "type": "integer"
+              }
+            }
+          ]
+        },
+        "string": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/base"
+            },
+            {
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "string_list": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/base"
+            },
+            {
+              "additionalProperties": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            }
+          ]
+        },
+        "timespan": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/base"
+            },
+            {
+              "additionalProperties": {
+                "properties": {
+                  "time_unit": {
+                    "$ref": "#/definitions/time_unit"
+                  },
+                  "value": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "value",
+                  "time_unit"
+                ],
+                "type": "object"
+              }
+            }
+          ]
+        },
+        "timing_distribution": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/base"
+            },
+            {
+              "additionalProperties": {
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/histogram"
+                  },
+                  {
+                    "properties": {
+                      "time_unit": {
+                        "$ref": "#/definitions/time_unit"
+                      }
+                    },
+                    "required": [
+                      "time_unit"
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "usage": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/base"
+            },
+            {
+              "additionalPropeties": {
+                "type": "boolean"
+              }
+            }
+          ]
+        },
+        "use_counter": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/base"
+            },
+            {
+              "additionalProperties": {
+                "properties": {
+                  "denominator": {
+                    "name": {
+                      "$ref": "#/definitions/short_id"
+                    },
+                    "type": "object",
+                    "value": {
+                      "type": "integer"
+                    }
+                  },
+                  "values": {
+                    "additionalProperties": {
+                      "type": "integer"
+                    },
+                    "propertyNames": {
+                      "$ref": "#/definitions/short_id"
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          ]
+        },
+        "uuid": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/base"
+            },
+            {
+              "additionalProperties": {
+                "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+                "type": "string"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "ping_info": {
+      "properties": {
+        "app_build": {
+          "type": "string"
+        },
+        "clientId": {
+          "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+          "type": "string"
+        },
+        "end_time": {
+          "format": "datetime",
+          "type": "string"
+        },
+        "experiments": {
+          "additionalProperties": {
+            "additionalProperties": false,
+            "properties": {
+              "branch": {
+                "$ref": "#/definitions/short_id"
+              },
+              "extra": {
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            },
+            "required": [
+              "branch"
+            ],
+            "type": "object"
+          },
+          "propertyNames": {
+            "$ref": "#/definitions/short_id"
+          }
+        },
+        "ping_type": {
+          "$ref": "#/definitions/short_id"
+        },
+        "seq": {
+          "type": "integer"
+        },
+        "start_time": {
+          "format": "datetime",
+          "type": "string"
+        },
+        "telemetry_sdk_build": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "ping_type",
+        "app_build",
+        "telemetry_sdk_build",
+        "client_id",
+        "seq",
+        "start_time",
+        "end_time"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "ping_info"
+  ],
+  "title": "Ping transport",
+  "type": "object"
+}
