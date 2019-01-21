@@ -30,6 +30,7 @@ message untrusted-modules {
     }
     required int64 structVersion;
     required int64 errorModules;
+    optional double xulLoadDurationMS;
     required group events (LIST) {
       repeated group list {
         required group element {
@@ -44,6 +45,7 @@ message untrusted-modules {
                 required binary moduleName (UTF8);
                 optional binary fileVersion (UTF8);
                 optional binary loaderName (UTF8);
+                optional double loadDurationMS;
                 required int64 moduleTrustFlags;
               }
             }
