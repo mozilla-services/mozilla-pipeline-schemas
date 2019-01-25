@@ -33,9 +33,16 @@ Note that Pioneer studies have a [slightly amended](README.pioneer.md) process.
 
 ### Prerequisites
 
-* CMake (3.0+) - http://cmake.org/cmake/resources/software.html
-* jq (1.5+) - https://github.com/stedolan/jq
-* parquetfmt (0.1+) - https://github.com/trink/parquetfmt
+* [`CMake` (3.0+)](http://cmake.org/cmake/resources/software.html)
+* [`jq` (1.5+)](https://github.com/stedolan/jq)
+* [`parquetfmt` (0.1+)](https://github.com/trink/parquetfmt), available via [cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html): `cargo install parquetfmt`
+  
+On MacOS, these prerequisites can be installed using [homebrew](https://brew.sh/):
+```
+brew install cmake
+brew intall jq
+brew cask install docker
+```
 
 ### CMake Build Instructions
 
