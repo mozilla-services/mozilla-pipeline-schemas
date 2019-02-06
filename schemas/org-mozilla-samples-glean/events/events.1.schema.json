@@ -328,68 +328,58 @@
         "labeled_timing_distribution": {
           "additionalProperties": {
             "additionalProperties": {
-              "allOf": [
-                {
-                  "properties": {
-                    "bucket_count": {
-                      "type": "integer"
-                    },
-                    "histogram_type": {
-                      "enum": [
-                        "linear",
-                        "exponential"
-                      ]
-                    },
-                    "overflow": {
-                      "type": "integer"
-                    },
-                    "range": {
-                      "items": {
-                        "type": "number"
-                      },
-                      "maxItems": 2,
-                      "minItems": 2,
-                      "type": "array"
-                    },
-                    "underflow": {
-                      "type": "integer"
-                    },
-                    "values": {
-                      "additionalProperties": {
-                        "type": "integer"
-                      },
-                      "propertyNames": {
-                        "pattern": "[0-9]+"
-                      },
-                      "type": "object"
-                    }
-                  },
-                  "required": [
-                    "range",
-                    "bucket_count",
-                    "values"
-                  ],
-                  "type": "object"
+              "properties": {
+                "bucket_count": {
+                  "type": "integer"
                 },
-                {
-                  "properties": {
-                    "time_unit": {
-                      "enum": [
-                        "nanosecond",
-                        "microsecond",
-                        "millisecond",
-                        "second",
-                        "minute",
-                        "hour",
-                        "day"
-                      ]
-                    }
-                  },
-                  "required": [
-                    "time_unit"
+                "histogram_type": {
+                  "enum": [
+                    "linear",
+                    "exponential"
                   ]
+                },
+                "overflow": {
+                  "type": "integer"
+                },
+                "range": {
+                  "items": {
+                    "type": "number"
+                  },
+                  "maxItems": 2,
+                  "minItems": 2,
+                  "type": "array"
+                },
+                "time_unit": {
+                  "enum": [
+                    "nanosecond",
+                    "microsecond",
+                    "millisecond",
+                    "second",
+                    "minute",
+                    "hour",
+                    "day"
+                  ]
+                },
+                "underflow": {
+                  "type": "integer"
+                },
+                "values": {
+                  "additionalProperties": {
+                    "type": "integer"
+                  },
+                  "propertyNames": {
+                    "pattern": "[0-9]+"
+                  },
+                  "type": "object"
                 }
-              ]
+              },
+              "required": [
+                "range",
+                "bucket_count",
+                "values",
+                "time_unit"
+              ],
+              "type": "object"
             },
             "propertyNames": {
               "maxLength": 61,
@@ -430,15 +420,9 @@
               "properties": {
                 "denominator": {
                   "name": {
-                    "allOf": [
-                      {
-                        "pattern": "^[a-z_][a-z0-9_]*$",
-                        "type": "string"
-                      },
-                      {
-                        "maxLength": 30
-                      }
-                    ]
+                    "maxLength": 30,
+                    "pattern": "^[a-z_][a-z0-9_]*$",
+                    "type": "string"
                   },
                   "type": "object",
                   "value": {
@@ -450,15 +434,9 @@
                     "type": "integer"
                   },
                   "propertyNames": {
-                    "allOf": [
-                      {
-                        "pattern": "^[a-z_][a-z0-9_]*$",
-                        "type": "string"
-                      },
-                      {
-                        "maxLength": 30
-                      }
-                    ]
+                    "maxLength": 30,
+                    "pattern": "^[a-z_][a-z0-9_]*$",
+                    "type": "string"
                   },
                   "type": "object"
                 }
@@ -579,68 +557,58 @@
         },
         "timing_distribution": {
           "additionalProperties": {
-            "allOf": [
-              {
-                "properties": {
-                  "bucket_count": {
-                    "type": "integer"
-                  },
-                  "histogram_type": {
-                    "enum": [
-                      "linear",
-                      "exponential"
-                    ]
-                  },
-                  "overflow": {
-                    "type": "integer"
-                  },
-                  "range": {
-                    "items": {
-                      "type": "number"
-                    },
-                    "maxItems": 2,
-                    "minItems": 2,
-                    "type": "array"
-                  },
-                  "underflow": {
-                    "type": "integer"
-                  },
-                  "values": {
-                    "additionalProperties": {
-                      "type": "integer"
-                    },
-                    "propertyNames": {
-                      "pattern": "[0-9]+"
-                    },
-                    "type": "object"
-                  }
-                },
-                "required": [
-                  "range",
-                  "bucket_count",
-                  "values"
-                ],
-                "type": "object"
+            "properties": {
+              "bucket_count": {
+                "type": "integer"
               },
-              {
-                "properties": {
-                  "time_unit": {
-                    "enum": [
-                      "nanosecond",
-                      "microsecond",
-                      "millisecond",
-                      "second",
-                      "minute",
-                      "hour",
-                      "day"
-                    ]
-                  }
-                },
-                "required": [
-                  "time_unit"
+              "histogram_type": {
+                "enum": [
+                  "linear",
+                  "exponential"
                 ]
+              },
+              "overflow": {
+                "type": "integer"
+              },
+              "range": {
+                "items": {
+                  "type": "number"
+                },
+                "maxItems": 2,
+                "minItems": 2,
+                "type": "array"
+              },
+              "time_unit": {
+                "enum": [
+                  "nanosecond",
+                  "microsecond",
+                  "millisecond",
+                  "second",
+                  "minute",
+                  "hour",
+                  "day"
+                ]
+              },
+              "underflow": {
+                "type": "integer"
+              },
+              "values": {
+                "additionalProperties": {
+                  "type": "integer"
+                },
+                "propertyNames": {
+                  "pattern": "[0-9]+"
+                },
+                "type": "object"
               }
-            ]
+            },
+            "required": [
+              "range",
+              "bucket_count",
+              "values",
+              "time_unit"
+            ],
+            "type": "object"
           },
           "propertyNames": {
             "maxLength": 61,
@@ -665,15 +633,9 @@
             "properties": {
               "denominator": {
                 "name": {
-                  "allOf": [
-                    {
-                      "pattern": "^[a-z_][a-z0-9_]*$",
-                      "type": "string"
-                    },
-                    {
-                      "maxLength": 30
-                    }
-                  ]
+                  "maxLength": 30,
+                  "pattern": "^[a-z_][a-z0-9_]*$",
+                  "type": "string"
                 },
                 "type": "object",
                 "value": {
@@ -685,15 +647,9 @@
                   "type": "integer"
                 },
                 "propertyNames": {
-                  "allOf": [
-                    {
-                      "pattern": "^[a-z_][a-z0-9_]*$",
-                      "type": "string"
-                    },
-                    {
-                      "maxLength": 30
-                    }
-                  ]
+                  "maxLength": 30,
+                  "pattern": "^[a-z_][a-z0-9_]*$",
+                  "type": "string"
                 },
                 "type": "object"
               }
@@ -742,15 +698,9 @@
             "additionalProperties": false,
             "properties": {
               "branch": {
-                "allOf": [
-                  {
-                    "pattern": "^[a-z_][a-z0-9_]*$",
-                    "type": "string"
-                  },
-                  {
-                    "maxLength": 30
-                  }
-                ]
+                "maxLength": 30,
+                "pattern": "^[a-z_][a-z0-9_]*$",
+                "type": "string"
               },
               "extra": {
                 "properties": {
@@ -767,27 +717,15 @@
             "type": "object"
           },
           "propertyNames": {
-            "allOf": [
-              {
-                "pattern": "^[a-z_][a-z0-9_]*$",
-                "type": "string"
-              },
-              {
-                "maxLength": 30
-              }
-            ]
+            "maxLength": 30,
+            "pattern": "^[a-z_][a-z0-9_]*$",
+            "type": "string"
           }
         },
         "ping_type": {
-          "allOf": [
-            {
-              "pattern": "^[a-z_][a-z0-9_]*$",
-              "type": "string"
-            },
-            {
-              "maxLength": 30
-            }
-          ]
+          "maxLength": 30,
+          "pattern": "^[a-z_][a-z0-9_]*$",
+          "type": "string"
         },
         "seq": {
           "type": "integer"
