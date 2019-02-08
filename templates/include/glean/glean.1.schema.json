@@ -3,92 +3,6 @@
   "title": "Ping transport",
   "description": "Schema for the ping content sent by Mozilla's glean telemetry SDK\n",
   "$id": "moz://mozilla.org/schemas/glean/ping/1",
-  "definitions": {
-    "token": {
-      "type": "string",
-      "pattern": "^[A-Za-z_][A-Za-z0-9_\\.]*$"
-    },
-    "short_id": {
-      "allOf": [
-        @COMMON_SNAKECASE_1_JSON@,
-        {
-          "maxLength": 30
-        }
-      ]
-    },
-    "very_short_id": {
-      "allOf": [
-        @COMMON_SNAKECASE_1_JSON@,
-        {
-          "maxLength": 20
-        }
-      ]
-    },
-    "dot_separated_short_id": {
-      "type": "string",
-      "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
-      "maxLength": 61
-    },
-    "base": {
-      "type": "object",
-      "propertyNames": {
-        "$ref": "#/definitions/dot_separated_short_id"
-      }
-    },
-    "histogram": {
-      "type": "object",
-      "properties": {
-        "range": {
-          "type": "array",
-          "minItems": 2,
-          "maxItems": 2,
-          "items": {
-            "type": "number"
-          }
-        },
-        "bucket_count": {
-          "type": "integer"
-        },
-        "histogram_type": {
-          "enum": [
-            "linear",
-            "exponential"
-          ]
-        },
-        "values": {
-          "type": "object",
-          "propertyNames": {
-            "pattern": "[0-9]+"
-          },
-          "additionalProperties": {
-            "type": "integer"
-          }
-        },
-        "underflow": {
-          "type": "integer"
-        },
-        "overflow": {
-          "type": "integer"
-        }
-      },
-      "required": [
-        "range",
-	"bucket_count",
-	"values"
-      ]
-    },
-    "time_unit": {
-      "enum": [
-        "nanosecond",
-        "microsecond",
-        "millisecond",
-        "second",
-        "minute",
-        "hour",
-        "day"
-      ]
-    }
-  },
   "type": "object",
   "properties": {
     "$schema": {
@@ -99,9 +13,7 @@
     "ping_info": {
       "type": "object",
       "properties": {
-        "ping_type": {
-          "$ref": "#/definitions/short_id"
-        },
+        "ping_type": @GLEAN_SHORT_ID_1_JSON@,
         "app_build": {
           "type": "string"
         },
@@ -124,15 +36,11 @@
           "format": "datetime"
         },
         "experiments": {
-          "propertyNames": {
-            "$ref": "#/definitions/short_id"
-          },
+          "propertyNames": @GLEAN_SHORT_ID_1_JSON@,
           "additionalProperties": {
             "type": "object",
             "properties": {
-              "branch": {
-                "$ref": "#/definitions/short_id"
-              },
+              "branch": @GLEAN_SHORT_ID_1_JSON@,
               "extra": {
                 "type": "object",
                 "properties": {
@@ -163,219 +71,147 @@
     "metrics": {
       "properties": {
         "boolean": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/base"
-            },
-            {
-              "additionalProperties": {
-                "type": "boolean"
-              }
-            }
-          ]
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": @GLEAN_BOOLEAN_1_JSON@
+        },
+        "labeled_boolean": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": {
+            @GLEAN_LABELED_GROUP_1_JSON@,
+            "additionalProperties": @GLEAN_BOOLEAN_1_JSON@
+          }
         },
         "string": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/base"
-            },
-            {
-              "additionalProperties": {
-                "type": "string"
-              }
-            }
-          ]
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": @GLEAN_STRING_1_JSON@
+        },
+        "labeled_string": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": {
+            @GLEAN_LABELED_GROUP_1_JSON@,
+            "additionalProperties": @GLEAN_STRING_1_JSON@
+          }
         },
         "number": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/base"
-            },
-            {
-              "additionalProperties": {
-                "type": "number"
-              }
-            }
-          ]
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": @GLEAN_NUMBER_1_JSON@
+        },
+        "labeled_number": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": {
+            @GLEAN_LABELED_GROUP_1_JSON@,
+            "additionalProperties": @GLEAN_NUMBER_1_JSON@
+          }
         },
         "string_list": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/base"
-            },
-            {
-              "additionalProperties": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            }
-          ]
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": @GLEAN_STRING_LIST_1_JSON@
+        },
+        "labeled_string_list": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": {
+            @GLEAN_LABELED_GROUP_1_JSON@,
+            "additionalProperties": @GLEAN_STRING_LIST_1_JSON@
+          }
         },
         "enumeration": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/base"
-            },
-            {
-              "additionalProperties": {
-                "type": "string"
-              }
-            }
-          ]
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": @GLEAN_ENUMERATION_1_JSON@
+        },
+        "labeled_enumeration": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": {
+            @GLEAN_LABELED_GROUP_1_JSON@,
+            "additionalProperties": @GLEAN_ENUMERATION_1_JSON@
+          }
         },
         "counter": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/base"
-            },
-            {
-              "additionalProperties": {
-                "type": "integer"
-              }
-            }
-          ]
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": @GLEAN_COUNTER_1_JSON@
+        },
+        "labeled_counter": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": {
+            @GLEAN_LABELED_GROUP_1_JSON@,
+            "additionalProperties": @GLEAN_COUNTER_1_JSON@
+          }
         },
         "timespan": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/base"
-            },
-            {
-              "additionalProperties": {
-                "type": "object",
-                "properties": {
-                  "value": {
-                    "type": "integer"
-                  },
-                  "time_unit": {
-                    "$ref": "#/definitions/time_unit"
-                  }
-                },
-                "required": [
-                  "value",
-                  "time_unit"
-                ]
-              }
-            }
-          ]
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": @GLEAN_TIMESPAN_1_JSON@
+        },
+        "labeled_timespan": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": {
+            @GLEAN_LABELED_GROUP_1_JSON@,
+            "additionalProperties": @GLEAN_TIMESPAN_1_JSON@
+          }
         },
         "timing_distribution": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/base"
-            },
-            {
-              "additionalProperties": {
-                "allOf": [
-                  {
-                    "$ref": "#/definitions/histogram"
-                  },
-                  {
-                    "properties": {
-                      "time_unit": {
-                        "$ref": "#/definitions/time_unit"
-                      }
-                    },
-                    "required": [
-                      "time_unit"
-                    ]
-                  }
-                ]
-              }
-            }
-          ]
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": @GLEAN_TIMING_DISTRIBUTION_1_JSON@
+        },
+        "labeled_timing_distribution": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": {
+            @GLEAN_LABELED_GROUP_1_JSON@,
+            "additionalProperties": @GLEAN_TIMING_DISTRIBUTION_1_JSON@
+          }
         },
         "datetime": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/base"
-            },
-            {
-              "additionalProperties": {
-                "type": "object",
-                "properties": {
-                  "value": {
-                    "type": "string",
-                    "format": "datetime"
-                  },
-                  "time_unit": {
-                    "$ref": "#/definitions/time_unit"
-                  }
-                }
-              }
-            }
-          ]
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": @GLEAN_DATETIME_1_JSON@
+        },
+        "labeled_datetime": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": {
+            @GLEAN_LABELED_GROUP_1_JSON@,
+            "additionalProperties": @GLEAN_DATETIME_1_JSON@
+          }
         },
         "use_counter": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/base"
-            },
-            {
-              "additionalProperties": {
-                "type": "object",
-                "properties": {
-                  "values": {
-                    "type": "object",
-                    "propertyNames": {
-                      "$ref": "#/definitions/short_id"
-                    },
-                    "additionalProperties": {
-                      "type": "integer"
-                    }
-                  },
-                  "denominator": {
-                    "type": "object",
-                    "name": {
-                      "$ref": "#/definitions/short_id"
-                    },
-                    "value": {
-                      "type": "integer"
-                    }
-                  }
-                }
-              }
-            }
-          ]
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": @GLEAN_USE_COUNTER_1_JSON@
+        },
+        "labeled_use_counter": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": {
+            @GLEAN_LABELED_GROUP_1_JSON@,
+            "additionalProperties": @GLEAN_USE_COUNTER_1_JSON@
+          }
         },
         "usage": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/base"
-            },
-            {
-              "additionalPropeties": {
-                "type": "boolean"
-              }
-            }
-          ]
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": @GLEAN_USAGE_1_JSON@
+        },
+        "labeled_usage": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": {
+            @GLEAN_LABELED_GROUP_1_JSON@,
+            "additionalProperties": @GLEAN_USAGE_1_JSON@
+          }
         },
         "rate": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/base"
-            },
-            {
-              "additionalPropeties": {
-                "type": "integer"
-              }
-            }
-          ]
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": @GLEAN_RATE_1_JSON@
+        },
+        "labeled_rate": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": {
+            @GLEAN_LABELED_GROUP_1_JSON@,
+            "additionalProperties": @GLEAN_RATE_1_JSON@
+          }
         },
         "uuid": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/base"
-            },
-            {
-              "additionalProperties": {
-                "type": "string",
-                @COMMON_PATTERN_UUID_1_JSON@
-              }
-            }
-          ]
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": @GLEAN_UUID_1_JSON@
+        },
+        "labeled_uuid": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": {
+            @GLEAN_LABELED_GROUP_1_JSON@,
+            "additionalProperties": @GLEAN_UUID_1_JSON@
+          }
         }
       },
       "additionalProperties": false
