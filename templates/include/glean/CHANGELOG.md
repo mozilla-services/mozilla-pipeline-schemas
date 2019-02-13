@@ -5,6 +5,9 @@
 
 - `first_run_date` is added as a required property to `ping_info`.
 
+- Loosened the regular expression for labels to include `.` characters
+  (required for error reporting).
+
 - The `ping_info` section no longer allows extra properties.
 
 - Changed datetime values from a (value, time_unit) pair to simply the raw
