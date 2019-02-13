@@ -124,6 +124,8 @@ For details on how to compare two arbitrary revisions, refer to the `integration
 * All non trivial contributions should start with an issue being filed (if it is
   a new feature please propose your design/approach before doing any work as not
   all feature requests are accepted).
+* If updating the glean schemas, be sure to update the changelog in
+  `include/glean/CHANGELOG.md`.
 
 ### Notes
 

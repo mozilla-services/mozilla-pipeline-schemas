@@ -1,0 +1,228 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "title": "Ping transport",
+  "description": "Schema for the ping content sent by Mozilla's glean telemetry SDK\n",
+  "$id": "moz://mozilla.org/schemas/glean/ping/2",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "enum": [
+        "moz://mozilla.org/schemas/glean/ping/2"
+      ]
+    },
+    "ping_info": {
+      "type": "object",
+      "properties": {
+        "ping_type": @GLEAN_SHORT_ID_1_JSON@,
+        "app_build": {
+          "type": "string"
+        },
+        "app_display_version": {
+          "type": "string"
+        },
+        "telemetry_sdk_build": {
+          "type": "string"
+        },
+        @TELEMETRY_CLIENTID_1_JSON@,
+        "seq": {
+          "type": "integer"
+        },
+        "start_time": {
+          "type": "string",
+          "format": "datetime"
+        },
+        "end_time": {
+          "type": "string",
+          "format": "datetime"
+        },
+        "experiments": {
+          "propertyNames": @GLEAN_SHORT_ID_1_JSON@,
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "branch": @GLEAN_SHORT_ID_1_JSON@,
+              "extra": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "required": [
+              "branch"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "ping_type",
+        "app_build",
+        "app_display_version",
+        "telemetry_sdk_build",
+        "client_id",
+        "seq",
+        "start_time",
+        "end_time"
+      ]
+    },
+    "metrics": {
+      "properties": {
+        "boolean": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": @GLEAN_BOOLEAN_1_JSON@
+        },
+        "labeled_boolean": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": {
+            @GLEAN_LABELED_GROUP_1_JSON@,
+            "additionalProperties": @GLEAN_BOOLEAN_1_JSON@
+          }
+        },
+        "string": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": @GLEAN_STRING_1_JSON@
+        },
+        "labeled_string": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": {
+            @GLEAN_LABELED_GROUP_1_JSON@,
+            "additionalProperties": @GLEAN_STRING_1_JSON@
+          }
+        },
+        "number": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": @GLEAN_NUMBER_1_JSON@
+        },
+        "labeled_number": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": {
+            @GLEAN_LABELED_GROUP_1_JSON@,
+            "additionalProperties": @GLEAN_NUMBER_1_JSON@
+          }
+        },
+        "string_list": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": @GLEAN_STRING_LIST_1_JSON@
+        },
+        "labeled_string_list": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": {
+            @GLEAN_LABELED_GROUP_1_JSON@,
+            "additionalProperties": @GLEAN_STRING_LIST_1_JSON@
+          }
+        },
+        "enumeration": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": @GLEAN_ENUMERATION_1_JSON@
+        },
+        "labeled_enumeration": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": {
+            @GLEAN_LABELED_GROUP_1_JSON@,
+            "additionalProperties": @GLEAN_ENUMERATION_1_JSON@
+          }
+        },
+        "counter": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": @GLEAN_COUNTER_1_JSON@
+        },
+        "labeled_counter": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": {
+            @GLEAN_LABELED_GROUP_1_JSON@,
+            "additionalProperties": @GLEAN_COUNTER_1_JSON@
+          }
+        },
+        "timespan": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": @GLEAN_TIMESPAN_1_JSON@
+        },
+        "labeled_timespan": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": {
+            @GLEAN_LABELED_GROUP_1_JSON@,
+            "additionalProperties": @GLEAN_TIMESPAN_1_JSON@
+          }
+        },
+        "timing_distribution": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": @GLEAN_TIMING_DISTRIBUTION_1_JSON@
+        },
+        "labeled_timing_distribution": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": {
+            @GLEAN_LABELED_GROUP_1_JSON@,
+            "additionalProperties": @GLEAN_TIMING_DISTRIBUTION_1_JSON@
+          }
+        },
+        "datetime": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": @GLEAN_DATETIME_2_JSON@
+        },
+        "labeled_datetime": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": {
+            @GLEAN_LABELED_GROUP_1_JSON@,
+            "additionalProperties": @GLEAN_DATETIME_2_JSON@
+          }
+        },
+        "use_counter": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": @GLEAN_USE_COUNTER_1_JSON@
+        },
+        "labeled_use_counter": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": {
+            @GLEAN_LABELED_GROUP_1_JSON@,
+            "additionalProperties": @GLEAN_USE_COUNTER_1_JSON@
+          }
+        },
+        "usage": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": @GLEAN_USAGE_1_JSON@
+        },
+        "labeled_usage": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": {
+            @GLEAN_LABELED_GROUP_1_JSON@,
+            "additionalProperties": @GLEAN_USAGE_1_JSON@
+          }
+        },
+        "rate": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": @GLEAN_RATE_1_JSON@
+        },
+        "labeled_rate": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": {
+            @GLEAN_LABELED_GROUP_1_JSON@,
+            "additionalProperties": @GLEAN_RATE_1_JSON@
+          }
+        },
+        "uuid": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": @GLEAN_UUID_1_JSON@
+        },
+        "labeled_uuid": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": {
+            @GLEAN_LABELED_GROUP_1_JSON@,
+            "additionalProperties": @GLEAN_UUID_1_JSON@
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "events": {
+        "type": "array",
+        "items": @COMMON_EVENT_1_JSON@
+    }
+  },
+  "required": [
+    "ping_info"
+  ],
+  "additionalProperties": false
+}
