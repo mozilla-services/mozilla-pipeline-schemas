@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "description": "Web-performance metrics",
+  "properties": {
+    "appName": {
+      "type": "string"
+    },
+    "channel": {
+      "type": "string"
+    },
+    "connection": {
+      "type": "string"
+    },
+    "metrics": {
+      "additionalProperties": {
+        "properties": {
+          "firstView": {
+            "anyOf": [
+              {
+                "required": [
+                  "median"
+                ]
+              },
+              {
+                "required": [
+                  "standardDeviation"
+                ]
+              }
+            ],
+            "properties": {
+              "median": {
+                "type": "number"
+              },
+              "standardDeviation": {
+                "type": "number"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "required": [
+          "firstView"
+        ],
+        "type": "object"
+      },
+      "type": "object"
+    },
+    "platform": {
+      "enum": [
+        "desktop",
+        "mobile"
+      ],
+      "type": "string"
+    },
+    "runId": {
+      "type": "string"
+    },
+    "runner": {
+      "type": "string"
+    },
+    "sessionState": {
+      "enum": [
+        "auth",
+        "noAuth"
+      ],
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "appName",
+    "channel",
+    "version",
+    "connection",
+    "url",
+    "platform",
+    "runner",
+    "runId",
+    "sessionState",
+    "metrics"
+  ],
+  "title": "webpagetest-run",
+  "type": "object"
+}
