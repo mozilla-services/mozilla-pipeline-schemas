@@ -1,7 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
-  "title": "crash",
+  "title": "sync",
+  "description": "Schema for sync pings as sent by this code: https://searchfox.org/mozilla-central/rev/ee40541496d3ad738097eebadaf4965ca1343b7a/services/sync/modules/telemetry.js#490 and documented at https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/telemetry/data/sync-ping.html",
   "properties": {
     @TELEMETRY_APPLICATION_1_JSON@,
     @TELEMETRY_CREATIONDATE_1_JSON@,
@@ -19,6 +20,7 @@
       "type": "object",
       "properties": {
         "os": {
+          "description": "OS data from the current telemetry environment. OS specific, but typically includes name, version and locale.",
           "type": "object",
           "properties": {
             "name": {
@@ -33,22 +35,36 @@
           }
         },
         "why": {
+          "description": "Why did we submit the ping?",
           "type": "string",
-          "__TODO__": "use an enum? can be 'schedule', others."
+          "enum": [ "idchange", "schedule", "shutdown" ]
         },
-        "version": {
+        "discarded": {
+          "description": "Number of syncs discarded -- left out if zero.",
           "type": "integer"
         },
+        "version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1
+        },
         "syncs": {
+          "description": "Array of recorded syncs. The ping is not submitted if this would be empty",
           "type": "array",
           "items": {
             "type": "object",
             "properties": {
               "when": {
+                "description": "milliseconds since epoch",
                 "type": "integer"
               },
               "took": {
+                "description": "duration in milliseconds",
                 "type": "integer"
+              },
+              "didLogin": {
+                "description": "Optional, is this the first sync after login? Excluded if we don't know.",
+                "type": "boolean"
               },
               "devices": {
                 "type": "array",
@@ -56,40 +72,134 @@
                   "type": "object",
                   "properties": {
                     "os": {
+                      "description": "OS string as reported by Services.appinfo.OS",
                       "type": "string"
                     },
                     "version": {
+                      "description": "Firefox version, as reported by Services.appinfo.version",
                       "type": "string"
                     },
                     "id": {
+                      "description": "Hashed FxA device id for device",
                       "type": "string"
                     }
                   }
                 }
               },
               "why": {
+                "description": "Optional, why the sync occurred, excluded if we don't know.",
                 "type": "string"
               },
+              "failureReason": @TELEMETRY_SYNCFAILUREREASON_1_JSON@,
+              "status": {
+                "description": "Internal sync status information. Omitted if it would be empty.",
+                "type": "object",
+                "properties": {
+                  "sync": {
+                    "description": "The value of the Status.sync property, unless it indicates success.",
+                    "type": "string"
+                  },
+                  "service": {
+                    "description": "The value of the Status.service property, unless it indicates success.",
+                    "type": "string"
+                  }
+                }
+              },
               "engines": {
+                "description": "Information about each engine's sync.",
                 "type": "array",
                 "items": {
                   "type": "object",
                   "properties": {
                     "name": {
+                      "description": "bookmarks, tabs, etc.",
                       "type": "string"
                     },
                     "took": {
+                      "description": "optional duration in milliseconds, values of 0 are omitted.",
+                      "type": "integer"
+                    },
+                    "status": {
+                      "description": "The value of Status.engines, if it holds a non-success value.",
                       "type": "string"
                     },
+                    "incoming": {
+                      "description": "Optional, excluded if all items would be 0. A missing item indicates a value of 0.",
+                      "type": "object",
+                      "properties": {
+                        "applied": {
+                          "description": "Number of records applied",
+                          "type": "integer"
+                        },
+                        "succeeded": {
+                          "description": "Number of records that applied without error",
+                          "type": "integer"
+                        },
+                        "failed": {
+                          "description": "Number of records that failed to apply",
+                          "type": "integer"
+                        },
+                        "newFailed": {
+                          "description": "Number of records that failed for the first time this sync",
+                          "type": "integer"
+                        },
+                        "reconciled": {
+                          "description": "Number of records that were reconciled",
+                          "type": "integer"
+                        }
+                      }
+                    },
                     "outgoing": {
+                      "description": "Optional, excluded if it would be empty. Records that would be empty (e.g. 0 sent and 0 failed) are omitted.",
                       "type": "array",
                       "items": {
                         "type": "object",
                         "properties": {
                           "sent": {
+                            "description": "Number of outgoing records sent. Zero values are omitted.",
+                            "type": "integer"
+                          },
+                          "failed": {
+                            "description": "Number that failed to send. Zero values are omitted.",
                             "type": "integer"
                           }
                         }
+                      }
+                    },
+                    "failureReason": @TELEMETRY_SYNCFAILUREREASON_1_JSON@,
+                    "validation": {
+                      "description": "Optional, excluded if it would be empty or if the engine cannot or did not run validation on itself.",
+                      "type": "object",
+                      "properties": {
+                        "version": {
+                          "description": "Optional validator version, default of 0.",
+                          "type": "integer"
+                        },
+                        "checked": {
+                          "type": "integer"
+                        },
+                        "took": {
+                          "description": "non-monotonic integer duration in milliseconds",
+                          "type": "integer"
+                        },
+                        "problems": {
+                          "description": "Entries with a count of 0 are excluded, the array is excluded if no problems are found.",
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "description": "The problem identified.",
+                                "type": "string"
+                              },
+                              "count": {
+                                "description": "Number of times it occurred.",
+                                "type": "integer"
+                              }
+                            }
+                          }
+                        },
+                        "failureReason": @TELEMETRY_SYNCFAILUREREASON_1_JSON@
                       }
                     }
                   }
@@ -99,14 +209,21 @@
           }
         },
         "uid": {
+          "description": "Hashed FxA unique ID, or string of 32 zeros. If this changes between syncs, the payload is submitted.",
           "type": "string"
         },
         "deviceID": {
+          "description": "Hashed FxA Device ID, hex string of 64 characters, not included if the user is not logged in. If this changes between syncs, the payload is submitted.",
           "type": "string"
         },
         "sessionStartDate": {
+          "description": "Hourly precision, ISO date in local time",
           "type": "string",
           "format": "date-time"
+        },
+        "events": {
+          "type": "array",
+          "items": @COMMON_EVENT_1_JSON@
         },
         "histograms": {
           "type": "object",
@@ -124,5 +241,6 @@
     "version",
     "application",
     "payload"
-  ]
+  ],
+  "additionalProperties": false
 }
