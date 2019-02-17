@@ -1,1 +1,128 @@
-@COMMON_PLACEHOLDER_1_JSON@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "crash",
+  "properties": {
+    @TELEMETRY_APPLICATION_1_JSON@,
+    @TELEMETRY_CREATIONDATE_1_JSON@,
+    @TELEMETRY_ID_1_JSON@,
+    "type": {
+      "type": "string",
+      "enum": [ "sync" ]
+    },
+    "version": {
+      "type": "number",
+      "minimum": 4,
+      "maximum": 4
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "os": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            },
+            "locale": {
+              "type": "string"
+            }
+          }
+        },
+        "why": {
+          "type": "string",
+          "__TODO__": "use an enum? can be 'schedule', others."
+        },
+        "version": {
+          "type": "integer"
+        },
+        "syncs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "when": {
+                "type": "integer"
+              },
+              "took": {
+                "type": "integer"
+              },
+              "devices": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "os": {
+                      "type": "string"
+                    },
+                    "version": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "why": {
+                "type": "string"
+              },
+              "engines": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "took": {
+                      "type": "string"
+                    },
+                    "outgoing": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "sent": {
+                            "type": "integer"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "uid": {
+          "type": "string"
+        },
+        "deviceID": {
+          "type": "string"
+        },
+        "sessionStartDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "histograms": {
+          "type": "object",
+          "additionalProperties": {
+            @TELEMETRY_HISTOGRAM_1_JSON@
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "type",
+    "id",
+    "creationDate",
+    "version",
+    "application",
+    "payload"
+  ]
+}
