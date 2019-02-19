@@ -53,6 +53,8 @@
           "type": "array",
           "items": {
             "type": "object",
+            "additionalProperties": false,
+            "required": ["when", "took"],
             "properties": {
               "when": {
                 "description": "milliseconds since epoch",
@@ -117,7 +119,8 @@
                     },
                     "took": {
                       "description": "optional duration in milliseconds, values of 0 are omitted.",
-                      "type": "integer"
+                      "type": "integer",
+                      "minimum": 1
                     },
                     "status": {
                       "description": "The value of Status.engines, if it holds a non-success value.",
@@ -154,6 +157,7 @@
                       "type": "array",
                       "items": {
                         "type": "object",
+                        "additionalProperties": false,
                         "properties": {
                           "sent": {
                             "description": "Number of outgoing records sent. Zero values are omitted.",
