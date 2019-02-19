@@ -6,7 +6,14 @@
   "required": ["version", "syncs", "why", "uid"],
   "properties": {
     "version": { "type": "integer", "minimum": 0 },
-    "os": { "type": "object" },
+    "os": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "version": { "type": "string" },
+        "locale": { "type": "string" }
+      }
+    },
     "discarded": { "type": "integer", "minimum": 1 },
     "why": { "enum": ["shutdown", "schedule", "idchange"] },
     "uid": {
@@ -108,7 +115,8 @@
             "applied": { "type": "integer", "minimum": 1 },
             "failed": { "type": "integer", "minimum": 1 },
             "newFailed": { "type": "integer", "minimum": 1 },
-            "reconciled": { "type": "integer", "minimum": 1 }
+            "reconciled": { "type": "integer", "minimum": 1 },
+            "succeeded": { "type": "integer", "minimum": 1 }
           }
         },
         "outgoing": {
