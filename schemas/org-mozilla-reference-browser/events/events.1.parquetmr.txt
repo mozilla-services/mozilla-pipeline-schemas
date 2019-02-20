@@ -49,16 +49,49 @@ message baseline {
         required boolean value;
       }
     }
+    optional group labeled_boolean (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value (MAP) {
+          repeated group key_value {
+            required binary key (UTF8);
+            required boolean value;
+          }
+        }
+      }
+    }
     optional group string (MAP) {
       repeated group key_value {
         required binary key (UTF8);
         required binary value (UTF8);
       }
     }
+    optional group labeled_string (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value (MAP) {
+          repeated group key_value {
+            required binary key (UTF8);
+            required binary value (UTF8);
+          }
+        }
+      }
+    }
     optional group number (MAP) {
       repeated group key_value {
         required binary key (UTF8);
         required double value;
+      }
+    }
+    optional group labeled_number (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value (MAP) {
+          repeated group key_value {
+            required binary key (UTF8);
+            required double value;
+          }
+        }
       }
     }
     optional group string_list (MAP) {
@@ -71,10 +104,36 @@ message baseline {
         }
       }
     }
+    optional group labeled_string_list (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value (MAP) {
+          repeated group key_value {
+            required binary key (UTF8);
+            required group value (LIST) {
+              repeated group list {
+                required binary element (UTF8);
+              }
+            }
+          }
+        }
+      }
+    }
     optional group enumeration (MAP) {
       repeated group key_value {
         required binary key (UTF8);
         required binary value (UTF8);
+      }
+    }
+    optional group labeled_enumeration (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value (MAP) {
+          repeated group key_value {
+            required binary key (UTF8);
+            required binary value (UTF8);
+          }
+        }
       }
     }
     optional group counter (MAP) {
@@ -83,12 +142,37 @@ message baseline {
         required int64 value;
       }
     }
+    optional group labeled_counter (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value (MAP) {
+          repeated group key_value {
+            required binary key (UTF8);
+            required int64 value;
+          }
+        }
+      }
+    }
     optional group timespan (MAP) {
       repeated group key_value {
         required binary key (UTF8);
         required group value {
           required int64 value;
           required binary time_unit (UTF8);
+        }
+      }
+    }
+    optional group labeled_timespan (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value (MAP) {
+          repeated group key_value {
+            required binary key (UTF8);
+            required group value {
+              required int64 value;
+              required binary time_unit (UTF8);
+            }
+          }
         }
       }
     }
@@ -114,12 +198,53 @@ message baseline {
         }
       }
     }
+    optional group labeled_timing_distribution (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value (MAP) {
+          repeated group key_value {
+            required binary key (UTF8);
+            required group value {
+              required group range (TUPLE) {
+                required double lo;
+                required double hi;
+              }
+              required int64 bucket_count;
+              optional binary histogram_type (UTF8);
+              required group values (MAP) {
+                repeated group key_value {
+                  required binary key (UTF8);
+                  optional int64 value;
+                }
+              }
+              optional int64 underflow;
+              optional int64 overflow;
+              required binary time_unit (UTF8);
+            }
+          }
+        }
+      }
+    }
     optional group datetime (MAP) {
       repeated group key_value {
         required binary key (UTF8);
         required group value {
           optional binary value (UTF8);
           optional binary time_unit (UTF8);
+        }
+      }
+    }
+    optional group labeled_datetime (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value (MAP) {
+          repeated group key_value {
+            required binary key (UTF8);
+            required group value {
+              optional binary value (UTF8);
+              optional binary time_unit (UTF8);
+            }
+          }
         }
       }
     }
@@ -140,10 +265,43 @@ message baseline {
         }
       }
     }
+    optional group labeled_use_counter (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value (MAP) {
+          repeated group key_value {
+            required binary key (UTF8);
+            required group value {
+              optional group values (MAP) {
+                repeated group key_value {
+                  required binary key (UTF8);
+                  required int64 value;
+                }
+              }
+              optional group denominator {
+                optional binary name (UTF8);
+                optional int64 value;
+              }
+            }
+          }
+        }
+      }
+    }
     optional group usage (MAP) {
       repeated group key_value {
         required binary key (UTF8);
         required boolean value;
+      }
+    }
+    optional group labeled_usage (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value (MAP) {
+          repeated group key_value {
+            required binary key (UTF8);
+            required boolean value;
+          }
+        }
       }
     }
     optional group rate (MAP) {
@@ -152,10 +310,32 @@ message baseline {
         required int64 value;
       }
     }
+    optional group labeled_rate (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value (MAP) {
+          repeated group key_value {
+            required binary key (UTF8);
+            required int64 value;
+          }
+        }
+      }
+    }
     optional group uuid (MAP) {
       repeated group key_value {
         required binary key (UTF8);
         required binary value (UTF8);
+      }
+    }
+    optional group labeled_uuid (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value (MAP) {
+          repeated group key_value {
+            required binary key (UTF8);
+            required binary value (UTF8);
+          }
+        }
       }
     }
   }
