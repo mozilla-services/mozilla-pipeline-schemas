@@ -1,6 +1,17 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
+    "type": {
+      "type": "string",
+      "enum": [ "launcher-process-failure" ]
+    },
+    "version": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 1
+    },
+    @TELEMETRY_CREATIONDATE_1_JSON@,
+    @TELEMETRY_ID_1_JSON@,
     "update_channel": {
       "description": "Channel that this build was built for",
       "type": "string"
@@ -9,12 +20,12 @@
       "description": "Build ID of the failing binary",
       "type": "string"
     },
-    "version": {
+    "build_version": {
       "description": "Version of the failing binary",
       "type": "string"
     },
     "os_version": {
-      "description": "Windows version numnber in major.minor.build format",
+      "description": "Windows version numnber in major.minor.build.UBR format (UBR is optional, only available on Win10)",
       "type": "string"
     },
     "server_os": {
@@ -69,7 +80,7 @@
       "type": "object",
       "properties": {
         "source_file": {
-          "description": "The path of source file on the build machine where the failure originated",
+          "description": "The leaf name of the source file where the failure originated",
           "type": "string"
         },
         "source_line": {
@@ -132,6 +143,8 @@
     }
   },
   "required": [
+    "type",
+    "version",
     "update_channel",
     "cpu_arch",
     "num_logical_cpus",
