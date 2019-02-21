@@ -1,5 +1,7 @@
 # Version 2 (2019-02-08)
 
+- `UUID` was removed from the `metadata` section of the parquet schema.
+
 - The `ping_info` section no longer allows extra properties.
 
 - Changed datetime values from a (value, time_unit) pair to simply the raw
