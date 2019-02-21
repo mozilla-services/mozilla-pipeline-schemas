@@ -1,4 +1,4 @@
-# Version 2 (2019-02-08)
+# Version 2 (2019-02-21)
 
 - `UUID` was removed from the `metadata` section of the parquet schema.
 
@@ -14,7 +14,11 @@
 
 - Changed datetime values from a (value, time_unit) pair to simply the raw
   value.  (Backward-incompatible change).
-  
+
+- Changed the event schema to drop `object`, `value` and renaming
+  `method` to `name`.
+
+
 # Version 1
 
 - Added support for labeled metrics.
