@@ -1,4 +1,4 @@
-# Version 2 (2019-02-21)
+# Version 1
 
 - `UUID` was removed from the `metadata` section of the parquet schema.
 
@@ -17,9 +17,6 @@
 
 - Changed the event schema to drop `object`, `value` and renaming
   `method` to `name`.
-
-
-# Version 1
 
 - Added support for labeled metrics.
 

@@ -1,12 +1,12 @@
 {
-  "$id": "moz://mozilla.org/schemas/glean/ping/1",
+  "$id": "moz://mozilla.org/schemas/glean/ping/2",
   "$schema": "http://json-schema.org/draft-06/schema#",
   "additionalProperties": false,
-  "description": "Schema for the ping content sent by Mozilla's glean telemetry SDK",
+  "description": "Schema for the ping content sent by Mozilla's glean telemetry SDK\n",
   "properties": {
     "$schema": {
       "enum": [
-        "moz://mozilla.org/schemas/glean/ping/1"
+        "moz://mozilla.org/schemas/glean/ping/2"
       ]
     },
     "events": {
@@ -23,29 +23,18 @@
             "type": "string"
           },
           {
-            "type": "string"
-          },
-          {
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          {
             "additionalProperties": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": "string"
             },
-            "type": [
-              "object",
-              "null"
-            ]
+            "propertyNames": {
+              "maxLength": 40,
+              "type": "string"
+            },
+            "type": "object"
           }
         ],
-        "maxItems": 6,
-        "minItems": 4,
+        "maxItems": 4,
+        "minItems": 3,
         "type": "array"
       },
       "type": "array"
@@ -77,24 +66,8 @@
         },
         "datetime": {
           "additionalProperties": {
-            "properties": {
-              "time_unit": {
-                "enum": [
-                  "nanosecond",
-                  "microsecond",
-                  "millisecond",
-                  "second",
-                  "minute",
-                  "hour",
-                  "day"
-                ]
-              },
-              "value": {
-                "format": "datetime",
-                "type": "string"
-              }
-            },
-            "type": "object"
+            "format": "datetime",
+            "type": "string"
           },
           "propertyNames": {
             "maxLength": 61,
@@ -153,24 +126,8 @@
         "labeled_datetime": {
           "additionalProperties": {
             "additionalProperties": {
-              "properties": {
-                "time_unit": {
-                  "enum": [
-                    "nanosecond",
-                    "microsecond",
-                    "millisecond",
-                    "second",
-                    "minute",
-                    "hour",
-                    "day"
-                  ]
-                },
-                "value": {
-                  "format": "datetime",
-                  "type": "string"
-                }
-              },
-              "type": "object"
+              "format": "datetime",
+              "type": "string"
             },
             "propertyNames": {
               "pattern": "^[a-z_][a-z0-9_.]*$",
@@ -665,6 +622,7 @@
       }
     },
     "ping_info": {
+      "additionalProperties": false,
       "properties": {
         "app_build": {
           "type": "string"
@@ -672,7 +630,7 @@
         "app_display_version": {
           "type": "string"
         },
-        "clientId": {
+        "client_id": {
           "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
           "type": "string"
         },
@@ -709,6 +667,10 @@
             "type": "string"
           }
         },
+        "first_run_date": {
+          "format": "datetime",
+          "type": "string"
+        },
         "ping_type": {
           "maxLength": 30,
           "pattern": "^[a-z_][a-z0-9_]*$",
@@ -733,7 +695,8 @@
         "client_id",
         "seq",
         "start_time",
-        "end_time"
+        "end_time",
+        "first_run_date"
       ],
       "type": "object"
     }
