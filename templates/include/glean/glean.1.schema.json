@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
   "title": "Ping transport",
-  "description": "Schema for the ping content sent by Mozilla's glean telemetry SDK",
+  "description": "Schema for the ping content sent by Mozilla's glean telemetry SDK\n",
   "$id": "moz://mozilla.org/schemas/glean/ping/1",
   "type": "object",
   "properties": {
@@ -23,7 +23,10 @@
         "telemetry_sdk_build": {
           "type": "string"
         },
-        @TELEMETRY_CLIENTID_1_JSON@,
+        "client_id": {
+          "type": "string",
+          @COMMON_PATTERN_UUID_1_JSON@
+        },
         "seq": {
           "type": "integer"
         },
@@ -32,6 +35,10 @@
           "format": "datetime"
         },
         "end_time": {
+          "type": "string",
+          "format": "datetime"
+        },
+        "first_run_date": {
           "type": "string",
           "format": "datetime"
         },
@@ -57,6 +64,7 @@
           }
         }
       },
+      "additionalProperties": false,
       "required": [
         "ping_type",
         "app_build",
@@ -65,7 +73,8 @@
         "client_id",
         "seq",
         "start_time",
-        "end_time"
+        "end_time",
+        "first_run_date"
       ]
     },
     "metrics": {
@@ -218,7 +227,7 @@
     },
     "events": {
         "type": "array",
-        "items": @COMMON_EVENT_1_JSON@
+        "items": @GLEAN_EVENT_1_JSON@
     }
   },
   "required": [
