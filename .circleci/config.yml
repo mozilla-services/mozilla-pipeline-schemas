@@ -38,8 +38,8 @@ jobs:
             cmake ..
             cd ..
             echo "Inconsistencies between templates and rendered schemas:"
-            git ls-files --other -x schemas/*
-            test `git ls-files --other -x schemas/* | wc -l` = 0
+            git ls-files --other --modified -x schemas/*
+            test `git ls-files --other --modified -x schemas/* | wc -l` = 0
   integrate:
     executor: edge-validator
     steps:
