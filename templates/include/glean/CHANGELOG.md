@@ -1,5 +1,7 @@
 # Version 2 (2019-02-08)
 
+- `UUID` was removed from the `metadata` section of the parquet schema.
+
 - The field `clientId` was changed to `client_id` to consistently use snake case
   everywhere and to match what the glean library produces.
 
