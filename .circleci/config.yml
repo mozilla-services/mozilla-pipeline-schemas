@@ -22,6 +22,24 @@ jobs:
       - run:
           name: Test Code
           command: docker run mps
+  verify-generated-schemas:
+    docker:
+      - image: circleci/rust:1.32
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Verify that all generated schemas are committed
+          command: |
+            sudo apt-get update
+            sudo apt-get -y install cmake jq
+            mkdir release
+            cd release
+            cmake ..
+            cd ..
+            echo "Inconsistencies between templates and rendered schemas:"
+            git ls-files --other --modified -x schemas/*
+            test `git ls-files --other --modified -x schemas/* | wc -l` = 0
   integrate:
     executor: edge-validator
     steps:
@@ -85,6 +103,7 @@ workflows:
               branches:
                 # This branch is only used for the .github/push-to-trigger-integration script
                 ignore: trigger-integration
+        - verify-generated-schemas
         - integrate:
             filters:
               branches:
