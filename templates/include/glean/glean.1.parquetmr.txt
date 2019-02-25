@@ -15,7 +15,6 @@ message baseline {
     required binary documentId (UTF8);
     required binary geoCity (UTF8);
     required binary geoCountry (UTF8);
-    required fixed_len_byte_array(16) Uuid;
     required int32 Pid;
     required int64 Timestamp;
   }
@@ -27,6 +26,7 @@ message baseline {
     required int32 seq;
     required binary start_time (UTF8);
     required binary end_time (UTF8);
+    required binary first_run_date (UTF8);
     optional group experiments (MAP) {
       repeated group key_value {
         required binary key (UTF8);
@@ -267,8 +267,17 @@ message baseline {
   }
   optional group events (LIST) {
     repeated group list {
-      required group element @COMMON_EVENT_1_TXT@
+      required group element (TUPLE) {
+        required int64 timestamp;
+        required binary category (UTF8);
+        required binary name (UTF8);
+        optional group extra (MAP) {
+          repeated group key_value {
+            required binary key (UTF8);
+            optional binary value (UTF8);
+          }
+        }
+      }
     }
   }
-  
 }
