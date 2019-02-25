@@ -1,0 +1,170 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "build_id": {
+      "description": "Build ID of the failing binary",
+      "type": "string"
+    },
+    "build_version": {
+      "description": "Version of the failing binary",
+      "type": "string"
+    },
+    "cpu_arch": {
+      "description": "One of the values from the Windows SYSTEM_INFO::wProcessorArchitecture field",
+      "type": "integer"
+    },
+    "creationDate": {
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{3}Z$",
+      "type": "string"
+    },
+    "id": {
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "type": "string"
+    },
+    "launcher_error": {
+      "description": "The error that raised the launcher process failure",
+      "properties": {
+        "hresult": {
+          "description": "The HRESULT error code from the launcher failure",
+          "type": "integer"
+        },
+        "source_file": {
+          "description": "The leaf name of the source file where the failure originated",
+          "type": "string"
+        },
+        "source_line": {
+          "description": "The line in the source code where the failure originated",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "memory": {
+      "description": "Information about the host computer's memory configuration",
+      "properties": {
+        "avail_page_file": {
+          "description": "Free space available in the page file, in bytes",
+          "type": "integer"
+        },
+        "avail_phys": {
+          "description": "Available physical memory on the machine, in bytes",
+          "type": "integer"
+        },
+        "avail_virt": {
+          "description": "Available virtual memory on the machine, in bytes",
+          "type": "integer"
+        },
+        "total_phys": {
+          "description": "Total physical memory on the machine, in bytes",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "modules": {
+      "additionalProperties": {
+        "items": [
+          {
+            "description": "Version number in the format major.minor.patch.build",
+            "type": "string"
+          },
+          {
+            "description": "Index into the signatures array indicating which signature this binary was signed with",
+            "type": "integer"
+          }
+        ],
+        "maxItems": 2,
+        "minItems": 1,
+        "type": "array"
+      },
+      "description": "List of leaf names of all modules found in the launcher process at the time of failure",
+      "maxProperties": 1000,
+      "minProperties": 1,
+      "type": "object"
+    },
+    "num_logical_cpus": {
+      "description": "The number of logical CPUs on the host machine",
+      "type": "integer"
+    },
+    "os_locale": {
+      "description": "The current user's OS locale setting",
+      "type": "string"
+    },
+    "os_version": {
+      "description": "Windows version numnber in major.minor.build.UBR format (UBR is optional, only available on Win10)",
+      "type": "string"
+    },
+    "security": {
+      "description": "Information about the security applications registered with Windows on the host computer",
+      "properties": {
+        "antispyware": {
+          "description": "Names of antispyware products registred on the host system",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "type": "array"
+        },
+        "av": {
+          "description": "Names of antivirus products registred on the host system",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "type": "array"
+        },
+        "firewall": {
+          "description": "Names of firewall products registred on the host system",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "server_os": {
+      "description": "True if this build was running atop a Windows Server OS",
+      "type": "boolean"
+    },
+    "signatures": {
+      "description": "Array of all the signatures that were found during module enumeration",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 1000,
+      "type": "array"
+    },
+    "type": {
+      "enum": [
+        "launcher-process-failure"
+      ],
+      "type": "string"
+    },
+    "update_channel": {
+      "description": "Channel that this build was built for",
+      "type": "string"
+    },
+    "version": {
+      "maximum": 1,
+      "minimum": 1,
+      "type": "number"
+    },
+    "xpcom_abi": {
+      "description": "This build's XPCOM_ABI string",
+      "type": "string"
+    }
+  },
+  "required": [
+    "type",
+    "version",
+    "update_channel",
+    "cpu_arch",
+    "num_logical_cpus",
+    "xpcom_abi",
+    "launcher_error"
+  ],
+  "title": "launcher-process-failure",
+  "type": "object"
+}
