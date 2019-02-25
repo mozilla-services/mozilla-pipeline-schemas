@@ -117,6 +117,7 @@ function process_message()
                         if not ok then error(err) end
                     else -- "fail"
                         if ok then error(string.format("Validation should not have passed: %s", fn)) end
+                        return 0
                     end
 
                     msg.Type = namespace
