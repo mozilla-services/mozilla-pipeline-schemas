@@ -103,9 +103,12 @@ function process_message()
         local mode = lfs.attributes(fqdn, "mode")
         if mode == "directory" and not namespace:match("^%.") then
             for fn in lfs.dir(fqdn) do
-                local schema, version, test, outcome = fn:match("(.+)%.(%d+)%.([%w_]+)%.(pass).json$")
+                local schema, version, test, outcome = fn:match("(.+)%.(%d+)%.([%w_-]+)%.(pass)%.json$")
                 if not schema then
-                    schema, version, test, outcome = fn:match("(.+)%.(%d+)%.([%w_]+)%.(fail).json$")
+                    schema, version, test, outcome = fn:match("(.+)%.(%d+)%.([%w_-]+)%.(fail)%.json$")
+                end
+                if not schema and fn:match("%.json$") then
+                    error(string.format("found '%s' filename should be <schema>.<version>.<test_name>.<pass|fail>.json", fn))
                 end
                 if schema then
                     local fqfn = string.format("%s/%s", fqdn, fn)
