@@ -115,16 +115,14 @@ function process_message()
                     local ok, err = doc:validate(schemas[string.format("%s.%s.%s", namespace, schema, version)])
                     if outcome == "pass" then
                         if not ok then error(err) end
+                        msg.Type = namespace
+                        msg.Fields.docType = schema
+                        msg.Fields.sourceVersion = tonumber(version)
+                        msg.Payload = json
+                        inject_message(msg)
                     else -- "fail"
                         if ok then error(string.format("Validation should not have passed: %s", fn)) end
-                        return 0
                     end
-
-                    msg.Type = namespace
-                    msg.Fields.docType = schema
-                    msg.Fields.sourceVersion = tonumber(version)
-                    msg.Payload = json
-                    inject_message(msg)
                 end
             end
         end
