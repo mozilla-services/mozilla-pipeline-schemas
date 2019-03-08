@@ -48,13 +48,9 @@ message launcher-process-failure {
   optional group modules (MAP) {
     repeated group key_value {
       required binary key (UTF8);
-      required group value (LIST) {
-        repeated group list {
-          required group element {
-            required binary version (UTF8);
-            optional int64 signatureIndex;
-          }
-        }
+      required group value (TUPLE) {
+        required binary version (UTF8);
+        optional int64 signatureIndex;
       }
     }
   }
