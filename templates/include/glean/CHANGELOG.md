@@ -22,3 +22,5 @@
 
 - Added support for the sending the set of active experiments in the ping_info
   section.
+
+- Added `sum` to histogram and `timing_distribution` as optional parameter.
