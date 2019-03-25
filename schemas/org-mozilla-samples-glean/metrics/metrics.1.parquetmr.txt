@@ -18,15 +18,23 @@ message baseline {
     required int32 Pid;
     required int64 Timestamp;
   }
+  required group client_info {
+    required binary app_build (UTF8);
+    required binary app_display_version (UTF8);
+    required binary architecture (UTF8);
+    required binary client_id (UTF8);
+    required binary device_manufacturer (UTF8);
+    required binary device_model (UTF8);
+    required binary first_run_date (UTF8);
+    required binary os (UTF8);
+    required binary os_version (UTF8);
+    required binary telemetry_sdk_build (UTF8);
+  }
   required group ping_info {
     required binary ping_type (UTF8);
-    required binary app_build (UTF8);
-    required binary telemetry_sdk_build (UTF8);
-    required binary client_id (UTF8);
     required int32 seq;
     required binary start_time (UTF8);
     required binary end_time (UTF8);
-    required binary first_run_date (UTF8);
     optional group experiments (MAP) {
       repeated group key_value {
         required binary key (UTF8);

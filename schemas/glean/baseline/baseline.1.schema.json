@@ -9,6 +9,56 @@
         "moz://mozilla.org/schemas/glean/ping/1"
       ]
     },
+    "client_info": {
+      "additionalProperties": false,
+      "properties": {
+        "app_build": {
+          "type": "string"
+        },
+        "app_display_version": {
+          "type": "string"
+        },
+        "architecture": {
+          "type": "string"
+        },
+        "client_id": {
+          "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+          "type": "string"
+        },
+        "device_manufacturer": {
+          "type": "string"
+        },
+        "device_model": {
+          "type": "string"
+        },
+        "first_run_date": {
+          "format": "datetime",
+          "type": "string"
+        },
+        "os": {
+          "type": "string"
+        },
+        "os_version": {
+          "type": "string"
+        },
+        "telemetry_sdk_build": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "app_build",
+        "app_display_version",
+        "architecture",
+        "client_id",
+        "device_manufacturer",
+        "device_model",
+        "first_run_date",
+        "os",
+        "os_version",
+        "telemetry_sdk_build"
+      ],
+      "type": "object"
+    },
     "events": {
       "items": {
         "items": [
@@ -630,16 +680,6 @@
     "ping_info": {
       "additionalProperties": false,
       "properties": {
-        "app_build": {
-          "type": "string"
-        },
-        "app_display_version": {
-          "type": "string"
-        },
-        "client_id": {
-          "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
-          "type": "string"
-        },
         "end_time": {
           "format": "datetime",
           "type": "string"
@@ -673,10 +713,6 @@
             "type": "string"
           }
         },
-        "first_run_date": {
-          "format": "datetime",
-          "type": "string"
-        },
         "ping_type": {
           "maxLength": 30,
           "pattern": "^[a-z_][a-z0-9_]*$",
@@ -688,21 +724,13 @@
         "start_time": {
           "format": "datetime",
           "type": "string"
-        },
-        "telemetry_sdk_build": {
-          "type": "string"
         }
       },
       "required": [
         "ping_type",
-        "app_build",
-        "app_display_version",
-        "telemetry_sdk_build",
-        "client_id",
         "seq",
         "start_time",
-        "end_time",
-        "first_run_date"
+        "end_time"
       ],
       "type": "object"
     }
