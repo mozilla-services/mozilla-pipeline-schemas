@@ -1,5 +1,7 @@
 # Version 1
 
+- Make `client_info` required.
+
 - Explicit types added for all objects and strings.
 
 - `UUID` was removed from the `metadata` section of the parquet schema.
