@@ -1,17 +1,18 @@
 {
-  "type": "array",
-  "items": [
-    {
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "timestamp": {
       "type": "integer",
       "minimum": 0
     },
-    {
+    "category": {
       "type": "string"
     },
-    {
+    "name": {
       "type": "string"
     },
-    {
+    "extra": {
       "type": "object",
       "additionalProperties": {
         "type": "string"
@@ -21,7 +22,10 @@
         "maxLength": 40
       }
     }
-  ],
-  "minItems": 3,
-  "maxItems": 4
+  },
+  "required": [
+    "timestamp",
+    "category",
+    "name"
+  ]
 }

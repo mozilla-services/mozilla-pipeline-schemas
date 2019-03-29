@@ -68,18 +68,12 @@
     },
     "events": {
       "items": {
-        "items": [
-          {
-            "minimum": 0,
-            "type": "integer"
-          },
-          {
+        "additionalProperties": false,
+        "properties": {
+          "category": {
             "type": "string"
           },
-          {
-            "type": "string"
-          },
-          {
+          "extra": {
             "additionalProperties": {
               "type": "string"
             },
@@ -88,11 +82,21 @@
               "type": "string"
             },
             "type": "object"
+          },
+          "name": {
+            "type": "string"
+          },
+          "timestamp": {
+            "minimum": 0,
+            "type": "integer"
           }
+        },
+        "required": [
+          "timestamp",
+          "category",
+          "name"
         ],
-        "maxItems": 4,
-        "minItems": 3,
-        "type": "array"
+        "type": "object"
       },
       "type": "array"
     },
