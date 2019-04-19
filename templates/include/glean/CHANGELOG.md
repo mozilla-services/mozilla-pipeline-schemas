@@ -1,5 +1,7 @@
 # Version 1
 
+- Make `client_id` optional.
+
 - Make `client_info` required.
 
 - Explicit types added for all objects and strings.
