@@ -1,0 +1,17 @@
+required int64 bucket_count;
+required int64 histogram_type;
+
+required group range (LIST) {
+  repeated group list {
+    required int64 element;
+  }
+}
+
+required int64 sum;
+
+required group values (MAP) {
+  repeated group key_value {
+    required binary key (UTF8);
+    optional int64 value;
+  }
+}
