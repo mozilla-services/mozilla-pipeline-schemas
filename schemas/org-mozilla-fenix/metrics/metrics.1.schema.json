@@ -103,26 +103,22 @@
       "additionalProperties": false,
       "properties": {
         "boolean": {
-          "additionalProperties": {
-            "type": "boolean"
-          },
-          "propertyNames": {
-            "maxLength": 61,
-            "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
-            "type": "string"
-          },
-          "type": "object"
+          "additionalProperties": false,
+          "type": "object",
+          "properties": {
+            "metrics.default_browser": {
+              "type": "boolean"
+            }
+          }
         },
         "counter": {
-          "additionalProperties": {
-            "type": "integer"
-          },
-          "propertyNames": {
-            "maxLength": 61,
-            "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
-            "type": "string"
-          },
-          "type": "object"
+          "additionalProperties": false,
+          "type": "object",
+          "properties": {
+            "events.total_uri_count": {
+              "type": "integer"
+            }
+          }
         },
         "datetime": {
           "additionalProperties": {
@@ -166,22 +162,20 @@
           "type": "object"
         },
         "labeled_counter": {
-          "additionalProperties": {
-            "additionalProperties": {
-              "type": "integer"
-            },
-            "propertyNames": {
-              "pattern": "^[a-z_][a-z0-9_.]*$",
-              "type": "string"
-            },
-            "type": "object"
-          },
-          "propertyNames": {
-            "maxLength": 61,
-            "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
-            "type": "string"
-          },
-          "type": "object"
+          "additionalProperties": false,
+          "type": "object",
+          "properties": {
+            "metrics.search_count": {
+              "additionalProperties": {
+                "type": "integer"
+              },
+              "propertyNames": {
+                "pattern": "^[a-z_][a-z0-9_.]*$",
+                "type": "string"
+              },
+              "type": "object"
+            }
+          }
         },
         "labeled_datetime": {
           "additionalProperties": {
@@ -507,29 +501,34 @@
           "type": "object"
         },
         "string": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "propertyNames": {
-            "maxLength": 61,
-            "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
-            "type": "string"
-          },
-          "type": "object"
-        },
-        "string_list": {
-          "additionalProperties": {
-            "items": {
+          "additionalProperties": false,
+          "type": "object",
+          "properties": {
+            "search.default_engine.code": {
               "type": "string"
             },
-            "type": "array"
-          },
-          "propertyNames": {
-            "maxLength": 61,
-            "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
-            "type": "string"
-          },
-          "type": "object"
+            "search.default_engine.name": {
+              "type": "string"
+            },
+            "search.default_engine.submission_url": {
+              "type": "string"
+            },
+            "metrics.default_moz_browser": {
+              "type": "string"
+            }
+          }
+        },
+        "string_list": {
+          "additionalProperties": false,
+          "type": "object",
+          "properties": {
+            "metrics.mozilla_products": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          }
         },
         "timespan": {
           "additionalProperties": {
@@ -745,11 +744,115 @@
         "end_time"
       ],
       "type": "object"
+    },
+    "additional_properties": {
+      "description": "A JSON string containing any payload properties not present in the schema",
+      "type": "string"
+    },
+    "document_id": {
+      "description": "The document ID specified in the URI when the client sent this message",
+      "type": "string"
+    },
+    "metadata": {
+      "properties": {
+        "geo": {
+          "description": "Results of a geographic lookup based on the client's IP address",
+          "properties": {
+            "city": {
+              "type": "string"
+            },
+            "country": {
+              "description": "An ISO 3166-1 alpha-2 country code",
+              "type": "string"
+            },
+            "db_version": {
+              "description": "The specific geo database version used for this lookup",
+              "type": "string"
+            },
+            "subdivision1": {
+              "description": "First major country subdivision, typically a state, province, or county",
+              "type": "string"
+            },
+            "subdivision2": {
+              "description": "Second major country subdivision; not applicable for most countries",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "header": {
+          "description": "Headers included in the client's HTTP request",
+          "properties": {
+            "date": {
+              "description": "Date HTTP header",
+              "type": "string"
+            },
+            "dnt": {
+              "description": "DNT (Do Not Track) HTTP header",
+              "type": "string"
+            },
+            "x_debug_id": {
+              "description": "X-Debug-Id HTTP header",
+              "type": "string"
+            },
+            "x_pingsender_version": {
+              "description": "X-PingSender-Version HTTP header",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "user_agent": {
+          "description": "Parsed components of the client's user agent string",
+          "properties": {
+            "browser": {
+              "type": "string"
+            },
+            "os": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "normalized_app_name": {
+      "description": "Set to \"Other\" if this message contained an unrecognized app name",
+      "type": "string"
+    },
+    "normalized_channel": {
+      "description": "Set to \"Other\" if this message contained an unrecognized channel name",
+      "type": "string"
+    },
+    "normalized_country_code": {
+      "description": "An ISO 3166-1 alpha-2 country code",
+      "type": "string"
+    },
+    "normalized_os": {
+      "description": "Set to \"Other\" if this message contained an unrecognized OS name",
+      "type": "string"
+    },
+    "normalized_os_version": {
+      "type": "string"
+    },
+    "sample_id": {
+      "description": "Hashed version of client_id (if present) useful for partitioning; ranges from 0 to 99",
+      "type": "integer"
+    },
+    "submission_timestamp": {
+      "description": "Time when the ingestion edge server accepted this message",
+      "type": "string"
     }
   },
   "required": [
     "ping_info",
-    "client_info"
+    "client_info",
+    "submission_timestamp",
+    "metadata"
   ],
   "title": "Ping transport",
   "type": "object"
