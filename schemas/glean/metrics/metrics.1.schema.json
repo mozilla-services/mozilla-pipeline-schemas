@@ -507,13 +507,15 @@
           "type": "object"
         },
         "string": {
-          "additionalProperties": false,
-          "type": "object",
-          "properties": {
-            "glean.baseline.locale": {
-              "type": "string"
-            }
-          }
+          "additionalProperties": {
+            "type": "string"
+          },
+          "propertyNames": {
+            "maxLength": 61,
+            "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
+            "type": "string"
+          },
+          "type": "object"
         },
         "string_list": {
           "additionalProperties": {
@@ -530,33 +532,35 @@
           "type": "object"
         },
         "timespan": {
-          "additionalProperties": false,
-          "type": "object",
-          "properties": {
-            "glean.baseline.duration": {
-              "properties": {
-                "time_unit": {
-                  "enum": [
-                    "nanosecond",
-                    "microsecond",
-                    "millisecond",
-                    "second",
-                    "minute",
-                    "hour",
-                    "day"
-                  ]
-                },
-                "value": {
-                  "type": "integer"
-                }
+          "additionalProperties": {
+            "properties": {
+              "time_unit": {
+                "enum": [
+                  "nanosecond",
+                  "microsecond",
+                  "millisecond",
+                  "second",
+                  "minute",
+                  "hour",
+                  "day"
+                ]
               },
-              "required": [
-                "value",
-                "time_unit"
-              ],
-              "type": "object"
-            }
-          }
+              "value": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "value",
+              "time_unit"
+            ],
+            "type": "object"
+          },
+          "propertyNames": {
+            "maxLength": 61,
+            "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
+            "type": "string"
+          },
+          "type": "object"
         },
         "timing_distribution": {
           "additionalProperties": {
