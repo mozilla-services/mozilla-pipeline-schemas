@@ -77,6 +77,8 @@ foreach(ITEM IN ITEMS ${SCHEMAS})
         message(FATAL_ERROR "parquetfmt output error ${PFMT_RV} ${ITEM}")
       endif()
       file(REMOVE ${TMP_FILE}) # the tmp file is intentionally not removed on failure so it can be examined
+    elseif(ITEM MATCHES "/README\\.")
+      # ignore README files
     else()
       configure_file(${IN_FILE} ${OUT_FILE} @ONLY)
     endif()
