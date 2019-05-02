@@ -1,61 +1,75 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
-    "addon_version": {
+    "created": {
+      "type": "integer"
+    },
+    "device": {
       "type": "string"
     },
-    "impression_id": {
-      "description": "A UUID representing this impression",
-      "pattern": "^\\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\}$",
-      "type": "string"
+    "events": {
+      "items": {
+        "items": [
+          {
+            "minimum": 0,
+            "type": "integer"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          {
+            "additionalProperties": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "type": [
+              "object",
+              "null"
+            ]
+          }
+        ],
+        "maxItems": 6,
+        "minItems": 4,
+        "type": "array"
+      },
+      "type": "array"
     },
     "locale": {
       "type": "string"
     },
-    "release_channel": {
+    "os": {
       "type": "string"
     },
-    "shield_id": {
-      "description": "A semicolon separated string to store a list of Shield study IDs",
+    "osversion": {
       "type": "string"
     },
-    "spoc_fills": {
-      "items": {
-        "properties": {
-          "displayed": {
-            "type": "integer"
-          },
-          "full_recalc": {
-            "type": "integer"
-          },
-          "id": {
-            "type": "integer"
-          },
-          "reason": {
-            "enum": [
-              "frequency_cap",
-              "blocked_by_user",
-              "below_min_score",
-              "campaign_duplicate",
-              "probability_selection",
-              "n/a",
-              "out_of_position"
-            ],
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "displayed",
-          "reason",
-          "full_recalc"
-        ],
-        "type": "object"
-      },
-      "type": "array"
-    },
-    "version": {
+    "pocketId": {
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
       "type": "string"
+    },
+    "processStartTimestamp": {
+      "type": "integer"
+    },
+    "seq": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "v": {
+      "type": "integer"
     },
     "additional_properties": {
       "description": "A JSON string containing any payload properties not present in the schema",
@@ -157,19 +171,23 @@
     },
     "submission_timestamp": {
       "description": "Time when the ingestion edge server accepted this message",
+      "format": "date-time",
       "type": "string"
     }
   },
   "required": [
-    "impression_id",
+    "v",
+    "pocketId",
+    "seq",
     "locale",
-    "version",
-    "addon_version",
-    "release_channel",
-    "spocs_fills",
+    "os",
+    "osversion",
+    "created",
+    "processStartTimestamp",
+    "events",
     "submission_timestamp",
     "metadata"
   ],
-  "title": "spocs-fills",
+  "title": "mobile-event",
   "type": "object"
 }

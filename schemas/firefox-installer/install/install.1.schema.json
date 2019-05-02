@@ -1,0 +1,315 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "64bit_build": {
+      "description": "True if the installed build is 64-bit",
+      "type": "boolean"
+    },
+    "64bit_os": {
+      "description": "True if the OS this installer ran on is 64-bit",
+      "type": "boolean"
+    },
+    "admin_user": {
+      "description": "True if the user account which ran the installer had administrative privileges",
+      "type": "boolean"
+    },
+    "attribution": {
+      "description": "Any attribution data that was included with the installer",
+      "type": "string"
+    },
+    "build_channel": {
+      "description": "Channel the installer was built with the branding for",
+      "type": "string"
+    },
+    "build_id": {
+      "description": "Build ID of the installed product. Absent for a failed stub installation.",
+      "type": "string"
+    },
+    "bytes_downloaded": {
+      "description": "Size of the full installer data that was actually transferred",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "default_path": {
+      "description": "True if the user did not customize the installation path",
+      "type": "boolean"
+    },
+    "disk_space_error": {
+      "description": "True if the installation failed because the drive we're trying to install to does not have enough space",
+      "type": "boolean"
+    },
+    "download_ip": {
+      "description": "IP address of the server the full installer was downloaded from. May be either IPv4 or IPv6.",
+      "type": "string"
+    },
+    "download_latency": {
+      "description": "Seconds between sending the full installer download request and receiving the first response data",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "download_retries": {
+      "description": "Number of times the full installer download was retried or resumed",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "download_size": {
+      "description": "Expected size of the full installer download according to the HTTP response",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "download_time": {
+      "description": "Seconds spent downloading the full installer",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "file_error": {
+      "description": "True if the installation failed because the downloaded file couldn\u2019t be read from",
+      "type": "boolean"
+    },
+    "finish_time": {
+      "description": "For a stub ping, seconds spent waiting for the installed application to launch. For a full ping, seconds spent on the finish page.",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "from_msi": {
+      "description": "True if the install was launched from an MSI wrapper",
+      "type": "boolean"
+    },
+    "had_old_install": {
+      "description": "True if at least one existing installation of Firefox was found on the system prior to this installation",
+      "type": "boolean"
+    },
+    "install_time": {
+      "description": "For a stub ping, seconds the full installer ran for. For a full ping, seconds spent on the install progress page.",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "install_timeout": {
+      "description": "True if the installation failed because running the full installer timed out. Currently that means it ran for more than 150 seconds for a new installation, or 165 seconds for a paveover installation.",
+      "type": "boolean"
+    },
+    "installer_type": {
+      "description": "Which type of installer generated this ping (full or stub)",
+      "type": "string"
+    },
+    "installer_version": {
+      "description": "Version of the installer itself. May be different from the product version for a stub install.",
+      "type": "string"
+    },
+    "intro_time": {
+      "description": "Seconds spent on the intro screen",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "locale": {
+      "description": "Locale of the installer and the installed product, in AB_CD format",
+      "type": "string"
+    },
+    "manual_download": {
+      "description": "True if the user clicked through the error message to the manual full installer download page.",
+      "type": "boolean"
+    },
+    "new_default": {
+      "description": "True if the new installation was successfully set as the default browser",
+      "type": "boolean"
+    },
+    "new_launched": {
+      "description": "True if the installation succeeded and we were able to launch the newly installed application.",
+      "type": "boolean"
+    },
+    "no_write_access": {
+      "description": "True if the installation failed because the user doesn\u2019t have permission to write to the path we\u2019re trying to install to.",
+      "type": "boolean"
+    },
+    "old_build_id": {
+      "description": "Build ID of the previously installed Firefox, if any",
+      "type": "string"
+    },
+    "old_default": {
+      "description": "True if an existing Firefox installation was already set as the default browser",
+      "type": "boolean"
+    },
+    "old_running": {
+      "description": "True if the installation succeeded and we weren\u2019t able to launch the newly installed application because a copy of Firefox was already running.",
+      "type": "boolean"
+    },
+    "old_version": {
+      "description": "Version of the previously installed Firefox, if any",
+      "type": "string"
+    },
+    "options_time": {
+      "description": "Seconds spent in the options screens. For the stub installer this includes only the profile cleanup prompt.",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "os_version": {
+      "description": "Windows version number in major.minor.build format",
+      "type": "string"
+    },
+    "out_of_retries": {
+      "description": "True if the installation failed because the download had to be retried too many times (currently 10)",
+      "type": "boolean"
+    },
+    "preinstall_time": {
+      "description": "Seconds spent verifying the downloaded full installer and preparing to run it",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "profile_cleanup_prompt": {
+      "description": "Which type of profile cleanup prompt was shown, (reinstall or paveover)",
+      "type": "string"
+    },
+    "profile_cleanup_requested": {
+      "description": "True if either profile cleanup prompt was shown and the user accepted the prompt",
+      "type": "boolean"
+    },
+    "server_os": {
+      "description": "True if the OS this installer ran on is Windows Server",
+      "type": "boolean"
+    },
+    "service_pack": {
+      "description": "Latest installed service pack number",
+      "type": "string"
+    },
+    "set_default": {
+      "description": "True if the option to set the new installation as the default browser was selected",
+      "type": "boolean"
+    },
+    "sig_not_trusted": {
+      "description": "True if the installation failed because the signature on the downloaded file wasn\u2019t valid and/or wasn\u2019t signed by a trusted authority",
+      "type": "boolean"
+    },
+    "sig_unexpected": {
+      "description": "True if the installation failed because the signature on the downloaded file didn\u2019t have the expected subject and issuer names",
+      "type": "boolean"
+    },
+    "succeeded": {
+      "description": "True if a new installation was successfully created. If false, check the error status fields for the failure reason.",
+      "type": "boolean"
+    },
+    "update_channel": {
+      "description": "Value of MOZ_UPDATE_CHANNEL the installer was built with. Generally the same as build_channel",
+      "type": "string"
+    },
+    "user_cancelled": {
+      "description": "True if the installation failed because the user cancelled it or closed the window",
+      "type": "boolean"
+    },
+    "version": {
+      "description": "Version of the installed product. May be different from installer_version for a stub install. Absent for a failed stub installation.",
+      "type": "string"
+    },
+    "additional_properties": {
+      "description": "A JSON string containing any payload properties not present in the schema",
+      "type": "string"
+    },
+    "document_id": {
+      "description": "The document ID specified in the URI when the client sent this message",
+      "type": "string"
+    },
+    "metadata": {
+      "properties": {
+        "geo": {
+          "description": "Results of a geographic lookup based on the client's IP address",
+          "properties": {
+            "city": {
+              "type": "string"
+            },
+            "country": {
+              "description": "An ISO 3166-1 alpha-2 country code",
+              "type": "string"
+            },
+            "db_version": {
+              "description": "The specific geo database version used for this lookup",
+              "type": "string"
+            },
+            "subdivision1": {
+              "description": "First major country subdivision, typically a state, province, or county",
+              "type": "string"
+            },
+            "subdivision2": {
+              "description": "Second major country subdivision; not applicable for most countries",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "header": {
+          "description": "Headers included in the client's HTTP request",
+          "properties": {
+            "date": {
+              "description": "Date HTTP header",
+              "type": "string"
+            },
+            "dnt": {
+              "description": "DNT (Do Not Track) HTTP header",
+              "type": "string"
+            },
+            "x_debug_id": {
+              "description": "X-Debug-Id HTTP header",
+              "type": "string"
+            },
+            "x_pingsender_version": {
+              "description": "X-PingSender-Version HTTP header",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "user_agent": {
+          "description": "Parsed components of the client's user agent string",
+          "properties": {
+            "browser": {
+              "type": "string"
+            },
+            "os": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "normalized_app_name": {
+      "description": "Set to \"Other\" if this message contained an unrecognized app name",
+      "type": "string"
+    },
+    "normalized_channel": {
+      "description": "Set to \"Other\" if this message contained an unrecognized channel name",
+      "type": "string"
+    },
+    "normalized_country_code": {
+      "description": "An ISO 3166-1 alpha-2 country code",
+      "type": "string"
+    },
+    "normalized_os": {
+      "description": "Set to \"Other\" if this message contained an unrecognized OS name",
+      "type": "string"
+    },
+    "normalized_os_version": {
+      "type": "string"
+    },
+    "sample_id": {
+      "description": "Hashed version of client_id (if present) useful for partitioning; ranges from 0 to 99",
+      "type": "integer"
+    },
+    "submission_timestamp": {
+      "description": "Time when the ingestion edge server accepted this message",
+      "format": "date-time",
+      "type": "string"
+    }
+  },
+  "required": [
+    "installer_type",
+    "installer_version",
+    "build_channel",
+    "submission_timestamp",
+    "metadata"
+  ],
+  "title": "install",
+  "type": "object"
+}
