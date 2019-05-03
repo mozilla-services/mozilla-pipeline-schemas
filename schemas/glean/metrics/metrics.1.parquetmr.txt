@@ -1,0 +1,363 @@
+message baseline {
+  required group metadata {
+    optional binary EnvVersion (UTF8);
+    optional binary Host (UTF8);
+    optional binary appUpdateChannel (UTF8);
+    optional binary geoSubdivision1 (UTF8);
+    optional binary geoSubdivision2 (UTF8);
+    optional binary normalizedChannel (UTF8);
+    optional double docVersion;
+    optional int32 Severity;
+    required binary Hostname (UTF8);
+    required binary Logger (UTF8);
+    required binary Type (UTF8);
+    required binary docType (UTF8);
+    required binary documentId (UTF8);
+    required binary geoCity (UTF8);
+    required binary geoCountry (UTF8);
+    required int32 Pid;
+    required int64 Timestamp;
+  }
+  required group client_info {
+    required binary app_build (UTF8);
+    required binary app_display_version (UTF8);
+    optional binary app_channel (UTF8);
+    required binary architecture (UTF8);
+    optional binary client_id (UTF8);
+    required binary device_manufacturer (UTF8);
+    required binary device_model (UTF8);
+    required binary first_run_date (UTF8);
+    required binary os (UTF8);
+    required binary os_version (UTF8);
+    optional binary android_sdk_version (UTF8);
+    required binary telemetry_sdk_build (UTF8);
+  }
+  required group ping_info {
+    required binary ping_type (UTF8);
+    required int32 seq;
+    required binary start_time (UTF8);
+    required binary end_time (UTF8);
+    optional group experiments (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value {
+          required binary branch (UTF8);
+          optional group extra (MAP) {
+            repeated group key_value {
+              required binary key (UTF8);
+              required binary value (UTF8);
+            }
+          }
+        }
+      }
+    }
+  }
+  optional group metrics {
+    optional group boolean (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required boolean value;
+      }
+    }
+    optional group labeled_boolean (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value (MAP) {
+          repeated group key_value {
+            required binary key (UTF8);
+            required boolean value;
+          }
+        }
+      }
+    }
+    optional group string (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required binary value (UTF8);
+      }
+    }
+    optional group labeled_string (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value (MAP) {
+          repeated group key_value {
+            required binary key (UTF8);
+            required binary value (UTF8);
+          }
+        }
+      }
+    }
+    optional group number (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required double value;
+      }
+    }
+    optional group labeled_number (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value (MAP) {
+          repeated group key_value {
+            required binary key (UTF8);
+            required double value;
+          }
+        }
+      }
+    }
+    optional group string_list (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value (LIST) {
+          repeated group list {
+            required binary element (UTF8);
+          }
+        }
+      }
+    }
+    optional group labeled_string_list (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value (MAP) {
+          repeated group key_value {
+            required binary key (UTF8);
+            required group value (LIST) {
+              repeated group list {
+                required binary element (UTF8);
+              }
+            }
+          }
+        }
+      }
+    }
+    optional group enumeration (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required binary value (UTF8);
+      }
+    }
+    optional group labeled_enumeration (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value (MAP) {
+          repeated group key_value {
+            required binary key (UTF8);
+            required binary value (UTF8);
+          }
+        }
+      }
+    }
+    optional group counter (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required int64 value;
+      }
+    }
+    optional group labeled_counter (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value (MAP) {
+          repeated group key_value {
+            required binary key (UTF8);
+            required int64 value;
+          }
+        }
+      }
+    }
+    optional group timespan (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value {
+          required int64 value;
+          required binary time_unit (UTF8);
+        }
+      }
+    }
+    optional group labeled_timespan (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value (MAP) {
+          repeated group key_value {
+            required binary key (UTF8);
+            required group value {
+              required int64 value;
+              required binary time_unit (UTF8);
+            }
+          }
+        }
+      }
+    }
+    optional group timing_distribution (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value {
+          required group range (TUPLE) {
+            required double lo;
+            required double hi;
+          }
+          required int64 bucket_count;
+          optional binary histogram_type (UTF8);
+          required group values (MAP) {
+            repeated group key_value {
+              required binary key (UTF8);
+              optional int64 value;
+            }
+          }
+          optional int64 underflow;
+          optional int64 overflow;
+          optional int64 sum;
+          required binary time_unit (UTF8);
+        }
+      }
+    }
+    optional group labeled_timing_distribution (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value (MAP) {
+          repeated group key_value {
+            required binary key (UTF8);
+            required group value {
+              required group range (TUPLE) {
+                required double lo;
+                required double hi;
+              }
+              required int64 bucket_count;
+              optional binary histogram_type (UTF8);
+              required group values (MAP) {
+                repeated group key_value {
+                  required binary key (UTF8);
+                  optional int64 value;
+                }
+              }
+              optional int64 underflow;
+              optional int64 overflow;
+              optional int64 sum;
+              required binary time_unit (UTF8);
+            }
+          }
+        }
+      }
+    }
+    optional group datetime (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required binary value (UTF8);
+      }
+    }
+    optional group labeled_datetime (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value (MAP) {
+          repeated group key_value {
+            required binary key (UTF8);
+            required binary value (UTF8);
+          }
+        }
+      }
+    }
+    optional group use_counter (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value {
+          optional group values (MAP) {
+            repeated group key_value {
+              required binary key (UTF8);
+              required int64 value;
+            }
+          }
+          optional group denominator {
+            optional binary name (UTF8);
+            optional int64 value;
+          }
+        }
+      }
+    }
+    optional group labeled_use_counter (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value (MAP) {
+          repeated group key_value {
+            required binary key (UTF8);
+            required group value {
+              optional group values (MAP) {
+                repeated group key_value {
+                  required binary key (UTF8);
+                  required int64 value;
+                }
+              }
+              optional group denominator {
+                optional binary name (UTF8);
+                optional int64 value;
+              }
+            }
+          }
+        }
+      }
+    }
+    optional group usage (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required boolean value;
+      }
+    }
+    optional group labeled_usage (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value (MAP) {
+          repeated group key_value {
+            required binary key (UTF8);
+            required boolean value;
+          }
+        }
+      }
+    }
+    optional group rate (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required int64 value;
+      }
+    }
+    optional group labeled_rate (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value (MAP) {
+          repeated group key_value {
+            required binary key (UTF8);
+            required int64 value;
+          }
+        }
+      }
+    }
+    optional group uuid (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required binary value (UTF8);
+      }
+    }
+    optional group labeled_uuid (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value (MAP) {
+          repeated group key_value {
+            required binary key (UTF8);
+            required binary value (UTF8);
+          }
+        }
+      }
+    }
+  }
+  optional group events (LIST) {
+    repeated group list {
+      required group element {
+        required int64 timestamp;
+        required binary category (UTF8);
+        required binary name (UTF8);
+        optional group extra (MAP) {
+          repeated group key_value {
+            required binary key (UTF8);
+            optional binary value (UTF8);
+          }
+        }
+      }
+    }
+  }
+}

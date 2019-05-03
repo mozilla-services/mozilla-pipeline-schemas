@@ -1,0 +1,17 @@
+message hgpush {
+  required group metadata {
+    required binary documentId (UTF8);
+    required int64 Timestamp;
+    optional binary Date (UTF8);
+  }
+  required binary changesetID (UTF8);
+  required binary reviewSystemUsed (UTF8);
+  required binary repository (UTF8);
+  optional binary landingSystem (UTF8);
+  optional group diffstat {
+    optional int64 additions;
+    optional int64 changedFiles;
+    optional int64 deletions;
+  }
+  optional int64 pushDate;
+}

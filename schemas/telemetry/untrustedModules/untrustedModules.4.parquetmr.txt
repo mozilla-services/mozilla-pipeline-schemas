@@ -1,0 +1,315 @@
+message untrusted-modules {
+  optional group environment {
+    optional group profile {
+      optional int64 creationDate;
+      optional int64 resetDate;
+    }
+    required group settings {
+      optional boolean isDefaultBrowser;
+      optional boolean addonCompatibilityCheckEnabled;
+      optional binary locale (UTF8);
+      optional int64 launcherProcessState;
+      optional boolean e10sEnabled;
+      optional boolean blocklistEnabled;
+      optional binary defaultSearchEngine (UTF8);
+      optional boolean telemetryEnabled;
+      optional binary e10sCohort (UTF8);
+      optional binary searchCohort (UTF8);
+      optional int64 e10sMultiProcesses;
+      optional group defaultSearchEngineData {
+        optional binary name (UTF8);
+        optional binary loadPath (UTF8);
+        optional binary submissionURL (UTF8);
+        optional binary origin (UTF8);
+      }
+      optional group update {
+        optional boolean autoDownload;
+        optional binary channel (UTF8);
+        optional boolean enabled;
+      }
+      optional group sandbox {
+        optional int64 effectiveContentProcessLevel;
+      }
+    }
+    required group system {
+      optional boolean isWow64;
+      optional int64 memoryMB;
+      optional int64 virtualMaxMB;
+      optional binary appleModelId (UTF8);
+      optional group os {
+        optional binary name (UTF8);
+        optional binary locale (UTF8);
+        optional int64 windowsUBR;
+        optional int64 installYear;
+        optional int64 servicePackMajor;
+        optional int64 windowsBuildNumber;
+        optional int64 servicePackMinor;
+      }
+      optional group gfx {
+        optional group features {
+          optional group advancedLayers {
+            optional binary status (UTF8);
+          }
+          optional group webrender {
+            optional binary status (UTF8);
+          }
+          optional group wrQualified {
+            optional binary status (UTF8);
+          }
+          optional binary compositor (UTF8);
+          optional group d3d11 {
+            optional binary status (UTF8);
+            optional boolean textureSharing;
+            optional int64 version;
+            optional boolean blacklisted;
+            optional boolean warp;
+          }
+          optional group gpuProcess {
+            optional binary status (UTF8);
+          }
+          optional group d2d {
+            optional binary status (UTF8);
+            optional binary version (UTF8);
+          }
+        }
+        optional boolean DWriteEnabled;
+        optional boolean D2DEnabled;
+        optional binary ContentBackend (UTF8);
+        optional group adapters (LIST) {
+          repeated group list {
+            required group element {
+              optional binary description (UTF8);
+              optional binary vendorID (UTF8);
+              optional binary deviceID (UTF8);
+              optional binary subsysID (UTF8);
+              optional int64 RAM;
+              optional binary driver (UTF8);
+              optional binary driverVersion (UTF8);
+              optional binary driverDate (UTF8);
+              optional boolean GPUActive;
+            }
+          }
+        }
+        optional group monitors (LIST) {
+          repeated group list {
+            required group element {
+              optional int64 refreshRate;
+              optional int64 screenHeight;
+              optional int64 screenWidth;
+              optional boolean pseudoDisplay;
+            }
+          }
+        }
+      }
+      optional group sec {
+        optional group firewall (LIST) {
+          repeated group list {
+            required binary element (UTF8);
+          }
+        }
+        optional group antispyware (LIST) {
+          repeated group list {
+            required binary element (UTF8);
+          }
+        }
+        optional group antivirus (LIST) {
+          repeated group list {
+            required binary element (UTF8);
+          }
+        }
+      }
+      optional group hdd {
+        optional group profile {
+          optional binary model (UTF8);
+          optional binary revision (UTF8);
+        }
+        optional group binary {
+          optional binary model (UTF8);
+          optional binary revision (UTF8);
+        }
+        optional group system {
+          optional binary model (UTF8);
+          optional binary revision (UTF8);
+        }
+      }
+      optional group cpu {
+        optional int64 cores;
+        optional int64 count;
+        optional int64 family;
+        optional int64 l2cacheKB;
+        optional int64 l3cacheKB;
+        optional int64 model;
+        optional int64 speedMHz;
+        optional int64 stepping;
+        optional binary vendor (UTF8);
+        optional group extensions (LIST) {
+          repeated group list {
+            required binary element (UTF8);
+          }
+        }
+      }
+    }
+    required group build {
+      required binary applicationId (UTF8);
+      required binary applicationName (UTF8);
+      required binary architecture (UTF8);
+      optional binary architecturesInBinary (UTF8);
+      required binary buildId (UTF8);
+      optional binary hotfixVersion (UTF8);
+      required binary version (UTF8);
+      required binary vendor (UTF8);
+      optional binary displayVersion (UTF8);
+      required binary platformVersion (UTF8);
+      optional boolean updaterAvailable;
+      required binary xpcomAbi (UTF8);
+    }
+    required group partner {
+      optional binary distributionId (UTF8);
+      optional binary distributionVersion (UTF8);
+      optional binary partnerId (UTF8);
+      optional binary distributor (UTF8);
+      optional binary distributorChannel (UTF8);
+      optional group partnerNames (LIST) {
+        repeated group list {
+          optional binary element (UTF8);
+        }
+      }
+    }
+    optional group addons {
+      optional binary persona (UTF8);
+      optional group theme {
+        optional binary id (UTF8);
+        optional boolean blocklisted;
+        optional binary description (UTF8);
+        optional binary name (UTF8);
+        optional boolean userDisabled;
+        optional boolean appDisabled;
+        optional binary version (UTF8);
+        optional int64 scope;
+        optional boolean hasBinaryComponents;
+        optional int64 installDay;
+        optional int64 updateDay;
+      }
+      optional group activeAddons (MAP) {
+        repeated group key_value {
+          required binary key (UTF8);
+          required group value {
+            optional boolean blocklisted;
+            optional binary name (UTF8);
+            optional binary description (UTF8);
+            optional boolean appDisabled;
+            optional int64 scope;
+            optional binary type (UTF8);
+            optional boolean hasBinaryComponents;
+            optional int64 installDay;
+            optional int64 updateDay;
+            optional int64 signedState;
+            optional boolean isSystem;
+          }
+        }
+      }
+      optional group activeGMPlugins (MAP) {
+        repeated group key_value {
+          required binary key (UTF8);
+          required group value {
+            optional binary version (UTF8);
+            optional boolean userDisabled;
+          }
+        }
+      }
+      optional group activePlugins (LIST) {
+        repeated group list {
+          required group element {
+            optional binary name (UTF8);
+            optional binary version (UTF8);
+            optional binary description (UTF8);
+            optional boolean blocklisted;
+            optional boolean disabled;
+            optional boolean clicktoplay;
+            optional int64 updateDay;
+            optional group mimeTypes (LIST) {
+              repeated group list {
+                required binary element (UTF8);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  optional binary clientId (UTF8);
+  required binary creationDate (UTF8);
+  required binary id (UTF8);
+  required binary type (UTF8);
+  required double version;
+  required group payload {
+    required group combinedStacks {
+      required group memoryMap (LIST) {
+        repeated group list {
+          required group element (TUPLE) {
+            required binary moduleName (UTF8);
+            required binary debugId (UTF8);
+          }
+        }
+      }
+      required group stacks (LIST) {
+        repeated group list {
+          required group element (LIST) {
+            repeated group list {
+              required group element (TUPLE) {
+                required int64 moduleIndex;
+                required int64 moduleOffset;
+              }
+            }
+          }
+        }
+      }
+    }
+    required int64 structVersion;
+    required int64 errorModules;
+    optional double xulLoadDurationMS;
+    required group events (LIST) {
+      repeated group list {
+        required group element {
+          optional int64 processUptimeMS;
+          required boolean isStartup;
+          optional binary threadName (UTF8);
+          optional int64 threadID;
+          required group modules (LIST) {
+            repeated group list {
+              required group element {
+                required binary baseAddress (UTF8);
+                required binary moduleName (UTF8);
+                optional binary fileVersion (UTF8);
+                optional binary loaderName (UTF8);
+                optional double loadDurationMS;
+                required int64 moduleTrustFlags;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  required group application {
+    required binary architecture (UTF8);
+    required binary buildId (UTF8);
+    required binary channel (UTF8);
+    required binary name (UTF8);
+    required binary platformVersion (UTF8);
+    required binary version (UTF8);
+    optional binary displayVersion (UTF8);
+    required binary vendor (UTF8);
+    required binary xpcomAbi (UTF8);
+  }
+  required group metadata {
+    required int64 Timestamp;
+    required binary submissionDate (UTF8);
+    optional binary Date (UTF8);
+    required binary normalizedChannel (UTF8);
+    required binary geoCountry (UTF8);
+    required binary geoCity (UTF8);
+    required binary appVersion (UTF8);
+    required binary appBuildId (UTF8);
+  }
+}

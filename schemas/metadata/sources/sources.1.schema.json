@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": {
+    "$ref": "#/definitions/data_source"
+  },
+  "definitions": {
+    "data_source": {
+      "additionalProperties": false,
+      "dependencies": {
+        "bucket": [
+          "prefix"
+        ],
+        "prefix": [
+          "bucket"
+        ]
+      },
+      "properties": {
+        "bucket": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "doclink": {
+          "format": "uri",
+          "type": "string"
+        },
+        "metadata_prefix": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
+        },
+        "record_format": {
+          "enum": [
+            "protobuf",
+            "protobuf.gzip",
+            "db.redshift",
+            "txt.lzma",
+            "parquet"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "description"
+      ],
+      "type": "object"
+    }
+  },
+  "properties": {},
+  "type": "object"
+}
