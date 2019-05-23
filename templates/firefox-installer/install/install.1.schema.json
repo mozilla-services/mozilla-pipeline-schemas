@@ -6,7 +6,13 @@
   "properties": {
     "installer_type": {
       "description": "Which type of installer generated this ping (full or stub)",
-      "type": "string"
+      "type": {
+        "enum": [
+          "full",
+          "stub"
+        ],
+        "type": "string"
+      }
     },
     "installer_version": {
       "description": "Version of the installer itself. May be different from the product version for a stub install.",
@@ -201,6 +207,14 @@
     "profile_cleanup_requested": {
       "description": "True if either profile cleanup prompt was shown and the user accepted the prompt",
       "type": "boolean"
+    },
+    "funnelcake": {
+      "description": "Funnelcake ID",
+      "type": "string"
+    },
+    "ping_version": {
+      "description": "Only set for stub installer pings",
+      "type": "string"
     }
   }
 }
