@@ -25,7 +25,7 @@ local function load_doctypes(namespace, path, schemas)
     local js = read_file("jsonschema.4.json")
     local jsonschema = rjson.parse_schema(js)
 
-    for dn in lfs.dir(path) do -- iterate the schema diretories
+    for dn in lfs.dir(path) do -- iterate the schema directories
         local fqdn = string.format("%s/%s", path, dn)
         local mode = lfs.attributes(fqdn, "mode")
         if mode == "directory" and not dn:match("^%.") then
