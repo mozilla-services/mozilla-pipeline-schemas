@@ -1,5 +1,9 @@
 # Version 1
 
+- The length of labels was changed from 30 to 61 characters. This is to
+  accomodate the full `category.name` identifier of a metric used for error
+  reporting (which uses labeled counters).  See [1556684](https://bugzilla.mozilla.org/show_bug.cgi?id=1556684).
+
 - Make `client_id` optional.
 
 - Make `client_info` required.
