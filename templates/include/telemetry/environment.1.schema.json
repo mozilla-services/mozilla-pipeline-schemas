@@ -1,5 +1,4 @@
 "environment": {
-  "type": "object",
   "properties": {
     "addons": {
       "type": "object",
@@ -7,54 +6,56 @@
         "activeAddons": {
           "type": "object",
           "additionalProperties": {
-            "type": "object",
-            "properties": {
-              "blocklisted": {
-                "type": "boolean"
-              },
-              "description": {
-                "type": [ "string", "null" ]
-              },
-              "name": {
-                "type": "string"
-              },
-              "userDisabled": {
-                "type": [ "boolean", "integer" ]
-              },
-              "appDisabled": {
-                "type": "boolean"
-              },
-              "version": {
-                "type": [ "string", "number" ]
-              },
-              "scope": {
-                "type": [ "integer", "null" ]
-              },
-              "type": {
-                "type": "string"
-              },
-              "foreignInstall": {
-                "type": [
-                  "integer",
-                  "boolean"
-                ]
-              },
-              "hasBinaryComponents": {
-                "type": "boolean"
-              },
-              "installDay": {
-                "type": [ "integer", "null" ],
-                "minimum": 0
-              },
-              "updateDay": {
-                "type": [ "integer", "null" ],
-                "minimum": 0
-              },
-              "signedState": {
-                "type": "integer"
-              },
-              "isSystem": {
-                "type": "boolean"
+            "addon": {
+              "type": "object",
+              "properties": {
+                "blocklisted": {
+                  "type": "boolean"
+                },
+                "description": {
+                  "type": [ "string", "null" ]
+                },
+                "name": {
+                  "type": "string"
+                },
+                "userDisabled": {
+                  "type": [ "boolean", "integer" ]
+                },
+                "appDisabled": {
+                  "type": "boolean"
+                },
+                "version": {
+                  "type": [ "string", "number" ]
+                },
+                "scope": {
+                  "type": "integer"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "foreignInstall": {
+                  "type": [
+                    "integer",
+                    "boolean"
+                    ]
+                },
+                "hasBinaryComponents": {
+                  "type": "boolean"
+                },
+                "installDay": {
+                  "type": [ "integer", "null" ],
+                  "minimum": 0
+                },
+                "updateDay": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "signedState": {
+                  "type": "integer"
+                },
+                "isSystem": {
+                  "type": "boolean"
+                }
               }
             }
           }
@@ -73,54 +74,58 @@
         "activeGMPlugins": {
           "type": "object",
           "additionalProperties": {
-            "type": "object",
-            "properties": {
-              "version": {
-                "type": [ "string", "null" ]
-              },
-              "userDisabled": {
-                "type": "boolean"
-              },
-              "applyBackgroundUpdates": {
-                "type": [
-                  "integer",
-                  "boolean"
-                ]
+            "gmPlugin": {
+              "type": "object",
+              "properties": {
+                "version": {
+                  "type": [ "string", "null" ]
+                },
+                "userDisabled": {
+                  "type": "boolean"
+                },
+                "applyBackgroundUpdates": {
+                  "type": [
+                    "integer",
+                    "boolean"
+                    ]
+                }
               }
             }
           }
         },
         "activePlugins": {
-          "type": "array",
+          "type": [ "array", "object" ],
           "items": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "type": "string"
-              },
-              "version": {
-                "type": "string"
-              },
-              "description": {
-                "type": "string"
-              },
-              "blocklisted": {
-                "type": "boolean"
-              },
-              "disabled": {
-                "type": "boolean"
-              },
-              "clicktoplay": {
-                "type": "boolean"
-              },
-              "mimeTypes": {
-                "type": "array",
-                "items": {
+            "plugin": {
+              "type": "object",
+              "properties": {
+                "name": {
                   "type": "string"
+                },
+                "version": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "blocklisted": {
+                  "type": "boolean"
+                },
+                "disabled": {
+                  "type": "boolean"
+                },
+                "clicktoplay": {
+                  "type": "boolean"
+                },
+                "mimeTypes": {
+                  "type": [ "array", "object" ],
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "updateDay": {
+                  "type": "integer"
                 }
-              },
-              "updateDay": {
-                "type": "integer"
               }
             }
           }
@@ -129,7 +134,7 @@
           "type": [
             "string",
             "null"
-          ]
+            ]
         },
         "theme": {
           "type": "object",
@@ -169,7 +174,7 @@
               "minimum": 0
             },
             "updateDay": {
-              "type": [ "integer", "null" ],
+              "type": "integer",
               "minimum": 0
             }
           }
@@ -205,16 +210,9 @@
         "vendor": {
           "type": "string"
         },
-        "displayVersion": {
-          "type": "string",
-          "pattern": "^[0-9]{2,3}\\."
-        },
         "platformVersion": {
           "type": "string",
           "pattern": "^[0-9]{2,3}\\."
-        },
-        "updaterAvailable": {
-          "type": "boolean"
         },
         "xpcomAbi": {
           "type": "string"
@@ -229,7 +227,7 @@
         "vendor",
         "platformVersion",
         "xpcomAbi"
-      ]
+        ]
     },
     "experiments": {
       "additionalProperties": {
@@ -249,37 +247,37 @@
           "type": [
             "string",
             "null"
-          ]
+            ]
         },
         "distributionVersion": {
           "type": [
             "string",
             "null"
-          ]
+            ]
         },
         "partnerId": {
           "type": [
             "string",
             "null"
-          ]
+            ]
         },
         "distributor": {
           "type": [
             "string",
             "null"
-          ]
+            ]
         },
         "distributorChannel": {
           "type": [
             "string",
             "null"
-          ]
+            ]
         },
         "partnerNames": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+          "type": [
+            "array",
+            "object"
+            ]
         }
       }
     },
@@ -291,21 +289,12 @@
         },
         "resetDate": {
           "type": "number"
-        },
-        "firstUseDate": {
-          "type": "number"
-        },
-        "isStubProfile": {
-          "type": "boolean"
         }
       }
     },
     "settings": {
       "type": "object",
       "properties": {
-        "addonCompatibilityCheckEnabled": {
-          "type": "boolean"
-        },
         "attribution": {
           "type": "object",
           "properties": {
@@ -349,58 +338,11 @@
             }
           }
         },
-        "searchCohort": {
-          "type": [ "string", "null" ]
-        },
-        "launcherProcessState": {
-          "type": "integer"
-        },
         "e10sEnabled": {
           "type": "boolean"
         },
         "e10sCohort": {
           "type": "string"
-        },
-        "intl": {
-          "type": "object",
-          "properties": {
-            "requestedLocales": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "availableLocales": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "appLocales": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "systemLocales": {
-              "type": [ "array", "null" ],
-              "items": {
-                "type": "string"
-              }
-            },
-            "regionalPrefsLocales": {
-              "type": [ "array", "null" ],
-              "items": {
-                "type": "string"
-              }
-            },
-            "acceptLanguages": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          }
         },
         "locale": {
           "type": "string"
@@ -438,9 +380,6 @@
     "system": {
       "type": "object",
       "properties": {
-        "appleModelId": {
-          "type": [ "string", "null" ]
-        },
         "cpu": {
           "type": "object",
           "properties": {
@@ -455,10 +394,7 @@
               "maximum": 1024
             },
             "extensions": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
+              "type": "array"
             },
             "family": {
               "type": [ "integer", "null" ]
@@ -484,20 +420,17 @@
           }
         },
         "device": {
-          "type": "object",
-          "properties": {
-            "model": {
-              "type": "string"
-            },
-            "manufacturer": {
-              "type": "string"
-            },
-            "hardware": {
-              "type": "string"
-            },
-            "isTablet": {
-              "type": "boolean"
-            }
+          "model": {
+            "type": "string"
+          },
+          "manufacturer": {
+            "type": "string"
+          },
+          "hardware": {
+            "type": "string"
+          },
+          "isTablet": {
+            "type": "boolean"
           }
         },
         "gfx": {
@@ -507,131 +440,99 @@
               "type": [
                 "boolean",
                 "null"
-              ]
+                ]
             },
             "DWriteEnabled": {
               "type": [
                 "boolean",
                 "null"
-              ]
-            },
-            "Headless": {
-              "type": [
-                "boolean",
-                "null"
-              ]
-            },
-            "LowEndMachine": {
-              "type": "boolean"
+                ]
             },
             "adapters": {
               "type": "array",
               "items": {
-                "type": "object",
-                "properties": {
-                  "description": {
-                    "type": [ "string", "null" ]
-                  },
-                  "vendorID": {
-                    "type": [ "string", "null" ]
-                  },
-                  "deviceID": {
-                    "type": [ "string", "null" ]
-                  },
-                  "subsysID": {
-                    "type": [ "string", "null" ]
-                  },
-                  "RAM": {
-                    "type": [ "integer", "null" ]
-                  },
-                  "driver": {
-                    "type": [ "string", "null" ]
-                  },
-                  "driverVersion": {
-                    "type": [ "string", "null" ]
-                  },
-                  "driverDate": {
-                    "type": [ "string", "null" ]
-                  },
-                  "GPUActive": {
-                    "type": "boolean"
+                "adapter": {
+                  "type": "object",
+                  "properties": {
+                    "description": {
+                      "type": [ "string", "null" ]
+                    },
+                    "vendorID": {
+                      "type": [ "string", "null" ]
+                    },
+                    "deviceID": {
+                      "type": [ "string", "null" ]
+                    },
+                    "subsysID": {
+                      "type": [ "string", "null" ]
+                    },
+                    "RAM": {
+                      "type": [ "integer", "null" ]
+                    },
+                    "driver": {
+                      "type": [ "string", "null" ]
+                    },
+                    "driverVersion": {
+                      "type": [ "string", "null" ]
+                    },
+                    "driverDate": {
+                      "type": [ "string", "null" ]
+                    },
+                    "GPUActive": {
+                      "type": "boolean"
+                    }
                   }
                 }
               }
             },
             "monitors": {
-              "type": "array",
+              "type": [
+                "array",
+                "object"
+                ],
               "items": {
-                "type": "object",
-                "properties": {
-                  "screenWidth": {
-                    "type": "integer"
-                  },
-                  "screenHeight": {
-                    "type": "integer"
-                  },
-                  "refreshRate": {
-                    "type": "number"
-                  },
-                  "pseudoDisplay": {
-                    "type": "boolean"
-                  },
-                  "scale": {
-                    "type": "number"
+                "monitor": {
+                  "type": "object",
+                  "properties": {
+                    "screenWidth": {
+                      "type": "integer"
+                    },
+                    "screenHeight": {
+                      "type": "integer"
+                    },
+                    "refreshRate": {
+                      "type": "number"
+                    },
+                    "pseudoDisplay": {
+                      "type": "boolean"
+                    },
+                    "scale": {
+                      "type": "number"
+                    }
                   }
                 }
               }
             },
             "features": {
               "type": "object",
-              "properties": {
-                "compositor": {
-                  "type": [ "string", "null" ]
-                },
-                "d3d11": {
+              "items": {
+                "feature": {
                   "type": "object",
                   "properties": {
                     "status": {
                       "type": [ "string", "null" ]
                     },
+                    "failureId": {
+                      "type": [ "string", "null" ]
+                    },
                     "version": {
-                      "type": [ "number", "null" ]
+                      "type": [ "string", "null" ]
                     },
                     "warp": {
                       "type": [ "boolean", "null" ]
                     },
-                    "blacklisted": {
-                      "type": [ "boolean", "null" ]
-                    },
                     "textureSharing": {
                       "type": [ "boolean", "null" ]
-                    }
-                  }
-                },
-                "d2d": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": [ "string", "null" ]
-                    },
-                    "version": {
-                      "type": [ "string", "null" ]
-                    }
-                  }
-                },
-                "gpuProcess": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": [ "string", "null" ]
-                    }
-                  }
-                },
-                "advancedLayers": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": [ "string", "null" ]
                     }
                   }
                 }
@@ -649,24 +550,13 @@
                   "type": [
                     "string",
                     "null"
-                  ]
+                    ]
                 },
                 "revision": {
                   "type": [
                     "string",
                     "null"
-                  ]
-                },
-                "type": {
-                  "type": [
-                    "string",
-                    "null"
-                  ],
-                  "enum": [
-                    "SSD",
-                    "HDD",
-                    null
-                  ]
+                    ]
                 }
               }
             },
@@ -677,24 +567,13 @@
                   "type": [
                     "string",
                     "null"
-                  ]
+                    ]
                 },
                 "revision": {
                   "type": [
                     "string",
                     "null"
-                  ]
-                },
-                "type": {
-                  "type": [
-                    "string",
-                    "null"
-                  ],
-                  "enum": [
-                    "SSD",
-                    "HDD",
-                    null
-                  ]
+                    ]
                 }
               }
             },
@@ -705,24 +584,13 @@
                   "type": [
                     "string",
                     "null"
-                  ]
+                    ]
                 },
                 "revision": {
                   "type": [
                     "string",
                     "null"
-                  ]
-                },
-                "type": {
-                  "type": [
-                    "string",
-                    "null"
-                  ],
-                  "enum": [
-                    "SSD",
-                    "HDD",
-                    null
-                  ]
+                    ]
                 }
               }
             }
@@ -733,9 +601,6 @@
         },
         "memoryMB": {
           "type": "number"
-        },
-        "virtualMaxMB": {
-          "type": [ "number", "null" ]
         },
         "os": {
           "type": "object",
@@ -768,29 +633,6 @@
               "type": "string"
             }
           }
-        },
-        "sec": {
-          "type": "object",
-          "properties": {
-            "antivirus": {
-              "type": [ "array", "null" ],
-              "items": {
-                "type": "string"
-              }
-            },
-            "antispyware": {
-              "type": [ "array", "null" ],
-              "items": {
-                "type": "string"
-              }
-            },
-            "firewall": {
-              "type": [ "array", "null" ],
-              "items": {
-                "type": "string"
-              }
-            }
-          }
         }
       }
     }
@@ -800,5 +642,5 @@
     "partner",
     "settings",
     "system"
-  ]
+    ]
 }

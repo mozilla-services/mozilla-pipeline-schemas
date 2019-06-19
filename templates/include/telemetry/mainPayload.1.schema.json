@@ -10,11 +10,7 @@
       "properties": { }
     },
     "childPayloads": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": { }
-      }
+      "type": "array"
     },
     "chromeHangs": {
       "type": "object",
@@ -34,8 +30,10 @@
       "type": "object",
       "properties": {
         "parent": {
-          @TELEMETRY_PROCESSDATA_1_JSON@ ,
-          "required": [ "scalars" ]
+          "allOf": [
+          { @TELEMETRY_PROCESSDATA_1_JSON@ },
+          { "required": [ "scalars" ] }
+            ]
         },
         "content": { @TELEMETRY_PROCESSDATA_1_JSON@ },
         "gpu": { @TELEMETRY_PROCESSDATA_1_JSON@ }
@@ -56,9 +54,8 @@
     "keyedHistograms": {
       "type": "object",
       "additionalProperties": {
-        "type": "object",
         "additionalProperties": {
-          @TELEMETRY_HISTOGRAM_1_JSON@
+          @TELEMETRY_PROCESSDATA_1_JSON@
         }
       }
     },
@@ -67,18 +64,10 @@
       "properties": { }
     },
     "log": {
-      "description": "Removed in FF61 via bug 1443615",
-      "type": "array",
-      "items": {
-        "type": "array",
-        "items": [
-          {"type": "string"},
-          {"type": "integer"}
-        ],
-        "additionalItems": {
-          "type": "string"
-        }
-      }
+      "type": [
+        "array",
+        "object"
+        ]
     },
     "simpleMeasurements": {
       "type": "object",
@@ -93,18 +82,16 @@
       "properties": { }
     },
     "threadHangStats": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": { }
-      }
+      "type": [
+        "array",
+        "object"
+        ]
     },
     "UIMeasurements": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": { }
-      }
+      "type": [
+        "array",
+        "object"
+        ]
     },
     "ver": {
       "type": "integer"
