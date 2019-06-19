@@ -4,18 +4,18 @@ message heartbeat {
   required binary creationDate (UTF8);
   required double version;
   required binary clientId (UTF8);
+  optional binary engagementType (UTF8);
   required group application {
-  required binary architecture (UTF8);
-  required binary buildId (UTF8);
-  required binary channel (UTF8);
-  required binary name (UTF8);
-  required binary platformVersion (UTF8);
-  required binary version (UTF8);
-  optional binary displayVersion (UTF8);
-  required binary vendor (UTF8);
-  required binary xpcomAbi (UTF8);
-}
-
+    required binary architecture (UTF8);
+    required binary buildId (UTF8);
+    required binary channel (UTF8);
+    required binary name (UTF8);
+    required binary platformVersion (UTF8);
+    required binary version (UTF8);
+    optional binary displayVersion (UTF8);
+    required binary vendor (UTF8);
+    required binary xpcomAbi (UTF8);
+  }
   required group payload {
     required int64 version;
     required binary flowId (UTF8);
@@ -29,7 +29,7 @@ message heartbeat {
     optional int64 score;
     required binary surveyId (UTF8);
     required binary surveyVersion (UTF8);
-    optional int64 testing;
+    optional boolean testing;
   }
   required group metadata {
     required int64 Timestamp;

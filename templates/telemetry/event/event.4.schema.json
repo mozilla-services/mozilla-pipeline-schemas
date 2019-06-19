@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "event",
+  "properties": {
+    @TELEMETRY_APPLICATION_1_JSON@,
+    @TELEMETRY_CLIENTID_1_JSON@,
+    @TELEMETRY_CREATIONDATE_1_JSON@,
+    @TELEMETRY_ENVIRONMENT_1_JSON@,
+    @TELEMETRY_ID_1_JSON@,
+    "payload": {
+      "properties": {
+        "reason": {
+          "type": "string"
+        },
+        "sessionId": {
+          "type": "string"
+        },
+        "subsessionId": {
+          "type": "string"
+        },
+        "processStartTimestamp": {
+          "type": "integer"
+        },
+        "lostEventsCount": {
+          "type": "integer"
+        },
+        "events": {
+          "properties": {
+            "parent": {
+              "type": "array",
+              "items": @COMMON_EVENT_1_JSON@
+            },
+            "content": {
+              "type": "array",
+              "items": @COMMON_EVENT_1_JSON@
+            },
+            "extension": {
+              "type": "array",
+              "items": @COMMON_EVENT_1_JSON@
+            },
+            "gpu": {
+              "type": "array",
+              "items": @COMMON_EVENT_1_JSON@
+            },
+            "dynamic": {
+              "type": "array",
+              "items": @COMMON_EVENT_1_JSON@
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "type": {
+      "type": "string",
+      "enum": [ "event" ]
+    },
+    "version": {
+      "type": "number",
+      "minimum": 4,
+      "maximum": 4
+    }
+  },
+  "required": [
+    "application",
+    "creationDate",
+    "id",
+    "type",
+    "version"
+    ]
+}

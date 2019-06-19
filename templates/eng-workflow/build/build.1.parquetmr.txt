@@ -1,0 +1,48 @@
+message build {
+  required group metadata {
+    required binary documentId (UTF8);
+    required int64  Timestamp;
+    optional binary Date (UTF8);
+  }
+  required group argv (LIST) {
+    repeated group list {
+      required binary element (UTF8);
+    }
+  }
+  optional group build_attrs {
+    optional boolean clobber;
+    optional int64 cpu_percent;
+  }
+  required group build_opts {
+    optional boolean artifact;
+    optional boolean ccache;
+    optional binary compiler (UTF8);
+    optional boolean debug;
+    optional boolean icecream;
+    optional boolean opt;
+    optional boolean sccache;
+  }
+  required binary client_id (UTF8);
+  required binary command (UTF8);
+  required int64 duration_ms;
+  required boolean success;
+  required group system {
+    required binary os (UTF8);
+    optional binary cpu_brand (UTF8);
+    optional boolean drive_is_ssd;
+    optional int64 logical_cores;
+    optional int64 memory_gb;
+    optional int64 physical_cores;
+    optional boolean virtual_machine;
+  }
+  required binary time (UTF8);
+  optional binary exception (UTF8);
+  optional group file_types_changed (LIST) {
+    repeated group list {
+      required group element {
+        required int64 count;
+        required binary ext (UTF8);
+      }
+    }
+  }
+}

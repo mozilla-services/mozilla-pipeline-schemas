@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "changesetID": {
+      "description": "The 40 char hex ID of the changeset. See https://www.mercurial-scm.org/wiki/ChangeSetID.",
+      "pattern": "[a-f0-9]{40}",
+      "type": "string"
+    },
+    "diffstat": {
+      "additionalProperties": false,
+      "description": "Statistics about files changed by this changeset.  Similar to running 'hg diff --stat'.  May be null if diffstats were not computed.",
+      "properties": {
+        "additions": {
+          "description": "The number of lines added by this changeset.",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "changedFiles": {
+          "description": "The number of files modified by this changeset.",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "deletions": {
+          "description": "The number of lines removed by this changeset.",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "landingSystem": {
+      "description": "A string labelling the automated system used to land this changeset in this repository.  May be empty.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "pushDate": {
+      "description": "Timestamp, in Unix time (seconds since the Unix epoch), of when the push to the repository occurred.  This value is obtained from the original repository pushlog.",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "repository": {
+      "description": "The URL of the repository the changeset was pushed to.",
+      "type": "string"
+    },
+    "reviewSystemUsed": {
+      "description": "A string labelling the code review system used to review this changeset.  Possible values include (but are not limited to): 'mozreview', 'phabricator', 'bmo', 'unknown', and 'not_applicable'.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "changesetID",
+    "reviewSystemUsed",
+    "repository"
+  ],
+  "title": "hgpush",
+  "type": "object"
+}

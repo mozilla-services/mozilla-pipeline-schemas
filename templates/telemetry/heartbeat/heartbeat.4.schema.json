@@ -7,6 +7,14 @@
     @TELEMETRY_CLIENTID_1_JSON@,
     @TELEMETRY_CREATIONDATE_1_JSON@,
     @TELEMETRY_ID_1_JSON@,
+    "engagementType": {
+      "enum": [
+        "stars",
+        "button1",
+        "button2"
+      ],
+      "type": "string"
+    },
     "payload": {
       "additionalProperties": false,
       "properties": {
@@ -55,13 +63,11 @@
           "type": "string"
         },
         "surveyVersion": {
-          "pattern": "^[a-fA-F0-9]{64}$",
+          "pattern": "^([0-9]+|[a-fA-F0-9]{64})$",
           "type": "string"
         },
         "testing": {
-          "maximum": 1,
-          "minimum": 1,
-          "type": "integer"
+          "type": "boolean"
         }
       },
       "required": [

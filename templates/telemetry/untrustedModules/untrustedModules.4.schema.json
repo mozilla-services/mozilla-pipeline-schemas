@@ -1,0 +1,168 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "untrusted-modules",
+  "properties": {
+    "payload": {
+      "type": "object",
+      "properties": {
+        "combinedStacks": {
+          "type": "object",
+          "properties": {
+            "memoryMap": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": [
+                  {
+                    "description": "The filename of the PDB symbol file",
+                    "examples": [
+                      "mozglue.pdb"
+                    ],
+                    "type": "string"
+                  },
+                  {
+                    "description": "The debug ID of the DLL",
+                    "examples": [
+                      "2403397A44447F1E42C7089B974E2DD48"
+                    ],
+                    "type": "string"
+                  }
+                ]
+              }
+            },
+            "stacks": {
+              "type": "array",
+              "items": {
+                "description": "Stack object, an array of frames",
+                "type": "array",
+                "items": {
+                  "description": "Stack frame object, a tuple<int,int>",
+                  "type": "array",
+                  "minItems": 2,
+                  "maxItems": 2,
+                  "items": [
+                    {
+                      "description": "Module index, an index into the combinedStacks/memoryMap array, or -1 if not applicable",
+                      "type": "number",
+                      "minimum": -1
+                    },
+                    {
+                      "description": "Module offset, the RVA of the program counter for this stack frame.",
+                      "type": "number",
+                      "minimum": 0
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "structVersion": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1
+        },
+        "errorModules": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "xulLoadDurationMS": {
+          "type": "number",
+          "minimum": 0
+        },
+        "events": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "processUptimeMS": {
+                "type": "number",
+                "minimum": 0
+              },
+              "isStartup": {
+                "type": "boolean"
+              },
+              "threadName": {
+                "type": "string"
+              },
+              "threadID": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "modules": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "baseAddress": {
+                      "type": "string"
+                    },
+                    "moduleName": {
+                      "type": "string"
+                    },
+                    "fileVersion": {
+                      "type": "string"
+                    },
+                    "loaderName": {
+                      "type": "string"
+                    },
+                    "moduleTrustFlags": {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    "loadDurationMS": {
+                      "type": "number",
+                      "minimum": 0
+                    }
+                  }
+                },
+                "required": [
+                  "baseAddress",
+                  "moduleName",
+                  "moduleTrustFlags"
+                ]
+              }
+            },
+            "required": [
+              "isStartup",
+              "modules"
+            ]
+          }
+        }
+      },
+      "required": [
+        "errorModules",
+        "events",
+        "structVersion",
+        "combinedStacks"
+      ]
+    },
+    "type": {
+      "type": "string",
+      "enum": [ "untrustedModules" ]
+    },
+    "version": {
+      "type": "number",
+      "minimum": 4,
+      "maximum": 4
+    },
+    @TELEMETRY_APPLICATION_1_JSON@,
+    @TELEMETRY_CLIENTID_1_JSON@,
+    @TELEMETRY_CREATIONDATE_1_JSON@,
+    @TELEMETRY_ENVIRONMENT_1_JSON@,
+    @TELEMETRY_ID_1_JSON@
+  },
+  "required": [
+    "payload",
+    "application",
+    "creationDate",
+    "id",
+    "type",
+    "version"
+  ]
+}

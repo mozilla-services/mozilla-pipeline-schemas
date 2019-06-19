@@ -1,0 +1,21 @@
+message online-news-log {
+  required group metadata {
+    required int64 Timestamp;
+    required binary documentId (UTF8);
+    required binary pioneerId (UTF8);
+    required binary studyName (UTF8);
+    optional binary geoCity (UTF8);
+    optional binary geoCountry (UTF8);
+    optional binary normalizedChannel (UTF8);
+  }
+  required group entries (LIST) {
+    repeated group list {
+      required group element {
+        required int64 timestamp;
+        optional binary branch (UTF8);
+        required binary details (UTF8);
+        required binary url (UTF8);
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+message launcher-process-failure {
+  required binary type (UTF8);
+  required double version;
+  optional binary id (UTF8);
+  optional binary creationDate (UTF8);
+  required binary update_channel (UTF8);
+  optional binary build_id (UTF8);
+  optional binary build_version (UTF8);
+  optional binary os_version (UTF8);
+  optional boolean server_os;
+  optional binary os_locale (UTF8);
+  required int64 cpu_arch;
+  required int64 num_logical_cpus;
+  required binary xpcom_abi (UTF8);
+  optional group security {
+    optional group antispyware (LIST) {
+      repeated group list {
+        required binary element (UTF8);
+      }
+    }
+    optional group av (LIST) {
+      repeated group list {
+        required binary element (UTF8);
+      }
+    }
+    optional group firewall (LIST) {
+      repeated group list {
+        required binary element (UTF8);
+      }
+    }
+  }
+  required group launcher_error {
+    required binary source_file (UTF8);
+    required int64 source_line;
+    required int64 hresult;
+  }
+  optional group memory {
+    required int64 total_phys;
+    required int64 avail_phys;
+    required int64 avail_page_file;
+    required int64 avail_virt;
+  }
+  optional group signatures (LIST) {
+    repeated group list {
+      required binary element (UTF8);
+    }
+  }
+  optional group modules (MAP) {
+    repeated group key_value {
+      required binary key (UTF8);
+      required group value (TUPLE) {
+        required binary version (UTF8);
+        optional int64 signatureIndex;
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+required int64 version;
+required binary study_name (UTF8);
+required binary branch (UTF8);
+required binary addon_version (UTF8);
+required binary shield_version (UTF8);
+optional boolean testing;
+required group data {
+  required binary study_state (UTF8);
+  optional binary study_state_fullname (UTF8);
+  optional group attributes (MAP) {
+    repeated group key_value {
+      required binary key (UTF8);
+      required binary value (UTF8);
+    }
+  }
+}
+required binary type (UTF8);

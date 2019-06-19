@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "hgpush",
+  "properties": {
+    "changesetID": {
+      "description": "The 40 char hex ID of the changeset. See https://www.mercurial-scm.org/wiki/ChangeSetID.",
+      "type": "string",
+      "pattern": "[a-f0-9]{40}"
+    },
+    "diffstat": {
+      "description": "Statistics about files changed by this changeset.  Similar to running 'hg diff --stat'.  May be null if diffstats were not computed.",
+      "additionalProperties": false,
+      "properties": {
+        "additions": {
+          "description": "The number of lines added by this changeset.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "changedFiles": {
+          "description": "The number of files modified by this changeset.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "deletions": {
+          "description": "The number of lines removed by this changeset.",
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "type": ["object", "null"]
+    },
+    "landingSystem": {
+      "description": "A string labelling the automated system used to land this changeset in this repository.  May be empty.",
+      "type": ["string", "null"]
+    },
+    "reviewSystemUsed": {
+      "description": "A string labelling the code review system used to review this changeset.  Possible values include (but are not limited to): 'mozreview', 'phabricator', 'bmo', 'unknown', and 'not_applicable'.",
+      "type": "string"
+    },
+    "repository": {
+      "description": "The URL of the repository the changeset was pushed to.",
+      "type": "string"
+    },
+    "pushDate": {
+      "description": "Timestamp, in Unix time (seconds since the Unix epoch), of when the push to the repository occurred.  This value is obtained from the original repository pushlog.",
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "required": [ "changesetID", "reviewSystemUsed", "repository" ],
+  "type": "object"
+}

@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "addon_version": {
+      "type": "string"
+    },
+    "block": {
+      "description": "A 0-based index to record which tile in the 'tiles' list the user just interacted with",
+      "type": "integer"
+    },
+    "click": {
+      "description": "A 0-based index to record which tile in the 'tiles' list the user just interacted with",
+      "type": "integer"
+    },
+    "impression_id": {
+      "description": "A UUID representing this impression",
+      "pattern": "^\\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\}$",
+      "type": "string"
+    },
+    "loaded": {
+      "description": "An integer to record the size of the loaded 'tiles' list",
+      "type": "integer"
+    },
+    "locale": {
+      "type": "string"
+    },
+    "page": {
+      "enum": [
+        "about:newtab",
+        "about:home",
+        "about:welcome",
+        "unknown"
+      ],
+      "type": "string"
+    },
+    "pocket": {
+      "description": "A 0-based index to record which tile in the 'tiles' list the user just interacted with",
+      "type": "integer"
+    },
+    "profile_creation_date": {
+      "type": "integer"
+    },
+    "region": {
+      "type": "string"
+    },
+    "release_channel": {
+      "type": "string"
+    },
+    "shield_id": {
+      "description": "A semicolon separated string to store a list of Shield study IDs",
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "tiles": {
+      "items": {
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "pos": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "user_prefs": {
+      "type": "integer"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "impression_id",
+    "addon_version",
+    "locale",
+    "source",
+    "page",
+    "user_prefs",
+    "tiles"
+  ],
+  "title": "impression-stats",
+  "type": "object"
+}

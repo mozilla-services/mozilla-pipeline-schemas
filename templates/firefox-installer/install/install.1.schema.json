@@ -1,0 +1,214 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "install",
+  "type": "object",
+  "required": ["installer_type", "installer_version", "build_channel"],
+  "properties": {
+    "installer_type": {
+      "description": "Which type of installer generated this ping (full or stub)",
+      "type": "string"
+    },
+    "installer_version": {
+      "description": "Version of the installer itself. May be different from the product version for a stub install.",
+      "type": "string"
+    },
+    "build_channel": {
+      "description": "Channel the installer was built with the branding for",
+      "type": "string"
+    },
+    "update_channel": {
+      "description": "Value of MOZ_UPDATE_CHANNEL the installer was built with. Generally the same as build_channel",
+      "type": "string"
+    },
+    "version": {
+      "description": "Version of the installed product. May be different from installer_version for a stub install. Absent for a failed stub installation.",
+      "type": "string"
+    },
+    "build_id": {
+      "description": "Build ID of the installed product. Absent for a failed stub installation.",
+      "type": "string"
+    },
+    "locale": {
+      "description": "Locale of the installer and the installed product, in AB_CD format",
+      "type": "string"
+    },
+    "from_msi": {
+      "description": "True if the install was launched from an MSI wrapper",
+      "type": "boolean"
+    },
+    "64bit_build": {
+      "description": "True if the installed build is 64-bit",
+      "type": "boolean"
+    },
+    "64bit_os": {
+      "description": "True if the OS this installer ran on is 64-bit",
+      "type": "boolean"
+    },
+    "os_version": {
+      "description": "Windows version number in major.minor.build format",
+      "type": "string"
+    },
+    "service_pack": {
+      "description": "Latest installed service pack number",
+      "type": "string"
+    },
+    "server_os": {
+      "description": "True if the OS this installer ran on is Windows Server",
+      "type": "boolean"
+    },
+    "admin_user": {
+      "description": "True if the user account which ran the installer had administrative privileges",
+      "type": "boolean"
+    },
+    "default_path": {
+      "description": "True if the user did not customize the installation path",
+      "type": "boolean"
+    },
+    "set_default": {
+      "description": "True if the option to set the new installation as the default browser was selected",
+      "type": "boolean"
+    },
+    "new_default": {
+      "description": "True if the new installation was successfully set as the default browser",
+      "type": "boolean"
+    },
+    "old_default": {
+      "description": "True if an existing Firefox installation was already set as the default browser",
+      "type": "boolean"
+    },
+    "had_old_install": {
+      "description": "True if at least one existing installation of Firefox was found on the system prior to this installation",
+      "type": "boolean"
+    },
+    "old_version": {
+      "description": "Version of the previously installed Firefox, if any",
+      "type": "string"
+    },
+    "old_build_id": {
+      "description": "Build ID of the previously installed Firefox, if any",
+      "type": "string"
+    },
+    "bytes_downloaded": {
+      "description": "Size of the full installer data that was actually transferred",
+      "type": "integer",
+      "minimum": 0
+    },
+    "download_size": {
+      "description": "Expected size of the full installer download according to the HTTP response",
+      "type": "integer",
+      "minimum": 0
+    },
+    "download_retries": {
+      "description": "Number of times the full installer download was retried or resumed",
+      "type": "integer",
+      "minimum": 0
+    },
+    "download_time": {
+      "description": "Seconds spent downloading the full installer",
+      "type": "integer",
+      "minimum": 0
+    },
+    "download_latency": {
+      "description": "Seconds between sending the full installer download request and receiving the first response data",
+      "type": "integer",
+      "minimum": 0
+    },
+    "download_ip": {
+      "description": "IP address of the server the full installer was downloaded from. May be either IPv4 or IPv6.",
+      "type": "string"
+    },
+    "manual_download": {
+      "description": "True if the user clicked through the error message to the manual full installer download page.",
+      "type": "boolean"
+    },
+    "intro_time": {
+      "description": "Seconds spent on the intro screen",
+      "type": "integer",
+      "minimum": 0
+    },
+    "options_time": {
+      "description": "Seconds spent in the options screens. For the stub installer this includes only the profile cleanup prompt.",
+      "type": "integer",
+      "minimum": 0
+    },
+    "preinstall_time": {
+      "description": "Seconds spent verifying the downloaded full installer and preparing to run it",
+      "type": "integer",
+      "minimum": 0
+    },
+    "install_time": {
+      "description": "For a stub ping, seconds the full installer ran for. For a full ping, seconds spent on the install progress page.",
+      "type": "integer",
+      "minimum": 0
+    },
+    "finish_time": {
+      "description": "For a stub ping, seconds spent waiting for the installed application to launch. For a full ping, seconds spent on the finish page.",
+      "type": "integer",
+      "minimum": 0
+    },
+    "succeeded": {
+      "description": "True if a new installation was successfully created. If false, check the error status fields for the failure reason.",
+      "type": "boolean"
+    },
+    "disk_space_error": {
+      "description": "True if the installation failed because the drive we're trying to install to does not have enough space",
+      "type": "boolean"
+    },
+    "no_write_access": {
+      "description": "True if the installation failed because the user doesn’t have permission to write to the path we’re trying to install to.",
+      "type": "boolean"
+    },
+    "user_cancelled": {
+      "description": "True if the installation failed because the user cancelled it or closed the window",
+      "type": "boolean"
+    },
+    "out_of_retries": {
+      "description": "True if the installation failed because the download had to be retried too many times (currently 10)",
+      "type": "boolean"
+    },
+    "file_error": {
+      "description": "True if the installation failed because the downloaded file couldn’t be read from",
+      "type": "boolean"
+    },
+    "sig_not_trusted": {
+      "description": "True if the installation failed because the signature on the downloaded file wasn’t valid and/or wasn’t signed by a trusted authority",
+      "type": "boolean"
+    },
+    "sig_unexpected": {
+      "description": "True if the installation failed because the signature on the downloaded file didn’t have the expected subject and issuer names",
+      "type": "boolean"
+    },
+    "install_timeout": {
+      "description": "True if the installation failed because running the full installer timed out. Currently that means it ran for more than 150 seconds for a new installation, or 165 seconds for a paveover installation.",
+      "type": "boolean"
+    },
+    "new_launched": {
+      "description": "True if the installation succeeded and we were able to launch the newly installed application.",
+      "type": "boolean"
+    },
+    "old_running": {
+      "description": "True if the installation succeeded and we weren’t able to launch the newly installed application because a copy of Firefox was already running.",
+      "type": "boolean"
+    },
+    "attribution": {
+      "description": "Any attribution data that was included with the installer",
+      "type": "string"
+    },
+    "profile_cleanup_prompt": {
+      "description": "Which type of profile cleanup prompt was shown, (reinstall or paveover)",
+      "type": "string"
+    },
+    "profile_cleanup_requested": {
+      "description": "True if either profile cleanup prompt was shown and the user accepted the prompt",
+      "type": "boolean"
+    },
+    "funnelcake": {
+      "description": "Funnelcake ID",
+      "type": "string"
+    },
+    "ping_version": {
+      "description": "Only set for stub installer pings",
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,263 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "block-autoplay",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [ "block-autoplay" ]
+    },
+    @TELEMETRY_ID_1_JSON@,
+    @TELEMETRY_CREATIONDATE_1_JSON@,
+    "version": {
+      "type": "number",
+      "maximum": 4,
+      "minimum": 4
+    },
+    @TELEMETRY_APPLICATION_1_JSON@,
+    @TELEMETRY_CLIENTID_1_JSON@,
+    "payload": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "branch": {
+          "type": "string",
+          "enum": [
+            "control",
+            "allow-and-notRemember",
+            "deny-and-notRemember",
+            "allow-and-remember",
+            "deny-and-remember"
+          ]
+        },
+        "payload": {
+          "type": "object",
+          "oneOf": [
+            {
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [ "counts"]
+                },
+                "counters": {
+                  "type": "object",
+                  "properties": {
+                    "totalBlockedAudibleMedia": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "totalPages": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "totalPagesAM": {
+                      "minimum": 0,
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "totalPages",
+                    "totalPagesAM",
+                    "totalBlockedAudibleMedia"
+                  ]
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "type",
+                "counters"
+              ]
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "promptResponse": {
+                  "items": {
+                    "oneOf": [
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "pageId": {
+                            "type": "string"
+                          },
+                          "timestamp": {
+                            "type": "integer"
+                          },
+                          "responseTime": {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          "interact": {
+                            "type": "string",
+                            "enum": [
+                              "interact"
+                            ]
+                          },
+                          "allowAutoplay": {
+                            "type": "boolean"
+                          },
+                          "rememberCheckbox": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "pageId",
+                          "timestamp",
+                          "responseTime",
+                          "interact",
+                          "rememberCheckbox",
+                          "allowAutoplay"
+                        ]
+                      },
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "pageId": {
+                            "type": "string"
+                          },
+                          "timestamp": {
+                            "type": "integer"
+                          },
+                          "responseTime": {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          "interact": {
+                            "type": "string",
+                            "enum": [
+                              "escape",
+                              "ignore"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "pageId",
+                          "timestamp",
+                          "responseTime",
+                          "interact"
+                        ]
+                      }
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "type": {
+                  "enum": [
+                    "prompt"
+                  ],
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "promptResponse"
+              ]
+            },
+            {
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [ "settings" ]
+                },
+                "settingsChanged": {
+                  "items": {
+                    "type": "object",
+                    "oneOf": [
+                      {
+                        "properties": {
+                          "globalSettings": {
+                            "type": "object",
+                            "properties": {
+                              "allowAutoplay": {
+                                "type": "string",
+                                "enum": [
+                                  "allow",
+                                  "block",
+                                  "ask"
+                                ]
+                              }
+                            },
+                            "additionalProperties": false,
+                            "required": [
+                              "allowAutoplay"
+                            ]
+                          },
+                          "timestamp": {
+                            "type": "integer"
+                          }
+                        },
+                        "additionalProperties": false,
+                        "required": [
+                          "globalSettings",
+                          "timestamp"
+                        ]
+                      },
+                      {
+                        "properties": {
+                          "pageSpecific": {
+                            "type": "object",
+                            "properties": {
+                              "allowAutoplay": {
+                                "type": "string",
+                                "enum": [
+                                  "allow",
+                                  "block",
+                                  "default"
+                                ]
+                              },
+                              "pageId": {
+                                "type": "string"
+                              }
+                            },
+                            "additionalProperties": false,
+                            "required": [
+                              "pageId",
+                              "allowAutoplay"
+                            ]
+                          },
+                          "timestamp": {
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "pageSpecific",
+                          "timestamp"
+                        ]
+                      }
+                    ]
+                  },
+                  "type": "array"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "type",
+                "settingsChanged"
+              ]
+            }
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "branch",
+        "payload"
+      ]
+    }
+  },
+  "required": [
+    "type",
+    "id",
+    "creationDate",
+    "version",
+    "application",
+    "clientId",
+    "payload"
+  ]
+}

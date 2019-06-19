@@ -1,0 +1,121 @@
+"type": "object",
+"title": "shield-study-error",
+"description": "`shield-study-error` data used to notify, group and count some kinds of errors from shield studies.",
+"properties": {
+  "version": {
+    "type": "integer",
+    "title": "Version schema.  Will be 3",
+    "enum": [
+      3
+    ]
+  },
+  "study_name": {
+    "description": "Name of a particular study.  Usually the addon_id.",
+    "type": "string",
+    "pattern": "^\\S+$",
+    "minLength": 1,
+    "maxLength": 100
+  },
+  "branch": {
+    "description": "Which branch (variation) of the study the user has.",
+    "type": "string",
+    "pattern": "^\\S+$",
+    "minLength": 1,
+    "maxLength": 100
+  },
+  "addon_version": {
+    "description": "Semantic version of the addon.",
+    "type": "string",
+    "pattern": "^\\S+$",
+    "minLength": 1,
+    "maxLength": 100
+  },
+  "shield_version": {
+    "description": "Which version of the shield-studies-addon-utils.",
+    "type": "string",
+    "pattern": "^\\S+$",
+    "minLength": 1,
+    "maxLength": 100
+  },
+  "testing": {
+    "type": "boolean",
+    "description": "If `true`, this packet is a TESTING packet and can be safely ignored."
+  },
+  "data": {
+    "type": "object",
+    "title": "Shield-Study-Error 'data' field",
+    "description": "`shield-study-error` data used to notify, group and count some kinds of errors from shield studies.",
+    "properties": {
+      "error_id": {
+        "description": "between 1,100 chars, no spaces, unicode ok.",
+        "type": "string",
+        "pattern": "^\\S+$",
+        "minLength": 1,
+        "maxLength": 100
+      },
+      "error_source": {
+        "type": "string",
+        "description": "Where did the error originate.",
+        "enum": [
+          "addon",
+          "shield",
+          "firefox",
+          "unknown"
+        ]
+      },
+      "message": {
+        "type": "string",
+        "minLength": 1,
+        "title": "Message schema.",
+        "description": "String of an error message."
+      },
+      "severity": {
+        "type": "string",
+        "description": "An explanation about the purpose of this instance.",
+        "enum": [
+          "debug",
+          "info",
+          "warn",
+          "fatal",
+          "impossible"
+        ]
+      },
+      "attributes": {
+        "type": "object",
+        "description": "Map(string, string) of attributes.",
+        "properties": {},
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
+      "error": {
+        "type": "object",
+        "description": "(Future use), things like tracebacks.",
+        "properties": {},
+        "additionalProperties": {
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "error_id",
+      "error_source"
+    ]
+  },
+  "type": {
+    "type": "string",
+    "description": "doc_type, restated",
+    "enum": [
+      "shield-study-error"
+    ]
+  }
+},
+"required": [
+  "version",
+  "study_name",
+  "branch",
+  "addon_version",
+  "shield_version",
+  "data",
+  "type"
+]

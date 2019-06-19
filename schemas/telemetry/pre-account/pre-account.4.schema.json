@@ -1,0 +1,225 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "application": {
+      "additionalProperties": false,
+      "properties": {
+        "architecture": {
+          "type": "string"
+        },
+        "buildId": {
+          "pattern": "^[0-9]{10}",
+          "type": "string"
+        },
+        "channel": {
+          "type": "string"
+        },
+        "displayVersion": {
+          "pattern": "^[0-9]{2,3}\\.",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "platformVersion": {
+          "pattern": "^[0-9]{2,3}\\.",
+          "type": "string"
+        },
+        "vendor": {
+          "type": "string"
+        },
+        "version": {
+          "pattern": "^[0-9]{2,3}\\.",
+          "type": "string"
+        },
+        "xpcomAbi": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "architecture",
+        "buildId",
+        "channel",
+        "name",
+        "platformVersion",
+        "version",
+        "vendor",
+        "xpcomAbi"
+      ],
+      "type": "object"
+    },
+    "creationDate": {
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{3}Z$",
+      "type": "string"
+    },
+    "environment": {
+      "properties": {
+        "profile": {
+          "properties": {
+            "creationDate": {
+              "type": "number"
+            },
+            "firstUseDate": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "creationDate"
+          ],
+          "type": "object"
+        },
+        "settings": {
+          "properties": {
+            "locale": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "locale"
+          ],
+          "type": "object"
+        },
+        "system": {
+          "properties": {
+            "cpu": {
+              "properties": {
+                "speedMHz": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "speedMHz"
+              ],
+              "type": "object"
+            },
+            "memoryMB": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "os": {
+              "properties": {
+                "locale": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "name": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "version": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "name",
+                "version",
+                "locale"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "memoryMB",
+            "cpu",
+            "os"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "settings",
+        "system",
+        "profile"
+      ],
+      "type": "object"
+    },
+    "id": {
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "type": "string"
+    },
+    "payload": {
+      "properties": {
+        "duration": {
+          "type": "number"
+        },
+        "ecosystemClientId": {
+          "type": "string"
+        },
+        "histograms": {
+          "type": "object"
+        },
+        "keyedHistograms": {
+          "type": "object"
+        },
+        "keyedScalars": {
+          "type": "object"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "scalars": {
+          "additionalProperties": {
+            "additionalProperties": {
+              "type": [
+                "integer",
+                "string",
+                "boolean"
+              ]
+            },
+            "type": "object"
+          },
+          "type": "object"
+        },
+        "uid": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "reason",
+        "ecosystemClientId",
+        "duration",
+        "scalars",
+        "keyedScalars",
+        "histograms",
+        "keyedHistograms"
+      ],
+      "type": "object"
+    },
+    "type": {
+      "enum": [
+        "pre-account"
+      ],
+      "type": "string"
+    },
+    "version": {
+      "maximum": 4,
+      "minimum": 4,
+      "type": "number"
+    }
+  },
+  "required": [
+    "application",
+    "creationDate",
+    "id",
+    "type",
+    "version",
+    "payload"
+  ],
+  "title": "pre-account",
+  "type": "object"
+}

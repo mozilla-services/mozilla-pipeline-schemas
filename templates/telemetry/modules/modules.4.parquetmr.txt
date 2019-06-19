@@ -1,0 +1,33 @@
+message modules {
+  optional binary clientId (UTF8);
+  required binary creationDate (UTF8);
+  required binary id (UTF8);
+  required binary type (UTF8);
+  required double version;
+  required group payload {
+    required int64 version;
+    optional group modules (LIST) {
+      repeated group list {
+        optional group element {
+          optional binary name (UTF8);
+          optional binary debugName (UTF8);
+          optional binary version (UTF8);
+          optional binary debugID (UTF8);
+          optional binary certSubject (UTF8);
+        }
+      }
+    }
+  }
+  @TELEMETRY_ENVIRONMENT_1_TXT@
+  @TELEMETRY_APPLICATION_1_TXT@
+  required group metadata {
+    required int64 Timestamp;
+    required binary submissionDate (UTF8);
+    optional binary Date (UTF8);
+    required binary normalizedChannel (UTF8);
+    required binary geoCountry (UTF8);
+    required binary geoCity (UTF8);
+    required binary appVersion (UTF8);
+    required binary appBuildId (UTF8);
+  }
+}

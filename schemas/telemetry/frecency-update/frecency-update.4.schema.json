@@ -1,0 +1,123 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "clientId": {
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "type": "string"
+    },
+    "payload": {
+      "properties": {
+        "bookmark_and_history_num_suggestions_displayed": {
+          "minimum": 0,
+          "type": "number"
+        },
+        "bookmark_and_history_rank_selected": {
+          "minimum": -1,
+          "type": "number"
+        },
+        "enter_was_pressed": {
+          "minimum": 0,
+          "type": "number"
+        },
+        "frecency_scores": {
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "loss": {
+          "type": "number"
+        },
+        "model_version": {
+          "type": "number"
+        },
+        "num_key_down_events": {
+          "minimum": 0,
+          "type": "number"
+        },
+        "num_key_down_events_at_selecteds_first_entry": {
+          "minimum": -1,
+          "type": "number"
+        },
+        "num_suggestions_displayed": {
+          "minimum": 0,
+          "type": "number"
+        },
+        "rank_selected": {
+          "minimum": -1,
+          "type": "number"
+        },
+        "search_string_length": {
+          "minimum": 0,
+          "type": "number"
+        },
+        "selected_style": {
+          "type": "string"
+        },
+        "selected_url_was_same_as_search_string": {
+          "minimum": -1,
+          "type": "number"
+        },
+        "study_addon_version": {
+          "type": "string"
+        },
+        "study_variation": {
+          "type": "string"
+        },
+        "time_at_selecteds_first_entry": {
+          "minimum": -1,
+          "type": "number"
+        },
+        "time_end_interaction": {
+          "minimum": 0,
+          "type": "number"
+        },
+        "time_start_interaction": {
+          "minimum": 0,
+          "type": "number"
+        },
+        "update": {
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 22,
+          "minItems": 22,
+          "type": "array"
+        }
+      },
+      "required": [
+        "model_version",
+        "frecency_scores",
+        "loss",
+        "update",
+        "num_suggestions_displayed",
+        "rank_selected",
+        "bookmark_and_history_num_suggestions_displayed",
+        "bookmark_and_history_rank_selected",
+        "num_key_down_events_at_selecteds_first_entry",
+        "num_key_down_events",
+        "time_start_interaction",
+        "time_end_interaction",
+        "time_at_selecteds_first_entry",
+        "search_string_length",
+        "selected_style",
+        "selected_url_was_same_as_search_string",
+        "enter_was_pressed",
+        "study_variation",
+        "study_addon_version"
+      ]
+    },
+    "type": {
+      "enum": [
+        "frecency-update"
+      ]
+    }
+  },
+  "required": [
+    "clientId",
+    "payload",
+    "type"
+  ],
+  "title": "frecency-update",
+  "type": "object"
+}

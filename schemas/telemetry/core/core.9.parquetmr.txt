@@ -1,11 +1,12 @@
 message core {
   required group metadata {
     required binary documentId (UTF8);
-    required int64  Timestamp;
+    required int64 Timestamp;
     optional binary Date (UTF8);
     optional binary geoCountry (UTF8);
     optional binary geoCity (UTF8);
     optional binary appBuildId (UTF8);
+    optional binary normalizedChannel (UTF8);
   }
   optional group application {
     optional binary name (UTF8);
@@ -14,7 +15,6 @@ message core {
   required binary clientId (UTF8);
   required int64 seq;
   required binary locale (UTF8);
-  required binary os (UTF8);
   required binary osversion (UTF8);
   required binary device (UTF8);
   required binary arch (UTF8);
@@ -36,6 +36,15 @@ message core {
       required binary element (UTF8);
     }
   }
+  optional group accessibilityServices (LIST) {
+    repeated group list {
+      required binary element (UTF8);
+    }
+  }
   optional int64 flashUsage;
   optional binary campaignId (UTF8);
+  optional boolean defaultBrowser;
+  optional boolean showTrackerStatsShare;
+  optional binary metadata_appVersion (UTF8);
+  optional boolean bug_1501329_affected;
 }

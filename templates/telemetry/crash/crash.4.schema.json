@@ -32,6 +32,9 @@
             "BuildID": {
               "type": "string"
             },
+            "ipc_channel_error": {
+              "type": "string"
+            },
             "IsGarbageCollecting": {
               "type": "string"
             },
@@ -45,6 +48,9 @@
               "type": "string"
             },
             "SecondsSinceLastCrash": {
+              "type": "string"
+            },
+            "StartupCrash": {
               "type": "string"
             },
             "SystemMemoryUsePercentage": {
@@ -64,12 +70,19 @@
             }
           }
         },
+        "processType": {
+          "type": "string"
+        },
         "version": {
           "type": "integer",
           "minimum": 1,
           "maximum": 1
         }
-      }
+      },
+      "required": [
+        "crashDate",
+        "metadata"
+      ]
     },
     "type": {
       "type": "string",
@@ -80,5 +93,13 @@
       "minimum": 4,
       "maximum": 4
     }
-  }
+  },
+  "required": [
+    "type",
+    "id",
+    "creationDate",
+    "version",
+    "application",
+    "payload"
+  ]
 }

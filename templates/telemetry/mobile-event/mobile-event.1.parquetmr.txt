@@ -11,26 +11,5 @@ message mobile_event {
     required double sampleId;
     required binary appUpdateChannel (UTF8);
   }
-  required int64 v;
-  required binary clientId (UTF8);
-  required int64 seq;
-  required binary locale (UTF8);
-  required binary os (UTF8);
-  required binary osversion (UTF8);
-  optional binary device (UTF8);
-  optional binary arch (UTF8);
-  required int64 created;
-  required int64 processStartTimestamp;
-  optional int64 tz;
-  required group settings (MAP) {
-    repeated group key_value {
-      required binary key (UTF8);
-      optional binary value (UTF8);
-    }
-  }
-  required group events (LIST) {
-    repeated group list {
-      required group element @COMMON_EVENT_1_TXT@
-    }
-  }
+  @TELEMETRY_MOBILEEVENT_1_TXT@
 }

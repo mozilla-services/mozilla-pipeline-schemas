@@ -2,11 +2,13 @@ message new-profile {
   required binary id (UTF8);
   required binary clientId (UTF8);
   required group metadata {
-    required int64  Timestamp;
+    required int64 Timestamp;
     optional binary Date (UTF8);
     optional binary normalizedChannel (UTF8);
     optional binary geoCountry (UTF8);
     optional binary geoCity (UTF8);
+    optional binary geoSubdivision1 (UTF8);
+    optional binary geoSubdivision2 (UTF8);
     required int64 creationTimestamp;
     optional binary X-PingSender-Version (UTF8);
   }
@@ -62,7 +64,7 @@ message new-profile {
       }
     }
     optional group profile {
-      required int64 creationDate;
+      optional int64 creationDate;
     }
   }
   required group payload {

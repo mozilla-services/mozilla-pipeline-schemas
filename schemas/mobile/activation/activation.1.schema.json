@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "oneOf": [
+    {
+      "required": [
+        "identifier"
+      ]
+    },
+    {
+      "required": [
+        "client_id"
+      ]
+    }
+  ],
+  "properties": {
+    "app_name": {
+      "type": "string"
+    },
+    "channel": {
+      "type": "string"
+    },
+    "client_id": {
+      "description": "telemetry client_id, included only if identifer is empty",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "type": "string"
+    },
+    "created": {
+      "type": "string"
+    },
+    "distribution_id": {
+      "type": "string"
+    },
+    "identifier": {
+      "description": "hashed version of Google ID",
+      "type": "string"
+    },
+    "locale": {
+      "description": "application locale, such as 'en-US'",
+      "type": "string"
+    },
+    "manufacturer": {
+      "description": "Build.MANUFACTURER",
+      "type": "string"
+    },
+    "model": {
+      "description": "Build.MODEL",
+      "type": "string"
+    },
+    "os": {
+      "type": "string"
+    },
+    "osversion": {
+      "type": "string"
+    },
+    "profile_date": {
+      "type": "integer"
+    },
+    "tz": {
+      "description": "timezone offset in minutes from UTC",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "manufacturer",
+    "model",
+    "locale",
+    "os",
+    "osversion",
+    "created",
+    "tz",
+    "app_name",
+    "channel"
+  ],
+  "title": "activation",
+  "type": "object"
+}

@@ -22,7 +22,7 @@
                     "type": [
                       "string",
                       "null"
-                      ]
+                    ]
                   },
                   "name": {
                     "type": "string"
@@ -31,7 +31,7 @@
                     "type": [
                       "boolean",
                       "integer"
-                      ]
+                    ]
                   },
                   "appDisabled": {
                     "type": "boolean"
@@ -40,7 +40,7 @@
                     "type": [
                       "string",
                       "number"
-                      ]
+                    ]
                   },
                   "scope": {
                     "type": "integer"
@@ -52,7 +52,7 @@
                     "type": [
                       "integer",
                       "boolean"
-                      ]
+                    ]
                   },
                   "hasBinaryComponents": {
                     "type": "boolean"
@@ -61,7 +61,7 @@
                     "type": [
                       "integer",
                       "null"
-                      ],
+                    ],
                     "minimum": 0
                   },
                   "updateDay": {
@@ -94,7 +94,7 @@
                     "type": [
                       "string",
                       "null"
-                      ]
+                    ]
                   },
                   "userDisabled": {
                     "type": "boolean"
@@ -103,16 +103,13 @@
                     "type": [
                       "integer",
                       "boolean"
-                      ]
+                    ]
                   }
                 }
               }
             },
             "activePlugins": {
-              "type": [
-                "array",
-                "object"
-                ],
+              "type": "array",
               "items": {
                 "type": "object",
                 "properties": {
@@ -135,10 +132,7 @@
                     "type": "boolean"
                   },
                   "mimeTypes": {
-                    "type": [
-                      "array",
-                      "object"
-                      ],
+                    "type": "array",
                     "items": {
                       "type": "string"
                     }
@@ -153,7 +147,7 @@
               "type": [
                 "string",
                 "null"
-                ]
+              ]
             },
             "theme": {
               "type": "object",
@@ -168,7 +162,7 @@
                   "type": [
                     "string",
                     "null"
-                    ]
+                  ]
                 },
                 "name": {
                   "type": "string"
@@ -189,7 +183,7 @@
                   "type": [
                     "boolean",
                     "integer"
-                    ]
+                  ]
                 },
                 "hasBinaryComponents": {
                   "type": "boolean"
@@ -198,7 +192,7 @@
                   "type": [
                     "integer",
                     "null"
-                    ],
+                  ],
                   "minimum": 0
                 },
                 "updateDay": {
@@ -238,7 +232,7 @@
         "name",
         "platformVersion",
         "version"
-        ],
+      ],
       "additionalProperties": true
     },
     "clientId": {
@@ -339,8 +333,7 @@
             }
           }
         }
-      },
-      "required": [ ]
+      }
     },
     "id": {
       "type": "string",
@@ -351,7 +344,7 @@
       "description": "doc_type, restated",
       "enum": [
         "shield-study"
-        ]
+      ]
     },
     "version": {
       "type": "number",
@@ -359,103 +352,7 @@
       "maximum": 4
     },
     "payload": {
-      "type": "object",
-      "title": "shield-study",
-      "description": "`shield-study` state and outcome data.",
-      "properties": {
-        "version": {
-          "type": "integer",
-          "title": "Version schema.  Will be 3",
-          "enum": [
-            3
-            ]
-        },
-        "study_name": {
-          "description": "Name of a particular study.  Usually the addon_id.",
-          "type": "string",
-          "pattern": "^\\S+$",
-          "minLength": 1,
-          "maxLength": 100
-        },
-        "branch": {
-          "description": "Which branch (variation) of the study the user has.",
-          "type": "string",
-          "pattern": "^\\S+$",
-          "minLength": 1,
-          "maxLength": 100
-        },
-        "addon_version": {
-          "description": "Semantic version of the addon.",
-          "type": "string",
-          "pattern": "^\\S+$",
-          "minLength": 1,
-          "maxLength": 100
-        },
-        "shield_version": {
-          "description": "Which version of the shield-studies-addon-utils.",
-          "type": "string",
-          "pattern": "^\\S+$",
-          "minLength": 1,
-          "maxLength": 100
-        },
-        "testing": {
-          "type": "boolean",
-          "description": "If `true`, this packet is a TESTING packet and can be safely ignored."
-        },
-        "data": {
-          "type": "object",
-          "description": "`shield-study` state and outcome data.",
-          "properties": {
-            "study_state": {
-              "type": "string",
-              "description": "message about the most recent state of the study.",
-              "enum": [
-                "enter",
-                "exit",
-                "installed",
-                "ineligible",
-                "expired",
-                "user-disable",
-                "ended-positive",
-                "ended-neutral",
-                "ended-negative",
-                "active"
-                ]
-            },
-            "study_state_fullname": {
-              "type": "string",
-              "description": "Second part of name of state, if any.  Study-specific for study-defined endings."
-            },
-            "attributes": {
-              "type": "object",
-              "description": "Map(string, string) of attributes.",
-              "properties": { },
-              "additionalProperties": {
-                "type": "string"
-              }
-            }
-          },
-          "required": [
-            "study_state"
-            ]
-        },
-        "type": {
-          "type": "string",
-          "description": "doc_type, restated",
-          "enum": [
-            "shield-study"
-            ]
-        }
-      },
-      "required": [
-        "version",
-        "study_name",
-        "branch",
-        "addon_version",
-        "shield_version",
-        "data",
-        "type"
-        ]
+      @TELEMETRY_SHIELDSTUDYPAYLOAD_3_JSON@
     }
   },
   "required": [
@@ -466,5 +363,5 @@
     "type",
     "version",
     "payload"
-    ]
+  ]
 }
