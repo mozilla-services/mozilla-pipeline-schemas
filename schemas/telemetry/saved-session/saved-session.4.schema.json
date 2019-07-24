@@ -1115,8 +1115,71 @@
         },
         "info": {
           "properties": {
-            "subsessionLength": {
+            "previousBuildId": {
+              "description": "null if this is the first run, or the previous build ID is unknown",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "previousSessionId": {
+              "description": "session id of the previous session, null on first run.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "previousSubsessionId": {
+              "description": "subsession id of the previous subsession (even if it was in a different session), null on first run.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "profileSubsessionCounter": {
+              "description": "the running no. of all subsessions for the whole profile life time",
               "minimum": 0,
+              "type": "integer"
+            },
+            "reason": {
+              "description": "what triggered this ping e.g. saved-session, environment-change, shutdown, ...",
+              "type": "string"
+            },
+            "revision": {
+              "description": "the Histograms.json revision",
+              "type": "string"
+            },
+            "sessionId": {
+              "description": "random session id, shared by subsessions",
+              "type": "string"
+            },
+            "sessionStartDate": {
+              "description": "hourly precision, ISO date in local time",
+              "type": "string"
+            },
+            "subsessionCounter": {
+              "description": "the running no. of this subsession since the start of the browser session",
+              "minimum": 0,
+              "type": "integer"
+            },
+            "subsessionId": {
+              "description": "random subsession id",
+              "type": "string"
+            },
+            "subsessionLength": {
+              "description": "the session length until now in seconds, monotonic",
+              "minimum": 0,
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "subsessionStartDate": {
+              "description": "hourly precision, ISO date in local time",
+              "type": "string"
+            },
+            "timezoneOffset": {
+              "description": "time-zone offset from UTC, in minutes, for the current locale",
               "type": [
                 "integer",
                 "null"
