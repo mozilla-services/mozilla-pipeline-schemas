@@ -34,3 +34,5 @@
   section.
 
 - Added `sum` to histogram and `timing_distribution` as optional parameter.
+
+- Renamed `string_list` to `string_set` and made it require its values to be unique.
