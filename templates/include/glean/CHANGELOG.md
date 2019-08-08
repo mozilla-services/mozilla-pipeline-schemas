@@ -1,5 +1,15 @@
 # Version 1
 
+- The length of labels was changed from 30 to 61 characters. This is to
+  accomodate the full `category.name` identifier of a metric used for error
+  reporting (which uses labeled counters).  See [1556684](https://bugzilla.mozilla.org/show_bug.cgi?id=1556684).
+
+- Make `client_id` optional.
+
+- Make `client_info` required.
+
+- Explicit types added for all objects and strings.
+
 - `UUID` was removed from the `metadata` section of the parquet schema.
 
 - The field `clientId` was changed to `client_id` to consistently use snake case
@@ -22,3 +32,5 @@
 
 - Added support for the sending the set of active experiments in the ping_info
   section.
+
+- Added `sum` to histogram and `timing_distribution` as optional parameter.

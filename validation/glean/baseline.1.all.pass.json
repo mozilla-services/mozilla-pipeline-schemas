@@ -1,15 +1,22 @@
 {
   "$schema": "moz://mozilla.org/schemas/glean/ping/1",
-  "ping_info": {
-    "ping_type": "full",
+  "client_info": {
     "app_build": "59f330e5",
     "app_display_version": "1.0.0",
-    "telemetry_sdk_build": "abcdabcd",
+    "architecture": "arm",
     "client_id": "6ff20eb7-e80d-4452-b45f-2ea7e63547aa",
+    "device_manufacturer": "Mozilla",
+    "device_model": "phone123",
+    "first_run_date": "2018-10-23-04:25",
+    "os": "Android",
+    "os_version": "3.2.1",
+    "telemetry_sdk_build": "abcdabcd"
+  },
+  "ping_info": {
+    "ping_type": "full",
     "seq": 1,
     "start_time": "2018-10-23 11:23:15-04:00",
     "end_time": "2018-10-23 11:23:15-04:25",
-    "first_run_date": "2018-10-23-04:25",
     "experiments": {
       "experiment1": {
         "branch": "branch_a"
@@ -38,7 +45,9 @@
     "labeled_string": {
       "examples.subcategory.labeled_string_example": {
         "longer_key_1": "ABCD",
-        "an_even_longer_key_2": "EFGH"
+        "an_even_longer_key_2": "EFGH",
+        "a_dotted.key": "IJKL",
+        "a-dashed-key.nice": "MNO"
       }
     },
     "number": {
@@ -126,6 +135,7 @@
         },
         "underflow": 52,
         "overflow": 3,
+        "sum": 21,
         "time_unit": "second"
       }
     },
@@ -156,6 +166,7 @@
           },
           "underflow": 52,
           "overflow": 3,
+          "sum": 21,
           "time_unit": "second"
         },
         "b": {
@@ -183,6 +194,7 @@
           },
           "underflow": 52,
           "overflow": 3,
+          "sum": 21,
           "time_unit": "second"
         }
       }
@@ -253,7 +265,19 @@
     }
   },
   "events": [
-    [123456789, "examples", "event_example", {"metadata1": "extra", "metadata2": "more_extra"}],
-    [123456791, "examples", "event_example"]
+    {
+      "timestamp": 123456789,
+      "category": "examples",
+      "name": "event_example",
+      "extra": {
+        "metadata1": "extra", 
+        "metadata2": "more_extra"
+      }
+    },
+    {
+      "timestamp": 123456791,
+      "category": "examples",
+      "name": "event_example"
+    }
   ]
 }

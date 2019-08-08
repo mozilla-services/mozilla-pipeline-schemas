@@ -111,7 +111,10 @@
                   },
                   "updateDay": {
                     "minimum": 0,
-                    "type": "integer"
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
                   },
                   "userDisabled": {
                     "type": [
@@ -183,10 +186,7 @@
                     "items": {
                       "type": "string"
                     },
-                    "type": [
-                      "array",
-                      "object"
-                    ]
+                    "type": "array"
                   },
                   "name": {
                     "type": "string"
@@ -200,10 +200,7 @@
                 },
                 "type": "object"
               },
-              "type": [
-                "array",
-                "object"
-              ]
+              "type": "array"
             },
             "persona": {
               "type": [
@@ -252,7 +249,10 @@
                 },
                 "updateDay": {
                   "minimum": 0,
-                  "type": "integer"
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
                 },
                 "userDisabled": {
                   "type": "boolean"
@@ -368,10 +368,10 @@
               ]
             },
             "partnerNames": {
-              "type": [
-                "array",
-                "object"
-              ]
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
             }
           },
           "type": "object"
@@ -651,6 +651,12 @@
                     "null"
                   ]
                 },
+                "Headless": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
                 "LowEndMachine": {
                   "type": "boolean"
                 },
@@ -819,10 +825,7 @@
                     },
                     "type": "object"
                   },
-                  "type": [
-                    "array",
-                    "object"
-                  ]
+                  "type": "array"
                 }
               },
               "type": "object"
@@ -838,6 +841,17 @@
                       ]
                     },
                     "revision": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "type": {
+                      "enum": [
+                        "SSD",
+                        "HDD",
+                        null
+                      ],
                       "type": [
                         "string",
                         "null"
@@ -859,6 +873,17 @@
                         "string",
                         "null"
                       ]
+                    },
+                    "type": {
+                      "enum": [
+                        "SSD",
+                        "HDD",
+                        null
+                      ],
+                      "type": [
+                        "string",
+                        "null"
+                      ]
                     }
                   },
                   "type": "object"
@@ -872,6 +897,17 @@
                       ]
                     },
                     "revision": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "type": {
+                      "enum": [
+                        "SSD",
+                        "HDD",
+                        null
+                      ],
                       "type": [
                         "string",
                         "null"
@@ -974,7 +1010,8 @@
         "partner",
         "settings",
         "system"
-      ]
+      ],
+      "type": "object"
     },
     "id": {
       "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",

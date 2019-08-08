@@ -111,7 +111,10 @@
                   },
                   "updateDay": {
                     "minimum": 0,
-                    "type": "integer"
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
                   },
                   "userDisabled": {
                     "type": [
@@ -183,10 +186,7 @@
                     "items": {
                       "type": "string"
                     },
-                    "type": [
-                      "array",
-                      "object"
-                    ]
+                    "type": "array"
                   },
                   "name": {
                     "type": "string"
@@ -200,10 +200,7 @@
                 },
                 "type": "object"
               },
-              "type": [
-                "array",
-                "object"
-              ]
+              "type": "array"
             },
             "persona": {
               "type": [
@@ -252,7 +249,10 @@
                 },
                 "updateDay": {
                   "minimum": 0,
-                  "type": "integer"
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
                 },
                 "userDisabled": {
                   "type": "boolean"
@@ -368,10 +368,10 @@
               ]
             },
             "partnerNames": {
-              "type": [
-                "array",
-                "object"
-              ]
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
             }
           },
           "type": "object"
@@ -651,6 +651,12 @@
                     "null"
                   ]
                 },
+                "Headless": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
                 "LowEndMachine": {
                   "type": "boolean"
                 },
@@ -819,10 +825,7 @@
                     },
                     "type": "object"
                   },
-                  "type": [
-                    "array",
-                    "object"
-                  ]
+                  "type": "array"
                 }
               },
               "type": "object"
@@ -838,6 +841,17 @@
                       ]
                     },
                     "revision": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "type": {
+                      "enum": [
+                        "SSD",
+                        "HDD",
+                        null
+                      ],
                       "type": [
                         "string",
                         "null"
@@ -859,6 +873,17 @@
                         "string",
                         "null"
                       ]
+                    },
+                    "type": {
+                      "enum": [
+                        "SSD",
+                        "HDD",
+                        null
+                      ],
+                      "type": [
+                        "string",
+                        "null"
+                      ]
                     }
                   },
                   "type": "object"
@@ -872,6 +897,17 @@
                       ]
                     },
                     "revision": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "type": {
+                      "enum": [
+                        "SSD",
+                        "HDD",
+                        null
+                      ],
                       "type": [
                         "string",
                         "null"
@@ -974,7 +1010,8 @@
         "partner",
         "settings",
         "system"
-      ]
+      ],
+      "type": "object"
     },
     "id": {
       "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
@@ -983,10 +1020,11 @@
     "payload": {
       "properties": {
         "UIMeasurements": {
-          "type": [
-            "array",
-            "object"
-          ]
+          "items": {
+            "properties": {},
+            "type": "object"
+          },
+          "type": "array"
         },
         "addonDetails": {
           "properties": {},
@@ -997,6 +1035,10 @@
           "type": "object"
         },
         "childPayloads": {
+          "items": {
+            "properties": {},
+            "type": "object"
+          },
           "type": "array"
         },
         "chromeHangs": {
@@ -1031,6 +1073,9 @@
                 "type": "number"
               },
               "range": {
+                "items": {
+                  "type": "integer"
+                },
                 "type": "array"
               },
               "sum": {
@@ -1094,6 +1139,9 @@
                   "type": "number"
                 },
                 "range": {
+                  "items": {
+                    "type": "integer"
+                  },
                   "type": "array"
                 },
                 "sum": {
@@ -1130,10 +1178,22 @@
           "type": "object"
         },
         "log": {
-          "type": [
-            "array",
-            "object"
-          ]
+          "description": "Removed in FF61 via bug 1443615",
+          "items": {
+            "additionalItems": {
+              "type": "string"
+            },
+            "items": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "type": "array"
+          },
+          "type": "array"
         },
         "processes": {
           "properties": {
@@ -1196,6 +1256,10 @@
                         "maxProperties": 30,
                         "properties": {
                           "slices": {
+                            "items": {
+                              "properties": {},
+                              "type": "object"
+                            },
                             "type": [
                               "array",
                               "number"
@@ -1214,7 +1278,7 @@
                               "maxProperties": 15,
                               "properties": {
                                 "times": {
-                                  "maxProperties": 65,
+                                  "maxProperties": 73,
                                   "type": "object"
                                 }
                               },
@@ -1224,7 +1288,7 @@
                             "type": "array"
                           },
                           "totals": {
-                            "maxProperties": 65,
+                            "maxProperties": 73,
                             "type": "object"
                           }
                         },
@@ -1246,6 +1310,10 @@
                         "maxProperties": 30,
                         "properties": {
                           "slices": {
+                            "items": {
+                              "properties": {},
+                              "type": "object"
+                            },
                             "type": [
                               "array",
                               "number"
@@ -1264,7 +1332,7 @@
                               "maxProperties": 15,
                               "properties": {
                                 "times": {
-                                  "maxProperties": 65,
+                                  "maxProperties": 73,
                                   "type": "object"
                                 }
                               },
@@ -1274,7 +1342,7 @@
                             "type": "array"
                           },
                           "totals": {
-                            "maxProperties": 65,
+                            "maxProperties": 73,
                             "type": "object"
                           }
                         },
@@ -1307,6 +1375,9 @@
                         "type": "number"
                       },
                       "range": {
+                        "items": {
+                          "type": "integer"
+                        },
                         "type": "array"
                       },
                       "sum": {
@@ -1358,6 +1429,9 @@
                           "type": "number"
                         },
                         "range": {
+                          "items": {
+                            "type": "integer"
+                          },
                           "type": "array"
                         },
                         "sum": {
@@ -1474,6 +1548,10 @@
                         "maxProperties": 30,
                         "properties": {
                           "slices": {
+                            "items": {
+                              "properties": {},
+                              "type": "object"
+                            },
                             "type": [
                               "array",
                               "number"
@@ -1492,7 +1570,7 @@
                               "maxProperties": 15,
                               "properties": {
                                 "times": {
-                                  "maxProperties": 65,
+                                  "maxProperties": 73,
                                   "type": "object"
                                 }
                               },
@@ -1502,7 +1580,7 @@
                             "type": "array"
                           },
                           "totals": {
-                            "maxProperties": 65,
+                            "maxProperties": 73,
                             "type": "object"
                           }
                         },
@@ -1524,6 +1602,10 @@
                         "maxProperties": 30,
                         "properties": {
                           "slices": {
+                            "items": {
+                              "properties": {},
+                              "type": "object"
+                            },
                             "type": [
                               "array",
                               "number"
@@ -1542,7 +1624,7 @@
                               "maxProperties": 15,
                               "properties": {
                                 "times": {
-                                  "maxProperties": 65,
+                                  "maxProperties": 73,
                                   "type": "object"
                                 }
                               },
@@ -1552,7 +1634,7 @@
                             "type": "array"
                           },
                           "totals": {
-                            "maxProperties": 65,
+                            "maxProperties": 73,
                             "type": "object"
                           }
                         },
@@ -1585,6 +1667,9 @@
                         "type": "number"
                       },
                       "range": {
+                        "items": {
+                          "type": "integer"
+                        },
                         "type": "array"
                       },
                       "sum": {
@@ -1636,6 +1721,9 @@
                           "type": "number"
                         },
                         "range": {
+                          "items": {
+                            "type": "integer"
+                          },
                           "type": "array"
                         },
                         "sum": {
@@ -1752,6 +1840,10 @@
                         "maxProperties": 30,
                         "properties": {
                           "slices": {
+                            "items": {
+                              "properties": {},
+                              "type": "object"
+                            },
                             "type": [
                               "array",
                               "number"
@@ -1770,7 +1862,7 @@
                               "maxProperties": 15,
                               "properties": {
                                 "times": {
-                                  "maxProperties": 65,
+                                  "maxProperties": 73,
                                   "type": "object"
                                 }
                               },
@@ -1780,7 +1872,7 @@
                             "type": "array"
                           },
                           "totals": {
-                            "maxProperties": 65,
+                            "maxProperties": 73,
                             "type": "object"
                           }
                         },
@@ -1802,6 +1894,10 @@
                         "maxProperties": 30,
                         "properties": {
                           "slices": {
+                            "items": {
+                              "properties": {},
+                              "type": "object"
+                            },
                             "type": [
                               "array",
                               "number"
@@ -1820,7 +1916,7 @@
                               "maxProperties": 15,
                               "properties": {
                                 "times": {
-                                  "maxProperties": 65,
+                                  "maxProperties": 73,
                                   "type": "object"
                                 }
                               },
@@ -1830,7 +1926,7 @@
                             "type": "array"
                           },
                           "totals": {
-                            "maxProperties": 65,
+                            "maxProperties": 73,
                             "type": "object"
                           }
                         },
@@ -1863,6 +1959,9 @@
                         "type": "number"
                       },
                       "range": {
+                        "items": {
+                          "type": "integer"
+                        },
                         "type": "array"
                       },
                       "sum": {
@@ -1914,6 +2013,9 @@
                           "type": "number"
                         },
                         "range": {
+                          "items": {
+                            "type": "integer"
+                          },
                           "type": "array"
                         },
                         "sum": {
@@ -1993,10 +2095,11 @@
           "type": "object"
         },
         "threadHangStats": {
-          "type": [
-            "array",
-            "object"
-          ]
+          "items": {
+            "properties": {},
+            "type": "object"
+          },
+          "type": "array"
         },
         "ver": {
           "type": "integer"

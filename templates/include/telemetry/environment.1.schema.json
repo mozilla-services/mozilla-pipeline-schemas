@@ -1,4 +1,5 @@
 "environment": {
+  "type": "object",
   "properties": {
     "addons": {
       "type": "object",
@@ -46,7 +47,7 @@
                 "minimum": 0
               },
               "updateDay": {
-                "type": "integer",
+                "type": [ "integer", "null" ],
                 "minimum": 0
               },
               "signedState": {
@@ -90,7 +91,7 @@
           }
         },
         "activePlugins": {
-          "type": [ "array", "object" ],
+          "type": "array",
           "items": {
             "type": "object",
             "properties": {
@@ -113,7 +114,7 @@
                 "type": "boolean"
               },
               "mimeTypes": {
-                "type": [ "array", "object" ],
+                "type": "array",
                 "items": {
                   "type": "string"
                 }
@@ -168,7 +169,7 @@
               "minimum": 0
             },
             "updateDay": {
-              "type": "integer",
+              "type": [ "integer", "null" ],
               "minimum": 0
             }
           }
@@ -275,10 +276,10 @@
           ]
         },
         "partnerNames": {
-          "type": [
-            "array",
-            "object"
-          ]
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -514,6 +515,12 @@
                 "null"
               ]
             },
+            "Headless": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
             "LowEndMachine": {
               "type": "boolean"
             },
@@ -553,7 +560,7 @@
               }
             },
             "monitors": {
-              "type": [ "array", "object" ],
+              "type": "array",
               "items": {
                 "type": "object",
                 "properties": {
@@ -649,6 +656,17 @@
                     "string",
                     "null"
                   ]
+                },
+                "type": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "enum": [
+                    "SSD",
+                    "HDD",
+                    null
+                  ]
                 }
               }
             },
@@ -666,6 +684,17 @@
                     "string",
                     "null"
                   ]
+                },
+                "type": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "enum": [
+                    "SSD",
+                    "HDD",
+                    null
+                  ]
                 }
               }
             },
@@ -682,6 +711,17 @@
                   "type": [
                     "string",
                     "null"
+                  ]
+                },
+                "type": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "enum": [
+                    "SSD",
+                    "HDD",
+                    null
                   ]
                 }
               }

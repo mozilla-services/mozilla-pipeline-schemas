@@ -6,43 +6,54 @@
   "type": "object",
   "properties": {
     "$schema": {
+      "type": "string",
       "enum": [
         "moz://mozilla.org/schemas/glean/ping/1"
+      ]
+    },
+    "client_info": {
+      "type": "object",
+      "properties": {
+        "app_build": @GLEAN_STRING_1_JSON@,
+        "app_display_version": @GLEAN_STRING_1_JSON@,
+        "app_channel": @GLEAN_STRING_1_JSON@,
+        "architecture": @GLEAN_STRING_1_JSON@,
+        "client_id": {
+          "type": "string",
+          @COMMON_PATTERN_UUID_1_JSON@
+        },
+        "device_manufacturer": @GLEAN_STRING_1_JSON@,
+        "device_model": @GLEAN_STRING_1_JSON@,
+        "first_run_date": @GLEAN_DATETIME_1_JSON@,
+        "os": @GLEAN_STRING_1_JSON@,
+        "os_version": @GLEAN_STRING_1_JSON@,
+        "android_sdk_version": @GLEAN_STRING_1_JSON@,
+        "telemetry_sdk_build": @GLEAN_STRING_1_JSON@
+      },
+      "additionalProperties": false,
+      "required": [
+        "app_build",
+        "app_display_version",
+        "architecture",
+        "device_manufacturer",
+        "device_model",
+        "first_run_date",
+        "os",
+        "os_version",
+        "telemetry_sdk_build"
       ]
     },
     "ping_info": {
       "type": "object",
       "properties": {
         "ping_type": @GLEAN_SHORT_ID_1_JSON@,
-        "app_build": {
-          "type": "string"
-        },
-        "app_display_version": {
-          "type": "string"
-        },
-        "telemetry_sdk_build": {
-          "type": "string"
-        },
-        "client_id": {
-          "type": "string",
-          @COMMON_PATTERN_UUID_1_JSON@
-        },
         "seq": {
           "type": "integer"
         },
-        "start_time": {
-          "type": "string",
-          "format": "datetime"
-        },
-        "end_time": {
-          "type": "string",
-          "format": "datetime"
-        },
-        "first_run_date": {
-          "type": "string",
-          "format": "datetime"
-        },
+        "start_time": @GLEAN_DATETIME_1_JSON@,
+        "end_time": @GLEAN_DATETIME_1_JSON@,
         "experiments": {
+          "type": "object",
           "propertyNames": @GLEAN_SHORT_ID_1_JSON@,
           "additionalProperties": {
             "type": "object",
@@ -67,17 +78,13 @@
       "additionalProperties": false,
       "required": [
         "ping_type",
-        "app_build",
-        "app_display_version",
-        "telemetry_sdk_build",
-        "client_id",
         "seq",
         "start_time",
-        "end_time",
-        "first_run_date"
+        "end_time"
       ]
     },
     "metrics": {
+      "type": "object",
       "properties": {
         "boolean": {
           @GLEAN_BASE_OBJECT_1_JSON@,
@@ -231,7 +238,8 @@
     }
   },
   "required": [
-    "ping_info"
+    "ping_info",
+    "client_info"
   ],
   "additionalProperties": false
 }

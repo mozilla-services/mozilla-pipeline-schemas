@@ -18,15 +18,25 @@ message baseline {
     required int32 Pid;
     required int64 Timestamp;
   }
+  required group client_info {
+    required binary app_build (UTF8);
+    required binary app_display_version (UTF8);
+    optional binary app_channel (UTF8);
+    required binary architecture (UTF8);
+    optional binary client_id (UTF8);
+    required binary device_manufacturer (UTF8);
+    required binary device_model (UTF8);
+    required binary first_run_date (UTF8);
+    required binary os (UTF8);
+    required binary os_version (UTF8);
+    optional binary android_sdk_version (UTF8);
+    required binary telemetry_sdk_build (UTF8);
+  }
   required group ping_info {
     required binary ping_type (UTF8);
-    required binary app_build (UTF8);
-    required binary telemetry_sdk_build (UTF8);
-    required binary client_id (UTF8);
     required int32 seq;
     required binary start_time (UTF8);
     required binary end_time (UTF8);
-    required binary first_run_date (UTF8);
     optional group experiments (MAP) {
       repeated group key_value {
         required binary key (UTF8);
@@ -194,6 +204,7 @@ message baseline {
           }
           optional int64 underflow;
           optional int64 overflow;
+          optional int64 sum;
           required binary time_unit (UTF8);
         }
       }
@@ -219,6 +230,7 @@ message baseline {
               }
               optional int64 underflow;
               optional int64 overflow;
+              optional int64 sum;
               required binary time_unit (UTF8);
             }
           }
@@ -335,7 +347,7 @@ message baseline {
   }
   optional group events (LIST) {
     repeated group list {
-      required group element (TUPLE) {
+      required group element {
         required int64 timestamp;
         required binary category (UTF8);
         required binary name (UTF8);
