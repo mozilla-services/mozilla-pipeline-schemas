@@ -17,7 +17,7 @@
     "discarded": { "type": "integer", "minimum": 1 },
     "why": { "enum": ["shutdown", "schedule", "idchange"] },
     "uid": {
-      "type": "string",
+      "type": ["string", "null"],
       "pattern": "^[0-9a-f]{32}$"
     },
     "deviceID": {
@@ -32,7 +32,7 @@
     },
     "events": {
       "type": "array",
-      "minItems": 1,
+      "minItems": 0,
       "items": { "$ref": "#/definitions/event" }
     },
     "histograms": {

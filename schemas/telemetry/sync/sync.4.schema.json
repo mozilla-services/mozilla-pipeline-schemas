@@ -4,13 +4,14 @@
   "description": "Schema for sync pings as sent by this code: https://searchfox.org/mozilla-central/rev/ee40541496d3ad738097eebadaf4965ca1343b7a/services/sync/modules/telemetry.js#490 and documented at https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/telemetry/data/sync-ping.html",
   "properties": {
     "application": {
+      "$comment": "The application section is included here inline due to incompatible incoming data",
       "additionalProperties": false,
       "properties": {
         "architecture": {
           "type": "string"
         },
         "buildId": {
-          "pattern": "^[0-9]{10}",
+          "$comment": "Note that we drop the pattern requirement commonly used by other ping types for this field due to observed values in incoming data.",
           "type": "string"
         },
         "channel": {
@@ -451,7 +452,7 @@
           "items": {
             "$ref": "#/definitions/event"
           },
-          "minItems": 1,
+          "minItems": 0,
           "type": "array"
         },
         "histograms": {
@@ -506,7 +507,10 @@
         },
         "uid": {
           "pattern": "^[0-9a-f]{32}$",
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "version": {
           "minimum": 0,
