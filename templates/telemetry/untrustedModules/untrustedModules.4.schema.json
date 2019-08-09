@@ -6,140 +6,164 @@
     "payload": {
       "type": "object",
       "properties": {
-        "combinedStacks": {
-          "type": "object",
-          "properties": {
-            "memoryMap": {
-              "type": "array",
-              "items": {
-                "type": "array",
-                "minItems": 2,
-                "maxItems": 2,
-                "items": [
-                  {
-                    "description": "The filename of the PDB symbol file",
-                    "examples": [
-                      "mozglue.pdb"
-                    ],
-                    "type": "string"
-                  },
-                  {
-                    "description": "The debug ID of the DLL",
-                    "examples": [
-                      "2403397A44447F1E42C7089B974E2DD48"
-                    ],
-                    "type": "string"
-                  }
-                ]
-              }
-            },
-            "stacks": {
-              "type": "array",
-              "items": {
-                "description": "Stack object, an array of frames",
-                "type": "array",
-                "items": {
-                  "description": "Stack frame object, a tuple<int,int>",
-                  "type": "array",
-                  "minItems": 2,
-                  "maxItems": 2,
-                  "items": [
-                    {
-                      "description": "Module index, an index into the combinedStacks/memoryMap array, or -1 if not applicable",
-                      "type": "number",
-                      "minimum": -1
-                    },
-                    {
-                      "description": "Module offset, the RVA of the program counter for this stack frame.",
-                      "type": "number",
-                      "minimum": 0
-                    }
-                  ]
-                }
-              }
-            }
-          }
-        },
+        "minProperties": 2,
+        "maxProperties": 2,
         "structVersion": {
           "type": "integer",
-          "minimum": 1,
-          "maximum": 1
+          "minimum": 2,
+          "maximum": 2
         },
-        "errorModules": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "xulLoadDurationMS": {
-          "type": "number",
-          "minimum": 0
-        },
-        "events": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
+        "processes": {
+          "type": "object",
+          "minProperties": 1,
+          "maxProperties": 100,
+          "additionalProperties": {
             "type": "object",
             "properties": {
-              "processUptimeMS": {
-                "type": "number",
-                "minimum": 0
-              },
-              "isStartup": {
-                "type": "boolean"
-              },
-              "threadName": {
+              "processType": {
+                "description": "Except for Default (which is remapped to 'browser'), one of the process string names specified in xpcom/build/GeckoProcessTypes.h",
                 "type": "string"
               },
-              "threadID": {
-                "type": "integer",
-                "minimum": 0
+              "elapsed": {
+                "description": "",
+                "type": "number"
               },
-              "modules": {
+              "xulLoadDurationMS": {
+                "description": "",
+                "type": "number"
+              },
+              "sanitizationFailures": {
+                "description": "",
+                "type": "integer"
+              },
+              "trustTestFailures": {
+                "description": "",
+                "type": "integer"
+              },
+              "events": {
+                "description": "",
                 "type": "array",
-                "minItems": 1,
+                "maxItems": 1000,
                 "items": {
+                  "description": "",
                   "type": "object",
                   "properties": {
-                    "baseAddress": {
+                    "processUptimeMS": {
+                      "description": "",
+                      "type": "integer"
+                    },
+                    "loadDurationMS": {
+                      "description": "",
+                      "type": "number"
+                    },
+                    "threadID": {
+                      "description": "",
+                      "type": "integer"
+                    },
+                    "threadName": {
+                      "description": "",
                       "type": "string"
                     },
-                    "moduleName": {
+                    "requestedDllName": {
+                      "description": "",
+                      "type": "string"
+                    },
+                    "resolvedDllName": {
+                      "description": "",
+                      "type": "string"
+                    },
+                    "baseAddress": {
+                      "description": "",
                       "type": "string"
                     },
                     "fileVersion": {
-                      "type": "string"
-                    },
-                    "loaderName": {
+                      "description": "",
                       "type": "string"
                     },
                     "moduleTrustFlags": {
-                      "type": "number",
-                      "minimum": 0
-                    },
-                    "loadDurationMS": {
-                      "type": "number",
-                      "minimum": 0
+                      "description": "",
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "processUptimeMS",
+                    "threadID",
+                    "resolvedDllName",
+                    "baseAddress",
+                    "moduleTrustFlags"
+                  ]
+                }
+              },
+              "combinedStacks": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "memoryMap": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "minItems": 2,
+                      "maxItems": 2,
+                      "items": [
+                        {
+                          "description": "The filename of the PDB symbol file",
+                          "examples": [
+                            "mozglue.pdb"
+                          ],
+                          "type": "string"
+                        },
+                        {
+                          "description": "The debug ID of the DLL",
+                          "examples": [
+                            "2403397A44447F1E42C7089B974E2DD48"
+                          ],
+                          "type": "string"
+                        }Components.classes["@mozilla.org/base/telemetry;1"].getService(Components.interfaces.nsITelemetry).getUntrustedModuleLoadEvents().then(pingdata => { console.log(pingdata); })
+                      ]
+                    }
+                  },
+                  "stacks": {
+                    "type": "array",
+                    "items": {
+                      "description": "Stack object, an array of frames",
+                      "type": "array",
+                      "items": {
+                        "description": "Stack frame object, a tuple<int,int>",
+                        "type": "array",
+                        "minItems": 2,
+                        "maxItems": 2,
+                        "items": [
+                          {
+                            "description": "Module index, an index into the combinedStacks/memoryMap array, or -1 if not applicable",
+                            "type": "number",
+                            "minimum": -1
+                          },
+                          {
+                            "description": "Module offset, the RVA of the program counter for this stack frame.",
+                            "type": "number",
+                            "minimum": 0
+                          }
+                        ]
+                      }
                     }
                   }
-                },
-                "required": [
-                  "baseAddress",
-                  "moduleName",
-                  "moduleTrustFlags"
-                ]
+                }
               }
             },
             "required": [
-              "isStartup",
-              "modules"
+              "processType",
+              "elapsed",
+              "sanitizationFailures",
+              "trustTestFailures",
+              "events",
+              "combinedStacks"
             ]
           }
         }
       },
       "required": [
-        "errorModules",
-        "events",
         "structVersion",
-        "combinedStacks"
+        "processes"
       ]
     },
     "type": {
@@ -166,3 +190,4 @@
     "version"
   ]
 }
+
