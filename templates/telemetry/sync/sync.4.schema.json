@@ -4,8 +4,11 @@
   "title": "sync",
   "description": "Schema for sync pings as sent by this code: https://searchfox.org/mozilla-central/rev/ee40541496d3ad738097eebadaf4965ca1343b7a/services/sync/modules/telemetry.js#490 and documented at https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/telemetry/data/sync-ping.html",
   "properties": {
+    "creationDate": {
+      "type": "string",
+      "$comment": "Note that we drop the pattern requirement commonly used by other ping types for this field due to observed values in incoming data."
+    },
     @TELEMETRY_APPLICATION_1_JSON@,
-    @TELEMETRY_CREATIONDATE_1_JSON@,
     @TELEMETRY_ID_1_JSON@,
     "type": {
       "type": "string",
