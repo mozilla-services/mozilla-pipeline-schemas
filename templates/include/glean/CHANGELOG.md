@@ -1,5 +1,7 @@
 # Version 1
 
+- Added a custom_distribution metric type.
+
 - `timing_distribution` now has a fixed functional binning, so many of the
   parameters are no longer necessary (`range`, `bucket_count`, `overflow`,
   `underflow`, `histogram_type`).
