@@ -505,6 +505,34 @@
           },
           "type": "object"
         },
+        "memory_distribution": {
+          "additionalProperties": {
+            "properties": {
+              "sum": {
+                "type": "integer"
+              },
+              "values": {
+                "additionalProperties": {
+                  "type": "integer"
+                },
+                "propertyNames": {
+                  "pattern": "[0-9]+"
+                },
+                "type": "object"
+              }
+            },
+            "required": [
+              "values"
+            ],
+            "type": "object"
+          },
+          "propertyNames": {
+            "maxLength": 61,
+            "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
+            "type": "string"
+          },
+          "type": "object"
+        },
         "number": {
           "additionalProperties": {
             "type": "number"
