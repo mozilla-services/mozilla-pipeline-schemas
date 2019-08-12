@@ -124,6 +124,35 @@
           },
           "type": "object"
         },
+        "custom_distribution": {
+          "additionalProperties": {
+            "properties": {
+              "sum": {
+                "type": "integer"
+              },
+              "values": {
+                "additionalProperties": {
+                  "type": "integer"
+                },
+                "propertyNames": {
+                  "pattern": "[0-9]+"
+                },
+                "type": "object"
+              }
+            },
+            "required": [
+              "sum",
+              "values"
+            ],
+            "type": "object"
+          },
+          "propertyNames": {
+            "maxLength": 61,
+            "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
+            "type": "string"
+          },
+          "type": "object"
+        },
         "datetime": {
           "additionalProperties": {
             "format": "datetime",
@@ -356,43 +385,7 @@
           "additionalProperties": {
             "additionalProperties": {
               "properties": {
-                "bucket_count": {
-                  "type": "integer"
-                },
-                "histogram_type": {
-                  "enum": [
-                    "linear",
-                    "exponential"
-                  ],
-                  "type": "string"
-                },
-                "overflow": {
-                  "type": "integer"
-                },
-                "range": {
-                  "items": {
-                    "type": "number"
-                  },
-                  "maxItems": 2,
-                  "minItems": 2,
-                  "type": "array"
-                },
                 "sum": {
-                  "type": "integer"
-                },
-                "time_unit": {
-                  "enum": [
-                    "nanosecond",
-                    "microsecond",
-                    "millisecond",
-                    "second",
-                    "minute",
-                    "hour",
-                    "day"
-                  ],
-                  "type": "string"
-                },
-                "underflow": {
                   "type": "integer"
                 },
                 "values": {
@@ -406,10 +399,7 @@
                 }
               },
               "required": [
-                "range",
-                "bucket_count",
-                "values",
-                "time_unit"
+                "values"
               ],
               "type": "object"
             },
@@ -597,43 +587,7 @@
         "timing_distribution": {
           "additionalProperties": {
             "properties": {
-              "bucket_count": {
-                "type": "integer"
-              },
-              "histogram_type": {
-                "enum": [
-                  "linear",
-                  "exponential"
-                ],
-                "type": "string"
-              },
-              "overflow": {
-                "type": "integer"
-              },
-              "range": {
-                "items": {
-                  "type": "number"
-                },
-                "maxItems": 2,
-                "minItems": 2,
-                "type": "array"
-              },
               "sum": {
-                "type": "integer"
-              },
-              "time_unit": {
-                "enum": [
-                  "nanosecond",
-                  "microsecond",
-                  "millisecond",
-                  "second",
-                  "minute",
-                  "hour",
-                  "day"
-                ],
-                "type": "string"
-              },
-              "underflow": {
                 "type": "integer"
               },
               "values": {
@@ -647,10 +601,7 @@
               }
             },
             "required": [
-              "range",
-              "bucket_count",
-              "values",
-              "time_unit"
+              "values"
             ],
             "type": "object"
           },
