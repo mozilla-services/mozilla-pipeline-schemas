@@ -2,6 +2,10 @@
 
 - Added a custom_distribution metric type.
 
+- `timing_distribution` now has a fixed functional binning, so many of the
+  parameters are no longer necessary (`range`, `bucket_count`, `overflow`,
+  `underflow`, `histogram_type`).
+
 - The length of labels was changed from 30 to 61 characters. This is to
   accomodate the full `category.name` identifier of a metric used for error
   reporting (which uses labeled counters).  See [1556684](https://bugzilla.mozilla.org/show_bug.cgi?id=1556684).
