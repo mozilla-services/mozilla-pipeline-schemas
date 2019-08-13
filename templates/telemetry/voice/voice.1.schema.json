@@ -1,0 +1,181 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "voice",
+  "properties": {
+    @TELEMETRY_APPLICATION_1_JSON@,
+    @TELEMETRY_CLIENTID_1_JSON@,
+    @TELEMETRY_CREATIONDATE_1_JSON@,
+    @TELEMETRY_ENVIRONMENT_1_JSON@,
+    @TELEMETRY_ID_1_JSON@,
+    "payload": {
+      "type": "object",
+      "properties": {
+        "intentId": {
+          "title": "A unique random ID specific to this intent execution",
+          "type": "string"
+        },
+        "extensionVersion": {
+          "title": "Firefox Voice extension version",
+          "type": "string"
+        },
+        "extensionTemporaryInstall": {
+          "title": "Temporary Install?",
+          "description": "When the extension is installed locally for development, this will be true",
+          "type": "boolean"
+        },
+        "extensionInstallationChannel": {
+          "title": "First install channel",
+          "description": "Where the user first installed the extension (e.g., internal_beta, external_beta, etc)",
+          "type": "string"
+        },
+        "siteCategoryOpened": {
+          "title": "Category of site opened by intent",
+          "type": "string"
+        },
+        "siteCategoryTriggering": {
+          "title": "Category of site of active tab when started",
+          "description": "This only set if the intent dependent on the current tab in some way",
+          "type": "string"
+        },
+        "inputLength": {
+          "title": "Number of characters in text/voice input",
+          "type": "integer",
+          "minumum": 0
+        },
+        "hasCard": {
+          "title": "Does the intent produce a card-like output?",
+          "type": "boolean"
+        },
+        "inputCancelled": {
+          "title": "Was the interaction cancelled?",
+          "type": "boolean"
+        },
+        "inputTyped": {
+          "title": "Was the input typed on the keyboard?",
+          "type": "boolean"
+        },
+        "intentCategory": {
+          "title": "Category of the intent handler",
+          "type": "string"
+        },
+        "intent": {
+          "title": "Full name of the intent handler",
+          "description": "This should begin with intent_category.exact_intent",
+          "type": "string"
+        },
+        "intentFallback": {
+          "title": "Was this a fallback intent handler?",
+          "description": "True if we couldn't parse the intent to some exact handler, and just fell back on something generic like search",
+          "type": "boolean"
+        },
+        "intentExtensionId": {
+          "title": "ID of second extension that handled intent",
+          "description": "If intent was handled by another extension, the id of that extension",
+          "type": "string"
+        },
+        "intentExtensionVersion": {
+          "title": "Title of second extension",
+          "description": "The self-reported title of an extension that handled the intent",
+          "type": "string"
+        },
+        "intentExtraData": {
+          "title": "Ad hoc intent-specific data",
+          "description": "A specific intent can add information here about how it interepreted the command",
+          "type": "object"
+        },
+        "intentConfidence": {
+          "title": "Confidence of the intent parsing",
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "intentParseSuccess": {
+          "title": "Was this intent parsed successfully?",
+          "type": "boolean"
+        },
+        "intentSuccess": {
+          "title": "Was the intent action successful?",
+          "description": "This is the self-reported success of the intent handler",
+          "type": "boolean"
+        },
+        "intentServiceName": {
+          "title": "What service did the intent handler use?",
+          "description": "If an intent used some external service, what service did it choose?",
+          "type": "string"
+        },
+        "internalError": {
+          "title": "If there was an unexpected error, the name of that error",
+          "type": "string"
+        },
+        "serverErrorIntentParser": {
+          "title": "Error with the server intent parser",
+          "type": "string"
+        },
+        "serverErrorSpeech": {
+          "title": "Error with the server speech-to-text parser",
+          "type": "string"
+        },
+        "serverTimeSpeech": {
+          "title": "Time in milliseconds for server TTS",
+          "type": "number",
+          "minimum": 0
+        },
+        "serverTimeIntentParser": {
+          "title": "Time in milliseconds for server intent parsing",
+          "type": "number",
+          "minimum": 0
+        },
+        "serverVersion": {
+          "title": "Server version",
+          "type": "string"
+        },
+        "transcriptionConfidence": {
+          "title": "Confidence of text-to-speech transcription",
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "timestamp": {
+          "title": "Milliseconds-since-the-epoch when intent was started",
+          "type": "number",
+          "minimum": 0
+        },
+        "utterance": {
+          "title": "Text utterance by user",
+          "description": "This is the actual text the user spoke",
+          "type": "string"
+        },
+        "utteranceParsed": {
+          "title": "Parsed form of the utterance",
+          "description": "Typically the slots found in the utterance",
+          "type": "object"
+        }
+      },
+      "required": [
+        "extensionVersion",
+        "extensionTemporaryInstall",
+        "timestamp"
+      ]
+    },
+    "type": {
+      "type": "string",
+      "enum": [ "voice" ]
+    },
+    "version": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 1
+    }
+  },
+  "required": [
+    "application",
+    "clientId",
+    "creationDate",
+    "environment",
+    "id",
+    "payload",
+    "type",
+    "version"
+  ]
+}
