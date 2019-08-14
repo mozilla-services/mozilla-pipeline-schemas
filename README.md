@@ -41,7 +41,7 @@ Note that Pioneer studies have a [slightly amended](README.pioneer.md) process.
 On MacOS, these prerequisites can be installed using [homebrew](https://brew.sh/):
 ```
 brew install cmake
-brew intall jq
+brew install jq
 brew install rust && cargo install --git https://github.com/trink/parquetfmt
 brew cask install docker
 ```
