@@ -21,6 +21,7 @@ schemas can be found here:
 ## Adding a new schema
 
 - Create the JSON Schema in the `templates` directory first. Make use of common schema components from the `templates/include` directory where possible, including things like the telemetry `environment`, `clientId`, `application` block, or UUID patterns. The filename should be `templates/<namespace>/<doctype>/<doctype>.<version>.schema.json`.
+- `<namespace>` and `<doctype>` must both follow "snake_case" naming (match regular expression `[a-z][-a-z0-9_]**`) although the pipeline will accept pings that use hyphens instead of underscores and still identify the schema.
 - If the data will be saved in parquet form, also add a Parquet-MR schema at `templates/<namespace>/<doctype>/<doctype>.<version>.parquetmr.txt`.
 - Build the rendered schemas using the instructions below, and check those artifacts (in the `schemas` directory) in to the git repo as well. See the rationale for this in the "Notes" section below.
 - Add one or more example JSON documents to the `validation` directory.
