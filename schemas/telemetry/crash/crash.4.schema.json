@@ -107,7 +107,10 @@
                   },
                   "updateDay": {
                     "minimum": 0,
-                    "type": "integer"
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
                   },
                   "userDisabled": {
                     "type": [
@@ -242,7 +245,10 @@
                 },
                 "updateDay": {
                   "minimum": 0,
-                  "type": "integer"
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
                 },
                 "userDisabled": {
                   "type": "boolean"
@@ -396,10 +402,18 @@
                 "content": {
                   "type": "string"
                 },
+                "experiment": {
+                  "description": "funnel experiment parameters, see bug 1567339",
+                  "type": "string"
+                },
                 "medium": {
                   "type": "string"
                 },
                 "source": {
+                  "type": "string"
+                },
+                "variation": {
+                  "description": "funnel experiment parameters, see bug 1567339",
                   "type": "string"
                 }
               },
@@ -436,6 +450,10 @@
             },
             "e10sEnabled": {
               "type": "boolean"
+            },
+            "e10sMultiProcesses": {
+              "description": "maximum number of processes that will be launched for regular web content",
+              "type": "integer"
             },
             "intl": {
               "properties": {

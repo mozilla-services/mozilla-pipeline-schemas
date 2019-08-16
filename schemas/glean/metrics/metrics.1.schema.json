@@ -124,6 +124,35 @@
           },
           "type": "object"
         },
+        "custom_distribution": {
+          "additionalProperties": {
+            "properties": {
+              "sum": {
+                "type": "integer"
+              },
+              "values": {
+                "additionalProperties": {
+                  "type": "integer"
+                },
+                "propertyNames": {
+                  "pattern": "[0-9]+"
+                },
+                "type": "object"
+              }
+            },
+            "required": [
+              "sum",
+              "values"
+            ],
+            "type": "object"
+          },
+          "propertyNames": {
+            "maxLength": 61,
+            "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
+            "type": "string"
+          },
+          "type": "object"
+        },
         "datetime": {
           "additionalProperties": {
             "format": "datetime",
@@ -153,7 +182,8 @@
               "type": "boolean"
             },
             "propertyNames": {
-              "maxLength": 30,
+              "comment": "This must be at least the length of 'category.name' metric names to support error reporting",
+              "maxLength": 61,
               "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z0-9_]{0,29})*$",
               "type": "string"
             },
@@ -172,7 +202,8 @@
               "type": "integer"
             },
             "propertyNames": {
-              "maxLength": 30,
+              "comment": "This must be at least the length of 'category.name' metric names to support error reporting",
+              "maxLength": 61,
               "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z0-9_]{0,29})*$",
               "type": "string"
             },
@@ -192,7 +223,8 @@
               "type": "string"
             },
             "propertyNames": {
-              "maxLength": 30,
+              "comment": "This must be at least the length of 'category.name' metric names to support error reporting",
+              "maxLength": 61,
               "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z0-9_]{0,29})*$",
               "type": "string"
             },
@@ -211,7 +243,8 @@
               "type": "string"
             },
             "propertyNames": {
-              "maxLength": 30,
+              "comment": "This must be at least the length of 'category.name' metric names to support error reporting",
+              "maxLength": 61,
               "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z0-9_]{0,29})*$",
               "type": "string"
             },
@@ -230,7 +263,8 @@
               "type": "number"
             },
             "propertyNames": {
-              "maxLength": 30,
+              "comment": "This must be at least the length of 'category.name' metric names to support error reporting",
+              "maxLength": 61,
               "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z0-9_]{0,29})*$",
               "type": "string"
             },
@@ -249,7 +283,8 @@
               "type": "integer"
             },
             "propertyNames": {
-              "maxLength": 30,
+              "comment": "This must be at least the length of 'category.name' metric names to support error reporting",
+              "maxLength": 61,
               "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z0-9_]{0,29})*$",
               "type": "string"
             },
@@ -268,7 +303,8 @@
               "type": "string"
             },
             "propertyNames": {
-              "maxLength": 30,
+              "comment": "This must be at least the length of 'category.name' metric names to support error reporting",
+              "maxLength": 61,
               "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z0-9_]{0,29})*$",
               "type": "string"
             },
@@ -290,7 +326,8 @@
               "type": "array"
             },
             "propertyNames": {
-              "maxLength": 30,
+              "comment": "This must be at least the length of 'category.name' metric names to support error reporting",
+              "maxLength": 61,
               "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z0-9_]{0,29})*$",
               "type": "string"
             },
@@ -316,7 +353,8 @@
                     "minute",
                     "hour",
                     "day"
-                  ]
+                  ],
+                  "type": "string"
                 },
                 "value": {
                   "type": "integer"
@@ -329,7 +367,8 @@
               "type": "object"
             },
             "propertyNames": {
-              "maxLength": 30,
+              "comment": "This must be at least the length of 'category.name' metric names to support error reporting",
+              "maxLength": 61,
               "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z0-9_]{0,29})*$",
               "type": "string"
             },
@@ -346,41 +385,7 @@
           "additionalProperties": {
             "additionalProperties": {
               "properties": {
-                "bucket_count": {
-                  "type": "integer"
-                },
-                "histogram_type": {
-                  "enum": [
-                    "linear",
-                    "exponential"
-                  ]
-                },
-                "overflow": {
-                  "type": "integer"
-                },
-                "range": {
-                  "items": {
-                    "type": "number"
-                  },
-                  "maxItems": 2,
-                  "minItems": 2,
-                  "type": "array"
-                },
                 "sum": {
-                  "type": "integer"
-                },
-                "time_unit": {
-                  "enum": [
-                    "nanosecond",
-                    "microsecond",
-                    "millisecond",
-                    "second",
-                    "minute",
-                    "hour",
-                    "day"
-                  ]
-                },
-                "underflow": {
                   "type": "integer"
                 },
                 "values": {
@@ -394,15 +399,13 @@
                 }
               },
               "required": [
-                "range",
-                "bucket_count",
-                "values",
-                "time_unit"
+                "values"
               ],
               "type": "object"
             },
             "propertyNames": {
-              "maxLength": 30,
+              "comment": "This must be at least the length of 'category.name' metric names to support error reporting",
+              "maxLength": 61,
               "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z0-9_]{0,29})*$",
               "type": "string"
             },
@@ -421,7 +424,8 @@
               "type": "boolean"
             },
             "propertyNames": {
-              "maxLength": 30,
+              "comment": "This must be at least the length of 'category.name' metric names to support error reporting",
+              "maxLength": 61,
               "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z0-9_]{0,29})*$",
               "type": "string"
             },
@@ -439,15 +443,17 @@
             "additionalProperties": {
               "properties": {
                 "denominator": {
-                  "name": {
-                    "maxLength": 30,
-                    "pattern": "^[a-z_][a-z0-9_]*$",
-                    "type": "string"
+                  "properties": {
+                    "name": {
+                      "maxLength": 30,
+                      "pattern": "^[a-z_][a-z0-9_]*$",
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "integer"
+                    }
                   },
-                  "type": "object",
-                  "value": {
-                    "type": "integer"
-                  }
+                  "type": "object"
                 },
                 "values": {
                   "additionalProperties": {
@@ -464,7 +470,8 @@
               "type": "object"
             },
             "propertyNames": {
-              "maxLength": 30,
+              "comment": "This must be at least the length of 'category.name' metric names to support error reporting",
+              "maxLength": 61,
               "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z0-9_]{0,29})*$",
               "type": "string"
             },
@@ -484,7 +491,8 @@
               "type": "string"
             },
             "propertyNames": {
-              "maxLength": 30,
+              "comment": "This must be at least the length of 'category.name' metric names to support error reporting",
+              "maxLength": 61,
               "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z0-9_]{0,29})*$",
               "type": "string"
             },
@@ -556,7 +564,8 @@
                   "minute",
                   "hour",
                   "day"
-                ]
+                ],
+                "type": "string"
               },
               "value": {
                 "type": "integer"
@@ -578,41 +587,7 @@
         "timing_distribution": {
           "additionalProperties": {
             "properties": {
-              "bucket_count": {
-                "type": "integer"
-              },
-              "histogram_type": {
-                "enum": [
-                  "linear",
-                  "exponential"
-                ]
-              },
-              "overflow": {
-                "type": "integer"
-              },
-              "range": {
-                "items": {
-                  "type": "number"
-                },
-                "maxItems": 2,
-                "minItems": 2,
-                "type": "array"
-              },
               "sum": {
-                "type": "integer"
-              },
-              "time_unit": {
-                "enum": [
-                  "nanosecond",
-                  "microsecond",
-                  "millisecond",
-                  "second",
-                  "minute",
-                  "hour",
-                  "day"
-                ]
-              },
-              "underflow": {
                 "type": "integer"
               },
               "values": {
@@ -626,10 +601,7 @@
               }
             },
             "required": [
-              "range",
-              "bucket_count",
-              "values",
-              "time_unit"
+              "values"
             ],
             "type": "object"
           },
@@ -655,15 +627,17 @@
           "additionalProperties": {
             "properties": {
               "denominator": {
-                "name": {
-                  "maxLength": 30,
-                  "pattern": "^[a-z_][a-z0-9_]*$",
-                  "type": "string"
+                "properties": {
+                  "name": {
+                    "maxLength": 30,
+                    "pattern": "^[a-z_][a-z0-9_]*$",
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "integer"
+                  }
                 },
-                "type": "object",
-                "value": {
-                  "type": "integer"
-                }
+                "type": "object"
               },
               "values": {
                 "additionalProperties": {

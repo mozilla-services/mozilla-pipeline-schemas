@@ -111,7 +111,10 @@
                   },
                   "updateDay": {
                     "minimum": 0,
-                    "type": "integer"
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
                   },
                   "userDisabled": {
                     "type": [
@@ -246,7 +249,10 @@
                 },
                 "updateDay": {
                   "minimum": 0,
-                  "type": "integer"
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
                 },
                 "userDisabled": {
                   "type": "boolean"
@@ -400,10 +406,18 @@
                 "content": {
                   "type": "string"
                 },
+                "experiment": {
+                  "description": "funnel experiment parameters, see bug 1567339",
+                  "type": "string"
+                },
                 "medium": {
                   "type": "string"
                 },
                 "source": {
+                  "type": "string"
+                },
+                "variation": {
+                  "description": "funnel experiment parameters, see bug 1567339",
                   "type": "string"
                 }
               },
@@ -440,6 +454,10 @@
             },
             "e10sEnabled": {
               "type": "boolean"
+            },
+            "e10sMultiProcesses": {
+              "description": "maximum number of processes that will be launched for regular web content",
+              "type": "integer"
             },
             "intl": {
               "properties": {
@@ -1015,7 +1033,23 @@
       "properties": {
         "UIMeasurements": {
           "items": {
-            "properties": {},
+            "properties": {
+              "action": {
+                "type": "string"
+              },
+              "extras": {
+                "type": "string"
+              },
+              "method": {
+                "type": "string"
+              },
+              "timestamp": {
+                "type": "number"
+              },
+              "type": {
+                "type": "string"
+              }
+            },
             "type": "object"
           },
           "type": "array"
@@ -1025,17 +1059,6 @@
           "type": "object"
         },
         "addonHistograms": {
-          "properties": {},
-          "type": "object"
-        },
-        "childPayloads": {
-          "items": {
-            "properties": {},
-            "type": "object"
-          },
-          "type": "array"
-        },
-        "chromeHangs": {
           "properties": {},
           "type": "object"
         },
@@ -1101,8 +1124,79 @@
         },
         "info": {
           "properties": {
-            "subsessionLength": {
+            "previousBuildId": {
+              "description": "null if this is the first run, or the previous build ID is unknown",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "previousSessionId": {
+              "description": "session id of the previous session, null on first run.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "previousSubsessionId": {
+              "description": "subsession id of the previous subsession (even if it was in a different session), null on first run.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "profileSubsessionCounter": {
+              "description": "the running no. of all subsessions for the whole profile life time",
               "minimum": 0,
+              "type": "integer"
+            },
+            "reason": {
+              "description": "what triggered this ping e.g. saved-session, environment-change, shutdown, ...",
+              "type": "string"
+            },
+            "revision": {
+              "description": "the Histograms.json revision",
+              "type": "string"
+            },
+            "sessionId": {
+              "description": "random session id, shared by subsessions",
+              "type": "string"
+            },
+            "sessionLength": {
+              "description": "the session length until now in seconds, monotonic",
+              "minimum": 0,
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "sessionStartDate": {
+              "description": "hourly precision, ISO date in local time",
+              "type": "string"
+            },
+            "subsessionCounter": {
+              "description": "the running no. of this subsession since the start of the browser session",
+              "minimum": 0,
+              "type": "integer"
+            },
+            "subsessionId": {
+              "description": "random subsession id",
+              "type": "string"
+            },
+            "subsessionLength": {
+              "description": "the subsession length until now in seconds, monotonic",
+              "minimum": 0,
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "subsessionStartDate": {
+              "description": "hourly precision, ISO date in local time",
+              "type": "string"
+            },
+            "timezoneOffset": {
+              "description": "time-zone offset from UTC, in minutes, for the current locale",
               "type": [
                 "integer",
                 "null"
@@ -1170,24 +1264,6 @@
         "lateWrites": {
           "properties": {},
           "type": "object"
-        },
-        "log": {
-          "description": "Removed in FF61 via bug 1443615",
-          "items": {
-            "additionalItems": {
-              "type": "string"
-            },
-            "items": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "integer"
-              }
-            ],
-            "type": "array"
-          },
-          "type": "array"
         },
         "processes": {
           "properties": {
@@ -1272,7 +1348,7 @@
                               "maxProperties": 15,
                               "properties": {
                                 "times": {
-                                  "maxProperties": 65,
+                                  "maxProperties": 73,
                                   "type": "object"
                                 }
                               },
@@ -1282,7 +1358,7 @@
                             "type": "array"
                           },
                           "totals": {
-                            "maxProperties": 65,
+                            "maxProperties": 73,
                             "type": "object"
                           }
                         },
@@ -1326,7 +1402,7 @@
                               "maxProperties": 15,
                               "properties": {
                                 "times": {
-                                  "maxProperties": 65,
+                                  "maxProperties": 73,
                                   "type": "object"
                                 }
                               },
@@ -1336,7 +1412,7 @@
                             "type": "array"
                           },
                           "totals": {
-                            "maxProperties": 65,
+                            "maxProperties": 73,
                             "type": "object"
                           }
                         },
@@ -1564,7 +1640,7 @@
                               "maxProperties": 15,
                               "properties": {
                                 "times": {
-                                  "maxProperties": 65,
+                                  "maxProperties": 73,
                                   "type": "object"
                                 }
                               },
@@ -1574,7 +1650,7 @@
                             "type": "array"
                           },
                           "totals": {
-                            "maxProperties": 65,
+                            "maxProperties": 73,
                             "type": "object"
                           }
                         },
@@ -1618,7 +1694,7 @@
                               "maxProperties": 15,
                               "properties": {
                                 "times": {
-                                  "maxProperties": 65,
+                                  "maxProperties": 73,
                                   "type": "object"
                                 }
                               },
@@ -1628,7 +1704,7 @@
                             "type": "array"
                           },
                           "totals": {
-                            "maxProperties": 65,
+                            "maxProperties": 73,
                             "type": "object"
                           }
                         },
@@ -1856,7 +1932,7 @@
                               "maxProperties": 15,
                               "properties": {
                                 "times": {
-                                  "maxProperties": 65,
+                                  "maxProperties": 73,
                                   "type": "object"
                                 }
                               },
@@ -1866,7 +1942,7 @@
                             "type": "array"
                           },
                           "totals": {
-                            "maxProperties": 65,
+                            "maxProperties": 73,
                             "type": "object"
                           }
                         },
@@ -1910,7 +1986,7 @@
                               "maxProperties": 15,
                               "properties": {
                                 "times": {
-                                  "maxProperties": 65,
+                                  "maxProperties": 73,
                                   "type": "object"
                                 }
                               },
@@ -1920,7 +1996,7 @@
                             "type": "array"
                           },
                           "totals": {
-                            "maxProperties": 65,
+                            "maxProperties": 73,
                             "type": "object"
                           }
                         },
@@ -2088,13 +2164,6 @@
           "properties": {},
           "type": "object"
         },
-        "threadHangStats": {
-          "items": {
-            "properties": {},
-            "type": "object"
-          },
-          "type": "array"
-        },
         "ver": {
           "type": "integer"
         },
@@ -2107,7 +2176,9 @@
     },
     "type": {
       "enum": [
-        "main"
+        "main",
+        "saved-session",
+        "first-shutdown"
       ],
       "type": "string"
     },
