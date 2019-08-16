@@ -1,6 +1,5 @@
 {
   "type": "object",
-  "additionalProperties": false,
   "required": ["when", "took"],
   "properties": {
     "didLogin": { "type": "boolean" },
@@ -35,7 +34,7 @@
     "failureReason": @TELEMETRY_SYNCERROR_1_JSON@ ,
     "engines": {
       "type": "array",
-      "minItems": 1,
+      "minItems": 0,
       "items": { 
         "type": "object",
         "required": ["name"],
@@ -55,23 +54,19 @@
               {"required": ["reconciled"]}
             ],
             "properties": {
-              "applied": { "type": "integer", "minimum": 1 },
-              "failed": { "type": "integer", "minimum": 1 },
-              "newFailed": { "type": "integer", "minimum": 1 },
-              "reconciled": { "type": "integer", "minimum": 1 },
-              "succeeded": { "type": "integer", "minimum": 1 }
+              "applied": { "type": "integer", "minimum": 0 },
+              "failed": { "type": "integer", "minimum": 0 },
+              "newFailed": { "type": "integer", "minimum": 0 },
+              "reconciled": { "type": "integer", "minimum": 0 },
+              "succeeded": { "type": "integer", "minimum": 0 }
             }
           },
           "outgoing": {
-            "type": "array",
+            "type": ["array", "object"],
             "minItems": 1,
             "items": {
               "type": "object",
               "additionalProperties": false,
-              "anyOf": [
-                {"required": ["sent"]},
-                {"required": ["failed"]}
-              ],
               "properties": {
                 "sent": { "type": "integer", "minimum": 1 },
                 "failed": { "type": "integer", "minimum": 1 }
