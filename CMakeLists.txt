@@ -53,7 +53,16 @@ endforeach()
 file(GLOB_RECURSE SCHEMAS LIST_DIRECTORIES FALSE RELATIVE "${CMAKE_SOURCE_DIR}/templates" "${CMAKE_SOURCE_DIR}/templates/*")
 foreach(ITEM IN ITEMS ${SCHEMAS})
   if(NOT ITEM MATCHES "^(include/|.*/\\.[^/])" )
-    string(REGEX MATCH "/([-a-zA-Z0-9_]+\\.[1-9][0-9]*\\.schema\\.json|[-a-zA-Z0-9_]+\\.[1-9][0-9]*\\.parquetmr\\.txt|README.*)$" MATCH ${ITEM})
+    # Consistency in naming of directories/files in this repository is important
+    # for it to be easily machine-parseable and so that we can consistently
+    # document how pings are represented at various points in the pipeline,
+    # so we enforce "kebab-case" naming in this regex;
+    # currently, underscores are allowed, but we are working to deprecate that
+    # (see https://github.com/mozilla-services/mozilla-pipeline-schemas/issues/390);
+    # the regex also includes a few legacy camelCase names as special cases.
+    # The format enforced here must match the recommendations documented in
+    # https://docs.telemetry.mozilla.org/cookbooks/new_ping.html#choose-a-namespace-and-doctype
+    string(REGEX MATCH "/([-a-z0-9_]+\\.[1-9][0-9]*(\\.schema\\.json|\\.parquetmr\\.txt)|README.*|disableSHA1rollout.4.schema.json|untrustedModules.4.parquetmr.txt|untrustedModules.4.schema.json)$" MATCH ${ITEM})
     if(NOT MATCH)
       message(FATAL_ERROR "schema name contains invalid characters: " ${ITEM})
     endif()
