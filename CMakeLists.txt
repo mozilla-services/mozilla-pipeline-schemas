@@ -53,7 +53,9 @@ endforeach()
 file(GLOB_RECURSE SCHEMAS LIST_DIRECTORIES FALSE RELATIVE "${CMAKE_SOURCE_DIR}/templates" "${CMAKE_SOURCE_DIR}/templates/*")
 foreach(ITEM IN ITEMS ${SCHEMAS})
   if(NOT ITEM MATCHES "^(include/|.*/\\.[^/])" )
-    string(REGEX MATCH "/([-a-zA-Z0-9_]+\\.[1-9][0-9]*\\.schema\\.json|[-a-zA-Z0-9_]+\\.[1-9][0-9]*\\.parquetmr\\.txt|README.*)$" MATCH ${ITEM})
+    # Enforce that namespaces and document types do not contain capitals
+    # except for a few historical exceptions.
+    string(REGEX MATCH "/([-a-z0-9_]+\\.[1-9][0-9]*\\.schema\\.json|[-a-z0-9_]+\\.[1-9][0-9]*\\.parquetmr\\.txt|README.*|disableSHA1rollout.4.schema.json|untrustedModules.4.parquetmr.txt|untrustedModules.4.schema.json)$" MATCH ${ITEM})
     if(NOT MATCH)
       message(FATAL_ERROR "schema name contains invalid characters: " ${ITEM})
     endif()
