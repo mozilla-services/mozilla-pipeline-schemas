@@ -1,6 +1,5 @@
 {
   "type": "object",
-  "required": ["when", "took"],
   "properties": {
     "didLogin": { "type": "boolean" },
     "when": { "type": "integer" },
@@ -30,7 +29,7 @@
       }
     },
     "why": { "type": "string" },
-    "took": { "type": "integer", "minimum": -1 },
+    "took": { "type": ["integer", "null"] },
     "failureReason": @TELEMETRY_SYNCERROR_1_JSON@ ,
     "engines": {
       "type": "array",
@@ -38,7 +37,6 @@
       "items": { 
         "type": "object",
         "required": ["name"],
-        "additionalProperties": false,
         "properties": {
           "failureReason": @TELEMETRY_SYNCERROR_1_JSON@ ,
           "name": { "type": "string" },
