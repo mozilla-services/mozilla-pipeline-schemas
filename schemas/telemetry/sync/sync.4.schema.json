@@ -70,36 +70,131 @@
         },
         "events": {
           "items": {
+            "items": [
+              {
+                "minimum": 0,
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              {
+                "additionalProperties": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "type": [
+                  "object",
+                  "null"
+                ]
+              }
+            ],
             "maxItems": 6,
             "minItems": 4,
             "type": "array"
           },
-          "minItems": 0,
           "type": "array"
         },
         "histograms": {
           "additionalProperties": {
-            "properties": {
-              "counts": {
-                "type": "array"
+            "anyOf": [
+              {
+                "$comment": "Desktop-style histograms",
+                "additionalProperties": false,
+                "properties": {
+                  "bucket_count": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "histogram_type": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "log_sum": {
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  "log_sum_squares": {
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  "range": {
+                    "items": {
+                      "type": "integer"
+                    },
+                    "type": "array"
+                  },
+                  "sum": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "sum_squares_hi": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "sum_squares_lo": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "values": {
+                    "additionalProperties": false,
+                    "patternProperties": {
+                      "^[0-9]+$": {
+                        "minimum": 0,
+                        "type": "integer"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
               },
-              "histogram_type": {
-                "type": "integer"
-              },
-              "max": {
-                "type": "integer"
-              },
-              "min": {
-                "type": "integer"
-              },
-              "ranges": {
-                "type": "array"
-              },
-              "sum": {
-                "type": "integer"
+              {
+                "$comment": "Nondesktop-style histograms",
+                "additionalProperties": false,
+                "properties": {
+                  "counts": {
+                    "items": {
+                      "type": "integer"
+                    },
+                    "type": "array"
+                  },
+                  "histogram_type": {
+                    "type": "integer"
+                  },
+                  "max": {
+                    "type": "integer"
+                  },
+                  "min": {
+                    "type": "integer"
+                  },
+                  "ranges": {
+                    "items": {
+                      "type": "integer"
+                    },
+                    "type": "array"
+                  },
+                  "sum": {
+                    "type": "integer"
+                  }
+                },
+                "type": "object"
               }
-            },
-            "type": "object"
+            ]
           },
           "type": "object"
         },

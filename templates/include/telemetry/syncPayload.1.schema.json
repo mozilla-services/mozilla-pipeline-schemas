@@ -30,25 +30,30 @@
     },
     "events": {
       "type": "array",
-      "minItems": 0,
-      "items": {
-        "type": "array",
-        "minItems": 4,
-        "maxItems": 6
-      }
+      "items": @COMMON_EVENT_1_JSON@
     },
     "histograms": {
       "type": "object",
       "additionalProperties": {
-        "type": "object",
-        "properties": {
-          "min": { "type": "integer" },
-          "max": { "type": "integer" },
-          "histogram_type": { "type": "integer" },
-          "sum": { "type": "integer" },
-          "ranges": { "type": "array" },
-          "counts": { "type": "array" }
-        }
+        "anyOf": [
+          {
+            "$comment": "Desktop-style histograms",
+            @TELEMETRY_HISTOGRAM_1_JSON@
+          },
+          {
+            "$comment": "Nondesktop-style histograms",
+            "type": "object",
+            "properties": {
+              "min": { "type": "integer" },
+              "max": { "type": "integer" },
+              "histogram_type": { "type": "integer" },
+              "sum": { "type": "integer" },
+              "ranges": { "type": "array", "items": { "type": "integer" } },
+              "counts": { "type": "array", "items": { "type": "integer" } }
+            },
+            "additionalProperties": false
+          }
+        ]
       }
     }
   }
