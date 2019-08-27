@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "schema for Sync pings, documentation avaliable in toolkit/components/telemetry/docs/sync-ping.rst",
+  "type": "object",
+  "properties": {
+    "version": { "type": "integer", "minimum": 0 },
+    "os": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "version": { "type": "string" },
+        "locale": { "type": "string" }
+      }
+    },
+    "discarded": { "type": "integer", "minimum": 1 },
+    "why": { "type": "string" },
+    "uid": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "deviceID": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "sessionStartDate": { "type": "string" },
+    "syncs": {
+      "type": "array",
+      "minItems": 0,
+      "items": @TELEMETRY_SYNCITEM_1_JSON@
+    },
+    "events": {
+      "type": "array",
+      "items": @COMMON_EVENT_1_JSON@
+    },
+    "histograms": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "$comment": "Desktop-style histograms",
+            @TELEMETRY_HISTOGRAM_1_JSON@
+          },
+          {
+            "$comment": "Nondesktop-style histograms",
+            "type": "object",
+            "properties": {
+              "min": { "type": "integer" },
+              "max": { "type": "integer" },
+              "histogram_type": { "type": "integer" },
+              "sum": { "type": "integer" },
+              "ranges": { "type": "array", "items": { "type": "integer" } },
+              "counts": { "type": "array", "items": { "type": "integer" } }
+            },
+            "additionalProperties": false
+          }
+        ]
+      }
+    }
+  }
+}

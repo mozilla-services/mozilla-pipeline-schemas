@@ -1,0 +1,99 @@
+{
+  "type": "object",
+  "properties": {
+    "didLogin": { "type": "boolean" },
+    "when": { "type": "integer" },
+    "devices": {
+      "type": "array",
+      "items": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "os": { "type": ["string", "null"] },
+          "version": { "type": "string" }
+        }
+      }
+    },
+    "status": {
+      "type": "object",
+      "anyOf": [
+        { "required": ["sync"] },
+        { "required": ["service"] }
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "sync": { "type": "string" },
+        "service": { "type": "string" }
+      }
+    },
+    "why": { "type": "string" },
+    "took": { "type": "integer", "minimum": -1 },
+    "failureReason": @TELEMETRY_SYNCERROR_1_JSON@ ,
+    "engines": {
+      "type": "array",
+      "minItems": 0,
+      "items": { 
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "failureReason": @TELEMETRY_SYNCERROR_1_JSON@ ,
+          "name": { "type": "string" },
+          "took": { "type": "integer", "minimum": -1 },
+          "status": { "type": "string" },
+          "incoming": {
+            "type": "object",
+            "additionalProperties": false,
+            "anyOf": [
+              {"required": ["applied"]},
+              {"required": ["failed"]},
+              {"required": ["newFailed"]},
+              {"required": ["reconciled"]}
+            ],
+            "properties": {
+              "applied": { "type": "integer", "minimum": 0 },
+              "failed": { "type": "integer", "minimum": 0 },
+              "newFailed": { "type": "integer", "minimum": 0 },
+              "reconciled": { "type": "integer", "minimum": 0 },
+              "succeeded": { "type": "integer", "minimum": 0 }
+            }
+          },
+          "outgoing": {
+            "type": ["array", "object"],
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "sent": { "type": "integer", "minimum": 1 },
+                "failed": { "type": "integer", "minimum": 1 }
+              }
+            }
+          },
+          "validation": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "checked": { "type": "integer", "minimum": 0 },
+              "failureReason": @TELEMETRY_SYNCERROR_1_JSON@ ,
+              "took": { "type": "integer", "minimum": -1 },
+              "version": { "type": "integer" },
+              "problems": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "required": ["name", "count"],
+                  "properties": {
+                    "name": { "type": "string" },
+                    "count": { "type": "integer" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

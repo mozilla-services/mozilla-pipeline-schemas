@@ -1,6 +1,512 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "properties": {},
-  "title": "placeholder_schema",
+  "additionalProperties": false,
+  "description": "Schema for sync pings as sent by this code: https://searchfox.org/mozilla-central/rev/ee40541496d3ad738097eebadaf4965ca1343b7a/services/sync/modules/telemetry.js#490 and documented at https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/telemetry/data/sync-ping.html",
+  "properties": {
+    "application": {
+      "$comment": "The application section is included here inline due to incompatible incoming data",
+      "additionalProperties": false,
+      "properties": {
+        "architecture": {
+          "type": "string"
+        },
+        "buildId": {
+          "$comment": "Note that we drop the pattern requirement commonly used by other ping types for this field due to observed values in incoming data.",
+          "type": "string"
+        },
+        "channel": {
+          "type": "string"
+        },
+        "displayVersion": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "platformVersion": {
+          "type": "string"
+        },
+        "vendor": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "xpcomAbi": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "architecture",
+        "channel",
+        "name",
+        "platformVersion",
+        "version"
+      ],
+      "type": "object"
+    },
+    "creationDate": {
+      "$comment": "Note that we drop the pattern requirement commonly used by other ping types for this field due to observed values in incoming data.",
+      "type": "string"
+    },
+    "id": {
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "type": "string"
+    },
+    "payload": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "description": "schema for Sync pings, documentation avaliable in toolkit/components/telemetry/docs/sync-ping.rst",
+      "properties": {
+        "deviceID": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "discarded": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "events": {
+          "items": {
+            "items": [
+              {
+                "minimum": 0,
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              {
+                "additionalProperties": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "type": [
+                  "object",
+                  "null"
+                ]
+              }
+            ],
+            "maxItems": 6,
+            "minItems": 4,
+            "type": "array"
+          },
+          "type": "array"
+        },
+        "histograms": {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "$comment": "Desktop-style histograms",
+                "additionalProperties": false,
+                "properties": {
+                  "bucket_count": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "histogram_type": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "log_sum": {
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  "log_sum_squares": {
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  "range": {
+                    "items": {
+                      "type": "integer"
+                    },
+                    "type": "array"
+                  },
+                  "sum": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "sum_squares_hi": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "sum_squares_lo": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "values": {
+                    "additionalProperties": false,
+                    "patternProperties": {
+                      "^[0-9]+$": {
+                        "minimum": 0,
+                        "type": "integer"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "$comment": "Nondesktop-style histograms",
+                "additionalProperties": false,
+                "properties": {
+                  "counts": {
+                    "items": {
+                      "type": "integer"
+                    },
+                    "type": "array"
+                  },
+                  "histogram_type": {
+                    "type": "integer"
+                  },
+                  "max": {
+                    "type": "integer"
+                  },
+                  "min": {
+                    "type": "integer"
+                  },
+                  "ranges": {
+                    "items": {
+                      "type": "integer"
+                    },
+                    "type": "array"
+                  },
+                  "sum": {
+                    "type": "integer"
+                  }
+                },
+                "type": "object"
+              }
+            ]
+          },
+          "type": "object"
+        },
+        "os": {
+          "properties": {
+            "locale": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "sessionStartDate": {
+          "type": "string"
+        },
+        "syncs": {
+          "items": {
+            "properties": {
+              "devices": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": {
+                      "pattern": "^[0-9a-f]{64}$",
+                      "type": "string"
+                    },
+                    "os": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "version": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "didLogin": {
+                "type": "boolean"
+              },
+              "engines": {
+                "items": {
+                  "properties": {
+                    "failureReason": {
+                      "properties": {
+                        "code": {
+                          "type": "integer"
+                        },
+                        "error": {
+                          "type": "string"
+                        },
+                        "from": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "name"
+                      ],
+                      "type": "object"
+                    },
+                    "incoming": {
+                      "additionalProperties": false,
+                      "anyOf": [
+                        {
+                          "required": [
+                            "applied"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "failed"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "newFailed"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "reconciled"
+                          ]
+                        }
+                      ],
+                      "properties": {
+                        "applied": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "failed": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "newFailed": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "reconciled": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "succeeded": {
+                          "minimum": 0,
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "outgoing": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "failed": {
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "sent": {
+                            "minimum": 1,
+                            "type": "integer"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "minItems": 1,
+                      "type": [
+                        "array",
+                        "object"
+                      ]
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "took": {
+                      "minimum": -1,
+                      "type": "integer"
+                    },
+                    "validation": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "checked": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "failureReason": {
+                          "properties": {
+                            "code": {
+                              "type": "integer"
+                            },
+                            "error": {
+                              "type": "string"
+                            },
+                            "from": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "name"
+                          ],
+                          "type": "object"
+                        },
+                        "problems": {
+                          "items": {
+                            "properties": {
+                              "count": {
+                                "type": "integer"
+                              },
+                              "name": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "count"
+                            ],
+                            "type": "object"
+                          },
+                          "minItems": 1,
+                          "type": "array"
+                        },
+                        "took": {
+                          "minimum": -1,
+                          "type": "integer"
+                        },
+                        "version": {
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ],
+                  "type": "object"
+                },
+                "minItems": 0,
+                "type": "array"
+              },
+              "failureReason": {
+                "properties": {
+                  "code": {
+                    "type": "integer"
+                  },
+                  "error": {
+                    "type": "string"
+                  },
+                  "from": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name"
+                ],
+                "type": "object"
+              },
+              "status": {
+                "additionalProperties": false,
+                "anyOf": [
+                  {
+                    "required": [
+                      "sync"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "service"
+                    ]
+                  }
+                ],
+                "properties": {
+                  "service": {
+                    "type": "string"
+                  },
+                  "sync": {
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "took": {
+                "minimum": -1,
+                "type": "integer"
+              },
+              "when": {
+                "type": "integer"
+              },
+              "why": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "minItems": 0,
+          "type": "array"
+        },
+        "uid": {
+          "pattern": "^[0-9a-f]{32}$",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "version": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "why": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "type": {
+      "enum": [
+        "sync"
+      ],
+      "type": "string"
+    },
+    "version": {
+      "maximum": 4,
+      "minimum": 4,
+      "type": "number"
+    }
+  },
+  "required": [
+    "application",
+    "type",
+    "id",
+    "creationDate",
+    "version",
+    "payload"
+  ],
+  "title": "sync",
   "type": "object"
 }

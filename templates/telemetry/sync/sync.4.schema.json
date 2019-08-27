@@ -1,1 +1,74 @@
-@COMMON_PLACEHOLDER_1_JSON@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "sync",
+  "description": "Schema for sync pings as sent by this code: https://searchfox.org/mozilla-central/rev/ee40541496d3ad738097eebadaf4965ca1343b7a/services/sync/modules/telemetry.js#490 and documented at https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/telemetry/data/sync-ping.html",
+  "properties": {
+    "creationDate": {
+      "type": "string",
+      "$comment": "Note that we drop the pattern requirement commonly used by other ping types for this field due to observed values in incoming data."
+    },
+    "application": {
+      "$comment": "The application section is included here inline due to incompatible incoming data",
+      "type": "object",
+      "properties": {
+        "architecture": {
+          "type": "string"
+        },
+        "buildId": {
+          "type": "string",
+          "$comment": "Note that we drop the pattern requirement commonly used by other ping types for this field due to observed values in incoming data."
+        },
+        "channel": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "platformVersion": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "displayVersion": {
+          "type": "string"
+        },
+        "vendor": {
+          "type": "string"
+        },
+        "xpcomAbi": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "architecture",
+        "channel",
+        "name",
+        "platformVersion",
+        "version"
+        ],
+      "additionalProperties": false
+    },
+    @TELEMETRY_ID_1_JSON@,
+    "type": {
+      "type": "string",
+      "enum": [ "sync" ]
+    },
+    "version": {
+      "type": "number",
+      "minimum": 4,
+      "maximum": 4
+    },
+    "payload": @TELEMETRY_SYNCPAYLOAD_1_JSON@
+  },
+  "required": [
+    "application",
+    "type",
+    "id",
+    "creationDate",
+    "version",
+    "payload"
+  ],
+  "additionalProperties": false
+}
