@@ -2,6 +2,8 @@
 
 - Added a memory_distribution metric type.
 
+- Added a `quantity` metric type.
+
 - Added a custom_distribution metric type.
 
 - `timing_distribution` now has a fixed functional binning, so many of the
