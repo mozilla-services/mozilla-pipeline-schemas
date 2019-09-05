@@ -1,0 +1,51 @@
+message voice {
+  required binary id (UTF8);
+  optional binary clientId (UTF8);
+  required group metadata {
+    required int64 Timestamp;
+    required binary submissionDate (UTF8);
+    optional binary Date (UTF8);
+    optional binary normalizedChannel (UTF8);
+    optional binary geoCountry (UTF8);
+    optional binary geoCity (UTF8);
+  }
+  optional group application {
+    optional binary name (UTF8);
+  }
+  optional group environment {
+    optional group system {
+      optional group os {
+        optional binary name (UTF8);
+        optional binary version (UTF8);
+      }
+    }
+  }
+  optional group payload {
+    optional binary extension_version (UTF8);
+    optional boolean extension_temporary_install;
+    optional binary extension_installation_channel (UTF8);
+    optional binary site_category_opened (UTF8);
+    optional binary site_category_triggering (UTF8);
+    optional int64 input_length;
+    optional boolean has_card;
+    optional boolean input_cancelled;
+    optional boolean input_typed;
+    optional binary intent_category (UTF8);
+    optional binary intent (UTF8);
+    optional boolean intent_fallback;
+    optional binary intent_extension_id (UTF8);
+    optional binary intent_extension_version (UTF8);
+    optional float intent_confidence;
+    optional boolean intent_parsed;
+    optional boolean intent_success;
+    optional binary intent_service_name (UTF8);
+    optional binary internal_error (UTF8);
+    optional binary server_error_intent (UTF8);
+    optional binary server_error_speech (UTF8);
+    optional float server_time_speech;
+    optional float server_time_intent;
+    optional binary server_version (UTF8);
+    optional float transcription_confidence;
+    optional int64 timestamp;
+  }
+}
