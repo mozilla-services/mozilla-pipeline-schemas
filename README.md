@@ -119,8 +119,6 @@ For details on how to compare two arbitrary revisions, refer to the `integration
 
 ## Contributions
 
-* All pull requests must be made against the `dev` branch, direct commits to
-  `master` are not permitted.
 * All non trivial contributions should start with an issue being filed (if it is
   a new feature please propose your design/approach before doing any work as not
   all feature requests are accepted).
