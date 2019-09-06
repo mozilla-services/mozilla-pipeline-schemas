@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "payload": {
+      "properties": {
+        "feedback": {
+          "title": "Any free-text feedback given by the user",
+          "type": "string"
+        },
+        "intentId": {
+          "title": "A unique random ID specific to the past intent execution",
+          "type": "string"
+        },
+        "rating": {
+          "title": "The rating given by the user, -1 (thumbs-down), 0, 1 (thums-up)",
+          "type": "number"
+        },
+        "timestamp": {
+          "minimum": 0,
+          "title": "Milliseconds-since-the-epoch when feedback was submitted",
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "type": {
+      "enum": [
+        "voice-feedback"
+      ],
+      "type": "string"
+    },
+    "version": {
+      "maximum": 1,
+      "minimum": 1,
+      "type": "number"
+    }
+  },
+  "required": [
+    "id",
+    "payload",
+    "type",
+    "version"
+  ],
+  "title": "voice-feedback",
+  "type": "object"
+}

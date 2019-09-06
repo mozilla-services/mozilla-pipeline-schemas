@@ -1031,101 +1031,176 @@
     },
     "payload": {
       "properties": {
-        "crashDate": {
-          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+        "extensionInstallationChannel": {
+          "description": "Where the user first installed the extension (e.g., internal_beta, external_beta, etc)",
+          "title": "First install channel",
           "type": "string"
         },
-        "hasCrashEnvironment": {
+        "extensionTemporaryInstall": {
+          "description": "When the extension is installed locally for development, this will be true",
+          "title": "Temporary Install?",
           "type": "boolean"
         },
-        "metadata": {
-          "properties": {
-            "AvailablePageFile": {
-              "type": "string"
-            },
-            "AvailablePhysicalMemory": {
-              "type": "string"
-            },
-            "AvailableVirtualMemory": {
-              "type": "string"
-            },
-            "BuildID": {
-              "type": "string"
-            },
-            "IsGarbageCollecting": {
-              "type": "string"
-            },
-            "ProductID": {
-              "type": "string"
-            },
-            "ProductName": {
-              "type": "string"
-            },
-            "ReleaseChannel": {
-              "type": "string"
-            },
-            "SecondsSinceLastCrash": {
-              "type": "string"
-            },
-            "StartupCrash": {
-              "type": "string"
-            },
-            "SystemMemoryUsePercentage": {
-              "type": "string"
-            },
-            "TotalPageFile": {
-              "type": "string"
-            },
-            "TotalPhysicalMemory": {
-              "type": "string"
-            },
-            "TotalVirtualMemory": {
-              "type": "string"
-            },
-            "Version": {
-              "type": "string"
-            },
-            "ipc_channel_error": {
-              "type": "string"
-            }
-          },
-          "type": "object"
-        },
-        "processType": {
+        "extensionVersion": {
+          "title": "Firefox Voice extension version",
           "type": "string"
         },
-        "version": {
-          "maximum": 1,
-          "minimum": 1,
+        "hasCard": {
+          "title": "Does the intent produce a card-like output?",
+          "type": "boolean"
+        },
+        "inputCancelled": {
+          "title": "Was the interaction cancelled?",
+          "type": "boolean"
+        },
+        "inputLength": {
+          "minumum": 0,
+          "title": "Number of characters in text/voice input",
           "type": "integer"
+        },
+        "inputTyped": {
+          "title": "Was the input typed on the keyboard?",
+          "type": "boolean"
+        },
+        "intent": {
+          "description": "This should begin with intent_category.exact_intent",
+          "title": "Full name of the intent handler",
+          "type": "string"
+        },
+        "intentCategory": {
+          "title": "Category of the intent handler",
+          "type": "string"
+        },
+        "intentConfidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence of the intent parsing",
+          "type": "number"
+        },
+        "intentExtensionId": {
+          "description": "If intent was handled by another extension, the id of that extension",
+          "title": "ID of second extension that handled intent",
+          "type": "string"
+        },
+        "intentExtensionVersion": {
+          "description": "The self-reported title of an extension that handled the intent",
+          "title": "Title of second extension",
+          "type": "string"
+        },
+        "intentExtraData": {
+          "description": "A specific intent can add information here about how it interepreted the command",
+          "title": "Ad hoc intent-specific data",
+          "type": "object"
+        },
+        "intentFallback": {
+          "description": "True if we couldn't parse the intent to some exact handler, and just fell back on something generic like search",
+          "title": "Was this a fallback intent handler?",
+          "type": "boolean"
+        },
+        "intentId": {
+          "title": "A unique random ID specific to this intent execution",
+          "type": "string"
+        },
+        "intentParseSuccess": {
+          "title": "Was this intent parsed successfully?",
+          "type": "boolean"
+        },
+        "intentServiceName": {
+          "description": "If an intent used some external service, what service did it choose?",
+          "title": "What service did the intent handler use?",
+          "type": "string"
+        },
+        "intentSuccess": {
+          "description": "This is the self-reported success of the intent handler",
+          "title": "Was the intent action successful?",
+          "type": "boolean"
+        },
+        "internalError": {
+          "title": "If there was an unexpected error, the name of that error",
+          "type": "string"
+        },
+        "serverErrorIntentParser": {
+          "title": "Error with the server intent parser",
+          "type": "string"
+        },
+        "serverErrorSpeech": {
+          "title": "Error with the server speech-to-text parser",
+          "type": "string"
+        },
+        "serverTimeIntentParser": {
+          "minimum": 0,
+          "title": "Time in milliseconds for server intent parsing",
+          "type": "number"
+        },
+        "serverTimeSpeech": {
+          "minimum": 0,
+          "title": "Time in milliseconds for server TTS",
+          "type": "number"
+        },
+        "serverVersion": {
+          "title": "Server version",
+          "type": "string"
+        },
+        "siteCategoryOpened": {
+          "title": "Category of site opened by intent",
+          "type": "string"
+        },
+        "siteCategoryTriggering": {
+          "description": "This only set if the intent dependent on the current tab in some way",
+          "title": "Category of site of active tab when started",
+          "type": "string"
+        },
+        "timestamp": {
+          "minimum": 0,
+          "title": "Milliseconds-since-the-epoch when intent was started",
+          "type": "number"
+        },
+        "transcriptionConfidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence of text-to-speech transcription",
+          "type": "number"
+        },
+        "utterance": {
+          "description": "This is the actual text the user spoke",
+          "title": "Text utterance by user",
+          "type": "string"
+        },
+        "utteranceParsed": {
+          "description": "Typically the slots found in the utterance",
+          "title": "Parsed form of the utterance",
+          "type": "object"
         }
       },
       "required": [
-        "crashDate",
-        "metadata"
+        "extensionVersion",
+        "extensionTemporaryInstall",
+        "timestamp"
       ],
       "type": "object"
     },
     "type": {
       "enum": [
-        "crash"
+        "voice"
       ],
       "type": "string"
     },
     "version": {
-      "maximum": 4,
-      "minimum": 4,
+      "maximum": 1,
+      "minimum": 1,
       "type": "number"
     }
   },
   "required": [
-    "type",
-    "id",
-    "creationDate",
-    "version",
     "application",
-    "payload"
+    "clientId",
+    "creationDate",
+    "environment",
+    "id",
+    "payload",
+    "type",
+    "version"
   ],
-  "title": "crash",
+  "title": "voice",
   "type": "object"
 }
