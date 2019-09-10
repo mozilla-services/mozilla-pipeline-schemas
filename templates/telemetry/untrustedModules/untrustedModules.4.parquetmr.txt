@@ -9,11 +9,13 @@ message untrusted-modules {
     required int64 structVersion;
     required group modules (LIST) {
       repeated group list {
-        required binary resolvedDllName (UTF8);
-        optional binary fileVersion (UTF8);
-        optional binary companyName (UTF8);
-        optional binary signedBy (UTF8);
-        required int64 trustFlags;
+        required group element {
+          required binary resolvedDllName (UTF8);
+          optional binary fileVersion (UTF8);
+          optional binary companyName (UTF8);
+          optional binary signedBy (UTF8);
+          required int64 trustFlags;
+        }
       }
     }
     required group processes (MAP) {
