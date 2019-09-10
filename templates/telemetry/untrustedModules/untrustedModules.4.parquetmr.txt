@@ -7,6 +7,15 @@ message untrusted-modules {
   required double version;
   required group payload {
     required int64 structVersion;
+    required group modules (LIST) {
+      repeated group list {
+        required binary resolvedDllName (UTF8);
+        optional binary fileVersion (UTF8);
+        optional binary companyName (UTF8);
+        optional binary signedBy (UTF8);
+        required int64 trustFlags;
+      }
+    }
     required group processes (MAP) {
       repeated group key_value {
         required binary key (UTF8);
@@ -24,10 +33,8 @@ message untrusted-modules {
                 required int64 threadID;
                 optional binary threadName (UTF8);
                 optional binary requestedDllName (UTF8);
-                required binary resolvedDllName (UTF8);
                 required binary baseAddress (UTF8);
-                optional binary fileVersion (UTF8);
-                required int64 moduleTrustFlags;
+                required int64 moduleIndex;
               }
             }
           }

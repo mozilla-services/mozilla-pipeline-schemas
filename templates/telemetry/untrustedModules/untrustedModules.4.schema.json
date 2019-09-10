@@ -13,6 +13,40 @@
           "minimum": 2,
           "maximum": 2
         },
+        "modules": {
+          "type": "array",
+          "maxItems": 100,
+          "items": {
+            "type": "object",
+            "properties": {
+              "resolvedDllName": {
+                "description": "The sanitized name of the module as resolved by the Windows loader.",
+                "type": "string"
+              },
+              "fileVersion": {
+                "description": "Version of the DLL as contained in its resources's fixed version information.",
+                "type": "string"
+              },
+              "companyName": {
+                "description": "The value of the CompanyName field as extracted from the DLL's version information. This property is only present when such version info is present, and when the 'signedBy' property is absent.",
+                "type": "string"
+              },
+              "signedBy": {
+                "description": "The organization whose certificate was used to sign the DLL. Only present for signed DLLs.",
+                "type": "string"
+              },
+              "trustFlags": {
+                "description": "Flags that indicate this module's level of trustworthiness. This corresponds to one or more mozilla::ModuleTrustFlags OR'd together.",
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "resolvedDllName",
+              "trustFlags"
+            ]
+          }
+        },
         "processes": {
           "type": "object",
           "minProperties": 1,
@@ -64,23 +98,15 @@
                       "type": "string"
                     },
                     "requestedDllName": {
-                      "description": "The sanitized name of the module that was requested by the invoking code. Only exists when it is different from resolvedDllName.",
-                      "type": "string"
-                    },
-                    "resolvedDllName": {
-                      "description": "The sanitized name of the module as resolved by the Windows loader.",
+                      "description": "The sanitized name of the module that was requested by the invoking code. Only exists when it is different from the associated module's resolvedDllName.",
                       "type": "string"
                     },
                     "baseAddress": {
                       "description": "The base address to which the loader mapped the module.",
                       "type": "string"
                     },
-                    "fileVersion": {
-                      "description": "Version of the DLL as contained in its resources's fixed version information.",
-                      "type": "string"
-                    },
-                    "moduleTrustFlags": {
-                      "description": "Flags that indicate this module's level of trustworthiness. This corresponds to one or more mozilla::ModuleTrustFlags OR'd together.",
+                    "moduleIndex": {
+                      "description": "Index of the element in the modules array that contains details about the module that was loaded during this event.",
                       "type": "integer",
                       "minimum": 0
                     }
@@ -88,9 +114,8 @@
                   "required": [
                     "processUptimeMS",
                     "threadID",
-                    "resolvedDllName",
                     "baseAddress",
-                    "moduleTrustFlags"
+                    "moduleIndex"
                   ]
                 }
               },
