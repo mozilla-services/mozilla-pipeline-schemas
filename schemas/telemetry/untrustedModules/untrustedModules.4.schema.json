@@ -1018,14 +1018,47 @@
       "type": "string"
     },
     "payload": {
-      "maxProperties": 2,
-      "minProperties": 2,
+      "maxProperties": 3,
+      "minProperties": 3,
       "properties": {
+        "modules": {
+          "items": {
+            "properties": {
+              "companyName": {
+                "description": "The value of the CompanyName field as extracted from the DLL's version information. This property is only present when such version info is present, and when the 'signedBy' property is absent.",
+                "type": "string"
+              },
+              "fileVersion": {
+                "description": "Version of the DLL as contained in its resources's fixed version information.",
+                "type": "string"
+              },
+              "resolvedDllName": {
+                "description": "The sanitized name of the module as resolved by the Windows loader.",
+                "type": "string"
+              },
+              "signedBy": {
+                "description": "The organization whose certificate was used to sign the DLL. Only present for signed DLLs.",
+                "type": "string"
+              },
+              "trustFlags": {
+                "description": "Flags that indicate this module's level of trustworthiness. This corresponds to one or more mozilla::ModuleTrustFlags OR'd together.",
+                "minimum": 0,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "resolvedDllName",
+              "trustFlags"
+            ],
+            "type": "object"
+          },
+          "maxItems": 100,
+          "type": "array"
+        },
         "processes": {
           "additionalProperties": {
             "properties": {
               "combinedStacks": {
-                "description": "",
                 "properties": {
                   "memoryMap": {
                     "items": {
@@ -1072,86 +1105,78 @@
                         "minItems": 2,
                         "type": "array"
                       },
+                      "maxItems": 512,
                       "type": "array"
                     },
+                    "maxItems": 50,
                     "type": "array"
                   }
                 },
                 "type": "object"
               },
               "elapsed": {
-                "description": "",
+                "description": "Elapsed time since process creation that this object was generated, in seconds.",
                 "type": "number"
               },
               "events": {
-                "description": "",
+                "description": "Array of module load events for this process.",
                 "items": {
-                  "description": "",
                   "properties": {
                     "baseAddress": {
-                      "description": "",
-                      "type": "string"
-                    },
-                    "fileVersion": {
-                      "description": "",
+                      "description": "The base address to which the loader mapped the module.",
                       "type": "string"
                     },
                     "loadDurationMS": {
-                      "description": "",
+                      "description": "Time spent loading this module, in milliseconds.",
                       "type": "number"
                     },
-                    "moduleTrustFlags": {
-                      "description": "",
+                    "moduleIndex": {
+                      "description": "Index of the element in the modules array that contains details about the module that was loaded during this event.",
                       "minimum": 0,
                       "type": "integer"
                     },
                     "processUptimeMS": {
-                      "description": "",
+                      "description": "Elapsed time since process creation that this event was generated, in milliseconds.",
                       "type": "integer"
                     },
                     "requestedDllName": {
-                      "description": "",
-                      "type": "string"
-                    },
-                    "resolvedDllName": {
-                      "description": "",
+                      "description": "The sanitized name of the module that was requested by the invoking code. Only exists when it is different from the associated module's resolvedDllName.",
                       "type": "string"
                     },
                     "threadID": {
-                      "description": "",
+                      "description": "Thread ID for the thread that loaded the module.",
                       "type": "integer"
                     },
                     "threadName": {
-                      "description": "",
+                      "description": "Name of the thread that loaded the module, when applicable.",
                       "type": "string"
                     }
                   },
                   "required": [
                     "processUptimeMS",
                     "threadID",
-                    "resolvedDllName",
                     "baseAddress",
-                    "moduleTrustFlags"
+                    "moduleIndex"
                   ],
                   "type": "object"
                 },
-                "maxItems": 1000,
+                "maxItems": 50,
                 "type": "array"
               },
               "processType": {
-                "description": "Except for Default (which is remapped to 'browser'), one of the process string names specified in xpcom/build/GeckoProcessTypes.h",
+                "description": "Except for Default (which is remapped to 'browser'), one of the process string names specified in xpcom/build/GeckoProcessTypes.h.",
                 "type": "string"
               },
               "sanitizationFailures": {
-                "description": "",
+                "description": "Number of dropped events due to failures sanitizing file paths.",
                 "type": "integer"
               },
               "trustTestFailures": {
-                "description": "",
+                "description": "Number of dropped events due to failures computing trust levels.",
                 "type": "integer"
               },
               "xulLoadDurationMS": {
-                "description": "",
+                "description": "Time spent loading xul.dll in milliseconds.",
                 "type": "number"
               }
             },
@@ -1177,6 +1202,7 @@
       },
       "required": [
         "structVersion",
+        "modules",
         "processes"
       ],
       "type": "object"
