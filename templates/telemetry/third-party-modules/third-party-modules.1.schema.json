@@ -1,0 +1,220 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "third-party-modules",
+  "properties": {
+    "payload": {
+      "type": "object",
+      "minProperties": 3,
+      "maxProperties": 3,
+      "properties": {
+        "structVersion": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1
+        },
+        "modules": {
+          "type": "array",
+          "maxItems": 100,
+          "items": {
+            "type": "object",
+            "properties": {
+              "resolvedDllName": {
+                "description": "The sanitized name of the module as resolved by the Windows loader.",
+                "type": "string"
+              },
+              "fileVersion": {
+                "description": "Version of the DLL as contained in its resources's fixed version information.",
+                "type": "string"
+              },
+              "companyName": {
+                "description": "The value of the CompanyName field as extracted from the DLL's version information. This property is only present when such version info is present, and when the 'signedBy' property is absent.",
+                "type": "string"
+              },
+              "signedBy": {
+                "description": "The organization whose certificate was used to sign the DLL. Only present for signed DLLs.",
+                "type": "string"
+              },
+              "trustFlags": {
+                "description": "Flags that indicate this module's level of trustworthiness. This corresponds to one or more mozilla::ModuleTrustFlags OR'd together.",
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "resolvedDllName",
+              "trustFlags"
+            ]
+          }
+        },
+        "processes": {
+          "type": "object",
+          "minProperties": 1,
+          "maxProperties": 100,
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "processType": {
+                "description": "Except for Default (which is remapped to 'browser'), one of the process string names specified in xpcom/build/GeckoProcessTypes.h.",
+                "type": "string"
+              },
+              "elapsed": {
+                "description": "Elapsed time since process creation that this object was generated, in seconds.",
+                "type": "number"
+              },
+              "xulLoadDurationMS": {
+                "description": "Time spent loading xul.dll in milliseconds.",
+                "type": "number"
+              },
+              "sanitizationFailures": {
+                "description": "Number of dropped events due to failures sanitizing file paths.",
+                "type": "integer"
+              },
+              "trustTestFailures": {
+                "description": "Number of dropped events due to failures computing trust levels.",
+                "type": "integer"
+              },
+              "events": {
+                "description": "Array of module load events for this process.",
+                "type": "array",
+                "maxItems": 50,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "processUptimeMS": {
+                      "description": "Elapsed time since process creation that this event was generated, in milliseconds.",
+                      "type": "integer"
+                    },
+                    "loadDurationMS": {
+                      "description": "Time spent loading this module, in milliseconds.",
+                      "type": "number"
+                    },
+                    "threadID": {
+                      "description": "Thread ID for the thread that loaded the module.",
+                      "type": "integer"
+                    },
+                    "threadName": {
+                      "description": "Name of the thread that loaded the module, when applicable.",
+                      "type": "string"
+                    },
+                    "requestedDllName": {
+                      "description": "The sanitized name of the module that was requested by the invoking code. Only exists when it is different from the associated module's resolvedDllName.",
+                      "type": "string"
+                    },
+                    "baseAddress": {
+                      "description": "The base address to which the loader mapped the module.",
+                      "type": "string"
+                    },
+                    "moduleIndex": {
+                      "description": "Index of the element in the modules array that contains details about the module that was loaded during this event.",
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  },
+                  "required": [
+                    "processUptimeMS",
+                    "threadID",
+                    "baseAddress",
+                    "moduleIndex"
+                  ]
+                }
+              },
+              "combinedStacks": {
+                "type": "object",
+                "properties": {
+                  "memoryMap": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "minItems": 2,
+                      "maxItems": 2,
+                      "items": [
+                        {
+                          "description": "The filename of the PDB symbol file",
+                          "examples": [
+                            "mozglue.pdb"
+                          ],
+                          "type": "string"
+                        },
+                        {
+                          "description": "The debug ID of the DLL",
+                          "examples": [
+                            "2403397A44447F1E42C7089B974E2DD48"
+                          ],
+                          "type": "string"
+                        }
+                      ]
+                    }
+                  },
+                  "stacks": {
+                    "type": "array",
+                    "maxItems": 50,
+                    "items": {
+                      "description": "Stack object, an array of frames",
+                      "type": "array",
+                      "maxItems": 512,
+                      "items": {
+                        "description": "Stack frame object, a tuple<int,int>",
+                        "type": "array",
+                        "minItems": 2,
+                        "maxItems": 2,
+                        "items": [
+                          {
+                            "description": "Module index, an index into the combinedStacks/memoryMap array, or -1 if not applicable",
+                            "type": "number",
+                            "minimum": -1
+                          },
+                          {
+                            "description": "Module offset, the RVA of the program counter for this stack frame.",
+                            "type": "number",
+                            "minimum": 0
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "required": [
+              "processType",
+              "elapsed",
+              "sanitizationFailures",
+              "trustTestFailures",
+              "events",
+              "combinedStacks"
+            ]
+          }
+        }
+      },
+      "required": [
+        "structVersion",
+        "modules",
+        "processes"
+      ]
+    },
+    "type": {
+      "type": "string",
+      "enum": [ "third-party-modules" ]
+    },
+    "version": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 1
+    },
+    @TELEMETRY_APPLICATION_1_JSON@,
+    @TELEMETRY_CLIENTID_1_JSON@,
+    @TELEMETRY_CREATIONDATE_1_JSON@,
+    @TELEMETRY_ENVIRONMENT_1_JSON@,
+    @TELEMETRY_ID_1_JSON@
+  },
+  "required": [
+    "payload",
+    "application",
+    "creationDate",
+    "id",
+    "type",
+    "version"
+  ]
+}
+
