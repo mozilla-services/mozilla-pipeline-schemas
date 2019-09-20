@@ -33,7 +33,7 @@
     "engines": {
       "type": "array",
       "minItems": 0,
-      "items": { 
+      "items": {
         "type": "object",
         "required": ["name"],
         "properties": {
@@ -70,6 +70,24 @@
               }
             }
           },
+          "steps": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["name"],
+              "properties": {
+                "name": { "type": "string" },
+                "took": { "type": "integer", "minimum": 0 },
+                "counts": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": @TELEMETRY_SYNCNAMEDCOUNT_1_JSON@
+                }
+              }
+            }
+          },
           "validation": {
             "type": "object",
             "additionalProperties": false,
@@ -81,14 +99,7 @@
               "problems": {
                 "type": "array",
                 "minItems": 1,
-                "items": {
-                  "type": "object",
-                  "required": ["name", "count"],
-                  "properties": {
-                    "name": { "type": "string" },
-                    "count": { "type": "integer" }
-                  }
-                }
+                "items": @TELEMETRY_SYNCNAMEDCOUNT_1_JSON@
               }
             }
           }
