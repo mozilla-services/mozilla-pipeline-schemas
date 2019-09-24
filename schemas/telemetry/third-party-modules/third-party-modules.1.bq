@@ -1102,11 +1102,6 @@
               },
               {
                 "mode": "NULLABLE",
-                "name": "version",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
                 "name": "windows_build_number",
                 "type": "FLOAT64"
               },
@@ -1305,44 +1300,127 @@
   {
     "fields": [
       {
-        "mode": "NULLABLE",
-        "name": "previous_build_id",
-        "type": "STRING"
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "company_name",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "file_version",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "resolved_dll_name",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "signed_by",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "trust_flags",
+            "type": "INT64"
+          }
+        ],
+        "mode": "REPEATED",
+        "name": "modules",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "key",
+            "type": "STRING"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "elapsed",
+                "type": "FLOAT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "base_address",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "load_duration_ms",
+                    "type": "FLOAT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "module_index",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "process_uptime_ms",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "requested_dll_name",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "thread_id",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "thread_name",
+                    "type": "STRING"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "events",
+                "type": "RECORD"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "process_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sanitization_failures",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "trust_test_failures",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "xul_load_duration_ms",
+                "type": "FLOAT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "value",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "REPEATED",
+        "name": "processes",
+        "type": "RECORD"
       },
       {
         "mode": "NULLABLE",
-        "name": "previous_channel",
-        "type": "STRING"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "previous_version",
-        "type": "STRING"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "reason",
-        "type": "STRING"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "target_build_id",
-        "type": "STRING"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "target_channel",
-        "type": "STRING"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "target_display_version",
-        "type": "STRING"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "target_version",
-        "type": "STRING"
+        "name": "struct_version",
+        "type": "INT64"
       }
     ],
     "mode": "NULLABLE",

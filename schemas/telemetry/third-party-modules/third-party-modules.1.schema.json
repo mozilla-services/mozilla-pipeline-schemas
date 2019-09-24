@@ -985,7 +985,8 @@
                 },
                 "version": {
                   "type": [
-                    "string"
+                    "string",
+                    "integer"
                   ]
                 },
                 "windowsBuildNumber": {
@@ -1055,70 +1056,215 @@
       "type": "string"
     },
     "payload": {
+      "maxProperties": 3,
+      "minProperties": 3,
       "properties": {
         "modules": {
           "items": {
             "properties": {
-              "certSubject": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              },
-              "debugID": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              },
-              "debugName": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              },
-              "name": {
+              "companyName": {
+                "description": "The value of the CompanyName field as extracted from the DLL's version information. This property is only present when such version info is present, and when the 'signedBy' property is absent.",
                 "type": "string"
               },
-              "version": {
-                "type": [
-                  "string",
-                  "null"
-                ]
+              "fileVersion": {
+                "description": "Version of the DLL as contained in its resources's fixed version information.",
+                "type": "string"
+              },
+              "resolvedDllName": {
+                "description": "The sanitized name of the module as resolved by the Windows loader.",
+                "type": "string"
+              },
+              "signedBy": {
+                "description": "The organization whose certificate was used to sign the DLL. Only present for signed DLLs.",
+                "type": "string"
+              },
+              "trustFlags": {
+                "description": "Flags that indicate this module's level of trustworthiness. This corresponds to one or more mozilla::ModuleTrustFlags OR'd together.",
+                "minimum": 0,
+                "type": "integer"
               }
             },
+            "required": [
+              "resolvedDllName",
+              "trustFlags"
+            ],
             "type": "object"
           },
+          "maxItems": 100,
           "type": "array"
         },
-        "version": {
+        "processes": {
+          "additionalProperties": {
+            "properties": {
+              "combinedStacks": {
+                "properties": {
+                  "memoryMap": {
+                    "items": {
+                      "items": [
+                        {
+                          "description": "The filename of the PDB symbol file",
+                          "examples": [
+                            "mozglue.pdb"
+                          ],
+                          "type": "string"
+                        },
+                        {
+                          "description": "The debug ID of the DLL",
+                          "examples": [
+                            "2403397A44447F1E42C7089B974E2DD48"
+                          ],
+                          "type": "string"
+                        }
+                      ],
+                      "maxItems": 2,
+                      "minItems": 2,
+                      "type": "array"
+                    },
+                    "type": "array"
+                  },
+                  "stacks": {
+                    "items": {
+                      "description": "Stack object, an array of frames",
+                      "items": {
+                        "description": "Stack frame object, a tuple<int,int>",
+                        "items": [
+                          {
+                            "description": "Module index, an index into the combinedStacks/memoryMap array, or -1 if not applicable",
+                            "minimum": -1,
+                            "type": "number"
+                          },
+                          {
+                            "description": "Module offset, the RVA of the program counter for this stack frame.",
+                            "minimum": 0,
+                            "type": "number"
+                          }
+                        ],
+                        "maxItems": 2,
+                        "minItems": 2,
+                        "type": "array"
+                      },
+                      "maxItems": 512,
+                      "type": "array"
+                    },
+                    "maxItems": 50,
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              },
+              "elapsed": {
+                "description": "Elapsed time since process creation that this object was generated, in seconds.",
+                "type": "number"
+              },
+              "events": {
+                "description": "Array of module load events for this process.",
+                "items": {
+                  "properties": {
+                    "baseAddress": {
+                      "description": "The base address to which the loader mapped the module.",
+                      "type": "string"
+                    },
+                    "loadDurationMS": {
+                      "description": "Time spent loading this module, in milliseconds.",
+                      "type": "number"
+                    },
+                    "moduleIndex": {
+                      "description": "Index of the element in the modules array that contains details about the module that was loaded during this event.",
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "processUptimeMS": {
+                      "description": "Elapsed time since process creation that this event was generated, in milliseconds.",
+                      "type": "integer"
+                    },
+                    "requestedDllName": {
+                      "description": "The sanitized name of the module that was requested by the invoking code. Only exists when it is different from the associated module's resolvedDllName.",
+                      "type": "string"
+                    },
+                    "threadID": {
+                      "description": "Thread ID for the thread that loaded the module.",
+                      "type": "integer"
+                    },
+                    "threadName": {
+                      "description": "Name of the thread that loaded the module, when applicable.",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "processUptimeMS",
+                    "threadID",
+                    "baseAddress",
+                    "moduleIndex"
+                  ],
+                  "type": "object"
+                },
+                "maxItems": 50,
+                "type": "array"
+              },
+              "processType": {
+                "description": "Except for Default (which is remapped to 'browser'), one of the process string names specified in xpcom/build/GeckoProcessTypes.h.",
+                "type": "string"
+              },
+              "sanitizationFailures": {
+                "description": "Number of dropped events due to failures sanitizing file paths.",
+                "type": "integer"
+              },
+              "trustTestFailures": {
+                "description": "Number of dropped events due to failures computing trust levels.",
+                "type": "integer"
+              },
+              "xulLoadDurationMS": {
+                "description": "Time spent loading xul.dll in milliseconds.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "processType",
+              "elapsed",
+              "sanitizationFailures",
+              "trustTestFailures",
+              "events",
+              "combinedStacks"
+            ],
+            "type": "object"
+          },
+          "maxProperties": 100,
+          "minProperties": 1,
+          "type": "object"
+        },
+        "structVersion": {
           "maximum": 1,
           "minimum": 1,
           "type": "integer"
         }
       },
+      "required": [
+        "structVersion",
+        "modules",
+        "processes"
+      ],
       "type": "object"
     },
     "type": {
       "enum": [
-        "modules"
+        "third-party-modules"
       ],
       "type": "string"
     },
     "version": {
-      "maximum": 4,
-      "minimum": 4,
+      "maximum": 1,
+      "minimum": 1,
       "type": "number"
     }
   },
   "required": [
+    "payload",
     "application",
     "creationDate",
     "id",
     "type",
-    "version",
-    "payload"
+    "version"
   ],
-  "title": "modules",
+  "title": "third-party-modules",
   "type": "object"
 }
