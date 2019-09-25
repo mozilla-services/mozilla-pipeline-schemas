@@ -1,7 +1,7 @@
 {
     "comment": [
-        "// moduleIndex has been set to an invalid value, which should cause",
-        "// a validation failure."
+        "// combinedStacks/stacks should be an array of tuple<number, number>.",
+        "// This test adds an extra tuple member and should fail."
     ],
     "payload": {
         "structVersion": 1,
@@ -18,15 +18,32 @@
                 "sanitizationFailures": 0,
                 "trustTestFailures": 0,
                 "combinedStacks": {
-                    "memoryMap": [],
-                    "stacks": []
+                    "memoryMap": [
+                        [
+                            "mozglue.pdb",
+                            "2403397A44447F1E42C7089B974E2DD48"
+                        ]
+                    ],
+                    "stacks": [
+                        [
+                            [
+                                1,
+                                2
+                            ],
+                            [
+                                1,
+                                2,
+                                3
+                            ]
+                        ]
+                    ]
                 },
                 "events": [
                     {
                         "threadID": 18264,
                         "processUptimeMS": 1844676547,
                         "baseAddress": "0x7ffed1330000",
-                        "moduleIndex": -1
+                        "moduleIndex": 0
                     }
                 ]
             }
@@ -43,7 +60,7 @@
         "xpcomAbi": "x86_64-msvc",
         "channel": "default"
     },
-    "version": 1,
+    "version": 4,
     "creationDate": "2019-08-13T13:45:20.160Z",
     "type": "third-party-modules",
     "id": "066af1e9-eca4-40bb-b691-54ced95257dd"
