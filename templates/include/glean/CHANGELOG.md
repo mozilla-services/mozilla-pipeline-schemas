@@ -1,5 +1,7 @@
 # Version 1
 
+- Reverted `timing_distribution` changes
+
 - Added a memory_distribution metric type.
 
 - Added a `quantity` metric type.
