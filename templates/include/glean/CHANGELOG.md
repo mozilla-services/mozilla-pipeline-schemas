@@ -1,5 +1,7 @@
 # Version 1
 
+- The experiment name length and experiment branch name length have been increased to 100 to match the schemas used on the experiments server.
+
 - Reverted `timing_distribution` changes
 
 - Added a memory_distribution metric type.
