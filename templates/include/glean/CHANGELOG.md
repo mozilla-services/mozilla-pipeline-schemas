@@ -1,5 +1,7 @@
 # Version 1
 
+- The experiment name length and experiment branch name length have been increased to 100 to match the schemas used on the experiments server.  See https://github.com/mozilla-services/remote-settings-permissions/blob/master/kinto.prod.yaml#L603-L733
+
 - Reverted `timing_distribution` changes
 
 - Added a memory_distribution metric type.
