@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "cfr",
+  "properties": {
+    "client_id": {
+      "type": "string",
+      @COMMON_PATTERN_UUID_1_JSON@
+    },
+    "impression_id": {
+      "description": "An alternative UUID used when client_id is absent",
+      "type": "string",
+      "pattern": "^\\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\}$"
+    },
+    "shield_id": {
+      "description": "A semicolon separated string to store a list of Shield study IDs",
+      "type": "string"
+    },
+    "event": {
+        "description": "An event identifier",
+        "type": "string"
+    },
+    "value": {
+        "description": "A string value that describes this event",
+        "type": "string"
+    },
+    "message_id": {
+        "type": "string"
+    },
+    "bucket_id": {
+        "type": "string"
+    },
+    "addon_version": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "release_channel": {
+      "type": "string"
+    },
+    "locale": {
+      "type": "string"
+    },
+    "profile_creation_date": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "client_id",
+    "impression_id",
+    "event",
+    "addon_version",
+    "version",
+    "locale"
+  ],
+  "anyOf": [
+    { "required": [ "message_id" ] },
+    { "required": [ "bucket_id" ] }
+  ]
+}
