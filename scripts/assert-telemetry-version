@@ -1,0 +1,53 @@
+#!/usr/bin/env python3
+"""
+Assert that that all documents under the telemetry namespace contain a top-level
+version that corresponds to the version of the common ping format. See [1] for
+more details. [1]
+https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/data/common-ping.html#common-ping-format
+"""
+import json
+import os
+import sys
+from pathlib import Path
+from typing import Any, Dict, Optional
+
+
+def is_placeholder(schema: Dict[str, Any]) -> bool:
+    return schema["title"] == "placeholder_schema" and not schema.get("properties")
+
+
+def is_valid_telemetry_version(schema: Dict[str, Any]) -> (bool, Optional[str]):
+    # either the version is set properly or not set at all
+    version = schema["properties"].get(
+        "version", {"minimum": 4, "maximum": 4, "type": "number"}
+    )
+    missing_fields = {"maximum", "minimum", "type"} - set(version.keys())
+    if missing_fields:
+        return False, f"missing {missing_fields} from version property"
+    if not version["minimum"] == 4:
+        return False, f"invalid minimum version number"
+    if not version["maximum"] == 4:
+        return False, f"invalid maximum version number"
+    if not version["type"] in {"integer", "number"}:
+        return False, f"version must be a number or integer"
+    return True, None
+
+
+def main(project_root: Path) -> None:
+    retval = 0
+    for path in (project_root / "schemas" / "telemetry").glob("**/*.schema.json"):
+        schema = json.load(open(path))
+        relative_path = "/".join(path.parts[-3:])
+        if is_placeholder(schema):
+            continue
+        is_valid, err_msg = is_valid_telemetry_version(schema)
+        if not is_valid:
+            print(f"{relative_path} is invalid: {err_msg}")
+            retval = 1
+    if not retval:
+        print("Success!")
+    return retval
+
+
+if __name__ == "__main__":
+    sys.exit(main(Path(__file__).resolve().parent.parent))
