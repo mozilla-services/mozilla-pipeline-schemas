@@ -11,10 +11,9 @@ RUN yum -y update && \
         jq \
         make \
         wget \
-        python-pip \
+        git \
+        python36 \
     && yum clean all
-
-RUN pip install jsonschema
 
 WORKDIR /downloads
 
