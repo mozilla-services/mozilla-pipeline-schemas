@@ -36,6 +36,17 @@
     "info": {
       "type": "object",
       "properties": {
+        "addons": {
+          "type": ["string", "null"],
+          "description": "obsolete, use environment.addons"
+        },
+        "asyncPluginInit": {
+          "type": ["boolean", "null"]
+        },
+        "flashVersion": {
+          "type": ["string", "null"],
+          "description": "obsolete, use environment.addons.activePlugins"
+        },
         "previousBuildId": {
           "type": ["string", "null"],
           "description": "null if this is the first run, or the previous build ID is unknown"
@@ -109,7 +120,51 @@
     },
     "lateWrites": {
       "type": "object",
-      "properties": { }
+      "description": "This sections reports writes to the file system that happen during shutdown. The reported data contains the stack and the file names of the loaded libraries at the time the writes happened.",
+      "properties": {
+        "memoryMap": {
+          "type": "array",
+          "description": "entries in the format [module name, breakpad identifier]",
+          "items": {
+            "type": "array",
+            "items": [
+              {
+                "type": "string",
+                "description": "module name"
+              },
+              {
+                "type": "string",
+                "description": "breakpad identifier"
+              }
+            ],
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "stacks": {
+          "type": "array",
+          "description": "a list of stacks",
+          "items": {
+            "type": "array",
+            "description": "a list of stack frames, entries in the format [module index, program counter offset]",
+            "items": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "integer",
+                  "description": "the module index or -1 for invalid module indices"
+                },
+                {
+                  "type": "integer",
+                  "description": "the offset of this program counter in its module or an absolute pc"
+                }
+              ],
+              "minItems": 2,
+              "maxItems": 2
+            }
+          }
+        }
+      }
     },
     "simpleMeasurements": {
       "type": "object",
