@@ -1336,16 +1336,9 @@
             "memoryMap": {
               "description": "entries in the format [module name, breakpad identifier]",
               "items": {
-                "items": [
-                  {
-                    "description": "module name",
-                    "type": "string"
-                  },
-                  {
-                    "description": "breakpad identifier",
-                    "type": "string"
-                  }
-                ],
+                "items": {
+                  "type": "string"
+                },
                 "maxItems": 2,
                 "minItems": 2,
                 "type": "array"
@@ -1353,20 +1346,13 @@
               "type": "array"
             },
             "stacks": {
-              "description": "a list of stacks",
+              "description": "A list of stacks",
               "items": {
-                "description": "a list of stack frames, entries in the format [module index, program counter offset]",
+                "description": "A list of stack frames, entries in the format [module index, program counter offset]. The module index can be -1 for invalid module indices. The program counter can be an offset in the module or an absolute pc.",
                 "items": {
-                  "items": [
-                    {
-                      "description": "the module index or -1 for invalid module indices",
-                      "type": "integer"
-                    },
-                    {
-                      "description": "the offset of this program counter in its module or an absolute pc",
-                      "type": "integer"
-                    }
-                  ],
+                  "items": {
+                    "type": "integer"
+                  },
                   "maxItems": 2,
                   "minItems": 2,
                   "type": "array"
