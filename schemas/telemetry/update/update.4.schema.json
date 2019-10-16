@@ -94,6 +94,12 @@
                   "isSystem": {
                     "type": "boolean"
                   },
+                  "isWebExtension": {
+                    "type": "boolean"
+                  },
+                  "multiprocessCompatible": {
+                    "type": "boolean"
+                  },
                   "name": {
                     "type": "string"
                   },
@@ -544,6 +550,12 @@
                 "null"
               ]
             },
+            "isInOptoutSample": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
             "launcherProcessState": {
               "type": "integer"
             },
@@ -585,6 +597,14 @@
               "type": "object"
             },
             "userPrefs": {
+              "additionalProperties": {
+                "type": [
+                  "boolean",
+                  "string",
+                  "number",
+                  "null"
+                ]
+              },
               "type": "object"
             }
           },
@@ -767,6 +787,12 @@
                   "properties": {
                     "advancedLayers": {
                       "properties": {
+                        "noConstantBufferOffsetting": {
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
                         "status": {
                           "type": [
                             "string",
@@ -835,6 +861,28 @@
                       "type": "object"
                     },
                     "gpuProcess": {
+                      "properties": {
+                        "status": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "webrender": {
+                      "properties": {
+                        "status": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "wrQualified": {
                       "properties": {
                         "status": {
                           "type": [
@@ -965,6 +1013,12 @@
             },
             "isWow64": {
               "type": "boolean"
+            },
+            "isWowARM64": {
+              "type": [
+                "boolean",
+                "null"
+              ]
             },
             "memoryMB": {
               "type": "number"
