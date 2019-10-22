@@ -12,6 +12,12 @@ from pathlib import Path
 from typing import Any, Dict, Optional
 
 
+""" List of schemas that shouldn't be validated"""
+SCHEMAS_TO_IGNORE = {
+    "sync", # sync v5 is sent from Android
+}
+
+
 def is_placeholder(schema: Dict[str, Any]) -> bool:
     return schema["title"] == "placeholder_schema" and not schema.get("properties")
 
@@ -39,6 +45,8 @@ def main(project_root: Path) -> None:
         schema = json.load(open(path))
         relative_path = "/".join(path.parts[-3:])
         if is_placeholder(schema):
+            continue
+        if path.parts[-2] in SCHEMAS_TO_IGNORE:
             continue
         is_valid, err_msg = is_valid_telemetry_version(schema)
         if not is_valid:
