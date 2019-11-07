@@ -29,6 +29,10 @@
           "description": "Where the user first installed the extension (e.g., internal_beta, external_beta, etc)",
           "type": "string"
         },
+        "extensionInstallDate": {
+          "title": "Timestamp when the extension was installed",
+          "type": "integer"
+        },
         "siteCategoryOpened": {
           "title": "Category of site opened by intent",
           "type": "string"
@@ -46,6 +50,10 @@
         "hasCard": {
           "title": "Does the intent produce a card-like output?",
           "type": "boolean"
+        },
+        "country": {
+          "title": "User country code",
+          "type": "string"
         },
         "inputCancelled": {
           "title": "Was the interaction cancelled?",
@@ -109,20 +117,22 @@
           "type": "string"
         },
         "serverErrorIntentParser": {
-          "title": "Error with the server intent parser",
+          "title": "DEPRECATED",
+          "description": "Error with the server intent parser",
           "type": "string"
         },
         "serverErrorSpeech": {
           "title": "Error with the server speech-to-text parser",
           "type": "string"
         },
+        "serverTimeIntentParser": {
+          "title": "DEPRECATED",
+          "minimum": 0,
+          "description": "Time in milliseconds for server intent parsing",
+          "type": "number"
+        },
         "serverTimeSpeech": {
           "title": "Time in milliseconds for server TTS",
-          "type": "number",
-          "minimum": 0
-        },
-        "serverTimeIntentParser": {
-          "title": "Time in milliseconds for server intent parsing",
           "type": "number",
           "minimum": 0
         },
@@ -136,10 +146,31 @@
           "minimum": 0.0,
           "maximum": 1.0
         },
+        "deepSpeechConfidence": {
+          "title": "Confidence of DeepSpeech text-to-speech transcription",
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
         "timestamp": {
           "title": "Milliseconds-since-the-epoch when intent was started",
           "type": "number",
           "minimum": 0
+        },
+        "localHour": {
+          "title": "Local hour of action",
+          "description": "The hour, 0-23, in the local timezone when the action was run",
+          "type": "integer"
+        },
+        "audioTime": {
+          "title": "Amount of spoken time",
+          "description": "Time in milliseconds of the recording",
+          "type": "integer"
+        },
+        "intentTime": {
+          "title": "Time to execute the intent",
+          "description": "Milliseconds between getting the utterance and execution the intent",
+          "type": "integer"
         },
         "utterance": {
           "title": "Text utterance by user",
@@ -167,6 +198,16 @@
         "deepSpeechMatches": {
           "title": "Did the DeepSpeech transcription match with Google's?",
           "type": "boolean"
+        },
+        "deepSpeechServerTime": {
+          "title": "Response time of DeepSpeech server",
+          "description": "Milliseconds for the DeepSpeech transcription to complete and respond",
+          "type": "integer"
+        },
+        "numberOfOpenTabs": {
+          "title": "Number of open tabs",
+          "description": "A count of the number of tabs in all windows, that are open when the tool is activated",
+          "type": "integer"
         }
       },
       "required": [
