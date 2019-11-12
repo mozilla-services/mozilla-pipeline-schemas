@@ -21,52 +21,132 @@
         "metadata": {
           "type": "object",
           "properties": {
+            "AsyncShutdownTimeout": {
+              "description": "<json>, Optional, present when a shutdown blocker failed to respond within a reasonable amount of time",
+              "type": "string"
+            },
             "AvailablePageFile": {
+              "description": "<size>, Windows-only, available paging file in bytes",
               "type": "string"
             },
             "AvailablePhysicalMemory": {
+              "description": "<size>, Windows-only, available physical memory in bytes",
               "type": "string"
             },
             "AvailableVirtualMemory": {
+              "description": "<size>, Windows-only, available virtual memory in bytes",
+              "type": "string"
+            },
+            "BlockedDllList": {
+              "description": "<list>, Windows-only, see WindowsDllBlocklist.cpp for details",
+              "type": "string"
+            },
+            "BlocklistInitFailed": {
+              "description": "1, Windows-only, present only if the DLL blocklist initialization failed",
               "type": "string"
             },
             "BuildID": {
+              "description": "YYYYMMDDHHMMSS",
+              "type": "string"
+            },
+            "ContainsMemoryReport": {
+              "description": "1, Optional, if set indicates that the crash had a memory report attached",
+              "type": "string"
+            },
+            "CrashTime": {
+              "description": "<time>, Seconds since the Epoch",
+              "type": "string"
+            },
+            "EventLoopNestingLevel": {
+              "description": "<levels>, Optional, present only if >0, indicates the nesting level of the event-loop",
               "type": "string"
             },
             "ipc_channel_error": {
+              "description": "<error string>, Optional, contains the string processing error reason for an ipc-based content crash",
               "type": "string"
             },
             "IsGarbageCollecting": {
+              "description": "1, Optional, if set indicates that the crash occurred while the garbage collector was running",
+              "type": "string"
+            },
+            "LowCommitSpaceEvents": {
+              "description": "<num>, Windows-only, present only if >0, number of low commit space events detected by the available memory tracker",
+              "type": "string"
+            },
+            "MemoryErrorCorrection": {
+              "description": "<type>, Windows-only, indicates the type of ECC memory in use, see below",
+              "type": "string"
+            },
+            "MozCrashReason": {
+              "description": "<reason>, Optional, contains the string passed to MOZ_CRASH()",
+              "type": "string"
+            },
+            "OOMAllocationSize": {
+              "description": "<size>, Size of the allocation that caused an OOM",
               "type": "string"
             },
             "ProductID": {
+              "description": "{ec8030f7-c20a-464f-9b0e-13a3a9e97384}",
               "type": "string"
             },
             "ProductName": {
+              "description": "Firefox",
               "type": "string"
             },
             "ReleaseChannel": {
+              "description": "<channel>",
+              "type": "string"
+            },
+            "RemoteType": {
+              "description": "<type>, Optional, type of content process, see below for a list of types",
               "type": "string"
             },
             "SecondsSinceLastCrash": {
+              "description": "<duration>, Seconds elapsed since the last crash occurred",
+              "type": "string"
+            },
+            "ShutdownProgress": {
+              "description": "<phase>, Optional, contains a string describing the shutdown phase in which the crash occurred",
               "type": "string"
             },
             "StartupCrash": {
+              "description": "1, Optional, if set indicates that Firefox crashed during startup",
               "type": "string"
             },
             "SystemMemoryUsePercentage": {
+              "description": "<percentage>, Windows-only, percent of memory in use",
+              "type": "string"
+            },
+            "TelemetrySessionId": {
+              "description": "<id>, Active telemetry session ID when the crash was recorded",
+              "type": "string"
+            },
+            "TextureUsage": {
+              "description": "<usage>, Optional, usage of texture memory in bytes",
               "type": "string"
             },
             "TotalPageFile": {
+              "description": "<size>, Windows-only, paging file in use expressed in bytes",
               "type": "string"
             },
             "TotalPhysicalMemory": {
+              "description": "<size>, Windows-only, physical memory in use expressed in bytes",
               "type": "string"
             },
             "TotalVirtualMemory": {
+              "description": "<size>, Windows-only, virtual memory in use expressed in bytes",
+              "type": "string"
+            },
+            "UptimeTS": {
+              "description": "<duration>, Seconds since Firefox was started, this can have a fractional component",
+              "type": "string"
+            },
+            "User32BeforeBlocklist": {
+              "description": "1, Windows-only, present only if user32.dll was loaded before the DLL blocklist has been initialized",
               "type": "string"
             },
             "Version": {
+              "description": "<version number>",
               "type": "string"
             }
           }
