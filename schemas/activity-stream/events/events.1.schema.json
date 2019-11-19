@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "action_position": {
+      "description": "A zero based integer indicating the position of this event",
+      "type": "integer"
+    },
+    "addon_version": {
+      "type": "string"
+    },
+    "client_id": {
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "type": "string"
+    },
+    "event": {
+      "description": "An event identifier",
+      "type": "string"
+    },
+    "locale": {
+      "type": "string"
+    },
+    "page": {
+      "enum": [
+        "about:newtab",
+        "about:home",
+        "about:welcome",
+        "unknown"
+      ],
+      "type": "string"
+    },
+    "profile_creation_date": {
+      "type": "integer"
+    },
+    "region": {
+      "type": "string"
+    },
+    "release_channel": {
+      "type": "string"
+    },
+    "session_id": {
+      "description": "A UUID representing the session, in which this event occurred",
+      "pattern": "^\\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\}$",
+      "type": "string"
+    },
+    "shield_id": {
+      "description": "A semicolon separated string to store a list of Shield study IDs",
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "user_prefs": {
+      "description": "An encoded integer representing user's preferences of Activity Stream",
+      "type": "integer"
+    },
+    "value": {
+      "description": "A string that describes the context about this event",
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "client_id",
+    "event",
+    "addon_version",
+    "version",
+    "locale"
+  ],
+  "title": "events",
+  "type": "object"
+}
