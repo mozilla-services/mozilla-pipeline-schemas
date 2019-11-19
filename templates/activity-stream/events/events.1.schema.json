@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "events",
+  "properties": {
+    "client_id": {
+      "type": "string",
+      @COMMON_PATTERN_UUID_1_JSON@
+    },
+    "shield_id": {
+      "description": "A semicolon separated string to store a list of Shield study IDs",
+      "type": "string"
+    },
+    "event": {
+      "description": "An event identifier",
+      "type": "string"
+    },
+    "value": {
+        "description": "A string that describes the context about this event",
+        "type": "string"
+    },
+    "session_id": {
+      "description": "A UUID representing the session, in which this event occurred",
+      "type": "string",
+      "pattern": "^\\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\}$"
+    },
+    "page": {
+      "type": "string",
+      "enum": [ "about:newtab", "about:home", "about:welcome", "unknown" ]
+    },
+    "source": {
+      "type": "string"
+    },
+    "addon_version": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "release_channel": {
+      "type": "string"
+    },
+    "locale": {
+      "type": "string"
+    },
+    "region": {
+      "type": "string"
+    },
+    "action_position": {
+      "description": "A zero based integer indicating the position of this event",
+      "type": "integer"
+    },
+    "user_prefs": {
+      "description": "An encoded integer representing user's preferences of Activity Stream",
+      "type": "integer"
+    },
+    "profile_creation_date": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "client_id",
+    "event",
+    "addon_version",
+    "version",
+    "locale"
+  ]
+}
