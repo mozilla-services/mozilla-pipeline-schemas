@@ -1,0 +1,53 @@
+message pre-account {
+  required group metadata {
+    required binary documentId (UTF8);
+    required int64  Timestamp;
+    optional binary Date (UTF8);
+    optional binary appBuildId (UTF8);
+    optional binary appName (UTF8);
+    optional binary appUpdateChannel (UTF8);
+    optional binary normalizedChannel (UTF8);
+  }
+  @TELEMETRY_APPLICATION_1_TXT@
+  required binary creationDate (UTF8);
+  required binary id (UTF8);
+  required group environment {
+    required group settings {
+      optional binary locale (UTF8);
+    }
+    required group system {
+      optional int64 memoryMB;
+      required group os {
+        optional binary name (UTF8);
+        optional binary version (UTF8);
+        optional binary locale (UTF8);
+      }
+      required group cpu {
+        optional int64 speedMHz;
+      }
+    }
+    required group profile {
+      required int64 creationDate;
+      optional int64 firstUseDate;
+    }
+  }
+
+  required group payload {
+    required binary reason (UTF8);
+    required binary ecosystemClientId (UTF8);
+    optional binary uid (UTF8);
+    required int64 duration;
+
+    required group scalars (MAP) {
+      repeated group key_value {
+        required binary key (UTF8);
+        required group value (MAP) {
+          repeated group key_value {
+            required binary key (UTF8);
+            required int64 value;
+          }
+        }
+      }
+    }
+  }
+}

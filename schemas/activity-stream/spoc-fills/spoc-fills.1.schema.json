@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "addon_version": {
+      "type": "string"
+    },
+    "impression_id": {
+      "description": "A UUID representing this impression",
+      "pattern": "^\\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\}$",
+      "type": "string"
+    },
+    "locale": {
+      "type": "string"
+    },
+    "release_channel": {
+      "type": "string"
+    },
+    "shield_id": {
+      "description": "A semicolon separated string to store a list of Shield study IDs",
+      "type": "string"
+    },
+    "spoc_fills": {
+      "items": {
+        "properties": {
+          "displayed": {
+            "type": "integer"
+          },
+          "full_recalc": {
+            "type": "integer"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "reason": {
+            "enum": [
+              "frequency_cap",
+              "blocked_by_user",
+              "below_min_score",
+              "campaign_duplicate",
+              "probability_selection",
+              "n/a",
+              "out_of_position"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "displayed",
+          "reason",
+          "full_recalc"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "impression_id",
+    "locale",
+    "version",
+    "addon_version",
+    "release_channel",
+    "spoc_fills"
+  ],
+  "title": "spoc-fills",
+  "type": "object"
+}

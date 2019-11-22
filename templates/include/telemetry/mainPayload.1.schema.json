@@ -10,7 +10,11 @@
       "properties": { }
     },
     "childPayloads": {
-      "type": "array"
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": { }
+      }
     },
     "chromeHangs": {
       "type": "object",
@@ -63,10 +67,18 @@
       "properties": { }
     },
     "log": {
-      "type": [
-        "array",
-        "object"
-        ]
+      "description": "Removed in FF61 via bug 1443615",
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": [
+          {"type": "string"},
+          {"type": "integer"}
+        ],
+        "additionalItems": {
+          "type": "string"
+        }
+      }
     },
     "simpleMeasurements": {
       "type": "object",
@@ -81,16 +93,18 @@
       "properties": { }
     },
     "threadHangStats": {
-      "type": [
-        "array",
-        "object"
-        ]
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": { }
+      }
     },
     "UIMeasurements": {
-      "type": [
-        "array",
-        "object"
-        ]
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": { }
+      }
     },
     "ver": {
       "type": "integer"

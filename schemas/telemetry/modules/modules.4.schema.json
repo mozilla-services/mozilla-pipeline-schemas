@@ -111,7 +111,10 @@
                   },
                   "updateDay": {
                     "minimum": 0,
-                    "type": "integer"
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
                   },
                   "userDisabled": {
                     "type": [
@@ -183,10 +186,7 @@
                     "items": {
                       "type": "string"
                     },
-                    "type": [
-                      "array",
-                      "object"
-                    ]
+                    "type": "array"
                   },
                   "name": {
                     "type": "string"
@@ -200,10 +200,7 @@
                 },
                 "type": "object"
               },
-              "type": [
-                "array",
-                "object"
-              ]
+              "type": "array"
             },
             "persona": {
               "type": [
@@ -252,7 +249,10 @@
                 },
                 "updateDay": {
                   "minimum": 0,
-                  "type": "integer"
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
                 },
                 "userDisabled": {
                   "type": "boolean"
@@ -368,10 +368,10 @@
               ]
             },
             "partnerNames": {
-              "type": [
-                "array",
-                "object"
-              ]
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
             }
           },
           "type": "object"
@@ -447,11 +447,61 @@
             "e10sEnabled": {
               "type": "boolean"
             },
+            "intl": {
+              "properties": {
+                "acceptLanguages": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "appLocales": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "availableLocales": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "regionalPrefsLocales": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": [
+                    "array",
+                    "null"
+                  ]
+                },
+                "requestedLocales": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "systemLocales": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": [
+                    "array",
+                    "null"
+                  ]
+                }
+              },
+              "type": "object"
+            },
             "isDefaultBrowser": {
               "type": [
                 "boolean",
                 "null"
               ]
+            },
+            "launcherProcessState": {
+              "type": "integer"
             },
             "locale": {
               "type": "string"
@@ -596,6 +646,12 @@
                   ]
                 },
                 "DWriteEnabled": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "Headless": {
                   "type": [
                     "boolean",
                     "null"
@@ -769,10 +825,7 @@
                     },
                     "type": "object"
                   },
-                  "type": [
-                    "array",
-                    "object"
-                  ]
+                  "type": "array"
                 }
               },
               "type": "object"
@@ -788,6 +841,17 @@
                       ]
                     },
                     "revision": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "type": {
+                      "enum": [
+                        "SSD",
+                        "HDD",
+                        null
+                      ],
                       "type": [
                         "string",
                         "null"
@@ -809,6 +873,17 @@
                         "string",
                         "null"
                       ]
+                    },
+                    "type": {
+                      "enum": [
+                        "SSD",
+                        "HDD",
+                        null
+                      ],
+                      "type": [
+                        "string",
+                        "null"
+                      ]
                     }
                   },
                   "type": "object"
@@ -822,6 +897,17 @@
                       ]
                     },
                     "revision": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "type": {
+                      "enum": [
+                        "SSD",
+                        "HDD",
+                        null
+                      ],
                       "type": [
                         "string",
                         "null"
@@ -924,7 +1010,8 @@
         "partner",
         "settings",
         "system"
-      ]
+      ],
+      "type": "object"
     },
     "id": {
       "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
@@ -935,6 +1022,12 @@
         "modules": {
           "items": {
             "properties": {
+              "certSubject": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
               "debugID": {
                 "type": [
                   "string",

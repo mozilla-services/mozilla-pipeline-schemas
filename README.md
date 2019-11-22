@@ -33,9 +33,18 @@ Note that Pioneer studies have a [slightly amended](README.pioneer.md) process.
 
 ### Prerequisites
 
-* CMake (3.0+) - http://cmake.org/cmake/resources/software.html
-* jq (1.5+) - https://github.com/stedolan/jq
-* parquetfmt (0.1+) - https://github.com/trink/parquetfmt
+* [`CMake` (3.0+)](http://cmake.org/cmake/resources/software.html)
+* [`jq` (1.5+)](https://github.com/stedolan/jq)
+* [`parquetfmt` (0.1+)](https://github.com/trink/parquetfmt), available via [cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html): `cargo install --git https://github.com/trink/parquetfmt`
+* Optional: [Docker](https://www.docker.com/get-started)
+
+On MacOS, these prerequisites can be installed using [homebrew](https://brew.sh/):
+```
+brew install cmake
+brew intall jq
+brew install rust && cargo install --git https://github.com/trink/parquetfmt
+brew cask install docker
+```
 
 ### CMake Build Instructions
 
@@ -115,6 +124,8 @@ For details on how to compare two arbitrary revisions, refer to the `integration
 * All non trivial contributions should start with an issue being filed (if it is
   a new feature please propose your design/approach before doing any work as not
   all feature requests are accepted).
+* If updating the glean schemas, be sure to update the changelog in
+  `include/glean/CHANGELOG.md`.
 
 ### Notes
 

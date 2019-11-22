@@ -1,33 +1,48 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#", 
+  "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "argv": {
-      "description": "Full mach commandline. If the commandline contains absolute paths they will be sanitized.", 
+      "description": "Full mach commandline. If the commandline contains absolute paths they will be sanitized.",
       "items": {
         "type": "string"
-      }, 
+      },
       "type": "array"
-    }, 
+    },
+    "build_attrs": {
+      "description": "Attributes characterizing a build",
+      "properties": {
+        "clobber": {
+          "description": "true if the build was a clobber/full build",
+          "type": "boolean"
+        },
+        "cpu_percent": {
+          "description": "cpu utilization observed during a build",
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
     "build_opts": {
-      "description": "Selected build options", 
+      "description": "Selected build options",
       "properties": {
         "artifact": {
-          "description": "true if --enable-artifact-builds", 
+          "description": "true if --enable-artifact-builds",
           "type": "boolean"
-        }, 
+        },
         "ccache": {
-          "description": "true if ccache is in use (--with-ccache)", 
+          "description": "true if ccache is in use (--with-ccache)",
           "type": "boolean"
-        }, 
+        },
         "compiler": {
-          "description": "The compiler type in use (CC_TYPE)", 
+          "description": "The compiler type in use (CC_TYPE)",
+          "type": "string",
           "enum": [
-            "clang", 
-            "clang-cl", 
-            "gcc", 
+            "clang",
+            "clang-cl",
+            "gcc",
             "msvc"
           ]
-        }, 
+        },
         "debug": {
           "description": "true if build is debug (--enable-debug)",
           "type": "boolean"
@@ -108,6 +123,7 @@
         },
         "os": {
           "description": "Operating system",
+          "type": "string",
           "enum": [
             "windows",
             "macos",

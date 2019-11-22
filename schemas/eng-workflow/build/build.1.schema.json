@@ -8,6 +8,20 @@
       },
       "type": "array"
     },
+    "build_attrs": {
+      "description": "Attributes characterizing a build",
+      "properties": {
+        "clobber": {
+          "description": "true if the build was a clobber/full build",
+          "type": "boolean"
+        },
+        "cpu_percent": {
+          "description": "cpu utilization observed during a build",
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
     "build_opts": {
       "description": "Selected build options",
       "properties": {
@@ -26,7 +40,8 @@
             "clang-cl",
             "gcc",
             "msvc"
-          ]
+          ],
+          "type": "string"
         },
         "debug": {
           "description": "true if build is debug (--enable-debug)",
@@ -113,7 +128,8 @@
             "macos",
             "linux",
             "other"
-          ]
+          ],
+          "type": "string"
         },
         "physical_cores": {
           "description": "Number of physical CPU cores present",

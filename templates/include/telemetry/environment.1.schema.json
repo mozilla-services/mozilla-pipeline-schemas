@@ -1,4 +1,5 @@
 "environment": {
+  "type": "object",
   "properties": {
     "addons": {
       "type": "object",
@@ -46,7 +47,7 @@
                 "minimum": 0
               },
               "updateDay": {
-                "type": "integer",
+                "type": [ "integer", "null" ],
                 "minimum": 0
               },
               "signedState": {
@@ -90,7 +91,7 @@
           }
         },
         "activePlugins": {
-          "type": [ "array", "object" ],
+          "type": "array",
           "items": {
             "type": "object",
             "properties": {
@@ -113,7 +114,7 @@
                 "type": "boolean"
               },
               "mimeTypes": {
-                "type": [ "array", "object" ],
+                "type": "array",
                 "items": {
                   "type": "string"
                 }
@@ -168,7 +169,7 @@
               "minimum": 0
             },
             "updateDay": {
-              "type": "integer",
+              "type": [ "integer", "null" ],
               "minimum": 0
             }
           }
@@ -275,10 +276,10 @@
           ]
         },
         "partnerNames": {
-          "type": [
-            "array",
-            "object"
-          ]
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -351,11 +352,55 @@
         "searchCohort": {
           "type": [ "string", "null" ]
         },
+        "launcherProcessState": {
+          "type": "integer"
+        },
         "e10sEnabled": {
           "type": "boolean"
         },
         "e10sCohort": {
           "type": "string"
+        },
+        "intl": {
+          "type": "object",
+          "properties": {
+            "requestedLocales": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "availableLocales": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "appLocales": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "systemLocales": {
+              "type": [ "array", "null" ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "regionalPrefsLocales": {
+              "type": [ "array", "null" ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "acceptLanguages": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
         },
         "locale": {
           "type": "string"
@@ -470,6 +515,12 @@
                 "null"
               ]
             },
+            "Headless": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
             "LowEndMachine": {
               "type": "boolean"
             },
@@ -509,7 +560,7 @@
               }
             },
             "monitors": {
-              "type": [ "array", "object" ],
+              "type": "array",
               "items": {
                 "type": "object",
                 "properties": {
@@ -605,6 +656,17 @@
                     "string",
                     "null"
                   ]
+                },
+                "type": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "enum": [
+                    "SSD",
+                    "HDD",
+                    null
+                  ]
                 }
               }
             },
@@ -622,6 +684,17 @@
                     "string",
                     "null"
                   ]
+                },
+                "type": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "enum": [
+                    "SSD",
+                    "HDD",
+                    null
+                  ]
                 }
               }
             },
@@ -638,6 +711,17 @@
                   "type": [
                     "string",
                     "null"
+                  ]
+                },
+                "type": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "enum": [
+                    "SSD",
+                    "HDD",
+                    null
                   ]
                 }
               }

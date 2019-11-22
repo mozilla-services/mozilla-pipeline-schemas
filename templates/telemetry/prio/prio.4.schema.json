@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "prio",
+  "properties": {
+    @TELEMETRY_APPLICATION_1_JSON@,
+    @TELEMETRY_CREATIONDATE_1_JSON@,
+    @TELEMETRY_ID_1_JSON@,
+    "payload": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "enum": [
+            "1"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "enum": [
+            "shutdown",
+            "periodic",
+            "max"
+            ]
+        },
+        "prioData": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "encoding": {
+                "type": "string",
+                "description": "The batch-id for the shares"
+              },
+              "prio": {
+                "type": "object",
+                "a": {
+                  "type": "string",
+                  "description": "Shares for server A in base64"
+                },
+                "b": {
+                    "type": "string",
+                    "description": "Shares for server B in base64"
+                }
+              }
+            },
+            "required": [
+              "encoding",
+              "prio"
+              ]
+          }
+        }
+      },
+      "required": [
+        "reason",
+        "version",
+        "prioData"
+        ]
+    },
+    "type": {
+      "type": "string",
+      "enum": [ "prio" ]
+    },
+    "version": {
+      "type": "number",
+      "minimum": 4,
+      "maximum": 4
+    }
+  },
+  "required": [
+    "application",
+    "creationDate",
+    "id",
+    "payload",
+    "type",
+    "version"
+    ]
+}
