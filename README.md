@@ -25,7 +25,7 @@ schemas can be found here:
 - Build the rendered schemas using the instructions below, and check those artifacts (in the `schemas` directory) in to the git repo as well. See the rationale for this in the "Notes" section below.
 - Add one or more example JSON documents to the `validation` directory.
 - Run the tests (either via Docker or directly) using the instructions below.
-- Once all tests pass, submit a PR to the github repository against the `master` branch.
+- Once all tests pass, submit a PR to the github repository against the `master` branch. Please include a reference to a bug number in your PR/commit, for reference.
 
 Note that Pioneer studies have a [slightly amended](README.pioneer.md) process.
 
@@ -124,6 +124,10 @@ For details on how to compare two arbitrary revisions, refer to the `integration
   all feature requests are accepted).
 * If updating the glean schemas, be sure to update the changelog in
   `include/glean/CHANGELOG.md`.
+* This repository is configured to auto-assign a reviewer on PR submission. If you
+  do not receive a response within a few business days (or your request is
+  urgent), please followup in the
+  [#fx-metrics slack channel](https://mozilla.slack.com/messages/fx-metrics/).
 
 ### Notes
 
