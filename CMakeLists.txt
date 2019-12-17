@@ -60,7 +60,7 @@ foreach(ITEM IN ITEMS ${SCHEMAS})
     # the regex includes a few legacy camelCase names as special cases.
     # The format enforced here must match the recommendations documented in
     # https://docs.telemetry.mozilla.org/cookbooks/new_ping.html#choose-a-namespace-and-doctype
-    string(REGEX MATCH "/([-a-z0-9]+\\.[1-9][0-9]*(\\.schema\\.json|\\.parquetmr\\.txt)|README.*|disableSHA1rollout.4.schema.json|untrustedModules.4.parquetmr.txt|untrustedModules.4.schema.json)$" MATCH ${ITEM})
+    string(REGEX MATCH "/([-a-z0-9]+\\.[1-9][0-9]*(\\.schema\\.json|\\.parquetmr\\.txt)|README.*|disableSHA1rollout.4.schema.json|untrustedModules.4.schema.json)$" MATCH ${ITEM})
     if(NOT MATCH)
       message(FATAL_ERROR "schema name contains invalid characters: " ${ITEM})
     endif()

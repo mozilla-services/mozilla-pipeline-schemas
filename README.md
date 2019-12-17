@@ -4,24 +4,22 @@ This repository contains schemas for Mozilla's data ingestion pipeline and data
 lake outputs.
 
 The JSON schemas are used to validate incoming submissions at ingestion time.
-The [RapidJSON](http://rapidjson.org/md_doc_schema.html) library is used for
-JSON Schema Validation. This has implications for what kinds of string patterns
-are supported, see the `Conformance` section in the linked document for further
-details.
+The [RapidJSON](http://rapidjson.org/md_doc_schema.html) library (using draft 4)
+is used for JSON Schema Validation in this repository's tests.
+This has implications for what kinds of string patterns are supported,
+see the `Conformance` section in the linked document for further details.
+Note that as of 2019, the data pipeline uses the
+[everit-org/json-schema](https://github.com/everit-org/json-schema) library
+for validation in production (see
+[#302](https://github.com/mozilla-services/mozilla-pipeline-schemas/issues/332)).
 
 To learn more about writing JSON Schemas,
 [Understanding JSON Schema](https://spacetelescope.github.io/understanding-json-schema/index.html)
 is a great resource.
 
-The [Parquet-MR](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md)
-schemas are used for direct to parquet output; some examples of Parquet-MR
-schemas can be found here:
-[Parquet Schema Examples](https://mozilla-services.github.io/lua_sandbox_extensions/parquet/io_modules/lpeg/parquet.html)
-
 ## Adding a new schema
 
 - Create the JSON Schema in the `templates` directory first. Make use of common schema components from the `templates/include` directory where possible, including things like the telemetry `environment`, `clientId`, `application` block, or UUID patterns. The filename should be `templates/<namespace>/<doctype>/<doctype>.<version>.schema.json`.
-- If the data will be saved in parquet form, also add a Parquet-MR schema at `templates/<namespace>/<doctype>/<doctype>.<version>.parquetmr.txt`.
 - Build the rendered schemas using the instructions below, and check those artifacts (in the `schemas` directory) in to the git repo as well. See the rationale for this in the "Notes" section below.
 - Add one or more example JSON documents to the `validation` directory.
 - Run the tests (either via Docker or directly) using the instructions below.
