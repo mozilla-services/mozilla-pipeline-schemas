@@ -81,6 +81,13 @@ jobs:
           <<: *store_artifacts
       - save_cache:
           <<: *save_cache
+  post-artifacts:
+    docker:
+      - image: circleci/node:8.10.0
+    steps:
+      - checkout
+      - run: npm i circle-github-bot
+      - run: .circleci/post-artifact.js
 
 workflows:
     version: 2
@@ -92,6 +99,11 @@ workflows:
                 # This branch is only used for the .github/push-to-trigger-integration script
                 ignore: trigger-integration
         - integrate:
+            filters:
+              branches:
+                # Forked pull requests have CIRCLE_BRANCH set to pull/XXX
+                ignore: /pull\/[0-9]+/
+        - post-artifacts:
             filters:
               branches:
                 # Forked pull requests have CIRCLE_BRANCH set to pull/XXX
