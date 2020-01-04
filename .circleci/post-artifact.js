@@ -3,7 +3,9 @@
 const bot = require("circle-github-bot").create();
 
 var fs = require("fs");
-var files = fs.readdirSync("/tmp/test-reports");
+
+let root = "/tmp/test-reports";
+var files = fs.readdirSync(root);
 console.log(files);
 
 // example listing
@@ -11,7 +13,7 @@ console.log(files);
 // c88ebe5-723350e.diff
 // c88ebe5.report.json
 let diff_file = files.filter(x => x.endsWith(".diff"))[0];
-let diff_content = fs.readFileSync(diff_file, "utf8");
+let diff_content = fs.readFileSync(root + "/" + diff_file, "utf8");
 let [upstream, head] = diff_file.split(".")[0].split("-");
 
 var content = "No changes detected.";
