@@ -63,6 +63,10 @@ jobs:
       - store_artifacts: &store_artifacts
           path: /app/test-reports
           destination: /app/test-results
+      - persist_to_workspace:
+          root: /app
+          paths:
+            - test-reports
       - save_cache: &save_cache
           paths:
             - ~/resources
@@ -86,6 +90,8 @@ jobs:
       - image: circleci/node:8.10.0
     steps:
       - checkout
+      - attach_workspace:
+          at: /tmp
       - run: npm i circle-github-bot
       - run: .circleci/post-artifact.js
 
@@ -104,6 +110,8 @@ workflows:
                 # Forked pull requests have CIRCLE_BRANCH set to pull/XXX
                 ignore: /pull\/[0-9]+/
         - post-artifacts:
+            requires:
+              - integrate
             filters:
               branches:
                 # Forked pull requests have CIRCLE_BRANCH set to pull/XXX
