@@ -60,10 +60,7 @@ jobs:
               python integration.py sync compare \
                 --report-path test-reports \
                 $upstream_short_id $head_short_id
-      - store_artifacts: &store_artifacts
-          path: /app/test-reports
-          destination: /app/test-results
-      - persist_to_workspace:
+      - persist_to_workspace: &persist_artifacts
           root: /app
           paths:
             - test-reports
@@ -81,8 +78,8 @@ jobs:
       # We skip the restore_cache step so that the most recent cache is pristine once every day.
       - run:
           <<: *run_comparison
-      - store_artifacts:
-          <<: *store_artifacts
+      - persist_to_workspace:
+          <<: *persist_artifacts
       - save_cache:
           <<: *save_cache
   post-artifacts:
@@ -91,9 +88,12 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: /tmp
+          at: /app
       - run: npm i circle-github-bot
       - run: .circleci/post-artifact.js
+      - store_artifacts:
+          path: /app/test-reports
+          destination: /app/test-reports
 
 workflows:
     version: 2
@@ -119,6 +119,9 @@ workflows:
     nightly:
       jobs:
         - integrate-clean
+        - post-artifacts:
+            requires:
+              - integrate-clean
       triggers:
         - schedule:
             # Run integration tests a little after midnight Pacific every day to pick up
