@@ -27,8 +27,8 @@ if (diff_content) {
 
 bot.comment(process.env.GH_AUTH_TOKEN, `
 ### Integration report for "${bot.env.commitMessage}"
-Report for upstream: ${bot.artifactLink("app/test-report", upstream + ".report.json")}
-Report for latest commit: ${bot.artifactLink("app/test-report", head + ".report.json")}
+Report for upstream: ${bot.artifactLink(`${upstream}.report.json`, upstream)}
+Report for latest commit: ${bot.artifactLink(`${head}.report.json`, head)}
 
 ${content}
 `);
