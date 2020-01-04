@@ -4,7 +4,7 @@ const bot = require("circle-github-bot").create();
 
 var fs = require("fs");
 
-let root = "/app/test-reports";
+let root = "/tmp/test-reports";
 var files = fs.readdirSync(root);
 console.log(files);
 

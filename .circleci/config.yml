@@ -88,11 +88,11 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: /app
+          at: /tmp
       - run: npm i circle-github-bot
       - run: .circleci/post-artifact.js
       - store_artifacts:
-          path: /app/test-reports
+          path: /tmp/test-reports
           destination: /app/test-reports
 
 workflows:
