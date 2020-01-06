@@ -46,7 +46,11 @@
     "ping_info": {
       "type": "object",
       "properties": {
-        "ping_type": @GLEAN_SHORT_ID_1_JSON@,
+        "ping_type": {
+          "type": "string",
+          "pattern": "^[a-z-][a-z0-9-]*$",
+          "maxLength": 30
+        },
         "seq": {
           "type": "integer"
         },
