@@ -22,7 +22,7 @@ let diff_content = fs.readFileSync(root + "/" + diff_file, "utf8");
 let [upstream, head] = diff_file.split(".")[0].split("-");
 
 // Generate and post markdown
-var content = `#### ${diff_file}
+var content = `#### \`${diff_file}\`
 \`\`\`diff
 ${diff_content}
 \`\`\`
