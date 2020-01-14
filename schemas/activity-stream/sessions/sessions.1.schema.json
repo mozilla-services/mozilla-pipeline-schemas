@@ -17,6 +17,8 @@
         "about:home",
         "about:welcome",
         "unknown",
+        "n/a",
+        "both",
         "https://newtab.firefoxchina.cn/newtab/as/activity-stream.html"
       ],
       "type": "string"
@@ -28,11 +30,11 @@
           "type": "integer"
         },
         "is_preloaded": {
-          "description": "Whether or not is this session preloaded?",
+          "description": "Whether or not this session is preloaded",
           "type": "boolean"
         },
         "load_trigger_ts": {
-          "description": "To store the timestamp (in ms) when this session gets triggered",
+          "description": "To store the timestamp (ms since Unix epoch) when this session gets triggered",
           "type": "integer"
         },
         "load_trigger_type": {
@@ -48,7 +50,7 @@
           "type": "integer"
         },
         "topsites_first_painted_ts": {
-          "description": "To store the timestamp (in ms) when the Top Sites is first painted",
+          "description": "To store the timestamp (ms since Unix epoch) when the Top Sites is first painted",
           "type": "integer"
         },
         "topsites_icon_stats": {
@@ -84,7 +86,7 @@
           "type": "integer"
         },
         "visibility_event_rcvd_ts": {
-          "description": "To store the timestamp (in ms) when the page is made visible to the user in this session",
+          "description": "To store the timestamp (ms since Unix epoch) when the page is made visible to the user in this session",
           "type": "integer"
         }
       },
@@ -94,7 +96,7 @@
       "type": "object"
     },
     "profile_creation_date": {
-      "description": "Profile age in days relative to the epoch (1970-01-01)",
+      "description": "Profile age in days since Unix epoch",
       "type": "integer"
     },
     "release_channel": {
@@ -105,8 +107,8 @@
       "type": "integer"
     },
     "session_id": {
-      "description": "A UUID representing this session. Could be joined against the activity-stream/event ping",
-      "pattern": "^\\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\}$",
+      "description": "A UUID representing an Activity Stream session. This can be used to do table joins between `sessions` and `events` in Activity Stream. Note that `n/a` denotes that the session is not applicable in the context.",
+      "pattern": "^\\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\}$|^n/a$",
       "type": "string"
     },
     "shield_id": {
