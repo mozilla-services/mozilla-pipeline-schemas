@@ -1,0 +1,138 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "addon_version": {
+      "type": "string"
+    },
+    "client_id": {
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "type": "string"
+    },
+    "locale": {
+      "type": "string"
+    },
+    "page": {
+      "enum": [
+        "about:newtab",
+        "about:home",
+        "about:welcome",
+        "unknown",
+        "https://newtab.firefoxchina.cn/newtab/as/activity-stream.html"
+      ],
+      "type": "string"
+    },
+    "perf": {
+      "properties": {
+        "highlights_data_late_by_ms": {
+          "description": "Latency of the data availability for Highlights",
+          "type": "integer"
+        },
+        "is_preloaded": {
+          "description": "Whether or not is this session preloaded?",
+          "type": "boolean"
+        },
+        "load_trigger_ts": {
+          "description": "To store the timestamp (in ms) when this session gets triggered",
+          "type": "integer"
+        },
+        "load_trigger_type": {
+          "enum": [
+            "menu_plus_or_keyboard",
+            "unexpected",
+            "first_window_opened"
+          ],
+          "type": "string"
+        },
+        "topsites_data_late_by_ms": {
+          "description": "Latency of the data availability for Top Sites",
+          "type": "integer"
+        },
+        "topsites_first_painted_ts": {
+          "description": "To store the timestamp (in ms) when the Top Sites is first painted",
+          "type": "integer"
+        },
+        "topsites_icon_stats": {
+          "description": "Icon stats for Top Sites, only sent if Top Sites is enabled",
+          "properties": {
+            "custom_screenshot": {
+              "type": "integer"
+            },
+            "no_image": {
+              "type": "integer"
+            },
+            "rich_icon": {
+              "type": "integer"
+            },
+            "screenshot": {
+              "type": "integer"
+            },
+            "screenshot_with_icon": {
+              "type": "integer"
+            },
+            "tippytop": {
+              "type": "integer"
+            }
+          },
+          "type": "object"
+        },
+        "topsites_pinned": {
+          "description": "The total number of pinned Top Sites in this session",
+          "type": "integer"
+        },
+        "topsites_search_shortcuts": {
+          "description": "The total number of search shortcuts in this session",
+          "type": "integer"
+        },
+        "visibility_event_rcvd_ts": {
+          "description": "To store the timestamp (in ms) when the page is made visible to the user in this session",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "load_trigger_type"
+      ],
+      "type": "object"
+    },
+    "profile_creation_date": {
+      "description": "Profile age in days relative to the epoch (1970-01-01)",
+      "type": "integer"
+    },
+    "release_channel": {
+      "type": "string"
+    },
+    "session_duration": {
+      "description": "The duration of this session in milliseconds. The session begins at `perf.visibility_event_rcvd_ts` and ends when the page is navigated away",
+      "type": "integer"
+    },
+    "session_id": {
+      "description": "A UUID representing this session. Could be joined against the activity-stream/event ping",
+      "pattern": "^\\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\}$",
+      "type": "string"
+    },
+    "shield_id": {
+      "description": "A semicolon separated string to store a list of Shield study IDs",
+      "type": "string"
+    },
+    "user_prefs": {
+      "description": "An encoded integer representing user's preferences of Activity Stream",
+      "type": "integer"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "client_id",
+    "addon_version",
+    "page",
+    "version",
+    "locale",
+    "session_id",
+    "session_duration",
+    "perf",
+    "user_prefs",
+    "profile_creation_date"
+  ],
+  "title": "sessions",
+  "type": "object"
+}
