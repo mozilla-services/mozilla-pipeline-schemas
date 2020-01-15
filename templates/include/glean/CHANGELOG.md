@@ -2,6 +2,8 @@
 
 - `ping_type` in the the `ping_info` section is now optional. See [Bug 1609149](https://bugzilla.mozilla.org/show_bug.cgi?id=1609149).
 
+- An optional `reason` field has been added to `ping_info`.
+
 - Glean ping_type is kebab-case instead of snake_case.
 
 - Label names can now be arbitrary strings, not just dotted snake_case.
