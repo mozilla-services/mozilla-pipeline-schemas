@@ -93,7 +93,7 @@ The following docker command will generate a report against a sample of data fro
             make report
 
 Pushes to the main repo will trigger integration tests in CircleCI that directly
-compare the revision to the `dev` branch. These tests do not run for forked PRs
+compare the revision to the `master` branch. These tests do not run for forked PRs
 in order to protect data and credentials, but reviewers can trigger tests to run
 by pushing the PR's revisions to a branch of the main repo. We provide a script for this:
 
@@ -106,14 +106,13 @@ For details on how to compare two arbitrary revisions, refer to the `integration
 
 ## Releases
 
-* The master branch is the current release and is considered stable at all
-  times.
-* New versions can be released as frequently as every two weeks (our sprint
-  cycle). The only exception would be for a high priority patch.
-* New releases occur the day after the sprint finishes.
-  * The version in the dev branch is updated
-  * The changes are merged into master
-  * A new tag is created
+There is a daily series of tasks run by Airflow (see the
+[`probe_scraper` DAG](https://github.com/mozilla/telemetry-airflow/blob/master/dags/probe_scraper.py))
+that uses the `master` branch of this repository as input and ends up pushing
+final JSONSchema and BigQuery schema files to the `generated-schemas` branch.
+As of January 2020, deploying schema changes still requires manual intervention
+by a member of the Data Ops team, but you can generally expect schemas to be
+deployed to production BigQuery tables several times a week.
 
 ## Contributions
 
