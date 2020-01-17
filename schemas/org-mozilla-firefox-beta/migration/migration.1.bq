@@ -214,12 +214,62 @@
         "fields": [
           {
             "mode": "NULLABLE",
-            "name": "glean_core_migration_successful",
+            "name": "migration_addons_any_failures",
             "type": "BOOL"
           },
           {
             "mode": "NULLABLE",
-            "name": "glean_error_preinit_tasks_timeout",
+            "name": "migration_bookmarks_any_failures",
+            "type": "BOOL"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "migration_fxa_any_failures",
+            "type": "BOOL"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "migration_fxa_has_custom_idp_server",
+            "type": "BOOL"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "migration_fxa_has_custom_token_server",
+            "type": "BOOL"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "migration_gecko_any_failures",
+            "type": "BOOL"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "migration_history_any_failures",
+            "type": "BOOL"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "migration_logins_any_failures",
+            "type": "BOOL"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "migration_open_tabs_any_failures",
+            "type": "BOOL"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "migration_settings_any_failures",
+            "type": "BOOL"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "migration_settings_telemetry_enabled",
+            "type": "BOOL"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "migration_telemetry_identifiers_any_failures",
             "type": "BOOL"
           }
         ],
@@ -231,22 +281,99 @@
         "fields": [
           {
             "mode": "NULLABLE",
-            "name": "glean_error_preinit_tasks_overflow",
+            "name": "migration_addons_failed_addons",
             "type": "INT64"
           },
           {
             "mode": "NULLABLE",
-            "name": "glean_validation_app_forceclosed_count",
+            "name": "migration_addons_failure_reason",
             "type": "INT64"
           },
           {
             "mode": "NULLABLE",
-            "name": "glean_validation_baseline_ping_count",
+            "name": "migration_addons_migrated_addons",
+            "type": "INT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "migration_addons_success_reason",
+            "type": "INT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "migration_bookmarks_detected",
+            "type": "INT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "migration_fxa_failure_reason",
+            "type": "INT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "migration_fxa_success_reason",
+            "type": "INT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "migration_history_detected",
+            "type": "INT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "migration_logins_detected",
+            "type": "INT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "migration_logins_failure_reason",
+            "type": "INT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "migration_logins_success_reason",
+            "type": "INT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "migration_logins_unsupported_db_version",
+            "type": "INT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "migration_open_tabs_detected",
+            "type": "INT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "migration_open_tabs_migrated",
+            "type": "INT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "migration_settings_failure_reason",
+            "type": "INT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "migration_settings_success_reason",
             "type": "INT64"
           }
         ],
         "mode": "NULLABLE",
         "name": "counter",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "migration_telemetry_identifiers_fennec_profile_creation_date",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "datetime",
         "type": "RECORD"
       },
       {
@@ -318,10 +445,170 @@
             "mode": "REPEATED",
             "name": "glean_error_invalid_value",
             "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "migration_bookmarks_migrated",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "migration_history_migrated",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "migration_logins_failure_counts",
+            "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
         "name": "labeled_counter",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "migration_migration_versions",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "labeled_string",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "migration_fxa_bad_auth_state",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "migration_fxa_failure_reason_rust",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "migration_fxa_unsupported_account_version",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "migration_fxa_unsupported_pickle_version",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "migration_fxa_unsupported_state_version",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "string",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "migration_bookmarks_duration",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "migration_history_duration",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "timespan",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "migration_telemetry_identifiers_fennec_client_id",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "uuid",
         "type": "RECORD"
       }
     ],
