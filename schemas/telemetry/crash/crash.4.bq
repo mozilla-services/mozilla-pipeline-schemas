@@ -1,5 +1,6 @@
 [
   {
+    "description": "A JSON string containing any payload properties not present in the schema",
     "mode": "NULLABLE",
     "name": "additional_properties",
     "type": "STRING"
@@ -67,6 +68,7 @@
     "type": "STRING"
   },
   {
+    "description": "The document ID specified in the URI when the client sent this message",
     "mode": "NULLABLE",
     "name": "document_id",
     "type": "STRING"
@@ -526,6 +528,7 @@
                 "type": "STRING"
               },
               {
+                "description": "funnel experiment parameters, see bug 1567339",
                 "mode": "NULLABLE",
                 "name": "experiment",
                 "type": "STRING"
@@ -541,6 +544,7 @@
                 "type": "STRING"
               },
               {
+                "description": "funnel experiment parameters, see bug 1567339",
                 "mode": "NULLABLE",
                 "name": "variation",
                 "type": "STRING"
@@ -630,6 +634,7 @@
             "type": "BOOL"
           },
           {
+            "description": "maximum number of processes that will be launched for regular web content",
             "mode": "NULLABLE",
             "name": "e10s_multi_processes",
             "type": "INT64"
@@ -1246,6 +1251,7 @@
   {
     "fields": [
       {
+        "description": "Results of a geographic lookup based on the client's IP address",
         "fields": [
           {
             "mode": "NULLABLE",
@@ -1253,21 +1259,25 @@
             "type": "STRING"
           },
           {
+            "description": "An ISO 3166-1 alpha-2 country code",
             "mode": "NULLABLE",
             "name": "country",
             "type": "STRING"
           },
           {
+            "description": "The specific geo database version used for this lookup",
             "mode": "NULLABLE",
             "name": "db_version",
             "type": "STRING"
           },
           {
+            "description": "First major country subdivision, typically a state, province, or county",
             "mode": "NULLABLE",
             "name": "subdivision1",
             "type": "STRING"
           },
           {
+            "description": "Second major country subdivision; not applicable for most countries",
             "mode": "NULLABLE",
             "name": "subdivision2",
             "type": "STRING"
@@ -1278,23 +1288,28 @@
         "type": "RECORD"
       },
       {
+        "description": "Headers included in the client's HTTP request",
         "fields": [
           {
+            "description": "Date HTTP header",
             "mode": "NULLABLE",
             "name": "date",
             "type": "STRING"
           },
           {
+            "description": "DNT (Do Not Track) HTTP header",
             "mode": "NULLABLE",
             "name": "dnt",
             "type": "STRING"
           },
           {
+            "description": "X-Debug-Id HTTP header",
             "mode": "NULLABLE",
             "name": "x_debug_id",
             "type": "STRING"
           },
           {
+            "description": "X-PingSender-Version HTTP header",
             "mode": "NULLABLE",
             "name": "x_pingsender_version",
             "type": "STRING"
@@ -1305,6 +1320,7 @@
         "type": "RECORD"
       },
       {
+        "description": "Components of the URI to which this ping was sent",
         "fields": [
           {
             "mode": "NULLABLE",
@@ -1332,6 +1348,7 @@
         "type": "RECORD"
       },
       {
+        "description": "Parsed components of the client's user agent string",
         "fields": [
           {
             "mode": "NULLABLE",
@@ -1359,21 +1376,25 @@
     "type": "RECORD"
   },
   {
+    "description": "Set to \"Other\" if this message contained an unrecognized app name",
     "mode": "NULLABLE",
     "name": "normalized_app_name",
     "type": "STRING"
   },
   {
+    "description": "Set to \"Other\" if this message contained an unrecognized channel name",
     "mode": "NULLABLE",
     "name": "normalized_channel",
     "type": "STRING"
   },
   {
+    "description": "An ISO 3166-1 alpha-2 country code",
     "mode": "NULLABLE",
     "name": "normalized_country_code",
     "type": "STRING"
   },
   {
+    "description": "Set to \"Other\" if this message contained an unrecognized OS name",
     "mode": "NULLABLE",
     "name": "normalized_os",
     "type": "STRING"
@@ -1391,6 +1412,7 @@
         "type": "STRING"
       },
       {
+        "description": "Optional, ID of the associated crash. Added to schema in bug 1604666.",
         "mode": "NULLABLE",
         "name": "crash_id",
         "type": "STRING"
@@ -1403,161 +1425,193 @@
       {
         "fields": [
           {
+            "description": "<json>, Optional, present when a shutdown blocker failed to respond within a reasonable amount of time",
             "mode": "NULLABLE",
             "name": "async_shutdown_timeout",
             "type": "STRING"
           },
           {
+            "description": "<size>, Windows-only, available paging file in bytes",
             "mode": "NULLABLE",
             "name": "available_page_file",
             "type": "STRING"
           },
           {
+            "description": "<size>, Windows-only, available physical memory in bytes",
             "mode": "NULLABLE",
             "name": "available_physical_memory",
             "type": "STRING"
           },
           {
+            "description": "<size>, Windows-only, available virtual memory in bytes",
             "mode": "NULLABLE",
             "name": "available_virtual_memory",
             "type": "STRING"
           },
           {
+            "description": "<list>, Windows-only, see WindowsDllBlocklist.cpp for details",
             "mode": "NULLABLE",
             "name": "blocked_dll_list",
             "type": "STRING"
           },
           {
+            "description": "1, Windows-only, present only if the DLL blocklist initialization failed",
             "mode": "NULLABLE",
             "name": "blocklist_init_failed",
             "type": "STRING"
           },
           {
+            "description": "YYYYMMDDHHMMSS",
             "mode": "NULLABLE",
             "name": "build_id",
             "type": "STRING"
           },
           {
+            "description": "1, Optional, if set indicates that the crash had a memory report attached",
             "mode": "NULLABLE",
             "name": "contains_memory_report",
             "type": "STRING"
           },
           {
+            "description": "<time>, Seconds since the Epoch",
             "mode": "NULLABLE",
             "name": "crash_time",
             "type": "STRING"
           },
           {
+            "description": "<levels>, Optional, present only if >0, indicates the nesting level of the event-loop",
             "mode": "NULLABLE",
             "name": "event_loop_nesting_level",
             "type": "STRING"
           },
           {
+            "description": "<error string>, Optional, contains the string processing error reason for an ipc-based content crash",
             "mode": "NULLABLE",
             "name": "ipc_channel_error",
             "type": "STRING"
           },
           {
+            "description": "1, Optional, if set indicates that the crash occurred while the garbage collector was running",
             "mode": "NULLABLE",
             "name": "is_garbage_collecting",
             "type": "STRING"
           },
           {
+            "description": "<num>, Windows-only, present only if >0, number of low commit space events detected by the available memory tracker",
             "mode": "NULLABLE",
             "name": "low_commit_space_events",
             "type": "STRING"
           },
           {
+            "description": "<type>, Windows-only, indicates the type of ECC memory in use, see below",
             "mode": "NULLABLE",
             "name": "memory_error_correction",
             "type": "STRING"
           },
           {
+            "description": "<reason>, Optional, contains the string passed to MOZ_CRASH()",
             "mode": "NULLABLE",
             "name": "moz_crash_reason",
             "type": "STRING"
           },
           {
+            "description": "<size>, Size of the allocation that caused an OOM",
             "mode": "NULLABLE",
             "name": "oom_allocation_size",
             "type": "STRING"
           },
           {
+            "description": "{ec8030f7-c20a-464f-9b0e-13a3a9e97384}",
             "mode": "NULLABLE",
             "name": "product_id",
             "type": "STRING"
           },
           {
+            "description": "Firefox",
             "mode": "NULLABLE",
             "name": "product_name",
             "type": "STRING"
           },
           {
+            "description": "<channel>",
             "mode": "NULLABLE",
             "name": "release_channel",
             "type": "STRING"
           },
           {
+            "description": "<type>, Optional, type of content process, see below for a list of types",
             "mode": "NULLABLE",
             "name": "remote_type",
             "type": "STRING"
           },
           {
+            "description": "<duration>, Seconds elapsed since the last crash occurred",
             "mode": "NULLABLE",
             "name": "seconds_since_last_crash",
             "type": "STRING"
           },
           {
+            "description": "<phase>, Optional, contains a string describing the shutdown phase in which the crash occurred",
             "mode": "NULLABLE",
             "name": "shutdown_progress",
             "type": "STRING"
           },
           {
+            "description": "1, Optional, if set indicates that Firefox crashed during startup",
             "mode": "NULLABLE",
             "name": "startup_crash",
             "type": "STRING"
           },
           {
+            "description": "<percentage>, Windows-only, percent of memory in use",
             "mode": "NULLABLE",
             "name": "system_memory_use_percentage",
             "type": "STRING"
           },
           {
+            "description": "<id>, Active telemetry session ID when the crash was recorded",
             "mode": "NULLABLE",
             "name": "telemetry_session_id",
             "type": "STRING"
           },
           {
+            "description": "<usage>, Optional, usage of texture memory in bytes",
             "mode": "NULLABLE",
             "name": "texture_usage",
             "type": "STRING"
           },
           {
+            "description": "<size>, Windows-only, paging file in use expressed in bytes",
             "mode": "NULLABLE",
             "name": "total_page_file",
             "type": "STRING"
           },
           {
+            "description": "<size>, Windows-only, physical memory in use expressed in bytes",
             "mode": "NULLABLE",
             "name": "total_physical_memory",
             "type": "STRING"
           },
           {
+            "description": "<size>, Windows-only, virtual memory in use expressed in bytes",
             "mode": "NULLABLE",
             "name": "total_virtual_memory",
             "type": "STRING"
           },
           {
+            "description": "<duration>, Seconds since Firefox was started, this can have a fractional component",
             "mode": "NULLABLE",
             "name": "uptime_ts",
             "type": "STRING"
           },
           {
+            "description": "1, Windows-only, present only if user32.dll was loaded before the DLL blocklist has been initialized",
             "mode": "NULLABLE",
             "name": "user32_before_blocklist",
             "type": "STRING"
           },
           {
+            "description": "<version number>",
             "mode": "NULLABLE",
             "name": "version",
             "type": "STRING"
@@ -1568,6 +1622,7 @@
         "type": "RECORD"
       },
       {
+        "description": "SHA256 hash of the minidump file. Added to schema in bug 1604913.",
         "mode": "NULLABLE",
         "name": "minidump_sha256_hash",
         "type": "STRING"
@@ -1588,11 +1643,13 @@
     "type": "RECORD"
   },
   {
+    "description": "Hashed version of client_id (if present) useful for partitioning; ranges from 0 to 99",
     "mode": "NULLABLE",
     "name": "sample_id",
     "type": "INT64"
   },
   {
+    "description": "Time when the ingestion edge server accepted this message",
     "mode": "NULLABLE",
     "name": "submission_timestamp",
     "type": "TIMESTAMP"

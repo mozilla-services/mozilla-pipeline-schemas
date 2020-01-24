@@ -1,5 +1,6 @@
 [
   {
+    "description": "A JSON string containing any payload properties not present in the schema",
     "mode": "NULLABLE",
     "name": "additional_properties",
     "type": "STRING"
@@ -67,6 +68,7 @@
     "type": "STRING"
   },
   {
+    "description": "The document ID specified in the URI when the client sent this message",
     "mode": "NULLABLE",
     "name": "document_id",
     "type": "STRING"
@@ -546,6 +548,7 @@
                 "type": "STRING"
               },
               {
+                "description": "funnel experiment parameters, see bug 1567339",
                 "mode": "NULLABLE",
                 "name": "experiment",
                 "type": "STRING"
@@ -561,6 +564,7 @@
                 "type": "STRING"
               },
               {
+                "description": "funnel experiment parameters, see bug 1567339",
                 "mode": "NULLABLE",
                 "name": "variation",
                 "type": "STRING"
@@ -650,6 +654,7 @@
             "type": "BOOL"
           },
           {
+            "description": "maximum number of processes that will be launched for regular web content",
             "mode": "NULLABLE",
             "name": "e10s_multi_processes",
             "type": "INT64"
@@ -1283,6 +1288,7 @@
   {
     "fields": [
       {
+        "description": "Results of a geographic lookup based on the client's IP address",
         "fields": [
           {
             "mode": "NULLABLE",
@@ -1290,21 +1296,25 @@
             "type": "STRING"
           },
           {
+            "description": "An ISO 3166-1 alpha-2 country code",
             "mode": "NULLABLE",
             "name": "country",
             "type": "STRING"
           },
           {
+            "description": "The specific geo database version used for this lookup",
             "mode": "NULLABLE",
             "name": "db_version",
             "type": "STRING"
           },
           {
+            "description": "First major country subdivision, typically a state, province, or county",
             "mode": "NULLABLE",
             "name": "subdivision1",
             "type": "STRING"
           },
           {
+            "description": "Second major country subdivision; not applicable for most countries",
             "mode": "NULLABLE",
             "name": "subdivision2",
             "type": "STRING"
@@ -1315,23 +1325,28 @@
         "type": "RECORD"
       },
       {
+        "description": "Headers included in the client's HTTP request",
         "fields": [
           {
+            "description": "Date HTTP header",
             "mode": "NULLABLE",
             "name": "date",
             "type": "STRING"
           },
           {
+            "description": "DNT (Do Not Track) HTTP header",
             "mode": "NULLABLE",
             "name": "dnt",
             "type": "STRING"
           },
           {
+            "description": "X-Debug-Id HTTP header",
             "mode": "NULLABLE",
             "name": "x_debug_id",
             "type": "STRING"
           },
           {
+            "description": "X-PingSender-Version HTTP header",
             "mode": "NULLABLE",
             "name": "x_pingsender_version",
             "type": "STRING"
@@ -1342,6 +1357,7 @@
         "type": "RECORD"
       },
       {
+        "description": "Components of the URI to which this ping was sent",
         "fields": [
           {
             "mode": "NULLABLE",
@@ -1369,6 +1385,7 @@
         "type": "RECORD"
       },
       {
+        "description": "Parsed components of the client's user agent string",
         "fields": [
           {
             "mode": "NULLABLE",
@@ -1396,21 +1413,25 @@
     "type": "RECORD"
   },
   {
+    "description": "Set to \"Other\" if this message contained an unrecognized app name",
     "mode": "NULLABLE",
     "name": "normalized_app_name",
     "type": "STRING"
   },
   {
+    "description": "Set to \"Other\" if this message contained an unrecognized channel name",
     "mode": "NULLABLE",
     "name": "normalized_channel",
     "type": "STRING"
   },
   {
+    "description": "An ISO 3166-1 alpha-2 country code",
     "mode": "NULLABLE",
     "name": "normalized_country_code",
     "type": "STRING"
   },
   {
+    "description": "Set to \"Other\" if this message contained an unrecognized OS name",
     "mode": "NULLABLE",
     "name": "normalized_os",
     "type": "STRING"
@@ -20217,6 +20238,7 @@
       {
         "fields": [
           {
+            "description": "obsolete, use environment.addons",
             "mode": "NULLABLE",
             "name": "addons",
             "type": "STRING"
@@ -20227,76 +20249,91 @@
             "type": "BOOL"
           },
           {
+            "description": "obsolete, use environment.addons.activePlugins",
             "mode": "NULLABLE",
             "name": "flash_version",
             "type": "STRING"
           },
           {
+            "description": "null if this is the first run, or the previous build ID is unknown",
             "mode": "NULLABLE",
             "name": "previous_build_id",
             "type": "STRING"
           },
           {
+            "description": "session id of the previous session, null on first run.",
             "mode": "NULLABLE",
             "name": "previous_session_id",
             "type": "STRING"
           },
           {
+            "description": "subsession id of the previous subsession (even if it was in a different session), null on first run.",
             "mode": "NULLABLE",
             "name": "previous_subsession_id",
             "type": "STRING"
           },
           {
+            "description": "the running no. of all subsessions for the whole profile life time",
             "mode": "NULLABLE",
             "name": "profile_subsession_counter",
             "type": "INT64"
           },
           {
+            "description": "what triggered this ping e.g. saved-session, environment-change, shutdown, ...",
             "mode": "NULLABLE",
             "name": "reason",
             "type": "STRING"
           },
           {
+            "description": "the Histograms.json revision",
             "mode": "NULLABLE",
             "name": "revision",
             "type": "STRING"
           },
           {
+            "description": "random session id, shared by subsessions",
             "mode": "NULLABLE",
             "name": "session_id",
             "type": "STRING"
           },
           {
+            "description": "the session length until now in seconds, monotonic; some clients report erroneous negative values",
             "mode": "NULLABLE",
             "name": "session_length",
             "type": "INT64"
           },
           {
+            "description": "hourly precision, ISO date in local time",
             "mode": "NULLABLE",
             "name": "session_start_date",
             "type": "STRING"
           },
           {
+            "description": "the running no. of this subsession since the start of the browser session",
             "mode": "NULLABLE",
             "name": "subsession_counter",
             "type": "INT64"
           },
           {
+            "description": "random subsession id",
             "mode": "NULLABLE",
             "name": "subsession_id",
             "type": "STRING"
           },
           {
+            "description": "the subsession length until now in seconds, monotonic",
             "mode": "NULLABLE",
             "name": "subsession_length",
             "type": "INT64"
           },
           {
+            "description": "hourly precision, ISO date in local time",
             "mode": "NULLABLE",
             "name": "subsession_start_date",
             "type": "STRING"
           },
           {
+            "description": "time-zone offset from UTC, in minutes, for the current locale",
             "mode": "NULLABLE",
             "name": "timezone_offset",
             "type": "INT64"
@@ -23068,6 +23105,7 @@
         "type": "RECORD"
       },
       {
+        "description": "This sections reports writes to the file system that happen during shutdown. The reported data contains the stack and the file names of the loaded libraries at the time the writes happened.",
         "fields": [
           {
             "fields": [
@@ -47887,11 +47925,13 @@
     "type": "RECORD"
   },
   {
+    "description": "Hashed version of client_id (if present) useful for partitioning; ranges from 0 to 99",
     "mode": "NULLABLE",
     "name": "sample_id",
     "type": "INT64"
   },
   {
+    "description": "Time when the ingestion edge server accepted this message",
     "mode": "NULLABLE",
     "name": "submission_timestamp",
     "type": "TIMESTAMP"

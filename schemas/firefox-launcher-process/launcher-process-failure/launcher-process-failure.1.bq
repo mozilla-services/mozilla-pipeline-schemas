@@ -1,20 +1,24 @@
 [
   {
+    "description": "A JSON string containing any payload properties not present in the schema",
     "mode": "NULLABLE",
     "name": "additional_properties",
     "type": "STRING"
   },
   {
+    "description": "Build ID of the failing binary",
     "mode": "NULLABLE",
     "name": "build_id",
     "type": "STRING"
   },
   {
+    "description": "Version of the failing binary",
     "mode": "NULLABLE",
     "name": "build_version",
     "type": "STRING"
   },
   {
+    "description": "One of the values from the Windows SYSTEM_INFO::wProcessorArchitecture field",
     "mode": "NULLABLE",
     "name": "cpu_arch",
     "type": "INT64"
@@ -25,6 +29,7 @@
     "type": "STRING"
   },
   {
+    "description": "The document ID specified in the URI when the client sent this message",
     "mode": "NULLABLE",
     "name": "document_id",
     "type": "STRING"
@@ -35,23 +40,28 @@
     "type": "STRING"
   },
   {
+    "description": "True if the process was launched with Administrator privileges but without User Account Control (= UAC)",
     "mode": "NULLABLE",
     "name": "is_admin_without_uac",
     "type": "BOOL"
   },
   {
+    "description": "The error that raised the launcher process failure",
     "fields": [
       {
+        "description": "The HRESULT error code from the launcher failure",
         "mode": "NULLABLE",
         "name": "hresult",
         "type": "INT64"
       },
       {
+        "description": "The leaf name of the source file where the failure originated",
         "mode": "NULLABLE",
         "name": "source_file",
         "type": "STRING"
       },
       {
+        "description": "The line in the source code where the failure originated",
         "mode": "NULLABLE",
         "name": "source_line",
         "type": "INT64"
@@ -62,23 +72,28 @@
     "type": "RECORD"
   },
   {
+    "description": "Information about the host computer's memory configuration",
     "fields": [
       {
+        "description": "Free space available in the page file, in bytes",
         "mode": "NULLABLE",
         "name": "avail_page_file",
         "type": "INT64"
       },
       {
+        "description": "Available physical memory on the machine, in bytes",
         "mode": "NULLABLE",
         "name": "avail_phys",
         "type": "INT64"
       },
       {
+        "description": "Available virtual memory on the machine, in bytes",
         "mode": "NULLABLE",
         "name": "avail_virt",
         "type": "INT64"
       },
       {
+        "description": "Total physical memory on the machine, in bytes",
         "mode": "NULLABLE",
         "name": "total_phys",
         "type": "INT64"
@@ -91,6 +106,7 @@
   {
     "fields": [
       {
+        "description": "Results of a geographic lookup based on the client's IP address",
         "fields": [
           {
             "mode": "NULLABLE",
@@ -98,21 +114,25 @@
             "type": "STRING"
           },
           {
+            "description": "An ISO 3166-1 alpha-2 country code",
             "mode": "NULLABLE",
             "name": "country",
             "type": "STRING"
           },
           {
+            "description": "The specific geo database version used for this lookup",
             "mode": "NULLABLE",
             "name": "db_version",
             "type": "STRING"
           },
           {
+            "description": "First major country subdivision, typically a state, province, or county",
             "mode": "NULLABLE",
             "name": "subdivision1",
             "type": "STRING"
           },
           {
+            "description": "Second major country subdivision; not applicable for most countries",
             "mode": "NULLABLE",
             "name": "subdivision2",
             "type": "STRING"
@@ -123,23 +143,28 @@
         "type": "RECORD"
       },
       {
+        "description": "Headers included in the client's HTTP request",
         "fields": [
           {
+            "description": "Date HTTP header",
             "mode": "NULLABLE",
             "name": "date",
             "type": "STRING"
           },
           {
+            "description": "DNT (Do Not Track) HTTP header",
             "mode": "NULLABLE",
             "name": "dnt",
             "type": "STRING"
           },
           {
+            "description": "X-Debug-Id HTTP header",
             "mode": "NULLABLE",
             "name": "x_debug_id",
             "type": "STRING"
           },
           {
+            "description": "X-PingSender-Version HTTP header",
             "mode": "NULLABLE",
             "name": "x_pingsender_version",
             "type": "STRING"
@@ -150,6 +175,7 @@
         "type": "RECORD"
       },
       {
+        "description": "Parsed components of the client's user agent string",
         "fields": [
           {
             "mode": "NULLABLE",
@@ -177,6 +203,7 @@
     "type": "RECORD"
   },
   {
+    "description": "List of leaf names of all modules found in the launcher process at the time of failure",
     "fields": [
       {
         "mode": "NULLABLE",
@@ -186,11 +213,13 @@
       {
         "fields": [
           {
+            "description": "Version number in the format major.minor.patch.build",
             "mode": "NULLABLE",
             "name": "f0_",
             "type": "STRING"
           },
           {
+            "description": "Index into the signatures array indicating which signature this binary was signed with",
             "mode": "NULLABLE",
             "name": "f1_",
             "type": "INT64"
@@ -206,21 +235,25 @@
     "type": "RECORD"
   },
   {
+    "description": "Set to \"Other\" if this message contained an unrecognized app name",
     "mode": "NULLABLE",
     "name": "normalized_app_name",
     "type": "STRING"
   },
   {
+    "description": "Set to \"Other\" if this message contained an unrecognized channel name",
     "mode": "NULLABLE",
     "name": "normalized_channel",
     "type": "STRING"
   },
   {
+    "description": "An ISO 3166-1 alpha-2 country code",
     "mode": "NULLABLE",
     "name": "normalized_country_code",
     "type": "STRING"
   },
   {
+    "description": "Set to \"Other\" if this message contained an unrecognized OS name",
     "mode": "NULLABLE",
     "name": "normalized_os",
     "type": "STRING"
@@ -231,26 +264,31 @@
     "type": "STRING"
   },
   {
+    "description": "The number of logical CPUs on the host machine",
     "mode": "NULLABLE",
     "name": "num_logical_cpus",
     "type": "INT64"
   },
   {
+    "description": "The current user's OS locale setting",
     "mode": "NULLABLE",
     "name": "os_locale",
     "type": "STRING"
   },
   {
+    "description": "Windows version numnber in major.minor.build.UBR format (UBR is optional, only available on Win10)",
     "mode": "NULLABLE",
     "name": "os_version",
     "type": "STRING"
   },
   {
+    "description": "Hashed version of client_id (if present) useful for partitioning; ranges from 0 to 99",
     "mode": "NULLABLE",
     "name": "sample_id",
     "type": "INT64"
   },
   {
+    "description": "Information about the security applications registered with Windows on the host computer",
     "fields": [
       {
         "mode": "REPEATED",
@@ -273,6 +311,7 @@
     "type": "RECORD"
   },
   {
+    "description": "True if this build was running atop a Windows Server OS",
     "mode": "NULLABLE",
     "name": "server_os",
     "type": "BOOL"
@@ -283,6 +322,7 @@
     "type": "STRING"
   },
   {
+    "description": "Time when the ingestion edge server accepted this message",
     "mode": "NULLABLE",
     "name": "submission_timestamp",
     "type": "TIMESTAMP"
@@ -293,6 +333,7 @@
     "type": "STRING"
   },
   {
+    "description": "Channel that this build was built for",
     "mode": "NULLABLE",
     "name": "update_channel",
     "type": "STRING"
@@ -303,6 +344,7 @@
     "type": "FLOAT64"
   },
   {
+    "description": "This build's XPCOM_ABI string",
     "mode": "NULLABLE",
     "name": "xpcom_abi",
     "type": "STRING"
