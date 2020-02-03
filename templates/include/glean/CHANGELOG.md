@@ -1,5 +1,7 @@
 # Version 1
 
+- `extras` on an experiment may now be `null`.  See [Bug 1012940](https://bugzilla.mozilla.org/show_bug.cgi?id=1612940)
+   
 - Added `locale` to `client_info` section. See [Bug 1601489](https://bugzilla.mozilla.org/show_bug.cgi?id=1601489).
 
 - `ping_type` in the the `ping_info` section is now optional. See [Bug 1609149](https://bugzilla.mozilla.org/show_bug.cgi?id=1609149).
