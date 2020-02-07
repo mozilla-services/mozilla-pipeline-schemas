@@ -3,7 +3,19 @@
   "id": "http://jsonschema.net",
   "type": "object",
   "properties": {
-    @METADATA_RAW_1_JSON@
+    @METADATA_RAW_1_JSON@,
+    "remote_addr": {
+      "type": "string",
+      "description": "Source IP address, usually a load balancer"
+    },
+    "x_forwarded_for": {
+      "type": "string",
+      "description": "X-Forwarded-For header containing intermediate IP addresses"
+    },
+    "x_pipeline_proxy": {
+      "type": "string",
+      "description": "Time that the AWS to GCP tee service received the message"
+    }
   },
   "required": ["submission_timestamp"]
 }
