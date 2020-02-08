@@ -33,7 +33,7 @@ def runif_java_configured(func):
     )
 
 
-def test_validation_pass(schemas, qualifier, passing_example):
+def test_validation_pass_python(schemas, qualifier, passing_example):
     assert qualifier in schemas, f"{qualifier} missing from schemas"
     validate(passing_example, schemas[qualifier])
     # TODO: raise all validation errors for debugging, using IValidator
@@ -41,12 +41,30 @@ def test_validation_pass(schemas, qualifier, passing_example):
     # example by ensuring $schema is set.
 
 
-def test_validation_fail(schemas, qualifier, failing_example):
+def test_validation_fail_python(schemas, qualifier, failing_example):
     assert qualifier in schemas, f"{qualifier} missing from schemas"
     with pytest.raises(ValidationError):
         validate(failing_example, schemas[qualifier])
 
 
 @runif_java_configured
-def test_validation_pass_org_everit(schemas, qualifier, passing_example):
-    pass
+def test_validation_pass_java(schemas, qualifier, passing_example):
+    JSONObject = autoclass("org.json.JSONObject")
+    SchemaLoader = autoclass("org.everit.json.schema.loader.SchemaLoader")
+
+    raw_schema = JSONObject(json.dumps(schemas[qualifier]))
+    example = JSONObject(json.dumps(passing_example))
+    schema = SchemaLoader.load(raw_schema)
+    schema.validate(example)
+
+
+@runif_java_configured
+def test_validation_fail_java(schemas, qualifier, failing_example):
+    JSONObject = autoclass("org.json.JSONObject")
+    SchemaLoader = autoclass("org.everit.json.schema.loader.SchemaLoader")
+
+    raw_schema = JSONObject(json.dumps(schemas[qualifier]))
+    example = JSONObject(json.dumps(failing_example))
+    schema = SchemaLoader.load(raw_schema)
+    with pytest.raises(JavaException):
+        schema.validate(example)
