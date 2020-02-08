@@ -1,10 +1,10 @@
-FROM centos:centos7
+FROM centos:centos8
 LABEL maintainer="Firefox Data Platform"
 
 # Install the appropriate software
-RUN yum -y update && \
-    yum -y install epel-release && \
-    yum -y install \
+RUN dnf -y update && \
+    dnf -y install epel-release && \
+    dnf -y install \
         cmake3 \
         gcc \
         gcc-c++ \
@@ -13,7 +13,11 @@ RUN yum -y update && \
         wget \
         git \
         python36 \
-    && yum clean all
+        java-1.8.0-openjdk \
+        java-1.8.0-openjdk-devel \
+        which \
+        maven \
+    && dnf clean all
 
 WORKDIR /downloads
 
@@ -21,7 +25,7 @@ WORKDIR /downloads
 RUN wget -qO- https://s3-us-west-2.amazonaws.com/net-mozaws-data-us-west-2-ops-ci-artifacts/mozilla-services/lua_sandbox_extensions/master/centos7/all.tgz | tar xvz
 RUN wget https://s3-us-west-2.amazonaws.com/net-mozaws-data-us-west-2-ops-ci-artifacts/mozilla-services/lua_sandbox_extensions/external/centos7/parquet-cpp-1.3.1-1.x86_64.rpm
 
-RUN yum -y install \
+RUN dnf -y install \
     hindsight-0* \
     luasandbox-1* \
     luasandbox-cjson* \
@@ -30,14 +34,16 @@ RUN yum -y install \
     luasandbox-parquet* \
     luasandbox-rjson* \
     parquet-cpp* \
-    && yum clean all
+    && dnf clean all
 
+WORKDIR /app
 COPY . /app
+RUN pip3 install -r requirements.txt
+RUN mvn dependency:copy-dependencies
 
-RUN rm -fr release/; mkdir release/
-
+RUN rm -fr /app/release; mkdir /app/release
 WORKDIR /app/release
+RUN cmake ..; make
 
-RUN ln -s /usr/bin/cmake3 /usr/bin/cmake; cmake ..; make
-
-CMD ctest3 -V -C hindsight
+WORKDIR /app
+CMD pytest -v
