@@ -10,12 +10,11 @@ RUN dnf -y update && \
         gcc-c++ \
         jq \
         make \
+        which \
         wget \
         git \
         python36 \
-        java-1.8.0-openjdk \
         java-1.8.0-openjdk-devel \
-        which \
         maven \
     && dnf clean all
 
