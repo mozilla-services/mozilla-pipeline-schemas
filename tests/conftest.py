@@ -24,7 +24,7 @@ def schemas():
         # Using the path parts allows proper handling of schemas that are not
         # placed in the expected directory structure, like pioneer-study.
         #
-        #   >>> schema.parts
+        #   >>> path.relative_to(ROOT).parts
         #   ('validation', 'pocket', 'fire-tv-events.1.sample.pass.json')
         #
         # https://docs.python.org/3/library/pathlib.html#accessing-individual-parts
