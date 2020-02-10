@@ -42,7 +42,7 @@ def load_examples():
     for path in sorted(VALIDATION_ROOT.glob("**/*.json")):
         assert (
             len(path.relative_to(ROOT).parts) == 3
-        ), f"validation directory too deep: {path}"
+        ), f"validation directory structure invalid: {path}"
         namespace = path.relative_to(ROOT).parts[1]
         try:
             doctype, version, _, expect, _ = path.name.split(".")
@@ -69,14 +69,12 @@ def schemas():
     return load_schemas()
 
 
-# TODO: test the following cases
-# - example in wrong place
-# - example with the wrong name
-# - schema that doesn't exist
 def pytest_generate_tests(metafunc):
     """Generate tests for validating schemas against examples.
 
-    https://docs.pytest.org/en/2.8.7/parametrize.html#the-metafunc-object
+    Run the tests for this function in `scripts/test-pytest-generation`.
+
+    See: https://docs.pytest.org/en/2.8.7/parametrize.html#the-metafunc-object
     """
     examples = load_examples()
 

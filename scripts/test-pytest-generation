@@ -1,0 +1,48 @@
+#!/bin/bash
+# Test generation of test cases in pytest
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+root="validation"
+namespace=$root/test-pytest
+deep=$namespace/bad-level
+
+if [ "$(git clean $root --dry-run | wc -l)" -ne 0 ] || [ "$(git diff $root | wc -l)" -ne 0 ]; then
+    echo "validation folder should be free of untracked files or unstaged changes"
+    exit 1
+fi
+
+function cleanup {
+    rm -r $namespace
+    git clean -fd $root    
+}
+trap cleanup EXIT
+
+
+function run_test {
+    local filename=$1
+    local message=$2
+    
+    cp $root/telemetry/main.4.min.pass.json "$filename"
+    if ! pytest | grep "$message"; then
+        echo "failed ${filename}: did not find message \`${message}\`"
+        pytest
+    fi
+    rm "$filename"
+}
+
+function main {
+    mkdir -p $namespace
+    mkdir -p $deep
+
+    run_test $root/test.1.reason.pass.json "validation directory structure invalid"
+    run_test $deep/test.1.reason.pass.json "validation directory structure invalid"
+    run_test $namespace/bad-name.json "validation example name must match"
+    run_test $namespace/test.1.reason.pass.json "missing from schemas"
+
+    echo "all passed!"
+}
+
+main
