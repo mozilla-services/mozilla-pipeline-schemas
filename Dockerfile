@@ -40,9 +40,11 @@ COPY . /app
 RUN pip3 install -r requirements.txt
 RUN mvn dependency:copy-dependencies
 
-RUN rm -fr /app/release; mkdir /app/release
-WORKDIR /app/release
-RUN cmake ..; make
+RUN rm -rf /app/release && \
+    mkdir /app/release && \
+    cd release && \
+    cmake .. && \
+    make
 
 WORKDIR /app
 CMD pytest -v
