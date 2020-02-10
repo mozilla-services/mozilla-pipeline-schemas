@@ -1,10 +1,3 @@
-"""Parametrization of validation tests.
-
-Each namespace will form a single suite, with each of the tests either passing
-or failing validation based on 
-http://doc.pytest.org/en/latest/example/parametrize.html
-"""
-
 import pytest
 from pathlib import Path
 import json
