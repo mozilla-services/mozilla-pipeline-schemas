@@ -6,7 +6,7 @@ lake outputs.
 The JSON schemas are used to validate incoming submissions at ingestion time.
 The [`jsonschema` [Python]](https://python-jsonschema.readthedocs.io/en/stable/)
 and [`everit-org/json-schema` [Java]](https://github.com/everit-org/json-schema)
-library (using draft 4) is used for JSON Schema Validation in this repository's
+library (using draft 4) are used for JSON Schema Validation in this repository's
 tests.
 This has implications for what kinds of string patterns are supported,
 see the `Conformance` section in the linked document for further details.
