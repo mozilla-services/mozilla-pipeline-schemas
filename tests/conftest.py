@@ -14,8 +14,8 @@ SCHEMAS_ROOT = ROOT / "schemas"
 VALIDATION_ROOT = ROOT / "validation"
 
 
-@pytest.fixture()
-def schemas():
+def load_schemas():
+    """Load all the schemas under the `schemas` folder."""
     schemas = {}
     for path in SCHEMAS_ROOT.glob("**/*.schema.json"):
         assert (
@@ -36,18 +36,9 @@ def schemas():
     return schemas
 
 
-# TODO: test the following cases
-# - example in wrong place
-# - example with the wrong name
-# - schema that doesn't exist
-def pytest_generate_tests(metafunc):
-    """Build up a data-structure for parameterization of tests.
-
-    https://docs.pytest.org/en/2.8.7/parametrize.html#the-metafunc-object
-    """
+def load_examples():
+    """Load all the examples under the `validation` folder."""
     examples = {"pass": {"params": [], "ids": []}, "fail": {"params": [], "ids": []}}
-
-    # find all of the examples
     for path in sorted(VALIDATION_ROOT.glob("**/*.json")):
         assert (
             len(path.relative_to(ROOT).parts) == 3
@@ -69,6 +60,25 @@ def pytest_generate_tests(metafunc):
 
         examples[expect]["params"].append((qualifier, example))
         examples[expect]["ids"].append(f"{namespace}/{path.name}")
+
+    return examples
+
+
+@pytest.fixture()
+def schemas():
+    return load_schemas()
+
+
+# TODO: test the following cases
+# - example in wrong place
+# - example with the wrong name
+# - schema that doesn't exist
+def pytest_generate_tests(metafunc):
+    """Generate tests for validating schemas against examples.
+
+    https://docs.pytest.org/en/2.8.7/parametrize.html#the-metafunc-object
+    """
+    examples = load_examples()
 
     # inject parameters into the relevant tests
     for expect, examples in examples.items():
