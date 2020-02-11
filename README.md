@@ -77,9 +77,9 @@ Follow the CMake Build Instructions above to update the `schemas` directory.
 To run the unit-tests, run the following commands:
 
 ```bash
-# optional: activate a virtual environment
-python -m venv venv
-venv/bin/activate
+# optional: activate a virtual environment with python3.6+
+python3 -m venv venv
+source venv/bin/activate
 
 # install python dependencies, if they haven't already
 pip install -r requirements.txt
@@ -99,7 +99,7 @@ If you would like to run validation against
 [mozilla/ingestion-beam](https://mozilla.github.io/gcp-ingestion/ingestion-beam/),
 either run the docker container or install the java dependencies.
 
-```pytest
+```bash
 export JAVA_HOME=...
 
 # resolves and copies jars into `target/dependency`
@@ -108,7 +108,6 @@ mvn dependency:copy-dependencies
 # check that tests are not skipped
 pytest -k java -n 8
 ```
-
 
 The following docker command will generate a report against a sample of data from the ingestion system given proper credentials. Running this is recommended when making modifications to many schemas or during review.
 
