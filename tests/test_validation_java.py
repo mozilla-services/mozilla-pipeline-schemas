@@ -15,8 +15,8 @@ JAVA_CONFIGURED_REASON = "failed to configure java"
 try:
     from jnius import JavaException, autoclass
 
-    autoclass("org.json.JSONObject")
-    autoclass("org.everit.json.schema.loader.SchemaLoader")
+    JSONObject = autoclass("org.json.JSONObject")
+    SchemaLoader = autoclass("org.everit.json.schema.loader.SchemaLoader")
     ENABLE_JAVA_TESTS = True
 except SystemError as ex:
     JAVA_CONFIGURED_REASON = f"{JAVA_CONFIGURED_REASON}: {str(ex)}"
