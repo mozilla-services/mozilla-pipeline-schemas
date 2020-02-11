@@ -1,0 +1,14 @@
+#!/bin/bash
+# example usage: scripts/mps-test -k java -k telemetry/main -n 4
+set -e
+
+cd "$(dirname "$0")/.."
+
+# NOTE: this will shadow java dependencies in `target/dependency`
+# TODO: only mount templates (r), schemas (w), validation (r), tests (r)
+# TODO: generate schemas from mounted templates, write to mounted schemas
+docker run \
+    --volume "$(pwd)":/app \
+    --entrypoint pytest \
+    -it mozilla-pipeline-schemas:latest \
+    "$@"

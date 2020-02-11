@@ -92,14 +92,6 @@ foreach(ITEM IN ITEMS ${SCHEMAS})
   endif()
 endforeach()
 
-include(CTest)
-add_custom_target(${PROJECT_NAME}-copy-tests ALL COMMAND ${CMAKE_COMMAND} -E copy_directory
-${CMAKE_CURRENT_SOURCE_DIR}/tests
-${CMAKE_CURRENT_BINARY_DIR})
-
-add_test(NAME ${PROJECT_NAME}-hindsight COMMAND run.sh CONFIGURATIONS hindsight
-  WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/hindsight)
-
 include(GNUInstallDirs)
 install(DIRECTORY "${CMAKE_SOURCE_DIR}/schemas/" DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/")
 include(CPack)

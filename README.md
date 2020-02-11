@@ -4,8 +4,10 @@ This repository contains schemas for Mozilla's data ingestion pipeline and data
 lake outputs.
 
 The JSON schemas are used to validate incoming submissions at ingestion time.
-The [RapidJSON](http://rapidjson.org/md_doc_schema.html) library (using draft 4)
-is used for JSON Schema Validation in this repository's tests.
+The [`jsonschema` [Python]](https://python-jsonschema.readthedocs.io/en/stable/)
+and [`everit-org/json-schema` [Java]](https://github.com/everit-org/json-schema)
+library (using draft 4) are used for JSON Schema Validation in this repository's
+tests.
 This has implications for what kinds of string patterns are supported,
 see the `Conformance` section in the linked document for further details.
 Note that as of 2019, the data pipeline uses the
@@ -33,14 +35,15 @@ Note that Pioneer studies have a [slightly amended](README.pioneer.md) process.
 
 * [`CMake` (3.0+)](http://cmake.org/cmake/resources/software.html)
 * [`jq` (1.5+)](https://github.com/stedolan/jq)
-* [`parquetfmt` (0.1+)](https://github.com/trink/parquetfmt), available via [cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html): `cargo install --git https://github.com/trink/parquetfmt`
+* `python` (3.6+)
+* Optional: `java 8`, `maven`
 * Optional: [Docker](https://www.docker.com/get-started)
 
 On MacOS, these prerequisites can be installed using [homebrew](https://brew.sh/):
 ```
 brew install cmake
 brew install jq
-brew install rust && cargo install --git https://github.com/trink/parquetfmt
+brew install python
 brew cask install docker
 ```
 
@@ -70,18 +73,41 @@ To run the tests:
 
 ### Packaging and integration tests (optional)
 
-Follow the CMake Build Instructions above, then:
+Follow the CMake Build Instructions above to update the `schemas` directory.
+To run the unit-tests, run the following commands:
 
-    cpack -G TGZ # (DEB|RPM|ZIP)
+```bash
+# optional: activate a virtual environment with python3.6+
+python3 -m venv venv
+source venv/bin/activate
 
-    # Integration Tests (run on schema-test EC2 instance)
-      # If running locally
-        # The following RPM's must be installed:
-          # luasandbox, hindsight, luasandbox-lfs, luasandbox-lpeg, luasandbox-rjson, luasandbox-cjson, luasandbox-parquet
-        # The following external libraries must be installed
-          # parquet-cpp
-    make # this sets up the tests in the release directory
-    ctest -V -C hindsight # loads all the schemas and tests the inputs in the validation directory against them
+# install python dependencies, if they haven't already
+pip install -r requirements.txt
+
+# run the tests, with 8 parallel processes
+pytest -n 8
+
+# run tests for a specific namespace and doctype
+pytest -k telemetry/main.4
+
+# run java tests only (if Java is configured)
+pytest -k java
+```
+
+If you would like to run validation against
+[`everit-org/json-schema`](https://github.com/everit-org/json-schema) used in
+[mozilla/ingestion-beam](https://mozilla.github.io/gcp-ingestion/ingestion-beam/),
+either run the docker container or install the java dependencies.
+
+```bash
+export JAVA_HOME=...
+
+# resolves and copies jars into `target/dependency`
+mvn dependency:copy-dependencies
+
+# check that tests are not skipped
+pytest -k java -n 8
+```
 
 The following docker command will generate a report against a sample of data from the ingestion system given proper credentials. Running this is recommended when making modifications to many schemas or during review.
 
