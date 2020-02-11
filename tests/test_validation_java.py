@@ -35,9 +35,6 @@ def runif_java_configured(func):
 def test_validation_pass_java(schemas, qualifier, passing_example):
     assert qualifier in schemas, f"{qualifier} missing from schemas"
 
-    JSONObject = autoclass("org.json.JSONObject")
-    SchemaLoader = autoclass("org.everit.json.schema.loader.SchemaLoader")
-
     raw_schema = JSONObject(json.dumps(schemas[qualifier]))
     schema = SchemaLoader.load(raw_schema)
     example = JSONObject(json.dumps(passing_example))
@@ -47,9 +44,6 @@ def test_validation_pass_java(schemas, qualifier, passing_example):
 @runif_java_configured
 def test_validation_fail_java(schemas, qualifier, failing_example):
     assert qualifier in schemas, f"{qualifier} missing from schemas"
-
-    JSONObject = autoclass("org.json.JSONObject")
-    SchemaLoader = autoclass("org.everit.json.schema.loader.SchemaLoader")
 
     raw_schema = JSONObject(json.dumps(schemas[qualifier]))
     schema = SchemaLoader.load(raw_schema)
