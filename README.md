@@ -25,7 +25,7 @@ is a great resource.
 - Build the rendered schemas using the instructions below, and check those artifacts (in the `schemas` directory) in to the git repo as well. See the rationale for this in the "Notes" section below.
 - Add one or more example JSON documents to the `validation` directory.
 - Run the tests (either via Docker or directly) using the instructions below.
-- Once all tests pass, submit a PR to the github repository against the `master` branch. Please include a reference to a bug number in your PR/commit, for reference.
+- Once all tests pass, submit a PR to the github repository against the `master` branch. See also the notes on [contributions](#contributions).
 
 Note that Pioneer studies have a [slightly amended](README.pioneer.md) process.
 
@@ -142,7 +142,7 @@ deployed to production BigQuery tables several times a week.
 
 ## Contributions
 
-* All non trivial contributions should start with an issue being filed (if it is
+* All non trivial contributions should start with a bug or issue being filed (if it is
   a new feature please propose your design/approach before doing any work as not
   all feature requests are accepted).
 * If updating the glean schemas, be sure to update the changelog in
@@ -151,6 +151,7 @@ deployed to production BigQuery tables several times a week.
   do not receive a response within a few business days (or your request is
   urgent), please followup in the
   [#fx-metrics slack channel](https://mozilla.slack.com/messages/fx-metrics/).
+* If your PR is associated with a bugzilla bug, please title it `Bug XXX - Description of change`, that way the [Bugzilla PR Linker](https://github.com/mozilla/github-bugzilla-pr-linker) will automatically add an attachment with your PR to bugzilla, for future reference.
 
 ### Notes
 
