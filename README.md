@@ -94,30 +94,6 @@ pytest -k telemetry/main.4
 pytest -k java
 ```
 
-If you would like to run validation against
-[`everit-org/json-schema`](https://github.com/everit-org/json-schema) used in
-[mozilla/ingestion-beam](https://mozilla.github.io/gcp-ingestion/ingestion-beam/),
-either run the docker container or install the java dependencies.
-
-```bash
-export JAVA_HOME=...
-
-# resolves and copies jars into `target/dependency`
-mvn dependency:copy-dependencies
-
-# check that tests are not skipped
-pytest -k java -n 8
-```
-
-The following docker command will generate a report against a sample of data from the ingestion system given proper credentials. Running this is recommended when making modifications to many schemas or during review.
-
-    docker run \
-        -e AWS_ACCESS_KEY_ID \
-        -e AWS_SECRET_ACCESS_KEY \
-        -v "$(pwd)":/app/mozilla-pipeline-schemas \
-        -it mozilla/edge-validator:latest \
-            make report
-
 Pushes to the main repo will trigger integration tests in CircleCI that directly
 compare the revision to the `master` branch. These tests do not run for forked PRs
 in order to protect data and credentials, but reviewers can trigger tests to run
