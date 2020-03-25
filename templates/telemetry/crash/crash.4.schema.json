@@ -19,6 +19,14 @@
           "type": "string",
           "description": "Optional, ID of the associated crash. Added to schema in bug 1604666."
         },
+        "crashTime": {
+          "description": "<ISO Date>, time of crash. Per-hour resolution",
+          "type": "string"
+        },
+        "sessionId": {
+          "description": "<uuid>, Telemetry ID of crashing session. May be missing for crashes that happen early in startup",
+          "type": ["string", "null"]
+        },
         "hasCrashEnvironment": {
           "type": "boolean"
         },
@@ -58,7 +66,7 @@
               "type": "string"
             },
             "CrashTime": {
-              "description": "<time>, Seconds since the Epoch",
+              "description": "<time>, Seconds since the Epoch (see also: `payload.crashTime`)",
               "type": "string"
             },
             "EventLoopNestingLevel": {
@@ -122,7 +130,7 @@
               "type": "string"
             },
             "TelemetrySessionId": {
-              "description": "<id>, Active telemetry session ID when the crash was recorded",
+              "description": "Should not be in any pings, left in only for backwards compatibility - see `payload.sessionId` instead",
               "type": "string"
             },
             "TextureUsage": {
