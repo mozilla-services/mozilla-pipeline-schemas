@@ -12,6 +12,18 @@
       "description": "A 0-based index to record which tile in the 'tiles' list the user just interacted with",
       "type": "integer"
     },
+    "experiments": {
+      "additionalProperties": {
+        "properties": {
+          "branch": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "description": "An object to record all active experiments, experiments IDs are stored as keys, and the value object stores the branch information. Example: {\"experiment_1\": {\"branch\": \"control\"}, \"experiment_2\": {\"branch\": \"treatment\"}}. This deprecates the \"shield_id\" used in activity-stream and messaging-system.",
+      "type": "object"
+    },
     "impression_id": {
       "description": "A UUID representing this user. Note that it's not client_id, nor can it be used to link to a client_id",
       "pattern": "^\\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\}$",
@@ -50,7 +62,7 @@
       "type": "string"
     },
     "shield_id": {
-      "description": "A semicolon separated string to store a list of Shield study IDs",
+      "description": "[DEPRECATED]: use `experiments` instead. A semicolon separated string to store a list of Shield study IDs",
       "type": "string"
     },
     "source": {
