@@ -162,6 +162,72 @@
         "processType": {
           "type": "string"
         },
+        "stackTraces": {
+          "type": ["object", "null"],
+          "properties": {
+            "crash_info": {
+              "type": "object",
+              "properties": {
+                "address": @TELEMETRY_HEXADDRESS_1_JSON@,
+                "crashing_thread": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "type": {
+                  "type": ["string", "null"]
+                }
+              }
+            },
+            "main_module": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "modules": {
+              "type": "array",
+              "items" : {
+                "type" : "object",
+                "properties": {
+                  "base_addr": @TELEMETRY_HEXADDRESS_1_JSON@,
+                  "end_addr": @TELEMETRY_HEXADDRESS_1_JSON@,
+                  "code_id": {
+                    "type": "string"
+                  },
+                  "debug_file": {
+                    "type": "string"
+                  },
+                  "debug_id": {
+                    "type": "string"
+                  },
+                  "filename": {
+                    "type": "string"
+                  },
+                  "version": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "status": {
+              "type": "string"
+            },
+            "threads": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "ip": @TELEMETRY_HEXADDRESS_1_JSON@,
+                  "module_index": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "trust": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
         "version": {
           "type": "integer",
           "minimum": 1,
