@@ -1397,6 +1397,90 @@
         "processType": {
           "type": "string"
         },
+        "stackTraces": {
+          "properties": {
+            "crash_info": {
+              "properties": {
+                "address": {
+                  "pattern": "^(0x[a-fA-F0-9]+|0)$",
+                  "type": "string"
+                },
+                "crashing_thread": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "type": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "type": "object"
+            },
+            "main_module": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "modules": {
+              "items": {
+                "properties": {
+                  "base_addr": {
+                    "pattern": "^(0x[a-fA-F0-9]+|0)$",
+                    "type": "string"
+                  },
+                  "code_id": {
+                    "type": "string"
+                  },
+                  "debug_file": {
+                    "type": "string"
+                  },
+                  "debug_id": {
+                    "type": "string"
+                  },
+                  "end_addr": {
+                    "pattern": "^(0x[a-fA-F0-9]+|0)$",
+                    "type": "string"
+                  },
+                  "filename": {
+                    "type": "string"
+                  },
+                  "version": {
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "status": {
+              "type": "string"
+            },
+            "threads": {
+              "items": {
+                "properties": {
+                  "ip": {
+                    "pattern": "^(0x[a-fA-F0-9]+|0)$",
+                    "type": "string"
+                  },
+                  "module_index": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "trust": {
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "type": [
+            "object",
+            "null"
+          ]
+        },
         "version": {
           "maximum": 1,
           "minimum": 1,
