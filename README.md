@@ -40,7 +40,7 @@ Note that Pioneer studies have a [slightly amended](README.pioneer.md) process.
 * Optional: [Docker](https://www.docker.com/get-started)
 
 On MacOS, these prerequisites can be installed using [homebrew](https://brew.sh/):
-```
+```bash
 brew install cmake
 brew install jq
 brew install python
@@ -49,12 +49,14 @@ brew cask install docker
 
 ### CMake Build Instructions
 
-    git clone https://github.com/mozilla-services/mozilla-pipeline-schemas.git
-    cd mozilla-pipeline-schemas
-    mkdir release
-    cd release
+```bash
+git clone https://github.com/mozilla-services/mozilla-pipeline-schemas.git
+cd mozilla-pipeline-schemas
+mkdir release
+cd release
 
-    cmake ..  # this is the build process (the schemas are built with cmake templates)
+cmake ..  # this is the build process (the schemas are built with cmake templates)
+```
 
 ### Running Tests via Docker
 
@@ -65,11 +67,13 @@ The `test name` should match the pattern `[0-9a-zA-Z_]+`
 
 To run the tests:
 
-    # build the container with the pipeline schemas
-    docker build -t mps .
+```bash
+# build the container with the pipeline schemas
+docker build -t mps .
 
-    # run the tests
-    docker run --rm mps
+# run the tests
+docker run --rm mps
+```
 
 ### Packaging and integration tests (optional)
 
@@ -99,10 +103,12 @@ compare the revision to the `master` branch. These tests do not run for forked P
 in order to protect data and credentials, but reviewers can trigger tests to run
 by pushing the PR's revisions to a branch of the main repo. We provide a script for this:
 
-    # Before running, double check that the PR doesn't make any changes to
-    # .circleci/config.yml that could spill sensitive environment variables
-    # or data contents to the public CircleCI logs.
-    ./.github/push-to-trigger-integration <username>:<branchname>
+```bash
+# Before running, double check that the PR doesn't make any changes to
+# .circleci/config.yml that could spill sensitive environment variables
+# or data contents to the public CircleCI logs.
+./.github/push-to-trigger-integration <username>:<branchname>
+```
 
 For details on how to compare two arbitrary revisions, refer to the `integration` job in `.circleci/config.yml`. For more documentation, see [mozilla-services/edge-validator](https://github.com/mozilla-services/edge-validator).
 
