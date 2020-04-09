@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 
-from pathlib import Path
-from subprocess import run, PIPE
 import json
+import shutil
+import tempfile
+from pathlib import Path
+from subprocess import PIPE, run
+from typing import List
 
 ROOT = Path(__file__).parent.parent
 SCHEMAS = (ROOT / "schemas").glob("**/*.schema.json")
@@ -35,7 +38,36 @@ def transform(document: dict) -> dict:
     pass
 
 
-# TODO: options --use-document-sample, --rev-base, --rev-head
+# transpile all of the schemas
+def transpile_schemas(output_path: Path, schema_paths: List[Path]):
+    """Write schemas to directory."""
+    assert output_path.is_dir()
+    for path in schema_paths:
+        namespace, doctype, filename = path.parts[-3:]
+        version = int(filename.split(".")[-3])
+        # pioneer-study schemas were done incorrectly and are ignored here
+        if namespace == "schemas":
+            print(f"skipping {path} due to wrong directory level")
+            continue
+        out = output_path / f"{namespace}.{doctype}.{version}.bq"
+        with out.open("w") as fp:
+            print(f"writing {out}")
+            json.dump(transpile(path), fp, indent=2)
+
+
+def load_schemas(input_path: Path):
+    paths = list(input_path.glob("*.bq"))
+    assert len(paths) > 0
+    schemas = {}
+    for path in paths:
+        qualified_name = path.parts[-1][:-3]
+        with path.open("r") as fp:
+            schemas[qualified_name] = json.load(fp)
+    print(f"loaded {len(schemas.keys())} schemas")
+    return schemas
+
+
+# TODO: options --use-document-sample, --rev-base, --rev-head, --stash
 def main():
     """
     ## metrics
@@ -101,10 +133,54 @@ def main():
     * git revision
     * validation reason
     """
+    base_ref = "master"
 
-    run(["jsonschema-transpiler", "--version"], check=True)
-    revision = run(["git", "rev-parse", "HEAD"], stdout=PIPE).stdout.decode().strip()
-    print(revision)
+    run("jsonschema-transpiler --version".split(), check=True)
+    workdir = Path(tempfile.mkdtemp())
+
+    head_ref = (
+        run("git rev-parse --abbrev-ref HEAD".split(), stdout=PIPE, check=True)
+        .stdout.decode()
+        .strip()
+    )
+    head_rev = (
+        run(f"git rev-parse {head_ref}".split(), stdout=PIPE, check=True)
+        .stdout.decode()
+        .strip()
+    )
+    print(f"{head_ref}, {head_rev}")
+    head_rev_path = workdir / head_rev[:7]
+    head_rev_path.mkdir()
+    transpile_schemas(head_rev_path, (ROOT / "schemas").glob("**/*.schema.json"))
+
+    def git_stash_size():
+        return len(
+            run("git stash list".split(), stdout=PIPE).stdout.decode().split("\n")
+        )
+
+    before_stash_size = git_stash_size()
+    run("git stash".split(), check=True)
+    should_apply_stash = before_stash_size != git_stash_size()
+
+    run(f"git checkout {base_ref}".split(), check=True)
+    base_rev = (
+        run(f"git rev-parse {base_ref}".split(), stdout=PIPE, check=True)
+        .stdout.decode()
+        .strip()
+    )
+    print(f"{base_ref}, {base_rev}")
+    base_rev_path = workdir / base_rev[:7]
+    base_rev_path.mkdir()
+    transpile_schemas(base_rev_path, (ROOT / "schemas").glob("**/*.schema.json"))
+
+    run(f"git checkout {head_ref}".split(), check=True)
+    if should_apply_stash:
+        run("git stash apply".split(), check=True)
+
+    head_schemas = load_schemas(head_rev_path)
+    base_schemas = load_schemas(base_rev_path)
+    shutil.rmtree(ROOT / "integration")
+    shutil.copytree(workdir, ROOT / "integration")
 
 
 def test_preconditions():
