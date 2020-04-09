@@ -104,6 +104,11 @@
                     "type": "STRING"
                   },
                   {
+                    "mode": "NULLABLE",
+                    "name": "foreign_install",
+                    "type": "INT64"
+                  },
+                  {
                     "description": "True or false depending on whether the add-on has binary components. This is always false since Firefox 60. This field is only available after the 'sessionstore-windows-restored' topic is notified.",
                     "mode": "NULLABLE",
                     "name": "has_binary_components",
@@ -161,6 +166,16 @@
                     "mode": "NULLABLE",
                     "name": "update_day",
                     "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "user_disabled",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "version",
+                    "type": "STRING"
                   }
                 ],
                 "mode": "NULLABLE",
@@ -289,6 +304,11 @@
                 "mode": "NULLABLE",
                 "name": "description",
                 "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "foreign_install",
+                "type": "INT64"
               },
               {
                 "description": "True or false depending on whether the theme has binary components. This is always false since Firefox 60.",
@@ -804,6 +824,23 @@
             "mode": "NULLABLE",
             "name": "update",
             "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "user_prefs",
+            "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
@@ -1249,6 +1286,16 @@
           {
             "fields": [
               {
+                "mode": "NULLABLE",
+                "name": "has_prefetch",
+                "type": "BOOL"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "has_superfetch",
+                "type": "BOOL"
+              },
+              {
                 "description": "The year Windows was installed. This is Windows only. `null` on failure.",
                 "mode": "NULLABLE",
                 "name": "install_year",
@@ -1285,7 +1332,6 @@
                 "type": "FLOAT64"
               },
               {
-                "description": "The version of the OS, e.g. '6.1'. This is `null` on failure.",
                 "mode": "NULLABLE",
                 "name": "version",
                 "type": "STRING"
@@ -1523,6 +1569,12 @@
         "type": "STRING"
       },
       {
+        "description": "<ISO Date>, time of crash. Per-hour resolution",
+        "mode": "NULLABLE",
+        "name": "crash_time",
+        "type": "STRING"
+      },
+      {
         "mode": "NULLABLE",
         "name": "has_crash_environment",
         "type": "BOOL"
@@ -1578,7 +1630,7 @@
             "type": "STRING"
           },
           {
-            "description": "<time>, Seconds since the Epoch",
+            "description": "<time>, Seconds since the Epoch (see also: `payload.crashTime`)",
             "mode": "NULLABLE",
             "name": "crash_time",
             "type": "STRING"
@@ -1674,7 +1726,7 @@
             "type": "STRING"
           },
           {
-            "description": "<id>, Active telemetry session ID when the crash was recorded",
+            "description": "Should not be in any pings, left in only for backwards compatibility - see `payload.sessionId` instead",
             "mode": "NULLABLE",
             "name": "telemetry_session_id",
             "type": "STRING"
@@ -1735,6 +1787,12 @@
       {
         "mode": "NULLABLE",
         "name": "process_type",
+        "type": "STRING"
+      },
+      {
+        "description": "<uuid>, Telemetry ID of crashing session. May be missing for crashes that happen early in startup",
+        "mode": "NULLABLE",
+        "name": "session_id",
         "type": "STRING"
       },
       {

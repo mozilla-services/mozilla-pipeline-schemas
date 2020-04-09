@@ -1286,6 +1286,16 @@
           {
             "fields": [
               {
+                "mode": "NULLABLE",
+                "name": "has_prefetch",
+                "type": "BOOL"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "has_superfetch",
+                "type": "BOOL"
+              },
+              {
                 "description": "The year Windows was installed. This is Windows only. `null` on failure.",
                 "mode": "NULLABLE",
                 "name": "install_year",
@@ -1814,6 +1824,12 @@
             "type": "STRING"
           },
           {
+            "description": "Number of font-family names used that resolved to base system fonts",
+            "mode": "NULLABLE",
+            "name": "base_font_families_per_page",
+            "type": "STRING"
+          },
+          {
             "description": "The common combinations of BFCacheStatus when we determine whether the page can be BFCached or not; If it's BFCached, we record BFCache_Success; Success_Not_Toplevel represents the number of not the only top level document in BrowsingContextGroup's documents that are BFCached, and BFCache_Success includes Success_Not_Toplevel; If it's not and it falls under common failure reasons combinations, we record the corresponding combination; Otherwise, we record Other to indicate this is not a common failure",
             "mode": "NULLABLE",
             "name": "bfcache_combo",
@@ -1853,6 +1869,12 @@
             "description": "Baseline Requirements section 9.2.2: subject common name field (0: present, in subject alt. names; 1: not present; 2: not present in subject alt. names)",
             "mode": "NULLABLE",
             "name": "br_9_2_2_subject_common_name",
+            "type": "STRING"
+          },
+          {
+            "description": "Count for the number of errors encountered trying to read the attribution data from the stub installer.",
+            "mode": "NULLABLE",
+            "name": "browser_attribution_errors",
             "type": "STRING"
           },
           {
@@ -4310,6 +4332,30 @@
             "type": "STRING"
           },
           {
+            "description": "Font fallback occurred using a base system font",
+            "mode": "NULLABLE",
+            "name": "fallback_to_base_font",
+            "type": "STRING"
+          },
+          {
+            "description": "Font fallback occurred using a langpack-installed font",
+            "mode": "NULLABLE",
+            "name": "fallback_to_langpack_font",
+            "type": "STRING"
+          },
+          {
+            "description": "Font fallback occurred using a font family specified in prefs",
+            "mode": "NULLABLE",
+            "name": "fallback_to_prefs_font",
+            "type": "STRING"
+          },
+          {
+            "description": "Font fallback occurred using a user-installed font",
+            "mode": "NULLABLE",
+            "name": "fallback_to_user_font",
+            "type": "STRING"
+          },
+          {
             "description": "Status of Family Safety detection and remediation. See nsNSSComponent.cpp.",
             "mode": "NULLABLE",
             "name": "family_safety",
@@ -6596,6 +6642,12 @@
             "type": "STRING"
           },
           {
+            "description": "Number of font-family names used that resolved to langpack-installed fonts",
+            "mode": "NULLABLE",
+            "name": "langpack_font_families_per_page",
+            "type": "STRING"
+          },
+          {
             "description": "The width dimension of the 'sizes' attribute for <link rel=icon>.",
             "mode": "NULLABLE",
             "name": "link_icon_sizes_attr_dimension",
@@ -6989,6 +7041,24 @@
             "description": "Unexpected errors encountered during use of MemoryBlockCache. 0=InitUnderuse, 1=InitAllocation, 2=ReadOverrun, 3=WriteBlockOverflow, 4=WriteBlockCannotGrow, 5=MoveBlockSourceOverrun, 6=MoveBlockDestOverflow, 7=MoveBlockCannotGrow",
             "mode": "NULLABLE",
             "name": "memoryblockcache_errors",
+            "type": "STRING"
+          },
+          {
+            "description": "Encountered a missing character (not supported by any available font)",
+            "mode": "NULLABLE",
+            "name": "missing_font",
+            "type": "STRING"
+          },
+          {
+            "description": "Encountered a missing character that would have been supported by a langpack-installed font",
+            "mode": "NULLABLE",
+            "name": "missing_font_langpack",
+            "type": "STRING"
+          },
+          {
+            "description": "Encountered a missing character that would have been supported by a user-installed font",
+            "mode": "NULLABLE",
+            "name": "missing_font_user",
             "type": "STRING"
           },
           {
@@ -7535,6 +7605,12 @@
             "description": "Network ID presence when the network connectivity checker reports that we have connectivity",
             "mode": "NULLABLE",
             "name": "network_id_online",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether the scheme of the PAC URL was FTP",
+            "mode": "NULLABLE",
+            "name": "network_pac_url_scheme",
             "type": "STRING"
           },
           {
@@ -23060,6 +23136,12 @@
             "type": "STRING"
           },
           {
+            "description": "Number of font-family names used that resolved to user-installed fonts",
+            "mode": "NULLABLE",
+            "name": "user_font_families_per_page",
+            "type": "STRING"
+          },
+          {
             "description": "Time (ms) VideoFrameContainer::ClearCurrentFrame spent holding a lock.",
             "mode": "NULLABLE",
             "name": "vfc_clearcurrentframe_lock_hold_ms",
@@ -23315,6 +23397,12 @@
             "description": "How long the AudioContext would become audible since it was created, time unit is seconds.",
             "mode": "NULLABLE",
             "name": "web_audio_becomes_audible_time",
+            "type": "STRING"
+          },
+          {
+            "description": "Number of font-family names used that resolved to web fonts",
+            "mode": "NULLABLE",
+            "name": "web_font_families_per_page",
             "type": "STRING"
           },
           {
@@ -27552,6 +27640,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Number of font-family names used that resolved to base system fonts",
+                    "mode": "NULLABLE",
+                    "name": "base_font_families_per_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "The common combinations of BFCacheStatus when we determine whether the page can be BFCached or not; If it's BFCached, we record BFCache_Success; Success_Not_Toplevel represents the number of not the only top level document in BrowsingContextGroup's documents that are BFCached, and BFCache_Success includes Success_Not_Toplevel; If it's not and it falls under common failure reasons combinations, we record the corresponding combination; Otherwise, we record Other to indicate this is not a common failure",
                     "mode": "NULLABLE",
                     "name": "bfcache_combo",
@@ -27591,6 +27685,12 @@
                     "description": "Baseline Requirements section 9.2.2: subject common name field (0: present, in subject alt. names; 1: not present; 2: not present in subject alt. names)",
                     "mode": "NULLABLE",
                     "name": "br_9_2_2_subject_common_name",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Count for the number of errors encountered trying to read the attribution data from the stub installer.",
+                    "mode": "NULLABLE",
+                    "name": "browser_attribution_errors",
                     "type": "STRING"
                   },
                   {
@@ -29850,6 +29950,30 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Font fallback occurred using a base system font",
+                    "mode": "NULLABLE",
+                    "name": "fallback_to_base_font",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Font fallback occurred using a langpack-installed font",
+                    "mode": "NULLABLE",
+                    "name": "fallback_to_langpack_font",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Font fallback occurred using a font family specified in prefs",
+                    "mode": "NULLABLE",
+                    "name": "fallback_to_prefs_font",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Font fallback occurred using a user-installed font",
+                    "mode": "NULLABLE",
+                    "name": "fallback_to_user_font",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Status of Family Safety detection and remediation. See nsNSSComponent.cpp.",
                     "mode": "NULLABLE",
                     "name": "family_safety",
@@ -32046,6 +32170,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Number of font-family names used that resolved to langpack-installed fonts",
+                    "mode": "NULLABLE",
+                    "name": "langpack_font_families_per_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "The width dimension of the 'sizes' attribute for <link rel=icon>.",
                     "mode": "NULLABLE",
                     "name": "link_icon_sizes_attr_dimension",
@@ -32445,6 +32575,24 @@
                     "description": "Unexpected errors encountered during use of MemoryBlockCache. 0=InitUnderuse, 1=InitAllocation, 2=ReadOverrun, 3=WriteBlockOverflow, 4=WriteBlockCannotGrow, 5=MoveBlockSourceOverrun, 6=MoveBlockDestOverflow, 7=MoveBlockCannotGrow",
                     "mode": "NULLABLE",
                     "name": "memoryblockcache_errors",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Encountered a missing character (not supported by any available font)",
+                    "mode": "NULLABLE",
+                    "name": "missing_font",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Encountered a missing character that would have been supported by a langpack-installed font",
+                    "mode": "NULLABLE",
+                    "name": "missing_font_langpack",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Encountered a missing character that would have been supported by a user-installed font",
+                    "mode": "NULLABLE",
+                    "name": "missing_font_user",
                     "type": "STRING"
                   },
                   {
@@ -48264,6 +48412,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Number of font-family names used that resolved to user-installed fonts",
+                    "mode": "NULLABLE",
+                    "name": "user_font_families_per_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Time (ms) VideoFrameContainer::ClearCurrentFrame spent holding a lock.",
                     "mode": "NULLABLE",
                     "name": "vfc_clearcurrentframe_lock_hold_ms",
@@ -48525,6 +48679,12 @@
                     "description": "How long the AudioContext would become audible since it was created, time unit is seconds.",
                     "mode": "NULLABLE",
                     "name": "web_audio_becomes_audible_time",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Number of font-family names used that resolved to web fonts",
+                    "mode": "NULLABLE",
+                    "name": "web_font_families_per_page",
                     "type": "STRING"
                   },
                   {
