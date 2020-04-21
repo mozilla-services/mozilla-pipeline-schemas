@@ -3289,7 +3289,37 @@
           "type": "object"
         },
         "slowSQL": {
-          "properties": {},
+          "description": "Slow SQL queries for both the main and other threads. The execution of an SQL statement is considered slow if it takes 50ms or more on the main thread or 100ms or more on other threads. Slow SQL statements will be automatically trimmed to 1000 characters.",
+          "properties": {
+            "mainThread": {
+              "patternProperties": {
+                "^.*$": {
+                  "description": "Entries in the format [hitCount, totalTime]",
+                  "items": {
+                    "type": "integer"
+                  },
+                  "maxItems": 2,
+                  "minItems": 2,
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            },
+            "otherThreads": {
+              "patternProperties": {
+                "^.*$": {
+                  "description": "Entries in the format [hitCount, totalTime]",
+                  "items": {
+                    "type": "integer"
+                  },
+                  "maxItems": 2,
+                  "minItems": 2,
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
           "type": "object"
         },
         "slowSQLStartup": {
