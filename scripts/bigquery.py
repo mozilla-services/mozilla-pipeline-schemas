@@ -161,7 +161,7 @@ def checkout_transpile_schemas(
         raise e
     finally:
         # cleanup so the environment is in the correct state
-        run(f"git checkout {head_ref}")
+        run(f"git checkout {resolved_head_ref}")
         if should_apply_stash:
             run("git stash apply")
 
