@@ -2,15 +2,15 @@
 
 import json
 import shutil
+import subprocess
 import tempfile
 from pathlib import Path
-import subprocess
-from typing import List, Union
+from typing import List, Tuple, Union
 
 ROOT = Path(__file__).parent.parent
 
 
-def run(command: Union[str, List[str]]) -> str:
+def run(command: Union[str, List[str]], **kwargs) -> str:
     """Simple wrapper around subprocess.run that returns stdout and raises exceptions on errors."""
     if isinstance(command, list):
         args = command
@@ -21,7 +21,9 @@ def run(command: Union[str, List[str]]) -> str:
 
     # TODO: log the output
     return (
-        subprocess.run(args, stdout=subprocess.PIPE, check=True).stdout.decode().strip()
+        subprocess.run(args, stdout=subprocess.PIPE, **{**dict(check=True), **kwargs})
+        .stdout.decode()
+        .strip()
     )
 
 
@@ -37,7 +39,7 @@ def transpile(schema_path: Path) -> dict:
             "bigquery",
         ]
     )
-    schema = json.loads(res.stdout.decode())
+    schema = json.loads(res)
     return schema
 
 
@@ -119,12 +121,14 @@ def _checkout_transpile_schemas(ref: str, output: Path) -> Path:
     except Exception as e:
         raise e
     finally:
-        return run(f"git checkout {original_ref}")
+        run(f"git checkout {original_ref}")
 
     return rev_path
 
 
-def checkout_transpile_schemas(head_ref: str, base_ref: str, outdir: Path):
+def checkout_transpile_schemas(
+    head_ref: str, base_ref: str, outdir: Path
+) -> Tuple[str, str]:
     """Generate schemas for the head and base revisions of the repository. This will
     generate a folder containing the generated BigQuery schemas under the
     outdir.
@@ -156,11 +160,13 @@ def checkout_transpile_schemas(head_ref: str, base_ref: str, outdir: Path):
         if should_apply_stash:
             run("git stash apply")
 
-    # copy into the final directory in one step
-    head_schemas = load_schemas(head_rev_path)
-    base_schemas = load_schemas(base_rev_path)
+    # copy into the final directory atomically
+    if not outdir.exists():
+        outdir.mkdir()
     shutil.rmtree(outdir)
     shutil.copytree(workdir, outdir)
+
+    return outdir / head_rev_path.parts[-1], outdir / base_rev_path.parts[-1]
 
 
 # TODO: options --use-document-sample, --rev-base, --rev-head, --stash
@@ -193,7 +199,24 @@ def main():
 
     # check that the correct tools are installed
     run("jsonschema-transpiler --version")
-    checkout_transpile_schemas(head_ref, base_ref, ROOT / "integration")
+
+    integration = ROOT / "integration"
+    head_rev_path, base_rev_path = checkout_transpile_schemas(
+        head_ref, base_ref, integration
+    )
+
+    # passing the revision in the path may not be the most elegant solution
+    head_rev = head_rev_path.parts[-1]
+    base_rev = base_rev_path.parts[-1]
+    diff_path = integration / f"bq_schema_{base_rev}-{head_rev}.diff"
+
+    diff_contents = run(f"diff {base_rev_path} {head_rev_path}", check=False)
+    with diff_path.open("w") as fp:
+        fp.write(diff_contents)
+
+    # TODO: load validation documents into bigquery tables
+    # load_schemas(head_rev_path)
+    # load_schemas(base_rev_path)
 
 
 def test_preconditions():
