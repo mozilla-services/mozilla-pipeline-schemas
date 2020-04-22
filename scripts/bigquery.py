@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 
 import json
+import os
 import shutil
 import subprocess
 import tempfile
 from pathlib import Path
 from typing import List, Tuple, Union
+
+import pytest
 
 ROOT = Path(__file__).parent.parent
 
@@ -86,13 +89,16 @@ def git_stash_size():
 
 
 def resolve_ref(ref: str) -> str:
-    resolved = run(f"git rev-parse --abbrev-ref {ref}")
+    """Return a resolved reference or the short revision if empty."""
+    resolved = run(f"git rev-parse --abbrev-ref {ref}") or run(
+        f"git rev-parse --short {ref}"
+    )
     if resolved != ref:
         print(f"resolved {ref} to {resolved}")
     return resolved
 
 
-def _checkout_transpile_schemas(ref: str, output: Path) -> Path:
+def _checkout_transpile_schemas(schemas: Path, ref: str, output: Path) -> Path:
     """Checkout a revision, transpile schemas, and return to the original revision.
     
     Generates a new folder under output with the short revision of the reference.
@@ -105,19 +111,17 @@ def _checkout_transpile_schemas(ref: str, output: Path) -> Path:
 
     # save the current state
     original_ref = run("git rev-parse --abbrev-ref HEAD")
-    rev = run(f"git rev-parse {ref}")
+    rev = run(f"git rev-parse --short {ref}")
     print(f"transpiling schemas for ref: {ref}, rev: {rev}")
 
     # directory structure uses the short revision
-    short_rev_len = 7
-    rev_path = output / rev[:short_rev_len]
+    rev_path = output / rev
     rev_path.mkdir()
 
     try:
         # checkout and generate schemas
         run(f"git checkout {ref}")
-        schemas = (ROOT / "schemas").glob("**/*.schema.json")
-        transpile_schemas(rev_path, schemas)
+        transpile_schemas(rev_path, schemas.glob("**/*.schema.json"))
     except Exception as e:
         raise e
     finally:
@@ -127,7 +131,7 @@ def _checkout_transpile_schemas(ref: str, output: Path) -> Path:
 
 
 def checkout_transpile_schemas(
-    head_ref: str, base_ref: str, outdir: Path
+    schemas: Path, head_ref: str, base_ref: str, outdir: Path
 ) -> Tuple[str, str]:
     """Generate schemas for the head and base revisions of the repository. This will
     generate a folder containing the generated BigQuery schemas under the
@@ -150,8 +154,8 @@ def checkout_transpile_schemas(
         print("NOTE: uncommitted have been detected. These will be ignored.")
 
     try:
-        head_rev_path = _checkout_transpile_schemas(resolved_head_ref, workdir)
-        base_rev_path = _checkout_transpile_schemas(resolved_base_ref, workdir)
+        head_rev_path = _checkout_transpile_schemas(schemas, resolved_head_ref, workdir)
+        base_rev_path = _checkout_transpile_schemas(schemas, resolved_base_ref, workdir)
     except Exception as e:
         raise e
     finally:
@@ -167,6 +171,19 @@ def checkout_transpile_schemas(
     shutil.copytree(workdir, outdir)
 
     return outdir / head_rev_path.parts[-1], outdir / base_rev_path.parts[-1]
+
+
+def write_schema_diff(head: Path, base: Path, output: Path) -> Path:
+    # passing the revision in the path may not be the most elegant solution
+    head_rev = head.parts[-1]
+    base_rev = base.parts[-1]
+    diff_path = output / f"bq_schema_{base_rev}-{head_rev}.diff"
+
+    diff_contents = run(f"diff {base} {head}", check=False)
+    with diff_path.open("w") as fp:
+        fp.write(diff_contents)
+
+    return diff_path
 
 
 # TODO: options --use-document-sample, --rev-base, --rev-head, --stash
@@ -200,19 +217,13 @@ def main():
     # check that the correct tools are installed
     run("jsonschema-transpiler --version")
 
+    schemas = ROOT / "schemas"
     integration = ROOT / "integration"
     head_rev_path, base_rev_path = checkout_transpile_schemas(
-        head_ref, base_ref, integration
+        schemas, head_ref, base_ref, integration
     )
 
-    # passing the revision in the path may not be the most elegant solution
-    head_rev = head_rev_path.parts[-1]
-    base_rev = base_rev_path.parts[-1]
-    diff_path = integration / f"bq_schema_{base_rev}-{head_rev}.diff"
-
-    diff_contents = run(f"diff {base_rev_path} {head_rev_path}", check=False)
-    with diff_path.open("w") as fp:
-        fp.write(diff_contents)
+    write_schema_diff(head_rev_path, base_rev_path, integration)
 
     # TODO: load validation documents into bigquery tables
     # load_schemas(head_rev_path)
@@ -228,12 +239,57 @@ def test_preconditions():
     ), "must contain at least one passing validation document"
 
 
-def test_transpile():
-    assert False
+def test_transpile(tmp_path):
+    test_schema = {"type": "string"}
+    expected_schema = [{"mode": "REQUIRED", "name": "root", "type": "STRING"}]
+    test_schema_path = tmp_path / "test.json"
+    with test_schema_path.open("w") as fp:
+        json.dump(test_schema, fp)
+    assert transpile(test_schema_path) == expected_schema
 
 
-def test_transform():
-    assert False
+@pytest.fixture
+def tmp_git(tmp_path: Path) -> Path:
+    """Copy the entire repository with the current revision."""
+    curdir = os.getcwd()
+    origin = ROOT
+    workdir = tmp_path / "mps"
+    resolved_head_ref = resolve_ref("HEAD")
+
+    run(f"git clone {origin} {workdir}")
+    os.chdir(workdir)
+    run(f"git checkout {resolved_head_ref}")
+    yield workdir
+    os.chdir(curdir)
+
+
+def test_dummy_git_env(tmp_git: Path):
+    assert Path(run("git remote get-url origin")) == ROOT
+    assert tmp_git != ROOT
+
+
+def test_checkout_transpile_schemas(tmp_git: Path, tmp_path):
+    test_schema = {
+        "type": "object",
+        "properties": {"first": {"type": "string"}, "second": {"type": "string"}},
+    }
+    test_schema_path = tmp_git / "schemas/test-namespace/test/test.1.schema.json"
+    test_schema_path.parent.mkdir(parents=True, exist_ok=False)
+    with test_schema_path.open("w") as fp:
+        json.dump(test_schema, fp)
+    run(f"git add {test_schema_path}")
+    run(["git", "commit", "-m", "Add a test schema"])
+
+    head, base = checkout_transpile_schemas(
+        tmp_git / "schemas", "HEAD", "HEAD~1", tmp_path / "integration"
+    )
+
+    assert len(list(base.glob("*.bq"))) > 0
+
+    def get_bq_names(path: Path) -> set:
+        return {p.name for p in path.glob("*.bq")}
+
+    assert get_bq_names(head) - get_bq_names(base) == {"test-namespace.test.1.bq"}
 
 
 if __name__ == "__main__":
