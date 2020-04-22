@@ -15,6 +15,11 @@ jobs:
       - image: docker:stable-git
     steps:
       - checkout
+      - run: &checkout_upstream
+          name: Checkout upstream
+          command: |
+            git remote add upstream git@github.com:mozilla-services/mozilla-pipeline-schemas.git
+            git fetch --all
       - setup_remote_docker:
           docker_layer_caching: true
       - run:
@@ -42,11 +47,8 @@ jobs:
     executor: edge-validator
     steps:
       - checkout
-      - run: &checkout_upstream
-          name: Checkout upstream
-          command: |
-            git remote add upstream git@github.com:mozilla-services/mozilla-pipeline-schemas.git
-            git fetch --all
+      - run:
+          <<: *checkout_upstream
       - setup_remote_docker
       - restore_cache:
           key: mps-integration-data-v2
