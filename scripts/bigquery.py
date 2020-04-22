@@ -4,12 +4,25 @@ import json
 import shutil
 import tempfile
 from pathlib import Path
-from subprocess import PIPE, run
-from typing import List
+import subprocess
+from typing import List, Union
 
 ROOT = Path(__file__).parent.parent
-SCHEMAS = (ROOT / "schemas").glob("**/*.schema.json")
-VALIDATION = (ROOT / "validation").glob("**/*.pass.json")
+
+
+def run(command: Union[str, List[str]]) -> str:
+    """Simple wrapper around subprocess.run that returns stdout and raises exceptions on errors."""
+    if isinstance(command, list):
+        args = command
+    elif isinstance(command, str):
+        args = command.split()
+    else:
+        raise RuntimeError(f"run command is invalid: {command}")
+
+    # TODO: log the output
+    return (
+        subprocess.run(args, stdout=subprocess.PIPE, check=True).stdout.decode().strip()
+    )
 
 
 def transpile(schema_path: Path) -> dict:
@@ -22,9 +35,7 @@ def transpile(schema_path: Path) -> dict:
             "cast",
             "--type",
             "bigquery",
-        ],
-        stdout=PIPE,
-        check=True,
+        ]
     )
     schema = json.loads(res.stdout.decode())
     return schema
@@ -53,6 +64,7 @@ def transpile_schemas(output_path: Path, schema_paths: List[Path]):
         with out.open("w") as fp:
             print(f"writing {out}")
             json.dump(transpile(path), fp, indent=2)
+            fp.write("\n")
 
 
 def load_schemas(input_path: Path):
@@ -67,33 +79,95 @@ def load_schemas(input_path: Path):
     return schemas
 
 
+def git_stash_size():
+    return len(run("git stash list").split("\n"))
+
+
+def resolve_ref(ref: str) -> str:
+    resolved = run(f"git rev-parse --abbrev-ref {ref}")
+    if resolved != ref:
+        print(f"resolved {ref} to {resolved}")
+    return resolved
+
+
+def _checkout_transpile_schemas(ref: str, output: Path) -> Path:
+    """Checkout a revision, transpile schemas, and return to the original revision.
+    
+    Generates a new folder under output with the short revision of the reference.
+    """
+    # preconditions
+    assert output.is_dir(), f"output must be a directory: {output}"
+    assert (
+        len(run("git diff")) == 0
+    ), f"current git state must be clean, please stash changes"
+
+    # save the current state
+    original_ref = run("git rev-parse --abbrev-ref HEAD")
+    rev = run(f"git rev-parse {ref}")
+    print(f"transpiling schemas for ref: {ref}, rev: {rev}")
+
+    # directory structure uses the short revision
+    short_rev_len = 7
+    rev_path = output / rev[:short_rev_len]
+    rev_path.mkdir()
+
+    try:
+        # checkout and generate schemas
+        run(f"git checkout {ref}")
+        schemas = (ROOT / "schemas").glob("**/*.schema.json")
+        transpile_schemas(rev_path, schemas)
+    except Exception as e:
+        raise e
+    finally:
+        return run(f"git checkout {original_ref}")
+
+    return rev_path
+
+
+def checkout_transpile_schemas(head_ref: str, base_ref: str, outdir: Path):
+    """Generate schemas for the head and base revisions of the repository. This will
+    generate a folder containing the generated BigQuery schemas under the
+    outdir.
+    """
+
+    # resolve references (e.g. HEAD) to their branch or tag name if they exist
+    resolved_head_ref = resolve_ref(head_ref)
+    resolved_base_ref = resolve_ref(base_ref)
+
+    # generate a working path that can be thrown away if errors occur
+    workdir = Path(tempfile.mkdtemp())
+
+    # Stash any changes so we can reference by real changes in the tree. If the
+    # branch has in-flight changes, the changes would be ignored by the stash.
+    before_stash_size = git_stash_size()
+    run("git stash")
+    should_apply_stash = before_stash_size != git_stash_size()
+    if should_apply_stash:
+        print("NOTE: uncommitted have been detected. These will be ignored.")
+
+    try:
+        head_rev_path = _checkout_transpile_schemas(resolved_head_ref, workdir)
+        base_rev_path = _checkout_transpile_schemas(resolved_base_ref, workdir)
+    except Exception as e:
+        raise e
+    finally:
+        # cleanup so the environment is in the correct state
+        run(f"git checkout {head_ref}")
+        if should_apply_stash:
+            run("git stash apply")
+
+    # copy into the final directory in one step
+    head_schemas = load_schemas(head_rev_path)
+    base_schemas = load_schemas(base_rev_path)
+    shutil.rmtree(outdir)
+    shutil.copytree(workdir, outdir)
+
+
 # TODO: options --use-document-sample, --rev-base, --rev-head, --stash
 def main():
     """
-    ## metrics
-
-    * count number of valid transpiles
-    * count number of casting instances
-    * count number of successful inserts
-    * generate diff between BQ schema of base and head revisions
-    * measure the size of additional_properties
-    * diff of rows between base and head
-    * list of missing fields for coverage
-
+    TODO:
     ```
-    assert schemas have been generated from templates
-    assert schemas pass validation
-
-    store git state
-    for each revision:
-        check out revision
-        create temp directory
-        for each schema:
-            transpile from JSONSchema into BigQuery schema
-            store schema into temp directory
-        copy validation into temp directory 
-    restore git state
-
     create a dataset with the base git revision
         f"rev_{base_revision}"
     if dataset does not exist:
@@ -113,79 +187,22 @@ def main():
     on user consent:
         report artifact to structured ingestion
     ```
-
-    ## failure modes
-
-    * (error) transpile
-    * (warn) empty schemas
-    * (warn) missing passing validation document for schema
-    * (error) missing validation document on modified schema
-    * (error) creation of base table
-    * (error) insertion of base document into base table
-    * (error) insertion of head document into initial head table (copy of base table)
-    * (error) evolution of initial head table into head table
-    * (error) insertion of head document into head table
-    * (warn) schema has new fields, but additional_properties does not change
-
-    ## metadata to consider
-
-    * timestamp
-    * git revision
-    * validation reason
     """
+    head_ref = "HEAD"
     base_ref = "master"
 
-    run("jsonschema-transpiler --version".split(), check=True)
-    workdir = Path(tempfile.mkdtemp())
-
-    head_ref = (
-        run("git rev-parse --abbrev-ref HEAD".split(), stdout=PIPE, check=True)
-        .stdout.decode()
-        .strip()
-    )
-    head_rev = (
-        run(f"git rev-parse {head_ref}".split(), stdout=PIPE, check=True)
-        .stdout.decode()
-        .strip()
-    )
-    print(f"{head_ref}, {head_rev}")
-    head_rev_path = workdir / head_rev[:7]
-    head_rev_path.mkdir()
-    transpile_schemas(head_rev_path, (ROOT / "schemas").glob("**/*.schema.json"))
-
-    def git_stash_size():
-        return len(
-            run("git stash list".split(), stdout=PIPE).stdout.decode().split("\n")
-        )
-
-    before_stash_size = git_stash_size()
-    run("git stash".split(), check=True)
-    should_apply_stash = before_stash_size != git_stash_size()
-
-    run(f"git checkout {base_ref}".split(), check=True)
-    base_rev = (
-        run(f"git rev-parse {base_ref}".split(), stdout=PIPE, check=True)
-        .stdout.decode()
-        .strip()
-    )
-    print(f"{base_ref}, {base_rev}")
-    base_rev_path = workdir / base_rev[:7]
-    base_rev_path.mkdir()
-    transpile_schemas(base_rev_path, (ROOT / "schemas").glob("**/*.schema.json"))
-
-    run(f"git checkout {head_ref}".split(), check=True)
-    if should_apply_stash:
-        run("git stash apply".split(), check=True)
-
-    head_schemas = load_schemas(head_rev_path)
-    base_schemas = load_schemas(base_rev_path)
-    shutil.rmtree(ROOT / "integration")
-    shutil.copytree(workdir, ROOT / "integration")
+    # check that the correct tools are installed
+    run("jsonschema-transpiler --version")
+    checkout_transpile_schemas(head_ref, base_ref, ROOT / "integration")
 
 
 def test_preconditions():
-    assert SCHEMAS, "must contain at least one schema"
-    assert VALIDATION, "must contain at least one passing validation document"
+    assert (ROOT / "schemas").glob(
+        "**/*.schema.json"
+    ), "must contain at least one schema"
+    assert (ROOT / "validation").glob(
+        "**/*.pass.json"
+    ), "must contain at least one passing validation document"
 
 
 def test_transpile():
