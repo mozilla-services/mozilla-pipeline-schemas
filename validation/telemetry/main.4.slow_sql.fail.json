@@ -1,0 +1,32 @@
+{
+  "application": {
+    "architecture": "x86-64",
+    "buildId": "20151103030248",
+    "channel": "beta",
+    "name": "Firefox",
+    "platformVersion": "45.0",
+    "vendor": "Mozilla",
+    "version": "45.0",
+    "xpcomAbi": "x86_64-gcc3"
+  },
+  "creationDate": "2015-11-05T01:25:43.312Z",
+  "type": "main",
+  "id": "0fdac909-d2ec-454c-b625-261a3e5d5c9b",
+  "version": 4,
+  "payload": {
+    "slowSQL": {
+      "mainThread": {
+        "SELECT h.id, h.url, h.title AS page_title, h.rev_host, h.visit_count, h.last_visit_date, null, null, null, null, null, null AS tags , h.frecency, h.hidden, h.guid, null, null, null FROM moz_places h WHERE 1  AND hidden = 0 AND last_visit_date NOTNULL   AND (( EXISTS (SELECT 1 FROM moz_historyvisits WHERE place_id = h.id  AND  visit_date >=  :begin_time  AND  visit_date <=  :end_time   LIMIT 1) ))  ORDER BY 6 DESC /* places.sqlite */": [
+          1,
+          209,
+          123
+        ],
+        "SELECT h.id, h.url, h.title AS page_title, h.rev_host, h.visit_count, h.last_visit_date, null, null, null, null, null, (SELECT GROUP_CONCAT(t_t.title, :private) FROM moz_bookmarks b_t JOIN moz_bookmarks t_t ON t_t.id = +b_t.parent  WHERE b_t.fk = h.id AND t_t.parent = 4 ) AS tags , h.frecency, h.hidden, h.guid, null, null, null FROM moz_places h WHERE 1  AND last_visit_date NOTNULL   AND (( AUTOCOMPLETE_MATCH(  :search_string  , h.url, page_title, tags,   1, 1, 1, 1, 4, 3)  AND  NOT h.url_hash BETWEEN hash(:private, :private) AND hash(:private, :private) ))  ORDER BY 6 DESC /* places.sqlite */": [
+          3,
+          241
+        ]
+      },
+      "otherThreads": { }
+    }
+  }
+}
