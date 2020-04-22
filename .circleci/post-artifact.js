@@ -23,15 +23,15 @@ function validation_report() {
     let [upstream, head] = diff_file.split(".")[0].split("-");
 
     // Generate and post markdown
-    var content = `#### \`${diff_file}\`
-    \`\`\`diff
-    ${diff_content}
-    \`\`\`
-    `;
+    var content = `
+[Report for upstream](${bot.env.buildUrl}/artifacts/0/app/test-reports/${upstream}.report.json)
+[Report for latest commit](${bot.env.buildUrl}/artifacts/0/app/test-reports/${head}.report.json)
 
-    if (!diff_content) {
-        content =  "No changes detected.";
-    }
+#### \`${diff_file}\`
+\`\`\`diff
+${diff_content}
+\`\`\`
+`;
     return content;
 }
 
@@ -43,22 +43,19 @@ function bigquery_diff() {
     let diff_content = fs.readFileSync(root + "/" + diff_file, "utf8");
 
     var content = `#### \`${diff_file}\`
-    <details>
-        <summary>Click to expand!</summary>
+<details>
+<summary>Click to expand!</summary>
 
-        \`\`\`diff
-        ${diff_content}
-        \`\`\`
-    </details>
-    `;
+\`\`\`diff
+${diff_content}
+\`\`\`
+</details>
+`;
     return content;
 }
 
 bot.comment(process.env.GH_AUTH_TOKEN, `
 ### Integration report for "${bot.env.commitMessage}"
-[Report for upstream](${bot.env.buildUrl}/artifacts/0/app/test-reports/${upstream}.report.json)
-[Report for latest commit](${bot.env.buildUrl}/artifacts/0/app/test-reports/${head}.report.json)
-
 ${validation_report()}
 
 ${bigquery_diff()}
