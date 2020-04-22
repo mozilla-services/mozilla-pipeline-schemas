@@ -16,24 +16,14 @@ RUN dnf -y update && \
         python36 \
         java-1.8.0-openjdk-devel \
         maven \
+        cargo \
     && dnf clean all
 
-WORKDIR /downloads
-
-# Install hindsight and the luasandbox
-RUN wget -qO- https://s3-us-west-2.amazonaws.com/net-mozaws-data-us-west-2-ops-ci-artifacts/mozilla-services/lua_sandbox_extensions/master/centos7/all.tgz | tar xvz
-RUN wget https://s3-us-west-2.amazonaws.com/net-mozaws-data-us-west-2-ops-ci-artifacts/mozilla-services/lua_sandbox_extensions/external/centos7/parquet-cpp-1.3.1-1.x86_64.rpm
-
-RUN dnf -y install \
-    hindsight-0* \
-    luasandbox-1* \
-    luasandbox-cjson* \
-    luasandbox-lfs* \
-    luasandbox-lpeg* \
-    luasandbox-parquet* \
-    luasandbox-rjson* \
-    parquet-cpp* \
-    && dnf clean all
+ENV PATH=$PATH:/root/.cargo/bin
+RUN cargo install jsonschema-transpiler
+# Configure git for testing
+RUN git config --global user.email "mozilla-pipeline-schemas@mozilla.com"
+RUN git config --global user.name "Mozilla Pipeline Schemas"
 
 WORKDIR /app
 COPY . /app
