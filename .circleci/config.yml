@@ -28,6 +28,15 @@ jobs:
       - run:
           name: Verify set version in telemetry namespace is correct
           command: docker run -w /app mps scripts/assert-telemetry-version
+      - run:
+          name: Generate diff artifacts for bigquery
+          command: |
+            docker run --name mps -w /app mps scripts/bigquery.py
+            docker cp app:/app/integration /tmp/integration
+      - persist_to_workspace:
+          root: /tmp
+          paths:
+            - integration
   integrate:
     executor: edge-validator
     steps:

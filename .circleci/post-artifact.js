@@ -10,6 +10,7 @@ const bot = require("circle-github-bot").create();
 let root = "/tmp/test-reports";
 let files = fs.readdirSync(root);
 console.log(files);
+console.log(fs.readdirSync("/tmp/integration"));
 
 // An example listing of files. The diff is created by comparing differences
 // between the upstream commit (mozilla-pipeline-schemas/master) and the report
