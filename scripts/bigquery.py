@@ -132,7 +132,7 @@ def _checkout_transpile_schemas(schemas: Path, ref: str, output: Path) -> Path:
 
 def checkout_transpile_schemas(
     schemas: Path, head_ref: str, base_ref: str, outdir: Path
-) -> Tuple[str, str]:
+) -> Tuple[Path, Path]:
     """Generate schemas for the head and base revisions of the repository. This will
     generate a folder containing the generated BigQuery schemas under the
     outdir.
@@ -274,22 +274,49 @@ def test_checkout_transpile_schemas(tmp_git: Path, tmp_path):
         "properties": {"first": {"type": "string"}, "second": {"type": "string"}},
     }
     test_schema_path = tmp_git / "schemas/test-namespace/test/test.1.schema.json"
-    test_schema_path.parent.mkdir(parents=True, exist_ok=False)
-    with test_schema_path.open("w") as fp:
-        json.dump(test_schema, fp)
-    run(f"git add {test_schema_path}")
-    run(["git", "commit", "-m", "Add a test schema"])
 
-    head, base = checkout_transpile_schemas(
-        tmp_git / "schemas", "HEAD", "HEAD~1", tmp_path / "integration"
-    )
+    def add_test_schema() -> Tuple[Path, Path]:
+        test_schema_path.parent.mkdir(parents=True, exist_ok=False)
+        with test_schema_path.open("w") as fp:
+            json.dump(test_schema, fp)
 
-    assert len(list(base.glob("*.bq"))) > 0
+        run(f"git add {test_schema_path}")
+        run(["git", "commit", "-m", "Add a test schema"])
+        return checkout_transpile_schemas(
+            tmp_git / "schemas", "HEAD", "HEAD~1", tmp_path / "integration"
+        )
+
+    def add_new_column():
+        test_schema["properties"]["third"] = {"type": "string"}
+        with test_schema_path.open("w") as fp:
+            json.dump(test_schema, fp)
+
+        run(f"git add {test_schema_path}")
+        run(["git", "commit", "-m", "Add a new column"])
+        return checkout_transpile_schemas(
+            tmp_git / "schemas", "HEAD", "HEAD~1", tmp_path / "integration"
+        )
 
     def get_bq_names(path: Path) -> set:
         return {p.name for p in path.glob("*.bq")}
 
-    assert get_bq_names(head) - get_bq_names(base) == {"test-namespace.test.1.bq"}
+    head, base = add_test_schema()
+    assert len(list(base.glob("*.bq"))) > 0
+    assert get_bq_names(head) - get_bq_names(base) == {
+        "test-namespace.test.1.bq"
+    }, "new schema not detected"
+
+    diff = write_schema_diff(head, base, tmp_path / "integration").open().readlines()
+    assert (
+        len(diff) == 1 and "only in" in diff[0].lower()
+    ), "a single line with addition expected"
+
+    head, base = add_new_column()
+    diff = write_schema_diff(head, base, tmp_path / "integration").open().readlines()
+    assert all(line[0] != "<" for line in diff), "diff contains removal"
+    assert any(
+        (">" in line) and ("third" in line) for line in diff
+    ), "diff does not contain new column"
 
 
 if __name__ == "__main__":
