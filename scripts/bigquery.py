@@ -5,6 +5,7 @@ import os
 import shutil
 import subprocess
 import tempfile
+import argparse
 from pathlib import Path
 from typing import List, Tuple, Union
 
@@ -186,7 +187,7 @@ def write_schema_diff(head: Path, base: Path, output: Path) -> Path:
     return diff_path
 
 
-# TODO: options --use-document-sample, --rev-base, --rev-head, --stash
+# TODO: options --use-document-sample
 def main():
     """
     TODO:
@@ -211,8 +212,15 @@ def main():
         report artifact to structured ingestion
     ```
     """
-    head_ref = "HEAD"
-    base_ref = "master"
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--base-ref", default="master", help="Reference to base commit e.g. master"
+    )
+    parser.add_argument(
+        "--head-ref", default="HEAD", help="Reference to the head commit e.g. HEAD"
+    )
+    args = parser.parse_args()
 
     # check that the correct tools are installed
     run("jsonschema-transpiler --version")
@@ -220,7 +228,7 @@ def main():
     schemas = ROOT / "schemas"
     integration = ROOT / "integration"
     head_rev_path, base_rev_path = checkout_transpile_schemas(
-        schemas, head_ref, base_ref, integration
+        schemas, args.head_ref, args.base_ref, integration
     )
 
     write_schema_diff(head_rev_path, base_rev_path, integration)
