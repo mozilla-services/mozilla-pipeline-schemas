@@ -1,0 +1,10 @@
+#!/bin/bash
+# example usage: scripts/mps-shell
+set -e
+
+cd "$(dirname "$0")/.."
+
+docker run \
+    --volume "$(pwd)":/app \
+    -it mozilla-pipeline-schemas:latest \
+    bash
