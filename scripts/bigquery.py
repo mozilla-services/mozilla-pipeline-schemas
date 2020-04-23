@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""Test the differences in BigQuery schemas between two revisions in schema repository history. This is
+for diagnostic purposes while writing schemas.
+"""
 
 import json
 import os
@@ -33,6 +36,7 @@ def run(command: Union[str, List[str]], **kwargs) -> str:
 
 
 def transpile(schema_path: Path) -> dict:
+    """Transpile a JSON Schema into a BigQuery schema."""
     res = run(
         [
             "jsonschema-transpiler",
@@ -49,6 +53,7 @@ def transpile(schema_path: Path) -> dict:
 
 
 def transform(document: dict) -> dict:
+    """Transform a document for loading into BigQuery."""
     # TODO: normalize field names using snake casing
     # TODO: additional properties
     # TODO: pseudo maps
@@ -56,7 +61,6 @@ def transform(document: dict) -> dict:
     raise NotImplementedError()
 
 
-# transpile all of the schemas
 def transpile_schemas(output_path: Path, schema_paths: List[Path]):
     """Write schemas to directory."""
     assert output_path.is_dir()
@@ -75,6 +79,7 @@ def transpile_schemas(output_path: Path, schema_paths: List[Path]):
 
 
 def load_schemas(input_path: Path):
+    """Load schemas into memory for use in google-cloud-bigquery."""
     paths = list(input_path.glob("*.bq"))
     assert len(paths) > 0
     schemas = {}
@@ -87,6 +92,7 @@ def load_schemas(input_path: Path):
 
 
 def git_stash_size():
+    """Find the size of the git stash."""
     return len([item for item in run("git stash list").split("\n") if item])
 
 
@@ -112,7 +118,9 @@ def managed_git_state():
     run("git stash")
     should_apply_stash = before_stash_size != git_stash_size()
     if should_apply_stash:
-        print("NOTE: uncommitted have been detected. These will be ignored.")
+        print(
+            "NOTE: uncommitted have been detected. These will be ignored during comparisons."
+        )
     try:
         yield
     finally:
@@ -157,13 +165,12 @@ def checkout_transpile_schemas(
     generate a folder containing the generated BigQuery schemas under the
     outdir.
     """
+    # generate a working path that can be thrown away if errors occur
+    workdir = Path(tempfile.mkdtemp())
 
     # resolve references (e.g. HEAD) to their branch or tag name if they exist
     resolved_head_ref = resolve_ref(head_ref)
     resolved_base_ref = resolve_ref(base_ref)
-
-    # generate a working path that can be thrown away if errors occur
-    workdir = Path(tempfile.mkdtemp())
 
     with managed_git_state():
         head_rev_path = _checkout_transpile_schemas(schemas, resolved_head_ref, workdir)
