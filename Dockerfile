@@ -20,7 +20,7 @@ RUN dnf -y update && \
     && dnf clean all
 
 ENV PATH=$PATH:/root/.cargo/bin
-RUN cargo install jsonschema-transpiler
+RUN cargo install jsonschema-transpiler --version 1.8.0
 # Configure git for testing
 RUN git config --global user.email "mozilla-pipeline-schemas@mozilla.com"
 RUN git config --global user.name "Mozilla Pipeline Schemas"
