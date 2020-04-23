@@ -309,7 +309,7 @@ def test_managed_git_state_stash(tmp_git: Path):
         assert git_stash_size() == 1
         run("git checkout HEAD~1")
         with managed_git_state():
-            assert git_stash_size() == 2
+            assert git_stash_size() == 1
             run("git checkout HEAD~1")
 
     assert git_stash_size() == 0
