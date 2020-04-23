@@ -22,15 +22,25 @@ function validation_report() {
     let diff_content = fs.readFileSync(root + "/" + diff_file, "utf8");
     let [upstream, head] = diff_file.split(".")[0].split("-");
 
+    var body = "No content detected.";
+    if (diff_content) {
+        body = `<details>
+<summary>Click to expand!</summary>
+
+\`\`\`diff
+${diff_content}
+\`\`\`
+</details>
+`;
+    }
+
     // Generate and post markdown
-    var content = `
+    let content = `
 [Report for upstream](${bot.env.buildUrl}/artifacts/0/app/test-reports/${upstream}.report.json)
 [Report for latest commit](${bot.env.buildUrl}/artifacts/0/app/test-reports/${head}.report.json)
 
 #### \`${diff_file}\`
-\`\`\`diff
-${diff_content}
-\`\`\`
+${body}
 `;
     return content;
 }
@@ -42,14 +52,19 @@ function bigquery_diff() {
     let diff_file = files.filter(x => x.endsWith(".diff"))[0];
     let diff_content = fs.readFileSync(root + "/" + diff_file, "utf8");
 
-    var content = `#### \`${diff_file}\`
-<details>
+    var body = "No content detected."
+    if (diff_content) {
+        body = `<details>
 <summary>Click to expand!</summary>
 
 \`\`\`diff
 ${diff_content}
 \`\`\`
 </details>
+`
+    }
+    var content = `#### \`${diff_file}\`
+${body}
 `;
     return content;
 }
