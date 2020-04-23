@@ -35,6 +35,10 @@ jobs:
           name: Verify set version in telemetry namespace is correct
           command: docker run -w /app mps scripts/assert-telemetry-version
       - run:
+          name: Test BigQuery schema generation for validation
+          command:
+            docker run -w /app mps pytest scripts/bigquery.py
+      - run:
           name: Generate diff artifacts for bigquery
           command: |
             docker run --name mps -w /app mps scripts/bigquery.py --base-ref upstream/master
