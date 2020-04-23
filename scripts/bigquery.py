@@ -6,6 +6,7 @@ import shutil
 import subprocess
 import tempfile
 import argparse
+from contextlib import contextmanager
 from pathlib import Path
 from typing import List, Tuple, Union
 
@@ -52,7 +53,7 @@ def transform(document: dict) -> dict:
     # TODO: additional properties
     # TODO: pseudo maps
     # TODO: anonymous structs
-    pass
+    raise NotImplementedError()
 
 
 # transpile all of the schemas
@@ -86,7 +87,7 @@ def load_schemas(input_path: Path):
 
 
 def git_stash_size():
-    return len(run("git stash list").split("\n"))
+    return len([item for item in run("git stash list").split("\n") if item])
 
 
 def resolve_ref(ref: str) -> str:
@@ -99,9 +100,33 @@ def resolve_ref(ref: str) -> str:
     return resolved
 
 
+@contextmanager
+def managed_git_state():
+    """Save the current git state.
+
+    Stash any changes so we can reference by real changes in the tree. If the
+    branch has in-flight changes, the changes would be ignored by the stash.
+    """
+    original_ref = run("git rev-parse --abbrev-ref HEAD")
+    before_stash_size = git_stash_size()
+    run("git stash")
+    should_apply_stash = before_stash_size != git_stash_size()
+    if should_apply_stash:
+        print("NOTE: uncommitted have been detected. These will be ignored.")
+    try:
+        yield
+    finally:
+        run(f"git checkout {original_ref}")
+        if should_apply_stash:
+            run("git stash apply")
+            # if apply fails, then an exception is thrown and the stash still
+            # exists
+            run("git stash drop")
+
+
 def _checkout_transpile_schemas(schemas: Path, ref: str, output: Path) -> Path:
     """Checkout a revision, transpile schemas, and return to the original revision.
-    
+
     Generates a new folder under output with the short revision of the reference.
     """
     # preconditions
@@ -110,8 +135,6 @@ def _checkout_transpile_schemas(schemas: Path, ref: str, output: Path) -> Path:
         len(run("git diff")) == 0
     ), f"current git state must be clean, please stash changes"
 
-    # save the current state
-    original_ref = run("git rev-parse --abbrev-ref HEAD")
     rev = run(f"git rev-parse --short {ref}")
     print(f"transpiling schemas for ref: {ref}, rev: {rev}")
 
@@ -119,14 +142,10 @@ def _checkout_transpile_schemas(schemas: Path, ref: str, output: Path) -> Path:
     rev_path = output / rev
     rev_path.mkdir()
 
-    try:
+    with managed_git_state():
         # checkout and generate schemas
         run(f"git checkout {ref}")
         transpile_schemas(rev_path, schemas.glob("**/*.schema.json"))
-    except Exception as e:
-        raise e
-    finally:
-        run(f"git checkout {original_ref}")
 
     return rev_path
 
@@ -146,24 +165,9 @@ def checkout_transpile_schemas(
     # generate a working path that can be thrown away if errors occur
     workdir = Path(tempfile.mkdtemp())
 
-    # Stash any changes so we can reference by real changes in the tree. If the
-    # branch has in-flight changes, the changes would be ignored by the stash.
-    before_stash_size = git_stash_size()
-    run("git stash")
-    should_apply_stash = before_stash_size != git_stash_size()
-    if should_apply_stash:
-        print("NOTE: uncommitted have been detected. These will be ignored.")
-
-    try:
+    with managed_git_state():
         head_rev_path = _checkout_transpile_schemas(schemas, resolved_head_ref, workdir)
         base_rev_path = _checkout_transpile_schemas(schemas, resolved_base_ref, workdir)
-    except Exception as e:
-        raise e
-    finally:
-        # cleanup so the environment is in the correct state
-        run(f"git checkout {resolved_head_ref}")
-        if should_apply_stash:
-            run("git stash apply")
 
     # copy into the final directory atomically
     if not outdir.exists():
@@ -233,10 +237,6 @@ def main():
 
     write_schema_diff(head_rev_path, base_rev_path, integration)
 
-    # TODO: load validation documents into bigquery tables
-    # load_schemas(head_rev_path)
-    # load_schemas(base_rev_path)
-
 
 def test_preconditions():
     assert (ROOT / "schemas").glob(
@@ -258,7 +258,11 @@ def test_transpile(tmp_path):
 
 @pytest.fixture
 def tmp_git(tmp_path: Path) -> Path:
-    """Copy the entire repository with the current revision."""
+    """Copy the entire repository with the current revision.
+
+    To check the state of a failed test, change directories to the temporary
+    directory surfaced by pytest.
+    """
     curdir = os.getcwd()
     origin = ROOT
     workdir = tmp_path / "mps"
@@ -274,6 +278,56 @@ def tmp_git(tmp_path: Path) -> Path:
 def test_dummy_git_env(tmp_git: Path):
     assert Path(run("git remote get-url origin")) == ROOT
     assert tmp_git != ROOT
+
+
+def test_managed_git_state(tmp_git: Path):
+    original = run("git rev-parse HEAD")
+    with managed_git_state():
+        run("git checkout HEAD~1")
+        assert run("git rev-parse HEAD") != original
+    assert run("git rev-parse HEAD") == original
+
+
+def test_managed_git_state_stash(tmp_git: Path):
+    """Assert that top level stash is maintained when no changes are made during visits of revisions."""
+    filename = tmp_git / "README.md"
+
+    original = run("git rev-parse HEAD")
+    filename.open("w+").write("test")
+    diff = run("git diff")
+    assert len(diff) > 0, run("git status")
+
+    assert git_stash_size() == 0
+    with managed_git_state():
+        assert git_stash_size() == 1
+        run("git checkout HEAD~1")
+        with managed_git_state():
+            assert git_stash_size() == 2
+            run("git checkout HEAD~1")
+
+    assert git_stash_size() == 0
+    assert run("git rev-parse HEAD") == original
+    assert run("git diff") == diff
+
+
+def test_managed_git_state_stash_with_conflict(tmp_git: Path):
+    """Conflicts made during visits are NOT handled, but the stash maintains history."""
+    filename = tmp_git / "README.md"
+
+    original = run("git rev-parse HEAD")
+    filename.open("w+").write("test")
+    diff = run("git diff")
+    assert len(diff) > 0, run("git status")
+
+    assert git_stash_size() == 0
+    with pytest.raises(subprocess.CalledProcessError) as excinfo:
+        with managed_git_state():
+            assert git_stash_size() == 1
+            run("git checkout HEAD~1")
+            filename.open("w+").write("test1")
+        assert "apply" in str(excinfo.value)
+
+    assert git_stash_size() == 1
 
 
 def test_checkout_transpile_schemas(tmp_git: Path, tmp_path):
