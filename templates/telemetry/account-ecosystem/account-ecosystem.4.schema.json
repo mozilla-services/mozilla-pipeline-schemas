@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "account-ecosystem",
+  "properties": {
+    @TELEMETRY_APPLICATION_1_JSON@,
+    @TELEMETRY_CREATIONDATE_1_JSON@,
+    @TELEMETRY_ID_1_JSON@,
+    "type": {
+      "type": "string",
+      "enum": [ "account-ecosystem" ]
+    },
+    "version": {
+      "type": "number",
+      "minimum": 4,
+      "maximum": 4
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "ecosystemClientId": {
+          "type": "string"
+        },
+        "ecosystemDeviceId": {
+          "type": "string"
+        },
+        "ecosystemUserId": {
+          @ACCOUNT-ECOSYSTEM_ECOSYSTEM_USER_ID_TYPE_1_JSON@,
+          "description": "Account Ecosystem Telemetry user identifier; this value is not present in the original payload sent by clients, but is instead inserted by the pipeline after decrypting and removing ecosystemAnonId"
+        },
+        "previousEcosystemUserIds": {
+          "description": "Previous Account Ecosystem Telemetry identifiers associated with this user; this value is not present in the original payload sent by clients, but is instead inserted by the pipeline after decrypting and removing previousEcosystemAnonIds",
+          "type": "array",
+          "items": {
+            @ACCOUNT-ECOSYSTEM_ECOSYSTEM_USER_ID_TYPE_1_JSON@
+          }
+        },
+        "scalars": {
+          "type": "object",
+          "properties": {
+            "parent": @TELEMETRY_SCALARS_1_JSON@
+          }
+        }
+      },
+      "required": [
+        "ecosystemClientId",
+        "ecosystemDeviceId"
+      ]
+    }
+  },
+  "required": [
+    "application",
+    "creationDate",
+    "id",
+    "type",
+    "version",
+    "payload"
+  ]
+}

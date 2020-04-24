@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "account-ecosystem",
+  "properties": {
+    "ecosystem_client_id": {
+      "type": "string"
+    },
+    "ecosystem_device_id": {
+      "type": "string"
+    },
+    "ecosystem_user_id": {
+      "description": "Account Ecosystem Telemetry user identifier; this value is not present in the original payload sent by clients, but is instead inserted by the pipeline after decrypting and removing ecosystem_anon_id",
+      @ACCOUNT-ECOSYSTEM_ECOSYSTEM_USER_ID_TYPE_1_JSON@
+    },
+    "previous_ecosystem_user_ids": {
+      "description": "Previous Account Ecosystem Telemetry identifiers associated with this user; this value is not present in the original payload sent by clients, but is instead inserted by the pipeline after decrypting and removing previous_ecosystem_anon_ids",
+      "type": "array",
+      "items": {
+        @ACCOUNT-ECOSYSTEM_ECOSYSTEM_USER_ID_TYPE_1_JSON@
+      }
+    }
+  },
+  "required": [
+    "ecosystem_client_id",
+    "ecosystem_device_id"
+  ]
+}
