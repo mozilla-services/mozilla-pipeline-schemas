@@ -78,7 +78,7 @@ def transpile_schemas(output_path: Path, schema_paths: List[Path]):
             fp.write("\n")
 
 
-def load_schemas(input_path: Path):
+def load_schemas(input_path: Path) -> dict:
     """Load schemas into memory for use in google-cloud-bigquery."""
     paths = list(input_path.glob("*.bq"))
     assert len(paths) > 0
@@ -91,9 +91,15 @@ def load_schemas(input_path: Path):
     return schemas
 
 
-def git_stash_size():
+def git_stash_size() -> int:
     """Find the size of the git stash."""
     return len([item for item in run("git stash list").split("\n") if item])
+
+
+def git_untracked_files(directories=["schemas", "templates"]) -> List[str]:
+    """Return a list of untracked files within specific directories."""
+    untracked = run(["git", "ls-files", "--others", "--exclude-standard", *directories])
+    return [item for item in untracked.split("\n") if item]
 
 
 def resolve_ref(ref: str) -> str:
@@ -142,6 +148,10 @@ def _checkout_transpile_schemas(schemas: Path, ref: str, output: Path) -> Path:
     assert (
         len(run("git diff")) == 0
     ), f"current git state must be clean, please stash changes"
+    assert not git_untracked_files(), (
+        "unchecked files detected in schema directories, please check them in: "
+        ", ".join(git_untracked_files())
+    )
 
     rev = run(f"git rev-parse --short {ref}")
     print(f"transpiling schemas for ref: {ref}, rev: {rev}")
@@ -285,6 +295,19 @@ def tmp_git(tmp_path: Path) -> Path:
 def test_dummy_git_env(tmp_git: Path):
     assert Path(run("git remote get-url origin")) == ROOT
     assert tmp_git != ROOT
+
+
+def test_git_untracked_files(tmp_git: Path):
+    assert not git_untracked_files()
+    # schemas folder is checked by default
+    run("touch schemas/new_file")
+    # but not the tests directory
+    run("touch tests/new_file")
+    assert git_untracked_files() == ["schemas/new_file"]
+    assert git_untracked_files(directories=["schemas", "tests"]) == [
+        "schemas/new_file",
+        "tests/new_file",
+    ]
 
 
 def test_managed_git_state(tmp_git: Path):
