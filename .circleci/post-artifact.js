@@ -18,7 +18,7 @@ function validation_report() {
     //
     // ["723350e.report.json", "c88ebe5.report.json", "c88ebe5-723350e.diff"]
 
-    let diff_file = files.filter(x => x.endsWith(".diff"))[0];
+    let diff_file = files.find(x => x.endsWith(".diff"));
     let diff_content = fs.readFileSync(root + "/" + diff_file, "utf8");
     let [upstream, head] = diff_file.split(".")[0].split("-");
 
