@@ -9,6 +9,7 @@ import shutil
 import subprocess
 import tempfile
 import argparse
+import sys
 from contextlib import contextmanager
 from pathlib import Path
 from typing import List, Tuple, Union
@@ -158,6 +159,9 @@ def _checkout_transpile_schemas(schemas: Path, ref: str, output: Path) -> Path:
 
     # directory structure uses the short revision
     rev_path = output / rev
+    if rev_path.exists():
+        print("Path already exists for revision, skipping")
+        return rev_path
     rev_path.mkdir()
 
     with managed_git_state():
@@ -209,7 +213,7 @@ def write_schema_diff(head: Path, base: Path, output: Path) -> Path:
 
 
 # TODO: options --use-document-sample
-def main():
+def main(argv):
     """
     TODO:
     ```
@@ -241,13 +245,20 @@ def main():
     parser.add_argument(
         "--head-ref", default="HEAD", help="Reference to the head commit e.g. HEAD"
     )
-    args = parser.parse_args()
+    parser.add_argument(
+        "--root-directory",
+        default=str(ROOT),
+        help="Directory to the root of the schema repository",
+    )
+    args = parser.parse_args(argv)
 
     # check that the correct tools are installed
     run("jsonschema-transpiler --version")
 
-    schemas = ROOT / "schemas"
-    integration = ROOT / "integration"
+    root = Path(args.root_directory)
+    schemas = root / "schemas"
+    integration = root / "integration"
+
     head_rev_path, base_rev_path = checkout_transpile_schemas(
         schemas, args.head_ref, args.base_ref, integration
     )
@@ -287,6 +298,8 @@ def tmp_git(tmp_path: Path) -> Path:
 
     run(f"git clone {origin} {workdir}")
     os.chdir(workdir)
+    # make branches available by checking them out, but ensure state ends up on HEAD
+    run(f"git checkout master")
     run(f"git checkout {resolved_head_ref}")
     yield workdir
     os.chdir(curdir)
@@ -315,6 +328,7 @@ def test_managed_git_state(tmp_git: Path):
     with managed_git_state():
         run("git checkout HEAD~1")
         assert run("git rev-parse HEAD") != original
+        assert run("git rev-parse master"), "cannot see reference to master"
     assert run("git rev-parse HEAD") == original
 
 
@@ -411,5 +425,19 @@ def test_checkout_transpile_schemas(tmp_git: Path, tmp_path):
     ), "diff does not contain new column"
 
 
+def test_main(tmp_git):
+    # choose a base ref relative to HEAD, since the head ref may be master
+    main(["--root-directory", str(tmp_git), "--base-ref", "HEAD~1"])
+    assert len(os.listdir(tmp_git / "integration")) == 3
+
+
+def test_main_duplicate(tmp_git):
+    main(["--root-directory", str(tmp_git), "--base-ref", "HEAD", "--head-ref", "HEAD"])
+    assert len(os.listdir(tmp_git / "integration")) == 2
+    assert (
+        not next((tmp_git / "integration").glob("*.diff")).open().read()
+    ), "diff should be empty"
+
+
 if __name__ == "__main__":
-    main()
+    sys.exit(main(sys.argv[1:]))
