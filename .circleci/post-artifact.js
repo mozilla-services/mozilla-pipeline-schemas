@@ -49,7 +49,7 @@ function bigquery_diff() {
     let root = "/tmp/integration";
     let files = fs.readdirSync(root);
     console.log(files);
-    let diff_file = files.filter(x => x.endsWith(".diff"))[0];
+    let diff_file = files.find(x => x.endsWith(".diff"));
     let diff_content = fs.readFileSync(root + "/" + diff_file, "utf8");
 
     var body = "No content detected."
