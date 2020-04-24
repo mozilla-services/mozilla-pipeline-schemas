@@ -65,14 +65,11 @@ in the form `<ping type>.<version>.<test name>.pass.json` for documents expected
 `<ping type>.<version>.<test name>.fail.json` for documents expected to fail validation.
 The `test name` should match the pattern `[0-9a-zA-Z_]+`
 
-To run the tests:
+To run the tests, make use of the wrapper scripts:
 
 ```bash
-# build the container with the pipeline schemas
-docker build -t mps .
-
-# run the tests
-docker run --rm mps
+./scripts/mps-build
+./scripts/mps-test
 ```
 
 ### Packaging and integration tests (optional)
@@ -96,6 +93,35 @@ pytest -k telemetry/main.4
 
 # run java tests only (if Java is configured)
 pytest -k java
+```
+
+To generate a diff of BigQuery schemas, run the `bigquery_schema_diff.py` script.
+
+```bash
+# optionally, enter the mozilla-pipeline-schemas environment
+# for jsonschema-transpiler and python3 dependencies
+./script/mps-shell
+
+# generate an integration folder, the options will default to HEAD and master
+# respectively
+./script/bigquery_schema_diff.py --base-ref master --head-ref HEAD
+```
+
+This generates an `integration` folder:
+
+```bash
+integration
+├── bq_schema_f59ca95-d502688.diff
+├── d502688
+│   ├── activity-stream.events.1.bq
+│   ├── activity-stream.impression-stats.1.bq
+...
+│   └── webpagetest.webpagetest-run.1.bq
+└── f59ca95
+    ├── activity-stream.events.1.bq
+    ├── activity-stream.impression-stats.1.bq
+    ...
+    └── webpagetest.webpagetest-run.1.bq
 ```
 
 Pushes to the main repo will trigger integration tests in CircleCI that directly
