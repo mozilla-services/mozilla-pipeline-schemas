@@ -119,7 +119,7 @@ def managed_git_state():
     should_apply_stash = before_stash_size != git_stash_size()
     if should_apply_stash:
         print(
-            "NOTE: uncommitted have been detected. These will be ignored during comparisons."
+            "NOTE: uncommitted files have been detected. These will be ignored during comparisons."
         )
     try:
         yield
