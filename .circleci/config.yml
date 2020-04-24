@@ -15,7 +15,13 @@ jobs:
       - image: docker:stable-git
     steps:
       - checkout
-      - setup_remote_docker
+      - run: &checkout_upstream
+          name: Checkout upstream
+          command: |
+            git remote add upstream git@github.com:mozilla-services/mozilla-pipeline-schemas.git
+            git fetch --all
+      - setup_remote_docker:
+          docker_layer_caching: true
       - run:
           name: Build Docker image
           command: docker build -t mps .
@@ -28,15 +34,26 @@ jobs:
       - run:
           name: Verify set version in telemetry namespace is correct
           command: docker run -w /app mps scripts/assert-telemetry-version
+      - run:
+          name: Test BigQuery schema generation for validation
+          command:
+            docker run -w /app mps pytest scripts/bigquery_schema_diff.py
+      - run:
+          name: Generate diff artifacts for bigquery
+          command: |
+            docker run --name mps -w /app mps scripts/bigquery_schema_diff.py \
+              --base-ref upstream/master
+            docker cp mps:/app/integration /tmp/integration
+      - persist_to_workspace:
+          root: /tmp
+          paths:
+            - integration
   integrate:
     executor: edge-validator
     steps:
       - checkout
-      - run: &checkout_upstream
-          name: Checkout upstream
-          command: |
-            git remote add upstream git@github.com:mozilla-services/mozilla-pipeline-schemas.git
-            git fetch --all
+      - run:
+          <<: *checkout_upstream
       - setup_remote_docker
       - restore_cache:
           key: mps-integration-data-v2
@@ -111,6 +128,7 @@ workflows:
                 ignore: /pull\/[0-9]+/
         - post-artifacts:
             requires:
+              - test
               - integrate
             filters:
               branches:
