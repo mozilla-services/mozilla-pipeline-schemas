@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "installation",
+  "properties": {
+    "device_id": {
+      "type": ["string", "null"],
+      "description": "hashed Google Ad ID"
+    },
+    "client_id": {
+      "type": "string",
+      @COMMON_PATTERN_UUID_1_JSON@,
+      "description": "telemetry client_id"
+    },
+    "seq": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "0-indexed sequence number"
+    },
+    "locale": {
+      "type": "string",
+      "description": "application locale, such as 'en-US'"
+    },
+    "os": {
+      "type": "string"
+    },
+    "osversion": {
+      "type": "string"
+    },
+    "manufacturer": {
+      "type": "string",
+      "description": "Build.MANUFACTURER"
+    },
+    "model": {
+      "type": "string",
+      "description": "Build.MODEL"
+    },
+    "arch": {
+      "type": "string",
+      "description": "device architecture"
+    },
+    "profile_date": {
+      "type": "integer"
+    },
+    "created": {
+      "type": "string"
+    },
+    "tz": {
+      "type": "integer",
+      "description": "timezone offset in minutes from UTC"
+    },
+    "app_name": {
+      "type": "string"
+    },
+    "channel": {
+      "type": "string"
+    },
+    "campaign": {
+      "type": ["string", "null"],
+      "description": "Adjust campaign"
+    },
+    "adgroup": {
+      "type": ["string", "null"],
+      "description": "Adjust AdGroup"
+    },
+    "creative": {
+      "type": ["string", "null"],
+      "description": "Adjust creative"
+    },
+    "network": {
+      "type": ["string", "null"],
+      "description": "Adjust network"
+    }
+  },
+  "required": [ "client_id", "app_name", "channel" ]
+}
