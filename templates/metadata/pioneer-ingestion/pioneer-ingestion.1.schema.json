@@ -1,0 +1,34 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "http://jsonschema.net",
+    "$comment": "Added in bug 1636317; extends the metadata included in structured ingestion, accounting for additional fields in the Pioneer envelope.",
+    "type": "object",
+    "properties": {
+        "pioneerId": {
+            "description": "Custom pioneer id, must not be Telemetry clientId",
+            @COMMON_PATTERN_UUID_1_JSON@,
+            "type": "string"
+        },
+        "studyName": {
+            "description": "Name of a particular study. Usually the addon_id.",
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^\\S+$",
+            "type": "string"
+        },
+        @METADATA_INGESTIONTOPLEVEL_1_JSON@,
+        @METADATA_ADDITIONALPROPERTIES_1_JSON@,
+        "metadata": {
+            "type": "object",
+            "properties": {
+                @METADATA_INGESTIONCOMMONMETADATA_1_JSON@
+            }
+        }
+    },
+    "required": [
+        "submission_timestamp",
+        "metadata",
+        "pioneerId",
+        "studyName"
+    ]
+}
