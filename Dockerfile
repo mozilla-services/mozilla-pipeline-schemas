@@ -19,22 +19,29 @@ RUN dnf -y update && \
         cargo \
     && dnf clean all
 
+# Install jsonschema-transpiler
 ENV PATH=$PATH:/root/.cargo/bin
 RUN cargo install jsonschema-transpiler --version 1.8.0
+
 # Configure git for testing
 RUN git config --global user.email "mozilla-pipeline-schemas@mozilla.com"
 RUN git config --global user.name "Mozilla Pipeline Schemas"
 
 WORKDIR /app
-COPY . /app
+
+# Install python dependencies
+COPY requirements.txt .
 RUN pip3 install -r requirements.txt
+
+# Install Java dependencies
+COPY pom.xml .
 RUN mvn dependency:copy-dependencies
 
-RUN rm -rf /app/release && \
-    mkdir /app/release && \
+COPY . /app
+
+RUN mkdir release && \
     cd release && \
     cmake .. && \
     make
 
-WORKDIR /app
 CMD pytest -v
