@@ -39,10 +39,14 @@ for crash_annotation_name, crash_annotation_props in crash_annotations.items():
         and crash_annotation_name not in existing_payload_properties
     ):
         print(
-            '"%s": {\n  "description": %s,\n  "type": "%s"\n},'
+            '"%s": {\n  "description": %s,\n  "type": "string"\n},'
             % (
                 crash_annotation_name,
-                json.dumps(crash_annotation_props["description"].strip()),
-                crash_annotation_props["type"],
+                json.dumps(
+                    "<{}>, {}".format(
+                        crash_annotation_props["type"],
+                        crash_annotation_props["description"].strip(),
+                    ),
+                ),
             )
         )
