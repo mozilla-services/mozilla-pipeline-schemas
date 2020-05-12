@@ -33,6 +33,10 @@
         "metadata": {
           "type": "object",
           "properties": {
+            "AvailableSwapMemory": {
+              "description": "<size>, Amount of free swap space in bytes. - Under macOS, populated with the contents of\n  sysctl \"vm.swapusage\" :: xsu_avail.\n- Under Linux, populated with /proc/meminfo's SwapFree. - Not available on other platforms.",
+              "type": "string"
+            },
             "AsyncShutdownTimeout": {
               "description": "<json>, Optional, present when a shutdown blocker failed to respond within a reasonable amount of time",
               "type": "string"
@@ -69,8 +73,16 @@
               "description": "<time>, Seconds since the Epoch (see also: `payload.crashTime`)",
               "type": "string"
             },
+            "DOMFissionEnabled": {
+              "description": "<boolean>, Set to 1 when DOM fission is enabled, and subframes are potentially loaded in a separate process.",
+              "type": "string"
+            },
             "EventLoopNestingLevel": {
               "description": "<levels>, Optional, present only if >0, indicates the nesting level of the event-loop",
+              "type": "string"
+            },
+            "IndexedDBShutdownTimeout": {
+              "description": "<json>, This annotation is present if IndexedDB shutdown was not finished in time and the browser was crashed instead of waiting for IndexedDB shutdown to finish. The condition that caused the hang is contained in the annotation. The condition is constructed by stringifying status of objects which blocked IndexedDB shutdown. Objects are divided into three groups: FactoryOperations, LiveDatabases and DatabaseMaintenances. Each group is reported separately and contains the number of objects in the group and status of individual objects in the group (duplicit entries are removed): \"GroupName: N (objectStatus1, objectStatus2, ...)\" where N is the number of objects in the group. Status of individual objects is constructed by taking selected object properties. Properties which contain origin strings are anonymized.",
               "type": "string"
             },
             "ipc_channel_error": {
@@ -81,8 +93,16 @@
               "description": "1, Optional, if set indicates that the crash occurred while the garbage collector was running",
               "type": "string"
             },
+            "LocalStorageShutdownTimeout": {
+              "description": "<json>, This annotation is present if LocalStorage shutdown was not finished in time and the browser was crashed instead of waiting for LocalStorage shutdown to finish. The condition that caused the hang is contained in the annotation. The condition is constructed by stringifying status of objects which blocked LocalStorage shutdown. Objects are divided into three groups: PrepareDatastoreOperations, Datastores and LiveDatabases. Each group is reported separately and contains the number of objects in the group and status of individual objects in the group (duplicit entries are removed): \"GroupName: N (objectStatus1, objectStatus2, ...)\" where N is the number of objects in the group. Status of individual objects is constructed by taking selected object properties. Properties which contain origin strings are anonymized.",
+              "type": "string"
+            },
             "LowCommitSpaceEvents": {
               "description": "<num>, Windows-only, present only if >0, number of low commit space events detected by the available memory tracker",
+              "type": "string"
+            },
+            "MainThreadRunnableName": {
+              "description": "<string>, Name of the currently executing nsIRunnable on the main thread.",
               "type": "string"
             },
             "MemoryErrorCorrection": {
@@ -95,6 +115,10 @@
             },
             "OOMAllocationSize": {
               "description": "<size>, Size of the allocation that caused an OOM",
+              "type": "string"
+            },
+            "PurgeablePhysicalMemory": {
+              "description": "<size>, macOS only. Amount of physical memory currently allocated but which may be deallocated by the system in case of memory pressure. Populated from vm_statistics64_data_t::purgeable_count * vm_page_size.",
               "type": "string"
             },
             "ProductID": {
