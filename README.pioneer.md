@@ -18,7 +18,7 @@ The raw incoming pings are described by the [`pioneer-study` schema](schemas/tel
  "studyName": "<my-study-name@pioneer.mozilla.org>",
  "schemaNamespace": "<namespace>",
  "schemaName": "<docType>",
- "schemaVersion": "<docVersion>"
+ "schemaVersion": <docVersion>
 }
 ```
 
