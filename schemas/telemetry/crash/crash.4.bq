@@ -1606,6 +1606,12 @@
             "type": "STRING"
           },
           {
+            "description": "<size>, Amount of free swap space in bytes. - Under macOS, populated with the contents of\n  sysctl \"vm.swapusage\" :: xsu_avail.\n- Under Linux, populated with /proc/meminfo's SwapFree. - Not available on other platforms.",
+            "mode": "NULLABLE",
+            "name": "available_swap_memory",
+            "type": "STRING"
+          },
+          {
             "description": "<size>, Windows-only, available virtual memory in bytes",
             "mode": "NULLABLE",
             "name": "available_virtual_memory",
@@ -1642,9 +1648,21 @@
             "type": "STRING"
           },
           {
+            "description": "<boolean>, Set to 1 when DOM fission is enabled, and subframes are potentially loaded in a separate process.",
+            "mode": "NULLABLE",
+            "name": "dom_fission_enabled",
+            "type": "STRING"
+          },
+          {
             "description": "<levels>, Optional, present only if >0, indicates the nesting level of the event-loop",
             "mode": "NULLABLE",
             "name": "event_loop_nesting_level",
+            "type": "STRING"
+          },
+          {
+            "description": "<json>, This annotation is present if IndexedDB shutdown was not finished in time and the browser was crashed instead of waiting for IndexedDB shutdown to finish. The condition that caused the hang is contained in the annotation. The condition is constructed by stringifying status of objects which blocked IndexedDB shutdown. Objects are divided into three groups: FactoryOperations, LiveDatabases and DatabaseMaintenances. Each group is reported separately and contains the number of objects in the group and status of individual objects in the group (duplicit entries are removed): \"GroupName: N (objectStatus1, objectStatus2, ...)\" where N is the number of objects in the group. Status of individual objects is constructed by taking selected object properties. Properties which contain origin strings are anonymized.",
+            "mode": "NULLABLE",
+            "name": "indexed_db_shutdown_timeout",
             "type": "STRING"
           },
           {
@@ -1660,9 +1678,21 @@
             "type": "STRING"
           },
           {
+            "description": "<json>, This annotation is present if LocalStorage shutdown was not finished in time and the browser was crashed instead of waiting for LocalStorage shutdown to finish. The condition that caused the hang is contained in the annotation. The condition is constructed by stringifying status of objects which blocked LocalStorage shutdown. Objects are divided into three groups: PrepareDatastoreOperations, Datastores and LiveDatabases. Each group is reported separately and contains the number of objects in the group and status of individual objects in the group (duplicit entries are removed): \"GroupName: N (objectStatus1, objectStatus2, ...)\" where N is the number of objects in the group. Status of individual objects is constructed by taking selected object properties. Properties which contain origin strings are anonymized.",
+            "mode": "NULLABLE",
+            "name": "local_storage_shutdown_timeout",
+            "type": "STRING"
+          },
+          {
             "description": "<num>, Windows-only, present only if >0, number of low commit space events detected by the available memory tracker",
             "mode": "NULLABLE",
             "name": "low_commit_space_events",
+            "type": "STRING"
+          },
+          {
+            "description": "<string>, Name of the currently executing nsIRunnable on the main thread.",
+            "mode": "NULLABLE",
+            "name": "main_thread_runnable_name",
             "type": "STRING"
           },
           {
@@ -1693,6 +1723,12 @@
             "description": "Firefox",
             "mode": "NULLABLE",
             "name": "product_name",
+            "type": "STRING"
+          },
+          {
+            "description": "<size>, macOS only. Amount of physical memory currently allocated but which may be deallocated by the system in case of memory pressure. Populated from vm_statistics64_data_t::purgeable_count * vm_page_size.",
+            "mode": "NULLABLE",
+            "name": "purgeable_physical_memory",
             "type": "STRING"
           },
           {
