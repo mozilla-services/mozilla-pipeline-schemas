@@ -5322,6 +5322,12 @@
             "type": "STRING"
           },
           {
+            "description": "Time spent marking GC objects held live through weakmaps (ms)",
+            "mode": "NULLABLE",
+            "name": "gc_mark_weak_ms",
+            "type": "STRING"
+          },
+          {
             "description": "Longest GC slice in a GC (ms)",
             "mode": "NULLABLE",
             "name": "gc_max_pause_ms",
@@ -5391,6 +5397,12 @@
             "description": "The percentage of nursery objects that were promoted to tenured heap.",
             "mode": "NULLABLE",
             "name": "gc_nursery_promotion_rate",
+            "type": "STRING"
+          },
+          {
+            "description": "Time spent running JS GC preparation phase (ms)",
+            "mode": "NULLABLE",
+            "name": "gc_prepare_ms",
             "type": "STRING"
           },
           {
@@ -6675,6 +6687,12 @@
             "description": "Time (ms) from the Input event being created to the end of it being handled for events handling during page load only",
             "mode": "NULLABLE",
             "name": "load_input_event_response_ms",
+            "type": "STRING"
+          },
+          {
+            "description": "Number of fully loaded (i.e., not pending from session restore) tabs opened across all windows, collected at most every 5 minutes whenever the user interacts with the browser in the following ways: open tab/window, page load, restoring a pending tab.",
+            "mode": "NULLABLE",
+            "name": "loaded_tab_count",
             "type": "STRING"
           },
           {
@@ -30898,6 +30916,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Time spent marking GC objects held live through weakmaps (ms)",
+                    "mode": "NULLABLE",
+                    "name": "gc_mark_weak_ms",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Longest GC slice in a GC (ms)",
                     "mode": "NULLABLE",
                     "name": "gc_max_pause_ms",
@@ -30967,6 +30991,12 @@
                     "description": "The percentage of nursery objects that were promoted to tenured heap.",
                     "mode": "NULLABLE",
                     "name": "gc_nursery_promotion_rate",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Time spent running JS GC preparation phase (ms)",
+                    "mode": "NULLABLE",
+                    "name": "gc_prepare_ms",
                     "type": "STRING"
                   },
                   {
@@ -54975,6 +55005,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "telemetry_keyed_scalars_unknown_keys",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "A counter incremented every time a user uses the Unknown Content Type dialog for PDF files, with counts grouped by action chosen (see keys). Some external applications that have very high adoption are counted specifically. Note: 'OPEN_WITH_SYSTEM_DEFAULT' may eventually resolve to one of Acrobat, Foxit, MsEdge, Chromium, etc.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "unknowncontenttype_pdf_action",
                     "type": "RECORD"
                   },
                   {
