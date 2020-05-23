@@ -1,0 +1,230 @@
+{
+  "$comment": "See https://docs.google.com/document/d/104x-QmODN7CQwvKVDlB4D2BJzJ0Q-BKnluW5EA7vX7Q/edit",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "AmountsByCategory": {
+      "properties": {
+        "in_total": {
+          "type": "number"
+        },
+        "via_non_search_algorithmic_recommendations_content": {
+          "type": "number"
+        },
+        "via_recommendations_with_an_explicit_query_or_constraint_to_optimize_for": {
+          "type": "number"
+        },
+        "via_search_results": {
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "RegretReport": {
+      "properties": {
+        "report_data": {
+          "$ref": "#/definitions/RegretReportData"
+        },
+        "user_supplied_optional_comment": {
+          "type": "string"
+        },
+        "user_supplied_other_regret_category": {
+          "type": "string"
+        },
+        "user_supplied_regret_categories": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "user_supplied_severity": {
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "RegretReportData": {
+      "properties": {
+        "parent_youtube_navigations_metadata": {
+          "items": {
+            "$ref": "#/definitions/YouTubeNavigationMetadata"
+          },
+          "type": "array"
+        },
+        "youtube_navigation_metadata": {
+          "$ref": "#/definitions/YouTubeNavigationMetadata"
+        },
+        "youtube_usage_statistics_update": {
+          "$ref": "#/definitions/YouTubeUsageStatisticsUpdate"
+        }
+      },
+      "type": "object"
+    },
+    "SharedDataEventMetadata": {
+      "properties": {
+        "amount_of_regret_reports_since_consent_was_given": {
+          "type": "number"
+        },
+        "browser_info": {
+          "properties": {
+            "build_id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "vendor": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "client_timestamp": {
+          "type": "string"
+        },
+        "event_uuid": {
+          "type": "string"
+        },
+        "extension_installation_uuid": {
+          "type": "string"
+        },
+        "extension_version": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "VideoMetadata": {
+      "properties": {
+        "video_description": {
+          "type": "string"
+        },
+        "video_id": {
+          "type": "string"
+        },
+        "video_posting_date": {
+          "type": "string"
+        },
+        "video_title": {
+          "type": "string"
+        },
+        "view_count_at_navigation": {
+          "type": "number"
+        },
+        "view_count_at_navigation_short": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "YouTubeNavigationMetadata": {
+      "description": "Selected/derived attributes from YouTubeNavigations",
+      "properties": {
+        "document_visible_time": {
+          "type": "number"
+        },
+        "page_entry_point": {
+          "$ref": "#/definitions/YouTubePageEntryPoint"
+        },
+        "url_type": {
+          "$ref": "#/definitions/YouTubeNavigationUrlType"
+        },
+        "via_non_search_algorithmic_recommendations_content": {
+          "type": "boolean"
+        },
+        "via_recommendations_with_an_explicit_query_or_constraint_to_optimize_for": {
+          "type": "boolean"
+        },
+        "via_search_results": {
+          "type": "boolean"
+        },
+        "video_element_play_time": {
+          "type": "number"
+        },
+        "video_metadata": {
+          "$ref": "#/definitions/VideoMetadata"
+        }
+      },
+      "type": "object"
+    },
+    "YouTubeNavigationUrlType": {
+      "enum": [
+        "<failed>",
+        "channel_page",
+        "empty",
+        "misc_xhr",
+        "not_a_youtube_page",
+        "other",
+        "prefetch",
+        "search_results_page",
+        "search_results_page_load_more_results",
+        "user_page",
+        "watch_page",
+        "youtube_main_page"
+      ],
+      "type": "string"
+    },
+    "YouTubePageEntryPoint": {
+      "enum": [
+        "<failed>",
+        "channel_page",
+        "direct_navigation",
+        "not_a_youtube_page",
+        "other",
+        "page_reload",
+        "search_results_page",
+        "user_page",
+        "watch_page",
+        "youtube_main_page"
+      ],
+      "type": "string"
+    },
+    "YouTubeUsageStatisticsUpdate": {
+      "properties": {
+        "amount_of_days_of_at_least_one_video_played_on_a_youtube_watch_page": {
+          "$ref": "#/definitions/AmountsByCategory"
+        },
+        "amount_of_days_with_at_least_one_youtube_visit": {
+          "type": "number"
+        },
+        "amount_of_days_with_at_least_one_youtube_watch_page_load": {
+          "$ref": "#/definitions/AmountsByCategory"
+        },
+        "amount_of_time_with_an_active_youtube_tab": {
+          "type": "number"
+        },
+        "amount_of_time_with_an_active_youtube_watch_page_tab": {
+          "$ref": "#/definitions/AmountsByCategory"
+        },
+        "amount_of_youtube_video_play_time": {
+          "type": "number"
+        },
+        "amount_of_youtube_video_play_time_on_youtube_watch_pages": {
+          "$ref": "#/definitions/AmountsByCategory"
+        },
+        "amount_of_youtube_videos_played_on_youtube_watch_pages": {
+          "$ref": "#/definitions/AmountsByCategory"
+        },
+        "amount_of_youtube_watch_pages_loaded": {
+          "$ref": "#/definitions/AmountsByCategory"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "properties": {
+    "event_metadata": {
+      "$ref": "#/definitions/SharedDataEventMetadata"
+    },
+    "regret_report": {
+      "$ref": "#/definitions/RegretReport"
+    },
+    "youtube_usage_statistics_update": {
+      "$ref": "#/definitions/YouTubeUsageStatisticsUpdate"
+    }
+  },
+  "title": "regrets-reporter-update",
+  "type": "object"
+}
