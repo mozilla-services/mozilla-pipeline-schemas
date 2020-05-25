@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "whats-new-panel",
+  "properties": {
+    @ACTIVITY-STREAM_EXPERIMENTS_1_JSON@,
+    "client_id": {
+      "type": "string",
+      @COMMON_PATTERN_UUID_1_JSON@
+    },
+    "impression_id": {
+      "description": "A UUID representing this user. Note that it's not client_id, nor can it be used to link to a client_id",
+      "type": "string",
+      "pattern": "^\\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\}$"
+    },
+    "event": {
+        "description": "An event identifier",
+        "type": "string"
+    },
+    "event_context": {
+        "description": "A string that describes the context about this event",
+        "type": "string"
+    },
+    "message_id": {
+        "type": "string"
+    },
+    "bucket_id": {
+        "type": "string"
+    },
+    "addon_version": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "release_channel": {
+      "type": "string"
+    },
+    "locale": {
+      "type": "string"
+    },
+    "profile_creation_date": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "event",
+    "addon_version",
+    "version",
+    "locale"
+  ],
+  "oneOf": [
+    { "required": [ "client_id" ] },
+    { "required": [ "impression_id" ] }
+  ],
+  "anyOf": [
+    { "required": [ "message_id" ] },
+    { "required": [ "bucket_id" ] }
+  ]
+}
