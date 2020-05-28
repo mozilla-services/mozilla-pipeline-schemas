@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "addon_version": {
+      "type": "string"
+    },
+    "client_id": {
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "type": "string"
+    },
+    "event": {
+      "description": "An event identifier",
+      "type": "string"
+    },
+    "event_context": {
+      "description": "A string that describes the context about this event",
+      "type": "string"
+    },
+    "experiments": {
+      "additionalProperties": {
+        "properties": {
+          "branch": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "description": "An object to record all active experiments, experiments IDs are stored as keys, and the value object stores the branch information. Example: {\"experiment_1\": {\"branch\": \"control\"}, \"experiment_2\": {\"branch\": \"treatment\"}}. This deprecates the \"shield_id\" used in activity-stream and messaging-system.",
+      "type": "object"
+    },
+    "locale": {
+      "type": "string"
+    },
+    "message_id": {
+      "type": "string"
+    },
+    "profile_creation_date": {
+      "type": "integer"
+    },
+    "release_channel": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "client_id",
+    "event",
+    "message_id",
+    "addon_version",
+    "version",
+    "locale"
+  ],
+  "title": "whats-new-panel",
+  "type": "object"
+}
