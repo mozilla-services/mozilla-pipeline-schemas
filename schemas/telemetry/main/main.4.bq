@@ -9362,7 +9362,7 @@
             "type": "STRING"
           },
           {
-            "description": "SSL Authentication Algorithm (null=0, rsa=1, dsa=2, ecdsa=4) in full handshake",
+            "description": "SSL Authentication Algorithm (null=0, rsa(KEA)=1, ecdsa=4, rsa(sign)=7) in full handshake",
             "mode": "NULLABLE",
             "name": "ssl_auth_algorithm_full",
             "type": "STRING"
@@ -9458,7 +9458,7 @@
             "type": "STRING"
           },
           {
-            "description": "ECDHE KEA (TLS_ECDHE_*) curve (23=P-256, 24=P-384, 25=P-521) in full handshake",
+            "description": "ECDHE KEA (TLS_ECDHE_*) curve (23=P-256, 24=P-384, 25=P-521, 29=Curve25519) in full handshake",
             "mode": "NULLABLE",
             "name": "ssl_kea_ecdhe_curve_full",
             "type": "STRING"
@@ -26194,6 +26194,24 @@
                 "type": "STRING"
               },
               {
+                "description": "Page load errors. Match values with type of error in nsDocShellTelemetryUtils.cpp",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "page_load_error",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "Permission requests (showing a permission prompt) by whether they were requested from code handling a user input event.",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -34842,7 +34860,7 @@
                     "type": "STRING"
                   },
                   {
-                    "description": "SSL Authentication Algorithm (null=0, rsa=1, dsa=2, ecdsa=4) in full handshake",
+                    "description": "SSL Authentication Algorithm (null=0, rsa(KEA)=1, ecdsa=4, rsa(sign)=7) in full handshake",
                     "mode": "NULLABLE",
                     "name": "ssl_auth_algorithm_full",
                     "type": "STRING"
@@ -34938,7 +34956,7 @@
                     "type": "STRING"
                   },
                   {
-                    "description": "ECDHE KEA (TLS_ECDHE_*) curve (23=P-256, 24=P-384, 25=P-521) in full handshake",
+                    "description": "ECDHE KEA (TLS_ECDHE_*) curve (23=P-256, 24=P-384, 25=P-521, 29=Curve25519) in full handshake",
                     "mode": "NULLABLE",
                     "name": "ssl_kea_ecdhe_curve_full",
                     "type": "STRING"
@@ -51154,6 +51172,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "opengl_compositing_failure_id",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Page load errors. Match values with type of error in nsDocShellTelemetryUtils.cpp",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "page_load_error",
                     "type": "RECORD"
                   },
                   {
