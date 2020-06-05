@@ -52881,6 +52881,48 @@
                     "type": "INT64"
                   },
                   {
+                    "description": "A counter incremented every time the print dialog is opened from print preview.\n",
+                    "mode": "NULLABLE",
+                    "name": "printing_dialog_opened_via_preview",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "A counter incremented every time the print dialog is opened without opening print preview.\n",
+                    "mode": "NULLABLE",
+                    "name": "printing_dialog_opened_without_preview",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "A counter incremented every time a print dialog opened from print preview is cancelled.\n",
+                    "mode": "NULLABLE",
+                    "name": "printing_dialog_via_preview_cancelled",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "A counter incremented every time a print dialog that was opened without print preview is cancelled.\n",
+                    "mode": "NULLABLE",
+                    "name": "printing_dialog_without_preview_cancelled",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "A counter incremented every time a print preview session exits without printing.\n",
+                    "mode": "NULLABLE",
+                    "name": "printing_preview_cancelled",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "A counter incremented every time the user initiates print preview.\n",
+                    "mode": "NULLABLE",
+                    "name": "printing_preview_opened",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "A counter incremented every time a silent print (a print without a print settings dialog being opened) is initiated.  This happens when extensions invoke ExtensionAPI.tabs.saveAsPDF, for example, or when the print.always_print_silent pref is set.\n",
+                    "mode": "NULLABLE",
+                    "name": "printing_silent_print",
+                    "type": "INT64"
+                  },
+                  {
                     "description": "How many times we ended up recompiling a script from the script preloader on the main thread.",
                     "mode": "NULLABLE",
                     "name": "script_preloader_mainthread_recompile",
@@ -55169,6 +55211,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "printing_error",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "A counter incremented every time the user prints to a certain target type.  For the most part, the 'unknown' count will be prints to a physical printer, but we can't know for sure since third party drivers could also be print to file drivers.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "printing_target_type",
                     "type": "RECORD"
                   },
                   {
