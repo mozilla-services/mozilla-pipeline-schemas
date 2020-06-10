@@ -1,19 +1,19 @@
 {
-    "type": "object",
-    "required": ["type"],
-    "properties": {
-        "type": { "type": "string" }
-    },
-    "anyOf": [
-        {
-            "properties": {
-                "type": { "const": "webext-storage" },
-                "entries": { "type": "integer" },
-                "entriesSuccessful": { "type": "integer" },
-                "extensions": { "type": "integer" },
-                "extensionsSuccessful": { "type": "integer" },
-                "openFailure": { "type": "boolean" }
-            }
-        }
-    ]
+  "type": "object",
+  "required": ["type"],
+  "properties": {
+    "type": { "type": "string" }
+  },
+  "anyOf": [
+    {
+      "properties": {
+        "type": { "const": "webext-storage" },
+        "entries": { "type": "integer", "minimum": 0 },
+        "entriesSuccessful": { "type": "integer", "minimum": 0 },
+        "extensions": { "type": "integer", "minimum": 0 },
+        "extensionsSuccessful": { "type": "integer", "minimum": 0 },
+        "openFailure": { "type": "boolean" }
+      }
+    }
+  ]
 }
