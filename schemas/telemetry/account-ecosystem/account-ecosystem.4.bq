@@ -9,103 +9,23 @@
     "fields": [
       {
         "mode": "NULLABLE",
-        "name": "android_sdk_version",
-        "type": "STRING"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "app_build",
-        "type": "STRING"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "app_channel",
-        "type": "STRING"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "app_display_version",
-        "type": "STRING"
-      },
-      {
-        "mode": "NULLABLE",
         "name": "architecture",
         "type": "STRING"
       },
       {
         "mode": "NULLABLE",
-        "name": "client_id",
+        "name": "build_id",
         "type": "STRING"
       },
       {
         "mode": "NULLABLE",
-        "name": "device_manufacturer",
+        "name": "channel",
         "type": "STRING"
       },
       {
         "mode": "NULLABLE",
-        "name": "device_model",
+        "name": "display_version",
         "type": "STRING"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "first_run_date",
-        "type": "STRING"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "locale",
-        "type": "STRING"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "os",
-        "type": "STRING"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "os_version",
-        "type": "STRING"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "telemetry_sdk_build",
-        "type": "STRING"
-      }
-    ],
-    "mode": "NULLABLE",
-    "name": "client_info",
-    "type": "RECORD"
-  },
-  {
-    "description": "The document ID specified in the URI when the client sent this message",
-    "mode": "NULLABLE",
-    "name": "document_id",
-    "type": "STRING"
-  },
-  {
-    "fields": [
-      {
-        "mode": "NULLABLE",
-        "name": "category",
-        "type": "STRING"
-      },
-      {
-        "fields": [
-          {
-            "mode": "NULLABLE",
-            "name": "key",
-            "type": "STRING"
-          },
-          {
-            "mode": "NULLABLE",
-            "name": "value",
-            "type": "STRING"
-          }
-        ],
-        "mode": "REPEATED",
-        "name": "extra",
-        "type": "RECORD"
       },
       {
         "mode": "NULLABLE",
@@ -114,13 +34,44 @@
       },
       {
         "mode": "NULLABLE",
-        "name": "timestamp",
-        "type": "INT64"
+        "name": "platform_version",
+        "type": "STRING"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "vendor",
+        "type": "STRING"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "version",
+        "type": "STRING"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "xpcom_abi",
+        "type": "STRING"
       }
     ],
-    "mode": "REPEATED",
-    "name": "events",
+    "mode": "NULLABLE",
+    "name": "application",
     "type": "RECORD"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "creation_date",
+    "type": "STRING"
+  },
+  {
+    "description": "The document ID specified in the URI when the client sent this message",
+    "mode": "NULLABLE",
+    "name": "document_id",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "id",
+    "type": "STRING"
   },
   {
     "fields": [
@@ -220,6 +171,34 @@
         "type": "RECORD"
       },
       {
+        "description": "Components of the URI to which this ping was sent",
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "app_build_id",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "app_name",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "app_update_channel",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "app_version",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "uri",
+        "type": "RECORD"
+      },
+      {
         "description": "Parsed components of the client's user agent string",
         "fields": [
           {
@@ -245,156 +224,6 @@
     ],
     "mode": "NULLABLE",
     "name": "metadata",
-    "type": "RECORD"
-  },
-  {
-    "fields": [
-      {
-        "fields": [
-          {
-            "mode": "NULLABLE",
-            "name": "glean_core_migration_successful",
-            "type": "BOOL"
-          },
-          {
-            "mode": "NULLABLE",
-            "name": "glean_error_preinit_tasks_timeout",
-            "type": "BOOL"
-          }
-        ],
-        "mode": "NULLABLE",
-        "name": "boolean",
-        "type": "RECORD"
-      },
-      {
-        "fields": [
-          {
-            "mode": "NULLABLE",
-            "name": "glean_error_preinit_tasks_overflow",
-            "type": "INT64"
-          },
-          {
-            "mode": "NULLABLE",
-            "name": "glean_validation_app_forceclosed_count",
-            "type": "INT64"
-          },
-          {
-            "mode": "NULLABLE",
-            "name": "glean_validation_baseline_ping_count",
-            "type": "INT64"
-          }
-        ],
-        "mode": "NULLABLE",
-        "name": "counter",
-        "type": "RECORD"
-      },
-      {
-        "fields": [
-          {
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "INT64"
-              }
-            ],
-            "mode": "REPEATED",
-            "name": "glean_error_invalid_label",
-            "type": "RECORD"
-          },
-          {
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "INT64"
-              }
-            ],
-            "mode": "REPEATED",
-            "name": "glean_error_invalid_overflow",
-            "type": "RECORD"
-          },
-          {
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "INT64"
-              }
-            ],
-            "mode": "REPEATED",
-            "name": "glean_error_invalid_state",
-            "type": "RECORD"
-          },
-          {
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "INT64"
-              }
-            ],
-            "mode": "REPEATED",
-            "name": "glean_error_invalid_value",
-            "type": "RECORD"
-          },
-          {
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "INT64"
-              }
-            ],
-            "mode": "REPEATED",
-            "name": "glean_upload_ping_upload_failure",
-            "type": "RECORD"
-          }
-        ],
-        "mode": "NULLABLE",
-        "name": "labeled_counter",
-        "type": "RECORD"
-      },
-      {
-        "fields": [
-          {
-            "mode": "NULLABLE",
-            "name": "ping_reason",
-            "type": "STRING"
-          }
-        ],
-        "mode": "NULLABLE",
-        "name": "string",
-        "type": "RECORD"
-      }
-    ],
-    "mode": "NULLABLE",
-    "name": "metrics",
     "type": "RECORD"
   },
   {
@@ -430,68 +259,28 @@
     "fields": [
       {
         "mode": "NULLABLE",
-        "name": "end_time",
+        "name": "ecosystem_client_id",
         "type": "STRING"
       },
       {
-        "fields": [
-          {
-            "mode": "NULLABLE",
-            "name": "key",
-            "type": "STRING"
-          },
-          {
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "branch",
-                "type": "STRING"
-              },
-              {
-                "fields": [
-                  {
-                    "mode": "NULLABLE",
-                    "name": "type",
-                    "type": "STRING"
-                  }
-                ],
-                "mode": "NULLABLE",
-                "name": "extra",
-                "type": "RECORD"
-              }
-            ],
-            "mode": "NULLABLE",
-            "name": "value",
-            "type": "RECORD"
-          }
-        ],
+        "mode": "NULLABLE",
+        "name": "ecosystem_device_id",
+        "type": "STRING"
+      },
+      {
+        "description": "Account Ecosystem Telemetry user identifier; this value is not present in the original payload sent by clients, but is instead inserted by the pipeline after decrypting and removing ecosystemAnonId",
+        "mode": "NULLABLE",
+        "name": "ecosystem_user_id",
+        "type": "STRING"
+      },
+      {
         "mode": "REPEATED",
-        "name": "experiments",
-        "type": "RECORD"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "ping_type",
-        "type": "STRING"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "reason",
-        "type": "STRING"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "seq",
-        "type": "INT64"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "start_time",
+        "name": "previous_ecosystem_user_ids",
         "type": "STRING"
       }
     ],
     "mode": "NULLABLE",
-    "name": "ping_info",
+    "name": "payload",
     "type": "RECORD"
   },
   {
@@ -505,5 +294,15 @@
     "mode": "NULLABLE",
     "name": "submission_timestamp",
     "type": "TIMESTAMP"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "type",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "version",
+    "type": "FLOAT64"
   }
 ]
