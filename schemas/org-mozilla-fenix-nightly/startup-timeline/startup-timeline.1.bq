@@ -252,11 +252,13 @@
       {
         "fields": [
           {
+            "description": "An error when attempting to record `framework_start` - the application\ninit timestamp returned a negative value - which is likely indicative of a\nbug in the implementation.\n",
             "mode": "NULLABLE",
             "name": "startup_timeline_framework_start_error",
             "type": "BOOL"
           },
           {
+            "description": "An error when attempting to read stats from /proc pseudo-filesystem -\nprivacy managers can block access to reading these files -\nthe application will catch a file reading exception.\n",
             "mode": "NULLABLE",
             "name": "startup_timeline_framework_start_read_error",
             "type": "BOOL"
@@ -269,6 +271,7 @@
       {
         "fields": [
           {
+            "description": "The number of clock tick time units that occur in one second on this\nparticular device. This value is expected to be used in conjunction with\nthe `framework_start` metric.\n",
             "mode": "NULLABLE",
             "name": "startup_timeline_clock_ticks_per_second",
             "type": "INT64"
@@ -281,6 +284,7 @@
       {
         "fields": [
           {
+            "description": "Counts the number of times a metric was set with an invalid label. The labels are the `category.name` identifier of the metric.",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -298,6 +302,7 @@
             "type": "RECORD"
           },
           {
+            "description": "Counts the number of times a metric was set a value that overflew. The labels are the `category.name` identifier of the metric.",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -315,6 +320,7 @@
             "type": "RECORD"
           },
           {
+            "description": "Counts the number of times a timing metric was used incorrectly. The labels are the `category.name` identifier of the metric.",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -332,6 +338,7 @@
             "type": "RECORD"
           },
           {
+            "description": "Counts the number of times a metric was set to an invalid value. The labels are the `category.name` identifier of the metric.",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -356,6 +363,7 @@
       {
         "fields": [
           {
+            "description": "The duration the Android framework takes to start before letting us run\ncode in `*Application.init`. This is calculated from `appInitTimestamp -\nprocessStartTimestamp`. `processStartTimestamp` is derived from the clock\ntick time unit, which is expected to be less granular than nanoseconds.\nTherefore, we convert and round our timestamps to clock ticks before\ncomputing the difference and convert back to nanoseconds to report.\n\nFor debugging purposes, `clock_ticks_per_second`, which may vary between\ndevices, is also reported as a metric\n",
             "fields": [
               {
                 "mode": "NULLABLE",

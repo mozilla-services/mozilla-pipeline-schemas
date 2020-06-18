@@ -252,11 +252,13 @@
       {
         "fields": [
           {
+            "description": "A counter of URIs visited by the user in the current session, including\npage reloads. This does not include background page requests and URIs from\nembedded pages or private browsing but may be incremented without user\ninteraction by website scripts that programmatically redirect to a new\nlocation.\n",
             "mode": "NULLABLE",
             "name": "events_total_uri_count",
             "type": "INT64"
           },
           {
+            "description": "The number of metrics pings sent during the lifetime of this baseline ping.",
             "mode": "NULLABLE",
             "name": "glean_validation_metrics_ping_count",
             "type": "INT64"
@@ -269,6 +271,7 @@
       {
         "fields": [
           {
+            "description": "Records clicks of adverts on SERP pages.\nThe key format is ‘<provider-name>’.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -286,6 +289,7 @@
             "type": "RECORD"
           },
           {
+            "description": "Records the type of interaction a user has on SERP pages.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -303,6 +307,7 @@
             "type": "RECORD"
           },
           {
+            "description": "Records counts of SERP pages with adverts displayed.\nThe key format is ‘<provider-name>’.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -320,6 +325,7 @@
             "type": "RECORD"
           },
           {
+            "description": "Counts the number of times a metric was set with an invalid label. The labels are the `category.name` identifier of the metric.",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -337,6 +343,7 @@
             "type": "RECORD"
           },
           {
+            "description": "Counts the number of times a metric was set a value that overflew. The labels are the `category.name` identifier of the metric.",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -354,6 +361,7 @@
             "type": "RECORD"
           },
           {
+            "description": "Counts the number of times a timing metric was used incorrectly. The labels are the `category.name` identifier of the metric.",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -371,6 +379,7 @@
             "type": "RECORD"
           },
           {
+            "description": "Counts the number of times a metric was set to an invalid value. The labels are the `category.name` identifier of the metric.",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -388,6 +397,7 @@
             "type": "RECORD"
           },
           {
+            "description": "The labels for this counter are `<search-engine-name>.<source>`.\n\nIf the search engine is bundled with Fenix `search-engine-name` will be\nthe name of the search engine. If it's a custom search engine (defined:\nhttps://github.com/mozilla-mobile/fenix/issues/1607) the value will be\n`custom`.\n\n`source` will be: `action`, `suggestion`, `widget` or `shortcut`\n(depending on the source from which the search started). Also added the\n`other` option for the source but it should never enter on this case.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -412,6 +422,7 @@
       {
         "fields": [
           {
+            "description": "The locale of the application during initialization (e.g. \"es-ES\").\nIf the locale can't be determined on the system, the value is\n[\"und\"](https://unicode.org/reports/tr35/#Unknown_or_Invalid_Identifiers),\nto indicate \"undetermined\".\n",
             "mode": "NULLABLE",
             "name": "glean_baseline_locale",
             "type": "STRING"
@@ -424,6 +435,7 @@
       {
         "fields": [
           {
+            "description": "The duration of the last foreground session.\n",
             "fields": [
               {
                 "mode": "NULLABLE",

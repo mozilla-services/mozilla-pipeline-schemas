@@ -252,21 +252,25 @@
       {
         "fields": [
           {
+            "description": "Bookmarks sync engine status. True means that the bookmarks sync status is enabled, false otherwise.\n",
             "mode": "NULLABLE",
             "name": "firefox_account_bookmarks_sync_status",
             "type": "BOOL"
           },
           {
+            "description": "History sync engine status. True means that the history sync status is enabled, false otherwise.\n",
             "mode": "NULLABLE",
             "name": "firefox_account_history_sync_status",
             "type": "BOOL"
           },
           {
+            "description": "Reports `true` if the client was successfully migrated from the Android-specific implementation of the Glean SDK to the cross-platform one.",
             "mode": "NULLABLE",
             "name": "glean_core_migration_successful",
             "type": "BOOL"
           },
           {
+            "description": "Set to true if the tasks that are queued prior to Glean initialization time out.",
             "mode": "NULLABLE",
             "name": "glean_error_preinit_tasks_timeout",
             "type": "BOOL"
@@ -279,21 +283,25 @@
       {
         "fields": [
           {
+            "description": "Number of tabs successfully sent per day\n",
             "mode": "NULLABLE",
             "name": "firefox_account_tab_sent",
             "type": "INT64"
           },
           {
+            "description": "The number of tasks queued in the pre-initialization buffer. Only sent if the buffer overflows.",
             "mode": "NULLABLE",
             "name": "glean_error_preinit_tasks_overflow",
             "type": "INT64"
           },
           {
+            "description": "This metric counts how many times a dirty bit was detected when starting the Glean SDK, on Android. This dirty bit is set to `true` when Android's lifecycle `ON_START` is hit and flipped back to false on `ON_STOP`. When an application is force-closed, it might not get the `ON_STOP` and so the value would stay `true`. The next time Glean starts, it will increment this counter.",
             "mode": "NULLABLE",
             "name": "glean_validation_app_forceclosed_count",
             "type": "INT64"
           },
           {
+            "description": "The number of baseline pings sent during the lifetime of this metrics ping.",
             "mode": "NULLABLE",
             "name": "glean_validation_baseline_ping_count",
             "type": "INT64"
@@ -306,6 +314,7 @@
       {
         "fields": [
           {
+            "description": "Number of received tabs per day\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -323,6 +332,7 @@
             "type": "RECORD"
           },
           {
+            "description": "Counts the number of times a metric was set with an invalid label. The labels are the `category.name` identifier of the metric.",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -340,6 +350,7 @@
             "type": "RECORD"
           },
           {
+            "description": "Counts the number of times a metric was set a value that overflew. The labels are the `category.name` identifier of the metric.",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -357,6 +368,7 @@
             "type": "RECORD"
           },
           {
+            "description": "Counts the number of times a timing metric was used incorrectly. The labels are the `category.name` identifier of the metric.",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -374,6 +386,7 @@
             "type": "RECORD"
           },
           {
+            "description": "Counts the number of times a metric was set to an invalid value. The labels are the `category.name` identifier of the metric.",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -391,6 +404,7 @@
             "type": "RECORD"
           },
           {
+            "description": "Counts the number of ping upload failures, by type of failure. This includes failures for all ping types, though the counts appear in the next successfully sent `metrics` ping.",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -408,6 +422,7 @@
             "type": "RECORD"
           },
           {
+            "description": "Counting how many searches are queried in a specific search engine. The search engine `identifier`s are used as keys for this metric.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -425,6 +440,7 @@
             "type": "RECORD"
           },
           {
+            "description": "Counting how many URLs are visited in a day, by input method.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -449,11 +465,13 @@
       {
         "fields": [
           {
+            "description": "The distribution channel name of this application. We use this field to recognize Firefox Reality is distributed to which channels, such as wavevrStore, oculusvr, picovr,etc.\n",
             "mode": "NULLABLE",
             "name": "distribution_channel_name",
             "type": "STRING"
           },
           {
+            "description": "The optional reason the ping was submitted.\nThe specific values for reason are specific to each ping, and are\ndocumented in the ping's pings.yaml file.\n",
             "mode": "NULLABLE",
             "name": "ping_reason",
             "type": "STRING"
@@ -466,6 +484,7 @@
       {
         "fields": [
           {
+            "description": "Measuring if users use WebXR APIs to enter XR immersive mode. How long they stay in this mode. (It starts from users call `navigator.xr.requestSession()` and be ended when the XRSession calls its `end()`.)\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -525,6 +544,7 @@
             "type": "RECORD"
           },
           {
+            "description": "Measuring how long each page takes to load.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -584,6 +604,7 @@
             "type": "RECORD"
           },
           {
+            "description": "Measuring how long windows are kept open.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
