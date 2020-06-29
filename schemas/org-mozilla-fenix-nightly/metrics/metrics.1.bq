@@ -288,6 +288,18 @@
             "type": "BOOL"
           },
           {
+            "description": "A boolean that indicates if the user has any open NORMAL tabs.\n",
+            "mode": "NULLABLE",
+            "name": "metrics_has_open_tabs",
+            "type": "BOOL"
+          },
+          {
+            "description": "A boolean that indicates if the user has recently used PWAs.\nSee recently_used_pwa_count for the actual count.\n",
+            "mode": "NULLABLE",
+            "name": "metrics_has_recent_pwas",
+            "type": "BOOL"
+          },
+          {
             "description": "A boolean that indicates if the user has top sites\n",
             "mode": "NULLABLE",
             "name": "metrics_has_top_sites",
@@ -346,6 +358,18 @@
             "description": "The total number of write operations performed on the logins store. The count only includes operations triggered by the application, not e.g. incidental writes performed as part of a sync. It is intended to be used together with `write_query_error_count` to measure the  overall error rate of write operations on the logins store.\n",
             "mode": "NULLABLE",
             "name": "logins_store_write_query_count",
+            "type": "INT64"
+          },
+          {
+            "description": "A counter that indicates how many PWAs a user has recently used.\nThreshold for \"recency\" set in HomeActivity#PWA_RECENTLY_USED_THRESHOLD.\nCurrently we are not told by the OS when a PWA is removed by the user,\nso we use the \"recently used\" heuristic to judge how many PWAs are still\nactive, as a proxy for \"installed\". This value will only be set if the\nuser has at least *one* recently used PWA. If they have 0, this metric\nwill not be sent, resulting in a null value during analysis on the\nserver-side. To disambiguate between a failed `recently_used_pwa_count`\nmetric and 0 recent PWAs, please see `has_recent_pwas`.\n",
+            "mode": "NULLABLE",
+            "name": "metrics_recently_used_pwa_count",
+            "type": "INT64"
+          },
+          {
+            "description": "A counter that indicates how many NORMAL tabs a user has open. This\nvalue will only be set if the user has at least *one* open tab. If they\nhave 0, this ping will not get sent, resulting in a null value. To\ndisambiguate between a failed `tabs_open_count` ping and 0 open tabs,\nplease see `has_open_tabs`.\n",
+            "mode": "NULLABLE",
+            "name": "metrics_tabs_open_count",
             "type": "INT64"
           },
           {
