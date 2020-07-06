@@ -31464,6 +31464,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "The length of time (in milliseconds) that it takes for the cache worker to generate the cache and return it to the main thread",
+                    "mode": "NULLABLE",
+                    "name": "fx_abouthome_cache_construction",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Firefox: Time to initialize the bookmarks toolbar view (ms)",
                     "mode": "NULLABLE",
                     "name": "fx_bookmarks_toolbar_init_ms",
@@ -57769,6 +57775,18 @@
                     "mode": "NULLABLE",
                     "name": "browser_session_restore_worker_restart_count",
                     "type": "INT64"
+                  },
+                  {
+                    "description": "How the about:home startup cache functioned on startup.\n0: Result value was never set (error case) 1: Cache did not exist 2: Cache page stream was corrupt / inaccessible 3: Cache script stream was corrupt / inaccessible 4: Cache was invalidated by a version bump 5: Cache was valid, but read too late to be useful. 6: Cache was valid and used. 7: Cache is disabled. 8: User did not load about:home on its own by default. 9: Cache is disabled because about:newtab preloading is disabled.\n",
+                    "mode": "NULLABLE",
+                    "name": "browser_startup_abouthome_cache_result",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "True if the about:home startup cache was written via the AsyncShutdown blocker.\n",
+                    "mode": "NULLABLE",
+                    "name": "browser_startup_abouthome_cache_shutdownwrite",
+                    "type": "BOOL"
                   },
                   {
                     "description": "The action that the user took with the slow startup notification bar. 0: No action (default) 1: User chose to open SUMO document on slow startup 2: User chose to never show the notification bar again 3: User dismissed the notification bar\n",
