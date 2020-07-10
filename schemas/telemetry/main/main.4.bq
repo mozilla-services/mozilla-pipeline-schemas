@@ -4742,6 +4742,18 @@
             "type": "STRING"
           },
           {
+            "description": "Seconds between `user-interaction-active` and `user-interaction-inactive`. For use in evaluating baseline engagement for Project FOG.",
+            "mode": "NULLABLE",
+            "name": "fog_eval_user_active_s",
+            "type": "STRING"
+          },
+          {
+            "description": "Seconds between a Firefox window being raised and lowered. For use in evaluating baseline engagement for Project FOG.",
+            "mode": "NULLABLE",
+            "name": "fog_eval_window_raised_s",
+            "type": "STRING"
+          },
+          {
             "description": "font cache hit",
             "mode": "NULLABLE",
             "name": "font_cache_hit",
@@ -7247,6 +7259,12 @@
             "description": "Encountered a missing character that would have been supported by a user-installed font",
             "mode": "NULLABLE",
             "name": "missing_font_user",
+            "type": "STRING"
+          },
+          {
+            "description": "Accumulates how many downloads are mixed-content (True = The download is MixedContent, False= is not MixedContent)",
+            "mode": "NULLABLE",
+            "name": "mixed_content_downloads",
             "type": "STRING"
           },
           {
@@ -33822,6 +33840,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Accumulates how many downloads are mixed-content (True = The download is MixedContent, False= is not MixedContent)",
+                    "mode": "NULLABLE",
+                    "name": "mixed_content_downloads",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "How often would blocked mixed content be allowed if HSTS upgrades were allowed? 0=display/no-HSTS, 1=display/HSTS, 2=active/no-HSTS, 3=active/HSTS",
                     "mode": "NULLABLE",
                     "name": "mixed_content_hsts",
@@ -58344,6 +58368,30 @@
                     "description": "Status of the FirstRun service, which runs post-install/early-startup in Firefox.",
                     "mode": "NULLABLE",
                     "name": "first_startup_status_code",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Whether the user is presently actively interacting with Firefox. For use in evaluating baseline engagement for Project FOG.\n",
+                    "mode": "NULLABLE",
+                    "name": "fog_eval_user_active",
+                    "type": "BOOL"
+                  },
+                  {
+                    "description": "How many Telemetry stopwatch errors did we have while trying to measure user activity? These could be attempts to start a started timer or finish an unstarted timer or so forth. See Stopwatch::Start and Stopwatch::Finish for details. For use in evaluating baseline engagement for Project FOG.\n",
+                    "mode": "NULLABLE",
+                    "name": "fog_eval_user_active_error",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Whether a Firefox window is presently raised. For use in evaluating baseline engagement for Project FOG.\n",
+                    "mode": "NULLABLE",
+                    "name": "fog_eval_window_raised",
+                    "type": "BOOL"
+                  },
+                  {
+                    "description": "How many Telemetry stopwatch errors did we have while trying to measure window raising? These could be attempts to start a started timer or finish an unstarted timer or so forth. See Stopwatch::Start and Stopwatch::Finish for details. For use in evaluating baseline engagement for Project FOG.\n",
+                    "mode": "NULLABLE",
+                    "name": "fog_eval_window_raised_error",
                     "type": "INT64"
                   },
                   {
