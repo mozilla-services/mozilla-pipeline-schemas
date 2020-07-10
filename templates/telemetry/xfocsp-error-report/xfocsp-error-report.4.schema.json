@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "xfocsp-error-report",
+  "description": "Schema for xfocsp-error-report pings as documented at https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/telemetry/data/xfocsp-error-report-ping.html",
+  "properties": {
+    "payload": {
+      "type": "object",
+      "minProperties": 7,
+      "maxProperties": 7,
+      "properties": {
+        "error_type": {
+          "description": "The type of what error triggers this ping.",
+          "type": "string",
+          "enum": ["xfo", "csp"]
+        },
+        "xfo_header": {
+          "description": "The X-Frame-Options value in the response HTTP header.",
+          "type": "string"
+        },
+        "csp_header": {
+          "description": "The CSP: frame-ancestors value in the response HTTP header.",
+          "type": "string"
+        },
+        "frame_hostname": {
+          "description": "The hostname of the frame which triggers the error.",
+          "type": "string"
+        },
+        "top_hostname": {
+          "description": "The hostname of the top-level page which loads the frame.",
+          "type": "string"
+        },
+        "frame_uri": {
+          "description": "The uri of the frame which triggers the error. This excludes the query strings.",
+          "type": "string"
+        },
+        "top_uri": {
+          "description": "The uri of the top-level page which loads the frame. This excludes the query strings.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "error_type",
+        "xfo_header",
+        "csp_header",
+        "frame_hostname",
+        "top_hostname",
+        "frame_uri",
+        "top_uri"
+      ]
+    }
+  },
+  "required": [
+    "payload"
+  ]
+}
