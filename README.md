@@ -52,10 +52,7 @@ brew cask install docker
 ```bash
 git clone https://github.com/mozilla-services/mozilla-pipeline-schemas.git
 cd mozilla-pipeline-schemas
-mkdir release
-cd release
-
-cmake ..  # this is the build process (the schemas are built with cmake templates)
+cmake .  # this is the build process (the schemas are built with cmake templates)
 ```
 
 ### Running Tests via Docker
