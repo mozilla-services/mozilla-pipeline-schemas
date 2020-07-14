@@ -32,7 +32,7 @@ existing_payload_properties = json.loads(
     ).read()
 )["properties"]["payload"]["properties"]["metadata"]["properties"].keys()
 
-crash_annotations = yaml.load(open(sys.argv[1]).read())
+crash_annotations = yaml.load(open(sys.argv[1]).read(), Loader=yaml.SafeLoader)
 for crash_annotation_name, crash_annotation_props in crash_annotations.items():
     if (
         crash_annotation_props.get("ping")
