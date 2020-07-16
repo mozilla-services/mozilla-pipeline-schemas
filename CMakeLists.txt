@@ -14,9 +14,9 @@ set(CPACK_PACKAGE_CONTACT        "Mike Trinkala <trink@mozilla.com>")
 set(CPACK_RESOURCE_FILE_LICENSE  "${CMAKE_SOURCE_DIR}/LICENSE.txt")
 set(CPACK_RPM_PACKAGE_LICENSE    "MPLv2.0")
 
-find_program(JQ_EXE jq)
-if(NOT JQ_EXE)
-  message(FATAL_ERROR "jq is required for output formatting")
+find_program(PYTHON_EXE python3)
+if(NOT PYTHON_EXE)
+  message(FATAL_ERROR "python3 is required for output formatting and metadata injection")
 endif()
 
 find_program(PARQUETFMT_EXE parquetfmt)
@@ -52,7 +52,7 @@ endforeach()
 
 file(GLOB_RECURSE SCHEMAS LIST_DIRECTORIES FALSE RELATIVE "${CMAKE_SOURCE_DIR}/templates" "${CMAKE_SOURCE_DIR}/templates/*")
 foreach(ITEM IN ITEMS ${SCHEMAS})
-  if(NOT ITEM MATCHES "^(include/|.*/\\.[^/])" )
+  if(NOT ITEM MATCHES "^(include/|.*/\\.[^/]|.*README\\.md|.*defaults\\.schema\\.json)")
     # Consistency in naming of directories/files in this repository is important
     # for it to be easily machine-parseable and so that we can consistently
     # document how pings are represented at various points in the pipeline,
@@ -60,7 +60,7 @@ foreach(ITEM IN ITEMS ${SCHEMAS})
     # the regex includes a few legacy camelCase names as special cases.
     # The format enforced here must match the recommendations documented in
     # https://docs.telemetry.mozilla.org/cookbooks/new_ping.html#choose-a-namespace-and-doctype
-    string(REGEX MATCH "/([-a-z0-9]+\\.[1-9][0-9]*(\\.schema\\.json|\\.parquetmr\\.txt)|README.*|disableSHA1rollout.4.schema.json|untrustedModules.4.schema.json)$" MATCH ${ITEM})
+    string(REGEX MATCH "/([-a-z0-9]+\\.[1-9][0-9]*(\\.schema\\.json|\\.parquetmr\\.txt)|disableSHA1rollout.4.schema.json|untrustedModules.4.schema.json)$" MATCH ${ITEM})
     if(NOT MATCH)
       message(FATAL_ERROR "schema name contains invalid characters: " ${ITEM})
     endif()
@@ -68,12 +68,12 @@ foreach(ITEM IN ITEMS ${SCHEMAS})
     # NOTE the artifacts are written back into the source repository (see the README)
     set(IN_FILE "${CMAKE_SOURCE_DIR}/templates/${ITEM}")
     set(OUT_FILE "${CMAKE_SOURCE_DIR}/schemas/${ITEM}")
-    if(ITEM MATCHES "\\.json$") # pretty print
+    if(ITEM MATCHES "\\.json$") # inject metadata and pretty print
       set(TMP_FILE "${OUT_FILE}.tmp")
       configure_file(${IN_FILE} ${TMP_FILE} @ONLY)
-      execute_process(COMMAND ${JQ_EXE} --sort-keys . RESULT_VARIABLE JQ_RV INPUT_FILE ${TMP_FILE} OUTPUT_FILE ${OUT_FILE})
-      if(NOT JQ_RV EQUAL 0)
-        message(FATAL_ERROR "jq output error ${JQ_RV} ${ITEM}")
+      execute_process(COMMAND ${PYTHON_EXE} ../scripts/inject-metadata ${ITEM} RESULT_VARIABLE INJECT_RV INPUT_FILE ${TMP_FILE} OUTPUT_FILE ${OUT_FILE})
+      if(NOT INJECT_RV EQUAL 0)
+        message(FATAL_ERROR "python output error ${INJECT_RV} ${ITEM}")
       endif()
       file(REMOVE ${TMP_FILE}) # the tmp file is intentionally not removed on failure so it can be examined
     elseif(ITEM MATCHES "\\.parquetmr\\.txt$")
@@ -84,8 +84,6 @@ foreach(ITEM IN ITEMS ${SCHEMAS})
         message(FATAL_ERROR "parquetfmt output error ${PFMT_RV} ${ITEM}")
       endif()
       file(REMOVE ${TMP_FILE}) # the tmp file is intentionally not removed on failure so it can be examined
-    elseif(ITEM MATCHES "/README\\.")
-      # ignore README files
     else()
       configure_file(${IN_FILE} ${OUT_FILE} @ONLY)
     endif()

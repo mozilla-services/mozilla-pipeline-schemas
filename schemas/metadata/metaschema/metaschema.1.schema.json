@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Metaschema for validating the structure of the per-doctype schemas in this repository",
+  "id": "http://jsonschema.net",
+  "properties": {
+    "mozPipelineMetadata": {
+      "additionalProperties": false,
+      "description": "Container for per-doctype metadata that can affect how pings are processed in the pipeline",
+      "properties": {
+        "bq_dataset_family": {
+          "description": "NOT YET IMPLEMENTED: The base name for the destination BigQuery dataset; if this is set to 'telemetry', the pipeline will write into 'telemetry_live'",
+          "type": "string"
+        },
+        "bq_table": {
+          "description": "NOT YET IMPLEMENTED: The name of the destination BigQuery table",
+          "type": "string"
+        },
+        "expiration_policy": {
+          "additionalProperties": false,
+          "description": "Various options controlling data lifecycle",
+          "properties": {
+            "collect_through_date": {
+              "description": "NOT YET IMPLEMENTED: If present, the pipeline will reject new data with submission_timestamp after the given date, sending it to error output",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+              "type": "string"
+            },
+            "delete_after_days": {
+              "description": "NOT YET IMPLEMENTED: If present, a time_partitioning_expiration policy will be set on the destination stable table in BigQuery",
+              "type": "integer"
+            }
+          },
+          "type": "object"
+        },
+        "jwe_mappings": {
+          "description": "NOT YET IMPLEMENTED: Mappings of encrypted JWE field paths to destinations where the value decrypted by the pipeline should be placed; only planned initial use case is for Account Ecosystem Telemetry; paths may indicate nested fields with dots such as 'payload.ecosystemAnonId'",
+          "items": {
+            "properties": {
+              "decrypted_field_path": {
+                "type": "string"
+              },
+              "source_field_path": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "uri_scheme": {
+          "description": "NOT YET IMPLEMENTED: The URI scheme associated with this doctype; this determines what fields appear in BigQuery under metadata.uri",
+          "enum": [
+            "structured",
+            "telemetry"
+          ],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "type": "object"
+}
