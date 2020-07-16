@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "description": "Metaschema for validating the structure of the per-doctype schemas in this repository",
+  "properties": {
+    "mozPipelineMetadata": {
+      "type": "object",
+      "description": "Container for per-doctype metadata that can affect how pings are processed in the pipeline",
+      "additionalProperties": false,
+      "properties": {
+        "bq_table": {
+          "type": "string",
+          "description": "NOT YET IMPLEMENTED: The name of the destination BigQuery table"
+        },
+        "bq_dataset_family": {
+          "type": "string",
+          "description": "NOT YET IMPLEMENTED: The base name for the destination BigQuery dataset; if this is set to 'telemetry', the pipeline will write into 'telemetry_live'"
+        },
+        "uri_scheme": {
+          "type": "string",
+          "description": "NOT YET IMPLEMENTED: The URI scheme associated with this doctype; this determines what fields appear in BigQuery under metadata.uri",
+          "enum": ["structured", "telemetry"]
+        },
+        "expiration_policy": {
+          "type": "object",
+          "description": "Various options controlling data lifecycle",
+          "additionalProperties": false,
+          "properties": {
+            "delete_after_days": {
+              "type": "integer",
+              "description": "NOT YET IMPLEMENTED: If present, a time_partitioning_expiration policy will be set on the destination stable table in BigQuery"
+            },
+            "collect_through_date": {
+              "type": "string",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+              "description": "NOT YET IMPLEMENTED: If present, the pipeline will reject new data with submission_timestamp after the given date, sending it to error output"
+            }
+          }
+        },
+        "jwe_mappings": {
+          "type": "array",
+          "description": "NOT YET IMPLEMENTED: Mappings of encrypted JWE field paths to destinations where the value decrypted by the pipeline should be placed; only planned initial use case is for Account Ecosystem Telemetry; paths may indicate nested fields with dots such as 'payload.ecosystemAnonId'",
+          "items": {
+            "type": "object",
+            "properties": {
+              "source_field_path":{"type": "string"},
+              "decrypted_field_path":{"type": "string"}
+            }
+          }
+        }
+      }
+    }
+  }
+}

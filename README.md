@@ -4,6 +4,9 @@ This repository contains schemas for Mozilla's data ingestion pipeline and data
 lake outputs.
 
 The JSON schemas are used to validate incoming submissions at ingestion time.
+They also are used as the source of truth for defining metadata about how each
+document type should be handled in the pipeline (see [the metaschema](templates/metadata/metaschema/metaschema.1.schema.json)).
+
 The [`jsonschema` [Python]](https://python-jsonschema.readthedocs.io/en/stable/)
 and [`everit-org/json-schema` [Java]](https://github.com/everit-org/json-schema)
 library (using draft 4) are used for JSON Schema Validation in this repository's
