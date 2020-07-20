@@ -1082,8 +1082,15 @@
                   {
                     "fields": [
                       {
+                        "description": "Indicates whether the d3d11 compositor was blocklisted due to driver bugs. (This field was renamed to blocklisted in bug 1647225).",
                         "mode": "NULLABLE",
                         "name": "blacklisted",
+                        "type": "BOOL"
+                      },
+                      {
+                        "description": "Indicates whether the d3d11 compositor was blocklisted due to driver bugs. (This field replaces blacklisted as of bug 1647225).",
+                        "mode": "NULLABLE",
+                        "name": "blocklisted",
                         "type": "BOOL"
                       },
                       {
@@ -5927,6 +5934,12 @@
             "description": "Whether an HTTP/2 session failed because the peer did not handshake properly",
             "mode": "NULLABLE",
             "name": "http2_fail_before_settings",
+            "type": "STRING"
+          },
+          {
+            "description": "HTTP3: Streams created per connection",
+            "mode": "NULLABLE",
+            "name": "http3_request_per_conn",
             "type": "STRING"
           },
           {
@@ -12131,6 +12144,18 @@
             "description": "Whether a page used the CSS property animation-timing-function",
             "mode": "NULLABLE",
             "name": "use_counter2_css_property_animation_timing_function_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document used the CSS property appearance",
+            "mode": "NULLABLE",
+            "name": "use_counter2_css_property_appearance_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page used the CSS property appearance",
+            "mode": "NULLABLE",
+            "name": "use_counter2_css_property_appearance_page",
             "type": "STRING"
           },
           {
@@ -32532,6 +32557,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "HTTP3: Streams created per connection",
+                    "mode": "NULLABLE",
+                    "name": "http3_request_per_conn",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "HTTP 09 Response Breakdown: lowbit subresource, high bit nonstd port",
                     "mode": "NULLABLE",
                     "name": "http_09_info",
@@ -38463,6 +38494,18 @@
                     "description": "Whether a page used the CSS property animation-timing-function",
                     "mode": "NULLABLE",
                     "name": "use_counter2_css_property_animation_timing_function_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document used the CSS property appearance",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_css_property_appearance_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page used the CSS property appearance",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_css_property_appearance_page",
                     "type": "STRING"
                   },
                   {
@@ -54351,6 +54394,12 @@
                     "type": "INT64"
                   },
                   {
+                    "description": "True if HTTP3 is enabled at the start of a session.\n",
+                    "mode": "NULLABLE",
+                    "name": "networking_http3_enabled",
+                    "type": "BOOL"
+                  },
+                  {
                     "description": "How many times PDF Viewer fallback bar was shown.\n",
                     "mode": "NULLABLE",
                     "name": "pdf_viewer_fallback_shown",
@@ -56301,7 +56350,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records when widgets are added, removed or moved in the UI. See https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/data/ecosystem-telemetry.html\n",
+                        "description": "Records when widgets are added, removed or moved in the UI. See https://firefox-source-docs.mozilla.org/browser/BrowserUsageTelemetry.html\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -56319,7 +56368,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records a count of interactions with items in the app menu. See https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/data/ecosystem-telemetry.html\n",
+                        "description": "Records a count of interactions with items in the app menu. See https://firefox-source-docs.mozilla.org/browser/BrowserUsageTelemetry.html\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -56337,7 +56386,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records a count of interactions with items in the bookmarks bar. See https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/data/ecosystem-telemetry.html\n",
+                        "description": "Records a count of interactions with items in the bookmarks bar. See https://firefox-source-docs.mozilla.org/browser/BrowserUsageTelemetry.html\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -56355,7 +56404,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records a count of interactions with items in the content context menu. See https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/data/ecosystem-telemetry.html\n",
+                        "description": "Records a count of interactions with items in the content context menu. See https://firefox-source-docs.mozilla.org/browser/BrowserUsageTelemetry.html\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -56373,7 +56422,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records a count of interactions with keyboard shortcuts. See https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/data/ecosystem-telemetry.html\n",
+                        "description": "Records a count of interactions with keyboard shortcuts. See https://firefox-source-docs.mozilla.org/browser/BrowserUsageTelemetry.html\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -56391,7 +56440,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records a count of interactions with items in the menu bar. See https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/data/ecosystem-telemetry.html\n",
+                        "description": "Records a count of interactions with items in the menu bar. See https://firefox-source-docs.mozilla.org/browser/BrowserUsageTelemetry.html\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -56409,7 +56458,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records a count of interactions with items in the nav bar. See https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/data/ecosystem-telemetry.html\n",
+                        "description": "Records a count of interactions with items in the nav bar. See https://firefox-source-docs.mozilla.org/browser/BrowserUsageTelemetry.html\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -56427,7 +56476,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records a count of interactions with items in the overflow menu. See https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/data/ecosystem-telemetry.html\n",
+                        "description": "Records a count of interactions with items in the overflow menu. See https://firefox-source-docs.mozilla.org/browser/BrowserUsageTelemetry.html\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -56445,7 +56494,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records a count of interactions with page action items in the panel. See https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/data/ecosystem-telemetry.html\n",
+                        "description": "Records a count of interactions with page action items in the panel. See https://firefox-source-docs.mozilla.org/browser/BrowserUsageTelemetry.html\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -56463,7 +56512,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records a count of interactions with page action items in the url bar. See https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/data/ecosystem-telemetry.html\n",
+                        "description": "Records a count of interactions with page action items in the url bar. See https://firefox-source-docs.mozilla.org/browser/BrowserUsageTelemetry.html\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -56481,7 +56530,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records a count of interactions with items in the pinned area of the overflow menu. See https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/data/ecosystem-telemetry.html\n",
+                        "description": "Records a count of interactions with items in the pinned area of the overflow menu. See https://firefox-source-docs.mozilla.org/browser/BrowserUsageTelemetry.html\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -56499,7 +56548,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records the items interacted with in the Containers section of preferences. See https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/data/ecosystem-telemetry.html\n",
+                        "description": "Records the items interacted with in the Containers section of preferences. See https://firefox-source-docs.mozilla.org/browser/BrowserUsageTelemetry.html\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -56517,7 +56566,25 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records the items interacted with in the General section of preferences. See https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/data/ecosystem-telemetry.html\n",
+                        "description": "Records the items interacted with in the Experimental section of preferences. See https://firefox-source-docs.mozilla.org/browser/BrowserUsageTelemetry.html\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "browser_ui_interaction_preferences_pane_experimental",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Records the items interacted with in the General section of preferences. See https://firefox-source-docs.mozilla.org/browser/BrowserUsageTelemetry.html\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -56535,7 +56602,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records the items interacted with in the Home section of preferences. See https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/data/ecosystem-telemetry.html\n",
+                        "description": "Records the items interacted with in the Home section of preferences. See https://firefox-source-docs.mozilla.org/browser/BrowserUsageTelemetry.html\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -56553,7 +56620,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records the items interacted with in the Privacy section of preferences. See https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/data/ecosystem-telemetry.html\n",
+                        "description": "Records the items interacted with in the Privacy section of preferences. See https://firefox-source-docs.mozilla.org/browser/BrowserUsageTelemetry.html\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -56571,7 +56638,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records the items interacted with in the Search section of preferences. See https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/data/ecosystem-telemetry.html\n",
+                        "description": "Records the items interacted with in the Search section of preferences. See https://firefox-source-docs.mozilla.org/browser/BrowserUsageTelemetry.html\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -56589,7 +56656,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records the items interacted with in the Search results section of preferences. See https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/data/ecosystem-telemetry.html\n",
+                        "description": "Records the items interacted with in the Search results section of preferences. See https://firefox-source-docs.mozilla.org/browser/BrowserUsageTelemetry.html\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -56607,7 +56674,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records the items interacted with in the Sync section of preferences. See https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/data/ecosystem-telemetry.html\n",
+                        "description": "Records the items interacted with in the Sync section of preferences. See https://firefox-source-docs.mozilla.org/browser/BrowserUsageTelemetry.html\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -56625,7 +56692,25 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records a count of interactions with items in the tab bar. See https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/data/ecosystem-telemetry.html\n",
+                        "description": "Records the items interacted with in any other section of preferences. See https://firefox-source-docs.mozilla.org/browser/BrowserUsageTelemetry.html\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "browser_ui_interaction_preferences_pane_unknown",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Records a count of interactions with items in the tab bar. See https://firefox-source-docs.mozilla.org/browser/BrowserUsageTelemetry.html\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -56643,7 +56728,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records a count of interactions with items in the tab context menu. See https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/data/ecosystem-telemetry.html\n",
+                        "description": "Records a count of interactions with items in the tab context menu. See https://firefox-source-docs.mozilla.org/browser/BrowserUsageTelemetry.html\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -56661,7 +56746,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "The widgets in the toolbars. See https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/data/ecosystem-telemetry.html\n",
+                        "description": "The widgets in the toolbars. See https://firefox-source-docs.mozilla.org/browser/BrowserUsageTelemetry.html\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "BOOL"
@@ -58747,6 +58832,12 @@
                     "mode": "NULLABLE",
                     "name": "networking_ftp_opened_channels_listings",
                     "type": "INT64"
+                  },
+                  {
+                    "description": "True if HTTP3 is enabled at the start of a session.\n",
+                    "mode": "NULLABLE",
+                    "name": "networking_http3_enabled",
+                    "type": "BOOL"
                   },
                   {
                     "description": "Number of http connections transfer over a captive portal during a subsession.\n",
