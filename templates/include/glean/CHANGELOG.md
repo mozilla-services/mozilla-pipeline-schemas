@@ -1,5 +1,7 @@
 # Version 1
 
+- Added `jwe` metric type to the metrics. See [Bug 1654809](https://bugzilla.mozilla.org/show_bug.cgi?id=1654809).
+
 - `device_manufacturer` and `device_model` are now optional. See [Bug 1625207](https://bugzilla.mozilla.org/show_bug.cgi?id=1625207).
 
 - `extras` on an experiment may now be `null`.  See [Bug 1012940](https://bugzilla.mozilla.org/show_bug.cgi?id=1612940)
