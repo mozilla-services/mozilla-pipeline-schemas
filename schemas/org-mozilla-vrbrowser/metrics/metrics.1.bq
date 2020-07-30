@@ -289,7 +289,7 @@
             "type": "INT64"
           },
           {
-            "description": "The number of tasks queued in the pre-initialization buffer. Only sent if the buffer overflows.",
+            "description": "The number of tasks queued in the pre-initialization buffer.\nOnly sent if the buffer overflows.\n",
             "mode": "NULLABLE",
             "name": "glean_error_preinit_tasks_overflow",
             "type": "INT64"
@@ -349,7 +349,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Counts the number of times a metric was set with an invalid label. The labels are the `category.name` identifier of the metric.",
+            "description": "Counts the number of times a metric was set with an invalid label.\nThe labels are the `category.name` identifier of the metric.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -367,7 +367,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Counts the number of times a metric was set a value that overflew. The labels are the `category.name` identifier of the metric.",
+            "description": "Counts the number of times a metric was set a value that overflowed.\nThe labels are the `category.name` identifier of the metric.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -385,7 +385,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Counts the number of times a timing metric was used incorrectly. The labels are the `category.name` identifier of the metric.",
+            "description": "Counts the number of times a timing metric was used incorrectly.\nThe labels are the `category.name` identifier of the metric.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -403,7 +403,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Counts the number of times a metric was set to an invalid value. The labels are the `category.name` identifier of the metric.",
+            "description": "Counts the number of times a metric was set to an invalid value.\nThe labels are the `category.name` identifier of the metric.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -421,7 +421,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Counts the number of ping upload failures, by type of failure. This includes failures for all ping types, though the counts appear in the next successfully sent `metrics` ping.",
+            "description": "Counts the number of ping upload failures, by type of failure.\nThis includes failures for all ping types,\nthough the counts appear in the next successfully sent `metrics` ping.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -477,6 +477,43 @@
         ],
         "mode": "NULLABLE",
         "name": "labeled_counter",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The size of pings that exceeded the maximum ping size allowed for upload.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "glean_upload_discarded_exceeding_pings_size",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "memory_distribution",
         "type": "RECORD"
       },
       {
