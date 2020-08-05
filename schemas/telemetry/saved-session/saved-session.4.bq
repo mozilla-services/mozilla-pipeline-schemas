@@ -3082,6 +3082,12 @@
             "type": "STRING"
           },
           {
+            "description": "How many times each saved credit card has ever been autofilled. Rewritten after each autofill; always contains one entry per each count of uses. Example: If user has 3 cards, and he used 2 of them 5 times, and one of them 3 times, the value will be: `{3: 1, 5: 2}.",
+            "mode": "NULLABLE",
+            "name": "creditcard_num_uses",
+            "type": "STRING"
+          },
+          {
             "description": "If both a CRLite lookup and OCSP request are made, how many milliseconds faster was CRLite?",
             "mode": "NULLABLE",
             "name": "crlite_faster_than_ocsp_ms",
@@ -54293,6 +54299,18 @@
                     "type": "BOOL"
                   },
                   {
+                    "description": "Count at detection time number of credit card form sections. A single form can contain more than one credit card form section.\n",
+                    "mode": "NULLABLE",
+                    "name": "formautofill_credit_cards_detected_sections_count",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Count at submission time number of credit card form sections submitted.\n",
+                    "mode": "NULLABLE",
+                    "name": "formautofill_credit_cards_submitted_sections_count",
+                    "type": "INT64"
+                  },
+                  {
                     "description": "Ratio (in units of 1/100th of a percent) of how many times OMTP waited for a paint for more than 200us, versus the total number of paints.\n",
                     "mode": "NULLABLE",
                     "name": "gfx_omtp_paint_wait_ratio",
@@ -58557,6 +58575,12 @@
                     "mode": "NULLABLE",
                     "name": "formautofill_availability",
                     "type": "BOOL"
+                  },
+                  {
+                    "description": "Count at store time how many credit card autofill profiles user has.\n",
+                    "mode": "NULLABLE",
+                    "name": "formautofill_credit_cards_autofill_profiles_count",
+                    "type": "INT64"
                   },
                   {
                     "description": "Count at submission time whether the submitted credit card form was autofilled.",
