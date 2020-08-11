@@ -1,0 +1,212 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "dnssec-study-v1",
+  "properties": {
+    @TELEMETRY_ID_1_JSON@,
+    @TELEMETRY_CREATIONDATE_1_JSON@,
+    @TELEMETRY_APPLICATION_1_JSON@,
+    @TELEMETRY_ENVIRONMENT_1_JSON@,
+    @TELEMETRY_CLIENTID_1_JSON@,
+    "type": {
+      "type": "string",
+      "enum": [ "dnssec-study-v1" ]
+    },
+    "version": {
+      "type": "number",
+      "minimum": 4,
+      "maximum": 4
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "reason": {
+          "type": "string",
+          "enum": [ "startup", "measurementCompleted", "end",
+                    "osNotSupportedError", "readNameserversFileError",
+                    "noNameserversInFileError", "noIPv4NameserversError",
+                    "openUDPSocketsError", "sendUDPQueryError",
+                    "sendTCPQueryError" ]
+        },
+        "measurementID": {
+          "type": "string",
+          @COMMON_PATTERN_UUID_1_JSON@
+        },
+        "errorRRTYPE": {
+          "type": "string",
+          "enum": [ "A", "RRSIG", "DNSKEY", "SMIMEA", "HTTPS", "NEWONE", "NEWTWO" ]
+        },
+        "errorAttempt": {
+          "type": "number",
+          "minimum": 0
+        },
+        "data": {
+          "type": "object",
+          "$comment": "parent object for DNS data",
+          "properties": {
+            "udpA": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "tcpA": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "udpRRSIG": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "tcpRRSIG": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "udpDNSKEY": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "tcpDNSKEY": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "udpSMIMEA": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "tcpSMIMEA": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "udpHTTPS": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "tcpHTTPS": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "udpNEWONE": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "tcpNEWONE": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "udpNEWTWO": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "tcpNEWTWO": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            }
+          },
+          "attempts": {
+            "type": "object",
+            "$comment": "parent object for DNS query attempts",
+            "properties": {
+              "udpA": {
+                "type": "number",
+                "minimum": 0
+              },
+              "tcpA": {
+                "type": "number",
+                "minimum": 0
+              },
+              "udpRRSIG": {
+                "type": "number",
+                "minimum": 0
+              },
+              "tcpRRSIG": {
+                "type": "number",
+                "minimum": 0
+              },
+              "udpDNSKEY": {
+                "type": "number",
+                "minimum": 0
+              },
+              "tcpDNSKEY": {
+                "type": "number",
+                "minimum": 0
+              },
+              "udpSMIMEA": {
+                "type": "number",
+                "minimum": 0
+              },
+              "tcpSMIMEA": {
+                "type": "number",
+                "minimum": 0
+              },
+              "udpHTTPS": {
+                "type": "number",
+                "minimum": 0
+              },
+              "tcpHTTPS": {
+                "type": "number",
+                "minimum": 0
+              },
+              "udpNEWONE": {
+                "type": "number",
+                "minimum": 0
+              },
+              "tcpNEWONE": {
+                "type": "number",
+                "minimum": 0
+              },
+              "udpNEWTWO": {
+                "type": "number",
+                "minimum": 0
+              },
+              "tcpNEWTWO": {
+                "type": "number",
+                "minimum": 0
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "reason",
+        "measurementID"
+      ]
+    }
+  },
+  "required": [
+    "type",
+    "id",
+    "creationDate",
+    "version",
+    "application",
+    "environment",
+    "clientId",
+    "payload"
+  ]
+}
