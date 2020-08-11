@@ -21,12 +21,7 @@
       "type": "object",
       "properties": {
         "reason": {
-          "type": "string",
-          "enum": [ "startup", "measurementCompleted", "end",
-                    "osNotSupportedError", "readNameserversFileError",
-                    "noNameserversInFileError", "noIPv4NameserversError",
-                    "openUDPSocketsError", "sendUDPQueryError",
-                    "sendTCPQueryError" ]
+          "type": "string"
         },
         "measurementID": {
           "type": "string",
@@ -42,7 +37,7 @@
         },
         "dnsData": {
           "type": "object",
-          "$comment": "parent object for DNS responses for each RRTYPE and socket type",
+          "description": "parent object for DNS responses for each RRTYPE and socket type",
           "properties": {
             "udpA": {
               "type": "array",
@@ -131,7 +126,7 @@
           },
           "dnsAttempts": {
             "type": "object",
-            "$comment": "parent object for DNS query attempts for each RRTYPE and socket type",
+            "description": "parent object for DNS query attempts for each RRTYPE and socket type",
             "properties": {
               "udpA": {
                 "type": "number",
