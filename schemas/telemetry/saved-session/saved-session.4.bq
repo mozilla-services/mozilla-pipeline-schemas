@@ -5872,6 +5872,12 @@
             "type": "STRING"
           },
           {
+            "description": "The type of view used for the history sidebar.",
+            "mode": "NULLABLE",
+            "name": "history_sidebar_view_type",
+            "type": "STRING"
+          },
+          {
             "description": "Measure the time how long the cursor is hovering before opening the unselcted tab. Only record the data if someone requests for sending unselected tab hover msg.",
             "mode": "NULLABLE",
             "name": "hover_until_unselected_tab_opened",
@@ -10414,6 +10420,12 @@
             "type": "STRING"
           },
           {
+            "description": "Whether TLS 1.3 client authentication uses PHA (true) or regular in-handshake authentication (false)",
+            "mode": "NULLABLE",
+            "name": "tls_1_3_client_auth_uses_pha",
+            "type": "STRING"
+          },
+          {
             "description": "milliseconds to complete a TLS handshake that used delegated credentials",
             "mode": "NULLABLE",
             "name": "tls_delegated_credentials_time_until_ready_ms",
@@ -10663,6 +10675,12 @@
             "description": "Update: count of systems that have a last update time greater than the current time (timer initiated)",
             "mode": "NULLABLE",
             "name": "update_invalid_lastupdatetime_notify",
+            "type": "STRING"
+          },
+          {
+            "description": "Update: How much longer langpacks took to download than the app update in seconds.",
+            "mode": "NULLABLE",
+            "name": "update_langpack_overtime",
             "type": "STRING"
           },
           {
@@ -57299,6 +57317,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "A count of how many times the user changed a setting in print preview, broken down per setting.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "printing_settings_changed",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "A counter incremented every time the user prints to a certain target type.  The 'pdf_unknown' count is for printers with names that we don't know about/check for, but that have 'pdf' in their name, and is mainly a sanity check that we're not missing significant counts in 'pdf_file'. For the most part, the 'unknown' count will be prints to a physical printer, but we can't know for sure since third party drivers could also be print to file drivers that we don't otherwise catch in the other counts.\n",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -57451,6 +57487,42 @@
                     ],
                     "mode": "REPEATED",
                     "name": "services_sync_sync_login_state_transitions",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "The number of times the sidebar was opened, per view (e.g.: bookmarks, history, synced tabs).\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "sidebar_opened",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "The number of searches from the sidebar, per view (e.g.: bookmarks, history).\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "sidebar_search",
                     "type": "RECORD"
                   },
                   {

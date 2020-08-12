@@ -283,6 +283,12 @@
             "type": "INT64"
           },
           {
+            "description": "The number of pings deleted after the quota for the size of the pending pings directory is hit. Since quota is only calculated for the pending pings directory, and deletion request ping live in a different directory, deletion request pings are never deleted.\n",
+            "mode": "NULLABLE",
+            "name": "glean_upload_deleted_pings_after_quota_hit",
+            "type": "INT64"
+          },
+          {
             "description": "This metric counts how many times a dirty bit was detected when starting the Glean SDK, on Android. This dirty bit is set to `true` when Android's lifecycle `ON_START` is hit and flipped back to false on `ON_STOP`. When an application is force-closed, it might not get the `ON_STOP` and so the value would stay `true`. The next time Glean starts, it will increment this counter.",
             "mode": "NULLABLE",
             "name": "glean_validation_app_forceclosed_count",
@@ -461,6 +467,36 @@
             ],
             "mode": "NULLABLE",
             "name": "glean_upload_discarded_exceeding_pings_size",
+            "type": "RECORD"
+          },
+          {
+            "description": "The size of the pending pings directory upon initialization of Glean. This does not include the size of the deletion request pings directory.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "glean_upload_pending_pings_directory_size",
             "type": "RECORD"
           }
         ],
