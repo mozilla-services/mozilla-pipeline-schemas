@@ -26244,6 +26244,24 @@
                 "type": "STRING"
               },
               {
+                "description": "Where bookmarks were stored in the other browser (1=bookmarks toolbar, 2=bookmarks menu, 4=reading list, 8=unfiled), keyed by the name of the browser. Note that migrating the reading list from classic Edge is supported but its root is not reported here.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "fx_migration_bookmarks_roots",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "Errors encountered during migration in buckets defined by the datatype, keyed by the string description of the browser.",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -57932,6 +57950,12 @@
                     "description": "The count of maximum number of browser windows open during a subsession. This includes private windows and the ones opened when starting the browser.\n",
                     "mode": "NULLABLE",
                     "name": "browser_engagement_max_concurrent_window_count",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "The count of the browser profiles on the current system. This counts profiles that have been used across all OS user accounts on machine since this probe was added. The value persists across installs. A value of 0 is reported if there is an error determining the correct count.\n",
+                    "mode": "NULLABLE",
+                    "name": "browser_engagement_profile_count",
                     "type": "INT64"
                   },
                   {
