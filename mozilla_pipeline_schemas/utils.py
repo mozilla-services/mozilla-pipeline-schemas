@@ -20,7 +20,6 @@ def run(command: Union[str, List[str]], **kwargs) -> str:
         .strip()
     )
 
-
 def get_repository_root():
     return Path(__file__).parent.parent
 
