@@ -347,6 +347,11 @@
     "fields": [
       {
         "mode": "NULLABLE",
+        "name": "duration",
+        "type": "INT64"
+      },
+      {
+        "mode": "NULLABLE",
         "name": "ecosystem_client_id",
         "type": "STRING"
       },
@@ -357,6 +362,38 @@
         "type": "STRING"
       },
       {
+        "fields": [
+          {
+            "fields": [
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Records search counts for search access points and in-content searches. For search access points in general, the format is: <engine-name>.<search-access-point> For the urlbar when an internal @engine shortcut is used, the format is: <engine-name>.alias For in-content searches, the format is <provider>.in-content:[sap|sap-follow-on|organic]:[code|none]",
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "STRING"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "search_counts",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "parent",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "keyed_histograms",
+        "type": "RECORD"
+      },
+      {
         "mode": "REPEATED",
         "name": "previous_ecosystem_user_ids",
         "type": "STRING"
@@ -365,6 +402,32 @@
         "mode": "NULLABLE",
         "name": "reason",
         "type": "STRING"
+      },
+      {
+        "fields": [
+          {
+            "fields": [
+              {
+                "description": "The count of the number of five-second intervals ('ticks') the user was considered 'active' in a subsession. Session activity involves keyboard or mouse interaction with the application. It does not take into account whether or not the window has focus or is in the foreground, only if it is receiving these interaction events.\n",
+                "mode": "NULLABLE",
+                "name": "browser_engagement_active_ticks",
+                "type": "INT64"
+              },
+              {
+                "description": "The count of the total non-unique http(s) URIs visited in a subsession, including page reloads, after the session has been restored. This does not include background page requests and URIs from embedded pages or private browsing.\n",
+                "mode": "NULLABLE",
+                "name": "browser_engagement_total_uri_count",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "parent",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "scalars",
+        "type": "RECORD"
       }
     ],
     "mode": "NULLABLE",

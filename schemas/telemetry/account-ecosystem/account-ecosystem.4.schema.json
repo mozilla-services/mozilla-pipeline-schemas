@@ -169,6 +169,9 @@
     },
     "payload": {
       "properties": {
+        "duration": {
+          "type": "integer"
+        },
         "ecosystemClientId": {
           "type": "string"
         },
@@ -176,6 +179,100 @@
           "description": "Account Ecosystem Telemetry user identifier; this value is not present in the original payload sent by clients, but is instead inserted by the pipeline after decrypting and removing ecosystemAnonId",
           "pattern": "[a-zA-z0-9]{64}",
           "type": "string"
+        },
+        "histograms": {
+          "properties": {
+            "parent": {
+              "additionalProperties": {
+                "type": [
+                  "integer",
+                  "string",
+                  "boolean"
+                ]
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "keyedHistograms": {
+          "properties": {
+            "parent": {
+              "additionalProperties": {
+                "additionalProperties": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "bucket_count": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "histogram_type": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "log_sum": {
+                      "minimum": 0,
+                      "type": "number"
+                    },
+                    "log_sum_squares": {
+                      "minimum": 0,
+                      "type": "number"
+                    },
+                    "range": {
+                      "items": {
+                        "type": "integer"
+                      },
+                      "type": "array"
+                    },
+                    "sum": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "sum_squares_hi": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "sum_squares_lo": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "values": {
+                      "additionalProperties": false,
+                      "patternProperties": {
+                        "^[0-9]+$": {
+                          "minimum": 0,
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                },
+                "type": "object"
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "keyedScalars": {
+          "properties": {
+            "parent": {
+              "additionalProperties": {
+                "additionalProperties": {
+                  "type": [
+                    "integer",
+                    "string",
+                    "boolean"
+                  ]
+                },
+                "type": "object"
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
         },
         "previousEcosystemUserIds": {
           "description": "Previous Account Ecosystem Telemetry identifiers associated with this user; this value is not present in the original payload sent by clients, but is instead inserted by the pipeline after decrypting and removing previousEcosystemAnonIds",
