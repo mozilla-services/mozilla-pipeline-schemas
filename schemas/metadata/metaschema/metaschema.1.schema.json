@@ -12,7 +12,7 @@
           "type": "string"
         },
         "bq_metadata_format": {
-          "description": "NOT YET IMPLEMENTED: The logical format for the metadata struct in the destination BigQuery table",
+          "description": "The logical format for the metadata struct in the destination BigQuery table",
           "enum": [
             "structured",
             "telemetry",
@@ -41,13 +41,15 @@
           "type": "object"
         },
         "jwe_mappings": {
-          "description": "NOT YET IMPLEMENTED: Mappings of encrypted JWE field paths to destinations where the value decrypted by the pipeline should be placed; only planned initial use case is for Account Ecosystem Telemetry; paths may indicate nested fields with dots such as 'payload.ecosystemAnonId'",
+          "description": "NOT YET IMPLEMENTED: Mappings of encrypted JWE field paths to destinations where the value decrypted by the pipeline should be placed; only planned initial use case is for Account Ecosystem Telemetry; paths must be in [JSON Pointer format](https://tools.ietf.org/html/rfc6901) like '/payload/ecosystemAnonId'",
           "items": {
             "properties": {
               "decrypted_field_path": {
+                "pattern": "^/.*$",
                 "type": "string"
               },
               "source_field_path": {
+                "pattern": "^/.*$",
                 "type": "string"
               }
             },
