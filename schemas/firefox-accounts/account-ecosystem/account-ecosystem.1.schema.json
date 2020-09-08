@@ -28,12 +28,20 @@
     ]
   },
   "properties": {
+    "country": {
+      "description": "Country name as extracted in the FxA pipeline; contains logical values like 'United States' and 'India' rather than 2-letter country codes",
+      "type": "string"
+    },
     "ecosystem_client_id": {
       "type": "string"
     },
     "ecosystem_user_id": {
       "description": "Account Ecosystem Telemetry user identifier; this value is not present in the original payload sent by clients, but is instead inserted by the pipeline after decrypting and removing ecosystem_anon_id",
       "pattern": "[a-zA-z0-9]{64}",
+      "type": "string"
+    },
+    "event": {
+      "description": "Value of the 'event' field in the source LogEntry payload",
       "type": "string"
     },
     "previous_ecosystem_user_ids": {
@@ -43,6 +51,10 @@
         "type": "string"
       },
       "type": "array"
+    },
+    "region": {
+      "description": "Region name as extracted in the FxA pipeline; contains logical values like 'Texas' rather than abbreviations like 'TX'",
+      "type": "string"
     }
   },
   "title": "account-ecosystem",
