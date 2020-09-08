@@ -4789,6 +4789,12 @@
             "type": "STRING"
           },
           {
+            "description": "Seconds between `user-interaction-inactive` and `user-interaction-active`. For use in evaluating baseline engagement for Project FOG.",
+            "mode": "NULLABLE",
+            "name": "fog_eval_user_inactive_s",
+            "type": "STRING"
+          },
+          {
             "description": "Seconds between a Firefox window being raised and lowered. For use in evaluating baseline engagement for Project FOG.",
             "mode": "NULLABLE",
             "name": "fog_eval_window_raised_s",
@@ -27807,7 +27813,7 @@
                 "type": "STRING"
               },
               {
-                "description": "Records search counts for search access points and in-content searches. For search access points in general, the format is: <engine-name>.<search-access-point> For the urlbar when an internal @engine shortcut is used, the format is: <engine-name>.alias For in-content searches, the format is <provider>.in-content:[sap|sap-follow-on|organic]:[code|none]",
+                "description": "Records search counts for search access points and in-content searches. For search access points in general, the format is: <engine-name>.<search-access-point> For the urlbar when in search mode, the format is <engine name>.urlbar-searchmode For the urlbar when an internal @engine shortcut is used, the format is: <engine-name>.alias For in-content searches, the format is <provider>.in-content:[sap|sap-follow-on|organic]:[code|none]",
                 "mode": "NULLABLE",
                 "name": "value",
                 "type": "STRING"
@@ -53485,7 +53491,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records search counts for search access points and in-content searches. For search access points in general, the format is: <engine-name>.<search-access-point> For the urlbar when an internal @engine shortcut is used, the format is: <engine-name>.alias For in-content searches, the format is <provider>.in-content:[sap|sap-follow-on|organic]:[code|none]",
+                        "description": "Records search counts for search access points and in-content searches. For search access points in general, the format is: <engine-name>.<search-access-point> For the urlbar when in search mode, the format is <engine name>.urlbar-searchmode For the urlbar when an internal @engine shortcut is used, the format is: <engine-name>.alias For in-content searches, the format is <provider>.in-content:[sap|sap-follow-on|organic]:[code|none]",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "STRING"
@@ -54692,9 +54698,15 @@
                     "type": "INT64"
                   },
                   {
-                    "description": "A counter incremented every time the print dialog is opened from print preview.\n",
+                    "description": "A counter incremented every time the print dialog is opened from the old print preview.\n",
                     "mode": "NULLABLE",
                     "name": "printing_dialog_opened_via_preview",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "A counter incremented every time a user opens the system print dialog from the print preview interface.\n",
+                    "mode": "NULLABLE",
+                    "name": "printing_dialog_opened_via_preview_tm",
                     "type": "INT64"
                   },
                   {
@@ -54704,9 +54716,15 @@
                     "type": "INT64"
                   },
                   {
-                    "description": "A counter incremented every time a print dialog opened from print preview is cancelled.\n",
+                    "description": "A counter incremented every time a print dialog opened from the old print preview is cancelled.\n",
                     "mode": "NULLABLE",
                     "name": "printing_dialog_via_preview_cancelled",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "A counter incremented every time a user cancels a system print dialog that they opened from the print preview interface.\n",
+                    "mode": "NULLABLE",
+                    "name": "printing_dialog_via_preview_cancelled_tm",
                     "type": "INT64"
                   },
                   {
@@ -54716,15 +54734,27 @@
                     "type": "INT64"
                   },
                   {
-                    "description": "A counter incremented every time a print preview session exits without printing.\n",
+                    "description": "A counter incremented every time an old print preview session exits without printing.\n",
                     "mode": "NULLABLE",
                     "name": "printing_preview_cancelled",
                     "type": "INT64"
                   },
                   {
-                    "description": "A counter incremented every time the user initiates print preview.\n",
+                    "description": "A counter incremented every time a user exits print preview without printing.\n",
+                    "mode": "NULLABLE",
+                    "name": "printing_preview_cancelled_tm",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "A counter incremented every time the user initiates the old print preview.\n",
                     "mode": "NULLABLE",
                     "name": "printing_preview_opened",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "A counter incremented every time a user opens print preview.\n",
+                    "mode": "NULLABLE",
+                    "name": "printing_preview_opened_tm",
                     "type": "INT64"
                   },
                   {
@@ -56546,6 +56576,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "The count URI loads triggered in a subsession from the urlbar's search mode, broken down by the originating action.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "browser_engagement_navigation_urlbar_searchmode",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "The count URI loads triggered in a subsession from a webextension.\n",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -57914,6 +57962,132 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "A keyed uint recording how many times the user entered a particular search mode after selecting a keyword offer result.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "urlbar_searchmode_keywordoffer",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "A keyed uint recording how many times the user entered a particular search mode after selecting a one-off.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "urlbar_searchmode_oneoff",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "A keyed uint recording how many times the user entered a particular search mode from an unknown entry point. If values appear for this probe in Telemetry, we should review the entry points to search mode.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "urlbar_searchmode_other",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "A keyed uint recording how many times the user entered a particular search mode after pressing a keyboard shortcut.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "urlbar_searchmode_shortcut",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "A keyed uint recording how many times the user entered a particular search mode after selecting a search shortcut Top Site on the New Tab Page.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "urlbar_searchmode_topsites_newtab",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "A keyed uint recording how many times the user entered a particular search mode after selecting a search shortcut Top Site in the Urlbar..\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "urlbar_searchmode_topsites_urlbar",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "A keyed uint recording how many times the user entered a particular search mode after typing an alias.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "urlbar_searchmode_typed",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "A keyed uint recording how many times particular tips are shown in the Urlbar and how often their confirm and help buttons are pressed.\n",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -58862,6 +59036,12 @@
                     "type": "INT64"
                   },
                   {
+                    "description": "How many Telemetry stopwatch errors did we have while trying to measure user inactivity? These could be attempts to start a started timer or finish an unstarted timer or so forth. See Stopwatch::Start and Stopwatch::Finish for details. For use in evaluating baseline engagement for Project FOG.\n",
+                    "mode": "NULLABLE",
+                    "name": "fog_eval_user_inactive_error",
+                    "type": "INT64"
+                  },
+                  {
                     "description": "Whether a Firefox window is presently raised. For use in evaluating baseline engagement for Project FOG.\n",
                     "mode": "NULLABLE",
                     "name": "fog_eval_window_raised",
@@ -59046,6 +59226,12 @@
                     "mode": "NULLABLE",
                     "name": "gfx_headless",
                     "type": "BOOL"
+                  },
+                  {
+                    "description": "Windowing protocol on Linux. Can be Wayland, WaylandDRM, XWayland, or X11\n",
+                    "mode": "NULLABLE",
+                    "name": "gfx_linux_window_protocol",
+                    "type": "STRING"
                   },
                   {
                     "description": "Boolean indicating whether the os compositor is being used by WebRender. Only collected in the first subsession.\n",
