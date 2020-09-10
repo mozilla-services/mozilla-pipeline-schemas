@@ -9,21 +9,33 @@
     }
   },
   "properties": {
-    "action_position": {
-      "description": "A zero based integer indicating the position of this event",
-      "type": "integer"
-    },
     "addon_version": {
       "type": "string"
     },
-    "event": {
-      "enum": [
-        "impression",
-        "click",
-        "save"
-      ],
-      "description": "An event identifier",
-      "type": "string"
+    "events": {
+      "items": {
+        "properties": {
+          "action": {
+            "enum": [
+              "impression",
+              "click",
+              "save"
+            ],
+            "description": "An event identifier",
+            "type": "string"
+          },
+          "position": {
+            "description": "A zero based integer indicating the position of this event",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "position"
+        ],
+        "type": "object"
+      },
+      "type": "array"
     },
     "experiments": {
       "additionalProperties": {
@@ -64,7 +76,7 @@
   },
   "required": [
     "impression_id",
-    "event",
+    "events",
     "addon_version",
     "version",
     "locale"

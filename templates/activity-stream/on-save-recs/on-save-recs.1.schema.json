@@ -5,21 +5,33 @@
   "properties": {
     @ACTIVITY-STREAM_IMPRESSIONID_1_JSON@,
     @ACTIVITY-STREAM_EXPERIMENTS_1_JSON@,
-    "action_position": {
-      "description": "A zero based integer indicating the position of this event",
-      "type": "integer"
-    },
     "addon_version": {
       "type": "string"
     },
-    "event": {
-      "enum": [
-        "impression",
-        "click",
-        "save"
-      ],
-      "description": "An event identifier",
-      "type": "string"
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "enum": [
+              "impression",
+              "click",
+              "save"
+            ],
+            "description": "An event identifier",
+            "type": "string"
+          },
+          "position": {
+            "description": "A zero based integer indicating the position of this event",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "position"
+        ],
+      }
     },
     "locale": {
       "type": "string"
@@ -43,7 +55,7 @@
   },
   "required": [
     "impression_id",
-    "event",
+    "events",
     "addon_version",
     "version",
     "locale"
