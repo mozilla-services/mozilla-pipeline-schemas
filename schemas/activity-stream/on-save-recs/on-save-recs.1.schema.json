@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "mozPipelineMetadata": {
+    "bq_dataset_family": "activity_stream",
+    "bq_metadata_format": "structured",
+    "bq_table": "on_save_recs_v1",
+    "expiration_policy": {
+      "delete_after_days": 180
+    }
+  },
+  "properties": {
+    "action_position": {
+      "description": "A zero based integer indicating the position of this event",
+      "type": "integer"
+    },
+    "addon_version": {
+      "type": "string"
+    },
+    "event": {
+      "enum": [
+        "impression",
+        "click",
+        "save"
+      ],
+      "description": "An event identifier",
+      "type": "string"
+    },
+    "experiments": {
+      "additionalProperties": {
+        "properties": {
+          "branch": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "description": "An object to record all active experiments, experiments IDs are stored as keys, and the value object stores the branch information. Example: {\"experiment_1\": {\"branch\": \"control\"}, \"experiment_2\": {\"branch\": \"treatment\"}}. This deprecates the \"shield_id\" used in activity-stream and messaging-system.",
+      "type": "object"
+    },
+    "impression_id": {
+      "description": "A UUID representing this user. Note that it's not client_id, nor can it be used to link to a client_id",
+      "pattern": "^\\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\}$",
+      "type": "string"
+    },
+    "locale": {
+      "type": "string"
+    },
+    "model": {
+      "description": "An identifier for the machine learning model used to generate the recommendations",
+      "type": "string"
+    },
+    "profile_creation_date": {
+      "type": "integer"
+    },
+    "region": {
+      "type": "string"
+    },
+    "release_channel": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "impression_id",
+    "event",
+    "addon_version",
+    "version",
+    "locale"
+  ],
+  "title": "on-save-recs",
+  "type": "object"
+}
