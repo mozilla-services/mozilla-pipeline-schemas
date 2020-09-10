@@ -20,7 +20,7 @@ try:
     ENABLE_JAVA_TESTS = True
 except SystemError as ex:
     JAVA_CONFIGURED_REASON = f"{JAVA_CONFIGURED_REASON}: {str(ex)}"
-except JavaException as ex:
+except Exception as ex:
     JAVA_CONFIGURED_REASON = f"{JAVA_CONFIGURED_REASON}: {str(ex)}"
 
 
