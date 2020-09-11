@@ -181,3 +181,6 @@ installable packages).
 changes to templated external pieces and when/how that impacted a given
 doctype's schema over time. This means that it should be easy to look back in
 time for the provenance of different parts of the schema for each doctype.
+
+We have a number of scripts to keep the schemas in sync with various in-tree
+definitions. See the contents of the `scripts` subdirectory.
