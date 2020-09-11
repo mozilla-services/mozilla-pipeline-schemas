@@ -18,11 +18,10 @@ try:
     JSONObject = autoclass("org.json.JSONObject")
     SchemaLoader = autoclass("org.everit.json.schema.loader.SchemaLoader")
     ENABLE_JAVA_TESTS = True
-except SystemError as ex:
-    JAVA_CONFIGURED_REASON = f"{JAVA_CONFIGURED_REASON}: {str(ex)}"
 except Exception as ex:
     # JavaException cannot be imported when javac is not found on the system.
-    # Just log the exception and move on with the rest of the tests instead.
+    # Just log the exception and move on with the rest of the tests instead. To
+    # determine the cause of the error, run pytest with the `-rs` flag.
     JAVA_CONFIGURED_REASON = f"{JAVA_CONFIGURED_REASON}: {str(ex)}"
 
 
