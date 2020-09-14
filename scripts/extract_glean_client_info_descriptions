@@ -1,0 +1,41 @@
+#!/usr/bin/env python3
+
+"""
+Simple script to synchronize glean's client_info structure
+(defined in the glean repository) with the schema
+"""
+
+
+import json
+import os
+import sys
+
+import requests
+import yaml
+
+
+CLIENT_INFO_PATH = os.path.join(
+    "templates", "include", "glean", "client_info.1.schema.json"
+)
+METRICS_URLS = [
+    "https://raw.githubusercontent.com/mozilla/glean/main/glean-core/metrics.yaml",
+    "https://raw.githubusercontent.com/mozilla/glean/main/glean-core/android/metrics.yaml",
+]
+
+
+client_info = json.loads(open(CLIENT_INFO_PATH).read())
+
+for metric_url in METRICS_URLS:
+    glean_metrics = yaml.safe_load(requests.get(metric_url).text)
+    for (name, props) in glean_metrics["glean.internal.metrics"].items():
+        # skip properties (like reason) that are not in glean
+        # client info
+        if "glean_client_info" not in props.get("send_in_pings", []):
+            continue
+        base = client_info["properties"][name]
+        base.update(
+            {"description": props["description"].replace("\n", " ").strip()})
+        client_info["properties"][name] = base
+
+open(CLIENT_INFO_PATH, "w").write(
+    json.dumps(client_info, sort_keys=True, indent=2))

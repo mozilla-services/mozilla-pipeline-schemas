@@ -66,3 +66,6 @@
   section.
 
 - Added `sum` to histogram and `timing_distribution` as optional parameter.
+
+- Pull client_info definitions from the glean source code (see:
+  `scripts/extract_glean_client_info_descriptions`)
