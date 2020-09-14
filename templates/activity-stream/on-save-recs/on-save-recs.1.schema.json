@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "on-save-recs",
+  "properties": {
+    @ACTIVITY-STREAM_IMPRESSIONID_1_JSON@,
+    @ACTIVITY-STREAM_EXPERIMENTS_1_JSON@,
+    "addon_version": {
+      "type": "string"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "enum": [
+              "impression",
+              "click",
+              "save"
+            ],
+            "description": "An event identifier",
+            "type": "string"
+          },
+          "position": {
+            "description": "A zero based integer indicating the position of this event",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "position"
+        ]
+      }
+    },
+    "locale": {
+      "type": "string"
+    },
+    "model": {
+      "description": "An identifier for the machine learning model used to generate the recommendations",
+      "type": "string"
+    },
+    "profile_creation_date": {
+      "type": "integer"
+    },
+    "region": {
+      "type": "string"
+    },
+    "release_channel": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "impression_id",
+    "events",
+    "addon_version",
+    "version",
+    "locale"
+  ]
+}
