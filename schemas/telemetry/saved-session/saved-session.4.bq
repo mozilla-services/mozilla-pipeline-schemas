@@ -1687,6 +1687,12 @@
             "type": "STRING"
           },
           {
+            "description": "time spent updating accessibility (ms)",
+            "mode": "NULLABLE",
+            "name": "a11y_update_time",
+            "type": "STRING"
+          },
+          {
             "description": "Record number of times particular features on about:config are used",
             "mode": "NULLABLE",
             "name": "about_config_features_usage",
@@ -2014,6 +2020,12 @@
             "description": "Result of the Set Default Browser dialog (0=Use Firefox + 'Always perform check' unchecked, 1=Use Firefox + 'Always perform check' checked, 2=Not Now + 'Always perform check' unchecked, 3=Not Now + 'Always perform check' checked)",
             "mode": "NULLABLE",
             "name": "browser_set_default_result",
+            "type": "STRING"
+          },
+          {
+            "description": "Time to successfully set Firefox as the default browser after clicking 'Set Firefox as Default'. Should be near-instant in some environments, others require user interaction. Measured in seconds.",
+            "mode": "NULLABLE",
+            "name": "browser_set_default_time_to_completion_seconds",
             "type": "STRING"
           },
           {
@@ -4111,6 +4123,24 @@
             "type": "STRING"
           },
           {
+            "description": "Number of times the DevTools WebIDE project editor has been opened.",
+            "mode": "NULLABLE",
+            "name": "devtools_webide_project_editor_opened_count",
+            "type": "STRING"
+          },
+          {
+            "description": "Number of times a file has been saved in the DevTools WebIDE project editor.",
+            "mode": "NULLABLE",
+            "name": "devtools_webide_project_editor_save_count",
+            "type": "STRING"
+          },
+          {
+            "description": "How long has WebIDE's project editor been active (seconds)",
+            "mode": "NULLABLE",
+            "name": "devtools_webide_project_editor_time_active_seconds",
+            "type": "STRING"
+          },
+          {
             "description": "Did WebIDE remote runtime connection succeed?",
             "mode": "NULLABLE",
             "name": "devtools_webide_remote_connection_result",
@@ -5359,6 +5389,12 @@
             "type": "STRING"
           },
           {
+            "description": "Firefox: If the spinner interstitial displays during tab switching, record if the tab being switched to has been seen (content was visible) before. If not, record if the tab is 'old' (> 1000ms since creation) or 'new'.",
+            "mode": "NULLABLE",
+            "name": "fx_tab_switch_spinner_type",
+            "type": "STRING"
+          },
+          {
             "description": "Firefox: If the spinner interstitial displays during tab switching, records the time in ms the graphic is visible. This probe is similar to FX_TAB_SWITCH_SPINNER_VISIBLE_MS, but is for truly degenerate cases.",
             "mode": "NULLABLE",
             "name": "fx_tab_switch_spinner_visible_long_ms",
@@ -6217,6 +6253,12 @@
             "type": "STRING"
           },
           {
+            "description": "HTTP Disk Cache Hit, Reval, Failed-Reval, Miss",
+            "mode": "NULLABLE",
+            "name": "http_disk_cache_disposition_2",
+            "type": "STRING"
+          },
+          {
             "description": "HTTP Disk cache memory overhead (bytes)",
             "mode": "NULLABLE",
             "name": "http_disk_cache_overhead",
@@ -6232,6 +6274,12 @@
             "description": "HTTP: KB read per connection",
             "mode": "NULLABLE",
             "name": "http_kbread_per_conn2",
+            "type": "STRING"
+          },
+          {
+            "description": "HTTP Memory Cache Hit, Reval, Failed-Reval, Miss",
+            "mode": "NULLABLE",
+            "name": "http_memory_cache_disposition_2",
             "type": "STRING"
           },
           {
@@ -6340,6 +6388,12 @@
             "description": "Network vs cache time load (OnStopRequest) difference (ms) for cache files with a small size (<256K). Cache wins: 41-50 for 1-100ms, 51-59 for 101-1000ms, 60-68 for 1-10s, 69-73 for 11-60s and 74 for > 1m. Network wins: 39-30 for 1-100ms, 29-21 for 101-1000ms, 20-12 for 1-10s, 11-7 for 11-60s and 6 for > 1m.",
             "mode": "NULLABLE",
             "name": "http_net_vs_cache_onstop_small_v2",
+            "type": "STRING"
+          },
+          {
+            "description": "HTTP Offline Cache Hit, Reval, Failed-Reval, Miss",
+            "mode": "NULLABLE",
+            "name": "http_offline_cache_disposition_2",
             "type": "STRING"
           },
           {
@@ -7975,6 +8029,24 @@
             "type": "STRING"
           },
           {
+            "description": "Amount of bytes received when we decide not to race cache with network.",
+            "mode": "NULLABLE",
+            "name": "network_race_cache_bandwith_not_race",
+            "type": "STRING"
+          },
+          {
+            "description": "Amount of bytes received when we decide to race cache with network and cache wins.",
+            "mode": "NULLABLE",
+            "name": "network_race_cache_bandwith_race_cache_win",
+            "type": "STRING"
+          },
+          {
+            "description": "Amount of bytes received when we decide to race cache with network and network wins.",
+            "mode": "NULLABLE",
+            "name": "network_race_cache_bandwith_race_network_win",
+            "type": "STRING"
+          },
+          {
             "description": "Stats for validation requests when cache won the race.",
             "mode": "NULLABLE",
             "name": "network_race_cache_validation",
@@ -7993,7 +8065,7 @@
             "type": "STRING"
           },
           {
-            "description": "Whether we raced network with the cache. (0=network & no racing, 1=cache & no racing, 2=network & raced, 3=cache & raced)",
+            "description": "Whether we raced network with the cache. (0=network & no racing, 1=cache & no racing, 2=network & raced, 3=cache & raced, 4=network & delayed race, 5=cache & delayed race)",
             "mode": "NULLABLE",
             "name": "network_race_cache_with_network_usage",
             "type": "STRING"
@@ -9079,6 +9151,12 @@
             "type": "STRING"
           },
           {
+            "description": "Result of call to SandboxBroker::Initialize",
+            "mode": "NULLABLE",
+            "name": "sandbox_broker_initialized",
+            "type": "STRING"
+          },
+          {
             "description": "Whether the sandbox is enabled for the content process",
             "mode": "NULLABLE",
             "name": "sandbox_content_enabled",
@@ -9136,6 +9214,12 @@
             "description": "Whether the script load has a MIME type of ...?  (unknown, javaScript, image, audio, video, text_plain, text_csv, text_xml, app_octet_stream, app_xml, app_json, text_json, text_html, empty). Whether the script load is from ...?  (serviceworker_load, worker_load, importSript_load, script_load). Whether the script load is of ...?  (same_origin, CORS_origin, cross_origin)",
             "mode": "NULLABLE",
             "name": "script_block_incorrect_mime_3",
+            "type": "STRING"
+          },
+          {
+            "description": "Tracking how often scripts are loaded with a 'valid' version parameter. This telemetry ID helps us to decide if and when remove the support of script versioning.",
+            "mode": "NULLABLE",
+            "name": "script_loaded_with_version",
             "type": "STRING"
           },
           {
@@ -10459,9 +10543,33 @@
             "type": "STRING"
           },
           {
+            "description": "Time from navigationStart to loadEventEnd as per the W3C Performance Timing API. This is only submitted on when the document would not preload a resource.",
+            "mode": "NULLABLE",
+            "name": "time_to_load_event_end_no_preload_ms",
+            "type": "STRING"
+          },
+          {
+            "description": "Time from navigationStart to loadEventEnd as per the W3C Performance Timing API. This is submitted only when the document would preload a resource (i.e., if it encounters a <link> element or a Link with rel=\"preload\"), even if the network.preload pref is disabled.",
+            "mode": "NULLABLE",
+            "name": "time_to_load_event_end_preload_ms",
+            "type": "STRING"
+          },
+          {
             "description": "Time in milliseconds from navigationStart to loadEventStart.",
             "mode": "NULLABLE",
             "name": "time_to_load_event_start_ms",
+            "type": "STRING"
+          },
+          {
+            "description": "Time from navigationStart to loadEventStart as per the W3C Performance Timing API. This is only submitted on when the document would not preload a resource.",
+            "mode": "NULLABLE",
+            "name": "time_to_load_event_start_no_preload_ms",
+            "type": "STRING"
+          },
+          {
+            "description": "Time from navigationStart to loadEventStart as per the W3C Performance Timing API. This is submitted only when the document would preload a resource (i.e., if it encounters a <link> element or a Link header with rel=\"preload\"), even if the network.preload pref is disabled.",
+            "mode": "NULLABLE",
+            "name": "time_to_load_event_start_preload_ms",
             "type": "STRING"
           },
           {
@@ -24415,7 +24523,7 @@
             "type": "STRING"
           },
           {
-            "description": "Total time spent playing video in milliseconds. This reports the total play time for an HTML Media Element whenever it is suspended, such as when the page is unloaded.",
+            "description": "Total time spent playing video in milliseconds. This reports the total play time for an HTML Media Element whenever it is suspended or resumed, such as when the page is unloaded, or when the mute status changes when the AudioChannelAPI pref is set.",
             "mode": "NULLABLE",
             "name": "video_play_time_ms",
             "type": "STRING"
@@ -25294,6 +25402,30 @@
             "description": "Fission enabled status of individual windows in fission.autostart and non-fission.autostart profiles",
             "mode": "NULLABLE",
             "name": "window_remote_subframes_enabled_status",
+            "type": "STRING"
+          },
+          {
+            "description": "Word cache hits, chrome text (chars)",
+            "mode": "NULLABLE",
+            "name": "word_cache_hits_chrome",
+            "type": "STRING"
+          },
+          {
+            "description": "Word cache hits, content text (chars)",
+            "mode": "NULLABLE",
+            "name": "word_cache_hits_content",
+            "type": "STRING"
+          },
+          {
+            "description": "Word cache misses, chrome text (chars)",
+            "mode": "NULLABLE",
+            "name": "word_cache_misses_chrome",
+            "type": "STRING"
+          },
+          {
+            "description": "Word cache misses, content text (chars)",
+            "mode": "NULLABLE",
+            "name": "word_cache_misses_content",
             "type": "STRING"
           },
           {
@@ -26877,6 +27009,24 @@
                 "type": "STRING"
               },
               {
+                "description": "Numbers of HTTP transactions and connections by type. There are some categories separated by keys based on 4 parameters: 1. normal browsing or private browsing 2. first party or third party 3. class of service 4. tracking classification. Available keys are: ['Y=0|NormalFirstParty', 'Y=1|NormalThirdPartyOther', 'Y=2|NormalThirdPartyContentLeader', 'Y=3|NormalThirdPartyContentBackground', 'Y=4|NormalThirdPartyContentOther', 'Y=5|NormalThirdPartyBasicLeader', 'Y=6|NormalThirdPartyBasicBackground', 'Y=7|NormalThirdPartyBasicOther', 'Y=8|NormalThirdPartyFingerprintingLeader', 'Y=9|NormalThirdPartyFingerprintingBackground', 'Y=10|NormalThirdPartyFingerprintingOther', 'Y=11|PrivateFirstParty', 'Y=12|PrivateThirdPartyOther', 'Y=13|PrivateThirdPartyContentLeader', 'Y=14|PrivateThirdPartyContentBackground', 'Y=15|PrivateThirdPartyContentOther', 'Y=16|PrivateThirdPartyBasicLeader', 'Y=17|PrivateThirdPartyBasicBackground', 'Y=18|PrivateThirdPartyBasicOther', 'Y=19|PrivateThirdPartyFingerprintingLe…",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http_traffic_analysis",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "Numbers of HTTP transactions and connections by type. There are some categories separated by labels based on 4 parameters: 1. normal browsing or private browsing 2. first party or third party 3. class of service (Leader/Background/Others) 4. tracking classification (Basic/Content/FingerprintingContent).",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -27813,7 +27963,7 @@
                 "type": "STRING"
               },
               {
-                "description": "Records search counts for search access points and in-content searches. For search access points in general, the format is: <engine-name>.<search-access-point> For the urlbar when in search mode, the format is <engine name>.urlbar-searchmode For the urlbar when an internal @engine shortcut is used, the format is: <engine-name>.alias For in-content searches, the format is <provider>.in-content:[sap|sap-follow-on|organic]:[code|none]",
+                "description": "Records search counts for search access points and in-content searches. For search access points in general, the format is: <engine-name>.<search-access-point> For the urlbar when an internal @engine shortcut is used, the format is: <engine-name>.alias For in-content searches, the format is <provider>.in-content:[sap|sap-follow-on|organic]:[code|none]",
                 "mode": "NULLABLE",
                 "name": "value",
                 "type": "STRING"
@@ -28859,6 +29009,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "time spent updating accessibility (ms)",
+                    "mode": "NULLABLE",
+                    "name": "a11y_update_time",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Number of active doc groups per tab group. Collected at the point when the top level document of the tab group is unloaded.",
                     "mode": "NULLABLE",
                     "name": "active_docgroups_per_tabgroup",
@@ -29198,6 +29354,12 @@
                     "description": "Result of the Set Default Browser dialog (0=Use Firefox + 'Always perform check' unchecked, 1=Use Firefox + 'Always perform check' checked, 2=Not Now + 'Always perform check' unchecked, 3=Not Now + 'Always perform check' checked)",
                     "mode": "NULLABLE",
                     "name": "browser_set_default_result",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Time to successfully set Firefox as the default browser after clicking 'Set Firefox as Default'. Should be near-instant in some environments, others require user interaction. Measured in seconds.",
+                    "mode": "NULLABLE",
+                    "name": "browser_set_default_time_to_completion_seconds",
                     "type": "STRING"
                   },
                   {
@@ -31115,6 +31277,24 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Number of times the DevTools WebIDE project editor has been opened.",
+                    "mode": "NULLABLE",
+                    "name": "devtools_webide_project_editor_opened_count",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Number of times a file has been saved in the DevTools WebIDE project editor.",
+                    "mode": "NULLABLE",
+                    "name": "devtools_webide_project_editor_save_count",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "How long has WebIDE's project editor been active (seconds)",
+                    "mode": "NULLABLE",
+                    "name": "devtools_webide_project_editor_time_active_seconds",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Did WebIDE remote runtime connection succeed?",
                     "mode": "NULLABLE",
                     "name": "devtools_webide_remote_connection_result",
@@ -32117,6 +32297,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Firefox: If the spinner interstitial displays during tab switching, record if the tab being switched to has been seen (content was visible) before. If not, record if the tab is 'old' (> 1000ms since creation) or 'new'.",
+                    "mode": "NULLABLE",
+                    "name": "fx_tab_switch_spinner_type",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Firefox: If the spinner interstitial displays during tab switching, records the time in ms the graphic is visible. This probe is similar to FX_TAB_SWITCH_SPINNER_VISIBLE_MS, but is for truly degenerate cases.",
                     "mode": "NULLABLE",
                     "name": "fx_tab_switch_spinner_visible_long_ms",
@@ -32951,6 +33137,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "HTTP Disk Cache Hit, Reval, Failed-Reval, Miss",
+                    "mode": "NULLABLE",
+                    "name": "http_disk_cache_disposition_2",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "HTTP Disk cache memory overhead (bytes)",
                     "mode": "NULLABLE",
                     "name": "http_disk_cache_overhead",
@@ -32966,6 +33158,12 @@
                     "description": "HTTP: KB read per connection",
                     "mode": "NULLABLE",
                     "name": "http_kbread_per_conn2",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "HTTP Memory Cache Hit, Reval, Failed-Reval, Miss",
+                    "mode": "NULLABLE",
+                    "name": "http_memory_cache_disposition_2",
                     "type": "STRING"
                   },
                   {
@@ -33074,6 +33272,12 @@
                     "description": "Network vs cache time load (OnStopRequest) difference (ms) for cache files with a small size (<256K). Cache wins: 41-50 for 1-100ms, 51-59 for 101-1000ms, 60-68 for 1-10s, 69-73 for 11-60s and 74 for > 1m. Network wins: 39-30 for 1-100ms, 29-21 for 101-1000ms, 20-12 for 1-10s, 11-7 for 11-60s and 6 for > 1m.",
                     "mode": "NULLABLE",
                     "name": "http_net_vs_cache_onstop_small_v2",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "HTTP Offline Cache Hit, Reval, Failed-Reval, Miss",
+                    "mode": "NULLABLE",
+                    "name": "http_offline_cache_disposition_2",
                     "type": "STRING"
                   },
                   {
@@ -34619,6 +34823,24 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Amount of bytes received when we decide not to race cache with network.",
+                    "mode": "NULLABLE",
+                    "name": "network_race_cache_bandwith_not_race",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Amount of bytes received when we decide to race cache with network and cache wins.",
+                    "mode": "NULLABLE",
+                    "name": "network_race_cache_bandwith_race_cache_win",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Amount of bytes received when we decide to race cache with network and network wins.",
+                    "mode": "NULLABLE",
+                    "name": "network_race_cache_bandwith_race_network_win",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Time in milliseconds between onStartRequest from the cache and onCacheEntryCheck. Report only when net wins and OCEC is before onStartRequest from net.",
                     "mode": "NULLABLE",
                     "name": "network_race_cache_with_network_ocec_on_start_diff",
@@ -34631,7 +34853,7 @@
                     "type": "STRING"
                   },
                   {
-                    "description": "Whether we raced network with the cache. (0=network & no racing, 1=cache & no racing, 2=network & raced, 3=cache & raced)",
+                    "description": "Whether we raced network with the cache. (0=network & no racing, 1=cache & no racing, 2=network & raced, 3=cache & raced, 4=network & delayed race, 5=cache & delayed race)",
                     "mode": "NULLABLE",
                     "name": "network_race_cache_with_network_usage",
                     "type": "STRING"
@@ -35153,6 +35375,24 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Count the number of times the user clicked 'allow' on the hidden-plugin infobar.",
+                    "mode": "NULLABLE",
+                    "name": "plugins_infobar_allow",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Count the number of times the user clicked 'block' on the hidden-plugin infobar.",
+                    "mode": "NULLABLE",
+                    "name": "plugins_infobar_block",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Count of when the hidden-plugin infobar was displayed.",
+                    "mode": "NULLABLE",
+                    "name": "plugins_infobar_shown",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "The number of plugins present in the click-to-activate notification, minus one (1, 2, 3, 4, more than 4)",
                     "mode": "NULLABLE",
                     "name": "plugins_notification_plugin_count",
@@ -35657,6 +35897,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Result of call to SandboxBroker::Initialize",
+                    "mode": "NULLABLE",
+                    "name": "sandbox_broker_initialized",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether the sandbox is enabled for the content process",
                     "mode": "NULLABLE",
                     "name": "sandbox_content_enabled",
@@ -35708,6 +35954,12 @@
                     "description": "Whether the script load has a MIME type of ...?  (unknown, javaScript, image, audio, video, text_plain, text_csv, text_xml, app_octet_stream, app_xml, app_json, text_json, text_html, empty). Whether the script load is from ...?  (serviceworker_load, worker_load, importSript_load, script_load). Whether the script load is of ...?  (same_origin, CORS_origin, cross_origin)",
                     "mode": "NULLABLE",
                     "name": "script_block_incorrect_mime_3",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Tracking how often scripts are loaded with a 'valid' version parameter. This telemetry ID helps us to decide if and when remove the support of script versioning.",
+                    "mode": "NULLABLE",
+                    "name": "script_loaded_with_version",
                     "type": "STRING"
                   },
                   {
@@ -50903,7 +51155,7 @@
                     "type": "STRING"
                   },
                   {
-                    "description": "Total time spent playing video in milliseconds. This reports the total play time for an HTML Media Element whenever it is suspended, such as when the page is unloaded.",
+                    "description": "Total time spent playing video in milliseconds. This reports the total play time for an HTML Media Element whenever it is suspended or resumed, such as when the page is unloaded, or when the mute status changes when the AudioChannelAPI pref is set.",
                     "mode": "NULLABLE",
                     "name": "video_play_time_ms",
                     "type": "STRING"
@@ -51716,6 +51968,30 @@
                     "description": "Flag indicating consumer of non-standard outerWidth/outerHeight features in window.open",
                     "mode": "NULLABLE",
                     "name": "window_open_outer_size",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Word cache hits, chrome text (chars)",
+                    "mode": "NULLABLE",
+                    "name": "word_cache_hits_chrome",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Word cache hits, content text (chars)",
+                    "mode": "NULLABLE",
+                    "name": "word_cache_hits_content",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Word cache misses, chrome text (chars)",
+                    "mode": "NULLABLE",
+                    "name": "word_cache_misses_chrome",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Word cache misses, content text (chars)",
+                    "mode": "NULLABLE",
+                    "name": "word_cache_misses_content",
                     "type": "STRING"
                   },
                   {
@@ -53509,7 +53785,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records search counts for search access points and in-content searches. For search access points in general, the format is: <engine-name>.<search-access-point> For the urlbar when in search mode, the format is <engine name>.urlbar-searchmode For the urlbar when an internal @engine shortcut is used, the format is: <engine-name>.alias For in-content searches, the format is <provider>.in-content:[sap|sap-follow-on|organic]:[code|none]",
+                        "description": "Records search counts for search access points and in-content searches. For search access points in general, the format is: <engine-name>.<search-access-point> For the urlbar when an internal @engine shortcut is used, the format is: <engine-name>.alias For in-content searches, the format is <provider>.in-content:[sap|sap-follow-on|organic]:[code|none]",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "STRING"
@@ -54632,6 +54908,12 @@
                     "type": "INT64"
                   },
                   {
+                    "description": "The number of HTMLMediaElement autoplays on HTMLMediaElements without an audio track which would not be allowed to play if block autoplay was enabled; we'd either prompt for permission to play or block outright depending on user preferences.\n",
+                    "mode": "NULLABLE",
+                    "name": "media_blocked_autoplay_no_audio_track_count",
+                    "type": "INT64"
+                  },
+                  {
                     "description": "The number of HTMLMediaElements which we blocked because they hadn't loaded metadata yet.\n",
                     "mode": "NULLABLE",
                     "name": "media_blocked_no_metadata",
@@ -54722,6 +55004,12 @@
                     "type": "INT64"
                   },
                   {
+                    "description": "A counter incremented every time a user opens the system print dialog from the print preview interface.\n",
+                    "mode": "NULLABLE",
+                    "name": "printing_dialog_opened_via_preview_tm",
+                    "type": "INT64"
+                  },
+                  {
                     "description": "A counter incremented every time the print dialog is opened without opening print preview.\n",
                     "mode": "NULLABLE",
                     "name": "printing_dialog_opened_without_preview",
@@ -54731,6 +55019,12 @@
                     "description": "A counter incremented every time a print dialog opened from the old print preview is cancelled.\n",
                     "mode": "NULLABLE",
                     "name": "printing_dialog_via_preview_cancelled",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "A counter incremented every time a user cancels a system print dialog that they opened from the print preview interface.\n",
+                    "mode": "NULLABLE",
+                    "name": "printing_dialog_via_preview_cancelled_tm",
                     "type": "INT64"
                   },
                   {
@@ -54746,9 +55040,21 @@
                     "type": "INT64"
                   },
                   {
+                    "description": "A counter incremented every time a user exits print preview without printing.\n",
+                    "mode": "NULLABLE",
+                    "name": "printing_preview_cancelled_tm",
+                    "type": "INT64"
+                  },
+                  {
                     "description": "A counter incremented every time the user initiates the old print preview.\n",
                     "mode": "NULLABLE",
                     "name": "printing_preview_opened",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "A counter incremented every time a user opens print preview.\n",
+                    "mode": "NULLABLE",
+                    "name": "printing_preview_opened_tm",
                     "type": "INT64"
                   },
                   {
@@ -57380,6 +57686,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "How many bytes of HTTP data transferred by type, there are some categories separated by keys based on 4 parameters:\n  1. normal browsing or private browsing\n  2. first party or third party\n  3. class of service\n  4. tracking classification\n\nAvailable keys are:\n  Y=0|NormalFirstParty\n  Y=1|NormalThirdPartyOther\n  Y=2|NormalThirdPartyContentLeader\n  Y=3|NormalThirdPartyContentBackground\n  Y=4|NormalThirdPartyContentOther\n  Y=5|NormalThirdPartyBasicLeader\n  Y=6|NormalThirdPartyBasicBackground\n  Y=7|NormalThirdPartyBasicOther\n  Y=8|NormalThirdPartyFingerprintingLeader\n  Y=9|NormalThirdPartyFingerprintingBackground\n  Y=10|NormalThirdPartyFingerprintingOther\n  Y=11|PrivateFirstParty\n  Y=12|PrivateThirdPartyOther\n  Y=13|PrivateThirdPartyContentLeader\n  Y=14|PrivateThirdPartyContentBackground\n  Y=15|PrivateThirdPartyContentOther\n  Y=16|PrivateThirdPartyBasicLeader\n  Y=17|PrivateThirdPartyBasicBackground\n  Y=18|PrivateThirdPartyBasicOther\n  Y=19|PrivateThirdPartyFingerprintingLeader\n  Y=20|Priv…",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "networking_data_transferred",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "How many KB of HTTP data transferred by type, there are some categories separated by keys based on 4 parameters:\n  1. normal browsing or private browsing\n  2. first party or third party\n  3. class of service (Leader/Background/Others)\n  4. tracking classification (Basic/Content/FingerprintingContent)\n\nAvailable keys are:\n  \"Y0_N1\",\n  \"Y1_N3Oth\",\n  \"Y2_N3BasicLead\",\n  \"Y3_N3BasicBg\",\n  \"Y4_N3BasicOth\",\n  \"Y5_N3ContentLead\",\n  \"Y6_N3ContentBg\",\n  \"Y7_N3ContentOth\",\n  \"Y8_N3FpLead\",\n  \"Y9_N3FpBg\",\n  \"Y10_N3FpOth\",\n  \"Y11_P1\",\n  \"Y12_P3Oth\",\n  \"Y13_P3ContentLead\",\n  \"Y14_P3ContentBg\",\n  \"Y15_P3ContentOth\",\n  \"Y16_P3BasicLead\",\n  \"Y17_P3BasicBg\",\n  \"Y18_P3BasicOth\",\n  \"Y19_P3FpLead\",\n  \"Y20_P3FpBg\",\n  \"Y21_P3FpOth\"\n",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -59120,6 +59444,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Recorded on startup. Boolean stating whether the general.autoconfig.filename preference has a value.\n",
+                    "mode": "NULLABLE",
+                    "name": "general_autoconfig_has_filename",
+                    "type": "BOOL"
+                  },
+                  {
                     "description": "Long form description of the Graphics adapter\n",
                     "mode": "NULLABLE",
                     "name": "gfx_adapter_description",
@@ -59300,6 +59630,12 @@
                     "type": "INT64"
                   },
                   {
+                    "description": "The number of HTMLMediaElement autoplays on HTMLMediaElements without an audio track which would not be allowed to play if block autoplay was enabled; we'd either prompt for permission to play or block outright depending on user preferences.\n",
+                    "mode": "NULLABLE",
+                    "name": "media_blocked_autoplay_no_audio_track_count",
+                    "type": "INT64"
+                  },
+                  {
                     "description": "The number of HTMLMediaElements which we blocked because they hadn't loaded metadata yet.\n",
                     "mode": "NULLABLE",
                     "name": "media_blocked_no_metadata",
@@ -59352,6 +59688,12 @@
                     "mode": "NULLABLE",
                     "name": "navigator_storage_persist_count",
                     "type": "INT64"
+                  },
+                  {
+                    "description": "For connection where TFO has not be use, collect telemetry on whether the backup connection or the primary connection was faster.\n",
+                    "mode": "NULLABLE",
+                    "name": "network_http_backup_conn_won",
+                    "type": "BOOL"
                   },
                   {
                     "description": "Count the number of sockets that use overlapped io and are canceled before the overlapped io finishes. (We only use overlapped io for connectEx when TCP Fast Open is used.)\n",
