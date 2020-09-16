@@ -7045,6 +7045,18 @@
             "type": "STRING"
           },
           {
+            "description": "Time (ms) from the Input event being created to the end of it being handled for events handled during page load only. This is only submitted on when the document would not preload a resource.",
+            "mode": "NULLABLE",
+            "name": "load_input_event_response_no_preload_ms",
+            "type": "STRING"
+          },
+          {
+            "description": "Time (ms) from the Input event being created to the end of it being handled for events handled during page load only. This is submitted only when the document would preload a resource (i.e., if it encounters a <link> element or a Link header with rel=\"preload\"), even if the network.preload pref is disabled.",
+            "mode": "NULLABLE",
+            "name": "load_input_event_response_preload_ms",
+            "type": "STRING"
+          },
+          {
             "description": "Number of fully loaded (i.e., not pending from session restore) tabs opened across all windows, collected at most every 5 minutes whenever the user interacts with the browser in the following ways: open tab/window, page load, restoring a pending tab.",
             "mode": "NULLABLE",
             "name": "loaded_tab_count",
@@ -10516,6 +10528,18 @@
             "description": "Time in milliseconds from the first non-blank paint to the creation time of the next click, key, mouse or scroll event per top-level content browsing context.",
             "mode": "NULLABLE",
             "name": "time_to_first_interaction_ms",
+            "type": "STRING"
+          },
+          {
+            "description": "Time in milliseconds from the first non-blank paint to the creation time of the next click, key, mouse or scroll event per top-level content browsing context. This is only submitted on when the document would not preload a resource.",
+            "mode": "NULLABLE",
+            "name": "time_to_first_interaction_no_preload_ms",
+            "type": "STRING"
+          },
+          {
+            "description": "Time in milliseconds from the first non-blank paint to the creation time of the next click, key, mouse or scroll event per top-level content browsing context. This is submitted only when the document would preload a resource (i.e., if it encounters a <link> element or a Link header with rel=\"preload\"), even if the network.preload pref is disabled.",
+            "mode": "NULLABLE",
+            "name": "time_to_first_interaction_preload_ms",
             "type": "STRING"
           },
           {
@@ -59754,6 +59778,12 @@
                     "mode": "NULLABLE",
                     "name": "networking_nss_initialization",
                     "type": "INT64"
+                  },
+                  {
+                    "description": "Indicates what sources the OS is currently configured to allow apps to be installed from. Possible values are \"Anywhere\", \"Recommendations\", \"PreferStore\", \"StoreOnly\", \"NoSuchFeature\", or \"Error\". \"Recommendations\" allows installs from anywhere, but recommends a comparable app from the store, if available. \"NoSuchFeature\" will be reported on versions of Windows that do not have an app source setting.\n",
+                    "mode": "NULLABLE",
+                    "name": "os_environment_allowed_app_sources",
+                    "type": "STRING"
                   },
                   {
                     "description": "Indicates that the process is lauched with Admin privileges but without UAC.\n",
