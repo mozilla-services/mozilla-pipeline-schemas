@@ -350,9 +350,15 @@
             "type": "INT64"
           },
           {
-            "description": "The number of pings deleted after the quota for the size of the pending pings directory is hit. Since quota is only calculated for the pending pings directory, and deletion request ping live in a different directory, deletion request pings are never deleted.\n",
+            "description": "The number of pings deleted after the quota for the size of the pending pings directory or number of files is hit. Since quota is only calculated for the pending pings directory, and deletion request ping live in a different directory, deletion request pings are never deleted.\n",
             "mode": "NULLABLE",
             "name": "glean_upload_deleted_pings_after_quota_hit",
+            "type": "INT64"
+          },
+          {
+            "description": "The total number of pending pings at startup. This does not include deletion-request pings.\n",
+            "mode": "NULLABLE",
+            "name": "glean_upload_pending_pings",
             "type": "INT64"
           },
           {
@@ -4559,6 +4565,126 @@
             "type": "RECORD"
           },
           {
+            "description": "Time from navigationStart to [`loadEventEnd`](https://www.w3.org/TR/ navigation-timing/#dom-performancetiming-loadend) as per the W3C Performance Timing API. This is only submitted on when the document would not preload a resource.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "performance_time_load_event_end_no_preload",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time from navigationStart to [`loadEventEnd`](https://www.w3.org/TR/ navigation-timing/#dom-performancetiming-loadend) as per the W3C Performance Timing API. This is only submitted on when the document would preload a resource (i.e., if it encounters a `<link>` element or a `Link` header with `rel=\"preload\"`), even if the `network.preload` pref is disabled.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "performance_time_load_event_end_preload",
+            "type": "RECORD"
+          },
+          {
             "description": "Time from navigationStart to loadEventStart as per the W3C Performance Timing API.\n",
             "fields": [
               {
@@ -4616,6 +4742,126 @@
             ],
             "mode": "NULLABLE",
             "name": "performance_time_load_event_start",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time from navigationStart to [`loadEventStart`](https://www.w3.org/TR/ navigation-timing/#dom-performancetiming-loadstart) as per the W3C Performance Timing API. This is only submitted on when the document would not preload a resource.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "performance_time_load_event_start_no_preload",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time from navigationStart to [`loadEventStart`](https://www.w3.org/TR/ navigation-timing/#dom-performancetiming-loadstart) as per the W3C Performance Timing API. This is only submitted on when the document would preload a resource (i.e., if it encounters a `<link>` element or a `Link` header with `rel=\"preload\"`), even if the `network.preload` pref is disabled.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "performance_time_load_event_start_preload",
             "type": "RECORD"
           },
           {

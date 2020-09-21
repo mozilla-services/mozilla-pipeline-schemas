@@ -290,9 +290,15 @@
             "type": "INT64"
           },
           {
-            "description": "The number of pings deleted after the quota for the size of the pending pings directory is hit. Since quota is only calculated for the pending pings directory, and deletion request ping live in a different directory, deletion request pings are never deleted.\n",
+            "description": "The number of pings deleted after the quota for the size of the pending pings directory or number of files is hit. Since quota is only calculated for the pending pings directory, and deletion request ping live in a different directory, deletion request pings are never deleted.\n",
             "mode": "NULLABLE",
             "name": "glean_upload_deleted_pings_after_quota_hit",
+            "type": "INT64"
+          },
+          {
+            "description": "The total number of pending pings at startup. This does not include deletion-request pings.\n",
+            "mode": "NULLABLE",
+            "name": "glean_upload_pending_pings",
             "type": "INT64"
           }
         ],
@@ -514,6 +520,36 @@
       {
         "fields": [
           {
+            "description": "The path of the page the client is on.\n",
+            "mode": "NULLABLE",
+            "name": "glean_page_path",
+            "type": "STRING"
+          },
+          {
+            "description": "The URL of the page that linked to the current page the client is on.\n",
+            "mode": "NULLABLE",
+            "name": "glean_page_referrer",
+            "type": "STRING"
+          },
+          {
+            "description": "The title of the page the client is on.\n",
+            "mode": "NULLABLE",
+            "name": "glean_page_title",
+            "type": "STRING"
+          },
+          {
+            "description": "The browser the current Glean instance is running on.\n",
+            "mode": "NULLABLE",
+            "name": "glean_platform_browser",
+            "type": "STRING"
+          },
+          {
+            "description": "The type of device the current Glean instance is running on.\nThis can be either 'mobile'|'tablet'|'desktop'\n",
+            "mode": "NULLABLE",
+            "name": "glean_platform_device_type",
+            "type": "STRING"
+          },
+          {
             "description": "The optional reason the ping was submitted.\nThe specific values for reason are specific to each ping, and are\ndocumented in the ping's pings.yaml file.\n",
             "mode": "NULLABLE",
             "name": "ping_reason",
@@ -522,6 +558,19 @@
         ],
         "mode": "NULLABLE",
         "name": "string",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "An identifier for the current session.\nA session is a measurement window for the usage of web app.\nA session is reset:\n    1. After 30 minutes of inactivity.\n       Any click, scroll or keypress on the page is considered activity.\n    2. When a user loads the app with a different `utm_campaign` search param.\n    3. Everyday at midnight local time.\n",
+            "mode": "NULLABLE",
+            "name": "glean_session_session_id",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "uuid",
         "type": "RECORD"
       }
     ],
