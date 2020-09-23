@@ -16,7 +16,7 @@ def run(command: Union[str, List[str]], **kwargs) -> str:
 
     logging.info(f"Running {args}")
     return (
-        subprocess.run(args, stdout=subprocess.PIPE, check=True, **kwargs)
+        subprocess.run(args, stdout=subprocess.PIPE, **{**dict(check=True), **kwargs})
         .stdout.decode()
         .strip()
     )

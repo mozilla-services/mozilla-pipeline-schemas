@@ -86,7 +86,7 @@ python3 -m venv venv
 source venv/bin/activate
 
 # install python dependencies, if they haven't already
-pip install -r requirements.txt
+pip install -r requirements-dev.txt
 
 # run the tests, with 8 parallel processes
 pytest -n 8

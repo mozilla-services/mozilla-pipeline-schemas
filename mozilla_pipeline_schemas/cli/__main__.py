@@ -1,3 +1,3 @@
-from .bigquery import bigquery
+from . import entry_point
 
-bigquery()
+entry_point()

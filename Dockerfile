@@ -30,8 +30,8 @@ RUN git config --global user.name "Mozilla Pipeline Schemas"
 WORKDIR /app
 
 # Install python dependencies
-COPY requirements.txt .
-RUN pip3 install -r requirements.txt
+COPY requirements.txt requirements-dev.txt ./
+RUN pip3 install -r requirements.txt -r requirements-dev.txt && pip install .
 
 # Install Java dependencies
 COPY pom.xml .
