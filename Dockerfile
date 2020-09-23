@@ -6,6 +6,7 @@ RUN dnf -y update && \
     dnf -y install epel-release && \
     dnf -y install \
         cmake3 \
+        diffutils \
         gcc \
         gcc-c++ \
         jq \
@@ -30,8 +31,9 @@ RUN git config --global user.name "Mozilla Pipeline Schemas"
 WORKDIR /app
 
 # Install python dependencies
-COPY requirements.txt .
-RUN pip3 install -r requirements.txt
+COPY requirements.txt requirements-dev.txt ./
+RUN pip3 install --upgrade pip setuptools && \
+    pip3 install -r requirements.txt -r requirements-dev.txt
 
 # Install Java dependencies
 COPY pom.xml .
@@ -39,6 +41,7 @@ RUN mvn dependency:copy-dependencies
 
 COPY . /app
 
+RUN pip3 install .
 RUN mkdir release && \
     cd release && \
     cmake .. && \
