@@ -16,7 +16,7 @@ setup(
     install_requires=["click"],
     long_description="Tooling for managing schemas for schema ingestion",
     long_description_content_type="text/markdown",
-    python_requires=">=3.7",
+    python_requires=">=3.6",
     entry_points="""
         [console_scripts]
         mps=mozilla_pipeline_schemas.cli:entry_point
