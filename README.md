@@ -87,6 +87,7 @@ source venv/bin/activate
 
 # install python dependencies, if they haven't already
 pip install -r requirements-dev.txt
+pip install .
 
 # run the tests, with 8 parallel processes
 pytest -n 8
@@ -98,7 +99,7 @@ pytest -k telemetry/main.4
 pytest -k java
 ```
 
-To generate a diff of BigQuery schemas, run the `bigquery_schema_diff.py` script.
+To generate a diff of BigQuery schemas, use the `mps` command-line tool.
 
 ```bash
 # optionally, enter the mozilla-pipeline-schemas environment
@@ -107,7 +108,7 @@ To generate a diff of BigQuery schemas, run the `bigquery_schema_diff.py` script
 
 # generate an integration folder, the options will default to HEAD and master
 # respectively
-./script/bigquery_schema_diff.py --base-ref master --head-ref HEAD
+mps bigquery diff --base-ref master --head-ref HEAD
 ```
 
 This generates an `integration` folder:

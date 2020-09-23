@@ -23,7 +23,8 @@ def run(command: Union[str, List[str]], **kwargs) -> str:
 
 
 def get_repository_root():
-    return Path(__file__).parent.parent
+    """Get the repository that the command is currently in."""
+    return Path(run("git rev-parse --show-toplevel"))
 
 
 # Search for all camelCase situations in reverse with arbitrary lookaheads.

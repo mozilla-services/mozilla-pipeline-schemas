@@ -41,8 +41,9 @@ def transpile(filename):
 )
 def diff(base_ref, head_ref, input_directory, output_directory):
     # check that the correct tools are installed
-    run("jsonschema-transpiler --version")
     run("diff --version")
+    run("git --version")
+    run("jsonschema-transpiler --version")
 
     schemas_path = Path(input_directory)
     integration_path = Path(output_directory)

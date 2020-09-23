@@ -1,20 +1,18 @@
 import pytest
 from pathlib import Path
 import json
+from utils import runif_cli_configured
 from mozilla_pipeline_schemas.utils import get_repository_root, run
 from mozilla_pipeline_schemas.bigquery import (
     transpile,
-    resolve_ref,
     git_untracked_files,
     git_stash_size,
     managed_git_state,
     checkout_transpile_schemas,
     write_schema_diff,
-    transform,
 )
 from typing import Tuple
 import subprocess
-import os
 
 ROOT = get_repository_root()
 
@@ -28,6 +26,7 @@ def test_preconditions():
     ), "must contain at least one passing validation document"
 
 
+@runif_cli_configured
 def test_transpile(tmp_path):
     test_schema = {"type": "string"}
     expected_schema = [{"mode": "REQUIRED", "name": "root", "type": "STRING"}]
@@ -37,32 +36,13 @@ def test_transpile(tmp_path):
     assert transpile(test_schema_path) == expected_schema
 
 
-@pytest.fixture
-def tmp_git(tmp_path: Path) -> Path:
-    """Copy the entire repository with the current revision.
-
-    To check the state of a failed test, change directories to the temporary
-    directory surfaced by pytest.
-    """
-    curdir = os.getcwd()
-    origin = ROOT
-    workdir = tmp_path / "mps"
-    resolved_head_ref = resolve_ref("HEAD")
-
-    run(f"git clone {origin} {workdir}")
-    os.chdir(workdir)
-    # make branches available by checking them out, but ensure state ends up on HEAD
-    run(f"git checkout master")
-    run(f"git checkout {resolved_head_ref}")
-    yield workdir
-    os.chdir(curdir)
-
-
+@runif_cli_configured
 def test_dummy_git_env(tmp_git: Path):
     assert Path(run("git remote get-url origin")) == ROOT
     assert tmp_git != ROOT
 
 
+@runif_cli_configured
 def test_git_untracked_files(tmp_git: Path):
     assert not git_untracked_files()
     # schemas folder is checked by default
@@ -76,6 +56,7 @@ def test_git_untracked_files(tmp_git: Path):
     ]
 
 
+@runif_cli_configured
 def test_managed_git_state(tmp_git: Path):
     original = run("git rev-parse HEAD")
     with managed_git_state():
@@ -85,6 +66,7 @@ def test_managed_git_state(tmp_git: Path):
     assert run("git rev-parse HEAD") == original
 
 
+@runif_cli_configured
 def test_managed_git_state_stash(tmp_git: Path):
     """Assert that top level stash is maintained when no changes are made during visits of revisions."""
     filename = tmp_git / "README.md"
@@ -107,11 +89,11 @@ def test_managed_git_state_stash(tmp_git: Path):
     assert run("git diff") == diff
 
 
+@runif_cli_configured
 def test_managed_git_state_stash_with_conflict(tmp_git: Path):
     """Conflicts made during visits are NOT handled, but the stash maintains history."""
     filename = tmp_git / "README.md"
 
-    original = run("git rev-parse HEAD")
     filename.open("w+").write("test")
     diff = run("git diff")
     assert len(diff) > 0, run("git status")
@@ -127,6 +109,7 @@ def test_managed_git_state_stash_with_conflict(tmp_git: Path):
     assert git_stash_size() == 1
 
 
+@runif_cli_configured
 def test_checkout_transpile_schemas(tmp_git: Path, tmp_path):
     test_schema = {
         "type": "object",
