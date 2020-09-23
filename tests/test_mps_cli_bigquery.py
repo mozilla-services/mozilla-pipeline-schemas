@@ -1,7 +1,9 @@
-from utils import runif_cli_configured
-from click.testing import CliRunner
-from mozilla_pipeline_schemas.cli.bigquery import diff
 import os
+
+from click.testing import CliRunner
+
+from mozilla_pipeline_schemas.cli.bigquery import diff
+from utils import runif_cli_configured
 
 
 @runif_cli_configured

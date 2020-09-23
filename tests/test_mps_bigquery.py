@@ -1,18 +1,20 @@
-import pytest
-from pathlib import Path
 import json
-from utils import runif_cli_configured
-from mozilla_pipeline_schemas.utils import get_repository_root, run
+import subprocess
+from pathlib import Path
+from typing import Tuple
+
+import pytest
+
 from mozilla_pipeline_schemas.bigquery import (
-    transpile,
-    git_untracked_files,
-    git_stash_size,
-    managed_git_state,
     checkout_transpile_schemas,
+    git_stash_size,
+    git_untracked_files,
+    managed_git_state,
+    transpile,
     write_schema_diff,
 )
-from typing import Tuple
-import subprocess
+from mozilla_pipeline_schemas.utils import get_repository_root, run
+from utils import runif_cli_configured
 
 ROOT = get_repository_root()
 

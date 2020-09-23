@@ -1,9 +1,11 @@
-import pytest
-from pathlib import Path
 import json
-from mozilla_pipeline_schemas.utils import get_repository_root, run
-from mozilla_pipeline_schemas.bigquery import resolve_ref
 import os
+from pathlib import Path
+
+import pytest
+
+from mozilla_pipeline_schemas.bigquery import resolve_ref
+from mozilla_pipeline_schemas.utils import get_repository_root, run
 
 ROOT = get_repository_root()
 SCHEMAS_ROOT = ROOT / "schemas"

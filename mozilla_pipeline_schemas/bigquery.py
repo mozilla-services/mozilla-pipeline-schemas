@@ -7,7 +7,7 @@ import sys
 from contextlib import contextmanager
 from pathlib import Path
 from typing import List, Tuple
-from .utils import run, snake_case
+from .utils import run
 
 
 def transpile(schema_path: Path) -> dict:
