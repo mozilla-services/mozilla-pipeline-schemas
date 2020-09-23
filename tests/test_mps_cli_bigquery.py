@@ -1,6 +1,3 @@
-import pytest
-
-
 def test_main(tmp_git):
     # choose a base ref relative to HEAD, since the head ref may be master
     main(["--root-directory", str(tmp_git), "--base-ref", "HEAD~1"])

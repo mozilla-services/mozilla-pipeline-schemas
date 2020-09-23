@@ -2,10 +2,11 @@ from typing import List, Tuple, Union
 import subprocess
 from pathlib import Path
 import re
+import logging
 
 
 def run(command: Union[str, List[str]], **kwargs) -> str:
-    """Simple wrapper around subprocess.run that returns stdout and raises exceptions on errors."""
+    """Run a command and return standard out, throwing an exception on failures."""
     if isinstance(command, list):
         args = command
     elif isinstance(command, str):
@@ -13,12 +14,13 @@ def run(command: Union[str, List[str]], **kwargs) -> str:
     else:
         raise RuntimeError(f"run command is invalid: {command}")
 
-    # TODO: log the output
+    logging.info(f"Running {args}")
     return (
-        subprocess.run(args, stdout=subprocess.PIPE, **{**dict(check=True), **kwargs})
+        subprocess.run(args, stdout=subprocess.PIPE, check=True, **kwargs)
         .stdout.decode()
         .strip()
     )
+
 
 def get_repository_root():
     return Path(__file__).parent.parent
