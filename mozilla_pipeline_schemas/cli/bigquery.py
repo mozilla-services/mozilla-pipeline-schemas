@@ -23,6 +23,29 @@ def transpile(filename):
 
 
 @bigquery.command()
+@click.argument("source", type=click.Path(exists=True, dir_okay=False))
+def columns(source):
+    """Generate a compact list of columns."""
+    doc = json.loads(Path(source).read_text())
+
+    def traverse(prefix, columns):
+        res = []
+        for node in columns:
+            name = node["name"] + (".[]" if node["mode"] == "REPEATED" else "")
+            dtype = node["type"]
+            if dtype == "RECORD":
+                res += traverse(f"{prefix}.{name}", node["fields"])
+            else:
+                res += [f"{prefix}.{name} {dtype}"]
+        return res
+
+    res = traverse("root", doc)
+
+    for item in sorted(res):
+        click.echo(item)
+
+
+@bigquery.command()
 @click.option(
     "--base-ref", default="master", help="Reference to base commit e.g. master"
 )

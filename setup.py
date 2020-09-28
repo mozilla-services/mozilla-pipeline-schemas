@@ -2,7 +2,7 @@ from setuptools import setup, find_namespace_packages
 
 setup(
     name="mozilla-pipeline-schemas",
-    version="0.1.0",
+    version="0.2.0",
     use_incremental=True,
     author="Mozilla Corporation",
     author_email="fx-data-dev@mozilla.org",
