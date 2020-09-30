@@ -6085,9 +6085,39 @@
             "type": "STRING"
           },
           {
+            "description": "HTTP3: number of times a connection is blocked by maximum allowed number of parallel streams per connection",
+            "mode": "NULLABLE",
+            "name": "http3_blocked_by_stream_limit_per_conn",
+            "type": "STRING"
+          },
+          {
             "description": "HTTP3: Streams created per connection",
             "mode": "NULLABLE",
             "name": "http3_request_per_conn",
+            "type": "STRING"
+          },
+          {
+            "description": "HTTP3: number of times when a stream is blocked by the flow control while sendnig data.",
+            "mode": "NULLABLE",
+            "name": "http3_sending_blocked_by_flow_control_per_trans",
+            "type": "STRING"
+          },
+          {
+            "description": "Time difference between setting timer value and actually firing the timer for calling neqo",
+            "mode": "NULLABLE",
+            "name": "http3_timer_delayed",
+            "type": "STRING"
+          },
+          {
+            "description": "HTTP3: number of transactions that are blocked by maximum allowed number of parallel streams per connection",
+            "mode": "NULLABLE",
+            "name": "http3_trans_blocked_by_stream_limit_per_conn",
+            "type": "STRING"
+          },
+          {
+            "description": "HTTP3: number of times streams are blocked by the flow control while sending data per connection",
+            "mode": "NULLABLE",
+            "name": "http3_trans_sending_blocked_by_flow_control_per_conn",
             "type": "STRING"
           },
           {
@@ -27027,6 +27057,24 @@
                 "type": "STRING"
               },
               {
+                "description": "Time to reuse an idle connection in HTTP3(ms); keyed by the transaction reusing an idle connection has succeeded or failed",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http3_time_to_reuse_idle_connecttion_ms",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "HTTP Cache v2 hit/miss stats keyed by content type.",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -33059,9 +33107,39 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "HTTP3: number of times a connection is blocked by maximum allowed number of parallel streams per connection",
+                    "mode": "NULLABLE",
+                    "name": "http3_blocked_by_stream_limit_per_conn",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "HTTP3: Streams created per connection",
                     "mode": "NULLABLE",
                     "name": "http3_request_per_conn",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "HTTP3: number of times when a stream is blocked by the flow control while sendnig data.",
+                    "mode": "NULLABLE",
+                    "name": "http3_sending_blocked_by_flow_control_per_trans",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Time difference between setting timer value and actually firing the timer for calling neqo",
+                    "mode": "NULLABLE",
+                    "name": "http3_timer_delayed",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "HTTP3: number of transactions that are blocked by maximum allowed number of parallel streams per connection",
+                    "mode": "NULLABLE",
+                    "name": "http3_trans_blocked_by_stream_limit_per_conn",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "HTTP3: number of times streams are blocked by the flow control while sending data per connection",
+                    "mode": "NULLABLE",
+                    "name": "http3_trans_sending_blocked_by_flow_control_per_conn",
                     "type": "STRING"
                   },
                   {
@@ -53271,6 +53349,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "http3_connecttion_close_code",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Time to reuse an idle connection in HTTP3(ms); keyed by the transaction reusing an idle connection has succeeded or failed",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_time_to_reuse_idle_connecttion_ms",
                     "type": "RECORD"
                   },
                   {
