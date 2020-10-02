@@ -4,11 +4,6 @@
 
 version: 2.1
 
-executors:
-  edge-validator:
-    docker:
-      - image: mozilla/edge-validator:v1.4.0
-
 jobs:
   test:
     docker:
@@ -44,57 +39,6 @@ jobs:
           root: /tmp
           paths:
             - integration
-  integrate:
-    executor: edge-validator
-    steps:
-      - checkout
-      - run:
-          <<: *checkout_upstream
-      - setup_remote_docker
-      - restore_cache:
-          key: mps-integration-data-v2
-      - run: &run_comparison
-          name: Run a comparison report
-          environment:
-            SOURCE_DATA_BUCKET: telemetry-parquet
-            SOURCE_DATA_PREFIX: sanitized-landfill-sample/v3
-          command: |
-            # Get the revisions for comparison. This will compare the tip of
-            # the PR against the upstream mozilla:master.
-            head_short_id=$(git rev-parse --short HEAD)
-            upstream_short_id=$(git rev-parse --short upstream/master)
-
-            # The `checkout` step defaults to $HOME/project (/app/project).
-            # Replace the container's submodule with the current state of this repo.
-            cd .. && rm -r mozilla-pipeline-schemas && mv project mozilla-pipeline-schemas
-
-            # Run the comparison report and store the artifacts for future viewing.
-            pipenv run \
-              python integration.py sync compare \
-                --report-path test-reports \
-                $upstream_short_id $head_short_id
-      - persist_to_workspace: &persist_artifacts
-          root: /app
-          paths:
-            - test-reports
-      - save_cache: &save_cache
-          paths:
-            - ~/resources
-          key: mps-integration-data-v2-{{ epoch }}
-  integrate-clean:
-    executor: edge-validator
-    steps:
-      - checkout
-      - run:
-          <<: *checkout_upstream
-      - setup_remote_docker
-      # We skip the restore_cache step so that the most recent cache is pristine once every day.
-      - run:
-          <<: *run_comparison
-      - persist_to_workspace:
-          <<: *persist_artifacts
-      - save_cache:
-          <<: *save_cache
   post-artifacts:
     docker:
       - image: circleci/node:8.10.0
@@ -113,31 +57,10 @@ workflows:
     build:
       jobs:
         - test
-        - integrate:
-            filters:
-              branches:
-                # Forked pull requests have CIRCLE_BRANCH set to pull/XXX
-                ignore: /pull\/[0-9]+/
         - post-artifacts:
             requires:
               - test
-              - integrate
             filters:
               branches:
                 # Forked pull requests have CIRCLE_BRANCH set to pull/XXX
                 ignore: /pull\/[0-9]+/
-    nightly:
-      jobs:
-        - integrate-clean
-        - post-artifacts:
-            requires:
-              - integrate-clean
-      triggers:
-        - schedule:
-            # Run integration tests a little after midnight Pacific every day to pick up
-            # the latest data and ensure a clean cache for PRs the following day.
-            cron: "33 8 * * *"
-            filters:
-              branches:
-                only:
-                  - master
