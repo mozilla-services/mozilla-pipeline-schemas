@@ -1,0 +1,1341 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "mozPipelineMetadata": {
+    "bq_dataset_family": "telemetry",
+    "bq_metadata_format": "telemetry",
+    "bq_table": "uninstall_v4"
+  },
+  "properties": {
+    "application": {
+      "additionalProperties": false,
+      "properties": {
+        "architecture": {
+          "type": "string"
+        },
+        "buildId": {
+          "pattern": "^[0-9]{10}",
+          "type": "string"
+        },
+        "channel": {
+          "type": "string"
+        },
+        "displayVersion": {
+          "pattern": "^[0-9]{2,3}\\.",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "platformVersion": {
+          "pattern": "^[0-9]{2,3}\\.",
+          "type": "string"
+        },
+        "vendor": {
+          "type": "string"
+        },
+        "version": {
+          "pattern": "^[0-9]{2,3}\\.",
+          "type": "string"
+        },
+        "xpcomAbi": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "architecture",
+        "buildId",
+        "channel",
+        "name",
+        "platformVersion",
+        "version",
+        "vendor",
+        "xpcomAbi"
+      ],
+      "type": "object"
+    },
+    "clientId": {
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "type": "string"
+    },
+    "creationDate": {
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{3}Z$",
+      "type": "string"
+    },
+    "environment": {
+      "properties": {
+        "addons": {
+          "properties": {
+            "activeAddons": {
+              "additionalProperties": {
+                "properties": {
+                  "appDisabled": {
+                    "description": "True if this add-on cannot be used in the application based on version compatibility, dependencies, and blocklisting. This field is only available after the 'sessionstore-windows-restored' topic is notified.",
+                    "type": "boolean"
+                  },
+                  "blocklisted": {
+                    "description": "Whether or not the add-on appears in the blocklist. This field is only available after the 'sessionstore-windows-restored' topic is notified.",
+                    "type": "boolean"
+                  },
+                  "description": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "foreignInstall": {
+                    "description": "True or false depending on whether the add-on is a third party add-on installation or not. This field is only available after the 'sessionstore-windows-restored' topic is notified.",
+                    "type": [
+                      "integer",
+                      "boolean"
+                    ]
+                  },
+                  "hasBinaryComponents": {
+                    "description": "True or false depending on whether the add-on has binary components. This is always false since Firefox 60. This field is only available after the 'sessionstore-windows-restored' topic is notified.",
+                    "type": "boolean"
+                  },
+                  "installDay": {
+                    "description": "The days since epoch that the add-on was first installed. This field is only available after the 'sessionstore-windows-restored' topic is notified.",
+                    "minimum": 0,
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "isSystem": {
+                    "description": "Whether or not the add-on is a system add-on. This field is available at startup.",
+                    "type": "boolean"
+                  },
+                  "isWebExtension": {
+                    "description": "Whether or not the add-on is a WebExtension add-on. This field is available at startup.",
+                    "type": "boolean"
+                  },
+                  "multiprocessCompatible": {
+                    "description": "Whether or not the add-on is a compatible with e10s. Since Firefox 61, this is always true. This field is available at startup.",
+                    "type": "boolean"
+                  },
+                  "name": {
+                    "description": "The add-on name, limited to 100 characters. This field is only available after the 'sessionstore-windows-restored' topic is notified.",
+                    "type": "string"
+                  },
+                  "scope": {
+                    "description": "Indicates what scope the add-on is installed in, per profile, user, system, or application. This field is available at startup.",
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "signedState": {
+                    "description": "The state of the signature of the add-on. This field is only available after the 'sessionstore-windows-restored' topic is notified.",
+                    "type": "integer"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "updateDay": {
+                    "description": "The day the add-on was last updated. This field is optional, but available at startup if present.",
+                    "minimum": 0,
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "userDisabled": {
+                    "description": "Whether or not the user disabled the add-on. This field is only available after the 'sessionstore-windows-restored' topic is notified.",
+                    "type": [
+                      "boolean",
+                      "integer"
+                    ]
+                  },
+                  "version": {
+                    "description": "The version of the add-on. This field is available at startup.",
+                    "type": [
+                      "string",
+                      "number"
+                    ]
+                  }
+                },
+                "type": "object"
+              },
+              "type": "object"
+            },
+            "activeExperiment": {
+              "properties": {
+                "branch": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "activeGMPlugins": {
+              "additionalProperties": {
+                "properties": {
+                  "applyBackgroundUpdates": {
+                    "type": [
+                      "integer",
+                      "boolean"
+                    ]
+                  },
+                  "userDisabled": {
+                    "type": "boolean"
+                  },
+                  "version": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "type": "object"
+              },
+              "type": "object"
+            },
+            "activePlugins": {
+              "items": {
+                "properties": {
+                  "blocklisted": {
+                    "type": "boolean"
+                  },
+                  "clicktoplay": {
+                    "type": "boolean"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "disabled": {
+                    "type": "boolean"
+                  },
+                  "mimeTypes": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "updateDay": {
+                    "type": "integer"
+                  },
+                  "version": {
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "persona": {
+              "description": "The id of the active persona (theme).",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "theme": {
+              "properties": {
+                "appDisabled": {
+                  "description": "True if this theme cannot be used in the application based on version compatibility, dependencies, and blocklisting.",
+                  "type": "boolean"
+                },
+                "blocklisted": {
+                  "description": "Whether or not the theme appears in the blocklist.",
+                  "type": "boolean"
+                },
+                "description": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "foreignInstall": {
+                  "description": "True or false depending on whether the theme is a third party theme installation or not.",
+                  "type": [
+                    "boolean",
+                    "integer"
+                  ]
+                },
+                "hasBinaryComponents": {
+                  "description": "True or false depending on whether the theme has binary components. This is always false since Firefox 60.",
+                  "type": "boolean"
+                },
+                "id": {
+                  "description": "The id of the theme.",
+                  "type": "string"
+                },
+                "installDay": {
+                  "description": "The days since epoch that the theme was first installed.",
+                  "minimum": 0,
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "name": {
+                  "description": "The theme name, limited to 100 characters.",
+                  "type": "string"
+                },
+                "scope": {
+                  "description": "Indicates what scope the theme is installed in, per profile, user, system, or application.",
+                  "type": "integer"
+                },
+                "updateDay": {
+                  "description": "The day the theme was last updated.",
+                  "minimum": 0,
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "userDisabled": {
+                  "description": "Whether or not the user disabled the theme.",
+                  "type": "boolean"
+                },
+                "version": {
+                  "description": "The version of the theme.",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "build": {
+          "properties": {
+            "applicationId": {
+              "description": "The application UUID.",
+              "type": "string"
+            },
+            "applicationName": {
+              "description": "The application name.",
+              "type": "string"
+            },
+            "architecture": {
+              "description": "The build architecture for the active build.",
+              "type": "string"
+            },
+            "architecturesInBinary": {
+              "description": "For Mac universal builds, this is a string containing a list of architectures delimited by '-'. Architecture sets are always in the same order: ppc > i386 > ppc64 > x86_64 > (future additions). This is only available on Mac.",
+              "type": "string"
+            },
+            "buildId": {
+              "description": "The build ID/date of the application.",
+              "pattern": "^[0-9]{10}",
+              "type": "string"
+            },
+            "displayVersion": {
+              "description": "The display version of the application.",
+              "pattern": "^[0-9]{2,3}\\.",
+              "type": "string"
+            },
+            "hotfixVersion": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "platformVersion": {
+              "description": "The version of the XULRunner platform.",
+              "pattern": "^[0-9]{2,3}\\.",
+              "type": "string"
+            },
+            "updaterAvailable": {
+              "description": "True if the application was built with the support for the updater component.",
+              "type": "boolean"
+            },
+            "vendor": {
+              "description": "The application vendor.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "version": {
+              "description": "The version of the application.",
+              "pattern": "^[0-9]{2,3}\\.",
+              "type": "string"
+            },
+            "xpcomAbi": {
+              "description": "A string tag identifying the binary ABI of the current processor and compiler vtable. This is taken from the TARGET_XPCOM_ABI configure variable. It may not be available on all platforms, especially unusual processor or compiler combinations. The result takes the form <processor>-<compilerABI>, for example: x86-msvc, ppc-gcc3, ... . This value should almost always be used in combination with  the 'OS'.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "applicationId",
+            "applicationName",
+            "architecture",
+            "buildId",
+            "version",
+            "vendor",
+            "platformVersion",
+            "xpcomAbi"
+          ],
+          "type": "object"
+        },
+        "experiments": {
+          "additionalProperties": {
+            "properties": {
+              "branch": {
+                "type": "string"
+              },
+              "enrollmentId": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": "object"
+        },
+        "partner": {
+          "properties": {
+            "distributionId": {
+              "description": "The value of the `distribution.id` pref that identifies the Firefox distribution.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "distributionVersion": {
+              "description": "The value of the `distribution.version` pref.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "distributor": {
+              "description": "The value of the `app.distributor` pref.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "distributorChannel": {
+              "description": "The value of the `app.distributor.channel` pref.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "partnerId": {
+              "description": "The value of the `mozilla.partner.id` pref.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "partnerNames": {
+              "description": "The list of names from the `app.partner` children prefs, as `app.partner.<name>=<name>`.",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "type": "object"
+        },
+        "profile": {
+          "properties": {
+            "creationDate": {
+              "description": "The creation date of the user profile as the integer number of days since UNIX epoch.",
+              "type": "number"
+            },
+            "firstUseDate": {
+              "type": "number"
+            },
+            "isStubProfile": {
+              "type": "boolean"
+            },
+            "resetDate": {
+              "description": "The date the user profile was reset, as the integer number of days since UNIX epoch. This is optional.",
+              "type": "number"
+            }
+          },
+          "type": "object"
+        },
+        "services": {
+          "properties": {
+            "accountEnabled": {
+              "type": "boolean"
+            },
+            "syncEnabled": {
+              "type": "boolean"
+            }
+          },
+          "type": "object"
+        },
+        "settings": {
+          "properties": {
+            "addonCompatibilityCheckEnabled": {
+              "description": "Whether application compatibility is respected for add-ons.",
+              "type": "boolean"
+            },
+            "attribution": {
+              "properties": {
+                "campaign": {
+                  "description": "Identifier of the particular campaign that led to the download of the product.",
+                  "type": "string"
+                },
+                "content": {
+                  "description": "Identifier to indicate the particular link within a campaign.",
+                  "type": "string"
+                },
+                "experiment": {
+                  "description": "funnel experiment parameters, see bug 1567339",
+                  "type": "string"
+                },
+                "medium": {
+                  "description": "Category of the source, such as 'organic' for a search engine.",
+                  "type": "string"
+                },
+                "source": {
+                  "description": "Referring partner domain, when install happens via a known partner.",
+                  "type": "string"
+                },
+                "ua": {
+                  "description": "derived user agent, see bug 1595063",
+                  "type": "string"
+                },
+                "variation": {
+                  "description": "funnel experiment parameters, see bug 1567339",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "blocklistEnabled": {
+              "description": "True if the blocklist is enabled.",
+              "type": "boolean"
+            },
+            "defaultPrivateSearchEngine": {
+              "type": "string"
+            },
+            "defaultPrivateSearchEngineData": {
+              "properties": {
+                "loadPath": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "name": {
+                  "type": "string"
+                },
+                "origin": {
+                  "type": "string"
+                },
+                "submissionURL": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "defaultSearchEngine": {
+              "description": "Contains the string identifier or name of the default search engine provider. Deprecated.",
+              "type": "string"
+            },
+            "defaultSearchEngineData": {
+              "properties": {
+                "loadPath": {
+                  "description": "The anonymized path of the engine xml file, e.g. e.g. jar:[app]/omni.ja!browser/engine.xml (where ‘browser’ is the name of the chrome package, not a folder) [profile]/searchplugins/engine.xml [distribution]/searchplugins/common/engine.xml [other]/engine.xml [other]/addEngineWithDetails [other]/addEngineWithDetails:extensionID [http/https]example.com/engine-name.xml [http/https]example.com/engine-name.xml:extensionID",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "name": {
+                  "description": "The name of the default search engine.",
+                  "type": "string"
+                },
+                "origin": {
+                  "description": "The origin of the search engine: the value will be default for engines that are built-in or from distribution partners, verified for user-installed engines with valid verification hashes, unverified for non-default engines without verification hash, and invalid for engines with broken verification hashes.",
+                  "type": "string"
+                },
+                "submissionURL": {
+                  "description": "The HTTP url we would use to search. For privacy, we don’t record this for user-installed engines.",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "e10sCohort": {
+              "type": "string"
+            },
+            "e10sEnabled": {
+              "description": "True if the E10S is enabled.",
+              "type": "boolean"
+            },
+            "e10sMultiProcesses": {
+              "description": "maximum number of processes that will be launched for regular web content",
+              "type": "integer"
+            },
+            "intl": {
+              "properties": {
+                "acceptLanguages": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "appLocales": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "availableLocales": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "regionalPrefsLocales": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": [
+                    "array",
+                    "null"
+                  ]
+                },
+                "requestedLocales": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "systemLocales": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": [
+                    "array",
+                    "null"
+                  ]
+                }
+              },
+              "type": "object"
+            },
+            "isDefaultBrowser": {
+              "description": "Identifier to indicate the particular link within a campaign.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "isInOptoutSample": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "launcherProcessState": {
+              "type": "integer"
+            },
+            "locale": {
+              "description": "The best locale that the application should be localized to.",
+              "type": "string"
+            },
+            "sandbox": {
+              "properties": {
+                "effectiveContentProcessLevel": {
+                  "description": "The effective sandbox. The values are OS dependent.",
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                }
+              },
+              "type": "object"
+            },
+            "searchCohort": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "telemetryEnabled": {
+              "description": "The state of the `toolkit.telemetry.enabled` pref.",
+              "type": "boolean"
+            },
+            "update": {
+              "properties": {
+                "autoDownload": {
+                  "description": "The state of the `app.update.auto` pref.",
+                  "type": "boolean"
+                },
+                "channel": {
+                  "description": "The update channel from the defaults only. Does not include the partner bits.",
+                  "type": "string"
+                },
+                "enabled": {
+                  "description": "The state of the `app.update.enabled` pref.",
+                  "type": "boolean"
+                }
+              },
+              "type": "object"
+            },
+            "userPrefs": {
+              "additionalProperties": {
+                "type": [
+                  "boolean",
+                  "string",
+                  "number",
+                  "null"
+                ]
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "system": {
+          "properties": {
+            "appleModelId": {
+              "description": "The model IDs for Apple desktop devices. This is Mac only.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "cpu": {
+              "properties": {
+                "cores": {
+                  "description": "The number of physical CPU cores. Desktop only, e.g. 4, or `null` on failure.",
+                  "maximum": 2048,
+                  "minimum": 1,
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "count": {
+                  "description": "The number of logical CPUs. Desktop only, e.g. 8, or `null` on failure.",
+                  "maximum": 1024,
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                "extensions": {
+                  "description": "This lists the avaible CPU extensions as strings. E.g.: 'hasMMX', 'hasSSE', 'hasSSE2', 'hasSSE3', 'hasSSSE3', 'hasSSE4A', 'hasSSE4_1', 'hasSSE4_2', 'hasAVX', 'hasAVX2', 'hasAES', 'hasEDSP', 'hasARMv6', 'hasARMv7', 'hasNEON'.",
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "family": {
+                  "description": "The CPU family, `null` on failure. Desktop only.",
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "l2cacheKB": {
+                  "description": "The CPU L2 cache size in KB. `null` on failure. Desktop only.",
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "l3cacheKB": {
+                  "description": "The CPU L3 cache size in KB. `null` on failure. Desktop only.",
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "model": {
+                  "description": "The CPU model, `null` on failure. Desktop only.",
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "speedMHz": {
+                  "description": "Only available on Firefox desktop. The CPU clock speed in MHz.",
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "stepping": {
+                  "description": "The CPU stepping, `null` on failure. Desktop only.",
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "vendor": {
+                  "description": "The CPU vendor, e.g. 'GenuineIntel', or `null` on failure. Desktop only.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "type": "object"
+            },
+            "device": {
+              "properties": {
+                "hardware": {
+                  "type": "string"
+                },
+                "isTablet": {
+                  "type": "boolean"
+                },
+                "manufacturer": {
+                  "type": "string"
+                },
+                "model": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "gfx": {
+              "properties": {
+                "ContentBackend": {
+                  "description": "The name of the content backend.",
+                  "type": "string"
+                },
+                "D2DEnabled": {
+                  "description": "Whether or not Direct2D is enabled. This is Windows only.",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "DWriteEnabled": {
+                  "description": "Whether or not DirectWrite is enabled. This is Windows only.",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "EmbeddedInFirefoxReality": {
+                  "description": "Whether or not Firefox desktop is embedded by Firefox Reality. This is Windows only.",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "Headless": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "LowEndMachine": {
+                  "type": "boolean"
+                },
+                "adapters": {
+                  "items": {
+                    "properties": {
+                      "GPUActive": {
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "RAM": {
+                        "type": [
+                          "integer",
+                          "null"
+                        ]
+                      },
+                      "description": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "deviceID": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "driver": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "driverDate": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "driverVendor": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "driverVersion": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "subsysID": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "vendorID": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "features": {
+                  "properties": {
+                    "advancedLayers": {
+                      "properties": {
+                        "noConstantBufferOffsetting": {
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "status": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "compositor": {
+                      "description": "The name of the compositor. This is one of 'd3d9', 'd3d11', 'opengl', 'basic', or 'none' ('none' indicates no compositors have been created).",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "d2d": {
+                      "properties": {
+                        "status": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "version": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "d3d11": {
+                      "properties": {
+                        "blacklisted": {
+                          "description": "Indicates whether the d3d11 compositor was blocklisted due to driver bugs. (This field was renamed to blocklisted in bug 1647225).",
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "blocklisted": {
+                          "description": "Indicates whether the d3d11 compositor was blocklisted due to driver bugs. (This field replaces blacklisted as of bug 1647225).",
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "status": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "textureSharing": {
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "version": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "warp": {
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "gpuProcess": {
+                      "properties": {
+                        "status": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "hwCompositing": {
+                      "properties": {
+                        "status": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "openglCompositing": {
+                      "properties": {
+                        "status": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "webrender": {
+                      "properties": {
+                        "status": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "wrCompositor": {
+                      "properties": {
+                        "status": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "wrQualified": {
+                      "properties": {
+                        "status": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                },
+                "monitors": {
+                  "items": {
+                    "properties": {
+                      "pseudoDisplay": {
+                        "type": "boolean"
+                      },
+                      "refreshRate": {
+                        "type": "number"
+                      },
+                      "scale": {
+                        "type": "number"
+                      },
+                      "screenHeight": {
+                        "type": "integer"
+                      },
+                      "screenWidth": {
+                        "type": "integer"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            },
+            "hdd": {
+              "properties": {
+                "binary": {
+                  "properties": {
+                    "model": {
+                      "description": "The model of the hdd where the application binaries are located. This is Windows only.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "revision": {
+                      "description": "The revision of the hdd where the application binaries are located. This is Windows only.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "type": {
+                      "enum": [
+                        "SSD",
+                        "HDD",
+                        null
+                      ],
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "type": "object"
+                },
+                "profile": {
+                  "properties": {
+                    "model": {
+                      "description": "The model of the hdd where the profile directory is located. This is Windows only.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "revision": {
+                      "description": "The revision of the hdd where the profile directory is located. This is Windows only.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "type": {
+                      "enum": [
+                        "SSD",
+                        "HDD",
+                        null
+                      ],
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "type": "object"
+                },
+                "system": {
+                  "properties": {
+                    "model": {
+                      "description": "The model of the hdd where the system files are located. This is Windows only.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "revision": {
+                      "description": "The revision of the hdd where the system files are located. This is Windows only.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "type": {
+                      "enum": [
+                        "SSD",
+                        "HDD",
+                        null
+                      ],
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "isWow64": {
+              "description": "The availability of the WoW64 subsystem. This is Windows only.",
+              "type": "boolean"
+            },
+            "isWowARM64": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "memoryMB": {
+              "description": "The machines amount of RAM.",
+              "type": "number"
+            },
+            "os": {
+              "properties": {
+                "hasPrefetch": {
+                  "description": "Whether or not the OS-based prefetch application start-up optimization is set. This is Windows-only. `null` on failure.",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "hasSuperfetch": {
+                  "description": "Whether or not the OS-based superfetch application start-up optimization service is running and using the default settings. This is Windows-only. `null` on failure.",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "installYear": {
+                  "description": "The year Windows was installed. This is Windows only. `null` on failure.",
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "kernelVersion": {
+                  "description": "The kernel version of Android. This is Android only. `null` on failure.",
+                  "type": "string"
+                },
+                "locale": {
+                  "description": "The locale of the OS, e.g. 'en'. This is `null` on failure.",
+                  "type": "string"
+                },
+                "name": {
+                  "description": "The name of the OS, e.g. 'Windows_NT'. This is `null` on failure.",
+                  "type": "string"
+                },
+                "servicePackMajor": {
+                  "description": "The Windows service pack major version. This is Windows only. `null` on failure.",
+                  "type": "number"
+                },
+                "servicePackMinor": {
+                  "description": "The Windows service pack minor version. This is Windows only. `null` on failure.",
+                  "type": "number"
+                },
+                "version": {
+                  "description": "The version of the OS, e.g. '6.1'. This is `null` on failure.",
+                  "type": [
+                    "string"
+                  ]
+                },
+                "windowsBuildNumber": {
+                  "description": "The Windows build number. This is Windows only. `null` on failure.",
+                  "type": "number"
+                },
+                "windowsUBR": {
+                  "description": "The Windows UBR. This is Windows 10 only. `null` on failure.",
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                }
+              },
+              "type": "object"
+            },
+            "sec": {
+              "properties": {
+                "antispyware": {
+                  "description": "The name of the registered antispyware software. Windows only.",
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": [
+                    "array",
+                    "null"
+                  ]
+                },
+                "antivirus": {
+                  "description": "The name of the registered antivirus software. Windows only.",
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": [
+                    "array",
+                    "null"
+                  ]
+                },
+                "firewall": {
+                  "description": "The name of the registered firewall software. Windows only.",
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": [
+                    "array",
+                    "null"
+                  ]
+                }
+              },
+              "type": "object"
+            },
+            "virtualMaxMB": {
+              "description": "Total virtual memory size in MB. This is Windows only. `null` on failure.",
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          },
+          "type": "object"
+        }
+      },
+      "required": [
+        "build",
+        "partner",
+        "settings",
+        "system"
+      ],
+      "type": "object"
+    },
+    "id": {
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "type": "string"
+    },
+    "payload": {
+      "properties": {
+        "otherInstalls": {
+          "maximum": 11,
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "version": {
+      "maximum": 4,
+      "minimum": 4,
+      "type": "number"
+    }
+  },
+  "required": [
+    "application",
+    "clientId",
+    "creationDate",
+    "environment",
+    "id",
+    "payload",
+    "version"
+  ],
+  "title": "uninstall",
+  "type": "object"
+}
