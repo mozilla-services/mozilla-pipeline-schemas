@@ -33071,6 +33071,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Number of HTML editors whose dispatching beforeinput events are canceled",
+                    "mode": "NULLABLE",
+                    "name": "htmleditors_overridden_by_beforeinput_listeners",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Number of HTML editors whose grabber to move absolute positioned elements is actually used by users.",
                     "mode": "NULLABLE",
                     "name": "htmleditors_whose_absolute_positioner_used_by_user",
@@ -33095,9 +33101,27 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Number of HTML editors whose window or a node in it has had beforeinput event listeners",
+                    "mode": "NULLABLE",
+                    "name": "htmleditors_with_beforeinput_listeners",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Number of HTML editors which has shown inline table editing UI.",
                     "mode": "NULLABLE",
                     "name": "htmleditors_with_inline_table_editor",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Number of HTML editors whose window or a node in it has had mutation event listeners, but has not had beforeinput event listeners",
+                    "mode": "NULLABLE",
+                    "name": "htmleditors_with_mutation_listeners_without_beforeinput_listeners",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Number of HTML editors a node in the window has been observed by mutation observers, but has not had beforeinput event listeners",
+                    "mode": "NULLABLE",
+                    "name": "htmleditors_with_mutation_observers_without_beforeinput_listeners",
                     "type": "STRING"
                   },
                   {
@@ -34019,6 +34043,24 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Percentage of execution time spent during Baseline compilation for JS scripts up until the page load event fires.",
+                    "mode": "NULLABLE",
+                    "name": "js_baseline_compile_proportion",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Time in milliseconds spent caching JS bytecode for scripts executed during a page load.",
+                    "mode": "NULLABLE",
+                    "name": "js_bytecode_caching_time",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Percentage of execution time spent during delazification for JS scripts up until the page load event fires.",
+                    "mode": "NULLABLE",
+                    "name": "js_delazification_proportion",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "A array generic function was called, like Array.forEach etc. See ARRAY_GENERICS_* defines in SelfHostingDefines.h for the meaning of values.",
                     "mode": "NULLABLE",
                     "name": "js_deprecated_array_generics",
@@ -34043,6 +34085,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Percentage of page load time spent executing Javascript.",
+                    "mode": "NULLABLE",
+                    "name": "js_execution_proportion",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Time elapsed between the moment a function is lazy-parsed (end of parsing of the ScriptSource) and the moment it is recompiled as non-lazy (start of compilation), in milliseconds, for privileged code.",
                     "mode": "NULLABLE",
                     "name": "js_privileged_parser_compile_lazy_after_ms",
@@ -34052,6 +34100,12 @@
                     "description": "Time elapsed between the moment a function is lazy-parsed (end of parsing of the ScriptSource) and the moment it is recompiled as non-lazy (start of compilation), in milliseconds, for web code.",
                     "mode": "NULLABLE",
                     "name": "js_web_parser_compile_lazy_after_ms",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Percentage of execution time spent during XDR encoding for JS scripts up until the page load event fires.",
+                    "mode": "NULLABLE",
+                    "name": "js_xdr_encoding_proportion",
                     "type": "STRING"
                   },
                   {
@@ -56690,6 +56744,12 @@
               {
                 "fields": [
                   {
+                    "description": "Count of overshoot events, where the user reverses scrollwheel direction soon after the last scrollwheel input.\n",
+                    "mode": "NULLABLE",
+                    "name": "apz_scrollwheel_overshoot",
+                    "type": "INT64"
+                  },
+                  {
                     "description": "The number of times a graphite2 font has been loaded.\n",
                     "mode": "NULLABLE",
                     "name": "browser_usage_graphite",
@@ -58142,6 +58202,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "The thing that triggered the print dialog, like \"keyboard_shortcut\", etc.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "printing_trigger",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "Keys are the filenames of unexpected files in the profile's origin directories.\n",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -58812,6 +58890,12 @@
                     "mode": "NULLABLE",
                     "name": "a11y_sitezoom",
                     "type": "BOOL"
+                  },
+                  {
+                    "description": "Count of overshoot events, where the user reverses scrollwheel direction soon after the last scrollwheel input.\n",
+                    "mode": "NULLABLE",
+                    "name": "apz_scrollwheel_overshoot",
+                    "type": "INT64"
                   },
                   {
                     "description": "The Websense version from the Windows registry.",
