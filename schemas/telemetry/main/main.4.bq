@@ -7219,6 +7219,12 @@
             "type": "STRING"
           },
           {
+            "description": "Counts the number of times users enable and use media control on different platforms.",
+            "mode": "NULLABLE",
+            "name": "media_control_platform_usage",
+            "type": "STRING"
+          },
+          {
             "description": "Counts the number of times a user enable or disable the media control feature via UI button, and the total number of times media control feature is enabled and disabled, which allow us to calculate the number of times a user changes setting via modifying the preference directly.",
             "mode": "NULLABLE",
             "name": "media_control_setting_change",
@@ -34319,6 +34325,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "The number of times `play/pause/stop` actions are being handled on either default handler or media session action handler.",
+                    "mode": "NULLABLE",
+                    "name": "media_control_handle_play_pause_stop_actions",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Media decoder backend (0=WMF Software, 1=DXVA2D3D9, 2=DXVA2D3D11)",
                     "mode": "NULLABLE",
                     "name": "media_decoder_backend_used",
@@ -57368,6 +57380,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "Records the WebExtension ID of a search engine where the WebExtension is not installed (= 1), disabled (= 2) or where the submission URL is different between the search engine and the WebExtension (= 3)\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "browser_searchinit_engine_invalid_webextension",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "Records when widgets are added, removed or moved in the UI. See https://firefox-source-docs.mozilla.org/browser/BrowserUsageTelemetry.html\n",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -58816,6 +58846,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "urlbar_searchmode_tabtosearch",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "A keyed uint recording how many times the user entered a particular search mode after selecting a tab-to-search onboarding result.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "urlbar_searchmode_tabtosearch_onboard",
                     "type": "RECORD"
                   },
                   {
