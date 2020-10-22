@@ -1,86 +1,137 @@
 {
-    "mozPipelineMetadata": {
-        "bq_metadata_format": "pioneer"
-    },
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "type": "object", "properties": {
-        "WebScience.Measurements.PageNavigation": { "type": "object", "properties": {
-            "numUntrackedVisits": {"type": "number"},
-            "trackedVisitsByDomain": {"type": "array",
-                "items": { "type": "object", "properties": {
-                    "domain" : {"type": "string"},
-                    "numSessions": {"type": "number"},
-                    "visitsByReferrer": {"type": "array",
-                        "items": {"type": "object", "properties": {
-                            "referrerDomain": {"type": "string"},
-                            "dayOfWeek": {"type": "number",
-                                "minimum": 0, "maximum": 6},
-                            "timeOfDay": {"type": "number",
-                                "multipleOf": 4, "minimum": 0, "maximum": 20},
-                            "pageCategory": {"type": "number",
-                                "minimum": 0, "maximum": 2},
-                            "numVisits": {"type": "number"},
-                            "totalAttention": {"type": "number"},
-                            "totalScroll": {"type": "number"},
-                            "prevExposedCount": {"type": "number"},
-                            "laterSharedCount": {"type": "number"}
-                        },
-                        "additionalProperties": false
-                        }
-                    }
-                },
-                "additionalProperties": false
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "WebScience.Measurements.PageNavigation": {
+      "type": "object",
+      "properties": {
+        "numUntrackedVisits": { "type": "number" },
+        "trackedVisitsByDomain": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "domain": { "type": "string" },
+              "numSessions": { "type": "number" },
+              "visitsByReferrer": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "referrerDomain": { "type": "string" },
+                    "dayOfWeek": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 6
+                    },
+                    "timeOfDay": {
+                      "type": "number",
+                      "multipleOf": 4,
+                      "minimum": 0,
+                      "maximum": 20
+                    },
+                    "pageCategory": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 2
+                    },
+                    "numVisits": { "type": "number" },
+                    "totalAttention": { "type": "number" },
+                    "totalScroll": { "type": "number" },
+                    "prevExposedCount": { "type": "number" },
+                    "laterSharedCount": { "type": "number" }
+                  },
+                  "additionalProperties": false
                 }
-            }
-        },
-        "additionalProperties": false
-        },
-        "WebScience.Measurements.SocialMediaLinkSharing": { "type": "object", "properties": {
-            "linkSharesByPlatform": {"type": "array",
-                "items": { "type": "object", "properties": {
-                    "platform": {"type": "string", "enum": ["facebook", "twitter", "reddit"]},
-                    "numUntrackedShares": {"type": "number"},
-                    "trackedShares": {"type": "array",
-                        "items": { "type": "object", "properties": {
-                            "domain" : {"type": "string"},
-                            "classification": {"type": "string", "enum": ["pol news", "nonpol news", "other"] },
-                            "audience": {"type": "string", "enum": ["public", "restricted"] },
-                            "numShares": {"type": "number"},
-                            "dayOfWeek": {"type": "number", "minimum": 0, "maximum": 6},
-                            "timeOfDay": {"type": "number", "minimum": 0, "maximum": 20, "multipleOf": 4}
-                        },
-                        "additionalProperties": false
-                    }
-                    }
-                },
-                "additionalProperties": false
-                }
-            }
-        },
-        "additionalProperties": false
-        },
-        "WebScience.Measurements.LinkExposure": { "type": "object", "properties": {
-            "untrackedLinkExposures": {"type": "object",
-                "propertyNames": { "pattern": "^[0-9]*$" },
-                "additionalProperties": { "type" : "number" } 
+              }
             },
-            "linkExposures": {"type": "array",
-                "items": { "type": "object", "properties": {
-                    "sourceDomain": {"type": "string"},
-                    "destinationDomain": {"type": "string"},
-                    "dayOfWeek": {"type": "number", 
-                        "minimum": 0, "maximum": 6 },
-                    "timeOfDay": {"type": "number",
-                        "multipleOf": 4, "minimum": 0, "maximum": 20},
-                    "numExposures": {"type": "number"},
-                    "laterSharedCount": {"type": "number"},
-                    "laterVisitedCount": {"type": "number"}
-                },
-                "additionalProperties": false
-                }
-            }
-        },
-        "additionalProperties": false
+            "additionalProperties": false
+          }
         }
+      },
+      "additionalProperties": false
+    },
+    "WebScience.Measurements.SocialMediaLinkSharing": {
+      "type": "object",
+      "properties": {
+        "linkSharesByPlatform": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "platform": {
+                "type": "string",
+                "enum": ["facebook", "twitter", "reddit"]
+              },
+              "numUntrackedShares": { "type": "number" },
+              "trackedShares": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "domain": { "type": "string" },
+                    "classification": {
+                      "type": "string",
+                      "enum": ["pol news", "nonpol news", "other"]
+                    },
+                    "audience": {
+                      "type": "string",
+                      "enum": ["public", "restricted"]
+                    },
+                    "numShares": { "type": "number" },
+                    "dayOfWeek": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 6
+                    },
+                    "timeOfDay": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 20,
+                      "multipleOf": 4
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "WebScience.Measurements.LinkExposure": {
+      "type": "object",
+      "properties": {
+        "untrackedLinkExposures": {
+          "type": "object",
+          "propertyNames": { "pattern": "^[0-9]*$" },
+          "additionalProperties": { "type": "number" }
+        },
+        "linkExposures": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "sourceDomain": { "type": "string" },
+              "destinationDomain": { "type": "string" },
+              "dayOfWeek": { "type": "number", "minimum": 0, "maximum": 6 },
+              "timeOfDay": {
+                "type": "number",
+                "multipleOf": 4,
+                "minimum": 0,
+                "maximum": 20
+              },
+              "numExposures": { "type": "number" },
+              "laterSharedCount": { "type": "number" },
+              "laterVisitedCount": { "type": "number" }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
     }
+  }
 }
