@@ -5,14 +5,14 @@
     "WebScience.Measurements.PageNavigation": {
       "type": "object",
       "properties": {
-        "numUntrackedVisits": { "type": "number" },
+        "numUntrackedVisits": { "type": "integer" },
         "trackedVisitsByDomain": {
           "type": "array",
           "items": {
             "type": "object",
             "properties": {
               "domain": { "type": "string" },
-              "numSessions": { "type": "number" },
+              "numSessions": { "type": "integer" },
               "visitsByReferrer": {
                 "type": "array",
                 "items": {
@@ -20,26 +20,26 @@
                   "properties": {
                     "referrerDomain": { "type": "string" },
                     "dayOfWeek": {
-                      "type": "number",
+                      "type": "integer",
                       "minimum": 0,
                       "maximum": 6
                     },
                     "timeOfDay": {
-                      "type": "number",
+                      "type": "integer",
                       "multipleOf": 4,
                       "minimum": 0,
                       "maximum": 20
                     },
                     "pageCategory": {
-                      "type": "number",
+                      "type": "integer",
                       "minimum": 0,
                       "maximum": 2
                     },
-                    "numVisits": { "type": "number" },
-                    "totalAttention": { "type": "number" },
-                    "totalScroll": { "type": "number" },
-                    "prevExposedCount": { "type": "number" },
-                    "laterSharedCount": { "type": "number" }
+                    "numVisits": { "type": "integer" },
+                    "totalAttention": { "type": "integer" },
+                    "totalScroll": { "type": "integer" },
+                    "prevExposedCount": { "type": "integer" },
+                    "laterSharedCount": { "type": "integer" }
                   },
                   "additionalProperties": false
                 }
@@ -63,7 +63,7 @@
                 "type": "string",
                 "enum": ["facebook", "twitter", "reddit"]
               },
-              "numUntrackedShares": { "type": "number" },
+              "numUntrackedShares": { "type": "integer" },
               "trackedShares": {
                 "type": "array",
                 "items": {
@@ -78,14 +78,14 @@
                       "type": "string",
                       "enum": ["public", "restricted"]
                     },
-                    "numShares": { "type": "number" },
+                    "numShares": { "type": "integer" },
                     "dayOfWeek": {
-                      "type": "number",
+                      "type": "integer",
                       "minimum": 0,
                       "maximum": 6
                     },
                     "timeOfDay": {
-                      "type": "number",
+                      "type": "integer",
                       "minimum": 0,
                       "maximum": 20,
                       "multipleOf": 4
@@ -107,7 +107,7 @@
         "untrackedLinkExposures": {
           "type": "object",
           "propertyNames": { "pattern": "^[0-9]*$" },
-          "additionalProperties": { "type": "number" }
+          "additionalProperties": { "type": "integer" }
         },
         "linkExposures": {
           "type": "array",
@@ -116,16 +116,16 @@
             "properties": {
               "sourceDomain": { "type": "string" },
               "destinationDomain": { "type": "string" },
-              "dayOfWeek": { "type": "number", "minimum": 0, "maximum": 6 },
+              "dayOfWeek": { "type": "integer", "minimum": 0, "maximum": 6 },
               "timeOfDay": {
-                "type": "number",
+                "type": "integer",
                 "multipleOf": 4,
                 "minimum": 0,
                 "maximum": 20
               },
-              "numExposures": { "type": "number" },
-              "laterSharedCount": { "type": "number" },
-              "laterVisitedCount": { "type": "number" }
+              "numExposures": { "type": "integer" },
+              "laterSharedCount": { "type": "integer" },
+              "laterVisitedCount": { "type": "integer" }
             },
             "additionalProperties": false
           }
