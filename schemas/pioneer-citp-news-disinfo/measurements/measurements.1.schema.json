@@ -1,0 +1,195 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "mozPipelineMetadata": {
+    "bq_dataset_family": "pioneer_citp_news_disinfo",
+    "bq_metadata_format": "pioneer",
+    "bq_table": "measurements_v1"
+  },
+  "properties": {
+    "WebScience.Measurements.LinkExposure": {
+      "additionalProperties": false,
+      "properties": {
+        "linkExposures": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "dayOfWeek": {
+                "maximum": 6,
+                "minimum": 0,
+                "type": "integer"
+              },
+              "destinationDomain": {
+                "type": "string"
+              },
+              "laterSharedCount": {
+                "type": "integer"
+              },
+              "laterVisitedCount": {
+                "type": "integer"
+              },
+              "numExposures": {
+                "type": "integer"
+              },
+              "sourceDomain": {
+                "type": "string"
+              },
+              "timeOfDay": {
+                "maximum": 20,
+                "minimum": 0,
+                "multipleOf": 4,
+                "type": "integer"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "untrackedLinkExposures": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "propertyNames": {
+            "pattern": "^[0-9]*$"
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "WebScience.Measurements.PageNavigation": {
+      "additionalProperties": false,
+      "properties": {
+        "numUntrackedVisits": {
+          "type": "integer"
+        },
+        "trackedVisitsByDomain": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "domain": {
+                "type": "string"
+              },
+              "numSessions": {
+                "type": "integer"
+              },
+              "visitsByReferrer": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "dayOfWeek": {
+                      "maximum": 6,
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "laterSharedCount": {
+                      "type": "integer"
+                    },
+                    "numVisits": {
+                      "type": "integer"
+                    },
+                    "pageCategory": {
+                      "maximum": 2,
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "prevExposedCount": {
+                      "type": "integer"
+                    },
+                    "referrerDomain": {
+                      "type": "string"
+                    },
+                    "timeOfDay": {
+                      "maximum": 20,
+                      "minimum": 0,
+                      "multipleOf": 4,
+                      "type": "integer"
+                    },
+                    "totalAttention": {
+                      "type": "integer"
+                    },
+                    "totalScroll": {
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "WebScience.Measurements.SocialMediaLinkSharing": {
+      "additionalProperties": false,
+      "properties": {
+        "linkSharesByPlatform": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "numUntrackedShares": {
+                "type": "integer"
+              },
+              "platform": {
+                "enum": [
+                  "facebook",
+                  "twitter",
+                  "reddit"
+                ],
+                "type": "string"
+              },
+              "trackedShares": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "audience": {
+                      "enum": [
+                        "public",
+                        "restricted"
+                      ],
+                      "type": "string"
+                    },
+                    "classification": {
+                      "enum": [
+                        "pol news",
+                        "nonpol news",
+                        "other"
+                      ],
+                      "type": "string"
+                    },
+                    "dayOfWeek": {
+                      "maximum": 6,
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "domain": {
+                      "type": "string"
+                    },
+                    "numShares": {
+                      "type": "integer"
+                    },
+                    "timeOfDay": {
+                      "maximum": 20,
+                      "minimum": 0,
+                      "multipleOf": 4,
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "type": "object"
+}
