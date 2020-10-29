@@ -2,6 +2,10 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
+    "WebScience.SurveyId": {
+        "type": "string",
+        "description": "ID sent to Qualtrics, for associating survey responses with telemetry data"
+    },
     "WebScience.Measurements.PageNavigation": {
       "type": "object",
       "properties": {
@@ -19,22 +23,9 @@
                   "type": "object",
                   "properties": {
                     "referrerDomain": { "type": "string" },
-                    "dayOfWeek": {
-                      "type": "integer",
-                      "minimum": 0,
-                      "maximum": 6
-                    },
-                    "timeOfDay": {
-                      "type": "integer",
-                      "multipleOf": 4,
-                      "minimum": 0,
-                      "maximum": 20
-                    },
-                    "pageCategory": {
-                      "type": "integer",
-                      "minimum": 0,
-                      "maximum": 2
-                    },
+                    "dayOfWeek": { "type": "integer" },
+                    "timeOfDay": { "type": "integer" },
+                    "pageCategory": { "type": "integer" },
                     "numVisits": { "type": "integer" },
                     "totalAttention": { "type": "integer" },
                     "totalScroll": { "type": "integer" },
@@ -71,25 +62,18 @@
                   "properties": {
                     "domain": { "type": "string" },
                     "classification": {
-                      "type": "string",
-                      "enum": ["pol news", "nonpol news", "other"]
+                        "type": "string",
+                        "description": "deprecated, use pageClassification"
                     },
+                    "pageClassification": { "type": "integer"},
+                    "visitReferrer": { "type": "string" },
                     "audience": {
                       "type": "string",
-                      "enum": ["public", "restricted"]
+                      "enum": ["public", "restricted", "unknown"]
                     },
                     "numShares": { "type": "integer" },
-                    "dayOfWeek": {
-                      "type": "integer",
-                      "minimum": 0,
-                      "maximum": 6
-                    },
-                    "timeOfDay": {
-                      "type": "integer",
-                      "minimum": 0,
-                      "maximum": 20,
-                      "multipleOf": 4
-                    }
+                    "dayOfWeek": { "type": "integer" },
+                    "timeOfDay": { "type": "integer" }
                   },
                   "additionalProperties": false
                 }
@@ -116,13 +100,8 @@
             "properties": {
               "sourceDomain": { "type": "string" },
               "destinationDomain": { "type": "string" },
-              "dayOfWeek": { "type": "integer", "minimum": 0, "maximum": 6 },
-              "timeOfDay": {
-                "type": "integer",
-                "multipleOf": 4,
-                "minimum": 0,
-                "maximum": 20
-              },
+              "dayOfWeek": { "type": "integer" },
+              "timeOfDay": { "type": "integer" },
               "numExposures": { "type": "integer" },
               "laterSharedCount": { "type": "integer" },
               "laterVisitedCount": { "type": "integer" }

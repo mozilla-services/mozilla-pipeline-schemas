@@ -14,8 +14,6 @@
             "additionalProperties": false,
             "properties": {
               "dayOfWeek": {
-                "maximum": 6,
-                "minimum": 0,
                 "type": "integer"
               },
               "destinationDomain": {
@@ -34,9 +32,6 @@
                 "type": "string"
               },
               "timeOfDay": {
-                "maximum": 20,
-                "minimum": 0,
-                "multipleOf": 4,
                 "type": "integer"
               }
             },
@@ -77,8 +72,6 @@
                   "additionalProperties": false,
                   "properties": {
                     "dayOfWeek": {
-                      "maximum": 6,
-                      "minimum": 0,
                       "type": "integer"
                     },
                     "laterSharedCount": {
@@ -88,8 +81,6 @@
                       "type": "integer"
                     },
                     "pageCategory": {
-                      "maximum": 2,
-                      "minimum": 0,
                       "type": "integer"
                     },
                     "prevExposedCount": {
@@ -99,9 +90,6 @@
                       "type": "string"
                     },
                     "timeOfDay": {
-                      "maximum": 20,
-                      "minimum": 0,
-                      "multipleOf": 4,
                       "type": "integer"
                     },
                     "totalAttention": {
@@ -148,21 +136,16 @@
                     "audience": {
                       "enum": [
                         "public",
-                        "restricted"
+                        "restricted",
+                        "unknown"
                       ],
                       "type": "string"
                     },
                     "classification": {
-                      "enum": [
-                        "pol news",
-                        "nonpol news",
-                        "other"
-                      ],
+                      "description": "deprecated, use pageClassification",
                       "type": "string"
                     },
                     "dayOfWeek": {
-                      "maximum": 6,
-                      "minimum": 0,
                       "type": "integer"
                     },
                     "domain": {
@@ -171,11 +154,14 @@
                     "numShares": {
                       "type": "integer"
                     },
-                    "timeOfDay": {
-                      "maximum": 20,
-                      "minimum": 0,
-                      "multipleOf": 4,
+                    "pageClassification": {
                       "type": "integer"
+                    },
+                    "timeOfDay": {
+                      "type": "integer"
+                    },
+                    "visitReferrer": {
+                      "type": "string"
                     }
                   },
                   "type": "object"
@@ -189,6 +175,10 @@
         }
       },
       "type": "object"
+    },
+    "WebScience.SurveyId": {
+      "description": "ID sent to Qualtrics, for associating survey responses with telemetry data",
+      "type": "string"
     }
   },
   "type": "object"
