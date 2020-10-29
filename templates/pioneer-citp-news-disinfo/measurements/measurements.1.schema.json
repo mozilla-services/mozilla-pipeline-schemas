@@ -3,7 +3,8 @@
   "type": "object",
   "properties": {
     "WebScience.SurveyId": {
-        "type": "string"
+        "type": "string",
+        "description": "ID sent to Qualtrics, for associating survey responses with telemetry data"
     },
     "WebScience.Measurements.PageNavigation": {
       "type": "object",
@@ -60,7 +61,11 @@
                   "type": "object",
                   "properties": {
                     "domain": { "type": "string" },
-                    "classification": { "type": "integer" },
+                    "classification": {
+                        "type": "string",
+                        "description": "deprecated, use pageClassification"
+                    },
+                    "pageClassification": { "type": "integer"},
                     "visitReferrer": { "type": "string" },
                     "audience": {
                       "type": "string",
