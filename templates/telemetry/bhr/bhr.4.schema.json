@@ -1,1 +1,84 @@
-@COMMON_PLACEHOLDER_1_JSON@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$comment": "Bug 1675103 - Define the bhr ping schema.",
+  "type": "object",
+  "title": "bhr",
+  "properties": {
+    @TELEMETRY_APPLICATION_1_JSON@,
+    @TELEMETRY_CLIENTID_1_JSON@,
+    @TELEMETRY_CREATIONDATE_1_JSON@,
+    @TELEMETRY_ENVIRONMENT_1_JSON@,
+    @TELEMETRY_ID_1_JSON@,
+    "type": {
+      "type": "string",
+      "enum": [ "bhr" ]
+    },
+    "version": {
+      "type": "number",
+      "minimum": 4,
+      "maximum": 4
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "modules": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "additionalItems": false
+          }
+        },
+        "hangs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "duration": {
+                "type": "number",
+                "minimum": 0.0
+              },
+              "thread": {
+                "type": "string"
+              },
+              "runnableName": {
+                "type": "string"
+              },
+              "process": {
+                "type": "string"
+              },
+              "remoteType": {
+                "type": ["string", "null"]
+              },
+              "annotations": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ],
+                  "additionalItems": false
+                }
+              }
+            }
+          }
+        },
+        "timeSinceLastPing": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}
