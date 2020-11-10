@@ -7591,6 +7591,12 @@
             "type": "STRING"
           },
           {
+            "description": "Did the mixed-display-content upgrade succeed?",
+            "mode": "NULLABLE",
+            "name": "mixed_content_upgrade_success",
+            "type": "STRING"
+          },
+          {
             "description": "XMLHttpRequest.responseType set to moz-blob",
             "mode": "NULLABLE",
             "name": "moz_blob_in_xhr",
@@ -27359,6 +27365,24 @@
             ],
             "mode": "REPEATED",
             "name": "https_only_mode_upgrade_time_ms",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "What content type did we upgrade, and did it load successfully?",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "https_only_mode_upgrade_type",
             "type": "RECORD"
           },
           {
@@ -60335,6 +60359,12 @@
                     "description": "Number of times platform accessibility has been enabled in DevTools Accessibility panel.\n",
                     "mode": "NULLABLE",
                     "name": "devtools_accessibility_service_enabled_count",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Number of times a tabbing order overlay was activated in the accessibility panel.\n",
+                    "mode": "NULLABLE",
+                    "name": "devtools_accessibility_tabbing_order_activated",
                     "type": "INT64"
                   },
                   {
