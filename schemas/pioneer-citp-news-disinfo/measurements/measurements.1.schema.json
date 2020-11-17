@@ -74,6 +74,13 @@
                 "items": {
                   "additionalProperties": false,
                   "properties": {
+                    "classifierResults": {
+                      "additionalProperties": {
+                        "type": "integer"
+                      },
+                      "description": "additional properties are the name of the classifier, with the classification result as the value",
+                      "type": "object"
+                    },
                     "dayOfWeek": {
                       "type": "integer"
                     },
@@ -84,6 +91,7 @@
                       "type": "integer"
                     },
                     "pageCategory": {
+                      "description": "deprecated, use classifierResults",
                       "type": "integer"
                     },
                     "prevExposedCount": {
@@ -145,8 +153,15 @@
                       "type": "string"
                     },
                     "classification": {
-                      "description": "deprecated, use pageClassification",
+                      "description": "deprecated, use classifierResults",
                       "type": "string"
+                    },
+                    "classifierResults": {
+                      "additionalProperties": {
+                        "type": "integer"
+                      },
+                      "description": "additional properties are the name of the classifier, with the classification result as the value",
+                      "type": "object"
                     },
                     "dayOfWeek": {
                       "type": "integer"
@@ -158,6 +173,7 @@
                       "type": "integer"
                     },
                     "pageClassification": {
+                      "description": "deprecated, use classifierResults",
                       "type": "integer"
                     },
                     "prevExposed": {
@@ -187,6 +203,9 @@
     },
     "WebScience.SurveyId": {
       "description": "ID sent to Qualtrics, for associating survey responses with telemetry data",
+      "type": "string"
+    },
+    "WebScience.version": {
       "type": "string"
     }
   },
