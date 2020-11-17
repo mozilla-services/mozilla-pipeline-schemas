@@ -6002,7 +6002,7 @@
             "type": "STRING"
           },
           {
-            "description": "GeckoView: Time taken to load a page in ms. This includes all static contents, no dynamic content. Loading of about: pages is not counted.",
+            "description": "GeckoView: Time taken to load a page in ms. This includes all static contents, no dynamic content. Loading of about: pages is not counted. Back back navigation (sometimes via BFCache) is included which is a source of bimodality due to the <50ms load times.",
             "mode": "NULLABLE",
             "name": "gv_page_load_ms",
             "type": "STRING"
@@ -7259,6 +7259,18 @@
             "description": "Records whether tunneled playback is supported by a video decoder when creating it.",
             "mode": "NULLABLE",
             "name": "media_android_video_tunneling_support",
+            "type": "STRING"
+          },
+          {
+            "description": "The operating system audio backend",
+            "mode": "NULLABLE",
+            "name": "media_audio_backend",
+            "type": "STRING"
+          },
+          {
+            "description": "Failure occurs when initializing the audio stream",
+            "mode": "NULLABLE",
+            "name": "media_audio_init_failure",
             "type": "STRING"
           },
           {
@@ -10901,6 +10913,12 @@
             "description": "Time from submission to dispatch of HTTP transaction (ms)",
             "mode": "NULLABLE",
             "name": "transaction_wait_time_http",
+            "type": "STRING"
+          },
+          {
+            "description": "Time from submission to dispatch of HTTP2 transaction that has received a respone from a server that addretizes HTTP3 support (ms)",
+            "mode": "NULLABLE",
+            "name": "transaction_wait_time_http2_sup_http3",
             "type": "STRING"
           },
           {
@@ -27226,6 +27244,24 @@
                 "type": "STRING"
               },
               {
+                "description": "HTTP channel (keys: uses_http3_page, uses_http3_sub, supports_http3_page, supports_http3_sub): Overall load time - network (ms)",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http3_complete_load",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "Error code when http3 connection is closed. Look at Http3Session for more details.",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -27244,6 +27280,60 @@
                 "type": "STRING"
               },
               {
+                "description": "HTTP channel (keys: uses_http3_page, uses_http3_sub, supports_http3_page, supports_http3_sub): First byte of request sent -> last byte of response received (ms)",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http3_first_sent_to_last_received",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "HTTP channel (keys: uses_http3_page, uses_http3_sub, supports_http3_page, supports_http3_sub): Open -> first byte of reply received (ms)",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http3_open_to_first_received",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "HTTP channel(keys: uses_http3_page, uses_http3_sub, supports_http3_page, supports_http3_sub): Open -> first byte of request sent (ms)",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http3_open_to_first_sent",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "Time to reuse an idle connection in HTTP3(ms); keyed by the transaction reusing an idle connection has succeeded or failed",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -27252,6 +27342,24 @@
             ],
             "mode": "REPEATED",
             "name": "http3_time_to_reuse_idle_connecttion_ms",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "HTTP channel (keys: uses_http3_page, uses_http3_sub, supports_http3_page, supports_http3_sub): After TCP SYN to Ready for HTTP (ms)",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http3_tls_handshake",
             "type": "RECORD"
           },
           {
@@ -28548,6 +28656,24 @@
             ],
             "mode": "REPEATED",
             "name": "subprocess_launch_failure",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "HTTP channel(keys: supports_http3_page, supports_http3_sub): TCP SYN to Ready for HTTP (ms)",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "sup_http3_tcp_connection",
             "type": "RECORD"
           },
           {
@@ -33204,7 +33330,7 @@
                     "type": "STRING"
                   },
                   {
-                    "description": "GeckoView: Time taken to load a page in ms. This includes all static contents, no dynamic content. Loading of about: pages is not counted.",
+                    "description": "GeckoView: Time taken to load a page in ms. This includes all static contents, no dynamic content. Loading of about: pages is not counted. Back back navigation (sometimes via BFCache) is included which is a source of bimodality due to the <50ms load times.",
                     "mode": "NULLABLE",
                     "name": "gv_page_load_ms",
                     "type": "STRING"
@@ -34485,6 +34611,18 @@
                     "description": "Records whether tunneled playback is supported by a video decoder when creating it.",
                     "mode": "NULLABLE",
                     "name": "media_android_video_tunneling_support",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "The operating system audio backend",
+                    "mode": "NULLABLE",
+                    "name": "media_audio_backend",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Failure occurs when initializing the audio stream",
+                    "mode": "NULLABLE",
+                    "name": "media_audio_init_failure",
                     "type": "STRING"
                   },
                   {
@@ -37899,6 +38037,12 @@
                     "description": "Time from submission to dispatch of HTTP transaction (ms)",
                     "mode": "NULLABLE",
                     "name": "transaction_wait_time_http",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Time from submission to dispatch of HTTP2 transaction that has received a respone from a server that addretizes HTTP3 support (ms)",
+                    "mode": "NULLABLE",
+                    "name": "transaction_wait_time_http2_sup_http3",
                     "type": "STRING"
                   },
                   {
@@ -53774,6 +53918,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "HTTP channel (keys: uses_http3_page, uses_http3_sub, supports_http3_page, supports_http3_sub): Overall load time - network (ms)",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_complete_load",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "Error code when http3 connection is closed. Look at Http3Session for more details.",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -53792,6 +53954,60 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "HTTP channel (keys: uses_http3_page, uses_http3_sub, supports_http3_page, supports_http3_sub): First byte of request sent -> last byte of response received (ms)",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_first_sent_to_last_received",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "HTTP channel (keys: uses_http3_page, uses_http3_sub, supports_http3_page, supports_http3_sub): Open -> first byte of reply received (ms)",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_open_to_first_received",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "HTTP channel(keys: uses_http3_page, uses_http3_sub, supports_http3_page, supports_http3_sub): Open -> first byte of request sent (ms)",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_open_to_first_sent",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "Time to reuse an idle connection in HTTP3(ms); keyed by the transaction reusing an idle connection has succeeded or failed",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -53800,6 +54016,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "http3_time_to_reuse_idle_connecttion_ms",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "HTTP channel (keys: uses_http3_page, uses_http3_sub, supports_http3_page, supports_http3_sub): After TCP SYN to Ready for HTTP (ms)",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_tls_handshake",
                     "type": "RECORD"
                   },
                   {
@@ -54646,6 +54880,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "subprocess_launch_failure",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "HTTP channel(keys: supports_http3_page, supports_http3_sub): TCP SYN to Ready for HTTP (ms)",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "sup_http3_tcp_connection",
                     "type": "RECORD"
                   },
                   {
