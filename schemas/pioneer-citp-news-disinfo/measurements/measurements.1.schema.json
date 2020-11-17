@@ -74,6 +74,14 @@
                 "items": {
                   "additionalProperties": false,
                   "properties": {
+                    "classifierResults": {
+                      "properties": {
+                        "additionalProperties": {
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
                     "dayOfWeek": {
                       "type": "integer"
                     },
@@ -84,6 +92,7 @@
                       "type": "integer"
                     },
                     "pageCategory": {
+                      "description": "deprecated, use classifierResults",
                       "type": "integer"
                     },
                     "prevExposedCount": {
@@ -145,8 +154,16 @@
                       "type": "string"
                     },
                     "classification": {
-                      "description": "deprecated, use pageClassification",
+                      "description": "deprecated, use classifierResults",
                       "type": "string"
+                    },
+                    "classifierResults": {
+                      "properties": {
+                        "additionalProperties": {
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
                     },
                     "dayOfWeek": {
                       "type": "integer"
@@ -158,6 +175,7 @@
                       "type": "integer"
                     },
                     "pageClassification": {
+                      "description": "deprecated, use classifierResults",
                       "type": "integer"
                     },
                     "prevExposed": {
@@ -187,6 +205,9 @@
     },
     "WebScience.SurveyId": {
       "description": "ID sent to Qualtrics, for associating survey responses with telemetry data",
+      "type": "string"
+    },
+    "WebScience.version": {
       "type": "string"
     }
   },

@@ -6,6 +6,7 @@
         "type": "string",
         "description": "ID sent to Qualtrics, for associating survey responses with telemetry data"
     },
+    "WebScience.version": { "type": "string" },
     "WebScience.Measurements.PageNavigation": {
       "type": "object",
       "properties": {
@@ -25,7 +26,18 @@
                     "referrerDomain": { "type": "string" },
                     "dayOfWeek": { "type": "integer" },
                     "timeOfDay": { "type": "integer" },
-                    "pageCategory": { "type": "integer" },
+                    "pageCategory": {
+                        "type": "integer",
+                        "description": "deprecated, use classifierResults"
+                    },
+                    "classifierResults": {
+                        "type": "object",
+                        "properties": {
+                            "additionalProperties": {
+                                "type": "integer"
+                            }
+                        }
+                    },
                     "numVisits": { "type": "integer" },
                     "totalAttention": { "type": "integer" },
                     "totalScroll": { "type": "integer" },
@@ -63,9 +75,20 @@
                     "domain": { "type": "string" },
                     "classification": {
                         "type": "string",
-                        "description": "deprecated, use pageClassification"
+                        "description": "deprecated, use classifierResults"
                     },
-                    "pageClassification": { "type": "integer"},
+                    "pageClassification": {
+                        "type": "integer",
+                        "description": "deprecated, use classifierResults"
+                    },
+                    "classifierResults": {
+                        "type": "object",
+                        "properties": {
+                            "additionalProperties": {
+                                "type": "integer"
+                            }
+                        }
+                    },
                     "visitReferrer": { "type": "string" },
                     "audience": {
                       "type": "string",
