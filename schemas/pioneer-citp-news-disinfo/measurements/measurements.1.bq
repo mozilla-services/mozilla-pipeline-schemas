@@ -288,6 +288,24 @@
           {
             "fields": [
               {
+                "description": "additional properties are the name of the classifier, with the classification result as the value",
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "classifier_results",
+                "type": "RECORD"
+              },
+              {
                 "mode": "NULLABLE",
                 "name": "day_of_week",
                 "type": "INT64"
@@ -303,6 +321,7 @@
                 "type": "INT64"
               },
               {
+                "description": "deprecated, use classifierResults",
                 "mode": "NULLABLE",
                 "name": "page_category",
                 "type": "INT64"
@@ -369,10 +388,28 @@
                 "type": "STRING"
               },
               {
-                "description": "deprecated, use pageClassification",
+                "description": "deprecated, use classifierResults",
                 "mode": "NULLABLE",
                 "name": "classification",
                 "type": "STRING"
+              },
+              {
+                "description": "additional properties are the name of the classifier, with the classification result as the value",
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "classifier_results",
+                "type": "RECORD"
               },
               {
                 "mode": "NULLABLE",
@@ -390,6 +427,7 @@
                 "type": "INT64"
               },
               {
+                "description": "deprecated, use classifierResults",
                 "mode": "NULLABLE",
                 "name": "page_classification",
                 "type": "INT64"
@@ -433,6 +471,11 @@
     "description": "ID sent to Qualtrics, for associating survey responses with telemetry data",
     "mode": "NULLABLE",
     "name": "web_science_survey_id",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "web_science_version",
     "type": "STRING"
   }
 ]
