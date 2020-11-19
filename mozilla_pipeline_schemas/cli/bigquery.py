@@ -64,4 +64,28 @@ def diff(base_ref, head_ref, input_directory, output_directory):
         schemas_path, head_ref, base_ref, integration_path
     )
 
-    write_schema_diff(head_rev_path, base_rev_path, integration_path)
+    # also compute the columns for each of these
+    def write_compact(path: Path):
+        for p in path.glob("*.bq"):
+            out = p.parent / p.name.replace(".bq", ".txt")
+            doc = json.loads(p.read_text())
+            out.write_text("\n".join(compute_compact_columns(doc)))
+
+    write_compact(head_rev_path)
+    write_compact(base_rev_path)
+
+    write_schema_diff(
+        head_rev_path,
+        base_rev_path,
+        integration_path,
+        prefix="bq_schema",
+        options="--new-file --exclude *.txt",
+    )
+
+    write_schema_diff(
+        head_rev_path,
+        base_rev_path,
+        integration_path,
+        prefix="compact_schema",
+        options="--new-file --exclude *.bq",
+    )

@@ -172,11 +172,13 @@ def checkout_transpile_schemas(
     return outdir / head_rev_path.parts[-1], outdir / base_rev_path.parts[-1]
 
 
-def write_schema_diff(head: Path, base: Path, output: Path) -> Path:
+def write_schema_diff(
+    head: Path, base: Path, output: Path, prefix: str = "bq_schema", options: str = ""
+) -> Path:
     # passing the revision in the path may not be the most elegant solution
     head_rev = head.parts[-1]
     base_rev = base.parts[-1]
-    diff_path = output / f"bq_schema_{base_rev}-{head_rev}.diff"
+    diff_path = output / f"{prefix}_{base_rev}-{head_rev}.diff"
 
     diff_contents = run(f"diff {base} {head}", check=False)
     with diff_path.open("w") as fp:
