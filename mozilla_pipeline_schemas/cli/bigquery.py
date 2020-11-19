@@ -1,11 +1,15 @@
-import click
 import json
 from pathlib import Path
-from mozilla_pipeline_schemas.utils import run, get_repository_root
-from mozilla_pipeline_schemas.bigquery import (
-    transpile as transpile_path,
-    checkout_transpile_schemas,
-    write_schema_diff,
+
+import click
+
+from mozilla_pipeline_schemas.bigquery import checkout_transpile_schemas
+from mozilla_pipeline_schemas.bigquery import transpile as transpile_path
+from mozilla_pipeline_schemas.bigquery import write_schema_diff
+from mozilla_pipeline_schemas.utils import (
+    compute_compact_columns,
+    get_repository_root,
+    run,
 )
 
 ROOT = get_repository_root()
@@ -27,22 +31,7 @@ def transpile(filename):
 def columns(source):
     """Generate a compact list of columns."""
     doc = json.loads(Path(source).read_text())
-
-    def traverse(prefix, columns):
-        res = []
-        for node in columns:
-            name = node["name"] + (".[]" if node["mode"] == "REPEATED" else "")
-            dtype = node["type"]
-            if dtype == "RECORD":
-                res += traverse(f"{prefix}.{name}", node["fields"])
-            else:
-                res += [f"{prefix}.{name} {dtype}"]
-        return res
-
-    res = traverse("root", doc)
-
-    for item in sorted(res):
-        click.echo(item)
+    click.echo("\n".join(compute_compact_columns(doc)))
 
 
 @bigquery.command()
