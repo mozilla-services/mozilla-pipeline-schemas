@@ -12,15 +12,22 @@ from .utils import run
 
 def transpile(schema_path: Path) -> dict:
     """Transpile a JSON Schema into a BigQuery schema."""
+    # check for the empty schema which causes issues
+    schema = json.loads(schema_path.read_text())
+    if schema["type"] == "object" and not schema.get("properties"):
+        return []
+
     res = run(
         [
             "jsonschema-transpiler",
             str(schema_path),
             "--normalize-case",
             "--resolve",
-            "cast",
+            "drop",
             "--type",
             "bigquery",
+            "--force-nullable",
+            "--tuple-struct"
         ]
     )
     schema = json.loads(res)
