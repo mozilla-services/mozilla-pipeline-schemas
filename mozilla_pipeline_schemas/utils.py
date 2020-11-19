@@ -1,8 +1,8 @@
-from typing import List, Tuple, Union
+import logging
+import re
 import subprocess
 from pathlib import Path
-import re
-import logging
+from typing import List, Tuple, Union
 
 
 def run(command: Union[str, List[str]], **kwargs) -> str:

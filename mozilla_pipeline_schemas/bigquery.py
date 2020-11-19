@@ -1,12 +1,13 @@
+import argparse
 import json
 import os
 import shutil
-import tempfile
-import argparse
 import sys
+import tempfile
 from contextlib import contextmanager
 from pathlib import Path
 from typing import List, Tuple
+
 from .utils import run
 
 
@@ -27,7 +28,7 @@ def transpile(schema_path: Path) -> dict:
             "--type",
             "bigquery",
             "--force-nullable",
-            "--tuple-struct"
+            "--tuple-struct",
         ]
     )
     schema = json.loads(res)
