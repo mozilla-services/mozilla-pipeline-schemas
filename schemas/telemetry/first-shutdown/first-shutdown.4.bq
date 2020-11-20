@@ -26704,6 +26704,24 @@
                 "type": "STRING"
               },
               {
+                "description": "Counts how often the external protocol handler dialog is shown. Labelled by protocol scheme. Keyed by whether the navigation came from the top level browser, an iframe or a cross origin iframe, or a null principal.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "external_protocol_handler_dialog_context_scheme",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "Milliseconds between starting to fill an autofill-eligible form field and submitting the form, keyed by the combination of form type and filling type.",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -54008,6 +54026,42 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "The time between navigationStart and the first contentful paint of a foreground http or https root content document, in milliseconds. The contentful paint timestamp is taken during display list building and does not include rasterization or compositing of that paint. This is collected only on page load where the main document uses or suppports HTTP3",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_perf_first_contentful_paint_ms",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Time in milliseconds from navigationStart to loadEventStart for the foreground http or https root content document. This is collected only on page load where the main document uses or suppports HTTP3",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_perf_page_load_time_ms",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "Time to reuse an idle connection in HTTP3(ms); keyed by the transaction reusing an idle connection has succeeded or failed",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -60225,9 +60279,15 @@
                     "type": "INT64"
                   },
                   {
-                    "description": "The count of the total non-unique http(s) URIs visited in a subsession, including page reloads, after the session has been restored. This does not include background page requests and URIs from embedded pages or private browsing.\n",
+                    "description": "The count of the total non-unique http(s) URIs visited in a subsession, including page reloads, after the session has been restored. URIs on minimized or background tabs may also be counted towards this. Private browsing is not included in this count.\n",
                     "mode": "NULLABLE",
                     "name": "browser_engagement_total_uri_count",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "The count of the total non-unique http(s) URIs visited in a subsession, including page reloads, after the session has been restored. URIs on minimized or background tabs may also be counted towards this. Private browsing is included in this count.\n",
+                    "mode": "NULLABLE",
+                    "name": "browser_engagement_total_uri_count_normal_and_private_mode",
                     "type": "INT64"
                   },
                   {
