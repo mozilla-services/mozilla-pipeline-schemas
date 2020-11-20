@@ -178,9 +178,9 @@ def write_schema_diff(
     # passing the revision in the path may not be the most elegant solution
     head_rev = head.parts[-1]
     base_rev = base.parts[-1]
-    diff_path = output / f"{prefix}_{base_rev}-{head_rev}.diff {options}"
+    diff_path = output / f"{prefix}_{base_rev}-{head_rev}.diff"
 
-    diff_contents = run(f"diff {base} {head}", check=False)
+    diff_contents = run(f"diff {base} {head} {options}", check=False)
     with diff_path.open("w") as fp:
         fp.write(diff_contents)
 
