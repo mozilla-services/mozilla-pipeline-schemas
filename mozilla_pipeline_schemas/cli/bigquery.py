@@ -68,8 +68,8 @@ def diff(base_ref, head_ref, input_directory, output_directory):
     def write_compact(path: Path):
         for p in path.glob("*.bq"):
             out = p.parent / p.name.replace(".bq", ".txt")
-            doc = json.loads(p.read_text())
-            out.write_text("\n".join(compute_compact_columns(doc)))
+            bq_schema = json.loads(p.read_text())
+            out.write_text("\n".join(compute_compact_columns(bq_schema)))
 
     write_compact(head_rev_path)
     write_compact(base_rev_path)
