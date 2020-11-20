@@ -1,26 +1,34 @@
+import argparse
 import json
 import os
 import shutil
-import tempfile
-import argparse
 import sys
+import tempfile
 from contextlib import contextmanager
 from pathlib import Path
 from typing import List, Tuple
+
 from .utils import run
 
 
 def transpile(schema_path: Path) -> dict:
     """Transpile a JSON Schema into a BigQuery schema."""
+    # check for the empty schema which causes issues
+    schema = json.loads(schema_path.read_text())
+    if schema["type"] == "object" and not schema.get("properties"):
+        return []
+
     res = run(
         [
             "jsonschema-transpiler",
             str(schema_path),
             "--normalize-case",
             "--resolve",
-            "cast",
+            "drop",
             "--type",
             "bigquery",
+            "--force-nullable",
+            "--tuple-struct",
         ]
     )
     schema = json.loads(res)
@@ -164,13 +172,15 @@ def checkout_transpile_schemas(
     return outdir / head_rev_path.parts[-1], outdir / base_rev_path.parts[-1]
 
 
-def write_schema_diff(head: Path, base: Path, output: Path) -> Path:
+def write_schema_diff(
+    head: Path, base: Path, output: Path, prefix: str = "bq_schema", options: str = ""
+) -> Path:
     # passing the revision in the path may not be the most elegant solution
     head_rev = head.parts[-1]
     base_rev = base.parts[-1]
-    diff_path = output / f"bq_schema_{base_rev}-{head_rev}.diff"
+    diff_path = output / f"{prefix}_{base_rev}-{head_rev}.diff"
 
-    diff_contents = run(f"diff {base} {head}", check=False)
+    diff_contents = run(f"diff {base} {head} {options}", check=False)
     with diff_path.open("w") as fp:
         fp.write(diff_contents)
 

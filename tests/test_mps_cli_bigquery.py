@@ -22,7 +22,8 @@ def test_bigquery_diff(tmp_git):
         ],
     )
     assert res.exit_code == 0, res.output
-    assert len(os.listdir(tmp_git / "integration")) == 3
+    # 2 folders for hashes, 1 file for bq diffs, 1 file for compact diffs
+    assert len(os.listdir(tmp_git / "integration")) == 4
 
 
 @runif_cli_configured
@@ -41,7 +42,7 @@ def test_bigquery_diff_duplicate(tmp_git):
         ],
     )
     assert res.exit_code == 0, res.output
-    assert len(os.listdir(tmp_git / "integration")) == 2
+    assert len(os.listdir(tmp_git / "integration")) == 3
     assert (
         not next((tmp_git / "integration").glob("*.diff")).open().read()
     ), "diff should be empty"

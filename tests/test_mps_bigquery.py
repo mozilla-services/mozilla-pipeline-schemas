@@ -31,7 +31,8 @@ def test_preconditions():
 @runif_cli_configured
 def test_transpile(tmp_path):
     test_schema = {"type": "string"}
-    expected_schema = [{"mode": "REQUIRED", "name": "root", "type": "STRING"}]
+    # --force-nullable
+    expected_schema = [{"mode": "NULLABLE", "name": "root", "type": "STRING"}]
     test_schema_path = tmp_path / "test.json"
     with test_schema_path.open("w") as fp:
         json.dump(test_schema, fp)
