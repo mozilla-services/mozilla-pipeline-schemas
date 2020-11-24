@@ -4982,7 +4982,7 @@
             "type": "STRING"
           },
           {
-            "description": "Where the migration wizard was entered from. 0=Other/catch-all, 1=first-run, 2=refresh-firefox, 3=Places window, 4=Password manager, 5=New tab, 6=File menu, 7=Help menu",
+            "description": "Where the migration wizard was entered from. 0=Other/catch-all, 1=first-run, 2=refresh-firefox, 3=Places window, 4=Password manager, 5=New tab, 6=File menu, 7=Help menu, 8=Bookmarks toolbar",
             "mode": "NULLABLE",
             "name": "fx_migration_entry_point",
             "type": "STRING"
@@ -32496,7 +32496,7 @@
                     "type": "STRING"
                   },
                   {
-                    "description": "Where the migration wizard was entered from. 0=Other/catch-all, 1=first-run, 2=refresh-firefox, 3=Places window, 4=Password manager, 5=New tab, 6=File menu, 7=Help menu",
+                    "description": "Where the migration wizard was entered from. 0=Other/catch-all, 1=first-run, 2=refresh-firefox, 3=Places window, 4=Password manager, 5=New tab, 6=File menu, 7=Help menu, 8=Bookmarks toolbar",
                     "mode": "NULLABLE",
                     "name": "fx_migration_entry_point",
                     "type": "STRING"
@@ -57909,7 +57909,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records clicks of adverts on SERP pages. The key format is ‘<engine-name>’.\n",
+                        "description": "Records clicks of adverts on SERP pages. The key format is ‘<provider>:<sap|organic>’.\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -57945,7 +57945,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records counts of SERP pages with adverts displayed. The key format is ‘<engine-name>’.\n",
+                        "description": "Records counts of SERP pages with adverts displayed. The key format is ‘<provider>:<sap|organic>’.\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -60234,6 +60234,18 @@
                     "description": "The count of the number of five-second intervals ('ticks') the user was considered 'active' in a subsession. Session activity involves keyboard or mouse interaction with the application. It does not take into account whether or not the window has focus or is in the foreground, only if it is receiving these interaction events.\n",
                     "mode": "NULLABLE",
                     "name": "browser_engagement_active_ticks",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "The count of bookmarks added to the bookmarks toolbar. This counts bookmarks created on the bookmarks toolbar and bookmarks moved to the bookmarks toolbar.\n",
+                    "mode": "NULLABLE",
+                    "name": "browser_engagement_bookmarks_toolbar_bookmark_added",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "The count of bookmarks opened from the Bookmarks Toolbar. This counts bookmarks opened on the toolbar and bookmarks opened from the 'symlinked' Other Bookmarks folder on the Bookmarks Toolbar. It does not count Bookmarks Toolbar bookmarks opened via the Library, Bookmarks Menu, or other UI since the goal is to measure interactions that pass through the toolbar.\n",
+                    "mode": "NULLABLE",
+                    "name": "browser_engagement_bookmarks_toolbar_bookmark_opened",
                     "type": "INT64"
                   },
                   {
