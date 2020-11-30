@@ -6,6 +6,7 @@ import click
 from mozilla_pipeline_schemas.bigquery import checkout_transpile_schemas
 from mozilla_pipeline_schemas.bigquery import transpile as transpile_path
 from mozilla_pipeline_schemas.bigquery import write_schema_diff
+from mozilla_pipeline_schemas.sink import transform_sink
 from mozilla_pipeline_schemas.utils import (
     compute_compact_columns,
     get_repository_root,
@@ -89,3 +90,14 @@ def diff(base_ref, head_ref, input_directory, output_directory):
         prefix="compact_schema",
         options="--new-file --exclude *.bq",
     )
+
+
+@bigquery.command()
+@click.argument("validation_source_path", type=click.Path(exists=True, dir_okay=False))
+@click.option(
+    "--jars",
+    type=click.Path(exists=True, file_okay=False),
+    default=str(ROOT / "target"),
+)
+def transform(validation_source_path, jars):
+    transform_sink(validation_source_path, jars)

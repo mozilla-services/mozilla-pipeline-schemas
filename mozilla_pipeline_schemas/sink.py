@@ -5,8 +5,6 @@ import tempfile
 from base64 import b64encode
 from pathlib import Path
 
-import click
-
 from .bigquery import transpile
 
 ROOT = Path(__file__).parent.parent
@@ -66,24 +64,23 @@ def temp_schema_artifact(validation_path: Path) -> Path:
     return artifact_path
 
 
-@click.command()
-@click.argument("source_path", type=click.Path(exists=True, dir_okay=False))
-@click.option(
-    "--jars",
-    type=click.Path(exists=True, file_okay=False),
-    default=str(ROOT / "target"),
-)
-def transform_sink(source_path, jars):
+def transform_sink(validation_source_path, jars):
     os.environ["CLASSPATH"] = ":".join(
         [str(p.resolve()) for p in Path(jars).glob("**/*.jar")]
     )
     # now we can import Java with the classpath set
-    from jnius import autoclass
+    try:
+        from jnius import autoclass
 
-    SinkConfig = autoclass("com.mozilla.telemetry.ingestion.sink.config.SinkConfig")
+        SinkConfig = autoclass("com.mozilla.telemetry.ingestion.sink.config.SinkConfig")
+    except Exception as e:
+        print(e)
+        raise click.ClickException(
+            "Unable to import SinkConfig, ensure Java dependencies are set correctly."
+        )
 
-    schema_location = temp_schema_artifact(Path(source_path))
-    intermediate_path = temp_pubsub_message(Path(source_path))
+    schema_location = temp_schema_artifact(Path(validation_source_path))
+    intermediate_path = temp_pubsub_message(Path(validation_source_path))
 
     config = dict(
         SCHEMAS_LOCATION=str(schema_location),
@@ -91,11 +88,6 @@ def transform_sink(source_path, jars):
         OUTPUT_PIPE="-",
         OUTPUT_FORMAT="payload",
     )
-    print(config)
     os.environ.update(config)
 
     SinkConfig.getInput(SinkConfig.getOutput()).run()
-
-
-if __name__ == "__main__":
-    transform_sink()
