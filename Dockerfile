@@ -1,5 +1,5 @@
 FROM centos:centos8.1.1911
-LABEL maintainer="Firefox Data Platform"
+LABEL maintainer="Mozilla Data Platform"
 
 # Install the appropriate software
 RUN dnf -y update && \
@@ -29,6 +29,8 @@ RUN git config --global user.email "mozilla-pipeline-schemas@mozilla.com"
 RUN git config --global user.name "Mozilla Pipeline Schemas"
 
 WORKDIR /app
+
+COPY --from=mozilla/ingestion-sink:latest /app/ingestion-sink/target /app/target
 
 # Install python dependencies
 COPY requirements.txt requirements-dev.txt ./
