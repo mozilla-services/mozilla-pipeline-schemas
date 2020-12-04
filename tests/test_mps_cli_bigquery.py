@@ -3,8 +3,8 @@ import json
 
 from click.testing import CliRunner
 
-from mozilla_pipeline_schemas.cli.bigquery import diff, columns, transpile
-from utils import runif_cli_configured
+from mozilla_pipeline_schemas.cli.bigquery import diff, columns, transpile, transform
+from utils import runif_cli_configured, runif_sink_configured
 
 
 @runif_cli_configured
@@ -119,3 +119,29 @@ def test_bigquery_columns_from_transpiled(tmp_path):
     res = CliRunner().invoke(columns, [str(path)], catch_exceptions=False)
     output = res.output.strip().split("\n")
     assert output == expected
+
+
+@runif_sink_configured
+def test_bigquery_transform_main_min(tmp_git, jars_root):
+    """A slightly involved test."""
+    validation = {"clientId": "a-unique-identifier", "metrics": {"value": 1}}
+    schema = {"type": "object", "properties": {"clientId": {"type": "string"}}}
+
+    validation_path = tmp_git / "validation/test/test.1.additional_properties.pass.json"
+    schema_path = tmp_git / "schemas/test/test/test.1.schema.json"
+
+    validation_path.parent.mkdir(parents=True)
+    schema_path.parent.mkdir(parents=True)
+
+    validation_path.write_text(json.dumps(validation))
+    schema_path.write_text(json.dumps(schema))
+
+    res = CliRunner().invoke(
+        transform,
+        [str(validation_path), "--jars", str(jars_root)],
+        catch_exceptions=False,
+    )
+    transformed = json.loads(res.output)
+
+    assert transformed["client_id"] == validation["clientId"]
+    assert transformed["additional_properties"] == '{"metrics":{"value":1}}'
