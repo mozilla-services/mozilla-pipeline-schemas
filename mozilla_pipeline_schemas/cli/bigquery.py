@@ -1,13 +1,17 @@
-import click
 import json
 from pathlib import Path
-from mozilla_pipeline_schemas.utils import run, get_repository_root
-from mozilla_pipeline_schemas.bigquery import (
-    transpile as transpile_path,
-    checkout_transpile_schemas,
-    write_schema_diff,
-)
+
+import click
+
+from mozilla_pipeline_schemas.bigquery import checkout_transpile_schemas
+from mozilla_pipeline_schemas.bigquery import transpile as transpile_path
+from mozilla_pipeline_schemas.bigquery import write_schema_diff
 from mozilla_pipeline_schemas.sink import transform_sink
+from mozilla_pipeline_schemas.utils import (
+    compute_compact_columns,
+    get_repository_root,
+    run,
+)
 
 ROOT = get_repository_root()
 
