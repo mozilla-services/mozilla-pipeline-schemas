@@ -10,6 +10,22 @@ from mozilla_pipeline_schemas.utils import get_repository_root, run
 ROOT = get_repository_root()
 SCHEMAS_ROOT = ROOT / "schemas"
 VALIDATION_ROOT = ROOT / "validation"
+JARS_ROOT = ROOT / "target"
+
+
+@pytest.fixture()
+def schemas_root():
+    return SCHEMAS_ROOT
+
+
+@pytest.fixture()
+def validation_root():
+    return VALIDATION_ROOT
+
+
+@pytest.fixture()
+def jars_root():
+    return JARS_ROOT
 
 
 def load_schemas():

@@ -65,9 +65,20 @@ def temp_schema_artifact(validation_path: Path) -> Path:
 
 
 def transform_sink(validation_source_path, jars):
-    os.environ["CLASSPATH"] = ":".join(
-        [str(p.resolve()) for p in Path(jars).glob("**/*.jar")]
+
+    schema_location = temp_schema_artifact(Path(validation_source_path))
+    intermediate_path = temp_pubsub_message(Path(validation_source_path))
+    output = Path(tempfile.mkdtemp()) / "output.json"
+
+    config = dict(
+        CLASSPATH=":".join([str(p.resolve()) for p in Path(jars).glob("**/*.jar")]),
+        SCHEMAS_LOCATION=str(schema_location),
+        INPUT_PIPE=str(intermediate_path),
+        OUTPUT_PIPE=str(output),
+        OUTPUT_FORMAT="payload",
     )
+    os.environ.update(config)
+
     # now we can import Java with the classpath set
     try:
         from jnius import autoclass
@@ -75,19 +86,9 @@ def transform_sink(validation_source_path, jars):
         SinkConfig = autoclass("com.mozilla.telemetry.ingestion.sink.config.SinkConfig")
     except Exception as e:
         print(e)
-        raise click.ClickException(
+        raise RuntimeError(
             "Unable to import SinkConfig, ensure Java dependencies are set correctly."
         )
 
-    schema_location = temp_schema_artifact(Path(validation_source_path))
-    intermediate_path = temp_pubsub_message(Path(validation_source_path))
-
-    config = dict(
-        SCHEMAS_LOCATION=str(schema_location),
-        INPUT_PIPE=str(intermediate_path),
-        OUTPUT_PIPE="-",
-        OUTPUT_FORMAT="payload",
-    )
-    os.environ.update(config)
-
     SinkConfig.getInput(SinkConfig.getOutput()).run()
+    return json.loads(output.read_text())

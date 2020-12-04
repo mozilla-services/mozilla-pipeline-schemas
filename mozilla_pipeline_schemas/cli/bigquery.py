@@ -96,4 +96,4 @@ def diff(base_ref, head_ref, input_directory, output_directory):
     default=str(ROOT / "target"),
 )
 def transform(validation_source_path, jars):
-    transform_sink(validation_source_path, jars)
+    click.echo(json.dumps(transform_sink(validation_source_path, jars), indent=2))
