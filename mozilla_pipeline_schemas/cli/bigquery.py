@@ -96,4 +96,12 @@ def diff(base_ref, head_ref, input_directory, output_directory):
     default=str(ROOT / "target"),
 )
 def transform(validation_source_path, jars):
+    """Convert the validation document into a format for insertion into
+    BigQuery.
+
+    This function relies on the java libraries for gcp-ingestion/ingestion-sink.
+    The documents will be transformed according to the shape of the transpiled
+    schemas. If field is not captured by the schemas, it will go into
+    additional_properties.
+    """
     click.echo(json.dumps(transform_sink(validation_source_path, jars), indent=2))
