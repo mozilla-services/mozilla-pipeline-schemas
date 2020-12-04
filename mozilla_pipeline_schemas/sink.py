@@ -4,6 +4,7 @@ import tarfile
 import tempfile
 from base64 import b64encode
 from pathlib import Path
+import multiprocessing as mp
 
 from .bigquery import transpile
 
@@ -64,8 +65,7 @@ def temp_schema_artifact(validation_path: Path) -> Path:
     return artifact_path
 
 
-def transform_sink(validation_source_path, jars):
-
+def _transform_sink(queue, validation_source_path, jars):
     schema_location = temp_schema_artifact(Path(validation_source_path))
     intermediate_path = temp_pubsub_message(Path(validation_source_path))
     output = Path(tempfile.mkdtemp()) / "output.json"
@@ -77,6 +77,7 @@ def transform_sink(validation_source_path, jars):
         OUTPUT_PIPE=str(output),
         OUTPUT_FORMAT="payload",
     )
+    # environment updates are done in the context of a new process
     os.environ.update(config)
 
     # now we can import Java with the classpath set
@@ -91,4 +92,25 @@ def transform_sink(validation_source_path, jars):
         )
 
     SinkConfig.getInput(SinkConfig.getOutput()).run()
-    return json.loads(output.read_text())
+    queue.put(json.loads(output.read_text()))
+
+
+def transform_sink(validation_source_path, jars):
+    # The tests do not play well with jnius for some reason (likely involving
+    # subprocesses internals). Instead, we can run this function inside of a
+    # process which has the nice side-effect of limiting the environment
+    # changes. This seems to work well enough for command-line use (and is not
+    # much slower than without the process call). See some of the following
+    # links for using multiprocessing and why pytest might deadlock without the
+    # spawn context.
+    # https://stackoverflow.com/a/2046630
+    # https://pythonspeed.com/articles/python-multiprocessing/
+    # https://docs.python.org/3/library/multiprocessing.html#contexts-and-start-methods
+    ctx = mp.get_context("spawn")
+    q = ctx.Queue()
+    p = ctx.Process(target=_transform_sink, args=(q, validation_source_path, jars))
+    p.start()
+    result = q.get()
+    # 10 second timeout
+    p.join(10)
+    return result
