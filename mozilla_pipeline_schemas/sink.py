@@ -96,16 +96,21 @@ def _transform_sink(queue, validation_source_path, jars):
 
 
 def transform_sink(validation_source_path, jars):
-    # The tests do not play well with jnius for some reason (likely involving
-    # subprocesses internals). Instead, we can run this function inside of a
-    # process which has the nice side-effect of limiting the environment
-    # changes. This seems to work well enough for command-line use (and is not
-    # much slower than without the process call). See some of the following
-    # links for using multiprocessing and why pytest might deadlock without the
-    # spawn context.
-    # https://stackoverflow.com/a/2046630
-    # https://pythonspeed.com/articles/python-multiprocessing/
-    # https://docs.python.org/3/library/multiprocessing.html#contexts-and-start-methods
+"""
+Transform a single payload at ` validation_source_path` into a format for insertion into BigQuery.
+
+The tests do not play well with jnius for some reason (likely involving
+subprocesses internals). Instead, we run this function inside of a
+process which has the nice side-effect of limiting the environment
+changes. This seems to work well enough for command-line use (and is not
+much slower than without the process call). See some of the following
+links for using multiprocessing and why pytest might deadlock without the
+spawn context:
+
+https://stackoverflow.com/a/2046630
+https://pythonspeed.com/articles/python-multiprocessing/
+https://docs.python.org/3/library/multiprocessing.html#contexts-and-start-methods
+"""
     ctx = mp.get_context("spawn")
     q = ctx.Queue()
     p = ctx.Process(target=_transform_sink, args=(q, validation_source_path, jars))
