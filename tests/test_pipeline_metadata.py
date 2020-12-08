@@ -1,6 +1,3 @@
-EMPTY_BQ_ACCESS = {"workgroups": [{"members": [], "role": "roles/bigquery.dataViewer"}]}
-
-
 def test_metadata_defaults(schemas):
     main = schemas["telemetry.account-ecosystem.4"]
     assert main["mozPipelineMetadata"]["bq_metadata_format"] == "telemetry"
@@ -15,5 +12,5 @@ def test_pioneer_defaults(schemas):
             )
             assert (
                 schema["mozPipelineMetadata"]["bq_metadata_format"] == "pioneer"
-                and schema["mozPipelineMetadata"]["bq_access"] == EMPTY_BQ_ACCESS
+                and schema["mozPipelineMetadata"]["bq_workgroup_access"] == []
             ), msg

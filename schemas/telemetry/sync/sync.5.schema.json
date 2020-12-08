@@ -3,19 +3,17 @@
   "additionalProperties": false,
   "description": "Schema for v5 of sync pings added for GCP compatibility. This is a copy of v4 schema, as discussed in https://bugzilla.mozilla.org/show_bug.cgi?id=1572744#c3",
   "mozPipelineMetadata": {
-    "bq_access": {
-      "workgroups": [
-        {
-          "members": [
-            "workgroup:mozilla-confidential"
-          ],
-          "role": "roles/bigquery.dataViewer"
-        }
-      ]
-    },
     "bq_dataset_family": "telemetry",
     "bq_metadata_format": "telemetry",
-    "bq_table": "sync_v5"
+    "bq_table": "sync_v5",
+    "bq_workgroup_access": [
+      {
+        "members": [
+          "workgroup:mozilla-confidential"
+        ],
+        "role": "roles/bigquery.dataViewer"
+      }
+    ]
   },
   "properties": {
     "application": {
