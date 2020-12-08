@@ -63,6 +63,14 @@ if __name__ == "__main__":
         "bq_dataset_family": bq_dataset_family,
         "bq_table": bq_table,
         "bq_metadata_format": "structured",
+        "bq_access": {
+            "workgroups": [
+                {
+                    "role": "roles/bigquery.dataViewer",
+                    "members": ["workgroup:mozilla-confidential"],
+                }
+            ]
+        },
     }
     merge_where_empty(meta, defaults)
     if inject_metadata:

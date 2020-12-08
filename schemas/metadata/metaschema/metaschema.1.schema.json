@@ -11,6 +11,39 @@
           "description": "Optional comment about the pipeline handling for this doctype",
           "type": "string"
         },
+        "bq_access": {
+          "additionalProperties": false,
+          "description": "NOT YET IMPLEMENTED: Container for access policy metadata for the destination BigQuery table",
+          "properties": {
+            "workgroups": {
+              "description": "NOT YET IMPLEMENTED: The workgroups with access to the destination BigQuery table",
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "members": {
+                    "items": {
+                      "description": "Workgroup identifier with an optional slash-delimited subgroup label; when unspecified the subgroup is set to 'default'",
+                      "pattern": "^workgroup:[a-z0-9-]+(/[a-z0-9-]+){0,1}$",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "role": {
+                    "description": "Predefined BigQuery role, see https://cloud.google.com/bigquery/docs/access-control#bigquery; only specific roles are supported",
+                    "enum": [
+                      "roles/bigquery.dataViewer",
+                      "roles/bigquery.dataEditor"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "type": "object"
+        },
         "bq_dataset_family": {
           "description": "NOT YET IMPLEMENTED: The base name for the destination BigQuery dataset; if this is set to 'telemetry', the pipeline will write into 'telemetry_live'",
           "type": "string"
