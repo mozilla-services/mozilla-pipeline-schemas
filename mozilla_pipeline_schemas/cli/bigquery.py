@@ -6,6 +6,7 @@ import click
 from mozilla_pipeline_schemas.bigquery import checkout_transpile_schemas
 from mozilla_pipeline_schemas.bigquery import transpile as transpile_path
 from mozilla_pipeline_schemas.bigquery import write_schema_diff
+from mozilla_pipeline_schemas.sink import transform_sink
 from mozilla_pipeline_schemas.utils import (
     compute_compact_columns,
     get_repository_root,
@@ -89,3 +90,27 @@ def diff(base_ref, head_ref, input_directory, output_directory):
         prefix="compact_schema",
         options="--new-file --exclude *.bq",
     )
+
+
+@bigquery.command()
+@click.argument("validation_source_path", type=click.Path(exists=True, dir_okay=False))
+@click.option(
+    "--jars",
+    type=click.Path(exists=True, file_okay=False),
+    default=str(ROOT / "target"),
+)
+def transform(validation_source_path, jars):
+    """Convert the validation document into a format for insertion into
+    BigQuery.
+
+    This command relies on the java libraries for gcp-ingestion/ingestion-sink.
+    Update these using `scripts/download-java-dependencies`.
+
+    This command also requires jnius. See installation instructions here:
+    https://pyjnius.readthedocs.io/en/stable/installation.html#installation
+
+    The documents will be transformed according to the shape of the transpiled
+    schemas. If field is not captured by the schemas, it will go into
+    additional_properties.
+    """
+    click.echo(json.dumps(transform_sink(validation_source_path, jars), indent=2))
