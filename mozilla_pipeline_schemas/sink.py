@@ -11,11 +11,19 @@ from .bigquery import transpile
 ROOT = Path(__file__).parent.parent
 
 
+def get_schema_elements(path):
+    """Return a tuple of namespace, doctype, and version from a validation path."""
+    if path.parent.parent.name != "validation":
+        raise ValueError(f"{path} is not a validation schema")
+    namespace = path.parent.name
+    doctype, version = path.name.split(".")[:2]
+    return namespace, doctype, version
+
+
 def temp_pubsub_message(validation_path: Path) -> Path:
     """Write a document as a base64 encoded message into a temporary path."""
     output = Path(tempfile.mkdtemp()) / "pubsub.json"
-    namespace = validation_path.parent.name
-    doctype, version = validation_path.name.split(".")[:2]
+    namespace, doctype, version = get_schema_elements(validation_path)
     data = json.dumps(
         dict(
             attributeMap=dict(
@@ -38,8 +46,7 @@ def temp_schema_artifact(validation_path: Path) -> Path:
     in: schemas/telemetry/main/main.4.schema.json
     out: {tmp_path}/schema.tar.gz
     """
-    namespace = validation_path.parent.name
-    doctype, version = validation_path.name.split(".")[:2]
+    namespace, doctype, version = get_schema_elements(validation_path)
 
     # schema relative to the validation path
     root = validation_path.parent.parent.parent
@@ -96,21 +103,21 @@ def _transform_sink(queue, validation_source_path, jars):
 
 
 def transform_sink(validation_source_path, jars):
-"""
-Transform a single payload at ` validation_source_path` into a format for insertion into BigQuery.
+    """
+    Transform a single payload at ` validation_source_path` into a format for
+    insertion into BigQuery.
 
-The tests do not play well with jnius for some reason (likely involving
-subprocesses internals). Instead, we run this function inside of a
-process which has the nice side-effect of limiting the environment
-changes. This seems to work well enough for command-line use (and is not
-much slower than without the process call). See some of the following
-links for using multiprocessing and why pytest might deadlock without the
-spawn context:
+    The tests do not play well with jnius for some reason (likely involving
+    subprocesses internals). Instead, we run this function inside of a process
+    which has the nice side-effect of limiting the environment changes. This
+    seems to work well enough for command-line use (and is not much slower than
+    without the process call). See some of the following links for using
+    multiprocessing and why pytest might deadlock without the spawn context:
 
-https://stackoverflow.com/a/2046630
-https://pythonspeed.com/articles/python-multiprocessing/
-https://docs.python.org/3/library/multiprocessing.html#contexts-and-start-methods
-"""
+    https://stackoverflow.com/a/2046630
+    https://pythonspeed.com/articles/python-multiprocessing/
+    https://docs.python.org/3/library/multiprocessing.html#contexts-and-start-methods
+    """
     ctx = mp.get_context("spawn")
     q = ctx.Queue()
     p = ctx.Process(target=_transform_sink, args=(q, validation_source_path, jars))
