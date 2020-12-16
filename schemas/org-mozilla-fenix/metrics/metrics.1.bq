@@ -307,6 +307,18 @@
             "type": "BOOL"
           },
           {
+            "description": "A boolean that indicates if the user has bookmarks in the desktop folder\n",
+            "mode": "NULLABLE",
+            "name": "metrics_has_desktop_bookmarks",
+            "type": "BOOL"
+          },
+          {
+            "description": "A boolean that indicates if the user has bookmarks in the mobile folder\n",
+            "mode": "NULLABLE",
+            "name": "metrics_has_mobile_bookmarks",
+            "type": "BOOL"
+          },
+          {
             "description": "A boolean that indicates if the user has any open NORMAL tabs.\n",
             "mode": "NULLABLE",
             "name": "metrics_has_open_tabs",
@@ -389,6 +401,18 @@
             "description": "The total number of write operations performed on the logins store. The count only includes operations triggered by the application, not e.g. incidental writes performed as part of a sync. It is intended to be used together with `write_query_error_count` to measure the overall error rate of write operations on the logins store.\n",
             "mode": "NULLABLE",
             "name": "logins_store_write_query_count",
+            "type": "INT64"
+          },
+          {
+            "description": "A counter that indicates how many bookmarks a user has in the desktop\nfolder. This value will only be set if the user has at least *one*\nbookmark. If they have 0, this ping will not get sent, resulting in a\nnull value. To disambiguate between a failed `desktop_bookmarks_count`\nping and 0 bookmarks, please see `has_desktop_bookmarks`.\n",
+            "mode": "NULLABLE",
+            "name": "metrics_desktop_bookmarks_count",
+            "type": "INT64"
+          },
+          {
+            "description": "A counter that indicates how many bookmarks a user has in the mobile\nfolder. This value will only be set if the user has at least *one*\nbookmark. If they have 0, this ping will not get sent, resulting in\na null value. To disambiguate between a failed `mobile_bookmarks_count`\nping and 0 bookmarks, please see `has_mobile_bookmarks`.\n",
+            "mode": "NULLABLE",
+            "name": "metrics_mobile_bookmarks_count",
             "type": "INT64"
           },
           {

@@ -58683,6 +58683,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "Counts the number of times users enable and use media control on different platforms. 0=EnabledOn, 1=UsedOn.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "media_control_platform_usage",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "How many bytes of HTTP data transferred by type, there are some categories separated by keys based on 4 parameters:\n  1. normal browsing or private browsing\n  2. first party or third party\n  3. class of service\n  4. tracking classification\n\nAvailable keys are:\n  Y=0|NormalFirstParty\n  Y=1|NormalThirdPartyOther\n  Y=2|NormalThirdPartyContentLeader\n  Y=3|NormalThirdPartyContentBackground\n  Y=4|NormalThirdPartyContentOther\n  Y=5|NormalThirdPartyBasicLeader\n  Y=6|NormalThirdPartyBasicBackground\n  Y=7|NormalThirdPartyBasicOther\n  Y=8|NormalThirdPartyFingerprintingLeader\n  Y=9|NormalThirdPartyFingerprintingBackground\n  Y=10|NormalThirdPartyFingerprintingOther\n  Y=11|PrivateFirstParty\n  Y=12|PrivateThirdPartyOther\n  Y=13|PrivateThirdPartyContentLeader\n  Y=14|PrivateThirdPartyContentBackground\n  Y=15|PrivateThirdPartyContentOther\n  Y=16|PrivateThirdPartyBasicLeader\n  Y=17|PrivateThirdPartyBasicBackground\n  Y=18|PrivateThirdPartyBasicOther\n  Y=19|PrivateThirdPartyFingerprintingLeader\n  Y=20|Priv…",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -60255,7 +60273,7 @@
                     "type": "INT64"
                   },
                   {
-                    "description": "The count of maximum number of pinned tabs open during a subsession. This includes private windows and the ones opened when starting the browser.\n",
+                    "description": "The count of maximum number of pinned tabs open during a subsession. This includes private windows and the ones opened when starting the browser. Starting Firefox 85 this includes number of restored pinned tabs at startup.\n",
                     "mode": "NULLABLE",
                     "name": "browser_engagement_max_concurrent_tab_pinned_count",
                     "type": "INT64"
