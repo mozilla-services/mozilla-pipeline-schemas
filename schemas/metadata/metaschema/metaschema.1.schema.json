@@ -28,6 +28,32 @@
           "description": "NOT YET IMPLEMENTED: The name of the destination BigQuery table",
           "type": "string"
         },
+        "bq_workgroup_access": {
+          "description": "NOT YET IMPLEMENTED: The workgroups with access to the destination BigQuery table",
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "members": {
+                "items": {
+                  "description": "Workgroup identifier with an optional slash-delimited subgroup label; when unspecified the subgroup is set to 'default'",
+                  "pattern": "^workgroup:[a-z0-9-]+(/[a-z0-9-]+){0,1}$",
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "role": {
+                "description": "Predefined BigQuery role, see https://cloud.google.com/bigquery/docs/access-control#bigquery; only specific roles are supported",
+                "enum": [
+                  "roles/bigquery.dataViewer",
+                  "roles/bigquery.dataEditor"
+                ],
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
         "expiration_policy": {
           "additionalProperties": false,
           "description": "Various options controlling data lifecycle",
