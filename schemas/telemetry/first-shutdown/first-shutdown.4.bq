@@ -26704,7 +26704,7 @@
                 "type": "STRING"
               },
               {
-                "description": "Counts how often the external protocol handler dialog is shown. Labelled by protocol scheme. Keyed by whether the navigation came from the top level browser, an iframe or a cross origin iframe, or a null principal.",
+                "description": "Counts how often the external protocol handler dialog is shown. Labelled by protocol scheme. Keyed by the kind of browsing context the navigation was triggered from: TOPLEVEL: Top browser, SUB_SAMEORIGIN: Same origin iframe, SUB_CROSSORIGIN: Cross origin iframe, SUB_SANDBOX_ALLOW: Sandboxed iframe with relevant allow flags, SUB_SANDBOX_NOALLOW: Sandboxed iframe without relevant allow flags",
                 "mode": "NULLABLE",
                 "name": "value",
                 "type": "STRING"
@@ -57881,6 +57881,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "browser_engagement_navigation_webextension",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Whether we show about:sessionrestore or not. Split by key, which indicates why we showed the item or not. Specifically, 'deferred_restore' means we didn't autorestore and thus didn't show the interstitial; 'autorestore' indicates we autorestored without showing the interstitial. 'shown_old_session', 'shown_only_about_welcomeback', 'shown_many_crashes', 'shown_many_crashes_old_session' all indicate we did show the interstitial because of a crash, and the text after 'shown' indicates what secondary reason there was to show this page (as we don't show it for 'just' one crash).\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "browser_engagement_sessionrestore_interstitial",
                     "type": "RECORD"
                   },
                   {
