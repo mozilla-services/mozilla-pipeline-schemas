@@ -104,6 +104,11 @@
                     "type": "STRING"
                   },
                   {
+                    "mode": "NULLABLE",
+                    "name": "foreign_install",
+                    "type": "INT64"
+                  },
+                  {
                     "description": "True or false depending on whether the add-on has binary components. This is always false since Firefox 60. This field is only available after the 'sessionstore-windows-restored' topic is notified.",
                     "mode": "NULLABLE",
                     "name": "has_binary_components",
@@ -161,6 +166,16 @@
                     "mode": "NULLABLE",
                     "name": "update_day",
                     "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "user_disabled",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "version",
+                    "type": "STRING"
                   }
                 ],
                 "mode": "NULLABLE",
@@ -198,6 +213,12 @@
               },
               {
                 "fields": [
+                  {
+                    "description": "Cast into an integer via mozilla-schema-generator. See bug 1611027.",
+                    "mode": "NULLABLE",
+                    "name": "apply_background_updates",
+                    "type": "INT64"
+                  },
                   {
                     "mode": "NULLABLE",
                     "name": "user_disabled",
@@ -289,6 +310,11 @@
                 "mode": "NULLABLE",
                 "name": "description",
                 "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "foreign_install",
+                "type": "INT64"
               },
               {
                 "description": "True or false depending on whether the theme has binary components. This is always false since Firefox 60.",
@@ -809,6 +835,24 @@
             ],
             "mode": "NULLABLE",
             "name": "update",
+            "type": "RECORD"
+          },
+          {
+            "description": "User preferences - limited to an allowlist defined in `toolkit/components/telemetry/app/TelemetryEnvironment.jsm`",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "user_prefs",
             "type": "RECORD"
           }
         ],
