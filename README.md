@@ -10,7 +10,6 @@ to [gcp-ingestion](https://github.com/mozilla/gcp-ingestion) and BigQuery.
 ```bash
 1d07ce75	2020-12-15 09:49:53 -0800	Add a schema for the Ion/Rally demographics ping (#647)
 b847c63e	2020-12-14 13:31:00 -0800	Add ingestion sink transforms via jnius (#645)
-05f54773	2020-12-07 10:29:18 -0800	Bug 1675103 - Define the bhr ping schema. (#636)
 ```
 
 ## directory tree
