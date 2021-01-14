@@ -49,11 +49,7 @@ schemas
 ├── firefox-launcher-process
 │   └── launcher-process-failure
 ├── glean
-│   ├── baseline
-│   ├── deletion-request
-│   ├── events
-│   ├── glean
-│   └── metrics
+│   └── glean
 ├── glean-js-tmp
 │   ├── baseline
 │   ├── deletion-request
@@ -335,6 +331,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-325 directories
+321 directories
 ```
 
