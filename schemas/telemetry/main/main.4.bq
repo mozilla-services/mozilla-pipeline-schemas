@@ -4532,6 +4532,12 @@
             "type": "STRING"
           },
           {
+            "description": "Labeling status of top-level page when overriding encoding",
+            "mode": "NULLABLE",
+            "name": "encoding_override_situation_2",
+            "type": "STRING"
+          },
+          {
             "description": "Added delays caused the esni keys fetching.(ms)",
             "mode": "NULLABLE",
             "name": "esni_keys_record_fetch_delays",
@@ -6134,9 +6140,27 @@
             "type": "STRING"
           },
           {
+            "description": "HTTP3: the number of dropped datagrams.",
+            "mode": "NULLABLE",
+            "name": "http3_drop_dgrams",
+            "type": "STRING"
+          },
+          {
+            "description": "HTTP3: packet loss ratio (multiply by 10000).",
+            "mode": "NULLABLE",
+            "name": "http3_loss_ratio",
+            "type": "STRING"
+          },
+          {
             "description": "HTTP3: Streams created per connection",
             "mode": "NULLABLE",
             "name": "http3_request_per_conn",
+            "type": "STRING"
+          },
+          {
+            "description": "HTTP3: the number of saved datagrams that are waiting for keys to be available.",
+            "mode": "NULLABLE",
+            "name": "http3_saved_dgrams",
             "type": "STRING"
           },
           {
@@ -22214,6 +22238,18 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document uses duplicate imports in WebAssembly",
+            "mode": "NULLABLE",
+            "name": "use_counter2_js_wasm_duplicate_imports_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page uses duplicate imports in WebAssembly",
+            "mode": "NULLABLE",
+            "name": "use_counter2_js_wasm_duplicate_imports_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a page uses WebAssembly",
             "mode": "NULLABLE",
             "name": "use_counter2_js_wasm_page",
@@ -27394,6 +27430,24 @@
                 "type": "STRING"
               },
               {
+                "description": "HTTP3: the number of PTOs.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http3_counts_pto",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "HTTP channel (keys: uses_http3_page, uses_http3_sub, supports_http3_page, supports_http3_sub): First byte of request sent -> last byte of response received (ms)",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -27402,6 +27456,42 @@
             ],
             "mode": "REPEATED",
             "name": "http3_first_sent_to_last_received",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "HTTP3: the number of spurious retransmissions.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http3_late_ack",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "HTTP3: spurious retransmissions ratio (spurios_retransmission / packet sent * 10000).",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http3_late_ack_ratio",
             "type": "RECORD"
           },
           {
@@ -27438,6 +27528,24 @@
             ],
             "mode": "REPEATED",
             "name": "http3_open_to_first_sent",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "HTTP3: the number of received/sent packets.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http3_received_sent_dgrams",
             "type": "RECORD"
           },
           {
@@ -32220,6 +32328,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Labeling status of top-level page when overriding encoding",
+                    "mode": "NULLABLE",
+                    "name": "encoding_override_situation_2",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Widget: Time it takes for the message before a UI message (ms)",
                     "mode": "NULLABLE",
                     "name": "eventloop_ui_activity_exp_ms",
@@ -33642,9 +33756,27 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "HTTP3: the number of dropped datagrams.",
+                    "mode": "NULLABLE",
+                    "name": "http3_drop_dgrams",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "HTTP3: packet loss ratio (multiply by 10000).",
+                    "mode": "NULLABLE",
+                    "name": "http3_loss_ratio",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "HTTP3: Streams created per connection",
                     "mode": "NULLABLE",
                     "name": "http3_request_per_conn",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "HTTP3: the number of saved datagrams that are waiting for keys to be available.",
+                    "mode": "NULLABLE",
+                    "name": "http3_saved_dgrams",
                     "type": "STRING"
                   },
                   {
@@ -49338,6 +49470,18 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document uses duplicate imports in WebAssembly",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_js_wasm_duplicate_imports_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page uses duplicate imports in WebAssembly",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_js_wasm_duplicate_imports_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a page uses WebAssembly",
                     "mode": "NULLABLE",
                     "name": "use_counter2_js_wasm_page",
@@ -54104,6 +54248,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "HTTP3: the number of PTOs.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_counts_pto",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "HTTP channel (keys: uses_http3_page, uses_http3_sub, supports_http3_page, supports_http3_sub): First byte of request sent -> last byte of response received (ms)",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -54112,6 +54274,42 @@
                     ],
                     "mode": "REPEATED",
                     "name": "http3_first_sent_to_last_received",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "HTTP3: the number of spurious retransmissions.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_late_ack",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "HTTP3: spurious retransmissions ratio (spurios_retransmission / packet sent * 10000).",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_late_ack_ratio",
                     "type": "RECORD"
                   },
                   {
@@ -54184,6 +54382,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "http3_perf_page_load_time_ms",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "HTTP3: the number of received/sent packets.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_received_sent_dgrams",
                     "type": "RECORD"
                   },
                   {
@@ -55932,6 +56148,18 @@
                     "description": "Whether the Text Encoding menu was used to override an encoding in this subsession.",
                     "mode": "NULLABLE",
                     "name": "encoding_override_used",
+                    "type": "BOOL"
+                  },
+                  {
+                    "description": "Whether the item Automatic in the Text Encoding menu was used to override an encoding in this subsession.",
+                    "mode": "NULLABLE",
+                    "name": "encoding_override_used_automatic",
+                    "type": "BOOL"
+                  },
+                  {
+                    "description": "Whether an item other than Automatic in the Text Encoding menu was used to override an encoding in this subsession.",
+                    "mode": "NULLABLE",
+                    "name": "encoding_override_used_manual",
                     "type": "BOOL"
                   },
                   {
@@ -61170,6 +61398,18 @@
                     "description": "Whether the Text Encoding menu was used to override an encoding in this subsession.",
                     "mode": "NULLABLE",
                     "name": "encoding_override_used",
+                    "type": "BOOL"
+                  },
+                  {
+                    "description": "Whether the item Automatic in the Text Encoding menu was used to override an encoding in this subsession.",
+                    "mode": "NULLABLE",
+                    "name": "encoding_override_used_automatic",
+                    "type": "BOOL"
+                  },
+                  {
+                    "description": "Whether an item other than Automatic in the Text Encoding menu was used to override an encoding in this subsession.",
+                    "mode": "NULLABLE",
+                    "name": "encoding_override_used_manual",
                     "type": "BOOL"
                   },
                   {
