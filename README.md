@@ -57,6 +57,7 @@ schemas
 │   └── metrics
 ├── messaging-system
 │   ├── cfr
+│   ├── infobar
 │   ├── moments
 │   ├── onboarding
 │   ├── personalization-experiment
@@ -331,6 +332,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-321 directories
+322 directories
 ```
 
