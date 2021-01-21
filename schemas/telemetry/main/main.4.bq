@@ -24950,7 +24950,7 @@
             "type": "STRING"
           },
           {
-            "description": "Total time spent playing video while element is hidden, in milliseconds. This reports the total hidden play time for an HTML Media Element whenever it is suspended, such as when the page is unloaded.",
+            "description": "Total time spent playing video while element is hidden, in milliseconds. This reports the total hidden play time for a video element whenever the decoder stops. (eg. pausing media, encountering an error, changing to a new resource, page goes to the bf-cached or page gets discarded)",
             "mode": "NULLABLE",
             "name": "video_hidden_play_time_ms",
             "type": "STRING"
@@ -24962,7 +24962,7 @@
             "type": "STRING"
           },
           {
-            "description": "Total time spent playing video in milliseconds. This reports the total play time for an HTML Media Element whenever it is suspended, such as when the page is unloaded.",
+            "description": "Total time spent playing video in milliseconds. This reports the total play time for a video element whenever the decoder stops. (eg. pausing media, encountering an error, changing to a new resource, page goes to the bf-cached or page gets discarded)",
             "mode": "NULLABLE",
             "name": "video_play_time_ms",
             "type": "STRING"
@@ -27394,6 +27394,24 @@
                 "type": "STRING"
               },
               {
+                "description": "Successfully started HTTP channels when HTTP3 is used",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http3_channel_onstart_success",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "HTTP channel (keys: uses_http3_page, uses_http3_sub, supports_http3_page, supports_http3_sub): Overall load time - network (ms)",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -29266,7 +29284,7 @@
                 "type": "STRING"
               },
               {
-                "description": "Percentage of total time spent playing video while element is hidden. Keyed by audio presence and by height ranges (boundaries: 240. 480, 576, 720, 1080, 2160), e.g.: 'V,0<h<=240', 'AV,h>2160'; and 'All' will accumulate all percentages. This is reported whenever an HTML Media Element is suspended or resumed, such as when the page is unloaded.",
+                "description": "Percentage of total time spent playing video while element is hidden. Keyed by audio presence and by height ranges (boundaries: 240. 480, 576, 720, 1080, 2160), e.g.: 'V,0<h<=240', 'AV,h>2160'; and 'All' will accumulate all percentages. This is reported whenever the decoder stops. (eg. pausing media, encountering an error, changing to a new resource, page goes to the bf-cached or page gets discarded)",
                 "mode": "NULLABLE",
                 "name": "value",
                 "type": "STRING"
@@ -29284,7 +29302,7 @@
                 "type": "STRING"
               },
               {
-                "description": "Percentage of total time spent *not* fully decoding video while element is hidden (simulated, even when feature is not enabled). Keyed by audio presence and by height ranges (boundaries: 240. 480, 576, 720, 1080, 2160), e.g.: 'V,0<h<=240', 'AV,h>2160'; and 'All' will accumulate all percentages. This is reported whenever an HTML Media Element is suspended or resumed, such as when the page is unloaded.",
+                "description": "Percentage of total time spent *not* fully decoding video while element is hidden (simulated, even when feature is not enabled). Keyed by audio presence and by height ranges (boundaries: 240. 480, 576, 720, 1080, 2160), e.g.: 'V,0<h<=240', 'AV,h>2160'; and 'All' will accumulate all percentages. This is reported whenever the decoder stops. (eg. pausing media, encountering an error, changing to a new resource, page goes to the bf-cached or page gets discarded)",
                 "mode": "NULLABLE",
                 "name": "value",
                 "type": "STRING"
@@ -29302,7 +29320,7 @@
                 "type": "STRING"
               },
               {
-                "description": "Average interval between video keyframes in played videos, in milliseconds. Keyed by audio presence and by height ranges (boundaries: 240. 480, 576, 720, 1080, 2160), e.g.: 'V,0<h<=240', 'AV,h>2160'; and 'All' will accumulate all percentages. This is reported whenever an HTML Media Element is suspended or resumed, such as when the page is unloaded.",
+                "description": "Average interval between video keyframes in played videos, in milliseconds. Keyed by audio presence and by height ranges (boundaries: 240. 480, 576, 720, 1080, 2160), e.g.: 'V,0<h<=240', 'AV,h>2160'; and 'All' will accumulate all percentages. This is reported whenever the decoder stops. (eg. pausing media, encountering an error, changing to a new resource, page goes to the bf-cached or page gets discarded)",
                 "mode": "NULLABLE",
                 "name": "value",
                 "type": "STRING"
@@ -29320,7 +29338,7 @@
                 "type": "STRING"
               },
               {
-                "description": "Maximum interval between video keyframes in played videos, in milliseconds; '0' means only 1 keyframe found. Keyed by audio presence and by height ranges (boundaries: 240. 480, 576, 720, 1080, 2160), e.g.: 'V,0<h<=240', 'AV,h>2160'; and 'All' will accumulate all percentages. This is reported whenever an HTML Media Element is suspended or resumed, such as when the page is unloaded.",
+                "description": "Maximum interval between video keyframes in played videos, in milliseconds; '0' means only 1 keyframe found. Keyed by audio presence and by height ranges (boundaries: 240. 480, 576, 720, 1080, 2160), e.g.: 'V,0<h<=240', 'AV,h>2160'; and 'All' will accumulate all percentages. This is reported whenever the decoder stops. (eg. pausing media, encountering an error, changing to a new resource, page goes to the bf-cached or page gets discarded)",
                 "mode": "NULLABLE",
                 "name": "value",
                 "type": "STRING"
@@ -52188,7 +52206,7 @@
                     "type": "STRING"
                   },
                   {
-                    "description": "Total time spent playing video while element is hidden, in milliseconds. This reports the total hidden play time for an HTML Media Element whenever it is suspended, such as when the page is unloaded.",
+                    "description": "Total time spent playing video while element is hidden, in milliseconds. This reports the total hidden play time for a video element whenever the decoder stops. (eg. pausing media, encountering an error, changing to a new resource, page goes to the bf-cached or page gets discarded)",
                     "mode": "NULLABLE",
                     "name": "video_hidden_play_time_ms",
                     "type": "STRING"
@@ -52212,7 +52230,7 @@
                     "type": "STRING"
                   },
                   {
-                    "description": "Total time spent playing video in milliseconds. This reports the total play time for an HTML Media Element whenever it is suspended, such as when the page is unloaded.",
+                    "description": "Total time spent playing video in milliseconds. This reports the total play time for a video element whenever the decoder stops. (eg. pausing media, encountering an error, changing to a new resource, page goes to the bf-cached or page gets discarded)",
                     "mode": "NULLABLE",
                     "name": "video_play_time_ms",
                     "type": "STRING"
@@ -54212,6 +54230,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "Successfully started HTTP channels when HTTP3 is used",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_channel_onstart_success",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "HTTP channel (keys: uses_http3_page, uses_http3_sub, supports_http3_page, supports_http3_sub): Overall load time - network (ms)",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -55616,7 +55652,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Percentage of total time spent playing video while element is hidden. Keyed by audio presence and by height ranges (boundaries: 240. 480, 576, 720, 1080, 2160), e.g.: 'V,0<h<=240', 'AV,h>2160'; and 'All' will accumulate all percentages. This is reported whenever an HTML Media Element is suspended or resumed, such as when the page is unloaded.",
+                        "description": "Percentage of total time spent playing video while element is hidden. Keyed by audio presence and by height ranges (boundaries: 240. 480, 576, 720, 1080, 2160), e.g.: 'V,0<h<=240', 'AV,h>2160'; and 'All' will accumulate all percentages. This is reported whenever the decoder stops. (eg. pausing media, encountering an error, changing to a new resource, page goes to the bf-cached or page gets discarded)",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "STRING"
@@ -55634,7 +55670,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Percentage of total time spent *not* fully decoding video while element is hidden (simulated, even when feature is not enabled). Keyed by audio presence and by height ranges (boundaries: 240. 480, 576, 720, 1080, 2160), e.g.: 'V,0<h<=240', 'AV,h>2160'; and 'All' will accumulate all percentages. This is reported whenever an HTML Media Element is suspended or resumed, such as when the page is unloaded.",
+                        "description": "Percentage of total time spent *not* fully decoding video while element is hidden (simulated, even when feature is not enabled). Keyed by audio presence and by height ranges (boundaries: 240. 480, 576, 720, 1080, 2160), e.g.: 'V,0<h<=240', 'AV,h>2160'; and 'All' will accumulate all percentages. This is reported whenever the decoder stops. (eg. pausing media, encountering an error, changing to a new resource, page goes to the bf-cached or page gets discarded)",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "STRING"
@@ -55652,7 +55688,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Average interval between video keyframes in played videos, in milliseconds. Keyed by audio presence and by height ranges (boundaries: 240. 480, 576, 720, 1080, 2160), e.g.: 'V,0<h<=240', 'AV,h>2160'; and 'All' will accumulate all percentages. This is reported whenever an HTML Media Element is suspended or resumed, such as when the page is unloaded.",
+                        "description": "Average interval between video keyframes in played videos, in milliseconds. Keyed by audio presence and by height ranges (boundaries: 240. 480, 576, 720, 1080, 2160), e.g.: 'V,0<h<=240', 'AV,h>2160'; and 'All' will accumulate all percentages. This is reported whenever the decoder stops. (eg. pausing media, encountering an error, changing to a new resource, page goes to the bf-cached or page gets discarded)",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "STRING"
@@ -55670,7 +55706,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Maximum interval between video keyframes in played videos, in milliseconds; '0' means only 1 keyframe found. Keyed by audio presence and by height ranges (boundaries: 240. 480, 576, 720, 1080, 2160), e.g.: 'V,0<h<=240', 'AV,h>2160'; and 'All' will accumulate all percentages. This is reported whenever an HTML Media Element is suspended or resumed, such as when the page is unloaded.",
+                        "description": "Maximum interval between video keyframes in played videos, in milliseconds; '0' means only 1 keyframe found. Keyed by audio presence and by height ranges (boundaries: 240. 480, 576, 720, 1080, 2160), e.g.: 'V,0<h<=240', 'AV,h>2160'; and 'All' will accumulate all percentages. This is reported whenever the decoder stops. (eg. pausing media, encountering an error, changing to a new resource, page goes to the bf-cached or page gets discarded)",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "STRING"
