@@ -1,10 +1,31 @@
-import pytest
-from pathlib import Path
 import json
+import os
+from pathlib import Path
 
-ROOT = Path(__file__).parent.parent
+import pytest
+
+from mozilla_pipeline_schemas.bigquery import resolve_ref
+from mozilla_pipeline_schemas.utils import get_repository_root, run
+
+ROOT = get_repository_root()
 SCHEMAS_ROOT = ROOT / "schemas"
 VALIDATION_ROOT = ROOT / "validation"
+JARS_ROOT = ROOT / "target"
+
+
+@pytest.fixture()
+def schemas_root():
+    return SCHEMAS_ROOT
+
+
+@pytest.fixture()
+def validation_root():
+    return VALIDATION_ROOT
+
+
+@pytest.fixture()
+def jars_root():
+    return JARS_ROOT
 
 
 def load_schemas():
@@ -79,3 +100,24 @@ def pytest_generate_tests(metafunc):
                 examples["params"],
                 ids=examples["ids"],
             )
+
+
+@pytest.fixture
+def tmp_git(tmp_path: Path) -> Path:
+    """Copy the entire repository with the current revision.
+
+    To check the state of a failed test, change directories to the temporary
+    directory surfaced by pytest.
+    """
+    curdir = os.getcwd()
+    origin = ROOT
+    workdir = tmp_path / "mps"
+    resolved_head_ref = resolve_ref("HEAD")
+
+    run(f"git clone {origin} {workdir}")
+    os.chdir(workdir)
+    # make branches available by checking them out, but ensure state ends up on HEAD
+    run(f"git checkout master")
+    run(f"git checkout {resolved_head_ref}")
+    yield workdir
+    os.chdir(curdir)

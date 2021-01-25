@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "account-ecosystem",
+  "mozPipelineMetadata": {
+    "jwe_mappings": [
+      {
+        "source_field_path": "/ecosystem_anon_id",
+        "decrypted_field_path": "/ecosystem_user_id"
+      },
+      {
+        "source_field_path": "/previous_ecosystem_anon_ids",
+        "decrypted_field_path": "/previous_ecosystem_user_ids"
+      }
+    ]
+  },
+  "properties": {
+    "ecosystem_client_id": {
+      "type": "string"
+    },
+    "ecosystem_user_id": {
+      "description": "Account Ecosystem Telemetry user identifier; this value is not present in the original payload sent by clients, but is instead inserted by the pipeline after decrypting and removing ecosystem_anon_id",
+      @ACCOUNT-ECOSYSTEM_ECOSYSTEM_USER_ID_TYPE_1_JSON@
+    },
+    "previous_ecosystem_user_ids": {
+      "description": "Previous Account Ecosystem Telemetry identifiers associated with this user; this value is not present in the original payload sent by clients, but is instead inserted by the pipeline after decrypting and removing previous_ecosystem_anon_ids",
+      "type": "array",
+      "items": {
+        @ACCOUNT-ECOSYSTEM_ECOSYSTEM_USER_ID_TYPE_1_JSON@
+      }
+    },
+    "event": {
+      "type": "string",
+      "description": "Value of the 'event' field in the source LogEntry payload"
+    },
+    "oauth_client_id": {
+      "type": "string",
+      "description": "Value of the 'clientId' field in the source LogEntry payload, indicating the OAuth client associated with the event"
+    },
+    "country": {
+      "type": "string",
+      "description": "Country name as extracted in the FxA pipeline; contains logical values like 'United States' and 'India' rather than 2-letter country codes"
+    },
+    "region": {
+      "type": "string",
+      "description": "Region name as extracted in the FxA pipeline; contains logical values like 'Texas' rather than abbreviations like 'TX'"
+    }
+  },
+  "anyOf": [
+    {
+      "required": [
+        "ecosystem_client_id"
+      ]
+    },
+    {
+      "required": [
+        "ecosystem_user_id"
+      ]
+    }
+  ]
+}

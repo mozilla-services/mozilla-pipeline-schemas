@@ -1,0 +1,140 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "WebScience.SurveyId": {
+        "type": "string",
+        "description": "ID sent to Qualtrics, for associating survey responses with telemetry data"
+    },
+    "WebScience.version": { "type": "string" },
+    "WebScience.Measurements.PageNavigation": {
+      "type": "object",
+      "properties": {
+        "numUntrackedVisits": { "type": "integer" },
+        "trackedVisitsByDomain": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "domain": { "type": "string" },
+              "numSessions": { "type": "integer" },
+              "visitsByReferrer": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "referrerDomain": { "type": "string" },
+                    "dayOfWeek": { "type": "integer" },
+                    "timeOfDay": { "type": "integer" },
+                    "pageCategory": {
+                        "type": "integer",
+                        "description": "deprecated, use classifierResults"
+                    },
+                    "classifierResults": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "integer"
+                        },
+                        "description": "additional properties are the name of the classifier, with the classification result as the value"
+                    },
+                    "numVisits": { "type": "integer" },
+                    "totalAttention": { "type": "integer" },
+                    "totalScroll": { "type": "integer" },
+                    "prevExposedCount": { "type": "integer" },
+                    "laterSharedCount": { "type": "integer" }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "WebScience.Measurements.SocialMediaLinkSharing": {
+      "type": "object",
+      "properties": {
+        "linkSharesByPlatform": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "platform": {
+                "type": "string",
+                "enum": ["facebook", "twitter", "reddit"]
+              },
+              "numUntrackedShares": { "type": "integer" },
+              "trackedShares": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "domain": { "type": "string" },
+                    "classification": {
+                        "type": "string",
+                        "description": "deprecated, use classifierResults"
+                    },
+                    "pageClassification": {
+                        "type": "integer",
+                        "description": "deprecated, use classifierResults"
+                    },
+                    "classifierResults": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "integer"
+                        },
+                        "description": "additional properties are the name of the classifier, with the classification result as the value"
+                    },
+                    "visitReferrer": { "type": "string" },
+                    "audience": {
+                      "type": "string",
+                      "enum": ["public", "restricted", "unknown"]
+                    },
+                    "prevExposed": { "type": "integer" },
+                    "source": { "type": "string" },
+                    "numShares": { "type": "integer" },
+                    "dayOfWeek": { "type": "integer" },
+                    "timeOfDay": { "type": "integer" }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "WebScience.Measurements.LinkExposure": {
+      "type": "object",
+      "properties": {
+        "untrackedLinkExposures": {
+          "type": "object",
+          "propertyNames": { "pattern": "^[0-9]*$" },
+          "additionalProperties": { "type": "integer" }
+        },
+        "linkExposures": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "sourceDomain": { "type": "string" },
+              "destinationDomain": { "type": "string" },
+              "dayOfWeek": { "type": "integer" },
+              "timeOfDay": { "type": "integer" },
+              "visThreshold": { "type": "integer" },
+              "numExposures": { "type": "integer" },
+              "laterSharedCount": { "type": "integer" },
+              "laterVisitedCount": { "type": "integer" }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

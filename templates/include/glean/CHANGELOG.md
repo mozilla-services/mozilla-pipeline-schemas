@@ -1,5 +1,9 @@
 # Version 1
 
+- Added `x_source_tags` field to header metadata fields. See [Bug 1655477](https://bugzilla.mozilla.org/show_bug.cgi?id=1655477).
+
+- Added `jwe` metric type to the metrics. See [Bug 1654809](https://bugzilla.mozilla.org/show_bug.cgi?id=1654809).
+
 - `device_manufacturer` and `device_model` are now optional. See [Bug 1625207](https://bugzilla.mozilla.org/show_bug.cgi?id=1625207).
 
 - `extras` on an experiment may now be `null`.  See [Bug 1012940](https://bugzilla.mozilla.org/show_bug.cgi?id=1612940)
@@ -62,3 +66,6 @@
   section.
 
 - Added `sum` to histogram and `timing_distribution` as optional parameter.
+
+- Pull client_info definitions from the glean source code (see:
+  `scripts/extract_glean_client_info_descriptions`)

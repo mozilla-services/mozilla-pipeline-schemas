@@ -11,37 +11,7 @@
         "moz://mozilla.org/schemas/glean/ping/1"
       ]
     },
-    "client_info": {
-      "type": "object",
-      "properties": {
-        "app_build": @GLEAN_STRING_1_JSON@,
-        "app_display_version": @GLEAN_STRING_1_JSON@,
-        "app_channel": @GLEAN_STRING_1_JSON@,
-        "architecture": @GLEAN_STRING_1_JSON@,
-        "client_id": {
-          "type": "string",
-          @COMMON_PATTERN_UUID_1_JSON@
-        },
-        "device_manufacturer": @GLEAN_STRING_1_JSON@,
-        "device_model": @GLEAN_STRING_1_JSON@,
-        "first_run_date": @GLEAN_DATETIME_1_JSON@,
-        "os": @GLEAN_STRING_1_JSON@,
-        "locale": @GLEAN_STRING_1_JSON@,
-        "os_version": @GLEAN_STRING_1_JSON@,
-        "android_sdk_version": @GLEAN_STRING_1_JSON@,
-        "telemetry_sdk_build": @GLEAN_STRING_1_JSON@
-      },
-      "additionalProperties": false,
-      "required": [
-        "app_build",
-        "app_display_version",
-        "architecture",
-        "first_run_date",
-        "os",
-        "os_version",
-        "telemetry_sdk_build"
-      ]
-    },
+    "client_info": @GLEAN_CLIENT_INFO_1_JSON@,
     "ping_info": {
       "type": "object",
       "properties": {
@@ -252,6 +222,10 @@
             @GLEAN_LABELED_GROUP_1_JSON@,
             "additionalProperties": @GLEAN_UUID_1_JSON@
           }
+        },
+        "jwe": {
+          @GLEAN_BASE_OBJECT_1_JSON@,
+          "additionalProperties": @GLEAN_STRING_1_JSON@
         }
       },
       "additionalProperties": false

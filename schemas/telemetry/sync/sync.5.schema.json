@@ -2,6 +2,11 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "additionalProperties": false,
   "description": "Schema for v5 of sync pings added for GCP compatibility. This is a copy of v4 schema, as discussed in https://bugzilla.mozilla.org/show_bug.cgi?id=1572744#c3",
+  "mozPipelineMetadata": {
+    "bq_dataset_family": "telemetry",
+    "bq_metadata_format": "telemetry",
+    "bq_table": "sync_v5"
+  },
   "properties": {
     "application": {
       "$comment": "The application section is included here inline due to incompatible incoming data",
@@ -242,6 +247,39 @@
           },
           "type": "object"
         },
+        "migrations": {
+          "items": {
+            "properties": {
+              "entries": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "entriesSuccessful": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "extensions": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "extensionsSuccessful": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "openFailure": {
+                "type": "boolean"
+              },
+              "type": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "type"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
         "os": {
           "properties": {
             "hasPrefetch": {
@@ -298,6 +336,14 @@
         "syncs": {
           "items": {
             "properties": {
+              "deviceID": {
+                "description": "Deprecated. Changed in https://hg.mozilla.org/mozilla-central/rev/801e4543e990929e6bb076a032774b788e612937",
+                "pattern": "^[0-9a-f]{64}$",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
               "devices": {
                 "items": {
                   "additionalProperties": false,
@@ -405,7 +451,7 @@
                         "additionalProperties": false,
                         "properties": {
                           "failed": {
-                            "minimum": 1,
+                            "minimum": 0,
                             "type": "integer"
                           },
                           "sent": {
@@ -549,6 +595,10 @@
                 ],
                 "type": "object"
               },
+              "restarted": {
+                "description": "Deprecated. Changed in https://hg.mozilla.org/mozilla-central/rev/801e4543e990929e6bb076a032774b788e612937",
+                "type": "boolean"
+              },
               "status": {
                 "additionalProperties": false,
                 "anyOf": [
@@ -576,6 +626,14 @@
               "took": {
                 "minimum": -1,
                 "type": "integer"
+              },
+              "uid": {
+                "description": "Deprecated. Changed in https://hg.mozilla.org/mozilla-central/rev/801e4543e990929e6bb076a032774b788e612937",
+                "pattern": "^[0-9a-f]{32}$",
+                "type": [
+                  "string",
+                  "null"
+                ]
               },
               "when": {
                 "type": "integer"

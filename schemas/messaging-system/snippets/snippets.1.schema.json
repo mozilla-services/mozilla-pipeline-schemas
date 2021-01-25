@@ -1,5 +1,13 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
+  "mozPipelineMetadata": {
+    "bq_dataset_family": "messaging_system",
+    "bq_metadata_format": "structured",
+    "bq_table": "snippets_v1",
+    "expiration_policy": {
+      "delete_after_days": 180
+    }
+  },
   "properties": {
     "addon_version": {
       "type": "string"
@@ -42,6 +50,14 @@
     },
     "shield_id": {
       "description": "[DEPRECATED]: use `experiments` instead. A semicolon separated string to store a list of Shield study IDs",
+      "type": "string"
+    },
+    "source": {
+      "description": "A string describing the source of this event",
+      "enum": [
+        "NEWTAB_FOOTER_BAR",
+        "NEWTAB_FOOTER_BAR_CONTENT"
+      ],
       "type": "string"
     },
     "version": {

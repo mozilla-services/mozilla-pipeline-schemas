@@ -524,6 +524,10 @@
         "e10sCohort": {
           "type": "string"
         },
+        "fissionEnabled": {
+          "type": "boolean",
+          "description": "whether fission is enabled this session, and subframes can load in a different process"
+        },
         "intl": {
           "type": "object",
           "properties": {
@@ -756,6 +760,13 @@
               ],
               "description": "Whether or not DirectWrite is enabled. This is Windows only."
             },
+            "EmbeddedInFirefoxReality": {
+              "type": [
+                "boolean",
+                "null"
+              ],
+              "description": "Whether or not Firefox desktop is embedded by Firefox Reality. This is Windows only."
+            },
             "Headless": {
               "type": [
                 "boolean",
@@ -819,7 +830,10 @@
                     ]
                   },
                   "GPUActive": {
-                    "type": "boolean"
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
                   },
                   "driverVendor": {
                     "type": [
@@ -885,6 +899,14 @@
                       ]
                     },
                     "blacklisted": {
+                      "description": "Indicates whether the d3d11 compositor was blocklisted due to driver bugs. (This field was renamed to blocklisted in bug 1647225).",
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    "blocklisted": {
+                      "description": "Indicates whether the d3d11 compositor was blocklisted due to driver bugs. (This field replaces blacklisted as of bug 1647225).",
                       "type": [
                         "boolean",
                         "null"
@@ -966,6 +988,52 @@
                   }
                 },
                 "hwCompositing": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "wrCompositor": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "wrSoftware": {
+                  "description": "Indicates whether the software backend to WebRender is enabled.",
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "omtp": {
+                  "description": "Indicates whether the off-main-thread painting is enabled.",
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "openglCompositing": {
                   "type": "object",
                   "properties": {
                     "status": {
@@ -1131,6 +1199,14 @@
                 "null"
               ],
               "description": "The Windows UBR. This is Windows 10 only. `null` on failure."
+            },
+            "hasPrefetch": {
+              "type": ["boolean", "null"],
+              "description": "Whether or not the OS-based prefetch application start-up optimization is set. This is Windows-only. `null` on failure."
+            },
+            "hasSuperfetch": {
+              "type": ["boolean", "null"],
+              "description": "Whether or not the OS-based superfetch application start-up optimization service is running and using the default settings. This is Windows-only. `null` on failure."
             },
             "installYear": {
               "type": [

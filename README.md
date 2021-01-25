@@ -4,6 +4,9 @@ This repository contains schemas for Mozilla's data ingestion pipeline and data
 lake outputs.
 
 The JSON schemas are used to validate incoming submissions at ingestion time.
+They also are used as the source of truth for defining metadata about how each
+document type should be handled in the pipeline (see [the metaschema](templates/metadata/metaschema/metaschema.1.schema.json)).
+
 The [`jsonschema` [Python]](https://python-jsonschema.readthedocs.io/en/stable/)
 and [`everit-org/json-schema` [Java]](https://github.com/everit-org/json-schema)
 library (using draft 4) are used for JSON Schema Validation in this repository's
@@ -33,13 +36,14 @@ Note that Pioneer studies have a [slightly amended](README.pioneer.md) process.
 
 ### Prerequisites
 
-* [`CMake` (3.0+)](http://cmake.org/cmake/resources/software.html)
-* [`jq` (1.5+)](https://github.com/stedolan/jq)
-* `python` (3.6+)
-* Optional: `java 8`, `maven`
-* Optional: [Docker](https://www.docker.com/get-started)
+- [`CMake` (3.0+)](http://cmake.org/cmake/resources/software.html)
+- [`jq` (1.5+)](https://github.com/stedolan/jq)
+- `python` (3.6+)
+- Optional: `java 8`, `maven`
+- Optional: [Docker](https://www.docker.com/get-started)
 
 On MacOS, these prerequisites can be installed using [homebrew](https://brew.sh/):
+
 ```bash
 brew install cmake
 brew install jq
@@ -83,7 +87,8 @@ python3 -m venv venv
 source venv/bin/activate
 
 # install python dependencies, if they haven't already
-pip install -r requirements.txt
+pip install -r requirements-dev.txt
+pip install .
 
 # run the tests, with 8 parallel processes
 pytest -n 8
@@ -95,7 +100,7 @@ pytest -k telemetry/main.4
 pytest -k java
 ```
 
-To generate a diff of BigQuery schemas, run the `bigquery_schema_diff.py` script.
+To generate a diff of BigQuery schemas, use the `mps` command-line tool.
 
 ```bash
 # optionally, enter the mozilla-pipeline-schemas environment
@@ -104,7 +109,7 @@ To generate a diff of BigQuery schemas, run the `bigquery_schema_diff.py` script
 
 # generate an integration folder, the options will default to HEAD and master
 # respectively
-./script/bigquery_schema_diff.py --base-ref master --head-ref HEAD
+mps bigquery diff --base-ref master --head-ref HEAD
 ```
 
 This generates an `integration` folder:
@@ -138,6 +143,42 @@ by pushing the PR's revisions to a branch of the main repo. We provide a script 
 
 For details on how to compare two arbitrary revisions, refer to the `integration` job in `.circleci/config.yml`. For more documentation, see [mozilla-services/edge-validator](https://github.com/mozilla-services/edge-validator).
 
+### `mps` command-line tool
+
+The repository has an `mps` command-line tool for checking on the output of
+schema transformations used for BigQuery. Enter the shell using
+`scripts/mps-shell`.
+
+To transpile a schema for Bigquery:
+
+```bash
+schema=schemas/glean/glean/glean.1.schema.json
+mps bigquery transpile $schema
+```
+
+It may be useful to look at a compact version of the output:
+
+```bash
+schema=schemas/glean/glean/glean.1.schema.json
+mps bigquery transpile $schema | mps bigquery columns /dev/stdin
+```
+
+The output of the ingestion sink can be viewed for validation documents.
+
+```bash
+validation=validation/glean/glean.1.baseline.pass.json
+mps bigquery transform $validation | jq
+```
+
+Any value that is not captured in the schema is put into `additional_properties`.
+
+```bash
+validation=validation/glean/glean.1.baseline.pass.json
+mps bigquery transform $validation | jq '.additional_properties'
+"{\"$schema\":\"moz://mozilla.org/schemas/glean/ping/1\"}"
+```
+
+
 ## Releases
 
 There is a daily series of tasks run by Airflow (see the
@@ -150,16 +191,16 @@ deployed to production BigQuery tables several times a week.
 
 ## Contributions
 
-* All non trivial contributions should start with a bug or issue being filed (if it is
+- All non trivial contributions should start with a bug or issue being filed (if it is
   a new feature please propose your design/approach before doing any work as not
   all feature requests are accepted).
-* If updating the glean schemas, be sure to update the changelog in
+- If updating the glean schemas, be sure to update the changelog in
   `include/glean/CHANGELOG.md`.
-* This repository is configured to auto-assign a reviewer on PR submission. If you
+- This repository is configured to auto-assign a reviewer on PR submission. If you
   do not receive a response within a few business days (or your request is
   urgent), please followup in the
   [#fx-metrics slack channel](https://mozilla.slack.com/messages/fx-metrics/).
-* If your PR is associated with a bugzilla bug, please title it `Bug XXX - Description of change`, that way the [Bugzilla PR Linker](https://github.com/mozilla/github-bugzilla-pr-linker) will automatically add an attachment with your PR to bugzilla, for future reference.
+- If your PR is associated with a bugzilla bug, please title it `Bug XXX - Description of change`, that way the [Bugzilla PR Linker](https://github.com/mozilla/github-bugzilla-pr-linker) will automatically add an attachment with your PR to bugzilla, for future reference.
 
 ### Notes
 
@@ -178,3 +219,6 @@ installable packages).
 changes to templated external pieces and when/how that impacted a given
 doctype's schema over time. This means that it should be easy to look back in
 time for the provenance of different parts of the schema for each doctype.
+
+We have a number of scripts to keep the schemas in sync with various in-tree
+definitions. See the contents of the `scripts` subdirectory.

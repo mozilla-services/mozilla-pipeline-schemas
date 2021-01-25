@@ -1,6 +1,11 @@
 {
   "$id": "moz://mozilla.org/schemas/main/ping/4",
   "$schema": "http://json-schema.org/draft-04/schema#",
+  "mozPipelineMetadata": {
+    "bq_dataset_family": "telemetry",
+    "bq_metadata_format": "telemetry",
+    "bq_table": "main_v4"
+  },
   "properties": {
     "application": {
       "additionalProperties": false,
@@ -570,6 +575,10 @@
               "description": "maximum number of processes that will be launched for regular web content",
               "type": "integer"
             },
+            "fissionEnabled": {
+              "description": "whether fission is enabled this session, and subframes can load in a different process",
+              "type": "boolean"
+            },
             "intl": {
               "properties": {
                 "acceptLanguages": {
@@ -812,6 +821,13 @@
                     "null"
                   ]
                 },
+                "EmbeddedInFirefoxReality": {
+                  "description": "Whether or not Firefox desktop is embedded by Firefox Reality. This is Windows only.",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
                 "Headless": {
                   "type": [
                     "boolean",
@@ -825,7 +841,10 @@
                   "items": {
                     "properties": {
                       "GPUActive": {
-                        "type": "boolean"
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
                       },
                       "RAM": {
                         "type": [
@@ -932,6 +951,14 @@
                     "d3d11": {
                       "properties": {
                         "blacklisted": {
+                          "description": "Indicates whether the d3d11 compositor was blocklisted due to driver bugs. (This field was renamed to blocklisted in bug 1647225).",
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "blocklisted": {
+                          "description": "Indicates whether the d3d11 compositor was blocklisted due to driver bugs. (This field replaces blacklisted as of bug 1647225).",
                           "type": [
                             "boolean",
                             "null"
@@ -986,6 +1013,29 @@
                       },
                       "type": "object"
                     },
+                    "omtp": {
+                      "description": "Indicates whether the off-main-thread painting is enabled.",
+                      "properties": {
+                        "status": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "openglCompositing": {
+                      "properties": {
+                        "status": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "type": "object"
+                    },
                     "webrender": {
                       "properties": {
                         "status": {
@@ -997,7 +1047,30 @@
                       },
                       "type": "object"
                     },
+                    "wrCompositor": {
+                      "properties": {
+                        "status": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "type": "object"
+                    },
                     "wrQualified": {
+                      "properties": {
+                        "status": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "wrSoftware": {
+                      "description": "Indicates whether the software backend to WebRender is enabled.",
                       "properties": {
                         "status": {
                           "type": [
@@ -1148,6 +1221,20 @@
             },
             "os": {
               "properties": {
+                "hasPrefetch": {
+                  "description": "Whether or not the OS-based prefetch application start-up optimization is set. This is Windows-only. `null` on failure.",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "hasSuperfetch": {
+                  "description": "Whether or not the OS-based superfetch application start-up optimization service is running and using the default settings. This is Windows-only. `null` on failure.",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
                 "installYear": {
                   "description": "The year Windows was installed. This is Windows only. `null` on failure.",
                   "type": [

@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Download relevant java dependencies for schema validation and document
+# transformations
+
+set -ex
+cd "$(dirname "$0")/.."
+
+image=mozilla/ingestion-sink:latest
+
+# https://stackoverflow.com/a/31316636
+container_id=$(docker create $image)
+
+# default behavior is inconsistent when copying a directory from the container
+# https://docs.docker.com/engine/reference/commandline/cp/
+mkdir -p target
+docker cp "$container_id":/app/ingestion-sink/target ./.
+docker rm -v "$container_id"
+
+# now fetch dependencies from maven
+mvn dependency:copy-dependencies

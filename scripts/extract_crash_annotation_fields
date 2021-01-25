@@ -10,43 +10,75 @@ You should be able to get the latest set of crash annotations from:
 
 https://hg.mozilla.org/mozilla-central/raw-file/tip/toolkit/crashreporter/CrashAnnotations.yaml
 
+To run:
+
+1. create virtual environment
+2. ``pip install pyyaml``
+3. ``./scripts/extract_crash_annotation_fields ANNOTATIONFILE``
+
 """
 
+import argparse
 import json
 import os
 import sys
 
 import yaml
 
-if len(sys.argv) != 2:
-    print(f"USAGE: {sys.argv[0]} <crash annotations file>")
-    sys.exit(1)
 
-existing_payload_properties = json.loads(
-    open(
-        os.path.join(
-            os.path.dirname(__file__),
-            "..",
-            "schemas/telemetry/crash/crash.4.schema.json",
-        )
-    ).read()
-)["properties"]["payload"]["properties"]["metadata"]["properties"].keys()
+def main():
+    parser = argparse.ArgumentParser(
+        description="Generate schema file from CrashAnnotations.yaml file"
+    )
+    parser.add_argument(
+        "annotation_file", help="path to CrashAnnotations.yaml file"
+    )
 
-crash_annotations = yaml.load(open(sys.argv[1]).read())
-for crash_annotation_name, crash_annotation_props in crash_annotations.items():
-    if (
-        crash_annotation_props.get("ping")
-        and crash_annotation_name not in existing_payload_properties
-    ):
-        print(
-            '"%s": {\n  "description": %s,\n  "type": "string"\n},'
-            % (
-                crash_annotation_name,
-                json.dumps(
-                    "<{}>, {}".format(
-                        crash_annotation_props["type"],
-                        crash_annotation_props["description"].strip(),
+    args = parser.parse_args()
+    annotation_file = args.annotation_file
+
+    schema_file = os.path.join(
+        os.path.dirname(__file__),
+        "..",
+        "schemas/telemetry/crash/crash.4.schema.json",
+    )
+    if not os.path.exists(schema_file):
+        print("Error: can't find schema file. Exiting.")
+        sys.exit(1)
+
+    print("Using schema file: %s" % schema_file)
+    with open(schema_file, "r") as fp:
+        data = json.load(fp)
+    payload = data["properties"]["payload"]
+    existing_payload_properties = payload["properties"]["metadata"]["properties"].keys()
+    print("Number of existing properties: %d" % len(existing_payload_properties))
+
+    print("Using annotation file: %s" % annotation_file)
+    if not os.path.exists(annotation_file):
+        print("Error: can't find annotation file. Exiting.")
+        sys.exit(1)
+
+    with open(annotation_file, "r") as fp:
+        crash_annotations = yaml.load(fp.read(), Loader=yaml.SafeLoader)
+
+    for crash_annotation_name, crash_annotation_props in crash_annotations.items():
+        if (
+            crash_annotation_props.get("ping")
+            and crash_annotation_name not in existing_payload_properties
+        ):
+            print(
+                '"%s": {\n  "description": %s,\n  "type": "string"\n},'
+                % (
+                    crash_annotation_name,
+                    json.dumps(
+                        "<{}>, {}".format(
+                            crash_annotation_props["type"],
+                            crash_annotation_props["description"].strip(),
+                        ),
                     ),
-                ),
+                )
             )
-        )
+
+
+if __name__ == "__main__":
+    main()

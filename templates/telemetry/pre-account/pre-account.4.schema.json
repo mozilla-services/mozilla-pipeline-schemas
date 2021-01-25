@@ -6,6 +6,7 @@
     @TELEMETRY_APPLICATION_1_JSON@,
     @TELEMETRY_CREATIONDATE_1_JSON@,
     @TELEMETRY_ID_1_JSON@,
+    @TELEMETRY_ENVIRONMENTACCOUNTECOSYSTEM_1_JSON@,
     "type": {
       "type": "string",
       "enum": [ "pre-account" ]
@@ -14,84 +15,6 @@
       "type": "number",
       "minimum": 4,
       "maximum": 4
-    },
-    "environment": {
-      "type": "object",
-      "properties": {
-        "settings": {
-          "type": "object",
-          "properties": {
-            "locale": {
-              "type": ["string", "null"]
-            }
-          },
-          "required": [
-            "locale"
-          ]
-        },
-        "system": {
-          "type": "object",
-          "properties": {
-            "memoryMB": {
-              "type": ["number", "null"]
-            },
-            "cpu": {
-              "type": "object",
-              "properties": {
-                "speedMHz": {
-                  "type": [ "number", "null" ]
-                }
-              },
-              "required": [
-                "speedMHz"
-              ]
-            },
-            "os": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": ["string", "null"]
-                },
-                "version": {
-                  "type": ["string", "null"]
-                },
-                "locale": {
-                  "type": ["string", "null"]
-                }
-              },
-              "required": [
-                "name",
-                "version",
-                "locale"
-              ]
-            }
-          },
-          "required": [
-            "memoryMB",
-            "cpu",
-            "os"
-          ]
-        },
-        "profile": {
-          "type": "object",
-          "properties": {
-            "creationDate": {
-              "type": "number"
-            },
-            "firstUseDate": {
-              "type": "number"
-            }
-          },
-          "required": [
-            "creationDate"
-          ]
-        }
-      },
-      "required": [
-        "settings",
-        "system",
-        "profile"
-      ]
     },
     "payload": {
       "type": "object",

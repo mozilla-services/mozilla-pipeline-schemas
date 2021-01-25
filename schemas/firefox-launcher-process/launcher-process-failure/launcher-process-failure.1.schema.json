@@ -1,5 +1,10 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
+  "mozPipelineMetadata": {
+    "bq_dataset_family": "firefox_launcher_process",
+    "bq_metadata_format": "structured",
+    "bq_table": "launcher_process_failure_v1"
+  },
   "properties": {
     "build_id": {
       "description": "Build ID of the failing binary",
@@ -28,6 +33,10 @@
     "launcher_error": {
       "description": "The error that raised the launcher process failure",
       "properties": {
+        "detour_orig_bytes": {
+          "description": "First sixteen bytes of a function that we failed to hook (Nightly-only).  This field is added only on detour failures.",
+          "type": "string"
+        },
         "hresult": {
           "description": "The HRESULT error code from the launcher failure",
           "type": "integer"
@@ -96,6 +105,10 @@
     },
     "os_version": {
       "description": "Windows version numnber in major.minor.build.UBR format (UBR is optional, only available on Win10)",
+      "type": "string"
+    },
+    "process_type": {
+      "description": "The type of the process which failed to start as a sandboxed process",
       "type": "string"
     },
     "security": {
