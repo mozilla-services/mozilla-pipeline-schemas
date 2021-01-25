@@ -4539,6 +4539,18 @@
             "type": "STRING"
           },
           {
+            "description": "Type of automatic encoding detection outcome for text/html excluding ASCII-only",
+            "mode": "NULLABLE",
+            "name": "encoding_detection_outcome_html",
+            "type": "STRING"
+          },
+          {
+            "description": "Type of automatic encoding detection outcome for text/plain excluding ASCII-only",
+            "mode": "NULLABLE",
+            "name": "encoding_detection_outcome_text",
+            "type": "STRING"
+          },
+          {
             "description": "Labeling status of top-level page when overriding encoding",
             "mode": "NULLABLE",
             "name": "encoding_override_situation",
@@ -22617,6 +22629,18 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document sets an element onoverflow event listener",
+            "mode": "NULLABLE",
+            "name": "use_counter2_onoverflow_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page sets an element onoverflow event listener",
+            "mode": "NULLABLE",
+            "name": "use_counter2_onoverflow_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document sets a <marquee> onstart event listener",
             "mode": "NULLABLE",
             "name": "use_counter2_onstart_document",
@@ -22626,6 +22650,18 @@
             "description": "Whether a page sets a <marquee> onstart event listener",
             "mode": "NULLABLE",
             "name": "use_counter2_onstart_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document sets an element onunderflow event listener",
+            "mode": "NULLABLE",
+            "name": "use_counter2_onunderflow_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page sets an element onunderflow event listener",
+            "mode": "NULLABLE",
+            "name": "use_counter2_onunderflow_page",
             "type": "STRING"
           },
           {
@@ -28253,6 +28289,24 @@
                 "type": "STRING"
               },
               {
+                "description": "Number of ms between initial rendering and when we show the bookmarks toolbar items. Will record once per window opened (so may never record in a given subsession, or multiple times). Keyed by whether we waited for idle or not.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "places_bookmarks_toolbar_render_delay_ms",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "(Bug 1207089) Time in ms between displaying a popup notification and dismissing it without an action the first time, keyed by ID",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -32350,6 +32404,18 @@
                     "description": "Whether enablePrivilege has ever been called during the current session",
                     "mode": "NULLABLE",
                     "name": "enable_privilege_ever_called",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Type of automatic encoding detection outcome for text/html excluding ASCII-only",
+                    "mode": "NULLABLE",
+                    "name": "encoding_detection_outcome_html",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Type of automatic encoding detection outcome for text/plain excluding ASCII-only",
+                    "mode": "NULLABLE",
+                    "name": "encoding_detection_outcome_text",
                     "type": "STRING"
                   },
                   {
@@ -49867,6 +49933,18 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document sets an element onoverflow event listener",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_onoverflow_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page sets an element onoverflow event listener",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_onoverflow_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document sets a <marquee> onstart event listener",
                     "mode": "NULLABLE",
                     "name": "use_counter2_onstart_document",
@@ -49876,6 +49954,18 @@
                     "description": "Whether a page sets a <marquee> onstart event listener",
                     "mode": "NULLABLE",
                     "name": "use_counter2_onstart_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document sets an element onunderflow event listener",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_onunderflow_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page sets an element onunderflow event listener",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_onunderflow_page",
                     "type": "STRING"
                   },
                   {
@@ -58354,6 +58444,168 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "Records counts of SERP pages with adverts displayed where the search was started from about:home. The key format is ‘<provider>:<tagged|organic>’\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "browser_search_adclicks_about_home",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Records counts of SERP pages with adverts displayed where the search was started from about:newtab. The key format is ‘<provider>:<tagged|organic>’\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "browser_search_adclicks_about_newtab",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Records counts of SERP pages with adverts displayed where the search was started from the context menu. The key format is ‘<provider>:<tagged|organic>’\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "browser_search_adclicks_contextmenu",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Records counts of SERP pages with adverts displayed where the search was started from the search bar. The key format is ‘<provider>:<tagged|organic>’\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "browser_search_adclicks_searchbar",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Records counts of SERP pages with adverts displayed where the search was started from the system, e.g. command line. The key format is ‘<provider>:<tagged|organic>’\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "browser_search_adclicks_system",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Records counts of SERP pages with adverts displayed where the search was started from a place not categorized by the other scalars. The key format is ‘<provider>:<tagged|organic>’\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "browser_search_adclicks_unknown",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Records counts of SERP pages with adverts displayed where the search was started from the urlbar. The key format is ‘<provider>:<tagged|organic>’\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "browser_search_adclicks_urlbar",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Records counts of SERP pages with adverts displayed where the search was started from the urlbar in search mode. The key format is ‘<provider>:<tagged|organic>’\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "browser_search_adclicks_urlbar_searchmode",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Records counts of SERP pages with adverts displayed where the search was started from a webextension. The key format is ‘<provider>:<tagged|organic>’\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "browser_search_adclicks_webextension",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "Records bytes that have been transferred for search requests, including top-level documents, sub-resources, iframes and search suggestions. The key format could be one of:\n  <search-provider-name>\n  <search-provider-name>-pb\n  sggt-<search-engine-id>\n  sggt-<search-engine-id>-pb\n",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -58380,6 +58632,168 @@
                     ],
                     "mode": "REPEATED",
                     "name": "browser_search_with_ads",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Records counts of SERP pages with adverts displayed where the search was started from about:home. The key format is ‘<provider>:<tagged|organic>’\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "browser_search_withads_about_home",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Records counts of SERP pages with adverts displayed where the search was started from about:newtab. The key format is ‘<provider>:<tagged|organic>’\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "browser_search_withads_about_newtab",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Records counts of SERP pages with adverts displayed where the search was started from the context menu. The key format is ‘<provider>:<tagged|organic>’\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "browser_search_withads_contextmenu",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Records counts of SERP pages with adverts displayed where the search was started from the search bar. The key format is ‘<provider>:<tagged|organic>’\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "browser_search_withads_searchbar",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Records counts of SERP pages with adverts displayed where the search was started from the system, e.g. command line. The key format is ‘<provider>:<tagged|organic>’\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "browser_search_withads_system",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Records counts of SERP pages with adverts displayed where the search was started from a place not categorized by the other scalars. The key format is ‘<provider>:<tagged|organic>’\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "browser_search_withads_unknown",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Records counts of SERP pages with adverts displayed where the search was started from the urlbar. The key format is ‘<provider>:<tagged|organic>’\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "browser_search_withads_urlbar",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Records counts of SERP pages with adverts displayed where the search was started from the urlbar in search mode. The key format is ‘<provider>:<tagged|organic>’\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "browser_search_withads_urlbar_searchmode",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Records counts of SERP pages with adverts displayed where the search was started from a webextension. The key format is ‘<provider>:<tagged|organic>’\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "browser_search_withads_webextension",
                     "type": "RECORD"
                   },
                   {
