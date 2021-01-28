@@ -62542,6 +62542,12 @@
                     "type": "INT64"
                   },
                   {
+                    "description": "The reason why the skeleton UI was not shown to the user. This should be one of the following values:\n  None:\n    There was no reason for not showing the skeleton UI. This should not\n    be recorded.\n  Ineligible:\n    The user was ineligible for the skeleton UI due to information which\n    should already be trivially available via telemetry (i.e., the user\n    is running an OS version that doesn't support the skeleton UI.)\n  Disabled:\n    The registry specified \"Enabled\" as 0 for the skeleton UI.\n  EnabledKeyDoesNotExist:\n    The \"Enabled\" key in the registry does not exist.\n  OOM:\n    We encountered an allocation failure while trying to show the\n    skeleton UI.\n  Cmdline:\n    The skeleton UI was disabled due to the presence of an unsupported\n    command line argument.\n  EnvVars:\n    The skeleton UI was disabled due to an explicitly unsupported\n    environment variable.\n  FailedToOpenRegistryKey:\n    We were unable to open the skeleton UI Windows registry key.\n  RegistryError:\n    We …",
+                    "mode": "NULLABLE",
+                    "name": "startup_skeleton_ui_disabled_reason",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "The count of webextensions that have data stored in the chrome.storage.sync API. This includes extensions that have not used the storage.sync API this session. This includes items that were not stored this session. This scalar is collected after every sync.\n",
                     "mode": "NULLABLE",
                     "name": "storage_sync_api_usage_extensions_using",
