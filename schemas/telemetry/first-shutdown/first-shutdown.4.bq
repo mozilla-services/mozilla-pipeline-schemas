@@ -2865,6 +2865,12 @@
             "type": "STRING"
           },
           {
+            "description": "A count of the number of content processes, collected every five minutes.",
+            "mode": "NULLABLE",
+            "name": "content_process_count",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a content process was launched synchronously (unnecessarily delaying UI response).",
             "mode": "NULLABLE",
             "name": "content_process_launch_is_sync",
@@ -2889,9 +2895,21 @@
             "type": "STRING"
           },
           {
+            "description": "The maximum number of content processes, submitted when a new maximum is reached.",
+            "mode": "NULLABLE",
+            "name": "content_process_max",
+            "type": "STRING"
+          },
+          {
             "description": "Time elapsed during synchronous content process launch until the process is usable for loading content.",
             "mode": "NULLABLE",
             "name": "content_process_sync_launch_ms",
+            "type": "STRING"
+          },
+          {
+            "description": "The time (in milliseconds) since the last content process was launched.",
+            "mode": "NULLABLE",
+            "name": "content_process_time_since_last_launch_ms",
             "type": "STRING"
           },
           {
@@ -7152,6 +7170,36 @@
             "description": "Number of font-family names used that resolved to langpack-installed fonts",
             "mode": "NULLABLE",
             "name": "langpack_font_families_per_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Number of lazy-loaded images that were started to load but didn't reach to the viewport eventually",
+            "mode": "NULLABLE",
+            "name": "lazyload_image_not_viewport",
+            "type": "STRING"
+          },
+          {
+            "description": "Number of lazy-loaded images that we've started loading as a result of triggering the lazy-load observer threshold.",
+            "mode": "NULLABLE",
+            "name": "lazyload_image_started",
+            "type": "STRING"
+          },
+          {
+            "description": "The amount of images that have `loading='lazy'` on the page or have loaded lazily already.",
+            "mode": "NULLABLE",
+            "name": "lazyload_image_total",
+            "type": "STRING"
+          },
+          {
+            "description": "Number of lazy-loaded images that reached the viewport and were done loading when they did so.",
+            "mode": "NULLABLE",
+            "name": "lazyload_image_viewport_loaded",
+            "type": "STRING"
+          },
+          {
+            "description": "Number of lazy-loaded images that reached the viewport which were not done loading when they did so.",
+            "mode": "NULLABLE",
+            "name": "lazyload_image_viewport_loading",
             "type": "STRING"
           },
           {
@@ -34855,6 +34903,36 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Number of lazy-loaded images that were started to load but didn't reach to the viewport eventually",
+                    "mode": "NULLABLE",
+                    "name": "lazyload_image_not_viewport",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Number of lazy-loaded images that we've started loading as a result of triggering the lazy-load observer threshold.",
+                    "mode": "NULLABLE",
+                    "name": "lazyload_image_started",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "The amount of images that have `loading='lazy'` on the page or have loaded lazily already.",
+                    "mode": "NULLABLE",
+                    "name": "lazyload_image_total",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Number of lazy-loaded images that reached the viewport and were done loading when they did so.",
+                    "mode": "NULLABLE",
+                    "name": "lazyload_image_viewport_loaded",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Number of lazy-loaded images that reached the viewport which were not done loading when they did so.",
+                    "mode": "NULLABLE",
+                    "name": "lazyload_image_viewport_loading",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "The width dimension of the 'sizes' attribute for <link rel=icon>.",
                     "mode": "NULLABLE",
                     "name": "link_icon_sizes_attr_dimension",
@@ -56104,6 +56182,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "Count the number of times the media with a specific mime type (Eg. audio/vorbis, that would be used as the key) encounters a decode error during playback.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "media_decode_error_per_mime_type",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "The number of times a Picture-in-Picture window was opened, per trigger mechanism (e.g.: the video toggle, the context menu).\n",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -62608,6 +62704,18 @@
                     "type": "INT64"
                   },
                   {
+                    "description": "Whether we generated a new client id this subsession.\n",
+                    "mode": "NULLABLE",
+                    "name": "telemetry_generated_new_client_id",
+                    "type": "BOOL"
+                  },
+                  {
+                    "description": "How often we loaded a client_id from disk that doesn't match what's cached in the pref.\n",
+                    "mode": "NULLABLE",
+                    "name": "telemetry_loaded_client_id_doesnt_match_pref",
+                    "type": "INT64"
+                  },
+                  {
                     "description": "Records true if there is a signal that Firefox was quitting because the OS was shutting down. Only available on Windows.\n",
                     "mode": "NULLABLE",
                     "name": "telemetry_os_shutting_down",
@@ -62641,6 +62749,12 @@
                     "description": "The number of times a profile directory scan was initiated in ProfileAge.jsm\n",
                     "mode": "NULLABLE",
                     "name": "telemetry_profile_directory_scans",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "How many times we errored out trying to save state.json\n",
+                    "mode": "NULLABLE",
+                    "name": "telemetry_state_file_save_errors",
                     "type": "INT64"
                   },
                   {
