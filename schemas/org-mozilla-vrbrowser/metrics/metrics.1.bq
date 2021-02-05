@@ -308,7 +308,7 @@
             "type": "INT64"
           },
           {
-            "description": "The number of times we encountered an IO error when writing a pending ping to disk.\n",
+            "description": "The number of times we encountered an IO error\nwhen writing a pending ping to disk.\n",
             "mode": "NULLABLE",
             "name": "glean_error_io",
             "type": "INT64"
@@ -320,13 +320,13 @@
             "type": "INT64"
           },
           {
-            "description": "The number of pings deleted after the quota for the size of the pending pings directory or number of files is hit. Since quota is only calculated for the pending pings directory, and deletion request ping live in a different directory, deletion request pings are never deleted.\n",
+            "description": "The number of pings deleted after the quota\nfor the size of the pending pings directory or number of files is hit.\nSince quota is only calculated for the pending pings directory,\nand deletion request ping live in a different directory,\ndeletion request pings are never deleted.\n",
             "mode": "NULLABLE",
             "name": "glean_upload_deleted_pings_after_quota_hit",
             "type": "INT64"
           },
           {
-            "description": "The total number of pending pings at startup. This does not include deletion-request pings.\n",
+            "description": "The total number of pending pings at startup.\nThis does not include deletion-request pings.\n",
             "mode": "NULLABLE",
             "name": "glean_upload_pending_pings",
             "type": "INT64"
@@ -495,6 +495,24 @@
             "type": "RECORD"
           },
           {
+            "description": "A count of the pings submitted, by ping type.\n\nThis metric appears in both the metrics and baseline pings.\n\n- On the metrics ping, the counts include the number of pings sent since\n  the last metrics ping (including the last metrics ping)\n- On the baseline ping, the counts include the number of pings send since\n  the last baseline ping (including the last baseline ping)\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "glean_validation_pings_submitted",
+            "type": "RECORD"
+          },
+          {
             "description": "Counting how many searches are queried in a specific search engine. The search engine `identifier`s are used as keys for this metric.\n",
             "fields": [
               {
@@ -598,7 +616,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The size of the pending pings directory upon initialization of Glean. This does not include the size of the deletion request pings directory.\n",
+            "description": "The size of the pending pings directory upon initialization of Glean.\nThis does not include the size of the deletion request pings directory.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
