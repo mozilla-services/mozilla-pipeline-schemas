@@ -50,11 +50,6 @@ schemas
 │   └── launcher-process-failure
 ├── glean
 │   └── glean
-├── glean-js-tmp
-│   ├── baseline
-│   ├── deletion-request
-│   ├── events
-│   └── metrics
 ├── messaging-system
 │   ├── cfr
 │   ├── infobar
@@ -332,6 +327,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-322 directories
+317 directories
 ```
 
