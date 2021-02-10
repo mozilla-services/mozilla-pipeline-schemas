@@ -3,12 +3,16 @@
   "mozPipelineMetadata": {
     "bq_dataset_family": "contextual_services",
     "bq_metadata_format": "structured",
-    "bq_table": "topsites_clicks_v1"
+    "bq_table": "quicksuggest_click_v1"
   },
   "properties": {
     "advertiser": {
       "description": "Name of the advertiser, e.g. amazon, ebay, bestbuy etc",
       "type": "string"
+    },
+    "block_id": {
+      "description": "A unique identifier for the QuickSuggest link",
+      "type": "integer"
     },
     "context_id": {
       "description": "A UUID representing this user. Note that it's not client_id, nor can it be used to link to a client_id",
@@ -46,9 +50,10 @@
   },
   "required": [
     "context_id",
+    "block_id",
     "reporting_url",
     "version"
   ],
-  "title": "topsites-clicks",
+  "title": "quicksuggest-click",
   "type": "object"
 }
