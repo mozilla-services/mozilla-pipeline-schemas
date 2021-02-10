@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "mozPipelineMetadata": {
+    "bq_dataset_family": "contextual_services",
+    "bq_metadata_format": "structured",
+    "bq_table": "quicksuggest_impressions_v1"
+  },
+  "properties": {
+    "advertiser": {
+      "description": "Name of the advertiser, e.g. amazon, ebay, bestbuy etc",
+      "type": "string"
+    },
+    "block_id": {
+      "description": "A unique identifier for the QuickSuggest link",
+      "type": "integer"
+    },
+    "context_id": {
+      "description": "A UUID representing this user. Note that it's not client_id, nor can it be used to link to a client_id",
+      "pattern": "^\\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\}$",
+      "type": "string"
+    },
+    "experiments": {
+      "additionalProperties": {
+        "properties": {
+          "branch": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "description": "An object to record all active experiments, experiments IDs are stored as keys, and the value object stores the branch information. Example: {\"experiment_1\": {\"branch\": \"control\"}, \"experiment_2\": {\"branch\": \"treatment\"}}. This deprecates the \"shield_id\" used in activity-stream and messaging-system.",
+      "type": "object"
+    },
+    "is_clicked": {
+      "description": "Whether or not the user has clicked on this QuickSuggest link",
+      "type": "boolean"
+    },
+    "locale": {
+      "description": "User's current locale",
+      "type": "string"
+    },
+    "matched_keywords": {
+      "description": "The matched keywords when a QuickSuggest link is shown",
+      "type": "string"
+    },
+    "release_channel": {
+      "description": "Firefox release channel",
+      "type": "string"
+    },
+    "reporting_url": {
+      "description": "The reporting URL of the ad, normally pointing to the ad partner's reporting endpoint. It's URL encoded",
+      "type": "string"
+    },
+    "search_query": {
+      "description": "The user's typed-in search query in the AwesomeBar. Note that this ping is only sent when a QuickSuggest ad is shown for the current search query, so we don't have to limit its size here",
+      "type": "string"
+    },
+    "version": {
+      "description": "Firefox version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "context_id",
+    "search_query",
+    "matched_keywords",
+    "block_id",
+    "is_clicked",
+    "reporting_url",
+    "version"
+  ],
+  "title": "quicksuggest-impressions",
+  "type": "object"
+}
