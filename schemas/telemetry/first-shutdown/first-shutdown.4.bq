@@ -6183,6 +6183,12 @@
             "type": "STRING"
           },
           {
+            "description": "Collect what is the outcome when 0rtt is used: (0)0RTT_NOT_USED, (1)0RTT_USED_SUCCESS, (2)0RTT_USED_REJECT, (3)0RTT_USED_CONN_ERROR, (4)0RTT_CONN_CLOSED_BY_NECKO.",
+            "mode": "NULLABLE",
+            "name": "http3_0rtt_state",
+            "type": "STRING"
+          },
+          {
             "description": "HTTP3: number of times a connection is blocked by maximum allowed number of parallel streams per connection",
             "mode": "NULLABLE",
             "name": "http3_blocked_by_stream_limit_per_conn",
@@ -6900,6 +6906,24 @@
             "description": "How many speculative http connections are actually used",
             "mode": "NULLABLE",
             "name": "httpconnmgr_used_speculative_conn",
+            "type": "STRING"
+          },
+          {
+            "description": "HTTPS RR is presented or not.",
+            "mode": "NULLABLE",
+            "name": "https_rr_presented",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether an HTTPS RR indicates that HTTP3 should be used.",
+            "mode": "NULLABLE",
+            "name": "https_rr_with_http3_presented",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether an HTTP request gets upgraded to HTTPS because HTTPS RR is presented",
+            "mode": "NULLABLE",
+            "name": "https_upgrade_with_https_rr",
             "type": "STRING"
           },
           {
@@ -20823,6 +20847,18 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document used FormSubmissionUntrustedEvent",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_form_submission_untrusted_event_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page used FormSubmissionUntrustedEvent",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_form_submission_untrusted_event_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document used GetAttributeNode",
             "mode": "NULLABLE",
             "name": "use_counter2_deprecated_get_attribute_node_document",
@@ -27497,6 +27533,24 @@
                 "type": "STRING"
               },
               {
+                "description": "The time a connection was in the zero rtt state, it is keyed by the zero rtt outcome.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http3_0rtt_state_duration",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "Successfully started HTTP channels when HTTP3 is used",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -27523,6 +27577,24 @@
             ],
             "mode": "REPEATED",
             "name": "http3_complete_load",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "Error code when http3 connection is closed. Look at Http3Session for more details.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http3_connection_close_code",
             "type": "RECORD"
           },
           {
@@ -28685,7 +28757,7 @@
                 "type": "STRING"
               },
               {
-                "description": "Time (ms) for the QuotaManager to load quota information.",
+                "description": "Time (ms) for the QuotaManager to load quota information. Keyed by conditions during quota info loading, see RecordQuotaInfoLoadTimeHelper::Run in https://searchfox.org/mozilla-central/source/dom/quota/ActorsParent.cpp",
                 "mode": "NULLABLE",
                 "name": "value",
                 "type": "STRING"
@@ -48157,6 +48229,18 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document used FormSubmissionUntrustedEvent",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_form_submission_untrusted_event_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page used FormSubmissionUntrustedEvent",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_form_submission_untrusted_event_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document used GetAttributeNode",
                     "mode": "NULLABLE",
                     "name": "use_counter2_deprecated_get_attribute_node_document",
@@ -52327,7 +52411,7 @@
                     "type": "STRING"
                   },
                   {
-                    "description": "Total time spent playing Clearkey encrypted video in milliseconds. This reports the total play time for an HTML Media Element playing Clearkey encrypted content whenever it is suspended, such as when the page is unloaded.",
+                    "description": "Total time spent playing Clearkey encrypted video in milliseconds. This reports the total play time for a video lement playing Clearkey encrypted content whenever the decoder stops. (eg. pausing media, encountering an error, changing to a new resource, page goes to the bf-cached or page gets discarded)",
                     "mode": "NULLABLE",
                     "name": "video_clearkey_play_time_ms",
                     "type": "STRING"
@@ -52375,7 +52459,7 @@
                     "type": "STRING"
                   },
                   {
-                    "description": "Total time spent playing encrypted video in milliseconds. This reports the total play time for an HTML Media Element playing encrypted content whenever it is suspended, such as when the page is unloaded.",
+                    "description": "Total time spent playing encrypted video in milliseconds. This reports the total play time for a video element playing encrypted content whenever the decoder stops. (eg. pausing media, encountering an error, changing to a new resource, page goes to the bf-cached or page gets discarded)",
                     "mode": "NULLABLE",
                     "name": "video_encrypted_play_time_ms",
                     "type": "STRING"
@@ -52435,7 +52519,7 @@
                     "type": "STRING"
                   },
                   {
-                    "description": "Total time spent playing Widevine encrypted video in milliseconds. This reports the total play time for an HTML Media Element playing Widevine encrypted content whenever it is suspended, such as when the page is unloaded.",
+                    "description": "Total time spent playing Widevine encrypted video in milliseconds. This reports the total play time for a video element playing Widevine encrypted content whenever the decoder stops. (eg. pausing media, encountering an error, changing to a new resource, page goes to the bf-cached or page gets discarded)",
                     "mode": "NULLABLE",
                     "name": "video_widevine_play_time_ms",
                     "type": "STRING"
@@ -54443,6 +54527,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "http3_complete_load",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Error code when http3 connection is closed. Look at Http3Session for more details.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_connection_close_code",
                     "type": "RECORD"
                   },
                   {
@@ -62479,6 +62581,12 @@
                     "description": "Number of http transactions transfer over a captive portal during a subsession.\n",
                     "mode": "NULLABLE",
                     "name": "networking_http_transactions_captive_portal",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "A bitfield representation for the usage of HTTPS RR prefs. bit 0: network.dns.upgrade_with_https_rr is enabled or not. bit 1: network.dns.use_https_rr_as_altsvc is enabled or not. bit 2: network.dns.echconfig.enabled is enabled or not.\n",
+                    "mode": "NULLABLE",
+                    "name": "networking_https_rr_prefs_usage",
                     "type": "INT64"
                   },
                   {
