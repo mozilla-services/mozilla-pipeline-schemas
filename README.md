@@ -24,6 +24,11 @@ schemas
 │   ├── metrics
 │   ├── space-ship-ready
 │   └── starbase46
+├── contextual-services
+│   ├── quicksuggest-click
+│   ├── quicksuggest-impression
+│   ├── topsites-click
+│   └── topsites-impression
 ├── coverage
 │   └── coverage
 ├── default-browser-agent
@@ -327,6 +332,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-317 directories
+322 directories
 ```
 
