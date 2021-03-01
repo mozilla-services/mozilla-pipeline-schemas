@@ -69,3 +69,5 @@
 
 - Pull client_info definitions from the glean source code (see:
   `scripts/extract_glean_client_info_descriptions`)
+  
+- The `rate` metric type is an object with a `numerator` and `denominator`.
