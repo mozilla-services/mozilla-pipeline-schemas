@@ -597,6 +597,12 @@
                 "type": "STRING"
               },
               {
+                "description": "Unique token created at Firefox download time, see bug 1677497",
+                "mode": "NULLABLE",
+                "name": "dltoken",
+                "type": "STRING"
+              },
+              {
                 "description": "funnel experiment parameters, see bug 1567339",
                 "mode": "NULLABLE",
                 "name": "experiment",
@@ -4404,6 +4410,12 @@
             "description": "TRR-first mode distribution. 0=Worked, 1=fell back fine after TRR fail, 2=native worked, 3=both failed",
             "mode": "NULLABLE",
             "name": "dns_trr_first2",
+            "type": "STRING"
+          },
+          {
+            "description": "HTTP version used by DoH endpoint",
+            "mode": "NULLABLE",
+            "name": "dns_trr_http_version",
             "type": "STRING"
           },
           {
@@ -9789,25 +9801,43 @@
             "type": "STRING"
           },
           {
-            "description": "Duration of shutdown phase profile-before-change, as measured by the shutdown terminator, in seconds of activity",
+            "description": "Duration of shutdown phase profile-before-change, as measured by the shutdown terminator in ticks of 100ms",
             "mode": "NULLABLE",
             "name": "shutdown_phase_duration_ticks_profile_before_change",
             "type": "STRING"
           },
           {
-            "description": "Duration of shutdown phase profile-change-teardown, as measured by the shutdown terminator, in seconds of activity",
+            "description": "Duration of shutdown phase profile-before-change-qm, as measured by the shutdown terminator in ticks of 100ms",
+            "mode": "NULLABLE",
+            "name": "shutdown_phase_duration_ticks_profile_before_change_qm",
+            "type": "STRING"
+          },
+          {
+            "description": "Duration of shutdown phase profile-change-net-teardown, as measured by the shutdown terminator in ticks of 100ms",
+            "mode": "NULLABLE",
+            "name": "shutdown_phase_duration_ticks_profile_change_net_teardown",
+            "type": "STRING"
+          },
+          {
+            "description": "Duration of shutdown phase profile-change-teardown, as measured by the shutdown terminator in ticks of 100ms",
             "mode": "NULLABLE",
             "name": "shutdown_phase_duration_ticks_profile_change_teardown",
             "type": "STRING"
           },
           {
-            "description": "Duration of shutdown phase quit-application, as measured by the shutdown terminator, in seconds of activity",
+            "description": "Duration of shutdown phase quit-application, as measured by the shutdown terminator in ticks of 100ms",
             "mode": "NULLABLE",
             "name": "shutdown_phase_duration_ticks_quit_application",
             "type": "STRING"
           },
           {
-            "description": "Duration of shutdown phase xpcom-will-shutdown, as measured by the shutdown terminator, in seconds of activity",
+            "description": "Duration of shutdown phase xpcom-shutdown, as measured by the shutdown terminator in ticks of 100ms",
+            "mode": "NULLABLE",
+            "name": "shutdown_phase_duration_ticks_xpcom_shutdown",
+            "type": "STRING"
+          },
+          {
+            "description": "Duration of shutdown phase xpcom-will-shutdown, as measured by the shutdown terminator in ticks of 100ms",
             "mode": "NULLABLE",
             "name": "shutdown_phase_duration_ticks_xpcom_will_shutdown",
             "type": "STRING"
@@ -22749,6 +22779,18 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document sets DOMMouseScroll event listener",
+            "mode": "NULLABLE",
+            "name": "use_counter2_ondommousescroll_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page sets DOMMouseScroll event listener",
+            "mode": "NULLABLE",
+            "name": "use_counter2_ondommousescroll_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document sets a <marquee> onfinish event listener",
             "mode": "NULLABLE",
             "name": "use_counter2_onfinish_document",
@@ -22758,6 +22800,18 @@
             "description": "Whether a page sets a <marquee> onfinish event listener",
             "mode": "NULLABLE",
             "name": "use_counter2_onfinish_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document sets MozMousePixelScroll event listener",
+            "mode": "NULLABLE",
+            "name": "use_counter2_onmozmousepixelscroll_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page sets MozMousePixelScroll event listener",
+            "mode": "NULLABLE",
+            "name": "use_counter2_onmozmousepixelscroll_page",
             "type": "STRING"
           },
           {
@@ -26891,6 +26945,24 @@
                 "type": "STRING"
               },
               {
+                "description": "DNS: lookup algorithm; Keyed by TRR domain",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dns_lookup_disposition3",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "DNS check for TRR was blocked by blacklist; Keyed by TRR auto-detected",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -26899,6 +26971,24 @@
             ],
             "mode": "REPEATED",
             "name": "dns_trr_blacklisted2",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "DNS check for TRR was blocked by blacklist; Keyed by TRR domain",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dns_trr_blacklisted3",
             "type": "RECORD"
           },
           {
@@ -26927,6 +27017,24 @@
                 "type": "STRING"
               },
               {
+                "description": "Resolve success rate when in TRR-first and called TRR-disabled (fall-back mode); Keyed by TRR domain",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dns_trr_disabled3",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "TRR-first mode distribution. 0=Worked, 1=fell back fine after TRR fail, 2=native worked, 3=both failed; Keyed by TRR auto-detected",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -26935,6 +27043,24 @@
             ],
             "mode": "REPEATED",
             "name": "dns_trr_first3",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "TRR-first mode distribution. 0=Worked, 1=fell back fine after TRR fail, 2=native worked, 3=both failed; Keyed by TRR domain",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dns_trr_first4",
             "type": "RECORD"
           },
           {
@@ -26963,6 +27089,24 @@
                 "type": "STRING"
               },
               {
+                "description": "Time for a completed TRR resolution (msec); Keyed by TRR domain",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dns_trr_lookup_time3",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "TRR managed to verify NS entry; Keyed by TRR auto-detected",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -26981,6 +27125,24 @@
                 "type": "STRING"
               },
               {
+                "description": "TRR managed to verify NS entry; Keyed by TRR domain",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dns_trr_ns_verfified3",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "How often TRR (Trusted Recursive Resolver) requests are fine, time-out or error. Keyed by TRR auto-detected",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -26989,6 +27151,24 @@
             ],
             "mode": "REPEATED",
             "name": "dns_trr_success2",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "How often TRR (Trusted Recursive Resolver) requests are fine, time-out or error. Keyed by TRR domain",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dns_trr_success3",
             "type": "RECORD"
           },
           {
@@ -27907,6 +28087,24 @@
             ],
             "mode": "REPEATED",
             "name": "http_channel_onstart_success_trr",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "Successfully started HTTP channels when TRR is enabled; Keyed by TRR domain",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http_channel_onstart_success_trr2",
             "type": "RECORD"
           },
           {
@@ -37453,25 +37651,43 @@
                     "type": "STRING"
                   },
                   {
-                    "description": "Duration of shutdown phase profile-before-change, as measured by the shutdown terminator, in seconds of activity",
+                    "description": "Duration of shutdown phase profile-before-change, as measured by the shutdown terminator in ticks of 100ms",
                     "mode": "NULLABLE",
                     "name": "shutdown_phase_duration_ticks_profile_before_change",
                     "type": "STRING"
                   },
                   {
-                    "description": "Duration of shutdown phase profile-change-teardown, as measured by the shutdown terminator, in seconds of activity",
+                    "description": "Duration of shutdown phase profile-before-change-qm, as measured by the shutdown terminator in ticks of 100ms",
+                    "mode": "NULLABLE",
+                    "name": "shutdown_phase_duration_ticks_profile_before_change_qm",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Duration of shutdown phase profile-change-net-teardown, as measured by the shutdown terminator in ticks of 100ms",
+                    "mode": "NULLABLE",
+                    "name": "shutdown_phase_duration_ticks_profile_change_net_teardown",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Duration of shutdown phase profile-change-teardown, as measured by the shutdown terminator in ticks of 100ms",
                     "mode": "NULLABLE",
                     "name": "shutdown_phase_duration_ticks_profile_change_teardown",
                     "type": "STRING"
                   },
                   {
-                    "description": "Duration of shutdown phase quit-application, as measured by the shutdown terminator, in seconds of activity",
+                    "description": "Duration of shutdown phase quit-application, as measured by the shutdown terminator in ticks of 100ms",
                     "mode": "NULLABLE",
                     "name": "shutdown_phase_duration_ticks_quit_application",
                     "type": "STRING"
                   },
                   {
-                    "description": "Duration of shutdown phase xpcom-will-shutdown, as measured by the shutdown terminator, in seconds of activity",
+                    "description": "Duration of shutdown phase xpcom-shutdown, as measured by the shutdown terminator in ticks of 100ms",
+                    "mode": "NULLABLE",
+                    "name": "shutdown_phase_duration_ticks_xpcom_shutdown",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Duration of shutdown phase xpcom-will-shutdown, as measured by the shutdown terminator in ticks of 100ms",
                     "mode": "NULLABLE",
                     "name": "shutdown_phase_duration_ticks_xpcom_will_shutdown",
                     "type": "STRING"
@@ -50185,6 +50401,18 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document sets DOMMouseScroll event listener",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_ondommousescroll_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page sets DOMMouseScroll event listener",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_ondommousescroll_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document sets a <marquee> onfinish event listener",
                     "mode": "NULLABLE",
                     "name": "use_counter2_onfinish_document",
@@ -50194,6 +50422,18 @@
                     "description": "Whether a page sets a <marquee> onfinish event listener",
                     "mode": "NULLABLE",
                     "name": "use_counter2_onfinish_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document sets MozMousePixelScroll event listener",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_onmozmousepixelscroll_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page sets MozMousePixelScroll event listener",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_onmozmousepixelscroll_page",
                     "type": "STRING"
                   },
                   {
@@ -59578,6 +59818,96 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "A keyed uint recording how many times the user has clicked on Firefox Suggests (a.k.a. Quick Suggest) results in the urlbar (not including the help button). The key is the 1-based index of each result.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "contextual_services_quicksuggest_click",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "A keyed uint recording how many times the user has clicked on the help button in Firefox Suggests (a.k.a. Quick Suggest) results in the urlbar. The key is the 1-based index of each result.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "contextual_services_quicksuggest_help",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "A keyed uint recording how many times the user has viewed Firefox Suggests (a.k.a. Quick Suggest) results in the urlbar. The key is the 1-based index of each result.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "contextual_services_quicksuggest_impression",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "A keyed uint recording how many times the user has clicked on the sponsored TopSites on the newtab page. The key is a combination of the source and the placement of the TopSites tile (1-based). such as 'urlbar_1', 'newtab_2'.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "contextual_services_topsites_click",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "A keyed uint recording how many times the user has viewed the sponsored TopSites on the newtab page. The key is a combination of the source and the placement of the TopSites tile (1-based). such as 'urlbar_1', 'newtab_2'.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "contextual_services_topsites_impression",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "Number of times a context menu item for an accessible object was activated (with mouse or keyboard) from the context menu opened in the accessibility tree. Keyed by the id of the context menu item.\n",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -62774,6 +63104,18 @@
                     "mode": "NULLABLE",
                     "name": "os_environment_is_admin_without_uac",
                     "type": "BOOL"
+                  },
+                  {
+                    "description": "Whether this app was pinned to taskbar on startup",
+                    "mode": "NULLABLE",
+                    "name": "os_environment_is_taskbar_pinned",
+                    "type": "BOOL"
+                  },
+                  {
+                    "description": "Records how Firefox was started on Windows. Currently will be one of \"Desktop\", \"StartMenu\" (including pins), \"Taskbar\", \"OtherShortcut\", or \"Other\"\n",
+                    "mode": "NULLABLE",
+                    "name": "os_environment_launch_method",
+                    "type": "STRING"
                   },
                   {
                     "description": "How many times PDF Viewer fallback bar was shown.\n",
