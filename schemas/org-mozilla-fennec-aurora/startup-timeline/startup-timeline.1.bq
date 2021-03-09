@@ -399,6 +399,47 @@
       {
         "fields": [
           {
+            "mode": "NULLABLE",
+            "name": "key",
+            "type": "STRING"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "denominator",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "numerator",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "value",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "REPEATED",
+        "name": "labeled_rate",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
             "description": "The number of clock tick time units that occur in one second on this\nparticular device. This value is expected to be used in conjunction with\nthe `framework_primary/secondary` metrics.\n",
             "mode": "NULLABLE",
             "name": "startup_timeline_clock_ticks_per_second_v2",

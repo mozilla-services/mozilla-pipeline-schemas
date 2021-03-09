@@ -253,7 +253,8 @@ schemas
 │   ├── demographic-survey
 │   ├── pioneer-enrollment
 │   ├── probes
-│   └── survey
+│   ├── survey
+│   └── uninstall-deletion
 ├── pioneer-debug
 │   ├── debug
 │   ├── deletion-request
@@ -336,6 +337,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-326 directories
+327 directories
 ```
 

@@ -489,6 +489,47 @@
       {
         "fields": [
           {
+            "mode": "NULLABLE",
+            "name": "key",
+            "type": "STRING"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "denominator",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "numerator",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "value",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "REPEATED",
+        "name": "labeled_rate",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
             "description": "The locale of the application during initialization (e.g. \"es-ES\").\nIf the locale can't be determined on the system, the value is\n[\"und\"](https://unicode.org/reports/tr35/#Unknown_or_Invalid_Identifiers),\nto indicate \"undetermined\".\n",
             "mode": "NULLABLE",
             "name": "glean_baseline_locale",
