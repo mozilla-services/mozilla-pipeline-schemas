@@ -103,6 +103,9 @@ schemas
 │   └── usage
 ├── mozza
 │   └── event
+├── org-mozilla-bergamot
+│   ├── custom
+│   └── deletion-request
 ├── org-mozilla-connect-firefox
 │   ├── baseline
 │   ├── deletion-request
@@ -337,6 +340,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-327 directories
+330 directories
 ```
 
