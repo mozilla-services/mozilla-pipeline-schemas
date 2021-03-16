@@ -2,6 +2,24 @@
   "$comment": "Added in bug 1636317; extends the metadata included in structured ingestion, accounting for additional fields in the Pioneer envelope.",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "id": "http://jsonschema.net",
+  "oneOf": [
+    {
+      "required": [
+        "submission_timestamp",
+        "metadata",
+        "pioneerId",
+        "studyName"
+      ]
+    },
+    {
+      "required": [
+        "submission_timestamp",
+        "metadata",
+        "rallyId",
+        "studyName"
+      ]
+    }
+  ],
   "properties": {
     "additional_properties": {
       "description": "A JSON string containing any payload properties not present in the schema",
@@ -146,10 +164,5 @@
       "type": "string"
     }
   },
-  "required": [
-    "submission_timestamp",
-    "metadata",
-    "studyName"
-  ],
   "type": "object"
 }
