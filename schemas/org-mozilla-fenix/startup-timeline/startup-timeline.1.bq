@@ -271,7 +271,7 @@
       {
         "fields": [
           {
-            "description": "An error when attempting to record `framework_start` - the application\ninit timestamp returned a negative value - which is likely indicative of a\nbug in the implementation.\n",
+            "description": "An error when attempting to record `framework_primary/secondary` - the\napplication init timestamp returned a negative value - which is likely\nindicative of a bug in the implementation.\n",
             "mode": "NULLABLE",
             "name": "startup_timeline_framework_start_error",
             "type": "BOOL"
@@ -398,6 +398,96 @@
       },
       {
         "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "key",
+            "type": "STRING"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "denominator",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "numerator",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "value",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "REPEATED",
+        "name": "labeled_rate",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The number of clock tick time units that occur in one second on this\nparticular device. This value is expected to be used in conjunction with\nthe `framework_primary/secondary` metrics.\n",
+            "mode": "NULLABLE",
+            "name": "startup_timeline_clock_ticks_per_second_v2",
+            "type": "INT64"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "quantity",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The duration the Android framework takes to start before letting us run\ncode in `*Application.init` when this device has\n`clock_ticks_per_second_v2` equal to 100: if it's not equal to 100, then\nthis value is captured in `framework_secondary`. We split this into two\nmetrics to make it easier to analyze in GLAM. We split on 100 because\nwhen we did our initial brief analysis -\nhttps://sql.telemetry.mozilla.org/queries/75591 - the results for clocks\nticks were overwhelmingly 100.\n\nThe duration is calculated from `appInitTimestamp -\nprocessStartTimestamp`. `processStartTimestamp` is derived from the clock\ntick time unit, which is expected to be less granular than nanoseconds.\nTherefore, we convert and round our timestamps to clock ticks before\ncomputing the difference and convert back to nanoseconds to report.\n\nFor debugging purposes, `clock_ticks_per_second_v2`, which may vary\nbetween devices, is also reported as a metric\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "startup_timeline_framework_primary",
+            "type": "RECORD"
+          },
+          {
+            "description": "The duration the Android framework takes to start before letting us run\ncode in `*Application.init` when this device has\n`clock_ticks_per_second_v2` not equal to 100. For more details on this\nmetric, see `framework_primary`\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "startup_timeline_framework_secondary",
+            "type": "RECORD"
+          },
           {
             "description": "The duration the Android framework takes to start before letting us run\ncode in `*Application.init`. This is calculated from `appInitTimestamp -\nprocessStartTimestamp`. `processStartTimestamp` is derived from the clock\ntick time unit, which is expected to be less granular than nanoseconds.\nTherefore, we convert and round our timestamps to clock ticks before\ncomputing the difference and convert back to nanoseconds to report.\n\nFor debugging purposes, `clock_ticks_per_second`, which may vary between\ndevices, is also reported as a metric\n",
             "fields": [

@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "mozPipelineMetadata": {
+    "bq_dataset_family": "contextual_services",
+    "bq_metadata_format": "structured",
+    "bq_table": "topsites_click_v1",
+    "expiration_policy": {
+      "delete_after_days": 30
+    }
+  },
+  "properties": {
+    "advertiser": {
+      "description": "Name of the advertiser, e.g. amazon, ebay, bestbuy etc",
+      "type": "string"
+    },
+    "context_id": {
+      "description": "A UUID representing this user. Note that it's not client_id, nor can it be used to link to a client_id",
+      "pattern": "^\\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\}$",
+      "type": "string"
+    },
+    "experiments": {
+      "additionalProperties": {
+        "properties": {
+          "branch": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "description": "An object to record all active experiments, experiments IDs are stored as keys, and the value object stores the branch information. Example: {\"experiment_1\": {\"branch\": \"control\"}, \"experiment_2\": {\"branch\": \"treatment\"}}. This deprecates the \"shield_id\" used in activity-stream and messaging-system.",
+      "type": "object"
+    },
+    "locale": {
+      "description": "User's current locale",
+      "type": "string"
+    },
+    "position": {
+      "description": "The placement of the tile (1-based)",
+      "type": "integer"
+    },
+    "release_channel": {
+      "description": "Firefox release channel",
+      "type": "string"
+    },
+    "reporting_url": {
+      "description": "The reporting URL of the ad, normally pointing to the ad partner's reporting endpoint. It's URL encoded",
+      "type": "string"
+    },
+    "source": {
+      "description": "The browser location where the click was triggered",
+      "enum": [
+        "newtab",
+        "urlbar"
+      ],
+      "type": "string"
+    },
+    "tile_id": {
+      "description": "A unique identifier for the sponsored tile",
+      "type": "integer"
+    },
+    "version": {
+      "description": "Firefox version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "context_id",
+    "tile_id",
+    "version"
+  ],
+  "title": "topsites-click",
+  "type": "object"
+}

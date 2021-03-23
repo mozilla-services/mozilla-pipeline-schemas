@@ -597,6 +597,12 @@
                 "type": "STRING"
               },
               {
+                "description": "Unique token created at Firefox download time, see bug 1677497",
+                "mode": "NULLABLE",
+                "name": "dltoken",
+                "type": "STRING"
+              },
+              {
                 "description": "funnel experiment parameters, see bug 1567339",
                 "mode": "NULLABLE",
                 "name": "experiment",
@@ -1944,6 +1950,12 @@
             "description": "The number of times the user adds a site to the allow list, removes a site from the allow list, adds a site to the block list and removes a site from the block list.",
             "mode": "NULLABLE",
             "name": "autoplay_sites_setting_change",
+            "type": "STRING"
+          },
+          {
+            "description": "Error code from aom_codec_decode when decoding AVIF image",
+            "mode": "NULLABLE",
+            "name": "avif_aom_decode_error",
             "type": "STRING"
           },
           {
@@ -4347,6 +4359,12 @@
             "type": "STRING"
           },
           {
+            "description": "Time for a completed ODoH resolution (msec)",
+            "mode": "NULLABLE",
+            "name": "dns_odoh_lookup_time",
+            "type": "STRING"
+          },
+          {
             "description": "DNS Cache Entry Age at Removal Time of non-expired entries (minutes)",
             "mode": "NULLABLE",
             "name": "dns_premature_eviction",
@@ -4392,6 +4410,12 @@
             "description": "TRR-first mode distribution. 0=Worked, 1=fell back fine after TRR fail, 2=native worked, 3=both failed",
             "mode": "NULLABLE",
             "name": "dns_trr_first2",
+            "type": "STRING"
+          },
+          {
+            "description": "HTTP version used by DoH endpoint",
+            "mode": "NULLABLE",
+            "name": "dns_trr_http_version",
             "type": "STRING"
           },
           {
@@ -4935,6 +4959,12 @@
             "type": "STRING"
           },
           {
+            "description": "Time(ms) spent activating additional fonts bundled with the product",
+            "mode": "NULLABLE",
+            "name": "fontlist_bundledfonts_activate",
+            "type": "STRING"
+          },
+          {
             "description": "Time(ms) spent on reading family names from all fonts",
             "mode": "NULLABLE",
             "name": "fontlist_initfacenamelists",
@@ -5034,6 +5064,12 @@
             "description": "Firefox: Time taken to store the image capture of the page to a canvas, for reuse while swiping through history (ms).",
             "mode": "NULLABLE",
             "name": "fx_gesture_install_snapshot_of_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Firefox: Time taken to load a page that has at least one `loading='lazy'` image. (This metric includes both loads and reloads)",
+            "mode": "NULLABLE",
+            "name": "fx_lazyload_image_page_load_ms",
             "type": "STRING"
           },
           {
@@ -6183,6 +6219,12 @@
             "type": "STRING"
           },
           {
+            "description": "Collect what is the outcome when 0rtt is used: (0)0RTT_NOT_USED, (1)0RTT_USED_SUCCESS, (2)0RTT_USED_REJECT, (3)0RTT_USED_CONN_ERROR, (4)0RTT_CONN_CLOSED_BY_NECKO.",
+            "mode": "NULLABLE",
+            "name": "http3_0rtt_state",
+            "type": "STRING"
+          },
+          {
             "description": "HTTP3: number of times a connection is blocked by maximum allowed number of parallel streams per connection",
             "mode": "NULLABLE",
             "name": "http3_blocked_by_stream_limit_per_conn",
@@ -6384,6 +6426,12 @@
             "description": "Successfully started HTTP channels",
             "mode": "NULLABLE",
             "name": "http_channel_onstart_success",
+            "type": "STRING"
+          },
+          {
+            "description": "Successfully started HTTP channels when ODoH is enabled",
+            "mode": "NULLABLE",
+            "name": "http_channel_onstart_success_odoh",
             "type": "STRING"
           },
           {
@@ -6615,6 +6663,12 @@
             "type": "STRING"
           },
           {
+            "description": "HTTP page channel: ODoH lookup time (ms)",
+            "mode": "NULLABLE",
+            "name": "http_page_dns_odoh_lookup_time",
+            "type": "STRING"
+          },
+          {
             "description": "HTTP page channel: First byte of request sent -> last byte of response received (ms)",
             "mode": "NULLABLE",
             "name": "http_page_first_sent_to_last_received",
@@ -6795,6 +6849,12 @@
             "type": "STRING"
           },
           {
+            "description": "HTTP subitem channel: ODoH lookup time (ms)",
+            "mode": "NULLABLE",
+            "name": "http_sub_dns_odoh_lookup_time",
+            "type": "STRING"
+          },
+          {
             "description": "HTTP subitem channel: First byte of request sent -> last byte of response received (ms)",
             "mode": "NULLABLE",
             "name": "http_sub_first_sent_to_last_received",
@@ -6900,6 +6960,24 @@
             "description": "How many speculative http connections are actually used",
             "mode": "NULLABLE",
             "name": "httpconnmgr_used_speculative_conn",
+            "type": "STRING"
+          },
+          {
+            "description": "HTTPS RR is presented or not.",
+            "mode": "NULLABLE",
+            "name": "https_rr_presented",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether an HTTPS RR indicates that HTTP3 should be used.",
+            "mode": "NULLABLE",
+            "name": "https_rr_with_http3_presented",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether an HTTP request gets upgraded to HTTPS because HTTPS RR is presented",
+            "mode": "NULLABLE",
+            "name": "https_upgrade_with_https_rr",
             "type": "STRING"
           },
           {
@@ -7725,6 +7803,12 @@
             "type": "STRING"
           },
           {
+            "description": "Time between receiving a mouseup which follow by a mouseclick on the event loop and compositing its result onto the screen (ms)",
+            "mode": "NULLABLE",
+            "name": "mouseup_followed_by_click_present_latency",
+            "type": "STRING"
+          },
+          {
             "description": "XMLHttpRequest.responseType set to moz-blob",
             "mode": "NULLABLE",
             "name": "moz_blob_in_xhr",
@@ -8376,6 +8460,12 @@
             "description": "If both a CRLite lookup and OCSP request are made, how many milliseconds faster was OCSP?",
             "mode": "NULLABLE",
             "name": "ocsp_faster_than_crlite_ms",
+            "type": "STRING"
+          },
+          {
+            "description": "When in ODoH-first mode, it lists the reason we may have skipped ODoH",
+            "mode": "NULLABLE",
+            "name": "odoh_skip_reason_odoh_first",
             "type": "STRING"
           },
           {
@@ -9231,6 +9321,24 @@
             "type": "STRING"
           },
           {
+            "description": "Results of login import from a CSV/TSV file, by category",
+            "mode": "NULLABLE",
+            "name": "pwmgr_import_logins_from_file_categorical",
+            "type": "STRING"
+          },
+          {
+            "description": "Accumulated timer delay (variance between when the timer was expected to fire and when it actually fired) in milliseconds as an indicator for decreased main-thread responsiveness while importing logins / passwords from a CSV/TSV file. The import is happening on a background thread and should ideally not affect the UI noticeably. The time with the blocking Keychain dialog on macOS can skew this data.",
+            "mode": "NULLABLE",
+            "name": "pwmgr_import_logins_from_file_jank_ms",
+            "type": "STRING"
+          },
+          {
+            "description": "How long it took to import logins (passwords) from a CSV/TSV file. The time for users to unlock Keychain on macOS is included in this time.",
+            "mode": "NULLABLE",
+            "name": "pwmgr_import_logins_from_file_ms",
+            "type": "STRING"
+          },
+          {
             "description": "Time in days each saved login was last used",
             "mode": "NULLABLE",
             "name": "pwmgr_login_last_used_days",
@@ -9723,25 +9831,43 @@
             "type": "STRING"
           },
           {
-            "description": "Duration of shutdown phase profile-before-change, as measured by the shutdown terminator, in seconds of activity",
+            "description": "Duration of shutdown phase profile-before-change, as measured by the shutdown terminator in ticks of 100ms",
             "mode": "NULLABLE",
             "name": "shutdown_phase_duration_ticks_profile_before_change",
             "type": "STRING"
           },
           {
-            "description": "Duration of shutdown phase profile-change-teardown, as measured by the shutdown terminator, in seconds of activity",
+            "description": "Duration of shutdown phase profile-before-change-qm, as measured by the shutdown terminator in ticks of 100ms",
+            "mode": "NULLABLE",
+            "name": "shutdown_phase_duration_ticks_profile_before_change_qm",
+            "type": "STRING"
+          },
+          {
+            "description": "Duration of shutdown phase profile-change-net-teardown, as measured by the shutdown terminator in ticks of 100ms",
+            "mode": "NULLABLE",
+            "name": "shutdown_phase_duration_ticks_profile_change_net_teardown",
+            "type": "STRING"
+          },
+          {
+            "description": "Duration of shutdown phase profile-change-teardown, as measured by the shutdown terminator in ticks of 100ms",
             "mode": "NULLABLE",
             "name": "shutdown_phase_duration_ticks_profile_change_teardown",
             "type": "STRING"
           },
           {
-            "description": "Duration of shutdown phase quit-application, as measured by the shutdown terminator, in seconds of activity",
+            "description": "Duration of shutdown phase quit-application, as measured by the shutdown terminator in ticks of 100ms",
             "mode": "NULLABLE",
             "name": "shutdown_phase_duration_ticks_quit_application",
             "type": "STRING"
           },
           {
-            "description": "Duration of shutdown phase xpcom-will-shutdown, as measured by the shutdown terminator, in seconds of activity",
+            "description": "Duration of shutdown phase xpcom-shutdown, as measured by the shutdown terminator in ticks of 100ms",
+            "mode": "NULLABLE",
+            "name": "shutdown_phase_duration_ticks_xpcom_shutdown",
+            "type": "STRING"
+          },
+          {
+            "description": "Duration of shutdown phase xpcom-will-shutdown, as measured by the shutdown terminator in ticks of 100ms",
             "mode": "NULLABLE",
             "name": "shutdown_phase_duration_ticks_xpcom_will_shutdown",
             "type": "STRING"
@@ -20787,6 +20913,18 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document used DrawWindowCanvasRenderingContext2D",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_draw_window_canvas_rendering_context2_d_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page used DrawWindowCanvasRenderingContext2D",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_draw_window_canvas_rendering_context2_d_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document used EnablePrivilege",
             "mode": "NULLABLE",
             "name": "use_counter2_deprecated_enable_privilege_document",
@@ -20820,6 +20958,18 @@
             "description": "Whether a page used FileLastModifiedDate",
             "mode": "NULLABLE",
             "name": "use_counter2_deprecated_file_last_modified_date_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document used FormSubmissionUntrustedEvent",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_form_submission_untrusted_event_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page used FormSubmissionUntrustedEvent",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_form_submission_untrusted_event_page",
             "type": "STRING"
           },
           {
@@ -22671,6 +22821,18 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document sets DOMMouseScroll event listener",
+            "mode": "NULLABLE",
+            "name": "use_counter2_ondommousescroll_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page sets DOMMouseScroll event listener",
+            "mode": "NULLABLE",
+            "name": "use_counter2_ondommousescroll_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document sets a <marquee> onfinish event listener",
             "mode": "NULLABLE",
             "name": "use_counter2_onfinish_document",
@@ -22680,6 +22842,18 @@
             "description": "Whether a page sets a <marquee> onfinish event listener",
             "mode": "NULLABLE",
             "name": "use_counter2_onfinish_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document sets MozMousePixelScroll event listener",
+            "mode": "NULLABLE",
+            "name": "use_counter2_onmozmousepixelscroll_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page sets MozMousePixelScroll event listener",
+            "mode": "NULLABLE",
+            "name": "use_counter2_onmozmousepixelscroll_page",
             "type": "STRING"
           },
           {
@@ -26813,6 +26987,24 @@
                 "type": "STRING"
               },
               {
+                "description": "DNS: lookup algorithm; Keyed by TRR domain",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dns_lookup_disposition3",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "DNS check for TRR was blocked by blacklist; Keyed by TRR auto-detected",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -26821,6 +27013,24 @@
             ],
             "mode": "REPEATED",
             "name": "dns_trr_blacklisted2",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "DNS check for TRR was blocked by blacklist; Keyed by TRR domain",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dns_trr_blacklisted3",
             "type": "RECORD"
           },
           {
@@ -26849,6 +27059,24 @@
                 "type": "STRING"
               },
               {
+                "description": "Resolve success rate when in TRR-first and called TRR-disabled (fall-back mode); Keyed by TRR domain",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dns_trr_disabled3",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "TRR-first mode distribution. 0=Worked, 1=fell back fine after TRR fail, 2=native worked, 3=both failed; Keyed by TRR auto-detected",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -26857,6 +27085,24 @@
             ],
             "mode": "REPEATED",
             "name": "dns_trr_first3",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "TRR-first mode distribution. 0=Worked, 1=fell back fine after TRR fail, 2=native worked, 3=both failed; Keyed by TRR domain",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dns_trr_first4",
             "type": "RECORD"
           },
           {
@@ -26885,6 +27131,24 @@
                 "type": "STRING"
               },
               {
+                "description": "Time for a completed TRR resolution (msec); Keyed by TRR domain",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dns_trr_lookup_time3",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "TRR managed to verify NS entry; Keyed by TRR auto-detected",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -26903,6 +27167,24 @@
                 "type": "STRING"
               },
               {
+                "description": "TRR managed to verify NS entry; Keyed by TRR domain",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dns_trr_ns_verfified3",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "How often TRR (Trusted Recursive Resolver) requests are fine, time-out or error. Keyed by TRR auto-detected",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -26911,6 +27193,24 @@
             ],
             "mode": "REPEATED",
             "name": "dns_trr_success2",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "How often TRR (Trusted Recursive Resolver) requests are fine, time-out or error. Keyed by TRR domain",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dns_trr_success3",
             "type": "RECORD"
           },
           {
@@ -27497,6 +27797,24 @@
                 "type": "STRING"
               },
               {
+                "description": "The time a connection was in the zero rtt state, it is keyed by the zero rtt outcome.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http3_0rtt_state_duration",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "Successfully started HTTP channels when HTTP3 is used",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -27523,6 +27841,60 @@
             ],
             "mode": "REPEATED",
             "name": "http3_complete_load",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "Error code when http3 connection is closed. Look at Http3Session for more details.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http3_connection_close_code",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "Error code when http3 connection is closed. Look at Http3Session for more details.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http3_connection_close_code_2",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "Error code when http3 connection is closed. Look at Http3Session for more details.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http3_connection_close_code_3",
             "type": "RECORD"
           },
           {
@@ -27785,6 +28157,24 @@
                 "type": "STRING"
               },
               {
+                "description": "Successfully started HTTP channels when TRR is enabled; Keyed by TRR domain",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http_channel_onstart_success_trr2",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "Numbers of HTTP transactions and connections by type. There are some categories separated by keys based on 4 parameters: 1. normal browsing or private browsing 2. first party or third party 3. class of service 4. tracking classification. Available keys are: ['Y=0|NormalFirstParty', 'Y=1|NormalThirdPartyOther', 'Y=2|NormalThirdPartyContentLeader', 'Y=3|NormalThirdPartyContentBackground', 'Y=4|NormalThirdPartyContentOther', 'Y=5|NormalThirdPartyBasicLeader', 'Y=6|NormalThirdPartyBasicBackground', 'Y=7|NormalThirdPartyBasicOther', 'Y=8|NormalThirdPartyFingerprintingLeader', 'Y=9|NormalThirdPartyFingerprintingBackground', 'Y=10|NormalThirdPartyFingerprintingOther', 'Y=11|PrivateFirstParty', 'Y=12|PrivateThirdPartyOther', 'Y=13|PrivateThirdPartyContentLeader', 'Y=14|PrivateThirdPartyContentBackground', 'Y=15|PrivateThirdPartyContentOther', 'Y=16|PrivateThirdPartyBasicLeader', 'Y=17|PrivateThirdPartyBasicBackground', 'Y=18|PrivateThirdPartyBasicOther', 'Y=19|PrivateThirdPartyFingerprintingLe…",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -27865,6 +28255,24 @@
             ],
             "mode": "REPEATED",
             "name": "https_only_mode_upgrade_type",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "HTTP channel(keys: uses_https_rr_page, uses_https_rr_sub, no_https_rr_page, no_https_rr_sub): Open -> first byte of request sent (ms)",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "https_rr_open_to_first_sent",
             "type": "RECORD"
           },
           {
@@ -28009,6 +28417,24 @@
             ],
             "mode": "REPEATED",
             "name": "js_telemetry_addon_exceptions",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "Time it took to perform initial translation of the document (in microseconds)",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "l10n_document_initial_translation_time_us",
             "type": "RECORD"
           },
           {
@@ -28685,7 +29111,7 @@
                 "type": "STRING"
               },
               {
-                "description": "Time (ms) for the QuotaManager to load quota information.",
+                "description": "Time (ms) for the QuotaManager to load quota information. Keyed by conditions during quota info loading, see RecordQuotaInfoLoadTimeHelper::Run in https://searchfox.org/mozilla-central/source/dom/quota/ActorsParent.cpp",
                 "mode": "NULLABLE",
                 "name": "value",
                 "type": "STRING"
@@ -29125,6 +29551,24 @@
             ],
             "mode": "REPEATED",
             "name": "thread_wakeup",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "Time from submission to dispatch of transaction when HTTPS RR is used (ms)",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "transaction_wait_time_https_rr",
             "type": "RECORD"
           },
           {
@@ -30094,6 +30538,12 @@
                     "description": "The number of times the user adds a site to the allow list, removes a site from the allow list, adds a site to the block list and removes a site from the block list.",
                     "mode": "NULLABLE",
                     "name": "autoplay_sites_setting_change",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Error code from aom_codec_decode when decoding AVIF image",
+                    "mode": "NULLABLE",
+                    "name": "avif_aom_decode_error",
                     "type": "STRING"
                   },
                   {
@@ -32785,6 +33235,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Time(ms) spent activating additional fonts bundled with the product",
+                    "mode": "NULLABLE",
+                    "name": "fontlist_bundledfonts_activate",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Time(ms) spent on reading family names from all fonts",
                     "mode": "NULLABLE",
                     "name": "fontlist_initfacenamelists",
@@ -34315,6 +34771,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "HTTP page channel: ODoH lookup time (ms)",
+                    "mode": "NULLABLE",
+                    "name": "http_page_dns_odoh_lookup_time",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "HTTP page channel: First byte of request sent -> last byte of response received (ms)",
                     "mode": "NULLABLE",
                     "name": "http_page_first_sent_to_last_received",
@@ -34492,6 +34954,12 @@
                     "description": "HTTP subitem channel: DNS lookup time (ms)",
                     "mode": "NULLABLE",
                     "name": "http_sub_dns_lookup_time",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "HTTP subitem channel: ODoH lookup time (ms)",
+                    "mode": "NULLABLE",
+                    "name": "http_sub_dns_odoh_lookup_time",
                     "type": "STRING"
                   },
                   {
@@ -37285,25 +37753,43 @@
                     "type": "STRING"
                   },
                   {
-                    "description": "Duration of shutdown phase profile-before-change, as measured by the shutdown terminator, in seconds of activity",
+                    "description": "Duration of shutdown phase profile-before-change, as measured by the shutdown terminator in ticks of 100ms",
                     "mode": "NULLABLE",
                     "name": "shutdown_phase_duration_ticks_profile_before_change",
                     "type": "STRING"
                   },
                   {
-                    "description": "Duration of shutdown phase profile-change-teardown, as measured by the shutdown terminator, in seconds of activity",
+                    "description": "Duration of shutdown phase profile-before-change-qm, as measured by the shutdown terminator in ticks of 100ms",
+                    "mode": "NULLABLE",
+                    "name": "shutdown_phase_duration_ticks_profile_before_change_qm",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Duration of shutdown phase profile-change-net-teardown, as measured by the shutdown terminator in ticks of 100ms",
+                    "mode": "NULLABLE",
+                    "name": "shutdown_phase_duration_ticks_profile_change_net_teardown",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Duration of shutdown phase profile-change-teardown, as measured by the shutdown terminator in ticks of 100ms",
                     "mode": "NULLABLE",
                     "name": "shutdown_phase_duration_ticks_profile_change_teardown",
                     "type": "STRING"
                   },
                   {
-                    "description": "Duration of shutdown phase quit-application, as measured by the shutdown terminator, in seconds of activity",
+                    "description": "Duration of shutdown phase quit-application, as measured by the shutdown terminator in ticks of 100ms",
                     "mode": "NULLABLE",
                     "name": "shutdown_phase_duration_ticks_quit_application",
                     "type": "STRING"
                   },
                   {
-                    "description": "Duration of shutdown phase xpcom-will-shutdown, as measured by the shutdown terminator, in seconds of activity",
+                    "description": "Duration of shutdown phase xpcom-shutdown, as measured by the shutdown terminator in ticks of 100ms",
+                    "mode": "NULLABLE",
+                    "name": "shutdown_phase_duration_ticks_xpcom_shutdown",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Duration of shutdown phase xpcom-will-shutdown, as measured by the shutdown terminator in ticks of 100ms",
                     "mode": "NULLABLE",
                     "name": "shutdown_phase_duration_ticks_xpcom_will_shutdown",
                     "type": "STRING"
@@ -48121,6 +48607,18 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document used DrawWindowCanvasRenderingContext2D",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_draw_window_canvas_rendering_context2_d_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page used DrawWindowCanvasRenderingContext2D",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_draw_window_canvas_rendering_context2_d_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document used EnablePrivilege",
                     "mode": "NULLABLE",
                     "name": "use_counter2_deprecated_enable_privilege_document",
@@ -48154,6 +48652,18 @@
                     "description": "Whether a page used FileLastModifiedDate",
                     "mode": "NULLABLE",
                     "name": "use_counter2_deprecated_file_last_modified_date_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document used FormSubmissionUntrustedEvent",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_form_submission_untrusted_event_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page used FormSubmissionUntrustedEvent",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_form_submission_untrusted_event_page",
                     "type": "STRING"
                   },
                   {
@@ -50005,6 +50515,18 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document sets DOMMouseScroll event listener",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_ondommousescroll_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page sets DOMMouseScroll event listener",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_ondommousescroll_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document sets a <marquee> onfinish event listener",
                     "mode": "NULLABLE",
                     "name": "use_counter2_onfinish_document",
@@ -50014,6 +50536,18 @@
                     "description": "Whether a page sets a <marquee> onfinish event listener",
                     "mode": "NULLABLE",
                     "name": "use_counter2_onfinish_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document sets MozMousePixelScroll event listener",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_onmozmousepixelscroll_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page sets MozMousePixelScroll event listener",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_onmozmousepixelscroll_page",
                     "type": "STRING"
                   },
                   {
@@ -52327,7 +52861,7 @@
                     "type": "STRING"
                   },
                   {
-                    "description": "Total time spent playing Clearkey encrypted video in milliseconds. This reports the total play time for an HTML Media Element playing Clearkey encrypted content whenever it is suspended, such as when the page is unloaded.",
+                    "description": "Total time spent playing Clearkey encrypted video in milliseconds. This reports the total play time for a video lement playing Clearkey encrypted content whenever the decoder stops. (eg. pausing media, encountering an error, changing to a new resource, page goes to the bf-cached or page gets discarded)",
                     "mode": "NULLABLE",
                     "name": "video_clearkey_play_time_ms",
                     "type": "STRING"
@@ -52375,7 +52909,7 @@
                     "type": "STRING"
                   },
                   {
-                    "description": "Total time spent playing encrypted video in milliseconds. This reports the total play time for an HTML Media Element playing encrypted content whenever it is suspended, such as when the page is unloaded.",
+                    "description": "Total time spent playing encrypted video in milliseconds. This reports the total play time for a video element playing encrypted content whenever the decoder stops. (eg. pausing media, encountering an error, changing to a new resource, page goes to the bf-cached or page gets discarded)",
                     "mode": "NULLABLE",
                     "name": "video_encrypted_play_time_ms",
                     "type": "STRING"
@@ -52435,7 +52969,7 @@
                     "type": "STRING"
                   },
                   {
-                    "description": "Total time spent playing Widevine encrypted video in milliseconds. This reports the total play time for an HTML Media Element playing Widevine encrypted content whenever it is suspended, such as when the page is unloaded.",
+                    "description": "Total time spent playing Widevine encrypted video in milliseconds. This reports the total play time for a video element playing Widevine encrypted content whenever the decoder stops. (eg. pausing media, encountering an error, changing to a new resource, page goes to the bf-cached or page gets discarded)",
                     "mode": "NULLABLE",
                     "name": "video_widevine_play_time_ms",
                     "type": "STRING"
@@ -54460,6 +54994,42 @@
                       }
                     ],
                     "mode": "REPEATED",
+                    "name": "http3_connection_close_code",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Error code when http3 connection is closed. Look at Http3Session for more details.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_connection_close_code_2",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Error code when http3 connection is closed. Look at Http3Session for more details.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
                     "name": "http3_connecttion_close_code",
                     "type": "RECORD"
                   },
@@ -54705,6 +55275,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "HTTP channel(keys: uses_https_rr_page, uses_https_rr_sub, no_https_rr_page, no_https_rr_sub): Open -> first byte of request sent (ms)",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "https_rr_open_to_first_sent",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "The time a given runnable exceeds its budget as set in nsIRunnable::SetDeadline (in milliseconds). The key comes from the runnables nsINamed::name value.",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -54839,6 +55427,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "js_telemetry_addon_exceptions",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Time it took to perform initial translation of the document (in microseconds)",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "l10n_document_initial_translation_time_us",
                     "type": "RECORD"
                   },
                   {
@@ -56422,6 +57028,18 @@
                     "type": "INT64"
                   },
                   {
+                    "description": "Tracking the number of attempts to open an unknown objectstore on an empty IndexedDB database.\n",
+                    "mode": "NULLABLE",
+                    "name": "idb_failure_unknown_objectstore_empty_database",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Tracking the number of attempts to open an unknown objectstore on a non-empty IndexedDB database.\n",
+                    "mode": "NULLABLE",
+                    "name": "idb_failure_unknown_objectstore_non_empty_database",
+                    "type": "INT64"
+                  },
+                  {
                     "description": "Number of times indexeddb.open(name, {storage: \"persistent\"}) has been used.\n",
                     "mode": "NULLABLE",
                     "name": "idb_type_persistent_count",
@@ -56516,6 +57134,12 @@
                     "mode": "NULLABLE",
                     "name": "media_page_had_play_revoked_count",
                     "type": "INT64"
+                  },
+                  {
+                    "description": "Record whether the WMF decoder module is used in content or chrome process.\n",
+                    "mode": "NULLABLE",
+                    "name": "media_wmf_process_usage",
+                    "type": "BOOL"
                   },
                   {
                     "description": "The number of times a MediaRecorder has been started. Recorded when a MediaRecorder starts\n",
@@ -57646,6 +58270,12 @@
                     "description": "WMF media decoder error or success (0) codes.",
                     "mode": "NULLABLE",
                     "name": "media_wmf_decode_error",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Time between receiving a mouseup which follow by a mouseclick on the event loop and compositing its result onto the screen (ms)",
+                    "mode": "NULLABLE",
+                    "name": "mouseup_followed_by_click_present_latency",
                     "type": "STRING"
                   },
                   {
@@ -58906,7 +59536,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records the WebExtension ID of a search engine where the WebExtension is not installed (= 1), disabled (= 2) or where the submission URL is different between the search engine and the WebExtension (= 3)\n",
+                        "description": "Records the WebExtension ID of a search engine where the WebExtension is not installed (= 1), disabled (= 2), search engine no longer specified (= 4), a different name (= 5), where the submission URL is different between the search engine and the WebExtension (= 6). The value '3' has been replaced by '6' to distinguish newer entries.\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -59328,6 +59958,96 @@
                     ],
                     "mode": "REPEATED",
                     "name": "browser_ui_toolbar_widgets",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "A keyed uint recording how many times the user has clicked on Firefox Suggests (a.k.a. Quick Suggest) results in the urlbar (not including the help button). The key is the 1-based index of each result.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "contextual_services_quicksuggest_click",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "A keyed uint recording how many times the user has clicked on the help button in Firefox Suggests (a.k.a. Quick Suggest) results in the urlbar. The key is the 1-based index of each result.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "contextual_services_quicksuggest_help",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "A keyed uint recording how many times the user has viewed Firefox Suggest (a.k.a. Quick Suggest) results in the urlbar. The key is the 1-based index of each result.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "contextual_services_quicksuggest_impression",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "A keyed uint recording how many times the user has clicked on the sponsored TopSites on the newtab page. The key is a combination of the source and the placement of the TopSites tile (1-based). such as 'urlbar_1', 'newtab_2'.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "contextual_services_topsites_click",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "A keyed uint recording how many times the user has viewed the sponsored TopSites on the newtab page. The key is a combination of the source and the placement of the TopSites tile (1-based). such as 'urlbar_1', 'newtab_2'.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "contextual_services_topsites_impression",
                     "type": "RECORD"
                   },
                   {
@@ -61144,6 +61864,18 @@
                     "type": "BOOL"
                   },
                   {
+                    "description": "Unsigned int tracking the user's prefered background color \\ (logged when HCM is enabled).\n",
+                    "mode": "NULLABLE",
+                    "name": "a11y_hcm_background",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Unsigned int tracking the user's prefered foreground color \\ (logged when HCM is enabled).\n",
+                    "mode": "NULLABLE",
+                    "name": "a11y_hcm_foreground",
+                    "type": "INT64"
+                  },
+                  {
                     "description": "Recorded on click or SPACE/ENTER keypress event. Boolean stating if the accessibility indicactor button was acted on.\n",
                     "mode": "NULLABLE",
                     "name": "a11y_indicator_acted_on",
@@ -61531,6 +62263,12 @@
                     "description": "The number of plugin instances that were created.",
                     "mode": "NULLABLE",
                     "name": "browser_usage_plugin_instantiated",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "The number of errors detected by a Cache API pragma_integrity_check() run in response to a constraint error detected by a VACUUM after performing a schema upgrade.\n",
+                    "mode": "NULLABLE",
+                    "name": "cache_integrity_check_count",
                     "type": "INT64"
                   },
                   {
@@ -61954,6 +62692,18 @@
                     "type": "INT64"
                   },
                   {
+                    "description": "The number of times the subframe crash UI is shown to the user. This only triggers when a tab containing the subframe is switched to.\n",
+                    "mode": "NULLABLE",
+                    "name": "dom_contentprocess_crash_subframe_ui_presented",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "The number of times the tab crashed page has been shown.\n",
+                    "mode": "NULLABLE",
+                    "name": "dom_contentprocess_crash_tab_ui_presented",
+                    "type": "INT64"
+                  },
+                  {
                     "description": "The number of times we've had the opportunity to change content process priority due to a tab switch or a tab being opened.\n",
                     "mode": "NULLABLE",
                     "name": "dom_contentprocess_os_priority_change_considered",
@@ -61975,6 +62725,12 @@
                     "description": "The number of content processes that were marked as troubled because it was running low on virtual memory.\n",
                     "mode": "NULLABLE",
                     "name": "dom_contentprocess_troubled_due_to_memory",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "The number of times the notification has been shown that indicates that there are unsubmitted crash reports.\n",
+                    "mode": "NULLABLE",
+                    "name": "dom_contentprocess_unsubmitted_ui_presented",
                     "type": "INT64"
                   },
                   {
@@ -62404,6 +63160,12 @@
                     "type": "INT64"
                   },
                   {
+                    "description": "Record whether the WMF decoder module is used in content or chrome process.\n",
+                    "mode": "NULLABLE",
+                    "name": "media_wmf_process_usage",
+                    "type": "BOOL"
+                  },
+                  {
                     "description": "The number of times a MediaRecorder has been started. Recorded when a MediaRecorder starts\n",
                     "mode": "NULLABLE",
                     "name": "mediarecorder_recording_count",
@@ -62482,6 +63244,12 @@
                     "type": "INT64"
                   },
                   {
+                    "description": "A bitfield representation for the usage of HTTPS RR prefs. bit 0: network.dns.upgrade_with_https_rr is enabled or not. bit 1: network.dns.use_https_rr_as_altsvc is enabled or not. bit 2: network.dns.echconfig.enabled is enabled or not.\n",
+                    "mode": "NULLABLE",
+                    "name": "networking_https_rr_prefs_usage",
+                    "type": "INT64"
+                  },
+                  {
                     "description": "The time in milliseconds to load any external certificates. This occurs off of the main-thread, but can block main-thread operations.",
                     "mode": "NULLABLE",
                     "name": "networking_loading_certs_task",
@@ -62504,6 +63272,18 @@
                     "mode": "NULLABLE",
                     "name": "os_environment_is_admin_without_uac",
                     "type": "BOOL"
+                  },
+                  {
+                    "description": "Whether this app was pinned to taskbar on startup",
+                    "mode": "NULLABLE",
+                    "name": "os_environment_is_taskbar_pinned",
+                    "type": "BOOL"
+                  },
+                  {
+                    "description": "Records how Firefox was started on Windows. Currently will be one of \"Desktop\", \"StartMenu\" (including pins), \"Taskbar\", \"OtherShortcut\", or \"Other\"\n",
+                    "mode": "NULLABLE",
+                    "name": "os_environment_launch_method",
+                    "type": "STRING"
                   },
                   {
                     "description": "How many times PDF Viewer fallback bar was shown.\n",
@@ -63278,6 +64058,42 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "Error code when http3 connection is closed. Look at Http3Session for more details.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_connection_close_code_3",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Time from submission to dispatch of transaction when HTTPS RR is used (ms)",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "transaction_wait_time_https_rr",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "Generic histogram to track uptake of remote content like blocklists, settings or updates.",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -63295,6 +64111,42 @@
               },
               {
                 "fields": [
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Error code when http3 connection is closed. Look at Http3Session for more details.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_connection_close_code_3",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Time from submission to dispatch of transaction when HTTPS RR is used (ms)",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "transaction_wait_time_https_rr",
+                    "type": "RECORD"
+                  },
                   {
                     "fields": [
                       {

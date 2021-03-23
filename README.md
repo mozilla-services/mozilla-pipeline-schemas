@@ -24,6 +24,11 @@ schemas
 │   ├── metrics
 │   ├── space-ship-ready
 │   └── starbase46
+├── contextual-services
+│   ├── quicksuggest-click
+│   ├── quicksuggest-impression
+│   ├── topsites-click
+│   └── topsites-impression
 ├── coverage
 │   └── coverage
 ├── default-browser-agent
@@ -35,7 +40,6 @@ schemas
 │   ├── build
 │   └── hgpush
 ├── firefox-accounts
-│   ├── account-ecosystem
 │   ├── activity-flow-metrics
 │   └── amplitude-event
 ├── firefox-desktop
@@ -98,6 +102,9 @@ schemas
 │   └── usage
 ├── mozza
 │   └── event
+├── org-mozilla-bergamot
+│   ├── custom
+│   └── deletion-request
 ├── org-mozilla-connect-firefox
 │   ├── baseline
 │   ├── deletion-request
@@ -239,12 +246,17 @@ schemas
 │   ├── deletion-request
 │   ├── measurements
 │   └── pioneer-enrollment
+├── pioneer-citp-news-disinfo-two
+│   ├── deletion-request
+│   ├── measurements
+│   └── pioneer-enrollment
 ├── pioneer-core
 │   ├── deletion-request
 │   ├── demographic-survey
 │   ├── pioneer-enrollment
 │   ├── probes
-│   └── survey
+│   ├── survey
+│   └── uninstall-deletion
 ├── pioneer-debug
 │   ├── debug
 │   ├── deletion-request
@@ -256,7 +268,6 @@ schemas
 ├── regrets-reporter
 │   └── regrets-reporter-update
 ├── telemetry
-│   ├── account-ecosystem
 │   ├── addon-install-blocked
 │   ├── advancedtelemetry
 │   ├── anonymous
@@ -327,6 +338,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-317 directories
+328 directories
 ```
 

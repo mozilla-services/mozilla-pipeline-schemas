@@ -350,6 +350,24 @@
       {
         "fields": [
           {
+            "description": "Counts the number of times a user taps Your Library in the app menu\n",
+            "mode": "NULLABLE",
+            "name": "app_menu_library",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user taps Logins & Passwords\nin the app menu\n",
+            "mode": "NULLABLE",
+            "name": "app_menu_logins",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user taps Sign Into Sync in the app menu\n",
+            "mode": "NULLABLE",
+            "name": "app_menu_sign_into_sync",
+            "type": "INT64"
+          },
+          {
             "description": "Counts the number of times the app is opened from an external\nlink, implying the client has Firefox set as a default browser.\n\nCurrently this is our most accurate way of measuring how\noften Firefox is set as the default browser.\n",
             "mode": "NULLABLE",
             "name": "app_opened_as_default_browser",
@@ -365,6 +383,18 @@
             "description": "Counts the number of times the Go To Settings button on\ndefault browser card is clicked.\n",
             "mode": "NULLABLE",
             "name": "default_browser_card_go_to_settings_pressed",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times default browser onboarding is dismissed.\n",
+            "mode": "NULLABLE",
+            "name": "default_browser_onboarding_dismiss_pressed",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times the Go To Settings button on\ndefault browser onboarding is clicked.\n",
+            "mode": "NULLABLE",
+            "name": "default_browser_onboarding_go_to_settings_pressed",
             "type": "INT64"
           },
           {
@@ -407,6 +437,12 @@
             "description": "On mobile, the number of times the application went to foreground.\n",
             "mode": "NULLABLE",
             "name": "glean_validation_foreground_count",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user opens\nPocket article from Firefox home Pocket feed\n",
+            "mode": "NULLABLE",
+            "name": "pocket_open_story",
             "type": "INT64"
           },
           {
@@ -455,6 +491,30 @@
             "description": "Counts the number of times setting as default\nbrowser menu option is tapped.\n",
             "mode": "NULLABLE",
             "name": "settings_menu_set_as_default_browser_pressed",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user taps\non create account button in sync library view\n",
+            "mode": "NULLABLE",
+            "name": "sync_create_account_pressed",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user opens\nsynced tab list from home view\n",
+            "mode": "NULLABLE",
+            "name": "sync_open_sync_home_shortcut",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user opens\nsynced tab\n",
+            "mode": "NULLABLE",
+            "name": "sync_open_tab",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user taps\non sign in to sync button in sync\nlibrary view\n",
+            "mode": "NULLABLE",
+            "name": "sync_sign_in_sync_pressed",
             "type": "INT64"
           },
           {
@@ -735,6 +795,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Counts the number of times a specific library panel\nbutton is tapped for Bookmarks, History, Reading List,\nDownloads and Synced tabs\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "library_panel_pressed",
+            "type": "RECORD"
+          },
+          {
             "description": "Counts the number of times an item is added to the reading\nlist from the following:\n* Reader Mode Toolbar\n* Share Extension\n* Page Action Menu\n",
             "fields": [
               {
@@ -786,6 +864,24 @@
             ],
             "mode": "REPEATED",
             "name": "search_counts",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of times the google top site button\nis pressed\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "search_google_topsite_pressed",
             "type": "RECORD"
           },
           {
@@ -863,6 +959,47 @@
         ],
         "mode": "NULLABLE",
         "name": "labeled_counter",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "key",
+            "type": "STRING"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "denominator",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "numerator",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "value",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "REPEATED",
+        "name": "labeled_rate",
         "type": "RECORD"
       },
       {
