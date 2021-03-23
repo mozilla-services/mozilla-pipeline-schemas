@@ -40,7 +40,6 @@ schemas
 │   ├── build
 │   └── hgpush
 ├── firefox-accounts
-│   ├── account-ecosystem
 │   ├── activity-flow-metrics
 │   └── amplitude-event
 ├── firefox-desktop
@@ -269,7 +268,6 @@ schemas
 ├── regrets-reporter
 │   └── regrets-reporter-update
 ├── telemetry
-│   ├── account-ecosystem
 │   ├── addon-install-blocked
 │   ├── advancedtelemetry
 │   ├── anonymous
@@ -340,6 +338,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-330 directories
+328 directories
 ```
 
