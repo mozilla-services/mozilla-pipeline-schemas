@@ -8481,6 +8481,12 @@
             "type": "STRING"
           },
           {
+            "description": "The amount of time to process ORB.",
+            "mode": "NULLABLE",
+            "name": "opaque_response_blocking_time_ms",
+            "type": "STRING"
+          },
+          {
             "description": "The duration between the instant the first message is sent to OS.File and the moment the OS.File worker starts executing JavaScript, in milliseconds",
             "mode": "NULLABLE",
             "name": "osfile_worker_launch_ms",
@@ -28669,6 +28675,24 @@
             ],
             "mode": "REPEATED",
             "name": "notify_observers_latency_ms",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "Find out how many opaque responses are allowed, or blocked by ORB per source.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "opaque_response_blocking",
             "type": "RECORD"
           },
           {
@@ -63259,6 +63283,12 @@
                     "description": "The time in milliseconds to initialize the NSS component in the parent process.",
                     "mode": "NULLABLE",
                     "name": "networking_nss_initialization",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "How many KB of response bodies are parsed by ORB?\n",
+                    "mode": "NULLABLE",
+                    "name": "opaque_response_blocking_parsing_size_kb",
                     "type": "INT64"
                   },
                   {
