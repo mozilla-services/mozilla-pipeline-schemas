@@ -133,6 +133,10 @@
               "description": "Firefox",
               "type": "string"
             },
+            "QuotaManagerShutdownTimeout": {
+              "description": "<string>, This annotation is present if the quota manager shutdown (resp. the shutdown of the quota manager clients) was not finished in time and the browser was crashed instead of waiting for the shutdown to finish. The status of objects which were blocking completion of the shutdown when reaching the timeout is contained in the annotation.\nIn the case of IndexedDB, objects are divided into three groups: FactoryOperations, LiveDatabases and DatabaseMaintenances.\nIn the case of LocalStorage, objects are divided into three groups: PrepareDatastoreOperations, Datastores and LiveDatabases.\nIn the case of Cache API, objects are in one group only: Managers.\nEach group is reported separately and contains the number of objects in the group and the status of individual objects in the group (duplicate entries are removed): \"GroupName: N (objectStatus1, objectStatus2, ...)\" where N is the number of objects in the group.\nThe status of individual objects is constructed by taking selected object properties. Properties which contain origin strings are anonymized.\nIn addition, intermediate steps are recorded for change events after shutdown started. These include the time difference and the type of object.",
+              "type": "string"
+            },
             "ReleaseChannel": {
               "description": "<channel>",
               "type": "string"
