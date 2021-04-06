@@ -9,7 +9,7 @@ from utils import runif_cli_configured, runif_sink_configured
 
 @runif_cli_configured
 def test_bigquery_diff(tmp_git):
-    # choose a base ref relative to HEAD, since the head ref may be master
+    # choose a base ref relative to HEAD, since the head ref may be main
     res = CliRunner().invoke(
         diff,
         [

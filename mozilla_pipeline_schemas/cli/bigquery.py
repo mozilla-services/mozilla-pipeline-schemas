@@ -37,7 +37,7 @@ def columns(source):
 
 @bigquery.command()
 @click.option(
-    "--base-ref", default="master", help="Reference to base commit e.g. master"
+    "--base-ref", default="main", help="Reference to base commit e.g. main"
 )
 @click.option(
     "--head-ref", default="HEAD", help="Reference to the head commit e.g. HEAD"
