@@ -28,7 +28,7 @@ is a great resource.
 - Build the rendered schemas using the instructions below, and check those artifacts (in the `schemas` directory) in to the git repo as well. See the rationale for this in the "Notes" section below.
 - Add one or more example JSON documents to the `validation` directory.
 - Run the tests (either via Docker or directly) using the instructions below.
-- Once all tests pass, submit a PR to the github repository against the `master` branch. See also the notes on [contributions](#contributions).
+- Once all tests pass, submit a PR to the github repository against the `main` branch. See also the notes on [contributions](#contributions).
 
 Note that Pioneer studies have a [slightly amended](README.pioneer.md) process.
 
@@ -107,9 +107,9 @@ To generate a diff of BigQuery schemas, use the `mps` command-line tool.
 # for jsonschema-transpiler and python3 dependencies
 ./script/mps-shell
 
-# generate an integration folder, the options will default to HEAD and master
+# generate an integration folder, the options will default to HEAD and main
 # respectively
-mps bigquery diff --base-ref master --head-ref HEAD
+mps bigquery diff --base-ref main --head-ref HEAD
 ```
 
 This generates an `integration` folder:
@@ -130,7 +130,7 @@ integration
 ```
 
 Pushes to the main repo will trigger integration tests in CircleCI that directly
-compare the revision to the `master` branch. These tests do not run for forked PRs
+compare the revision to the `main` branch. These tests do not run for forked PRs
 in order to protect data and credentials, but reviewers can trigger tests to run
 by pushing the PR's revisions to a branch of the main repo. We provide a script for this:
 
@@ -182,8 +182,8 @@ mps bigquery transform $validation | jq '.additional_properties'
 ## Releases
 
 There is a daily series of tasks run by Airflow (see the
-[`probe_scraper` DAG](https://github.com/mozilla/telemetry-airflow/blob/master/dags/probe_scraper.py))
-that uses the `master` branch of this repository as input and ends up pushing
+[`probe_scraper` DAG](https://github.com/mozilla/telemetry-airflow/blob/main/dags/probe_scraper.py))
+that uses the `main` branch of this repository as input and ends up pushing
 final JSONSchema and BigQuery schema files to the `generated-schemas` branch.
 As of January 2020, deploying schema changes still requires manual intervention
 by a member of the Data Ops team, but you can generally expect schemas to be
@@ -207,7 +207,7 @@ deployed to production BigQuery tables several times a week.
 All schemas are generated from the 'templates' directory and written into the
 'schemas' directory (i.e., the artifacts are generated/saved back into the
 repository) and validated against the [draft 4 schema](http://json-schema.org/draft-04/schema)
-a [copy](https://github.com/mozilla-services/mozilla-pipeline-schemas/blob/master/tests/hindsight/jsonschema.4.json)
+a [copy](https://github.com/mozilla-services/mozilla-pipeline-schemas/blob/main/tests/hindsight/jsonschema.4.json)
 of which resides in the 'tests' directory. The reason for this is twofold:
 
 1. It lets us easily see and refer to complete schemas as they are actually used.

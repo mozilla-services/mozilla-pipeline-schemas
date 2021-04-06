@@ -65,7 +65,7 @@ def test_managed_git_state(tmp_git: Path):
     with managed_git_state():
         run("git checkout HEAD~1")
         assert run("git rev-parse HEAD") != original
-        assert run("git rev-parse master"), "cannot see reference to master"
+        assert run("git rev-parse main"), "cannot see reference to main"
     assert run("git rev-parse HEAD") == original
 
 
