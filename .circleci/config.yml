@@ -34,7 +34,7 @@ jobs:
           name: Generate diff artifacts for bigquery
           command: |
             docker run --name mps -w /app mps \
-              mps bigquery diff --base-ref upstream/master
+              mps bigquery diff --base-ref upstream/main
             docker cp mps:/app/integration /tmp/integration
       - persist_to_workspace:
           root: /tmp
