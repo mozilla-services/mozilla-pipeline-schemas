@@ -307,6 +307,12 @@
             "type": "BOOL"
           },
           {
+            "description": "The `StartupActivityStateProvider...onActivityStarted` was unexpectedly\ncalled twice. We can use this metric to validate our assumptions about\nhow these APIs are called. This probe can be removed once we validate\nthese assumptions.\n",
+            "mode": "NULLABLE",
+            "name": "metrics_activity_state_provider_error",
+            "type": "BOOL"
+          },
+          {
             "description": "Is Fenix the default browser?\n",
             "mode": "NULLABLE",
             "name": "metrics_default_browser",
@@ -346,6 +352,18 @@
             "description": "Whether or not the search widget is installed\n",
             "mode": "NULLABLE",
             "name": "metrics_search_widget_installed",
+            "type": "BOOL"
+          },
+          {
+            "description": "The `AppStartReasonProvider.ActivityLifecycleCallbacks.onActivityCreated`\nwas unexpectedly called twice. We can use this metric to validate our\nassumptions about how these APIs are called. This probe can be removed\nonce we validate these assumptions.\n",
+            "mode": "NULLABLE",
+            "name": "metrics_start_reason_activity_error",
+            "type": "BOOL"
+          },
+          {
+            "description": "The `AppStartReasonProvider.ProcessLifecycleObserver.onCreate` was\nunexpectedly called twice. We can use this metric to validate our\nassumptions about how these APIs are called. This probe can be removed\nonce we validate these assumptions.\n",
+            "mode": "NULLABLE",
+            "name": "metrics_start_reason_process_error",
             "type": "BOOL"
           }
         ],
@@ -5007,6 +5025,186 @@
             ],
             "mode": "NULLABLE",
             "name": "perf_startup_base_bfragment_on_view_created",
+            "type": "RECORD"
+          },
+          {
+            "description": "The duration from `*Application`'s initializer to the first Android frame\nbeing drawn in a [COLD MAIN start\nup](https://wiki.mozilla.org/index.php?title=Performance/Fenix/Glossary).\nNotably, this duration omits the time from process start to the\ninitializer (which includes a lengthy dex operation) and the time from\nthe first frame to visual completeness. This probe doesn't measure Custom\nTabs or other uses of `ExternalAppBrowserActivity` to simplify result\nanalysis. The methodology for determining this measurement is imperfect\nto simplify implementation. Issues may include:\n<br>- Not measuring Beta and Release channels (due to\n`MigrationDecisionActivity` interrupting the logic).\n<br>- Not distinguishing between MAIN to homescreen, onboarding, session\nrestore, others?\n<br>- Not choosing to record a MAIN based on what the user would see and\nthus the core code path (i.e. the thing we want to measure) but rather on\nthe initial `Intent` state.\n<br><br>\nThe hope is that these cases will not have a significant impac",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "perf_startup_cold_main_app_to_first_frame",
+            "type": "RECORD"
+          },
+          {
+            "description": "The duration from `*Application`'s initializer to the first Android frame\nbeing drawn in a [COLD start\nup](https://wiki.mozilla.org/index.php?title=Performance/Fenix/Glossary)\nwhere we can't say it was a MAIN or VIEW start up. The methodology for\ndetermining this measurement is imperfect to simplify implementation.\n<br><br>\nSee the `cold_main_app_to_first_frame` probe docs for known issues and\nmore details.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "perf_startup_cold_unknwn_app_to_first_frame",
+            "type": "RECORD"
+          },
+          {
+            "description": "The duration from `*Application`'s initializer to the first Android frame\nbeing drawn in a [COLD VIEW start\nup](https://wiki.mozilla.org/index.php?title=Performance/Fenix/Glossary).\nThe methodology for determining this measurement is imperfect to simplify\nimplementation. Issues may include:\n<br>-Including VIEW intents that aren't valid so take code paths similar\nto MAIN (this is speculative)\n<br><br>\nSee the `cold_main_app_to_first_frame` probe docs for other possible\nknown issues and more details.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "perf_startup_cold_view_app_to_first_frame",
             "type": "RECORD"
           },
           {
