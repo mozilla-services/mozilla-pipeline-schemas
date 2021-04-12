@@ -265,6 +265,10 @@ schemas
 │   └── pioneer-enrollment
 ├── pocket
 │   └── fire-tv-events
+├── rally-zero-one
+│   ├── deletion-request
+│   ├── measurements
+│   └── pioneer-enrollment
 ├── regrets-reporter
 │   └── regrets-reporter-update
 ├── telemetry
@@ -338,6 +342,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-328 directories
+332 directories
 ```
 
