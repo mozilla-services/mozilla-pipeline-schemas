@@ -3,12 +3,8 @@ bigquery:
     fields:
     - normalized_channel
     - sample_id
+  require_partition_filter: true
   time_partitioning:
     field: submission_date
-    require_partition_filter: true
     type: day
-mozPipelineMetadata:
-  bq_dataset_family: firefox_desktop
-  bq_metadata_format: structured
-  bq_table: fog_validation_v1
 source_schema: firefox-desktop/fog-validation/fog-validation.1.schema.json

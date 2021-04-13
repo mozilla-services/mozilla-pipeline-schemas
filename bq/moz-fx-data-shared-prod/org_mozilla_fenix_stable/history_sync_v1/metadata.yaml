@@ -3,12 +3,8 @@ bigquery:
     fields:
     - normalized_channel
     - sample_id
+  require_partition_filter: true
   time_partitioning:
     field: submission_date
-    require_partition_filter: true
     type: day
-mozPipelineMetadata:
-  bq_dataset_family: org_mozilla_fenix
-  bq_metadata_format: structured
-  bq_table: history_sync_v1
 source_schema: org-mozilla-fenix/history-sync/history-sync.1.schema.json

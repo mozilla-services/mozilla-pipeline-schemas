@@ -3,14 +3,9 @@ bigquery:
     fields:
     - normalized_channel
     - sample_id
+  require_partition_filter: true
   time_partitioning:
+    expiration_ms: '2592000000'
     field: submission_date
-    require_partition_filter: true
     type: day
-mozPipelineMetadata:
-  bq_dataset_family: contextual_services
-  bq_metadata_format: structured
-  bq_table: quicksuggest_click_v1
-  expiration_policy:
-    delete_after_days: 30
 source_schema: contextual-services/quicksuggest-click/quicksuggest-click.1.schema.json

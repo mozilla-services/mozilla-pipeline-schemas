@@ -3,12 +3,8 @@ bigquery:
     fields:
     - normalized_channel
     - sample_id
+  require_partition_filter: true
   time_partitioning:
     field: submission_date
-    require_partition_filter: true
     type: day
-mozPipelineMetadata:
-  bq_dataset_family: burnham
-  bq_metadata_format: structured
-  bq_table: discovery_v1
 source_schema: burnham/discovery/discovery.1.schema.json

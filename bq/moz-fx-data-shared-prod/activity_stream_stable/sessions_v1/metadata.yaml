@@ -3,14 +3,9 @@ bigquery:
     fields:
     - normalized_channel
     - sample_id
+  require_partition_filter: true
   time_partitioning:
+    expiration_ms: '15552000000'
     field: submission_date
-    require_partition_filter: true
     type: day
-mozPipelineMetadata:
-  bq_dataset_family: activity_stream
-  bq_metadata_format: structured
-  bq_table: sessions_v1
-  expiration_policy:
-    delete_after_days: 180
 source_schema: activity-stream/sessions/sessions.1.schema.json

@@ -3,12 +3,8 @@ bigquery:
     fields:
     - normalized_channel
     - sample_id
+  require_partition_filter: true
   time_partitioning:
     field: submission_date
-    require_partition_filter: true
     type: day
-mozPipelineMetadata:
-  bq_dataset_family: edge_validator
-  bq_metadata_format: structured
-  bq_table: error_report_v1
 source_schema: edge-validator/error-report/error-report.1.schema.json

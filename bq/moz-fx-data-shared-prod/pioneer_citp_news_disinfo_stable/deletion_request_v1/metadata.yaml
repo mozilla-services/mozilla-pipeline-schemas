@@ -3,12 +3,8 @@ bigquery:
     fields:
     - normalized_channel
     - sample_id
+  require_partition_filter: true
   time_partitioning:
     field: submission_date
-    require_partition_filter: true
     type: day
-mozPipelineMetadata:
-  bq_dataset_family: pioneer_citp_news_disinfo
-  bq_metadata_format: pioneer
-  bq_table: deletion_request_v1
 source_schema: pioneer-citp-news-disinfo/deletion-request/deletion-request.1.schema.json

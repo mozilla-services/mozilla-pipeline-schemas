@@ -3,12 +3,8 @@ bigquery:
     fields:
     - normalized_channel
     - sample_id
+  require_partition_filter: true
   time_partitioning:
     field: submission_date
-    require_partition_filter: true
     type: day
-mozPipelineMetadata:
-  bq_dataset_family: mozilla_lockbox
-  bq_metadata_format: structured
-  bq_table: logins_sync_v1
 source_schema: mozilla-lockbox/logins-sync/logins-sync.1.schema.json

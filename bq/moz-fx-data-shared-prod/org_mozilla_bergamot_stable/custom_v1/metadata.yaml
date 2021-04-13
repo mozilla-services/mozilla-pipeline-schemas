@@ -3,14 +3,9 @@ bigquery:
     fields:
     - normalized_channel
     - sample_id
+  require_partition_filter: true
   time_partitioning:
+    expiration_ms: '15552000000'
     field: submission_date
-    require_partition_filter: true
     type: day
-mozPipelineMetadata:
-  bq_dataset_family: org_mozilla_bergamot
-  bq_metadata_format: structured
-  bq_table: custom_v1
-  expiration_policy:
-    delete_after_days: 180
 source_schema: org-mozilla-bergamot/custom/custom.1.schema.json

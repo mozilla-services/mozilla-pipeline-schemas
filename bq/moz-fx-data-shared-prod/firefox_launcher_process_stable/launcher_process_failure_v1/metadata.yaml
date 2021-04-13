@@ -3,12 +3,8 @@ bigquery:
     fields:
     - normalized_channel
     - sample_id
+  require_partition_filter: true
   time_partitioning:
     field: submission_date
-    require_partition_filter: true
     type: day
-mozPipelineMetadata:
-  bq_dataset_family: firefox_launcher_process
-  bq_metadata_format: structured
-  bq_table: launcher_process_failure_v1
 source_schema: firefox-launcher-process/launcher-process-failure/launcher-process-failure.1.schema.json

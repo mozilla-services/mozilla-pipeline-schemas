@@ -3,12 +3,8 @@ bigquery:
     fields:
     - normalized_channel
     - sample_id
+  require_partition_filter: true
   time_partitioning:
     field: submission_date
-    require_partition_filter: true
     type: day
-mozPipelineMetadata:
-  bq_dataset_family: telemetry
-  bq_metadata_format: telemetry
-  bq_table: tls_13_study_v4_v4
 source_schema: telemetry/tls-13-study-v4/tls-13-study-v4.4.schema.json

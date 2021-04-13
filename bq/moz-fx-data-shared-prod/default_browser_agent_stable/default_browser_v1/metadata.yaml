@@ -3,12 +3,8 @@ bigquery:
     fields:
     - normalized_channel
     - sample_id
+  require_partition_filter: true
   time_partitioning:
     field: submission_date
-    require_partition_filter: true
     type: day
-mozPipelineMetadata:
-  bq_dataset_family: default_browser_agent
-  bq_metadata_format: structured
-  bq_table: default_browser_v1
 source_schema: default-browser-agent/default-browser/default-browser.1.schema.json
