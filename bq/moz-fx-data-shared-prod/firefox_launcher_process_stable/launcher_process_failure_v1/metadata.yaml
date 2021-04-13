@@ -1,0 +1,21 @@
+bigquery:
+  clustering:
+    fields:
+    - normalized_channel
+    - sample_id
+  time_partitioning:
+    field: submission_date
+    require_partition_filter: true
+    type: day
+mozPipelineMetadata:
+  bq_dataset_family: firefox_launcher_process
+  bq_metadata_format: structured
+  bq_table: launcher_process_failure_v1
+source_schema: !!python/object/apply:pathlib.PosixPath
+- /
+- app
+- mozilla-pipeline-schemas
+- schemas
+- firefox-launcher-process
+- launcher-process-failure
+- launcher-process-failure.1.schema.json

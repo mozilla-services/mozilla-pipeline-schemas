@@ -1,0 +1,21 @@
+bigquery:
+  clustering:
+    fields:
+    - normalized_channel
+    - sample_id
+  time_partitioning:
+    field: submission_date
+    require_partition_filter: true
+    type: day
+mozPipelineMetadata:
+  bq_dataset_family: eng_workflow
+  bq_metadata_format: structured
+  bq_table: hgpush_v1
+source_schema: !!python/object/apply:pathlib.PosixPath
+- /
+- app
+- mozilla-pipeline-schemas
+- schemas
+- eng-workflow
+- hgpush
+- hgpush.1.schema.json

@@ -1,0 +1,21 @@
+bigquery:
+  clustering:
+    fields:
+    - normalized_channel
+    - sample_id
+  time_partitioning:
+    field: submission_date
+    require_partition_filter: true
+    type: day
+mozPipelineMetadata:
+  bq_dataset_family: org_mozilla_mozregression
+  bq_metadata_format: structured
+  bq_table: metrics_v1
+source_schema: !!python/object/apply:pathlib.PosixPath
+- /
+- app
+- mozilla-pipeline-schemas
+- schemas
+- org-mozilla-mozregression
+- metrics
+- metrics.1.schema.json

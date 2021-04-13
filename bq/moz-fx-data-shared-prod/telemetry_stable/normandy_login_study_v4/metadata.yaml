@@ -1,0 +1,21 @@
+bigquery:
+  clustering:
+    fields:
+    - normalized_channel
+    - sample_id
+  time_partitioning:
+    field: submission_date
+    require_partition_filter: true
+    type: day
+mozPipelineMetadata:
+  bq_dataset_family: telemetry
+  bq_metadata_format: telemetry
+  bq_table: normandy_login_study_v4
+source_schema: !!python/object/apply:pathlib.PosixPath
+- /
+- app
+- mozilla-pipeline-schemas
+- schemas
+- telemetry
+- normandy-login-study
+- normandy-login-study.4.schema.json

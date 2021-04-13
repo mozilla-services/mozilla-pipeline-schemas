@@ -1,0 +1,23 @@
+bigquery:
+  clustering:
+    fields:
+    - normalized_channel
+    - sample_id
+  time_partitioning:
+    field: submission_date
+    require_partition_filter: true
+    type: day
+mozPipelineMetadata:
+  bq_dataset_family: contextual_services
+  bq_metadata_format: structured
+  bq_table: quicksuggest_impression_v1
+  expiration_policy:
+    delete_after_days: 30
+source_schema: !!python/object/apply:pathlib.PosixPath
+- /
+- app
+- mozilla-pipeline-schemas
+- schemas
+- contextual-services
+- quicksuggest-impression
+- quicksuggest-impression.1.schema.json

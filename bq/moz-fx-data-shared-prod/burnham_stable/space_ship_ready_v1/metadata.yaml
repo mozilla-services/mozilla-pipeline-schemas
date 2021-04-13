@@ -1,0 +1,21 @@
+bigquery:
+  clustering:
+    fields:
+    - normalized_channel
+    - sample_id
+  time_partitioning:
+    field: submission_date
+    require_partition_filter: true
+    type: day
+mozPipelineMetadata:
+  bq_dataset_family: burnham
+  bq_metadata_format: structured
+  bq_table: space_ship_ready_v1
+source_schema: !!python/object/apply:pathlib.PosixPath
+- /
+- app
+- mozilla-pipeline-schemas
+- schemas
+- burnham
+- space-ship-ready
+- space-ship-ready.1.schema.json

@@ -1,0 +1,23 @@
+bigquery:
+  clustering:
+    fields:
+    - normalized_channel
+    - sample_id
+  time_partitioning:
+    field: submission_date
+    require_partition_filter: true
+    type: day
+mozPipelineMetadata:
+  bq_dataset_family: org_mozilla_ios_focus
+  bq_metadata_format: structured
+  bq_table: baseline_v1
+  expiration_policy:
+    delete_after_days: 720
+source_schema: !!python/object/apply:pathlib.PosixPath
+- /
+- app
+- mozilla-pipeline-schemas
+- schemas
+- org-mozilla-ios-focus
+- baseline
+- baseline.1.schema.json

@@ -1,0 +1,21 @@
+bigquery:
+  clustering:
+    fields:
+    - normalized_channel
+    - sample_id
+  time_partitioning:
+    field: submission_date
+    require_partition_filter: true
+    type: day
+mozPipelineMetadata:
+  bq_dataset_family: pioneer_citp_news_disinfo_two
+  bq_metadata_format: pioneer
+  bq_table: pioneer_enrollment_v1
+source_schema: !!python/object/apply:pathlib.PosixPath
+- /
+- app
+- mozilla-pipeline-schemas
+- schemas
+- pioneer-citp-news-disinfo-two
+- pioneer-enrollment
+- pioneer-enrollment.1.schema.json
