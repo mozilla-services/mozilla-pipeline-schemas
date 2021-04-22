@@ -48,6 +48,12 @@ schemas
 │   ├── events
 │   ├── fog-validation
 │   └── metrics
+├── firefox-desktop-background-update
+│   ├── background-update
+│   ├── baseline
+│   ├── deletion-request
+│   ├── events
+│   └── metrics
 ├── firefox-installer
 │   └── install
 ├── firefox-launcher-process
@@ -342,6 +348,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-332 directories
+338 directories
 ```
 
