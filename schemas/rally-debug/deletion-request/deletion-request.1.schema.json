@@ -5,11 +5,17 @@
     "description":"Schema for the ping content sent by Mozilla's glean telemetry SDK\n",
     "mozPipelineMetadata":{
         "bq_dataset_family":"rally_debug",
-        "bq_metadata_format":"structured",
+        "bq_metadata_format":"pioneer",
         "bq_table":"deletion_request_v1",
         "expiration_policy":{
             "delete_after_days":180
-        }
+        },
+        "jwe_mappings":[
+            {
+                "decrypted_field_path":"",
+                "source_field_path":"/payload"
+            }
+        ]
     },
     "properties":{
         "$schema":{
