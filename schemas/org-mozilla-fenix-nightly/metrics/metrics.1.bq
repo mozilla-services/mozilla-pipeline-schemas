@@ -398,6 +398,12 @@
             "type": "INT64"
           },
           {
+            "description": "Counts the number of times we encountered an invalid timezone offset\nwhen trying to get the current time.\nA timezone offset is invalid if it is outside [-24h, +24h].\nIf invalid a UTC offset is used (+0h).\n",
+            "mode": "NULLABLE",
+            "name": "glean_time_invalid_timezone_offset",
+            "type": "INT64"
+          },
+          {
             "description": "The number of pings deleted after the quota\nfor the size of the pending pings directory or number of files is hit.\nSince quota is only calculated for the pending pings directory,\nand deletion request ping live in a different directory,\ndeletion request pings are never deleted.\n",
             "mode": "NULLABLE",
             "name": "glean_upload_deleted_pings_after_quota_hit",
@@ -1318,6 +1324,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Indicates how the browser was started. The label is divided into two\nvariables. `state` is how cached the browser is when started. `path` is\nwhat code path we are expected to take. Together, they create a combined\nlabel: `state_path`. For brevity, the specific states are documented in\nthe [Fenix perf\nglossary](https://wiki.mozilla.org/index.php?title=Performance/Fenix/Glossary).\n<br><br>\nThis implementation is intended to be simple, not comprehensive. We list\nthe implications below.\n\n<br><br>\nThese ways of opening the app undesirably adds events to our primary\nbuckets (non-`unknown` cases):\n<br>- App switcher cold/warm: `cold/warm_` + duplicates path from\nprevious launch\n<br>- Home screen shortcuts: `*_view`\n<br>- An Intent is sent internally that's uses `ACTION_MAIN` or\n`ACTION_VIEW` could be: `*_main/view` (unknown if this ever happens)\n<br>- A command-line launch uses `ACTION_MAIN` or `ACTION_VIEW` could be:\n`*_main/view`\n\n<br><br>\nThese ways of opening the app undesirably do not add their events to our\npr",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "perf_startup_startup_type",
+            "type": "RECORD"
+          },
+          {
             "description": "The total number of errors encountered during read operations on the places store, labeled by type. It is intended to be used together with `read_query_count` to measure the overall error rate of read operations on the places store.\n",
             "fields": [
               {
@@ -1719,6 +1743,12 @@
             "description": "Name of the graphics compositor last seen in use. Possible values are \"opengl, d3d11, client, webrender or basic\" This is a temporary workaround for some early telemetry system issues. See Bug 1601091 for more information\n",
             "mode": "NULLABLE",
             "name": "gfx_status_compositor_last_seen",
+            "type": "STRING"
+          },
+          {
+            "description": "The gecko version at the last time a compositor was initialized, and therefore when gfx_status_compositor was last updated. Due to gfx_status_compositor's user lifetime we see lots of unexpected values for the current gecko version. We believe this is because the user has not opened a tab since they were updated to a version where webrender should be enabled on their device. This can be used to verify that theory.\n",
+            "mode": "NULLABLE",
+            "name": "gfx_status_last_compositor_gecko_version",
             "type": "STRING"
           },
           {
@@ -5088,7 +5118,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The duration from `*Application`'s initializer to the first Android frame\nbeing drawn in a [COLD start\nup](https://wiki.mozilla.org/index.php?title=Performance/Fenix/Glossary)\nwhere we can't say it was a MAIN or VIEW start up. The methodology for\ndetermining this measurement is imperfect to simplify implementation.\n<br><br>\nSee the `cold_main_app_to_first_frame` probe docs for known issues and\nmore details.\n",
+            "description": "The duration from `*Application`'s initializer to the first Android frame\nbeing drawn in a [COLD start\nup](https://wiki.mozilla.org/index.php?title=Performance/Fenix/Glossary)\nwhere we can't say it was a MAIN or VIEW start up. The methodology for\ndetermining this measurement is imperfect to simplify implementation.\n<br><br>\nSee the `cold_main_app_to_first_frame` probe docs for known issues and\nmore details.\n<br><br>\nAround April 8, 2021 the implementation was refactored. Functionally, it\nshould be the same but it's noted just in case there are bugs.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -5148,7 +5178,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The duration from `*Application`'s initializer to the first Android frame\nbeing drawn in a [COLD VIEW start\nup](https://wiki.mozilla.org/index.php?title=Performance/Fenix/Glossary).\nThe methodology for determining this measurement is imperfect to simplify\nimplementation. Issues may include:\n<br>-Including VIEW intents that aren't valid so take code paths similar\nto MAIN (this is speculative)\n<br><br>\nSee the `cold_main_app_to_first_frame` probe docs for other possible\nknown issues and more details.\n",
+            "description": "The duration from `*Application`'s initializer to the first Android frame\nbeing drawn in a [COLD VIEW start\nup](https://wiki.mozilla.org/index.php?title=Performance/Fenix/Glossary).\nThe methodology for determining this measurement is imperfect to simplify\nimplementation. Issues may include:\n<br>-Including VIEW intents that aren't valid so take code paths similar\nto MAIN (this is speculative)\n<br><br>\nSee the `cold_main_app_to_first_frame` probe docs for other possible\nknown issues and more details.\n<br><br>\nAround April 8, 2021 the implementation was refactored. Functionally, it\nshould be the same but it's noted just in case there are bugs.\n",
             "fields": [
               {
                 "mode": "NULLABLE",

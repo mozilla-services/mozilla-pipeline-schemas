@@ -48,6 +48,12 @@ schemas
 │   ├── events
 │   ├── fog-validation
 │   └── metrics
+├── firefox-desktop-background-update
+│   ├── background-update
+│   ├── baseline
+│   ├── deletion-request
+│   ├── events
+│   └── metrics
 ├── firefox-installer
 │   └── install
 ├── firefox-launcher-process
@@ -265,6 +271,16 @@ schemas
 │   └── pioneer-enrollment
 ├── pocket
 │   └── fire-tv-events
+├── rally-debug
+│   ├── deletion-request
+│   ├── demographics
+│   ├── enrollment
+│   ├── study-enrollment
+│   └── study-unenrollment
+├── rally-zero-one
+│   ├── deletion-request
+│   ├── measurements
+│   └── pioneer-enrollment
 ├── regrets-reporter
 │   └── regrets-reporter-update
 ├── telemetry
@@ -338,6 +354,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-328 directories
+344 directories
 ```
 

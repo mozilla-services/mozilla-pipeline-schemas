@@ -2085,7 +2085,7 @@
             "type": "STRING"
           },
           {
-            "description": "Result of the Set Default Browser dialog (0=Use Firefox + 'Always perform check' unchecked, 1=Use Firefox + 'Always perform check' checked, 2=Not Now + 'Always perform check' unchecked, 3=Not Now + 'Always perform check' checked)",
+            "description": "Result of the Set Default Browser dialog. After Firefox 89 the these values are: (0=Use Firefox + 'Don't ask again' checked, 1=Use Firefox + 'Don't ask again' unchecked, 2=Not Now + 'Don't ask again' checked, 3=Not Now + 'Don't ask again' unchecked). Before Firefox 89 these values were: (0=Use Firefox + 'Always perform check' unchecked, 1=Use Firefox + 'Always perform check' checked, 2=Not Now + 'Always perform check' unchecked, 3=Not Now + 'Always perform check' checked).",
             "mode": "NULLABLE",
             "name": "browser_set_default_result",
             "type": "STRING"
@@ -26627,6 +26627,42 @@
                 "type": "STRING"
               },
               {
+                "description": "Percentages of times for phases in an expensive content paint relative to the time spent in the entire expensive paint. (\"dl\" = Display list, \"wrdl\" = WebRender display list, \"sb\" = Scene building, \"fb\" = Frame building)",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "content_large_paint_phase_weight_full",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "Percentages of times for phases in an expensive content paint relative to the time spent in the entire expensive paint. (\"dl\" = Display list, \"wrdl\" = WebRender display list, \"sb\" = Scene building, \"fb\" = Frame building)",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "content_large_paint_phase_weight_partial",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "Result of the content signature verification keyed by application (certificate fingerprint). 0=valid, 1=invalid, 2=noCertChain, 3=createContextFailedWithOtherError, 4=expiredCert, 5=certNotValidYet, 6=buildCertChainFailed, 7=eeCertForWrongHost, 8=extractKeyError, 9=vfyContextError",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -26653,6 +26689,42 @@
             ],
             "mode": "REPEATED",
             "name": "content_small_paint_phase_weight",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "Percentages of times for phases in a normal content paint relative to the time spent in the entire normal paint. (\"dl\" = Display list, \"wrdl\" = WebRender display list, \"sb\" = Scene building, \"fb\" = Frame building)",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "content_small_paint_phase_weight_full",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "Percentages of times for phases in a normal content paint relative to the time spent in the entire normal paint. (\"dl\" = Display list, \"wrdl\" = WebRender display list, \"sb\" = Scene building, \"fb\" = Frame building)",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "content_small_paint_phase_weight_partial",
             "type": "RECORD"
           },
           {
@@ -27139,6 +27211,24 @@
             ],
             "mode": "REPEATED",
             "name": "dns_trr_first4",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "HTTP version used by DoH endpoint",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dns_trr_http_version2",
             "type": "RECORD"
           },
           {
@@ -30781,7 +30871,7 @@
                     "type": "STRING"
                   },
                   {
-                    "description": "Result of the Set Default Browser dialog (0=Use Firefox + 'Always perform check' unchecked, 1=Use Firefox + 'Always perform check' checked, 2=Not Now + 'Always perform check' unchecked, 3=Not Now + 'Always perform check' checked)",
+                    "description": "Result of the Set Default Browser dialog. After Firefox 89 the these values are: (0=Use Firefox + 'Don't ask again' checked, 1=Use Firefox + 'Don't ask again' unchecked, 2=Not Now + 'Don't ask again' checked, 3=Not Now + 'Don't ask again' unchecked). Before Firefox 89 these values were: (0=Use Firefox + 'Always perform check' unchecked, 1=Use Firefox + 'Always perform check' checked, 2=Not Now + 'Always perform check' unchecked, 3=Not Now + 'Always perform check' checked).",
                     "mode": "NULLABLE",
                     "name": "browser_set_default_result",
                     "type": "STRING"
@@ -54249,6 +54339,42 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "Percentages of times for phases in an expensive content paint relative to the time spent in the entire expensive paint. (\"dl\" = Display list, \"wrdl\" = WebRender display list, \"sb\" = Scene building, \"fb\" = Frame building)",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "content_large_paint_phase_weight_full",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Percentages of times for phases in an expensive content paint relative to the time spent in the entire expensive paint. (\"dl\" = Display list, \"wrdl\" = WebRender display list, \"sb\" = Scene building, \"fb\" = Frame building)",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "content_large_paint_phase_weight_partial",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "Result of the content signature verification keyed by application (certificate fingerprint). 0=valid, 1=invalid, 2=noCertChain, 3=createContextFailedWithOtherError, 4=expiredCert, 5=certNotValidYet, 6=buildCertChainFailed, 7=eeCertForWrongHost, 8=extractKeyError, 9=vfyContextError",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -54275,6 +54401,42 @@
                     ],
                     "mode": "REPEATED",
                     "name": "content_small_paint_phase_weight",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Percentages of times for phases in a normal content paint relative to the time spent in the entire normal paint. (\"dl\" = Display list, \"wrdl\" = WebRender display list, \"sb\" = Scene building, \"fb\" = Frame building)",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "content_small_paint_phase_weight_full",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Percentages of times for phases in a normal content paint relative to the time spent in the entire normal paint. (\"dl\" = Display list, \"wrdl\" = WebRender display list, \"sb\" = Scene building, \"fb\" = Frame building)",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "content_small_paint_phase_weight_partial",
                     "type": "RECORD"
                   },
                   {
@@ -59320,7 +59482,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records counts of SERP pages with adverts displayed where the search was started from about:home. The key format is ‘<provider>:<tagged|organic>’\n",
+                        "description": "Records clicks of adverts on SERP pages where the search was started from about:home. The key format is ‘<provider>:<tagged|organic>’\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -59338,7 +59500,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records counts of SERP pages with adverts displayed where the search was started from about:newtab. The key format is ‘<provider>:<tagged|organic>’\n",
+                        "description": "Records clicks of adverts on SERP pages where the search was started from about:newtab. The key format is ‘<provider>:<tagged|organic>’\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -59356,7 +59518,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records counts of SERP pages with adverts displayed where the search was started from the context menu. The key format is ‘<provider>:<tagged|organic>’\n",
+                        "description": "Records clicks of adverts on SERP pages where the search was started from the context menu. The key format is ‘<provider>:<tagged|organic>’\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -59392,7 +59554,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records counts of SERP pages with adverts displayed where the search was started from the search bar. The key format is ‘<provider>:<tagged|organic>’\n",
+                        "description": "RRecords clicks of adverts on SERP pages where the search was started from the search bar. The key format is ‘<provider>:<tagged|organic>’\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -59410,7 +59572,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records counts of SERP pages with adverts displayed where the search was started from the system, e.g. command line. The key format is ‘<provider>:<tagged|organic>’\n",
+                        "description": "Records clicks of adverts on SERP pages where the search was started from the system, e.g. command line. The key format is ‘<provider>:<tagged|organic>’\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -59446,7 +59608,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records counts of SERP pages with adverts displayed where the search was started from a place not categorized by the other scalars. The key format is ‘<provider>:<tagged|organic>’\n",
+                        "description": "Records clicks of adverts on SERP pages where the search was started from a place not categorized by the other scalars. The key format is ‘<provider>:<tagged|organic>’\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -59464,7 +59626,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records counts of SERP pages with adverts displayed where the search was started from the urlbar. The key format is ‘<provider>:<tagged|organic>’\n",
+                        "description": "Records clicks of adverts on SERP pages where the search was started from the urlbar. The key format is ‘<provider>:<tagged|organic>’\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -59482,7 +59644,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records counts of SERP pages with adverts displayed where the search was started from the urlbar in search mode. The key format is ‘<provider>:<tagged|organic>’\n",
+                        "description": "Records clicks of adverts on SERP pages where the search was started from the urlbar in search mode. The key format is ‘<provider>:<tagged|organic>’\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
@@ -59500,7 +59662,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Records counts of SERP pages with adverts displayed where the search was started from a webextension. The key format is ‘<provider>:<tagged|organic>’\n",
+                        "description": "Records clicks of adverts on SERP pages where the search was started from a webextension. The key format is ‘<provider>:<tagged|organic>’\n",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "INT64"
