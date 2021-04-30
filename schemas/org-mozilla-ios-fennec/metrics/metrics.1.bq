@@ -626,7 +626,7 @@
             "type": "INT64"
           },
           {
-            "description": "Measures the current open tab count as the application\ngoes to background. Each background event adds to this\nmetric, making it the cumulative sum of all open tabs\nwhen the app goes to background. This can be divided by\nthe number of baseline pings to determine the average\nopen tab count.\n",
+            "description": "Measures the current open tab count as the application\ngoes to background. Each background event adds to this\nmetric, making it the cumulative sum of all open tabs\nwhen the app goes to background during the period of\ntime covered by a single metrics ping. This can be\ndivided by the number of baseline pings with\n`ping_info.reason=\"inactive\"` from the `start_time` to\nthe `end_time` of the metrics ping to determine the\naverage open tabs per foreground \"session\".\n",
             "mode": "NULLABLE",
             "name": "tabs_cumulative_count",
             "type": "INT64"
