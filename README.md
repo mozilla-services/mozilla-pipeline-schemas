@@ -271,6 +271,12 @@ schemas
 │   └── pioneer-enrollment
 ├── pocket
 │   └── fire-tv-events
+├── rally-core
+│   ├── deletion-request
+│   ├── demographics
+│   ├── enrollment
+│   ├── study-enrollment
+│   └── study-unenrollment
 ├── rally-debug
 │   ├── deletion-request
 │   ├── demographics
@@ -354,6 +360,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-344 directories
+350 directories
 ```
 
