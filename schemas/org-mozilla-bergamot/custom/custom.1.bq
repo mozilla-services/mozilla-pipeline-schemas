@@ -469,6 +469,109 @@
       {
         "fields": [
           {
+            "description": "Telemetry Environment `system.cpu.cores` metric\n",
+            "mode": "NULLABLE",
+            "name": "metadata_cpu_cores_count",
+            "type": "INT64"
+          },
+          {
+            "description": "Telemetry Environment `system.cpu.count` metric\n",
+            "mode": "NULLABLE",
+            "name": "metadata_cpu_count",
+            "type": "INT64"
+          },
+          {
+            "description": "Telemetry Environment `system.cpu.l2cacheKB` metric\n",
+            "mode": "NULLABLE",
+            "name": "metadata_cpu_l2_cache",
+            "type": "INT64"
+          },
+          {
+            "description": "Telemetry Environment `system.cpu.l3cacheKB` metric\n",
+            "mode": "NULLABLE",
+            "name": "metadata_cpu_l3_cache",
+            "type": "INT64"
+          },
+          {
+            "description": "Telemetry Environment `system.cpu.speedMHz` metric\n",
+            "mode": "NULLABLE",
+            "name": "metadata_cpu_speed",
+            "type": "INT64"
+          },
+          {
+            "description": "Telemetry Environment `system.memoryMB` metric\n",
+            "mode": "NULLABLE",
+            "name": "metadata_system_memory",
+            "type": "INT64"
+          },
+          {
+            "description": "Speed of the translation from \"translation button\npressed\" to \"full page is translated\".\n",
+            "mode": "NULLABLE",
+            "name": "performance_full_page_translated_wps",
+            "type": "INT64"
+          },
+          {
+            "description": "Speed of translation as measured by the translation engine.\n",
+            "mode": "NULLABLE",
+            "name": "performance_translation_engine_wps",
+            "type": "INT64"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "quantity",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "Bergamot translator engine version\n",
+            "mode": "NULLABLE",
+            "name": "metadata_bergamot_translator_version",
+            "type": "STRING"
+          },
+          {
+            "description": "Telemetry Environment `system.cpu.extensions` metric\n",
+            "mode": "NULLABLE",
+            "name": "metadata_cpu_extensions",
+            "type": "STRING"
+          },
+          {
+            "description": "Telemetry Environment `system.cpu.family` metric\n",
+            "mode": "NULLABLE",
+            "name": "metadata_cpu_family",
+            "type": "STRING"
+          },
+          {
+            "description": "Telemetry Environment `system.cpu.model` metric\n",
+            "mode": "NULLABLE",
+            "name": "metadata_cpu_model",
+            "type": "STRING"
+          },
+          {
+            "description": "Telemetry Environment `system.cpu.stepping` metric\n",
+            "mode": "NULLABLE",
+            "name": "metadata_cpu_stepping",
+            "type": "STRING"
+          },
+          {
+            "description": "Telemetry Environment `system.cpu.vendor` metric\n",
+            "mode": "NULLABLE",
+            "name": "metadata_cpu_vendor",
+            "type": "STRING"
+          },
+          {
+            "description": "Extension build id, indicating which git revision\nand build config was used to produce this build\n",
+            "mode": "NULLABLE",
+            "name": "metadata_extension_build_id",
+            "type": "STRING"
+          },
+          {
+            "description": "Extension version\n",
+            "mode": "NULLABLE",
+            "name": "metadata_extension_version",
+            "type": "STRING"
+          },
+          {
             "description": "Firefox Telemetry client id.\n",
             "mode": "NULLABLE",
             "name": "metadata_firefox_client_id",
@@ -525,6 +628,85 @@
         ],
         "mode": "NULLABLE",
         "name": "string",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "Timing from \"translation button pressed\"\nto \"full page is translated\".\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "performance_full_page_translated_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time spent on downloading a translation model for a language pair.\n(Renamed from model_download_time to model_download_time_num as part of\nchanging type from string to quantity)\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "performance_model_download_time_num",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time spent on loading a model into memory to start translation.\n(Renamed from model_load_time to model_load_time_num as part of\nchanging type from string to quantity)\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "performance_model_load_time_num",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time spent on translation by the translation engine.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "performance_translation_engine_time",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "timespan",
         "type": "RECORD"
       }
     ],
