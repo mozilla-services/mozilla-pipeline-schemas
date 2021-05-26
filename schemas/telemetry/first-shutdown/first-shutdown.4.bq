@@ -62788,6 +62788,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "The source of the RemoteSettings attachment that holds the bloom filter. Possible values are \"dump_match\", \"cache_match\", \"remote_match\", \"dump_fallback\", \"cache_fallback\", \"unknown\". \"dump_match\", \"cache_match\" and \"remote_match\" are expected known-good values, and means that the loaded bloomfilter matches the blocklist record in the RemoteSettings collection. The prefix denotes the immediate source of the loaded data: \"dump\" means packaged with the application, \"remote\" means a freshly downloaded bloomfilter, \"cache\" means a previously downloaded bloomfilter. \"dump_fallback\" and \"cache_fallback\" means that the last known bloomfilter was used, despite it not matching the latest record in the RemoteSettings collection. In this case the outdated bloomfilter is used as a fallback (e.g. because the latest version cannot be downloaded). \"unknown\" means that the bloomfilter cannot be loaded at all. This can happen if the blocklist is disabled via preferences or enterprise policies.\n",
+                    "mode": "NULLABLE",
+                    "name": "blocklist_mlbf_source",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Keep track of the timestamp of the most recent stash of the addons blocklist. Only meaningful when mlbf_enabled and mlbf_stashes are true. The value is a datetime string in UTC format, or \"Missing Date\" when unavailable.\n",
                     "mode": "NULLABLE",
                     "name": "blocklist_mlbf_stash_time_newest",
