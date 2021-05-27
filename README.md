@@ -100,6 +100,9 @@ schemas
 │   ├── events
 │   ├── metrics
 │   └── usage
+├── mozillavpn
+│   ├── deletion-request
+│   └── main
 ├── mozphab
 │   ├── baseline
 │   ├── deletion-request
@@ -360,6 +363,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-350 directories
+353 directories
 ```
 
