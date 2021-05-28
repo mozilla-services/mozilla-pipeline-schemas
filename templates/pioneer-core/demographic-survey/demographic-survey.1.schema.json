@@ -1,14 +1,11 @@
 {
-  "$comment": "mozilla-ion/ion-core-addon#182 - Collect demographic information",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "mozPipelineMetadata": {
-    "bq_dataset_family": "pioneer_core",
-    "bq_metadata_format": "pioneer",
-    "bq_table": "demographic_survey_v1"
-  },
+  "type": "object",
+  "title": "demographic-survey",
+  "$comment": "https://github.com/mozilla-rally/rally-core-addon/pull/624 - new exactIncome field for Rally Core Add-On demographic survey",
   "properties": {
     "age": {
-      "additionalProperties": false,
+      "type": "object",
       "properties": {
         "19_24": {
           "type": "boolean"
@@ -29,83 +26,28 @@
           "type": "boolean"
         }
       },
-      "type": "object"
-    },
-    "education": {
-      "additionalProperties": false,
-      "properties": {
-        "associates_degree": {
-          "type": "boolean"
-        },
-        "bachelors_degree": {
-          "type": "boolean"
-        },
-        "graduate_degree": {
-          "type": "boolean"
-        },
-        "high_school_graduate_or_equivalent": {
-          "type": "boolean"
-        },
-        "less_than_high_school": {
-          "type": "boolean"
-        },
-        "some_college_but_no_degree_or_in_progress": {
-          "type": "boolean"
-        },
-        "some_high_school": {
-          "type": "boolean"
-        }
-      },
-      "type": "object"
+      "additionalProperties": false
     },
     "gender": {
-      "additionalProperties": false,
+      "type": "object",
       "properties": {
-        "decline": {
+        "male": {
           "type": "boolean"
         },
         "female": {
           "type": "boolean"
         },
-        "male": {
-          "type": "boolean"
-        },
         "neither": {
           "type": "boolean"
-        }
-      },
-      "type": "object"
-    },
-    "income": {
-      "description": "this field is deprecated in favor of exactIncome",
-      "additionalProperties": false,
-      "properties": {
-        "0_24999": {
-          "type": "boolean"
         },
-        "100000_149999": {
-          "type": "boolean"
-        },
-        "25000_49999": {
-          "type": "boolean"
-        },
-        "50000_74999": {
-          "type": "boolean"
-        },
-        "75000_99999": {
-          "type": "boolean"
-        },
-        "ge_150000": {
+        "decline": {
           "type": "boolean"
         }
       },
-      "type": "object"
-    },
-    "exactIncome": {
-      "type": "number"
+      "additionalProperties": false
     },
     "origin": {
-      "additionalProperties": false,
+      "type": "object",
       "properties": {
         "hispanicLatinoSpanish": {
           "description": "This field is deprecated in favour of hispanicLatinxSpanish",
@@ -118,21 +60,70 @@
           "type": "boolean"
         }
       },
-      "type": "object"
+      "additionalProperties": false
+    },
+    "education": {
+      "type": "object",
+      "properties": {
+        "less_than_high_school": {
+          "type": "boolean"
+        },
+        "some_high_school": {
+          "type": "boolean"
+        },
+        "high_school_graduate_or_equivalent": {
+          "type": "boolean"
+        },
+        "some_college_but_no_degree_or_in_progress": {
+          "type": "boolean"
+        },
+        "associates_degree": {
+          "type": "boolean"
+        },
+        "bachelors_degree": {
+          "type": "boolean"
+        },
+        "graduate_degree": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "income": {
+      "description": "this field has been deprecated in favor of exactIncome",
+      "type": "object",
+      "properties": {
+        "0_24999": {
+          "type": "boolean"
+        },
+        "25000_49999": {
+          "type": "boolean"
+        },
+        "50000_74999": {
+          "type": "boolean"
+        },
+        "75000_99999": {
+          "type": "boolean"
+        },
+        "100000_149999": {
+          "type": "boolean"
+        },
+        "ge_150000": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "exactIncome": {
+      "type": "number"
     },
     "races": {
-      "additionalProperties": false,
+      "type": "object",
       "properties": {
+        "white": {
+          "type": "boolean"
+        },
         "american_indian_or_alaska_native": {
-          "type": "boolean"
-        },
-        "asian_indian": {
-          "type": "boolean"
-        },
-        "black_or_african_american": {
-          "type": "boolean"
-        },
-        "chamorro": {
           "type": "boolean"
         },
         "chinese": {
@@ -141,37 +132,41 @@
         "filipino": {
           "type": "boolean"
         },
-        "japanese": {
-          "type": "boolean"
-        },
-        "korean": {
-          "type": "boolean"
-        },
-        "native_hawaiian": {
-          "type": "boolean"
-        },
-        "other_pacific_islander": {
-          "type": "boolean"
-        },
-        "samoan": {
-          "type": "boolean"
-        },
-        "some_other_race": {
+        "asian_indian": {
           "type": "boolean"
         },
         "vietnamese": {
           "type": "boolean"
         },
-        "white": {
+        "korean": {
+          "type": "boolean"
+        },
+        "japanese": {
+          "type": "boolean"
+        },
+        "black_or_african_american": {
+          "type": "boolean"
+        },
+        "native_hawaiian": {
+          "type": "boolean"
+        },
+        "samoan": {
+          "type": "boolean"
+        },
+        "chamorro": {
+          "type": "boolean"
+        },
+        "other_pacific_islander": {
+          "type": "boolean"
+        },
+        "some_other_race": {
           "type": "boolean"
         }
       },
-      "type": "object"
+      "additionalProperties": false
     },
     "zipCode": {
       "type": "string"
     }
-  },
-  "title": "demographic-survey",
-  "type": "object"
+  }
 }
