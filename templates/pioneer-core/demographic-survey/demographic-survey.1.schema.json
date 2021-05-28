@@ -1,11 +1,14 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "title": "demographic-survey",
   "$comment": "mozilla-ion/ion-core-addon#182 - Collect demographic information",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "mozPipelineMetadata": {
+    "bq_dataset_family": "pioneer_core",
+    "bq_metadata_format": "pioneer",
+    "bq_table": "demographic_survey_v1"
+  },
   "properties": {
     "age": {
-      "type": "object",
+      "additionalProperties": false,
       "properties": {
         "19_24": {
           "type": "boolean"
@@ -26,28 +29,83 @@
           "type": "boolean"
         }
       },
-      "additionalProperties": false
+      "type": "object"
+    },
+    "education": {
+      "additionalProperties": false,
+      "properties": {
+        "associates_degree": {
+          "type": "boolean"
+        },
+        "bachelors_degree": {
+          "type": "boolean"
+        },
+        "graduate_degree": {
+          "type": "boolean"
+        },
+        "high_school_graduate_or_equivalent": {
+          "type": "boolean"
+        },
+        "less_than_high_school": {
+          "type": "boolean"
+        },
+        "some_college_but_no_degree_or_in_progress": {
+          "type": "boolean"
+        },
+        "some_high_school": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
     },
     "gender": {
-      "type": "object",
+      "additionalProperties": false,
       "properties": {
-        "male": {
+        "decline": {
           "type": "boolean"
         },
         "female": {
           "type": "boolean"
         },
-        "neither": {
+        "male": {
           "type": "boolean"
         },
-        "decline": {
+        "neither": {
           "type": "boolean"
         }
       },
-      "additionalProperties": false
+      "type": "object"
+    },
+    "income": {
+      "description": "this field is deprecated in favor of exactIncome",
+      "additionalProperties": false,
+      "properties": {
+        "0_24999": {
+          "type": "boolean"
+        },
+        "100000_149999": {
+          "type": "boolean"
+        },
+        "25000_49999": {
+          "type": "boolean"
+        },
+        "50000_74999": {
+          "type": "boolean"
+        },
+        "75000_99999": {
+          "type": "boolean"
+        },
+        "ge_150000": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "exactIncome": {
+      "type": "number"
     },
     "origin": {
-      "type": "object",
+      "additionalProperties": false,
       "properties": {
         "hispanicLatinoSpanish": {
           "description": "This field is deprecated in favour of hispanicLatinxSpanish",
@@ -60,66 +118,21 @@
           "type": "boolean"
         }
       },
-      "additionalProperties": false
-    },
-    "education": {
-      "type": "object",
-      "properties": {
-        "less_than_high_school": {
-          "type": "boolean"
-        },
-        "some_high_school": {
-          "type": "boolean"
-        },
-        "high_school_graduate_or_equivalent": {
-          "type": "boolean"
-        },
-        "some_college_but_no_degree_or_in_progress": {
-          "type": "boolean"
-        },
-        "associates_degree": {
-          "type": "boolean"
-        },
-        "bachelors_degree": {
-          "type": "boolean"
-        },
-        "graduate_degree": {
-          "type": "boolean"
-        }
-      },
-      "additionalProperties": false
-    },
-    "income": {
-      "type": "object",
-      "properties": {
-        "0_24999": {
-          "type": "boolean"
-        },
-        "25000_49999": {
-          "type": "boolean"
-        },
-        "50000_74999": {
-          "type": "boolean"
-        },
-        "75000_99999": {
-          "type": "boolean"
-        },
-        "100000_149999": {
-          "type": "boolean"
-        },
-        "ge_150000": {
-          "type": "boolean"
-        }
-      },
-      "additionalProperties": false
+      "type": "object"
     },
     "races": {
-      "type": "object",
+      "additionalProperties": false,
       "properties": {
-        "white": {
+        "american_indian_or_alaska_native": {
           "type": "boolean"
         },
-        "american_indian_or_alaska_native": {
+        "asian_indian": {
+          "type": "boolean"
+        },
+        "black_or_african_american": {
+          "type": "boolean"
+        },
+        "chamorro": {
           "type": "boolean"
         },
         "chinese": {
@@ -128,41 +141,37 @@
         "filipino": {
           "type": "boolean"
         },
-        "asian_indian": {
-          "type": "boolean"
-        },
-        "vietnamese": {
+        "japanese": {
           "type": "boolean"
         },
         "korean": {
           "type": "boolean"
         },
-        "japanese": {
-          "type": "boolean"
-        },
-        "black_or_african_american": {
-          "type": "boolean"
-        },
         "native_hawaiian": {
-          "type": "boolean"
-        },
-        "samoan": {
-          "type": "boolean"
-        },
-        "chamorro": {
           "type": "boolean"
         },
         "other_pacific_islander": {
           "type": "boolean"
         },
+        "samoan": {
+          "type": "boolean"
+        },
         "some_other_race": {
+          "type": "boolean"
+        },
+        "vietnamese": {
+          "type": "boolean"
+        },
+        "white": {
           "type": "boolean"
         }
       },
-      "additionalProperties": false
+      "type": "object"
     },
     "zipCode": {
       "type": "string"
     }
-  }
+  },
+  "title": "demographic-survey",
+  "type": "object"
 }
