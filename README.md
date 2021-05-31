@@ -86,14 +86,17 @@ schemas
 ├── mozdata
 │   └── event
 ├── mozilla-lockbox
+│   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
 │   ├── history-sync
 │   ├── logins-sync
 │   ├── metrics
-│   └── sync
+│   ├── sync
+│   └── tabs-sync
 ├── mozilla-mach
 │   ├── baseline
 │   ├── deletion-request
@@ -121,8 +124,10 @@ schemas
 │   └── metrics
 ├── org-mozilla-fenix
 │   ├── activation
+│   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
@@ -132,11 +137,14 @@ schemas
 │   ├── metrics
 │   ├── migration
 │   ├── startup-timeline
-│   └── sync
+│   ├── sync
+│   └── tabs-sync
 ├── org-mozilla-fenix-nightly
 │   ├── activation
+│   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
@@ -146,11 +154,14 @@ schemas
 │   ├── metrics
 │   ├── migration
 │   ├── startup-timeline
-│   └── sync
+│   ├── sync
+│   └── tabs-sync
 ├── org-mozilla-fennec-aurora
 │   ├── activation
+│   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
@@ -160,11 +171,14 @@ schemas
 │   ├── metrics
 │   ├── migration
 │   ├── startup-timeline
-│   └── sync
+│   ├── sync
+│   └── tabs-sync
 ├── org-mozilla-firefox
 │   ├── activation
+│   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
@@ -174,11 +188,14 @@ schemas
 │   ├── metrics
 │   ├── migration
 │   ├── startup-timeline
-│   └── sync
+│   ├── sync
+│   └── tabs-sync
 ├── org-mozilla-firefox-beta
 │   ├── activation
+│   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
@@ -188,7 +205,8 @@ schemas
 │   ├── metrics
 │   ├── migration
 │   ├── startup-timeline
-│   └── sync
+│   ├── sync
+│   └── tabs-sync
 ├── org-mozilla-firefoxreality
 │   ├── baseline
 │   ├── deletion-request
@@ -242,15 +260,18 @@ schemas
 │   ├── events
 │   └── metrics
 ├── org-mozilla-vrbrowser
+│   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
 │   ├── history-sync
 │   ├── logins-sync
 │   ├── metrics
 │   ├── session-end
-│   └── sync
+│   ├── sync
+│   └── tabs-sync
 ├── pioneer-citp-news-disinfo
 │   ├── deletion-request
 │   ├── measurements
@@ -363,6 +384,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-353 directories
+374 directories
 ```
 
