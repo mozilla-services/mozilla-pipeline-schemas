@@ -300,13 +300,15 @@ schemas
 │   ├── demographics
 │   ├── enrollment
 │   ├── study-enrollment
-│   └── study-unenrollment
+│   ├── study-unenrollment
+│   └── uninstall-deletion
 ├── rally-debug
 │   ├── deletion-request
 │   ├── demographics
 │   ├── enrollment
 │   ├── study-enrollment
-│   └── study-unenrollment
+│   ├── study-unenrollment
+│   └── uninstall-deletion
 ├── rally-zero-one
 │   ├── deletion-request
 │   ├── measurements
@@ -384,6 +386,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-374 directories
+376 directories
 ```
 
