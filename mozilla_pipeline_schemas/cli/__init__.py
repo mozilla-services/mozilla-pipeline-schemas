@@ -1,4 +1,5 @@
 import click
+
 from .bigquery import bigquery
 
 

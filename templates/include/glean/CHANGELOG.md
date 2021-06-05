@@ -69,3 +69,10 @@
 
 - Pull client_info definitions from the glean source code (see:
   `scripts/extract_glean_client_info_descriptions`)
+  
+- The `rate` metric type is an object with a `numerator` and `denominator`.
+
+- Unused / unimplemented metric types have been removed. This includes `number`,
+  `labeled_number`, `labeled_string_list`, `enumeration`, `labeled_enumeration`,
+  `labeled_timing_distribution`, `labeled_datetime`, `use_counter`,
+  `labeled_use_counter`, `usage`, `labeled_usage`, and `labeled_uuid`.

@@ -485,6 +485,10 @@
                   "description": "Identifier to indicate the particular link within a campaign.",
                   "type": "string"
                 },
+                "dltoken": {
+                  "description": "Unique token created at Firefox download time, see bug 1677497",
+                  "type": "string"
+                },
                 "experiment": {
                   "description": "funnel experiment parameters, see bug 1567339",
                   "type": "string"
@@ -671,6 +675,10 @@
               "properties": {
                 "autoDownload": {
                   "description": "The state of the `app.update.auto` pref.",
+                  "type": "boolean"
+                },
+                "background": {
+                  "description": "Indicates whether updates may be installed when Firefox is not running.",
                   "type": "boolean"
                 },
                 "channel": {
@@ -1012,6 +1020,18 @@
                       },
                       "type": "object"
                     },
+                    "omtp": {
+                      "description": "Indicates whether the off-main-thread painting is enabled.",
+                      "properties": {
+                        "status": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "type": "object"
+                    },
                     "openglCompositing": {
                       "properties": {
                         "status": {
@@ -1329,78 +1349,83 @@
     },
     "payload": {
       "properties": {
+        "dnsAttempts": {
+          "description": "parent object for DNS query attempts for each RRTYPE and socket type",
+          "properties": {
+            "tcpA": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "tcpADO": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "tcpDNSKEY": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "tcpHTTPS": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "tcpNEWONE": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "tcpNEWTWO": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "tcpRRSIG": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "tcpSMIMEA": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "udpA": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "udpADO": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "udpAWebExt": {
+              "description": "Number of attempted dns.resolve() calls made using a domain name we control",
+              "minimum": 0,
+              "type": "number"
+            },
+            "udpDNSKEY": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "udpHTTPS": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "udpNEWONE": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "udpNEWTWO": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "udpRRSIG": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "udpSMIMEA": {
+              "minimum": 0,
+              "type": "number"
+            }
+          },
+          "type": "object"
+        },
         "dnsData": {
           "description": "parent object for DNS responses for each RRTYPE and socket type",
-          "dnsAttempts": {
-            "description": "parent object for DNS query attempts for each RRTYPE and socket type",
-            "properties": {
-              "tcpA": {
-                "minimum": 0,
-                "type": "number"
-              },
-              "tcpADO": {
-                "minimum": 0,
-                "type": "number"
-              },
-              "tcpDNSKEY": {
-                "minimum": 0,
-                "type": "number"
-              },
-              "tcpHTTPS": {
-                "minimum": 0,
-                "type": "number"
-              },
-              "tcpNEWONE": {
-                "minimum": 0,
-                "type": "number"
-              },
-              "tcpNEWTWO": {
-                "minimum": 0,
-                "type": "number"
-              },
-              "tcpRRSIG": {
-                "minimum": 0,
-                "type": "number"
-              },
-              "tcpSMIMEA": {
-                "minimum": 0,
-                "type": "number"
-              },
-              "udpA": {
-                "minimum": 0,
-                "type": "number"
-              },
-              "udpADO": {
-                "minimum": 0,
-                "type": "number"
-              },
-              "udpDNSKEY": {
-                "minimum": 0,
-                "type": "number"
-              },
-              "udpHTTPS": {
-                "minimum": 0,
-                "type": "number"
-              },
-              "udpNEWONE": {
-                "minimum": 0,
-                "type": "number"
-              },
-              "udpNEWTWO": {
-                "minimum": 0,
-                "type": "number"
-              },
-              "udpRRSIG": {
-                "minimum": 0,
-                "type": "number"
-              },
-              "udpSMIMEA": {
-                "minimum": 0,
-                "type": "number"
-              }
-            },
-            "type": "object"
-          },
           "properties": {
             "tcpA": {
               "items": {
@@ -1459,6 +1484,13 @@
             "udpADO": {
               "items": {
                 "type": "integer"
+              },
+              "type": "array"
+            },
+            "udpAWebExt": {
+              "description": "Results from dns.resolve() call made using a domain name we control",
+              "items": {
+                "type": "string"
               },
               "type": "array"
             },

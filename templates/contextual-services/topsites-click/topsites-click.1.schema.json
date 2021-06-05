@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "topsites-click",
+  "properties": {
+    @ACTIVITY-STREAM_EXPERIMENTS_1_JSON@,
+    "context_id": {
+      "description": "A UUID representing this user. Note that it's not client_id, nor can it be used to link to a client_id",
+      "type": "string",
+      "pattern": "^\\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\}$"
+    },
+    "tile_id": {
+      "description": "A unique identifier for the sponsored tile",
+      "type": "integer"
+    },
+    "source": {
+      "type": "string",
+      "enum": [ "newtab", "urlbar" ],
+      "description": "The browser location where the click was triggered"
+    },
+    "position": {
+      "description": "The placement of the tile (1-based)",
+      "type": "integer"
+    },
+    "advertiser": {
+        "description": "Name of the advertiser, e.g. amazon, ebay, bestbuy etc",
+        "type": "string"
+    },
+    "reporting_url": {
+        "description": "The reporting URL of the ad, normally pointing to the ad partner's reporting endpoint. It's URL encoded",
+        "type": "string"
+    },
+    "version": {
+      "description": "Firefox version",
+      "type": "string"
+    },
+    "release_channel": {
+      "description": "Firefox release channel",
+      "type": "string"
+    },
+    "locale": {
+      "description": "User's current locale",
+      "type": "string"
+    }
+  },
+  "required": [
+    "context_id",
+    "tile_id",
+    "version"
+  ]
+}

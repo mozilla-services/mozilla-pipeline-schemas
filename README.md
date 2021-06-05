@@ -28,7 +28,7 @@ is a great resource.
 - Build the rendered schemas using the instructions below, and check those artifacts (in the `schemas` directory) in to the git repo as well. See the rationale for this in the "Notes" section below.
 - Add one or more example JSON documents to the `validation` directory.
 - Run the tests (either via Docker or directly) using the instructions below.
-- Once all tests pass, submit a PR to the github repository against the `master` branch. See also the notes on [contributions](#contributions).
+- Once all tests pass, submit a PR to the github repository against the `main` branch. See also the notes on [contributions](#contributions).
 
 Note that Pioneer studies have a [slightly amended](README.pioneer.md) process.
 
@@ -36,13 +36,14 @@ Note that Pioneer studies have a [slightly amended](README.pioneer.md) process.
 
 ### Prerequisites
 
-* [`CMake` (3.0+)](http://cmake.org/cmake/resources/software.html)
-* [`jq` (1.5+)](https://github.com/stedolan/jq)
-* `python` (3.6+)
-* Optional: `java 8`, `maven`
-* Optional: [Docker](https://www.docker.com/get-started)
+- [`CMake` (3.0+)](http://cmake.org/cmake/resources/software.html)
+- [`jq` (1.5+)](https://github.com/stedolan/jq)
+- `python` (3.6+)
+- Optional: `java 8`, `maven`
+- Optional: [Docker](https://www.docker.com/get-started)
 
 On MacOS, these prerequisites can be installed using [homebrew](https://brew.sh/):
+
 ```bash
 brew install cmake
 brew install jq
@@ -106,9 +107,9 @@ To generate a diff of BigQuery schemas, use the `mps` command-line tool.
 # for jsonschema-transpiler and python3 dependencies
 ./script/mps-shell
 
-# generate an integration folder, the options will default to HEAD and master
+# generate an integration folder, the options will default to HEAD and main
 # respectively
-mps bigquery diff --base-ref master --head-ref HEAD
+mps bigquery diff --base-ref main --head-ref HEAD
 ```
 
 This generates an `integration` folder:
@@ -129,7 +130,7 @@ integration
 ```
 
 Pushes to the main repo will trigger integration tests in CircleCI that directly
-compare the revision to the `master` branch. These tests do not run for forked PRs
+compare the revision to the `main` branch. These tests do not run for forked PRs
 in order to protect data and credentials, but reviewers can trigger tests to run
 by pushing the PR's revisions to a branch of the main repo. We provide a script for this:
 
@@ -142,11 +143,47 @@ by pushing the PR's revisions to a branch of the main repo. We provide a script 
 
 For details on how to compare two arbitrary revisions, refer to the `integration` job in `.circleci/config.yml`. For more documentation, see [mozilla-services/edge-validator](https://github.com/mozilla-services/edge-validator).
 
+### `mps` command-line tool
+
+The repository has an `mps` command-line tool for checking on the output of
+schema transformations used for BigQuery. Enter the shell using
+`scripts/mps-shell`.
+
+To transpile a schema for Bigquery:
+
+```bash
+schema=schemas/glean/glean/glean.1.schema.json
+mps bigquery transpile $schema
+```
+
+It may be useful to look at a compact version of the output:
+
+```bash
+schema=schemas/glean/glean/glean.1.schema.json
+mps bigquery transpile $schema | mps bigquery columns /dev/stdin
+```
+
+The output of the ingestion sink can be viewed for validation documents.
+
+```bash
+validation=validation/glean/glean.1.baseline.pass.json
+mps bigquery transform $validation | jq
+```
+
+Any value that is not captured in the schema is put into `additional_properties`.
+
+```bash
+validation=validation/glean/glean.1.baseline.pass.json
+mps bigquery transform $validation | jq '.additional_properties'
+"{\"$schema\":\"moz://mozilla.org/schemas/glean/ping/1\"}"
+```
+
+
 ## Releases
 
 There is a daily series of tasks run by Airflow (see the
-[`probe_scraper` DAG](https://github.com/mozilla/telemetry-airflow/blob/master/dags/probe_scraper.py))
-that uses the `master` branch of this repository as input and ends up pushing
+[`probe_scraper` DAG](https://github.com/mozilla/telemetry-airflow/blob/main/dags/probe_scraper.py))
+that uses the `main` branch of this repository as input and ends up pushing
 final JSONSchema and BigQuery schema files to the `generated-schemas` branch.
 As of January 2020, deploying schema changes still requires manual intervention
 by a member of the Data Ops team, but you can generally expect schemas to be
@@ -154,23 +191,23 @@ deployed to production BigQuery tables several times a week.
 
 ## Contributions
 
-* All non trivial contributions should start with a bug or issue being filed (if it is
+- All non trivial contributions should start with a bug or issue being filed (if it is
   a new feature please propose your design/approach before doing any work as not
   all feature requests are accepted).
-* If updating the glean schemas, be sure to update the changelog in
+- If updating the glean schemas, be sure to update the changelog in
   `include/glean/CHANGELOG.md`.
-* This repository is configured to auto-assign a reviewer on PR submission. If you
+- This repository is configured to auto-assign a reviewer on PR submission. If you
   do not receive a response within a few business days (or your request is
   urgent), please followup in the
   [#fx-metrics slack channel](https://mozilla.slack.com/messages/fx-metrics/).
-* If your PR is associated with a bugzilla bug, please title it `Bug XXX - Description of change`, that way the [Bugzilla PR Linker](https://github.com/mozilla/github-bugzilla-pr-linker) will automatically add an attachment with your PR to bugzilla, for future reference.
+- If your PR is associated with a bugzilla bug, please title it `Bug XXX - Description of change`, that way the [Bugzilla PR Linker](https://github.com/mozilla/github-bugzilla-pr-linker) will automatically add an attachment with your PR to bugzilla, for future reference.
 
 ### Notes
 
 All schemas are generated from the 'templates' directory and written into the
 'schemas' directory (i.e., the artifacts are generated/saved back into the
 repository) and validated against the [draft 4 schema](http://json-schema.org/draft-04/schema)
-a [copy](https://github.com/mozilla-services/mozilla-pipeline-schemas/blob/master/tests/hindsight/jsonschema.4.json)
+a [copy](https://github.com/mozilla-services/mozilla-pipeline-schemas/blob/main/tests/hindsight/jsonschema.4.json)
 of which resides in the 'tests' directory. The reason for this is twofold:
 
 1. It lets us easily see and refer to complete schemas as they are actually used.

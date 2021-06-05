@@ -10,6 +10,22 @@ from mozilla_pipeline_schemas.utils import get_repository_root, run
 ROOT = get_repository_root()
 SCHEMAS_ROOT = ROOT / "schemas"
 VALIDATION_ROOT = ROOT / "validation"
+JARS_ROOT = ROOT / "target"
+
+
+@pytest.fixture()
+def schemas_root():
+    return SCHEMAS_ROOT
+
+
+@pytest.fixture()
+def validation_root():
+    return VALIDATION_ROOT
+
+
+@pytest.fixture()
+def jars_root():
+    return JARS_ROOT
 
 
 def load_schemas():
@@ -101,7 +117,7 @@ def tmp_git(tmp_path: Path) -> Path:
     run(f"git clone {origin} {workdir}")
     os.chdir(workdir)
     # make branches available by checking them out, but ensure state ends up on HEAD
-    run(f"git checkout master")
+    run(f"git checkout main")
     run(f"git checkout {resolved_head_ref}")
     yield workdir
     os.chdir(curdir)

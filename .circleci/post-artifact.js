@@ -8,11 +8,11 @@ const fs = require("fs");
 const bot = require("circle-github-bot").create();
 
 
-function bigquery_diff() {
+function diff(prefix) {
     let root = "/tmp/integration";
     let files = fs.readdirSync(root);
     console.log(files);
-    let diff_file = files.find(x => x.endsWith(".diff"));
+    let diff_file = files.find(x => x.startsWith(prefix) && x.endsWith(".diff"));
     let diff_content = fs.readFileSync(root + "/" + diff_file, "utf8");
 
     var body = "No content detected."
@@ -35,5 +35,7 @@ ${body}
 bot.comment(process.env.GH_AUTH_TOKEN, `
 ### Integration report for "${bot.env.commitMessage}"
 
-${bigquery_diff()}
+${diff("bq_schema")}
+
+${diff("compact_schema")}
 `);

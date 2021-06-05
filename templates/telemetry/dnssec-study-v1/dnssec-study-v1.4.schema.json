@@ -38,6 +38,13 @@
           "type": "object",
           "description": "parent object for DNS responses for each RRTYPE and socket type",
           "properties": {
+            "udpAWebExt": {
+              "type": "array",
+              "description": "Results from dns.resolve() call made using a domain name we control",
+              "items": {
+                "type": "string"
+              }
+            },
             "udpA": {
               "type": "array",
               "items": {
@@ -134,75 +141,80 @@
                 "type": "integer"
               }
             }
-          },
-          "dnsAttempts": {
-            "type": "object",
-            "description": "parent object for DNS query attempts for each RRTYPE and socket type",
-            "properties": {
-              "udpA": {
-                "type": "number",
-                "minimum": 0
-              },
-              "tcpA": {
-                "type": "number",
-                "minimum": 0
-              },
-              "udpADO": {
-                "type": "number",
-                "minimum": 0
-              },
-              "tcpADO": {
-                "type": "number",
-                "minimum": 0
-              },
-              "udpRRSIG": {
-                "type": "number",
-                "minimum": 0
-              },
-              "tcpRRSIG": {
-                "type": "number",
-                "minimum": 0
-              },
-              "udpDNSKEY": {
-                "type": "number",
-                "minimum": 0
-              },
-              "tcpDNSKEY": {
-                "type": "number",
-                "minimum": 0
-              },
-              "udpSMIMEA": {
-                "type": "number",
-                "minimum": 0
-              },
-              "tcpSMIMEA": {
-                "type": "number",
-                "minimum": 0
-              },
-              "udpHTTPS": {
-                "type": "number",
-                "minimum": 0
-              },
-              "tcpHTTPS": {
-                "type": "number",
-                "minimum": 0
-              },
-              "udpNEWONE": {
-                "type": "number",
-                "minimum": 0
-              },
-              "tcpNEWONE": {
-                "type": "number",
-                "minimum": 0
-              },
-              "udpNEWTWO": {
-                "type": "number",
-                "minimum": 0
-              },
-              "tcpNEWTWO": {
-                "type": "number",
-                "minimum": 0
-              }
+          }
+        },
+        "dnsAttempts": {
+          "type": "object",
+          "description": "parent object for DNS query attempts for each RRTYPE and socket type",
+          "properties": {
+            "udpAWebExt": {
+              "type": "number",
+              "description": "Number of attempted dns.resolve() calls made using a domain name we control",
+              "minimum": 0
+            },
+            "udpA": {
+              "type": "number",
+              "minimum": 0
+            },
+            "tcpA": {
+              "type": "number",
+              "minimum": 0
+            },
+            "udpADO": {
+              "type": "number",
+              "minimum": 0
+            },
+            "tcpADO": {
+              "type": "number",
+              "minimum": 0
+            },
+            "udpRRSIG": {
+              "type": "number",
+              "minimum": 0
+            },
+            "tcpRRSIG": {
+              "type": "number",
+              "minimum": 0
+            },
+            "udpDNSKEY": {
+              "type": "number",
+              "minimum": 0
+            },
+            "tcpDNSKEY": {
+              "type": "number",
+              "minimum": 0
+            },
+            "udpSMIMEA": {
+              "type": "number",
+              "minimum": 0
+            },
+            "tcpSMIMEA": {
+              "type": "number",
+              "minimum": 0
+            },
+            "udpHTTPS": {
+              "type": "number",
+              "minimum": 0
+            },
+            "tcpHTTPS": {
+              "type": "number",
+              "minimum": 0
+            },
+            "udpNEWONE": {
+              "type": "number",
+              "minimum": 0
+            },
+            "tcpNEWONE": {
+              "type": "number",
+              "minimum": 0
+            },
+            "udpNEWTWO": {
+              "type": "number",
+              "minimum": 0
+            },
+            "tcpNEWTWO": {
+              "type": "number",
+              "minimum": 0
             }
           }
         }

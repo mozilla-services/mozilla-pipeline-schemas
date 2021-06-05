@@ -433,6 +433,10 @@
             "ua": {
               "type": "string",
               "description": "derived user agent, see bug 1595063"
+            },
+            "dltoken": {
+              "type": "string",
+              "description": "Unique token created at Firefox download time, see bug 1677497"
             }
           }
         },
@@ -597,6 +601,10 @@
             "enabled": {
               "type": "boolean",
               "description": "The state of the `app.update.enabled` pref."
+            },
+            "background": {
+              "type": "boolean",
+              "description": "Indicates whether updates may be installed when Firefox is not running."
             }
           }
         },
@@ -1011,6 +1019,18 @@
                 },
                 "wrSoftware": {
                   "description": "Indicates whether the software backend to WebRender is enabled.",
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "omtp": {
+                  "description": "Indicates whether the off-main-thread painting is enabled.",
                   "type": "object",
                   "properties": {
                     "status": {

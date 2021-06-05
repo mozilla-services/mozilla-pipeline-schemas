@@ -3,13 +3,13 @@ import json
 
 from click.testing import CliRunner
 
-from mozilla_pipeline_schemas.cli.bigquery import diff, columns, transpile
-from utils import runif_cli_configured
+from mozilla_pipeline_schemas.cli.bigquery import diff, columns, transpile, transform
+from utils import runif_cli_configured, runif_sink_configured
 
 
 @runif_cli_configured
 def test_bigquery_diff(tmp_git):
-    # choose a base ref relative to HEAD, since the head ref may be master
+    # choose a base ref relative to HEAD, since the head ref may be main
     res = CliRunner().invoke(
         diff,
         [
@@ -22,7 +22,8 @@ def test_bigquery_diff(tmp_git):
         ],
     )
     assert res.exit_code == 0, res.output
-    assert len(os.listdir(tmp_git / "integration")) == 3
+    # 2 folders for hashes, 1 file for bq diffs, 1 file for compact diffs
+    assert len(os.listdir(tmp_git / "integration")) == 4
 
 
 @runif_cli_configured
@@ -41,7 +42,7 @@ def test_bigquery_diff_duplicate(tmp_git):
         ],
     )
     assert res.exit_code == 0, res.output
-    assert len(os.listdir(tmp_git / "integration")) == 2
+    assert len(os.listdir(tmp_git / "integration")) == 3
     assert (
         not next((tmp_git / "integration").glob("*.diff")).open().read()
     ), "diff should be empty"
@@ -118,3 +119,29 @@ def test_bigquery_columns_from_transpiled(tmp_path):
     res = CliRunner().invoke(columns, [str(path)], catch_exceptions=False)
     output = res.output.strip().split("\n")
     assert output == expected
+
+
+@runif_sink_configured
+def test_bigquery_transform_main_min(tmp_git, jars_root):
+    """A slightly involved test."""
+    validation = {"clientId": "a-unique-identifier", "metrics": {"value": 1}}
+    schema = {"type": "object", "properties": {"clientId": {"type": "string"}}}
+
+    validation_path = tmp_git / "validation/test/test.1.additional_properties.pass.json"
+    schema_path = tmp_git / "schemas/test/test/test.1.schema.json"
+
+    validation_path.parent.mkdir(parents=True)
+    schema_path.parent.mkdir(parents=True)
+
+    validation_path.write_text(json.dumps(validation))
+    schema_path.write_text(json.dumps(schema))
+
+    res = CliRunner().invoke(
+        transform,
+        [str(validation_path), "--jars", str(jars_root)],
+        catch_exceptions=False,
+    )
+    transformed = json.loads(res.output)
+
+    assert transformed["client_id"] == validation["clientId"]
+    assert transformed["additional_properties"] == '{"metrics":{"value":1}}'

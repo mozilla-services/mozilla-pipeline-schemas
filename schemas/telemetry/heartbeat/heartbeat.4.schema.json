@@ -493,6 +493,10 @@
                   "description": "Identifier to indicate the particular link within a campaign.",
                   "type": "string"
                 },
+                "dltoken": {
+                  "description": "Unique token created at Firefox download time, see bug 1677497",
+                  "type": "string"
+                },
                 "experiment": {
                   "description": "funnel experiment parameters, see bug 1567339",
                   "type": "string"
@@ -679,6 +683,10 @@
               "properties": {
                 "autoDownload": {
                   "description": "The state of the `app.update.auto` pref.",
+                  "type": "boolean"
+                },
+                "background": {
+                  "description": "Indicates whether updates may be installed when Firefox is not running.",
                   "type": "boolean"
                 },
                 "channel": {
@@ -1010,6 +1018,18 @@
                       "type": "object"
                     },
                     "hwCompositing": {
+                      "properties": {
+                        "status": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "omtp": {
+                      "description": "Indicates whether the off-main-thread painting is enabled.",
                       "properties": {
                         "status": {
                           "type": [

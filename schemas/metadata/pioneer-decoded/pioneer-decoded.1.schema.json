@@ -68,6 +68,10 @@
             "x_source_tags": {
               "description": "X-Source-Tags HTTP header",
               "type": "string"
+            },
+            "x_telemetry_agent": {
+              "description": "X-Telemetry-Agent HTTP header",
+              "type": "string"
             }
           },
           "type": "object"
@@ -154,12 +158,17 @@
       "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
       "type": "string"
     },
+    "rallyId": {
+      "description": "Bug 1677567 - Rally id reported by the core addon; deprecated as part of bug 1708552.",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "type": "string"
+    },
     "sample_id": {
       "description": "Hashed version of client_id (if present) useful for partitioning; ranges from 0 to 99",
       "type": "integer"
     },
     "studyName": {
-      "description": "Name of a particular study. Usually the addon_id.",
+      "description": "Name of a particular study. Usually the addon_id. Not populated when using glean.js.",
       "maxLength": 100,
       "minLength": 1,
       "pattern": "^\\S+$",

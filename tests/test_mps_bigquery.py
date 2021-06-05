@@ -31,7 +31,8 @@ def test_preconditions():
 @runif_cli_configured
 def test_transpile(tmp_path):
     test_schema = {"type": "string"}
-    expected_schema = [{"mode": "REQUIRED", "name": "root", "type": "STRING"}]
+    # --force-nullable
+    expected_schema = [{"mode": "NULLABLE", "name": "root", "type": "STRING"}]
     test_schema_path = tmp_path / "test.json"
     with test_schema_path.open("w") as fp:
         json.dump(test_schema, fp)
@@ -64,7 +65,7 @@ def test_managed_git_state(tmp_git: Path):
     with managed_git_state():
         run("git checkout HEAD~1")
         assert run("git rev-parse HEAD") != original
-        assert run("git rev-parse master"), "cannot see reference to master"
+        assert run("git rev-parse main"), "cannot see reference to main"
     assert run("git rev-parse HEAD") == original
 
 
