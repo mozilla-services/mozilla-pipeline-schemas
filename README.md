@@ -62,7 +62,10 @@ cd release
 cmake ..  # this is the build process (the schemas are built with cmake templates)
 ```
 
-### Running Tests via Docker
+### Running Tests via Docker (optional)
+
+You can generally skip this step if you're just make a small change to an existing schema: tests are
+automatically run via continuous integration.
 
 The tests expect example pings to be in the `validation/<namespace>/` subdirectory, with files named
 in the form `<ping type>.<version>.<test name>.pass.json` for documents expected to be valid, or
