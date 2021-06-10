@@ -310,6 +310,9 @@ schemas
 │   ├── study-enrollment
 │   ├── study-unenrollment
 │   └── uninstall-deletion
+├── rally-study-zero-one
+│   ├── deletion-request
+│   └── rs01-event
 ├── rally-zero-one
 │   ├── deletion-request
 │   ├── measurements
@@ -387,6 +390,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-377 directories
+380 directories
 ```
 
