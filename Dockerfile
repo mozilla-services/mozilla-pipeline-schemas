@@ -5,7 +5,7 @@ LABEL maintainer="Mozilla Data Platform"
 RUN dnf -y update && \
     dnf -y install epel-release && \
     dnf -y install \
-        cmake3 \
+        cmake \
         diffutils \
         gcc \
         gcc-c++ \
