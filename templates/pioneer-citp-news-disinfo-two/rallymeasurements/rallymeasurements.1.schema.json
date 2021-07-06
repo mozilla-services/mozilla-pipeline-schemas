@@ -1,0 +1,118 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "$comment": "Information about this study is available at https://github.com/citp/news-disinformation-study",
+  "mozPipelineMetadata": {
+    "expiration_policy": {
+      "delete_after_days": 180
+    }
+  },
+  "properties": {
+    "newsAndDisinfo.surveyId": {
+        "type": "string",
+        "description": "ID sent to Qualtrics, for associating survey responses with telemetry data"
+    },
+    "newsAndDisinfo.version": { "type": "string" },
+    "newsAndDisinfo.pageNavigation": {
+      "type": "object",
+      "properties": {
+        "untrackedVisitsCount": { "type": "number" },
+        "untrackedAttention": { "type": "number" },
+        "trackedVisitsByCategory": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "visitTrimmedUrl": { "type": "string" },
+              "sourceTrimmedUrlFromReferrer": { "type": "string" },
+              "sourceTrimmedUrlFromTransitions": { "type": "string" },
+              "dayOfWeek": { "type": "integer" },
+              "timeOfDay": { "type": "integer" },
+              "classifierResults": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "integer"
+                },
+                "description": "additional properties are the name of the classifier, with the classification result as the value"
+                },
+              "categoryVisitsCount": { "type": "integer" },
+              "categoryAttention": { "type": "number" },
+              "categoryScroll": { "type": "number" }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "newsAndDisinfo.socialMediaLinkSharing": {
+      "type": "object",
+      "properties": {
+        "linkSharesByPlatform": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "platform": {
+                "type": "string",
+                "enum": ["facebook", "twitter", "reddit"]
+              },
+              "untrackedSharesCount": { "type": "integer" },
+              "trackedSharesByCategory": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "sharedTrimmedUrl": { "type": "string" },
+                    "visitSourceFromTransitions": { "type": "string" },
+                    "facebookReshareSource": { "type": "string" },
+                    "dayOfWeek": { "type": "integer" },
+                    "timeOfDay": { "type": "integer" },
+                    "classifierResults": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "integer"
+                        },
+                        "description": "additional properties are the name of the classifier, with the classification result as the value"
+                    },
+                    "shareAudience": {
+                      "type": "string",
+                      "enum": ["public", "restricted", "unknown"]
+                    },
+                    "categorySharesCount": { "type": "integer" },
+                    "categoryVisitAttention": { "type": "number" },
+                    "categoryVisitsInPageNavigationCount" : { "type": "integer" },
+                    "categoryVisitsInHistoryCount" : { "type": "integer" }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "newsAndDisinfo.linkExposure": {
+      "type": "object",
+      "properties": {
+        "trackedExposuresByCategory": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "exposureSourceTrimmedUrl": { "type": "string" },
+              "exposureDestinationTrimmedUrl": { "type": "string" },
+              "dayOfWeek": { "type": "integer" },
+              "timeOfDay": { "type": "integer" },
+              "categoryExposuresCount": { "type": "integer" }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
