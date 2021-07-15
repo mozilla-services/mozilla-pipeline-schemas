@@ -1,5 +1,7 @@
 # Version 1
 
+- Added a `url` metric type. See [Bug 1719315](https://bugzilla.mozilla.org/show_bug.cgi?id=1719315).
+
 - Added `x_source_tags` field to header metadata fields. See [Bug 1655477](https://bugzilla.mozilla.org/show_bug.cgi?id=1655477).
 
 - Added `jwe` metric type to the metrics. See [Bug 1654809](https://bugzilla.mozilla.org/show_bug.cgi?id=1654809).
