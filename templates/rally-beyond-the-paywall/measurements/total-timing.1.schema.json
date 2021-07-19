@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$comment": "Please do not edit this schema by hand. Generate it instead by running npm run build:schema.",
+  "mozPipelineMetadata": {
+    "expiration_policy": {
+      "delete_after_days": 558
+    }
+  },
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "the type of event recorded. Either WebScience.advertisements, WebScience.articleContents, WebScience.pageNav, or WebScience.pageNavSensitive",
+      "enum": [
+        "WebScience.advertisements",
+        "WebScience.articleContents",
+        "WebScience.pageNav",
+        "WebScience.pageNavSensitive",
+        "WebScience.totalTiming"
+      ]
+    },
+    "userId": {
+      "type": "string",
+      "description": "a unique ID associated with a participant."
+    },
+    "visitDuration": {
+      "type": "integer",
+      "description": "Duration of visit in milliseconds"
+    },
+    "visitStartDate": {
+      "type": "string",
+      "description": "The local date in the format YYYY-MM-DD"
+    },
+    "visitStartHour": {
+      "type": "integer",
+      "description": "The hour of the visit in local time (from 0-23)"
+    },
+    "attentionDuration": {
+      "type": "integer",
+      "description": "duration (in ms) that the page was in attentive view"
+    }
+  },
+  "required": [
+    "type",
+    "userId",
+    "visitDuration",
+    "visitStartDate",
+    "visitStartHour",
+    "attentionDuration"
+  ]
+}
