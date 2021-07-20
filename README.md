@@ -213,6 +213,12 @@ schemas
 │   ├── events
 │   ├── launch
 │   └── metrics
+├── org-mozilla-focus
+│   ├── activation
+│   ├── baseline
+│   ├── deletion-request
+│   ├── events
+│   └── metrics
 ├── org-mozilla-ios-fennec
 │   ├── baseline
 │   ├── deletion-request
@@ -239,6 +245,12 @@ schemas
 │   ├── events
 │   └── metrics
 ├── org-mozilla-ios-lockbox
+│   ├── baseline
+│   ├── deletion-request
+│   ├── events
+│   └── metrics
+├── org-mozilla-klar
+│   ├── activation
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
@@ -392,6 +404,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-382 directories
+394 directories
 ```
 
