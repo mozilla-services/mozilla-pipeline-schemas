@@ -307,6 +307,14 @@ schemas
 │   └── pioneer-enrollment
 ├── pioneer-meta
 │   └── pioneer-enrollment
+├── pioneer-sgsb-beyond-the-paywall
+│   ├── advertisement
+│   ├── article-content
+│   ├── deletion-request
+│   ├── page-nav
+│   ├── page-nav-sensitive
+│   ├── pioneer-enrollment
+│   └── total-timing
 ├── pocket
 │   └── fire-tv-events
 ├── rally-core
@@ -404,6 +412,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-394 directories
+402 directories
 ```
 
