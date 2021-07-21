@@ -2,17 +2,17 @@
   "$comment": "Please do not edit this schema by hand. Generate it instead by running npm run build:schema.",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "mozPipelineMetadata": {
-    "bq_dataset_family": "rally_beyond_the_paywall",
+    "bq_dataset_family": "pioneer_beyond_the_paywall",
     "bq_metadata_format": "pioneer",
-    "bq_table": "measurements_v1",
+    "bq_table": "total_timing_v1",
     "expiration_policy": {
       "delete_after_days": 558
     }
   },
   "properties": {
-    "domain": {
-      "description": "The URL of the page visited.  This URL has been stripped to only include the domain",
-      "type": "string"
+    "attentionDuration": {
+      "description": "duration (in ms) that the page was in attentive view",
+      "type": "integer"
     },
     "type": {
       "description": "the type of event recorded. Either WebScience.advertisements, WebScience.articleContents, WebScience.pageNav, or WebScience.pageNavSensitive",
@@ -45,10 +45,10 @@
   "required": [
     "type",
     "userId",
-    "domain",
     "visitDuration",
     "visitStartDate",
-    "visitStartHour"
+    "visitStartHour",
+    "attentionDuration"
   ],
   "type": "object"
 }

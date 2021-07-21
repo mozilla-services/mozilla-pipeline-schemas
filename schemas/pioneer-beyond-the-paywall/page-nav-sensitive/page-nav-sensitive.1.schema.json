@@ -2,20 +2,16 @@
   "$comment": "Please do not edit this schema by hand. Generate it instead by running npm run build:schema.",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "mozPipelineMetadata": {
-    "bq_dataset_family": "rally_beyond_the_paywall",
+    "bq_dataset_family": "pioneer_beyond_the_paywall",
     "bq_metadata_format": "pioneer",
-    "bq_table": "measurements_v1",
+    "bq_table": "page_nav_sensitive_v1",
     "expiration_policy": {
       "delete_after_days": 558
     }
   },
   "properties": {
-    "textContent": {
-      "description": "The text contents of the article on the page.",
-      "type": "string"
-    },
-    "title": {
-      "description": "the contents of the title element in the head of the page",
+    "domain": {
+      "description": "The URL of the page visited.  This URL has been stripped to only include the domain",
       "type": "string"
     },
     "type": {
@@ -29,26 +25,30 @@
       ],
       "type": "string"
     },
-    "url": {
-      "description": "The URL of the page visited",
-      "type": "string"
-    },
     "userId": {
       "description": "a unique ID associated with a participant.",
       "type": "string"
     },
-    "visitId": {
-      "description": "a unique ID associated with a page visit.",
+    "visitDuration": {
+      "description": "Duration of visit in milliseconds",
+      "type": "integer"
+    },
+    "visitStartDate": {
+      "description": "The local date in the format YYYY-MM-DD",
       "type": "string"
+    },
+    "visitStartHour": {
+      "description": "The hour of the visit in local time (from 0-23)",
+      "type": "integer"
     }
   },
   "required": [
     "type",
-    "visitId",
     "userId",
-    "url",
-    "title",
-    "textContent"
+    "domain",
+    "visitDuration",
+    "visitStartDate",
+    "visitStartHour"
   ],
   "type": "object"
 }

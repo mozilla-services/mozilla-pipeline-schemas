@@ -2,17 +2,33 @@
   "$comment": "Please do not edit this schema by hand. Generate it instead by running npm run build:schema.",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "mozPipelineMetadata": {
-    "bq_dataset_family": "rally_beyond_the_paywall",
+    "bq_dataset_family": "pioneer_beyond_the_paywall",
     "bq_metadata_format": "pioneer",
-    "bq_table": "measurements_v1",
+    "bq_table": "page_nav_v1",
     "expiration_policy": {
       "delete_after_days": 558
     }
   },
   "properties": {
+    "attentionAndAudioDuration": {
+      "description": "duration (in ms) that audio was playing on the page and the page was in attentive view",
+      "type": "integer"
+    },
     "attentionDuration": {
       "description": "duration (in ms) that the page was in attentive view",
       "type": "integer"
+    },
+    "audioDuration": {
+      "description": "duration (in ms) that audio was playing on the page",
+      "type": "integer"
+    },
+    "maxRelativeScrollDepth": {
+      "description": "The largest depth reach on the page, as a proportion of the total page height",
+      "type": "number"
+    },
+    "referrer": {
+      "description": "The page that referred the user to the current page",
+      "type": "string"
     },
     "type": {
       "description": "the type of event recorded. Either WebScience.advertisements, WebScience.articleContents, WebScience.pageNav, or WebScience.pageNavSensitive",
@@ -25,6 +41,10 @@
       ],
       "type": "string"
     },
+    "url": {
+      "description": "The URL of the page visited",
+      "type": "string"
+    },
     "userId": {
       "description": "a unique ID associated with a participant.",
       "type": "string"
@@ -32,6 +52,10 @@
     "visitDuration": {
       "description": "Duration of visit in milliseconds",
       "type": "integer"
+    },
+    "visitId": {
+      "description": "a unique ID associated with a page visit.",
+      "type": "string"
     },
     "visitStartDate": {
       "description": "The local date in the format YYYY-MM-DD",
@@ -44,11 +68,17 @@
   },
   "required": [
     "type",
+    "visitId",
     "userId",
+    "url",
+    "referrer",
     "visitDuration",
     "visitStartDate",
     "visitStartHour",
-    "attentionDuration"
+    "attentionDuration",
+    "audioDuration",
+    "attentionAndAudioDuration",
+    "maxRelativeScrollDepth"
   ],
   "type": "object"
 }
