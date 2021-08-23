@@ -9819,6 +9819,12 @@
             "type": "STRING"
           },
           {
+            "description": "Time (ms) for spawning a service worker in the remote content process.",
+            "mode": "NULLABLE",
+            "name": "service_worker_launch_time_2",
+            "type": "STRING"
+          },
+          {
             "description": "Tracking how long a ServiceWorker stays alive after it is spawned. File bugs in Core::DOM in case of a Telemetry regression.",
             "mode": "NULLABLE",
             "name": "service_worker_life_time",
@@ -30035,6 +30041,24 @@
                 "type": "STRING"
               },
               {
+                "description": "Time (in ms) measured between when the fetch handler finished executing and when we reset the network channel.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "service_worker_fetch_event_channel_reset_ms_2",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "Time (in ms) measured between when the fetch event is dispatched by the Service Worker and before we execute the event listeners. This effectively measures the SW backlong, in the future this should also cover the IPC steps required to dispatch events to the SW.",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -30043,6 +30067,24 @@
             ],
             "mode": "REPEATED",
             "name": "service_worker_fetch_event_dispatch_ms",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "Time (in ms) measured between when the fetch event is dispatched by the Service Worker and before we execute the event listeners.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "service_worker_fetch_event_dispatch_ms_2",
             "type": "RECORD"
           },
           {
@@ -30071,6 +30113,24 @@
                 "type": "STRING"
               },
               {
+                "description": "Time (in ms) measured between when the respondWith promise resolves and when we provide the response through the intercepted channel.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "service_worker_fetch_event_finish_synthesized_response_ms_2",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "Time delta (ms) between when a network request is intercepted and the service worker provides a response. This includes: possible SW startup, worker thread dispatch, time until the respondWith() promise resolves, time to synthesize the response (including the body), worker thread to main thread dispatch. In the future this should include the IPC roundtrips involved in fetch interception.",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -30079,6 +30139,24 @@
             ],
             "mode": "REPEATED",
             "name": "service_worker_fetch_interception_duration_ms",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "Time delta (ms) between when a network request is intercepted in the parent process and the service worker provides a response.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "service_worker_fetch_interception_duration_ms_2",
             "type": "RECORD"
           },
           {
@@ -38632,6 +38710,12 @@
                     "description": "Time (ms) for a service worker to start up.",
                     "mode": "NULLABLE",
                     "name": "service_worker_launch_time",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Time (ms) for spawning a service worker in the remote content process.",
+                    "mode": "NULLABLE",
+                    "name": "service_worker_launch_time_2",
                     "type": "STRING"
                   },
                   {
@@ -57537,6 +57621,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "Time (in ms) measured between when the fetch handler finished executing and when we reset the network channel.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "service_worker_fetch_event_channel_reset_ms_2",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "Time (in ms) measured between when the fetch event is dispatched by the Service Worker and before we execute the event listeners. This effectively measures the SW backlong, in the future this should also cover the IPC steps required to dispatch events to the SW.",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -57545,6 +57647,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "service_worker_fetch_event_dispatch_ms",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Time (in ms) measured between when the fetch event is dispatched by the Service Worker and before we execute the event listeners.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "service_worker_fetch_event_dispatch_ms_2",
                     "type": "RECORD"
                   },
                   {
@@ -57573,6 +57693,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "Time (in ms) measured between when the respondWith promise resolves and when we provide the response through the intercepted channel.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "service_worker_fetch_event_finish_synthesized_response_ms_2",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "Time delta (ms) between when a network request is intercepted and the service worker provides a response. This includes: possible SW startup, worker thread dispatch, time until the respondWith() promise resolves, time to synthesize the response (including the body), worker thread to main thread dispatch. In the future this should include the IPC roundtrips involved in fetch interception.",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -57581,6 +57719,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "service_worker_fetch_interception_duration_ms",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Time delta (ms) between when a network request is intercepted in the parent process and the service worker provides a response.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "service_worker_fetch_interception_duration_ms_2",
                     "type": "RECORD"
                   },
                   {
