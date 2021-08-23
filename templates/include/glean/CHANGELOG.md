@@ -1,5 +1,7 @@
 # Version 1
 
+- Added a `text` metric type. See [Bug 1712783](https://bugzilla.mozilla.org/show_bug.cgi?id=1712783).
+
 - Added a `url` metric type. See [Bug 1719315](https://bugzilla.mozilla.org/show_bug.cgi?id=1719315).
 
 - Added `x_source_tags` field to header metadata fields. See [Bug 1655477](https://bugzilla.mozilla.org/show_bug.cgi?id=1655477).
