@@ -465,6 +465,23 @@
       {
         "fields": [
           {
+            "mode": "NULLABLE",
+            "name": "key",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "value",
+            "type": "STRING"
+          }
+        ],
+        "mode": "REPEATED",
+        "name": "text",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
             "description": "The duration the Android framework takes to start before letting us run\ncode in `*Application.init` when this device has\n`clock_ticks_per_second_v2` equal to 100: if it's not equal to 100, then\nthis value is captured in `framework_secondary`. We split this into two\nmetrics to make it easier to analyze in GLAM. We split on 100 because\nwhen we did our initial brief analysis -\nhttps://sql.telemetry.mozilla.org/queries/75591 - the results for clocks\nticks were overwhelmingly 100.\n\nThe duration is calculated from `appInitTimestamp -\nprocessStartTimestamp`. `processStartTimestamp` is derived from the clock\ntick time unit, which is expected to be less granular than nanoseconds.\nTherefore, we convert and round our timestamps to clock ticks before\ncomputing the difference and convert back to nanoseconds to report.\n\nFor debugging purposes, `clock_ticks_per_second_v2`, which may vary\nbetween devices, is also reported as a metric\n",
             "fields": [
               {
