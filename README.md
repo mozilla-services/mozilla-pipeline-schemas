@@ -81,6 +81,13 @@ schemas
 │   ├── sources
 │   ├── structured-ingestion
 │   └── telemetry-ingestion
+├── mlhackweek-search
+│   ├── action
+│   ├── baseline
+│   ├── custom
+│   ├── deletion-request
+│   ├── events
+│   └── metrics
 ├── mobile
 │   └── activation
 ├── mozdata
@@ -412,6 +419,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-402 directories
+409 directories
 ```
 
