@@ -4,7 +4,6 @@ LABEL maintainer="Mozilla Data Platform"
 # Install the appropriate software
 RUN dnf -y update && \
     dnf -y install epel-release && \
-    dnf -y remove java-1.8.0-openjdk-devel && \
     dnf -y install \
         cmake \
         diffutils \
@@ -18,8 +17,11 @@ RUN dnf -y update && \
         python36 \
         java-11-openjdk-devel \
         maven \
-        cargo \
-    && dnf clean all
+        cargo
+
+# Remove old
+RUN dnf -y remove java-1.8.0-openjdk-devel
+RUN dnf clean all
 
 # Install jsonschema-transpiler
 ENV PATH=$PATH:/root/.cargo/bin
