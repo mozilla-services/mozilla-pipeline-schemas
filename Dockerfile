@@ -2,7 +2,8 @@ FROM centos:centos8.1.1911
 LABEL maintainer="Mozilla Data Platform"
 
 # Install the appropriate software
-RUN dnf -y update && \
+RUN echo 'fastestmirror=1' >> /etc/dnf/dnf.conf && \
+    dnf -y update && \
     dnf -y install epel-release && \
     dnf -y install \
         cmake \
@@ -15,10 +16,14 @@ RUN dnf -y update && \
         wget \
         git \
         python36 \
-        java-1.8.0-openjdk-devel \
+        java-11-openjdk-devel \
         maven \
         cargo \
     && dnf clean all
+
+# ensure we're actually using java 11
+ENV JAVA_HOME=/etc/alternatives/java_sdk_11_openjdk
+RUN alternatives --set java `readlink $JAVA_HOME`/bin/java
 
 # Install jsonschema-transpiler
 ENV PATH=$PATH:/root/.cargo/bin
