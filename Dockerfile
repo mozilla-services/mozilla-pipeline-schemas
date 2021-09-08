@@ -2,7 +2,8 @@ FROM centos:centos8.1.1911
 LABEL maintainer="Mozilla Data Platform"
 
 # Install the appropriate software
-RUN dnf -y update && \
+RUN echo 'fastestmirror=1' >> /etc/dnf/dnf.conf && \
+    dnf -y update && \
     dnf -y install epel-release && \
     dnf -y install \
         cmake \
