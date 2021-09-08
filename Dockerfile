@@ -20,9 +20,9 @@ RUN dnf -y update && \
         cargo \
     && dnf clean all
 
-# various hacks to make sure we use openjdk 11
-ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.12.0.7-0.el8_4.x86_64
-RUN alternatives --set java /usr/lib/jvm/java-11-openjdk-11.0.12.0.7-0.el8_4.x86_64/bin/java
+# ensure we're actually using java 11
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+RUN alternatives --set java /usr/lib/jvm/java-11-openjdk/bin/java
 
 # Install jsonschema-transpiler
 ENV PATH=$PATH:/root/.cargo/bin
