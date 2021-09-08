@@ -19,7 +19,7 @@ RUN dnf -y update && \
         maven \
         cargo
 
-# Remove old
+# Remove old java SDK, clean up
 RUN dnf -y remove java-1.8.0-openjdk-devel
 RUN dnf clean all
 
