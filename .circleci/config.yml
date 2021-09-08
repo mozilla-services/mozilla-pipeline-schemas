@@ -13,14 +13,14 @@ jobs:
       - run: &checkout_upstream
           name: Checkout upstream
           command: |
-            git remote add upstream git@github.com:mozilla-services/mozilla-pipeline-schemas.git
+            git remote add upstream https://github.com/mozilla-services/mozilla-pipeline-schemas.git
             git fetch --all
       - setup_remote_docker:
           docker_layer_caching: true
-          version: 19.03.13
+          version: 20.10.7
       - run:
           name: Build Docker image
-          command: docker build -t mps .
+          command: docker build --pull -t mps .
       - run:
           name: Test Code
           command: docker run mps
