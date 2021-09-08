@@ -17,11 +17,12 @@ RUN dnf -y update && \
         python36 \
         java-11-openjdk-devel \
         maven \
-        cargo
+        cargo \
+    && dnf clean all
 
-# Remove old java SDK, clean up
-RUN dnf -y remove java-1.8.0-openjdk-devel
-RUN dnf clean all
+# ensure we're actually using java 11
+ENV JAVA_HOME=/etc/alternatives/java_sdk_11_openjdk
+RUN alternatives --set java `readlink $JAVA_HOME`/bin/java
 
 # Install jsonschema-transpiler
 ENV PATH=$PATH:/root/.cargo/bin
