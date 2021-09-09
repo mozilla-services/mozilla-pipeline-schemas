@@ -67,6 +67,7 @@ schemas
 │   ├── onboarding
 │   ├── personalization-experiment
 │   ├── snippets
+│   ├── spotlight
 │   ├── undesired-events
 │   └── whats-new-panel
 ├── metadata
@@ -419,6 +420,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-409 directories
+410 directories
 ```
 

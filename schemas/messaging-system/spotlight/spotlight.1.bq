@@ -6,27 +6,37 @@
     "type": "STRING"
   },
   {
-    "description": "Name of the advertiser, e.g. amazon, ebay, bestbuy etc",
     "mode": "NULLABLE",
-    "name": "advertiser",
+    "name": "addon_version",
     "type": "STRING"
   },
   {
-    "description": "A unique identifier for the QuickSuggest link",
+    "description": "A mirror of the browser sessionId, as defined in https://github.com/mozilla-services/mozilla-pipeline-schemas/blob/main/schemas/telemetry/main/main.4.schema.json",
     "mode": "NULLABLE",
-    "name": "block_id",
-    "type": "INT64"
+    "name": "browser_session_id",
+    "type": "STRING"
   },
   {
-    "description": "A UUID representing this user. Note that it's not client_id, nor can it be used to link to a client_id",
     "mode": "NULLABLE",
-    "name": "context_id",
+    "name": "client_id",
     "type": "STRING"
   },
   {
     "description": "The document ID specified in the URI when the client sent this message",
     "mode": "NULLABLE",
     "name": "document_id",
+    "type": "STRING"
+  },
+  {
+    "description": "An event identifier",
+    "mode": "NULLABLE",
+    "name": "event",
+    "type": "STRING"
+  },
+  {
+    "description": "A string that describes the context about this event",
+    "mode": "NULLABLE",
+    "name": "event_context",
     "type": "STRING"
   },
   {
@@ -55,21 +65,13 @@
     "type": "RECORD"
   },
   {
-    "description": "Whether or not the user has clicked on this QuickSuggest link",
-    "mode": "NULLABLE",
-    "name": "is_clicked",
-    "type": "BOOL"
-  },
-  {
-    "description": "User's current locale",
     "mode": "NULLABLE",
     "name": "locale",
     "type": "STRING"
   },
   {
-    "description": "The matched keywords when a QuickSuggest link is shown",
     "mode": "NULLABLE",
-    "name": "matched_keywords",
+    "name": "message_id",
     "type": "STRING"
   },
   {
@@ -245,21 +247,8 @@
     "type": "STRING"
   },
   {
-    "description": "The placement of the QuickSuggest link (1-based)",
-    "mode": "NULLABLE",
-    "name": "position",
-    "type": "INT64"
-  },
-  {
-    "description": "Firefox release channel",
     "mode": "NULLABLE",
     "name": "release_channel",
-    "type": "STRING"
-  },
-  {
-    "description": "The reporting URL of the ad, normally pointing to the ad partner's reporting endpoint. It's URL encoded",
-    "mode": "NULLABLE",
-    "name": "reporting_url",
     "type": "STRING"
   },
   {
@@ -269,25 +258,12 @@
     "type": "INT64"
   },
   {
-    "description": "The scenario of the QuickSuggest user experience",
-    "mode": "NULLABLE",
-    "name": "scenario",
-    "type": "STRING"
-  },
-  {
-    "description": "The user's typed-in search query in the AwesomeBar. Note that this ping is only sent when a QuickSuggest ad is shown for the current search query, so we don't have to limit its size here",
-    "mode": "NULLABLE",
-    "name": "search_query",
-    "type": "STRING"
-  },
-  {
     "description": "Time when the ingestion edge server accepted this message",
     "mode": "NULLABLE",
     "name": "submission_timestamp",
     "type": "TIMESTAMP"
   },
   {
-    "description": "Firefox version",
     "mode": "NULLABLE",
     "name": "version",
     "type": "STRING"
