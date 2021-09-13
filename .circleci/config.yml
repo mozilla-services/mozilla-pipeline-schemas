@@ -33,8 +33,14 @@ jobs:
       - run:
           name: Generate diff artifacts for bigquery
           command: |
+            # compare a branch against the main branch, or against the previous
+            # commit if we're already on the main branch
+            base=upstream/main
+            if [[ "$CIRCLE_BRANCH" == "main" ]]; then
+              base=HEAD~1
+            fi
             docker run --name mps -w /app mps \
-              mps bigquery diff --base-ref upstream/main
+              mps bigquery diff --base-ref "$base"
             docker cp mps:/app/integration /tmp/integration
       - persist_to_workspace:
           root: /tmp
