@@ -590,6 +590,24 @@
             "type": "INT64"
           },
           {
+            "description": "The total number of login records which failed to migrate\n",
+            "mode": "NULLABLE",
+            "name": "logins_store_migration_num_failed",
+            "type": "INT64"
+          },
+          {
+            "description": "The total number of login records processed by the migration\n",
+            "mode": "NULLABLE",
+            "name": "logins_store_migration_num_processed",
+            "type": "INT64"
+          },
+          {
+            "description": "The total number of login records successfully migrated\n",
+            "mode": "NULLABLE",
+            "name": "logins_store_migration_num_succeeded",
+            "type": "INT64"
+          },
+          {
             "description": "The total number of read operations performed on the logins store. The count only includes operations triggered by the application, not e.g. incidental reads performed as part of a sync. It is intended to be used together with `read_query_error_count` to measure the overall error rate of read operations on the logins store.\n",
             "mode": "NULLABLE",
             "name": "logins_store_read_query_count",
@@ -2244,6 +2262,11 @@
           },
           {
             "mode": "REPEATED",
+            "name": "logins_store_migration_errors",
+            "type": "STRING"
+          },
+          {
+            "mode": "REPEATED",
             "name": "metrics_mozilla_products",
             "type": "STRING"
           },
@@ -2395,6 +2418,24 @@
             ],
             "mode": "NULLABLE",
             "name": "engine_kill_foreground_age",
+            "type": "RECORD"
+          },
+          {
+            "description": "How long the migration tool\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "logins_store_migration_total_duration",
             "type": "RECORD"
           }
         ],
