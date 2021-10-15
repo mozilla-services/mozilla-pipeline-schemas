@@ -139,6 +139,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
+│   ├── fog-validation
 │   ├── history-sync
 │   ├── installation
 │   ├── logins-sync
@@ -156,6 +157,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
+│   ├── fog-validation
 │   ├── history-sync
 │   ├── installation
 │   ├── logins-sync
@@ -173,6 +175,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
+│   ├── fog-validation
 │   ├── history-sync
 │   ├── installation
 │   ├── logins-sync
@@ -190,6 +193,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
+│   ├── fog-validation
 │   ├── history-sync
 │   ├── installation
 │   ├── logins-sync
@@ -207,6 +211,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
+│   ├── fog-validation
 │   ├── history-sync
 │   ├── installation
 │   ├── logins-sync
@@ -420,6 +425,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-410 directories
+415 directories
 ```
 

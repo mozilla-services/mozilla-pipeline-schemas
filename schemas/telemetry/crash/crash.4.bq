@@ -1843,6 +1843,12 @@
             "type": "STRING"
           },
           {
+            "description": "How long the user had been inactive in seconds if the user was inactive at crash. The value is not set if the user state was active.",
+            "mode": "NULLABLE",
+            "name": "last_interaction_duration",
+            "type": "STRING"
+          },
+          {
             "description": "<json>, This annotation is present if LocalStorage shutdown was not finished in time and the browser was crashed instead of waiting for LocalStorage shutdown to finish. The condition that caused the hang is contained in the annotation. The condition is constructed by stringifying status of objects which blocked LocalStorage shutdown. Objects are divided into three groups: PrepareDatastoreOperations, Datastores and LiveDatabases. Each group is reported separately and contains the number of objects in the group and status of individual objects in the group (duplicit entries are removed): \"GroupName: N (objectStatus1, objectStatus2, ...)\" where N is the number of objects in the group. Status of individual objects is constructed by taking selected object properties. Properties which contain origin strings are anonymized.",
             "mode": "NULLABLE",
             "name": "local_storage_shutdown_timeout",

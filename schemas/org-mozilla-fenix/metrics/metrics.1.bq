@@ -307,6 +307,12 @@
             "type": "BOOL"
           },
           {
+            "description": "True if the Proton default theme is enabled.\n",
+            "mode": "NULLABLE",
+            "name": "browser_ui_proton_enabled",
+            "type": "BOOL"
+          },
+          {
             "description": "Text selection contextual menu option tapped.\n",
             "mode": "NULLABLE",
             "name": "contextual_menu_long_press_tapped",
@@ -340,6 +346,12 @@
             "description": "An indication of whether the Recently visited section is enabled to be displayed\n",
             "mode": "NULLABLE",
             "name": "customize_home_recently_visited",
+            "type": "BOOL"
+          },
+          {
+            "description": "True if we failed to register with the idle service. Absent otherwise.\nMeans IPC probably isn't working well.\nChild-process data will likely be absent, or incomplete.\n",
+            "mode": "NULLABLE",
+            "name": "fog_failed_idle_registration",
             "type": "BOOL"
           },
           {
@@ -539,6 +551,12 @@
             "description": "A counter of URIs visited by the user in the current session, including\npage reloads. This does not include background page requests and URIs from\nembedded pages or private browsing but may be incremented without user\ninteraction by website scripts that programmatically redirect to a new\nlocation.\n",
             "mode": "NULLABLE",
             "name": "events_total_uri_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of times the ipc buffer failed to be replayed in the\nparent process.\n",
+            "mode": "NULLABLE",
+            "name": "fog_ipc_replay_failures",
             "type": "INT64"
           },
           {
@@ -1786,6 +1804,36 @@
       {
         "fields": [
           {
+            "description": "The number and size of the IPC buffers being received over FOG IPC.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "fog_ipc_buffer_sizes",
+            "type": "RECORD"
+          },
+          {
             "description": "The size of the database file at startup.\n",
             "fields": [
               {
@@ -2421,6 +2469,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Time the FOG initialization takes.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "fog_initialization",
+            "type": "RECORD"
+          },
+          {
             "description": "How long the migration tool\n",
             "fields": [
               {
@@ -2563,6 +2629,66 @@
             ],
             "mode": "NULLABLE",
             "name": "engine_tab_kill_foreground_age",
+            "type": "RECORD"
+          },
+          {
+            "description": "The length of time between asking the child processes for their\nIPC buffers and all of them being received by the parent.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "fog_ipc_flush_durations",
             "type": "RECORD"
           },
           {
@@ -5143,6 +5269,66 @@
             ],
             "mode": "NULLABLE",
             "name": "network_tls_handshake",
+            "type": "RECORD"
+          },
+          {
+            "description": "The time to build a Gecko display list.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "paint_build_displaylist_time",
             "type": "RECORD"
           },
           {
