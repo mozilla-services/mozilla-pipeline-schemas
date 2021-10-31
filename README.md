@@ -232,6 +232,18 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   └── metrics
+├── org-mozilla-focus-beta
+│   ├── activation
+│   ├── baseline
+│   ├── deletion-request
+│   ├── events
+│   └── metrics
+├── org-mozilla-focus-nightly
+│   ├── activation
+│   ├── baseline
+│   ├── deletion-request
+│   ├── events
+│   └── metrics
 ├── org-mozilla-ios-fennec
 │   ├── baseline
 │   ├── deletion-request
@@ -425,6 +437,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-415 directories
+427 directories
 ```
 
