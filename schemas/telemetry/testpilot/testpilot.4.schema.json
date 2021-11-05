@@ -651,6 +651,13 @@
             },
             "sandbox": {
               "properties": {
+                "contentWin32kLockdownState": {
+                  "description": "The status of Win32k Lockdown for Content process.",
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
                 "effectiveContentProcessLevel": {
                   "description": "The effective sandbox. The values are OS dependent.",
                   "type": [
@@ -675,6 +682,10 @@
               "properties": {
                 "autoDownload": {
                   "description": "The state of the `app.update.auto` pref.",
+                  "type": "boolean"
+                },
+                "background": {
+                  "description": "Indicates whether updates may be installed when Firefox is not running.",
                   "type": "boolean"
                 },
                 "channel": {
@@ -1112,6 +1123,13 @@
                 }
               },
               "type": "object"
+            },
+            "hasWinPackageId": {
+              "description": "Is the process running with a package identity (e.g. from an MSIX install)? See bug 1709892. This is Windows only.",
+              "type": [
+                "boolean",
+                "null"
+              ]
             },
             "hdd": {
               "properties": {

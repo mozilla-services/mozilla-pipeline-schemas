@@ -2,24 +2,6 @@
   "$comment": "Added in bug 1636317; extends the metadata included in structured ingestion, accounting for additional fields in the Pioneer envelope.",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "id": "http://jsonschema.net",
-  "oneOf": [
-    {
-      "required": [
-        "submission_timestamp",
-        "metadata",
-        "pioneerId",
-        "studyName"
-      ]
-    },
-    {
-      "required": [
-        "submission_timestamp",
-        "metadata",
-        "rallyId",
-        "studyName"
-      ]
-    }
-  ],
   "properties": {
     "additional_properties": {
       "description": "A JSON string containing any payload properties not present in the schema",
@@ -71,12 +53,20 @@
               "description": "X-Debug-Id HTTP header",
               "type": "string"
             },
+            "x_foxsec_ip_reputation": {
+              "description": "X-Foxsec-IP-Reputation header",
+              "type": "string"
+            },
             "x_pingsender_version": {
               "description": "X-PingSender-Version HTTP header",
               "type": "string"
             },
             "x_source_tags": {
               "description": "X-Source-Tags HTTP header",
+              "type": "string"
+            },
+            "x_telemetry_agent": {
+              "description": "X-Telemetry-Agent HTTP header",
               "type": "string"
             }
           },
@@ -143,7 +133,7 @@
       "type": "string"
     },
     "rallyId": {
-      "description": "Bug 1677567 - Rally id reported by the core addon",
+      "description": "Bug 1677567 - Rally id reported by the core addon; deprecated as part of bug 1708552.",
       "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
       "type": "string"
     },
@@ -152,7 +142,7 @@
       "type": "integer"
     },
     "studyName": {
-      "description": "Name of a particular study. Usually the addon_id.",
+      "description": "Name of a particular study. Usually the addon_id. Not populated when using glean.js.",
       "maxLength": 100,
       "minLength": 1,
       "pattern": "^\\S+$",
@@ -164,5 +154,9 @@
       "type": "string"
     }
   },
+  "required": [
+    "submission_timestamp",
+    "metadata"
+  ],
   "type": "object"
 }

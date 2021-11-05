@@ -1,0 +1,447 @@
+[
+  {
+    "description": "A JSON string containing any payload properties not present in the schema",
+    "mode": "NULLABLE",
+    "name": "additional_properties",
+    "type": "STRING"
+  },
+  {
+    "description": "The document ID specified in the URI when the client sent this message",
+    "mode": "NULLABLE",
+    "name": "document_id",
+    "type": "STRING"
+  },
+  {
+    "fields": [
+      {
+        "description": "Results of a geographic lookup based on the client's IP address",
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "city",
+            "type": "STRING"
+          },
+          {
+            "description": "An ISO 3166-1 alpha-2 country code",
+            "mode": "NULLABLE",
+            "name": "country",
+            "type": "STRING"
+          },
+          {
+            "description": "The specific geo database version used for this lookup",
+            "mode": "NULLABLE",
+            "name": "db_version",
+            "type": "STRING"
+          },
+          {
+            "description": "First major country subdivision, typically a state, province, or county",
+            "mode": "NULLABLE",
+            "name": "subdivision1",
+            "type": "STRING"
+          },
+          {
+            "description": "Second major country subdivision; not applicable for most countries",
+            "mode": "NULLABLE",
+            "name": "subdivision2",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "geo",
+        "type": "RECORD"
+      },
+      {
+        "description": "Headers included in the client's HTTP request",
+        "fields": [
+          {
+            "description": "Date HTTP header",
+            "mode": "NULLABLE",
+            "name": "date",
+            "type": "STRING"
+          },
+          {
+            "description": "DNT (Do Not Track) HTTP header",
+            "mode": "NULLABLE",
+            "name": "dnt",
+            "type": "STRING"
+          },
+          {
+            "description": "X-Debug-Id HTTP header",
+            "mode": "NULLABLE",
+            "name": "x_debug_id",
+            "type": "STRING"
+          },
+          {
+            "description": "X-Foxsec-IP-Reputation header",
+            "mode": "NULLABLE",
+            "name": "x_foxsec_ip_reputation",
+            "type": "STRING"
+          },
+          {
+            "description": "X-PingSender-Version HTTP header",
+            "mode": "NULLABLE",
+            "name": "x_pingsender_version",
+            "type": "STRING"
+          },
+          {
+            "description": "X-Source-Tags HTTP header",
+            "mode": "NULLABLE",
+            "name": "x_source_tags",
+            "type": "STRING"
+          },
+          {
+            "description": "X-Telemetry-Agent HTTP header",
+            "mode": "NULLABLE",
+            "name": "x_telemetry_agent",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "header",
+        "type": "RECORD"
+      },
+      {
+        "description": "Results of ISP lookup based on the client's IP address",
+        "fields": [
+          {
+            "description": "The specific geo ISP database version used for this lookup",
+            "mode": "NULLABLE",
+            "name": "db_version",
+            "type": "STRING"
+          },
+          {
+            "description": "The name of the ISP associated with the client's IP address",
+            "mode": "NULLABLE",
+            "name": "name",
+            "type": "STRING"
+          },
+          {
+            "description": "The name of a specific business entity associated with the client's IP address when available; otherwise the ISP name",
+            "mode": "NULLABLE",
+            "name": "organization",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "isp",
+        "type": "RECORD"
+      },
+      {
+        "description": "Parsed components of the client's user agent string",
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "browser",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "os",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "version",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "user_agent",
+        "type": "RECORD"
+      }
+    ],
+    "mode": "NULLABLE",
+    "name": "metadata",
+    "type": "RECORD"
+  },
+  {
+    "fields": [
+      {
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "category_exposures_count",
+            "type": "INT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "day_of_week",
+            "type": "INT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "exposure_destination_trimmed_url",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "exposure_source_trimmed_url",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "time_of_day",
+            "type": "INT64"
+          }
+        ],
+        "mode": "REPEATED",
+        "name": "tracked_exposures_by_category",
+        "type": "RECORD"
+      }
+    ],
+    "mode": "NULLABLE",
+    "name": "news_and_disinfo_link_exposure",
+    "type": "RECORD"
+  },
+  {
+    "fields": [
+      {
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "category_attention",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "category_scroll",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "category_visits_count",
+            "type": "INT64"
+          },
+          {
+            "description": "additional properties are the name of the classifier, with the classification result as the value",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "classifier_results",
+            "type": "RECORD"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "day_of_week",
+            "type": "INT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "source_trimmed_url_from_referrer",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "source_trimmed_url_from_transitions",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "time_of_day",
+            "type": "INT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "visit_trimmed_url",
+            "type": "STRING"
+          }
+        ],
+        "mode": "REPEATED",
+        "name": "tracked_visits_by_category",
+        "type": "RECORD"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "untracked_attention",
+        "type": "FLOAT64"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "untracked_visits_count",
+        "type": "FLOAT64"
+      }
+    ],
+    "mode": "NULLABLE",
+    "name": "news_and_disinfo_page_navigation",
+    "type": "RECORD"
+  },
+  {
+    "fields": [
+      {
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "platform",
+            "type": "STRING"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "category_shares_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "category_visit_attention",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "category_visits_in_history_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "category_visits_in_page_navigation_count",
+                "type": "INT64"
+              },
+              {
+                "description": "additional properties are the name of the classifier, with the classification result as the value",
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "classifier_results",
+                "type": "RECORD"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "day_of_week",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "facebook_reshare_source",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "share_audience",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "shared_trimmed_url",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_of_day",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "visit_source_from_transitions",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "tracked_shares_by_category",
+            "type": "RECORD"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "untracked_shares_count",
+            "type": "INT64"
+          }
+        ],
+        "mode": "REPEATED",
+        "name": "link_shares_by_platform",
+        "type": "RECORD"
+      }
+    ],
+    "mode": "NULLABLE",
+    "name": "news_and_disinfo_social_media_link_sharing",
+    "type": "RECORD"
+  },
+  {
+    "description": "ID sent to Qualtrics, for associating survey responses with telemetry data",
+    "mode": "NULLABLE",
+    "name": "news_and_disinfo_survey_id",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "news_and_disinfo_version",
+    "type": "STRING"
+  },
+  {
+    "description": "Set to \"Other\" if this message contained an unrecognized app name",
+    "mode": "NULLABLE",
+    "name": "normalized_app_name",
+    "type": "STRING"
+  },
+  {
+    "description": "Set to \"Other\" if this message contained an unrecognized channel name",
+    "mode": "NULLABLE",
+    "name": "normalized_channel",
+    "type": "STRING"
+  },
+  {
+    "description": "An ISO 3166-1 alpha-2 country code",
+    "mode": "NULLABLE",
+    "name": "normalized_country_code",
+    "type": "STRING"
+  },
+  {
+    "description": "Set to \"Other\" if this message contained an unrecognized OS name",
+    "mode": "NULLABLE",
+    "name": "normalized_os",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "normalized_os_version",
+    "type": "STRING"
+  },
+  {
+    "description": "Custom pioneer id, must not be Telemetry clientId",
+    "mode": "NULLABLE",
+    "name": "pioneer_id",
+    "type": "STRING"
+  },
+  {
+    "description": "Bug 1677567 - Rally id reported by the core addon; deprecated as part of bug 1708552.",
+    "mode": "NULLABLE",
+    "name": "rally_id",
+    "type": "STRING"
+  },
+  {
+    "description": "Hashed version of client_id (if present) useful for partitioning; ranges from 0 to 99",
+    "mode": "NULLABLE",
+    "name": "sample_id",
+    "type": "INT64"
+  },
+  {
+    "description": "Name of a particular study. Usually the addon_id. Not populated when using glean.js.",
+    "mode": "NULLABLE",
+    "name": "study_name",
+    "type": "STRING"
+  },
+  {
+    "description": "Time when the ingestion edge server accepted this message",
+    "mode": "NULLABLE",
+    "name": "submission_timestamp",
+    "type": "TIMESTAMP"
+  }
+]

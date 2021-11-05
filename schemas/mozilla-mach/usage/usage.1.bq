@@ -196,6 +196,12 @@
             "type": "STRING"
           },
           {
+            "description": "X-Foxsec-IP-Reputation header",
+            "mode": "NULLABLE",
+            "name": "x_foxsec_ip_reputation",
+            "type": "STRING"
+          },
+          {
             "description": "X-PingSender-Version HTTP header",
             "mode": "NULLABLE",
             "name": "x_pingsender_version",
@@ -205,6 +211,12 @@
             "description": "X-Source-Tags HTTP header",
             "mode": "NULLABLE",
             "name": "x_source_tags",
+            "type": "STRING"
+          },
+          {
+            "description": "X-Telemetry-Agent HTTP header",
+            "mode": "NULLABLE",
+            "name": "x_telemetry_agent",
             "type": "STRING"
           }
         ],
@@ -274,6 +286,24 @@
             "description": "True if the mach invocation succeeded.",
             "mode": "NULLABLE",
             "name": "mach_success",
+            "type": "BOOL"
+          },
+          {
+            "description": "True if the current shell is a remote SSH connection.",
+            "mode": "NULLABLE",
+            "name": "mach_system_ssh_connection",
+            "type": "BOOL"
+          },
+          {
+            "description": "True if there is an instance of vscode running.",
+            "mode": "NULLABLE",
+            "name": "mach_system_vscode_running",
+            "type": "BOOL"
+          },
+          {
+            "description": "True if the current terminal is opened via Visual Studio Code.",
+            "mode": "NULLABLE",
+            "name": "mach_system_vscode_terminal",
             "type": "BOOL"
           },
           {
@@ -568,6 +598,23 @@
       {
         "fields": [
           {
+            "mode": "NULLABLE",
+            "name": "key",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "value",
+            "type": "STRING"
+          }
+        ],
+        "mode": "REPEATED",
+        "name": "text",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
             "description": "How long it took for the command to complete.",
             "fields": [
               {
@@ -588,6 +635,23 @@
         ],
         "mode": "NULLABLE",
         "name": "timespan",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "key",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "value",
+            "type": "STRING"
+          }
+        ],
+        "mode": "REPEATED",
+        "name": "url",
         "type": "RECORD"
       }
     ],

@@ -196,6 +196,12 @@
             "type": "STRING"
           },
           {
+            "description": "X-Foxsec-IP-Reputation header",
+            "mode": "NULLABLE",
+            "name": "x_foxsec_ip_reputation",
+            "type": "STRING"
+          },
+          {
             "description": "X-PingSender-Version HTTP header",
             "mode": "NULLABLE",
             "name": "x_pingsender_version",
@@ -205,6 +211,12 @@
             "description": "X-Source-Tags HTTP header",
             "mode": "NULLABLE",
             "name": "x_source_tags",
+            "type": "STRING"
+          },
+          {
+            "description": "X-Telemetry-Agent HTTP header",
+            "mode": "NULLABLE",
+            "name": "x_telemetry_agent",
             "type": "STRING"
           }
         ],
@@ -283,9 +295,63 @@
             "type": "BOOL"
           },
           {
+            "description": "Whether or not Firefox is the Android Autofill provider for this user.\nprovider.\n",
+            "mode": "NULLABLE",
+            "name": "android_autofill_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether or not Android Autofill is supported by the device and is\nsupported for this user.\n",
+            "mode": "NULLABLE",
+            "name": "android_autofill_supported",
+            "type": "BOOL"
+          },
+          {
+            "description": "True if the Proton default theme is enabled.\n",
+            "mode": "NULLABLE",
+            "name": "browser_ui_proton_enabled",
+            "type": "BOOL"
+          },
+          {
             "description": "Text selection contextual menu option tapped.\n",
             "mode": "NULLABLE",
             "name": "contextual_menu_long_press_tapped",
+            "type": "BOOL"
+          },
+          {
+            "description": "An indication of whether the Jump back\nin section is enabled to be displayed\n",
+            "mode": "NULLABLE",
+            "name": "customize_home_jump_back_in",
+            "type": "BOOL"
+          },
+          {
+            "description": "An indication of whether the most visited sites\nare enabled to be displayed\n",
+            "mode": "NULLABLE",
+            "name": "customize_home_most_visited_sites",
+            "type": "BOOL"
+          },
+          {
+            "description": "An indication of whether Pocket is enabled to be displayed\n",
+            "mode": "NULLABLE",
+            "name": "customize_home_pocket",
+            "type": "BOOL"
+          },
+          {
+            "description": "An indication of whether the recently\nsaved section is enabled to be displayed\n",
+            "mode": "NULLABLE",
+            "name": "customize_home_recently_saved",
+            "type": "BOOL"
+          },
+          {
+            "description": "An indication of whether the Recently\nvisited section is enabled to be displayed\n",
+            "mode": "NULLABLE",
+            "name": "customize_home_recently_visited",
+            "type": "BOOL"
+          },
+          {
+            "description": "True if we failed to register with the idle service. Absent otherwise.\nMeans IPC probably isn't working well.\nChild-process data will likely be absent, or incomplete.\n",
+            "mode": "NULLABLE",
+            "name": "fog_failed_idle_registration",
             "type": "BOOL"
           },
           {
@@ -365,6 +431,102 @@
             "mode": "NULLABLE",
             "name": "metrics_start_reason_process_error",
             "type": "BOOL"
+          },
+          {
+            "description": "Whether or not the user has enabled bookmark search suggestions\ndefault: true\n",
+            "mode": "NULLABLE",
+            "name": "preferences_bookmarks_suggestion",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether or not the user has enabled browsing history suggestions.\ndefault: true\n",
+            "mode": "NULLABLE",
+            "name": "preferences_browsing_history_suggestion",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether or not the user has enabled clipboard search suggestions.\ndefault: true\n",
+            "mode": "NULLABLE",
+            "name": "preferences_clipboard_suggestions_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether or not the user has the inactive tabs feature enabled.\ndefault: true\n",
+            "mode": "NULLABLE",
+            "name": "preferences_inactive_tabs_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether or not the user has the open links in apps feature enabled.\ndefault: false\n",
+            "mode": "NULLABLE",
+            "name": "preferences_open_links_in_app_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether or not the user has enabled open links in a private tab. default: false\n",
+            "mode": "NULLABLE",
+            "name": "preferences_open_links_in_private",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether or not the user has enabled showing search suggestions in private mode. default: false (we prompt the user, asking them to make a selection)\n",
+            "mode": "NULLABLE",
+            "name": "preferences_private_search_suggestions",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether or not the user has remote debugging enabled\ndefault: false\n",
+            "mode": "NULLABLE",
+            "name": "preferences_remote_debugging_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether or not the user has enabled search shortcuts.\ndefault: true\n",
+            "mode": "NULLABLE",
+            "name": "preferences_search_shortcuts_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether or not the user has search suggestions enabled\ndefault: true\n",
+            "mode": "NULLABLE",
+            "name": "preferences_search_suggestions_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Is search term group in tabs tray on?\n",
+            "mode": "NULLABLE",
+            "name": "preferences_search_term_groups_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether or not the user is signed into FxA\ndefault: false\n",
+            "mode": "NULLABLE",
+            "name": "preferences_signed_in_sync",
+            "type": "BOOL"
+          },
+          {
+            "description": "A metric indicating whether or not the user has studies enabled default: true\n",
+            "mode": "NULLABLE",
+            "name": "preferences_studies_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether or not the user has telemetry enabled. Note we should\nnever receive a \"false\" value for this since telemetry would\nnot send in that case.\ndefault: true\n",
+            "mode": "NULLABLE",
+            "name": "preferences_telemetry_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether or not the user has enabled the voice search button.\ndefault: true\n",
+            "mode": "NULLABLE",
+            "name": "preferences_voice_search_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "An indication of whether the recent tabs /\nJump Back In section is visible on the homepage.\n",
+            "mode": "NULLABLE",
+            "name": "recent_tabs_section_visible",
+            "type": "BOOL"
           }
         ],
         "mode": "NULLABLE",
@@ -373,6 +535,36 @@
       },
       {
         "fields": [
+          {
+            "description": "A counter of the number of times the user has autofilled\na credit card.\n",
+            "mode": "NULLABLE",
+            "name": "credit_cards_autofill_card",
+            "type": "INT64"
+          },
+          {
+            "description": "A counter of the number of credit cards that have been deleted by\nthe user.\n",
+            "mode": "NULLABLE",
+            "name": "credit_cards_delete_card",
+            "type": "INT64"
+          },
+          {
+            "description": "A counter of the number of credit cards that have been deleted by\nthe user.\n",
+            "mode": "NULLABLE",
+            "name": "credit_cards_deleted",
+            "type": "INT64"
+          },
+          {
+            "description": "A counter of the number of credit cards that have been saved\nmanually by the user.\n",
+            "mode": "NULLABLE",
+            "name": "credit_cards_manual_save",
+            "type": "INT64"
+          },
+          {
+            "description": "A counter of the number of credit cards that have been saved\nmanually by the user.\n",
+            "mode": "NULLABLE",
+            "name": "credit_cards_saved",
+            "type": "INT64"
+          },
           {
             "description": "A counter of URIs visited by the user in the current session, including\npage reloads. This includes private browsing.  This does not include\nbackground page requests and URIs from embedded pages but may be\nincremented without user interaction by website scripts that\nprogrammatically redirect to a new location.\n",
             "mode": "NULLABLE",
@@ -383,6 +575,12 @@
             "description": "A counter of URIs visited by the user in the current session, including\npage reloads. This does not include background page requests and URIs from\nembedded pages or private browsing but may be incremented without user\ninteraction by website scripts that programmatically redirect to a new\nlocation.\n",
             "mode": "NULLABLE",
             "name": "events_total_uri_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of times the ipc buffer failed to be replayed in the\nparent process.\n",
+            "mode": "NULLABLE",
+            "name": "fog_ipc_replay_failures",
             "type": "INT64"
           },
           {
@@ -434,6 +632,24 @@
             "type": "INT64"
           },
           {
+            "description": "The total number of login records which failed to migrate\n",
+            "mode": "NULLABLE",
+            "name": "logins_store_migration_num_failed",
+            "type": "INT64"
+          },
+          {
+            "description": "The total number of login records processed by the migration\n",
+            "mode": "NULLABLE",
+            "name": "logins_store_migration_num_processed",
+            "type": "INT64"
+          },
+          {
+            "description": "The total number of login records successfully migrated\n",
+            "mode": "NULLABLE",
+            "name": "logins_store_migration_num_succeeded",
+            "type": "INT64"
+          },
+          {
             "description": "The total number of read operations performed on the logins store. The count only includes operations triggered by the application, not e.g. incidental reads performed as part of a sync. It is intended to be used together with `read_query_error_count` to measure the overall error rate of read operations on the logins store.\n",
             "mode": "NULLABLE",
             "name": "logins_store_read_query_count",
@@ -449,6 +665,24 @@
             "description": "The total number of write operations performed on the logins store. The count only includes operations triggered by the application, not e.g. incidental writes performed as part of a sync. It is intended to be used together with `write_query_error_count` to measure the overall error rate of write operations on the logins store.\n",
             "mode": "NULLABLE",
             "name": "logins_store_write_query_count",
+            "type": "INT64"
+          },
+          {
+            "description": "A counter that indicates the number of times the user has autofilled\na credit card.\n",
+            "mode": "NULLABLE",
+            "name": "metrics_credit_cards_autofill_count",
+            "type": "INT64"
+          },
+          {
+            "description": "A counter that indicates the number of credit cards that have been\ndeleted by the user.\n",
+            "mode": "NULLABLE",
+            "name": "metrics_credit_cards_deleted_count",
+            "type": "INT64"
+          },
+          {
+            "description": "A counter that indicates the number of credit cards that have been\nsaved manually by the user.\n",
+            "mode": "NULLABLE",
+            "name": "metrics_credit_cards_saved_count",
             "type": "INT64"
           },
           {
@@ -491,6 +725,36 @@
             "description": "The total number of write operations performed on the places store. The count only includes operations triggered by the application, not e.g. incidental writes performed as part of a sync. It is intended to be used together with `write_query_error_count` to measure the overall error rate of write operations on the places store.\n",
             "mode": "NULLABLE",
             "name": "places_manager_write_query_count",
+            "type": "INT64"
+          },
+          {
+            "description": "Total CPU time used by all processes in ms.\n",
+            "mode": "NULLABLE",
+            "name": "power_total_cpu_time_ms",
+            "type": "INT64"
+          },
+          {
+            "description": "A counter that indicates the number of times that a user\nhas clicked on a recently saved bookmark from the home\nscreen.\n",
+            "mode": "NULLABLE",
+            "name": "recent_bookmarks_bookmark_clicked",
+            "type": "INT64"
+          },
+          {
+            "description": "A counter that indicates the number of times that a user\nhas clicked the show all button for recently saved bookmarks\non the home screen.\n",
+            "mode": "NULLABLE",
+            "name": "recent_bookmarks_show_all_bookmarks",
+            "type": "INT64"
+          },
+          {
+            "description": "A counter that indicates how many INACTIVE tabs a user has closed.\n",
+            "mode": "NULLABLE",
+            "name": "tabs_tray_close_inactive_tab",
+            "type": "INT64"
+          },
+          {
+            "description": "A counter that indicates how many INACTIVE tabs a user has opened.\n",
+            "mode": "NULLABLE",
+            "name": "tabs_tray_open_inactive_tab",
             "type": "INT64"
           }
         ],
@@ -889,6 +1153,36 @@
             "mode": "NULLABLE",
             "name": "js_xdr_encode_percentage",
             "type": "RECORD"
+          },
+          {
+            "description": "Size of deserialized data, in items\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "performance_clone_deserialize_items",
+            "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
@@ -928,6 +1222,24 @@
       {
         "fields": [
           {
+            "description": "AVIF alpha plane.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "avif_alpha",
+            "type": "RECORD"
+          },
+          {
             "description": "Bits per pixel of AVIF image.\n",
             "fields": [
               {
@@ -943,6 +1255,78 @@
             ],
             "mode": "REPEATED",
             "name": "avif_bit_depth",
+            "type": "RECORD"
+          },
+          {
+            "description": "AVIF CICP colour primaries.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "avif_cicp_cp",
+            "type": "RECORD"
+          },
+          {
+            "description": "AVIF CICP transfer characteristics.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "avif_cicp_mc",
+            "type": "RECORD"
+          },
+          {
+            "description": "AVIF CICP transfer characteristics.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "avif_cicp_tc",
+            "type": "RECORD"
+          },
+          {
+            "description": "AVIF colour information type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "avif_colr",
             "type": "RECORD"
           },
           {
@@ -982,6 +1366,42 @@
             "type": "RECORD"
           },
           {
+            "description": "AVIF spatial extents (image size).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "avif_ispe",
+            "type": "RECORD"
+          },
+          {
+            "description": "AVIF pixel information (bits per channel).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "avif_pixi",
+            "type": "RECORD"
+          },
+          {
             "description": "YUV color space of AVIF image.\n",
             "fields": [
               {
@@ -1000,7 +1420,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Records clicks of adverts on SERP pages.\nThe key format is ‘<provider-name>’.\n",
+            "description": "Records clicks of adverts on SERP pages.\nThe key format is `<provider-name>`.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -1036,7 +1456,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Records counts of SERP pages with adverts displayed.\nThe key format is ‘<provider-name>’.\n",
+            "description": "Records counts of SERP pages with adverts displayed.\nThe key format is `<provider-name>`.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -1426,6 +1846,36 @@
       {
         "fields": [
           {
+            "description": "The number and size of the IPC buffers being received over FOG IPC.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "fog_ipc_buffer_sizes",
+            "type": "RECORD"
+          },
+          {
             "description": "The size of the database file at startup.\n",
             "fields": [
               {
@@ -1516,7 +1966,37 @@
             "type": "RECORD"
           },
           {
-            "description": "The size of the app's APK and related files as installed: this is expected to be larger than download size. This is the output of [StorageStats.getAppBytes](https://developer.android.com/reference/android/app/usage/StorageStats#getAppBytes()) so see that for details. This value is only available on Android 8+. A similar value may be available on the Google Play dashboard: we can use this value to see if that value is reliable enough.\n",
+            "description": "Size of deserialized data, in bytes\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "performance_clone_deserialize_size",
+            "type": "RECORD"
+          },
+          {
+            "description": "The size of the app's APK and related files as installed: this is expected\nto be larger than download size. This is the output of\n[StorageStats.getAppBytes](https://developer.android.com/reference/android/app/usage/StorageStats#getAppBytes())\nso see that for details. This value is only available on Android 8+. A\nsimilar value may be available on the Google Play dashboard: we can use\nthis value to see if that value is reliable enough.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -1546,7 +2026,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The size of all cached data in the app. This is the output of [StorageStats.getCacheBytes](https://developer.android.com/reference/android/app/usage/StorageStats#getCacheBytes()) so see that for details. This value is only available on Android 8+.\n",
+            "description": "The size of all cached data in the app. This is the output of\n[StorageStats.getCacheBytes](https://developer.android.com/reference/android/app/usage/StorageStats#getCacheBytes())\nso see that for details. This value is only available on Android 8+.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -1576,7 +2056,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The size of all data minus `cache_bytes`. This is the output of [StorageStats.getDataBytes](https://developer.android.com/reference/android/app/usage/StorageStats#getDataBytes()) except we subtract the value of `cache_bytes` so the cache is not measured redundantly; see that method for details. This value is only available on Android 8+.\n",
+            "description": "The size of all data minus `cache_bytes`. This is the output of\n[StorageStats.getDataBytes](https://developer.android.com/reference/android/app/usage/StorageStats#getDataBytes())\nexcept we subtract the value of `cache_bytes` so the cache is not measured\nredundantly; see that method for details. This value is only available on\nAndroid 8+.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -1647,6 +2127,18 @@
             "mode": "NULLABLE",
             "name": "gfx_display_primary_width",
             "type": "INT64"
+          },
+          {
+            "description": "How many inactive tabs does the user have.\n",
+            "mode": "NULLABLE",
+            "name": "metrics_inactive_tabs_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of bookmarked items appearing in the\nRecently Saved section on the home page.\n",
+            "mode": "NULLABLE",
+            "name": "recent_bookmarks_recent_bookmarks_count",
+            "type": "INT64"
           }
         ],
         "mode": "NULLABLE",
@@ -1665,6 +2157,18 @@
             "description": "The Buildid of the Gecko engine, example: 20200205124310\n",
             "mode": "NULLABLE",
             "name": "geckoview_build_id",
+            "type": "STRING"
+          },
+          {
+            "description": "The Buildid of the Gecko engine, example: 20200205124310 Mirror of `geckoview.build_id` for validation of migrated data.\n",
+            "mode": "NULLABLE",
+            "name": "geckoview_validation_build_id",
+            "type": "STRING"
+          },
+          {
+            "description": "The version of the Gecko engine, example: 74.0a1 Mirror of `geckoview.version` for validation of migrated data.\n",
+            "mode": "NULLABLE",
+            "name": "geckoview_validation_version",
             "type": "STRING"
           },
           {
@@ -1794,6 +2298,12 @@
             "type": "STRING"
           },
           {
+            "description": "Used to identify the source the app was installed from.\n",
+            "mode": "NULLABLE",
+            "name": "metrics_install_source",
+            "type": "STRING"
+          },
+          {
             "description": "A string that indicates the setting for tab view:\nGRID, LIST\n",
             "mode": "NULLABLE",
             "name": "metrics_tab_view_setting",
@@ -1815,6 +2325,24 @@
             "description": "The optional reason the ping was submitted.\nThe specific values for reason are specific to each ping, and are\ndocumented in the ping's pings.yaml file.\n",
             "mode": "NULLABLE",
             "name": "ping_reason",
+            "type": "STRING"
+          },
+          {
+            "description": "What type of enhanced tracking protection the user has enabled.\n\"standard,\" \"strict,\" \"custom,\" or \"\" (if disabled)\ndefault: \"standard\"\n",
+            "mode": "NULLABLE",
+            "name": "preferences_enhanced_tracking_protection",
+            "type": "STRING"
+          },
+          {
+            "description": "The position of the toolbar\ndefault: bottom (defaults to top if the user has accessibility services)\n",
+            "mode": "NULLABLE",
+            "name": "preferences_toolbar_position_setting",
+            "type": "STRING"
+          },
+          {
+            "description": "The theme the user has enabled. \"light,\" \"dark,\" \"system,\" or \"battery\"\ndefault: \"system\" for API 28+, else \"light\"\n",
+            "mode": "NULLABLE",
+            "name": "preferences_user_theme",
             "type": "STRING"
           },
           {
@@ -1850,6 +2378,11 @@
           {
             "mode": "REPEATED",
             "name": "addons_installed_addons",
+            "type": "STRING"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "logins_store_migration_errors",
             "type": "STRING"
           },
           {
@@ -1955,6 +2488,23 @@
       {
         "fields": [
           {
+            "mode": "NULLABLE",
+            "name": "key",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "value",
+            "type": "STRING"
+          }
+        ],
+        "mode": "REPEATED",
+        "name": "text",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
             "description": "Measures the age of the engine session of a background tab at the\ntime its content process got killed.\n",
             "fields": [
               {
@@ -1988,6 +2538,42 @@
             ],
             "mode": "NULLABLE",
             "name": "engine_kill_foreground_age",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time the FOG initialization takes.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "fog_initialization",
+            "type": "RECORD"
+          },
+          {
+            "description": "How long the migration tool\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "logins_store_migration_total_duration",
             "type": "RECORD"
           }
         ],
@@ -2115,6 +2701,66 @@
             ],
             "mode": "NULLABLE",
             "name": "engine_tab_kill_foreground_age",
+            "type": "RECORD"
+          },
+          {
+            "description": "The length of time between asking the child processes for their\nIPC buffers and all of them being received by the parent.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "fog_ipc_flush_durations",
             "type": "RECORD"
           },
           {
@@ -3618,6 +4264,426 @@
             "type": "RECORD"
           },
           {
+            "description": "Time spent during page load baseline compiling Javascript in ms.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "javascript_pageload_baseline_compile_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time spent during page load delazifying Javascript in ms.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "javascript_pageload_delazification_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time spent during page load executing Javascript in ms.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "javascript_pageload_execution_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time spent during page load in the GC in ms.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "javascript_pageload_gc_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time spent during page load syntax parsing JS scripts on the main thread in ms.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "javascript_pageload_parse_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time spent during page load protecting JIT executable memory.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "javascript_pageload_protect_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time spent during page load XDR encoding Javascript in ms.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "javascript_pageload_xdr_encode_time",
+            "type": "RECORD"
+          },
+          {
             "description": "Time spent caching JS bytecode for scripts executed during a page load.\n",
             "fields": [
               {
@@ -4275,6 +5341,66 @@
             ],
             "mode": "NULLABLE",
             "name": "network_tls_handshake",
+            "type": "RECORD"
+          },
+          {
+            "description": "The time to build a Gecko display list.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "paint_build_displaylist_time",
             "type": "RECORD"
           },
           {
@@ -5475,6 +6601,66 @@
             ],
             "mode": "NULLABLE",
             "name": "perf_startup_home_fragment_on_view_created",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time spent deserializing structured data\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "performance_clone_deserialize_time",
             "type": "RECORD"
           },
           {
@@ -7098,7 +8284,7 @@
             "type": "RECORD"
           },
           {
-            "description": "How long it took to query the device for the StorageStats that contain the file size information. The docs say it may be expensive so we want to ensure it's not too expensive.  This value is only available on Android 8+.\n",
+            "description": "How long it took to query the device for the StorageStats that contain the\nfile size information. The docs say it may be expensive so we want to\nensure it's not too expensive.  This value is only available on Android\n8+.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -7160,6 +8346,23 @@
         ],
         "mode": "NULLABLE",
         "name": "timing_distribution",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "key",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "value",
+            "type": "STRING"
+          }
+        ],
+        "mode": "REPEATED",
+        "name": "url",
         "type": "RECORD"
       }
     ],

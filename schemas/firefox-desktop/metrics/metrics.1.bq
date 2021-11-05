@@ -196,6 +196,12 @@
             "type": "STRING"
           },
           {
+            "description": "X-Foxsec-IP-Reputation header",
+            "mode": "NULLABLE",
+            "name": "x_foxsec_ip_reputation",
+            "type": "STRING"
+          },
+          {
             "description": "X-PingSender-Version HTTP header",
             "mode": "NULLABLE",
             "name": "x_pingsender_version",
@@ -205,6 +211,12 @@
             "description": "X-Source-Tags HTTP header",
             "mode": "NULLABLE",
             "name": "x_source_tags",
+            "type": "STRING"
+          },
+          {
+            "description": "X-Telemetry-Agent HTTP header",
+            "mode": "NULLABLE",
+            "name": "x_telemetry_agent",
             "type": "STRING"
           }
         ],
@@ -270,6 +282,12 @@
     "fields": [
       {
         "fields": [
+          {
+            "description": "True if the Proton default theme is enabled.\n",
+            "mode": "NULLABLE",
+            "name": "browser_ui_proton_enabled",
+            "type": "BOOL"
+          },
           {
             "description": "True if we failed to register with the idle service. Absent otherwise.\nMeans IPC probably isn't working well.\nChild-process data will likely be absent, or incomplete.\n",
             "mode": "NULLABLE",
@@ -347,6 +365,12 @@
             "description": "On mobile, the number of times the application went to foreground.\n",
             "mode": "NULLABLE",
             "name": "glean_validation_foreground_count",
+            "type": "INT64"
+          },
+          {
+            "description": "Total CPU time used by all processes in ms.\n",
+            "mode": "NULLABLE",
+            "name": "power_total_cpu_time_ms",
             "type": "INT64"
           }
         ],
@@ -670,6 +694,18 @@
       {
         "fields": [
           {
+            "description": "The Buildid of the Gecko engine, example: 20200205124310 Mirror of `geckoview.build_id` for validation of migrated data.\n",
+            "mode": "NULLABLE",
+            "name": "geckoview_validation_build_id",
+            "type": "STRING"
+          },
+          {
+            "description": "The version of the Gecko engine, example: 74.0a1 Mirror of `geckoview.version` for validation of migrated data.\n",
+            "mode": "NULLABLE",
+            "name": "geckoview_validation_version",
+            "type": "STRING"
+          },
+          {
             "description": "The optional reason the ping was submitted.\nThe specific values for reason are specific to each ping, and are\ndocumented in the ping's pings.yaml file.\n",
             "mode": "NULLABLE",
             "name": "ping_reason",
@@ -678,6 +714,23 @@
         ],
         "mode": "NULLABLE",
         "name": "string",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "key",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "value",
+            "type": "STRING"
+          }
+        ],
+        "mode": "REPEATED",
+        "name": "text",
         "type": "RECORD"
       },
       {
@@ -766,10 +819,87 @@
             "mode": "NULLABLE",
             "name": "fog_ipc_flush_durations",
             "type": "RECORD"
+          },
+          {
+            "description": "The time to build a Gecko display list.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "paint_build_displaylist_time",
+            "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
         "name": "timing_distribution",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "key",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "value",
+            "type": "STRING"
+          }
+        ],
+        "mode": "REPEATED",
+        "name": "url",
         "type": "RECORD"
       }
     ],

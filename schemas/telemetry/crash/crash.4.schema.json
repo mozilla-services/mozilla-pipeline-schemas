@@ -651,6 +651,13 @@
             },
             "sandbox": {
               "properties": {
+                "contentWin32kLockdownState": {
+                  "description": "The status of Win32k Lockdown for Content process.",
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
                 "effectiveContentProcessLevel": {
                   "description": "The effective sandbox. The values are OS dependent.",
                   "type": [
@@ -675,6 +682,10 @@
               "properties": {
                 "autoDownload": {
                   "description": "The state of the `app.update.auto` pref.",
+                  "type": "boolean"
+                },
+                "background": {
+                  "description": "Indicates whether updates may be installed when Firefox is not running.",
                   "type": "boolean"
                 },
                 "channel": {
@@ -1113,6 +1124,13 @@
               },
               "type": "object"
             },
+            "hasWinPackageId": {
+              "description": "Is the process running with a package identity (e.g. from an MSIX install)? See bug 1709892. This is Windows only.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
             "hdd": {
               "properties": {
                 "binary": {
@@ -1414,12 +1432,20 @@
               "description": "<string>, Comma-separated list of enabled experimental features from about:preferences#experimental.",
               "type": "string"
             },
+            "GPUProcessLaunchCount": {
+              "description": "<integer>, Number of times the GPU process was launched.",
+              "type": "string"
+            },
             "IndexedDBShutdownTimeout": {
               "description": "<json>, This annotation is present if IndexedDB shutdown was not finished in time and the browser was crashed instead of waiting for IndexedDB shutdown to finish. The condition that caused the hang is contained in the annotation. The condition is constructed by stringifying status of objects which blocked IndexedDB shutdown. Objects are divided into three groups: FactoryOperations, LiveDatabases and DatabaseMaintenances. Each group is reported separately and contains the number of objects in the group and status of individual objects in the group (duplicit entries are removed): \"GroupName: N (objectStatus1, objectStatus2, ...)\" where N is the number of objects in the group. Status of individual objects is constructed by taking selected object properties. Properties which contain origin strings are anonymized.",
               "type": "string"
             },
             "IsGarbageCollecting": {
               "description": "1, Optional, if set indicates that the crash occurred while the garbage collector was running",
+              "type": "string"
+            },
+            "LastInteractionDuration": {
+              "description": "How long the user had been inactive in seconds if the user was inactive at crash. The value is not set if the user state was active.",
               "type": "string"
             },
             "LocalStorageShutdownTimeout": {
@@ -1456,6 +1482,10 @@
             },
             "ProductName": {
               "description": "Firefox",
+              "type": "string"
+            },
+            "ProfilerChildShutdownPhase": {
+              "description": "<string>, When a child process shuts down, this describes if the profiler is running, and the point the profiler shutdown sequence has reached.",
               "type": "string"
             },
             "PurgeablePhysicalMemory": {
@@ -1520,6 +1550,10 @@
             },
             "Version": {
               "description": "<version number>",
+              "type": "string"
+            },
+            "WindowsErrorReporting": {
+              "description": "<boolean>, Set to 1 if this crash was intercepted via the Windows Error Reporting runtime exception module.",
               "type": "string"
             },
             "ipc_channel_error": {
@@ -1636,6 +1670,29 @@
                     "type": "integer"
                   },
                   "trust": {
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "unloaded_modules": {
+              "description": "List of modules that were loaded in the process but have been unloaded at the time of crash",
+              "items": {
+                "properties": {
+                  "base_addr": {
+                    "pattern": "^(0x[a-fA-F0-9]+|0)$",
+                    "type": "string"
+                  },
+                  "code_id": {
+                    "type": "string"
+                  },
+                  "end_addr": {
+                    "pattern": "^(0x[a-fA-F0-9]+|0)$",
+                    "type": "string"
+                  },
+                  "filename": {
                     "type": "string"
                   }
                 },

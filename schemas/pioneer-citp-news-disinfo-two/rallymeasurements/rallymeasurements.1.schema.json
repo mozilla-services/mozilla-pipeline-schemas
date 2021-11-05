@@ -1,0 +1,181 @@
+{
+  "$comment": "Information about this study is available at https://github.com/citp/news-disinformation-study",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "mozPipelineMetadata": {
+    "bq_dataset_family": "pioneer_citp_news_disinfo_two",
+    "bq_metadata_format": "pioneer",
+    "bq_table": "rallymeasurements_v1",
+    "expiration_policy": {
+      "delete_after_days": 180
+    }
+  },
+  "properties": {
+    "newsAndDisinfo.linkExposure": {
+      "additionalProperties": false,
+      "properties": {
+        "trackedExposuresByCategory": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "categoryExposuresCount": {
+                "type": "integer"
+              },
+              "dayOfWeek": {
+                "type": "integer"
+              },
+              "exposureDestinationTrimmedUrl": {
+                "type": "string"
+              },
+              "exposureSourceTrimmedUrl": {
+                "type": "string"
+              },
+              "timeOfDay": {
+                "type": "integer"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "newsAndDisinfo.pageNavigation": {
+      "additionalProperties": false,
+      "properties": {
+        "trackedVisitsByCategory": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "categoryAttention": {
+                "type": "number"
+              },
+              "categoryScroll": {
+                "type": "number"
+              },
+              "categoryVisitsCount": {
+                "type": "integer"
+              },
+              "classifierResults": {
+                "additionalProperties": {
+                  "type": "integer"
+                },
+                "description": "additional properties are the name of the classifier, with the classification result as the value",
+                "type": "object"
+              },
+              "dayOfWeek": {
+                "type": "integer"
+              },
+              "sourceTrimmedUrlFromReferrer": {
+                "type": "string"
+              },
+              "sourceTrimmedUrlFromTransitions": {
+                "type": "string"
+              },
+              "timeOfDay": {
+                "type": "integer"
+              },
+              "visitTrimmedUrl": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "untrackedAttention": {
+          "type": "number"
+        },
+        "untrackedVisitsCount": {
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "newsAndDisinfo.socialMediaLinkSharing": {
+      "additionalProperties": false,
+      "properties": {
+        "linkSharesByPlatform": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "platform": {
+                "enum": [
+                  "facebook",
+                  "twitter",
+                  "reddit"
+                ],
+                "type": "string"
+              },
+              "trackedSharesByCategory": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "categorySharesCount": {
+                      "type": "integer"
+                    },
+                    "categoryVisitAttention": {
+                      "type": "number"
+                    },
+                    "categoryVisitsInHistoryCount": {
+                      "type": "integer"
+                    },
+                    "categoryVisitsInPageNavigationCount": {
+                      "type": "integer"
+                    },
+                    "classifierResults": {
+                      "additionalProperties": {
+                        "type": "integer"
+                      },
+                      "description": "additional properties are the name of the classifier, with the classification result as the value",
+                      "type": "object"
+                    },
+                    "dayOfWeek": {
+                      "type": "integer"
+                    },
+                    "facebookReshareSource": {
+                      "type": "string"
+                    },
+                    "shareAudience": {
+                      "enum": [
+                        "public",
+                        "restricted",
+                        "unknown"
+                      ],
+                      "type": "string"
+                    },
+                    "sharedTrimmedUrl": {
+                      "type": "string"
+                    },
+                    "timeOfDay": {
+                      "type": "integer"
+                    },
+                    "visitSourceFromTransitions": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "untrackedSharesCount": {
+                "type": "integer"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "newsAndDisinfo.surveyId": {
+      "description": "ID sent to Qualtrics, for associating survey responses with telemetry data",
+      "type": "string"
+    },
+    "newsAndDisinfo.version": {
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

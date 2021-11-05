@@ -67,6 +67,7 @@ schemas
 │   ├── onboarding
 │   ├── personalization-experiment
 │   ├── snippets
+│   ├── spotlight
 │   ├── undesired-events
 │   └── whats-new-panel
 ├── metadata
@@ -81,25 +82,38 @@ schemas
 │   ├── sources
 │   ├── structured-ingestion
 │   └── telemetry-ingestion
+├── mlhackweek-search
+│   ├── action
+│   ├── baseline
+│   ├── custom
+│   ├── deletion-request
+│   ├── events
+│   └── metrics
 ├── mobile
 │   └── activation
 ├── mozdata
 │   └── event
 ├── mozilla-lockbox
+│   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
 │   ├── history-sync
 │   ├── logins-sync
 │   ├── metrics
-│   └── sync
+│   ├── sync
+│   └── tabs-sync
 ├── mozilla-mach
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
 │   ├── metrics
 │   └── usage
+├── mozillavpn
+│   ├── deletion-request
+│   └── main
 ├── mozphab
 │   ├── baseline
 │   ├── deletion-request
@@ -118,79 +132,117 @@ schemas
 │   └── metrics
 ├── org-mozilla-fenix
 │   ├── activation
+│   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
+│   ├── fog-validation
 │   ├── history-sync
 │   ├── installation
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
 │   ├── startup-timeline
-│   └── sync
+│   ├── sync
+│   └── tabs-sync
 ├── org-mozilla-fenix-nightly
 │   ├── activation
+│   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
+│   ├── fog-validation
 │   ├── history-sync
 │   ├── installation
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
 │   ├── startup-timeline
-│   └── sync
+│   ├── sync
+│   └── tabs-sync
 ├── org-mozilla-fennec-aurora
 │   ├── activation
+│   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
+│   ├── fog-validation
 │   ├── history-sync
 │   ├── installation
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
 │   ├── startup-timeline
-│   └── sync
+│   ├── sync
+│   └── tabs-sync
 ├── org-mozilla-firefox
 │   ├── activation
+│   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
+│   ├── fog-validation
 │   ├── history-sync
 │   ├── installation
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
 │   ├── startup-timeline
-│   └── sync
+│   ├── sync
+│   └── tabs-sync
 ├── org-mozilla-firefox-beta
 │   ├── activation
+│   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
+│   ├── fog-validation
 │   ├── history-sync
 │   ├── installation
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
 │   ├── startup-timeline
-│   └── sync
+│   ├── sync
+│   └── tabs-sync
 ├── org-mozilla-firefoxreality
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
 │   ├── launch
+│   └── metrics
+├── org-mozilla-focus
+│   ├── activation
+│   ├── baseline
+│   ├── deletion-request
+│   ├── events
+│   └── metrics
+├── org-mozilla-focus-beta
+│   ├── activation
+│   ├── baseline
+│   ├── deletion-request
+│   ├── events
+│   └── metrics
+├── org-mozilla-focus-nightly
+│   ├── activation
+│   ├── baseline
+│   ├── deletion-request
+│   ├── events
 │   └── metrics
 ├── org-mozilla-ios-fennec
 │   ├── baseline
@@ -222,6 +274,12 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   └── metrics
+├── org-mozilla-klar
+│   ├── activation
+│   ├── baseline
+│   ├── deletion-request
+│   ├── events
+│   └── metrics
 ├── org-mozilla-mozregression
 │   ├── baseline
 │   ├── deletion-request
@@ -239,23 +297,28 @@ schemas
 │   ├── events
 │   └── metrics
 ├── org-mozilla-vrbrowser
+│   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
 │   ├── history-sync
 │   ├── logins-sync
 │   ├── metrics
 │   ├── session-end
-│   └── sync
+│   ├── sync
+│   └── tabs-sync
 ├── pioneer-citp-news-disinfo
 │   ├── deletion-request
 │   ├── measurements
-│   └── pioneer-enrollment
+│   ├── pioneer-enrollment
+│   └── rallymeasurements
 ├── pioneer-citp-news-disinfo-two
 │   ├── deletion-request
 │   ├── measurements
-│   └── pioneer-enrollment
+│   ├── pioneer-enrollment
+│   └── rallymeasurements
 ├── pioneer-core
 │   ├── deletion-request
 │   ├── demographic-survey
@@ -269,14 +332,34 @@ schemas
 │   └── pioneer-enrollment
 ├── pioneer-meta
 │   └── pioneer-enrollment
+├── pioneer-sgsb-beyond-the-paywall
+│   ├── advertisement
+│   ├── article-content
+│   ├── deletion-request
+│   ├── page-nav
+│   ├── page-nav-sensitive
+│   ├── pioneer-enrollment
+│   └── total-timing
 ├── pocket
 │   └── fire-tv-events
+├── rally-core
+│   ├── deletion-request
+│   ├── demographics
+│   ├── enrollment
+│   ├── study-enrollment
+│   ├── study-unenrollment
+│   └── uninstall-deletion
 ├── rally-debug
 │   ├── deletion-request
 │   ├── demographics
 │   ├── enrollment
 │   ├── study-enrollment
-│   └── study-unenrollment
+│   ├── study-unenrollment
+│   └── uninstall-deletion
+├── rally-study-zero-one
+│   ├── deletion-request
+│   ├── rs01-event
+│   └── study-enrollment
 ├── rally-zero-one
 │   ├── deletion-request
 │   ├── measurements
@@ -354,6 +437,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-344 directories
+427 directories
 ```
 

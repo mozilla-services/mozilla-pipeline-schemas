@@ -196,6 +196,12 @@
             "type": "STRING"
           },
           {
+            "description": "X-Foxsec-IP-Reputation header",
+            "mode": "NULLABLE",
+            "name": "x_foxsec_ip_reputation",
+            "type": "STRING"
+          },
+          {
             "description": "X-PingSender-Version HTTP header",
             "mode": "NULLABLE",
             "name": "x_pingsender_version",
@@ -205,6 +211,12 @@
             "description": "X-Source-Tags HTTP header",
             "mode": "NULLABLE",
             "name": "x_source_tags",
+            "type": "STRING"
+          },
+          {
+            "description": "X-Telemetry-Agent HTTP header",
+            "mode": "NULLABLE",
+            "name": "x_telemetry_agent",
             "type": "STRING"
           }
         ],
@@ -289,6 +301,12 @@
             "type": "BOOL"
           },
           {
+            "description": "True if the device support device owner authentication\nwith either biometrics or a passcode.\n",
+            "mode": "NULLABLE",
+            "name": "device_authentication",
+            "type": "BOOL"
+          },
+          {
             "description": "Reports `true` if the client was successfully migrated from the Android-specific implementation of the Glean SDK to the cross-platform one.",
             "mode": "NULLABLE",
             "name": "glean_core_migration_successful",
@@ -298,6 +316,18 @@
             "description": "Set to true if the tasks that are queued prior to Glean initialization time out.",
             "mode": "NULLABLE",
             "name": "glean_error_preinit_tasks_timeout",
+            "type": "BOOL"
+          },
+          {
+            "description": "If Focus is installed on the users's device.\n",
+            "mode": "NULLABLE",
+            "name": "installed_mozilla_products_focus",
+            "type": "BOOL"
+          },
+          {
+            "description": "If Klar is installed on the users's device.\n",
+            "mode": "NULLABLE",
+            "name": "installed_mozilla_products_klar",
             "type": "BOOL"
           },
           {
@@ -350,7 +380,25 @@
       {
         "fields": [
           {
-            "description": "Counts the number of times a user taps Your Library in the app menu\n",
+            "description": "Counts the number of times a user disables Block Images\nin the app menu\n",
+            "mode": "NULLABLE",
+            "name": "app_menu_block_images_disabled",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user enables Block Images\nin the app menu\n",
+            "mode": "NULLABLE",
+            "name": "app_menu_block_images_enabled",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user taps Home in the app menu\n",
+            "mode": "NULLABLE",
+            "name": "app_menu_home",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user taps Library in the app menu\n",
             "mode": "NULLABLE",
             "name": "app_menu_library",
             "type": "INT64"
@@ -362,9 +410,33 @@
             "type": "INT64"
           },
           {
-            "description": "Counts the number of times a user taps Sign Into Sync in the app menu\n",
+            "description": "Counts the number of times a user taps Disable Night Mode\nin the app menu\n",
+            "mode": "NULLABLE",
+            "name": "app_menu_night_mode_disabled",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user taps Enable Night Mode\nin the app menu\n",
+            "mode": "NULLABLE",
+            "name": "app_menu_night_mode_enabled",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user taps Settings in the app menu\n",
+            "mode": "NULLABLE",
+            "name": "app_menu_settings",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user taps Sign Into Sync\nin the app menu\n",
             "mode": "NULLABLE",
             "name": "app_menu_sign_into_sync",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user taps What's New in the app menu\n",
+            "mode": "NULLABLE",
+            "name": "app_menu_whats_new",
             "type": "INT64"
           },
           {
@@ -395,6 +467,72 @@
             "description": "Counts the number of times the Go To Settings button on\ndefault browser onboarding is clicked.\n",
             "mode": "NULLABLE",
             "name": "default_browser_onboarding_go_to_settings_pressed",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user taps to open the\nsettings menu to customize the Firefox Homepage\n",
+            "mode": "NULLABLE",
+            "name": "firefox_home_page_customize_homepage_button",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of times a user sees the Firefox Homepage\n",
+            "mode": "NULLABLE",
+            "name": "firefox_home_page_firefox_homepage_view",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user taps to open an\nexisting group from the Jump Back In section\n",
+            "mode": "NULLABLE",
+            "name": "firefox_home_page_jump_back_in_group_opened",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user sees the\nJump Back In section on the homepage\n",
+            "mode": "NULLABLE",
+            "name": "firefox_home_page_jump_back_in_section_view",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user taps the\nShow All button in the Jump Back In section.\n",
+            "mode": "NULLABLE",
+            "name": "firefox_home_page_jump_back_in_show_all",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user taps to open an\nexisting tab from the Jump Back In section\n",
+            "mode": "NULLABLE",
+            "name": "firefox_home_page_jump_back_in_tab_opened",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts when a user opens Firefox Home\nfrom awesomebar.\n",
+            "mode": "NULLABLE",
+            "name": "firefox_home_page_open_from_awesomebar",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts when user opens Firefox Home from\nbottom right hamburger menu Home button\nand New Tab button.\n",
+            "mode": "NULLABLE",
+            "name": "firefox_home_page_open_from_menu_home_button",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a bookmarked item in\nthe Recently Saved section is tapped\n",
+            "mode": "NULLABLE",
+            "name": "firefox_home_page_recently_saved_bookmark_item",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a reading list\nitem in the Recently Saved section is tapped.\n",
+            "mode": "NULLABLE",
+            "name": "firefox_home_page_recently_saved_reading_item",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user taps the Show All\nbutton of the Recently Saved Section\n",
+            "mode": "NULLABLE",
+            "name": "firefox_home_page_recently_saved_show_all",
             "type": "INT64"
           },
           {
@@ -446,9 +584,177 @@
             "type": "INT64"
           },
           {
+            "description": "Counts the number of times user opens an inactive tab.\n",
+            "mode": "NULLABLE",
+            "name": "inactive_tabs_tray_open_inactive_tab",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times user opens recently closed\nsection from inactive tabs tray.\n",
+            "mode": "NULLABLE",
+            "name": "inactive_tabs_tray_open_recently_closed_list",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times the Go To Settings button on\ndefault browser card is clicked.\n",
+            "mode": "NULLABLE",
+            "name": "inactive_tabs_tray_open_recently_closed_tab",
+            "type": "INT64"
+          },
+          {
+            "description": "The total number of login records which failed to migrate\n",
+            "mode": "NULLABLE",
+            "name": "logins_store_migration_num_failed",
+            "type": "INT64"
+          },
+          {
+            "description": "The total number of login records processed by the migration\n",
+            "mode": "NULLABLE",
+            "name": "logins_store_migration_num_processed",
+            "type": "INT64"
+          },
+          {
+            "description": "The total number of login records successfully migrated\n",
+            "mode": "NULLABLE",
+            "name": "logins_store_migration_num_succeeded",
+            "type": "INT64"
+          },
+          {
+            "description": "The total number of read operations performed on the logins store. The count only includes operations triggered by the application, not e.g. incidental reads performed as part of a sync. It is intended to be used together with `read_query_error_count` to measure the overall error rate of read operations on the logins store.\n",
+            "mode": "NULLABLE",
+            "name": "logins_store_read_query_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of times the login store was unlocked. It is intended to be used together with `unlock_error_count` to measure the overall error rate of unlocking the logins store.\n",
+            "mode": "NULLABLE",
+            "name": "logins_store_unlock_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The total number of write operations performed on the logins store. The count only includes operations triggered by the application, not e.g. incidental writes performed as part of a sync. It is intended to be used together with `write_query_error_count` to measure the overall error rate of write operations on the logins store.\n",
+            "mode": "NULLABLE",
+            "name": "logins_store_write_query_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of times a user is shown the second screen, the\nSync Screen, from the onboarding process.\n",
+            "mode": "NULLABLE",
+            "name": "onboarding_sync_screen",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of times a user taps on the start browsing button\nin onboarding's second screen, the Sync Screen.\n",
+            "mode": "NULLABLE",
+            "name": "onboarding_sync_screen_browse",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of times a user taps on the sign up button in\nonboarding's second screen, the Sync Screen.\n",
+            "mode": "NULLABLE",
+            "name": "onboarding_sync_screen_sign_up",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of times a user is shown the first screen, the\nwelcome screen, from the onboarding process.\n",
+            "mode": "NULLABLE",
+            "name": "onboarding_welcome_screen",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of times a user taps on the close button in\nonboarding's first screen, the welcome screen.\n",
+            "mode": "NULLABLE",
+            "name": "onboarding_welcome_screen_close",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of times a user taps on the next button in\nonboarding's first screen, the welcome screen.\n",
+            "mode": "NULLABLE",
+            "name": "onboarding_welcome_screen_next",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of times a user taps on the Sign In button in\nonboarding's first screen, the welcome screen.\n",
+            "mode": "NULLABLE",
+            "name": "onboarding_welcome_screen_sign_in",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of times a user taps the sign up button in\nonboarding's first screen, the welcome screen.\n",
+            "mode": "NULLABLE",
+            "name": "onboarding_welcome_screen_sign_up",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user taps Add to Reading List\nin the page action menu\n",
+            "mode": "NULLABLE",
+            "name": "page_action_menu_add_to_reading_list",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user taps Copy Address\nin the page action menu\n",
+            "mode": "NULLABLE",
+            "name": "page_action_menu_copy_address",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user taps Find in Page\nin the page action menu\n",
+            "mode": "NULLABLE",
+            "name": "page_action_menu_find_in_page",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user taps Pin to Top Sites\nin the page action menu\n",
+            "mode": "NULLABLE",
+            "name": "page_action_menu_pin_to_top_sites",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user taps Pin to Top Sites\nin the page action menu\n",
+            "mode": "NULLABLE",
+            "name": "page_action_menu_remove_pinned_site",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user taps Report Site Issue\nin the page action menu\n",
+            "mode": "NULLABLE",
+            "name": "page_action_menu_report_site_issue",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user taps Request Desktop Site\nin the page action menu\n",
+            "mode": "NULLABLE",
+            "name": "page_action_menu_request_desktop_site",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user taps Request Mobile Site\nin the page action menu\n",
+            "mode": "NULLABLE",
+            "name": "page_action_menu_request_mobile_site",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user taps Send to Device\nin the page action menu\n",
+            "mode": "NULLABLE",
+            "name": "page_action_menu_send_to_device",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user taps Share Page With in the\npage action menu\n",
+            "mode": "NULLABLE",
+            "name": "page_action_menu_share_page_with",
+            "type": "INT64"
+          },
+          {
             "description": "Counts the number of times a user opens\nPocket article from Firefox home Pocket feed\n",
             "mode": "NULLABLE",
             "name": "pocket_open_story",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts when a user gets to pocket section\non Firefox Home\n",
+            "mode": "NULLABLE",
+            "name": "pocket_section_impressions",
             "type": "INT64"
           },
           {
@@ -524,15 +830,27 @@
             "type": "INT64"
           },
           {
-            "description": "Measures the current open tab count as the application\ngoes to background. Each background event adds to this\nmetric, making it the cumulative sum of all open tabs\nwhen the app goes to background. This can be divided by\nthe number of baseline pings to determine the average\nopen tab count.\n",
+            "description": "Measures the current open tab count as the application\ngoes to background. Each background event adds to this\nmetric, making it the cumulative sum of all open tabs\nwhen the app goes to background during the period of\ntime covered by a single metrics ping. This can be\ndivided by the number of baseline pings with\n`ping_info.reason=\"inactive\"` from the `start_time` to\nthe `end_time` of the metrics ping to determine the\naverage open tabs per foreground \"session\".\n",
             "mode": "NULLABLE",
             "name": "tabs_cumulative_count",
+            "type": "INT64"
+          },
+          {
+            "description": "This counts the number of times a user has tapped the search\nicon for grouped tabs in the tab tray.\n",
+            "mode": "NULLABLE",
+            "name": "tabs_grouped_tab_search",
             "type": "INT64"
           },
           {
             "description": "Counts the number of times the add new tab button is\npressed\n",
             "mode": "NULLABLE",
             "name": "tabs_new_tab_pressed",
+            "type": "INT64"
+          },
+          {
+            "description": "Record the number of times a user pulls down\non a page to reload.\n",
+            "mode": "NULLABLE",
+            "name": "tabs_pull_to_refresh",
             "type": "INT64"
           },
           {
@@ -621,7 +939,7 @@
       {
         "fields": [
           {
-            "description": "Counts the number of times a bookmark is added from the\nfollowing:\n* Page Action Menu\n* Share Menu\n* Activity Stream context menu\n",
+            "description": "Counts the number of times a bookmark is added from the\nfollowing:\n* Page Action Menu\n* Share Menu\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -654,6 +972,24 @@
             ],
             "mode": "REPEATED",
             "name": "bookmarks_delete",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of times a bookmark is tapped to\nbe edited from:\n* Add bookmark toast Edit button\n* Bookmarks panel edit bookmarks view\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "bookmarks_edit",
             "type": "RECORD"
           },
           {
@@ -690,6 +1026,60 @@
             ],
             "mode": "REPEATED",
             "name": "bookmarks_view_list",
+            "type": "RECORD"
+          },
+          {
+            "description": "Records clicks of adverts on SERP pages.\nThe key format is ‘<provider-name>’.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_search_ad_clicks",
+            "type": "RECORD"
+          },
+          {
+            "description": "Records counts of SERP pages with adverts displayed.\nThe key format is ‘<provider-name>’.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_search_with_ads",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of times the user taps the Bookmarks,\nHistory, Reading List, or Downloads buttons\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "firefox_home_page_your_library",
             "type": "RECORD"
           },
           {
@@ -801,6 +1191,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Counts the number of times user toggle (expand or collapse)\ninactive tab section.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "inactive_tabs_tray_toggle_inactive_tab_tray",
+            "type": "RECORD"
+          },
+          {
             "description": "Counts the number of times a specific library panel\nbutton is tapped for Bookmarks, History, Reading List,\nDownloads and Synced tabs\n",
             "fields": [
               {
@@ -816,6 +1224,78 @@
             ],
             "mode": "REPEATED",
             "name": "library_panel_pressed",
+            "type": "RECORD"
+          },
+          {
+            "description": "The total number of errors encountered during read operations on the logins store, labeled by type. It is intended to be used together with `read_query_count` to measure the overall error rate of read operations on the logins store.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "logins_store_read_query_error_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "The number of errors encountered when unlocking the logins store, labeled by type. It is intended to be used together with `unlock_count` to measure the overall error rate of unlocking the logins store.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "logins_store_unlock_error_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "The total number of errors encountered during write operations on the logins store, labeled by type. It is intended to be used together with `write_query_count` to measure the overall error rate of write operations on the logins store.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "logins_store_write_query_error_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts when a user opens Pocket article from\nFirefox Home Pocket feed.\nThe label is position of tile i.e. 0,1,2...\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "pocket_open_story_position",
             "type": "RECORD"
           },
           {
@@ -1114,6 +1594,12 @@
             "type": "STRING"
           },
           {
+            "description": "The setting a user chooses as their Home page. By default,\nit is initially set to Firefox Home.\n",
+            "mode": "NULLABLE",
+            "name": "preferences_home_page_setting",
+            "type": "STRING"
+          },
+          {
             "description": "The URL scheme of the mail client that the user wants to use\nfor `mailto:` links. It is used to measure usage of this\nfeature, to see how effective feature promotion campaigns are\nand to report back to third-party mail clients what percentage\nof users is using their client.\n",
             "mode": "NULLABLE",
             "name": "preferences_mail_client",
@@ -1152,6 +1638,277 @@
         ],
         "mode": "NULLABLE",
         "name": "string",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "mode": "REPEATED",
+            "name": "logins_store_migration_errors",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "string_list",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "key",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "value",
+            "type": "STRING"
+          }
+        ],
+        "mode": "REPEATED",
+        "name": "text",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "How long the migration tool\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "logins_store_migration_total_duration",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "timespan",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The time taken to execute a read query on the logins store (such as listing all logins, or finding a specific login by id).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "logins_store_read_query_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "The time taken to open the logins store on startup, or after locking it due to user inactivity.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "logins_store_unlock_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "The time taken to execute a write query on the logins store (such as adding, updating, or deleting a login record).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "logins_store_write_query_time",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "timing_distribution",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "key",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "value",
+            "type": "STRING"
+          }
+        ],
+        "mode": "REPEATED",
+        "name": "url",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The client id from legacy telemetry.\n",
+            "mode": "NULLABLE",
+            "name": "legacy_ids_client_id",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "uuid",
         "type": "RECORD"
       }
     ],

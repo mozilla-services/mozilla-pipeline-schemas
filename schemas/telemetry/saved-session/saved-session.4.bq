@@ -797,6 +797,12 @@
           {
             "fields": [
               {
+                "description": "The status of Win32k Lockdown for Content process.",
+                "mode": "NULLABLE",
+                "name": "content_win32k_lockdown_state",
+                "type": "INT64"
+              },
+              {
                 "description": "The effective sandbox. The values are OS dependent.",
                 "mode": "NULLABLE",
                 "name": "effective_content_process_level",
@@ -824,6 +830,12 @@
                 "description": "The state of the `app.update.auto` pref.",
                 "mode": "NULLABLE",
                 "name": "auto_download",
+                "type": "BOOL"
+              },
+              {
+                "description": "Indicates whether updates may be installed when Firefox is not running.",
+                "mode": "NULLABLE",
+                "name": "background",
                 "type": "BOOL"
               },
               {
@@ -1282,6 +1294,12 @@
             "type": "RECORD"
           },
           {
+            "description": "Is the process running with a package identity (e.g. from an MSIX install)? See bug 1709892. This is Windows only.",
+            "mode": "NULLABLE",
+            "name": "has_win_package_id",
+            "type": "BOOL"
+          },
+          {
             "fields": [
               {
                 "fields": [
@@ -1557,6 +1575,12 @@
             "type": "STRING"
           },
           {
+            "description": "X-Foxsec-IP-Reputation header",
+            "mode": "NULLABLE",
+            "name": "x_foxsec_ip_reputation",
+            "type": "STRING"
+          },
+          {
             "description": "X-PingSender-Version HTTP header",
             "mode": "NULLABLE",
             "name": "x_pingsender_version",
@@ -1566,6 +1590,12 @@
             "description": "X-Source-Tags HTTP header",
             "mode": "NULLABLE",
             "name": "x_source_tags",
+            "type": "STRING"
+          },
+          {
+            "description": "X-Telemetry-Agent HTTP header",
+            "mode": "NULLABLE",
+            "name": "x_telemetry_agent",
             "type": "STRING"
           }
         ],
@@ -1953,6 +1983,12 @@
             "type": "STRING"
           },
           {
+            "description": "AVIF alpha plane",
+            "mode": "NULLABLE",
+            "name": "avif_alpha",
+            "type": "STRING"
+          },
+          {
             "description": "Error code from aom_codec_decode when decoding AVIF image",
             "mode": "NULLABLE",
             "name": "avif_aom_decode_error",
@@ -1965,6 +2001,30 @@
             "type": "STRING"
           },
           {
+            "description": "AVIF CICP colour primaries",
+            "mode": "NULLABLE",
+            "name": "avif_cicp_cp",
+            "type": "STRING"
+          },
+          {
+            "description": "AVIF CICP matrix coefficients",
+            "mode": "NULLABLE",
+            "name": "avif_cicp_mc",
+            "type": "STRING"
+          },
+          {
+            "description": "AVIF CICP transfer characteristics",
+            "mode": "NULLABLE",
+            "name": "avif_cicp_tc",
+            "type": "STRING"
+          },
+          {
+            "description": "AVIF colour information type",
+            "mode": "NULLABLE",
+            "name": "avif_colr",
+            "type": "STRING"
+          },
+          {
             "description": "Decode result of AVIF image",
             "mode": "NULLABLE",
             "name": "avif_decode_result",
@@ -1974,6 +2034,18 @@
             "description": "Decoder of AVIF image",
             "mode": "NULLABLE",
             "name": "avif_decoder",
+            "type": "STRING"
+          },
+          {
+            "description": "AVIF spatial extents (image size)",
+            "mode": "NULLABLE",
+            "name": "avif_ispe",
+            "type": "STRING"
+          },
+          {
+            "description": "AVIF pixel information (bits per channel)",
+            "mode": "NULLABLE",
+            "name": "avif_pixi",
             "type": "STRING"
           },
           {
@@ -2055,7 +2127,7 @@
             "type": "STRING"
           },
           {
-            "description": "The result of the startup default desktop browser check.",
+            "description": "Whether Firefox is the system default browser on startup. A true value is also recorded here, and a false value is recorded to BROWSER_SET_DEFAULT_ERROR, if a user clicked 'Use Firefox as my default browser' on an in-product prompt. (Note that on Windows 8+ the latter action opens the right settings dialog but does not actually change the default browser without further user action.) On Windows, 'system default browser' is operationalized as whether Firefox is the default HTTP protocol handler.",
             "mode": "NULLABLE",
             "name": "browser_is_user_default",
             "type": "STRING"
@@ -2094,6 +2166,12 @@
             "description": "Time to successfully set Firefox as the default browser after clicking 'Set Firefox as Default'. Should be near-instant in some environments, others require user interaction. Measured in seconds.",
             "mode": "NULLABLE",
             "name": "browser_set_default_time_to_completion_seconds",
+            "type": "STRING"
+          },
+          {
+            "description": "Result of each attempt to set the default browser with SetDefaultBrowserUserChoice()",
+            "mode": "NULLABLE",
+            "name": "browser_set_default_user_choice_result",
             "type": "STRING"
           },
           {
@@ -2727,6 +2805,12 @@
             "type": "STRING"
           },
           {
+            "description": "ms elapsed time scanning for client certificates",
+            "mode": "NULLABLE",
+            "name": "client_certificate_scan_time",
+            "type": "STRING"
+          },
+          {
             "description": "Whether content ever accesed the Components shim in this session",
             "mode": "NULLABLE",
             "name": "components_shim_accessed_by_content",
@@ -2910,6 +2994,18 @@
             "description": "The maximum number of content processes, submitted when a new maximum is reached.",
             "mode": "NULLABLE",
             "name": "content_process_max",
+            "type": "STRING"
+          },
+          {
+            "description": "An enumerated count of the number of content processes, collected every five minutes.",
+            "mode": "NULLABLE",
+            "name": "content_process_precise_count",
+            "type": "STRING"
+          },
+          {
+            "description": "The enumerated maximum number of content processes, submitted when a new maximum is reached.",
+            "mode": "NULLABLE",
+            "name": "content_process_precise_max",
             "type": "STRING"
           },
           {
@@ -3198,6 +3294,12 @@
             "description": "The result of looking up revocation information for a TLS server certificate in CRLite.",
             "mode": "NULLABLE",
             "name": "crlite_result",
+            "type": "STRING"
+          },
+          {
+            "description": "Does CRLite and OCSP fetching agree when a certificate is revoked?",
+            "mode": "NULLABLE",
+            "name": "crlite_vs_ocsp_result",
             "type": "STRING"
           },
           {
@@ -3504,6 +3606,24 @@
             "description": "A number of tranlation offers the user denied",
             "mode": "NULLABLE",
             "name": "denied_translation_offers",
+            "type": "STRING"
+          },
+          {
+            "description": "Size of deserialized data, in bytes",
+            "mode": "NULLABLE",
+            "name": "deserialize_bytes",
+            "type": "STRING"
+          },
+          {
+            "description": "Size of deserialized data, in items",
+            "mode": "NULLABLE",
+            "name": "deserialize_items",
+            "type": "STRING"
+          },
+          {
+            "description": "Time spent deserializing structured data",
+            "mode": "NULLABLE",
+            "name": "deserialize_us",
             "type": "STRING"
           },
           {
@@ -5631,6 +5751,12 @@
             "type": "STRING"
           },
           {
+            "description": "Firefox: Time from request to Merino endpoint to response (ms)",
+            "mode": "NULLABLE",
+            "name": "fx_urlbar_merino_latency_ms",
+            "type": "STRING"
+          },
+          {
             "description": "Firefox: The index of the selected result in the URL bar popup",
             "mode": "NULLABLE",
             "name": "fx_urlbar_selected_result_index",
@@ -5694,6 +5820,12 @@
             "description": "How long a GC slice ran over its budget in microseconds",
             "mode": "NULLABLE",
             "name": "gc_budget_overrun",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether the budget was increased due to taking too long or approaching the incremental limit",
+            "mode": "NULLABLE",
+            "name": "gc_budget_was_increased",
             "type": "STRING"
           },
           {
@@ -5913,6 +6045,12 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a GC slice took 1.5 times or 5ms more than its budget",
+            "mode": "NULLABLE",
+            "name": "gc_slice_was_long",
+            "type": "STRING"
+          },
+          {
             "description": "The longest phase in any slice that goes over 2x the budget. The phase values are defined in js/src/gc/GenerateStatsPhases.py.",
             "mode": "NULLABLE",
             "name": "gc_slow_phase",
@@ -5946,6 +6084,12 @@
             "description": "Time spent in between garbage collections slice for the main runtime (ms)",
             "mode": "NULLABLE",
             "name": "gc_time_between_slices_ms",
+            "type": "STRING"
+          },
+          {
+            "description": "The number of queued GCs, collected each time GCs are (de)queued)",
+            "mode": "NULLABLE",
+            "name": "gc_wait_for_idle_count",
             "type": "STRING"
           },
           {
@@ -7047,6 +7191,12 @@
             "type": "STRING"
           },
           {
+            "description": "AVIF image decode speed (Kbytes/sec)",
+            "mode": "NULLABLE",
+            "name": "image_decode_speed_avif",
+            "type": "STRING"
+          },
+          {
             "description": "GIF image decode speed (Kbytes/sec)",
             "mode": "NULLABLE",
             "name": "image_decode_speed_gif",
@@ -7143,7 +7293,7 @@
             "type": "STRING"
           },
           {
-            "description": "Time (ms) for the mouse click event to dispatch, but before handlers executing.",
+            "description": "Time (ms) for the mouse up/down event to dispatch, but before handlers executing.",
             "mode": "NULLABLE",
             "name": "input_event_queued_click_ms",
             "type": "STRING"
@@ -7491,6 +7641,12 @@
             "type": "STRING"
           },
           {
+            "description": "Reports if a Firefox succeeded or failed in fetching the GMP update.xml from balrog, and which method was used to verify the download.",
+            "mode": "NULLABLE",
+            "name": "media_gmp_update_xml_fetch_result",
+            "type": "STRING"
+          },
+          {
             "description": "Reports a true value when a page requests canPlayType for a HLS media type.",
             "mode": "NULLABLE",
             "name": "media_hls_canplay_requested",
@@ -7578,6 +7734,12 @@
             "description": "Whether rust and stagefight mp4 parser video track results match.",
             "mode": "NULLABLE",
             "name": "media_rust_mp4parse_track_match_video",
+            "type": "STRING"
+          },
+          {
+            "description": "ISOBMFF brand pattern used to identify MP4 in media sniffer",
+            "mode": "NULLABLE",
+            "name": "media_sniffer_mp4_brand_pattern",
             "type": "STRING"
           },
           {
@@ -9213,6 +9375,12 @@
             "type": "STRING"
           },
           {
+            "description": "If and why prefetches are used/unused.",
+            "mode": "NULLABLE",
+            "name": "predictor_prefetch_use_status",
+            "type": "STRING"
+          },
+          {
             "description": "The degradation calculated for a subresource",
             "mode": "NULLABLE",
             "name": "predictor_subresource_degradation",
@@ -9405,6 +9573,12 @@
             "type": "STRING"
           },
           {
+            "description": "The number of passwords generated when 'signon.improvedPasswordRules.enabled' is true. 0 = Password generated by default rules, 1 = Password generated by custom rules",
+            "mode": "NULLABLE",
+            "name": "pwmgr_num_improved_generated_passwords",
+            "type": "STRING"
+          },
+          {
             "description": "The number of passwords per hostname",
             "mode": "NULLABLE",
             "name": "pwmgr_num_passwords_per_hostname",
@@ -9459,6 +9633,12 @@
             "type": "STRING"
           },
           {
+            "description": "A count of the query stripping. ('Navigation' = There was a top-level loading via navigation, 'Redirect' = There was a top-level loading via redirect, 'StripForNavigation' = There was a stripping happened for a top-level navigation, 'StripForRedirect' = There was a stripping happened for a top-level redirect.",
+            "mode": "NULLABLE",
+            "name": "query_stripping_count",
+            "type": "STRING"
+          },
+          {
             "description": "HTML document compat mode (quirks mode)",
             "mode": "NULLABLE",
             "name": "quirks_mode",
@@ -9480,6 +9660,12 @@
             "description": "The result of trying to parse a document to show in reader view (0=Success, 1=Error too many elements, 2=Error in worker, 3=Error no article)",
             "mode": "NULLABLE",
             "name": "reader_mode_parse_result",
+            "type": "STRING"
+          },
+          {
+            "description": "The counter of each referrer policy which has been computed for a referrer. The buckets (0-8) are for same-site requests and buckets (9-17) are for cross-site requests. Note that the index matches to the order in ReferrerPolicy.webidl",
+            "mode": "NULLABLE",
+            "name": "referrer_policy_count",
             "type": "STRING"
           },
           {
@@ -9720,6 +9906,12 @@
             "description": "Time (ms) for a service worker to start up.",
             "mode": "NULLABLE",
             "name": "service_worker_launch_time",
+            "type": "STRING"
+          },
+          {
+            "description": "Time (ms) for spawning a service worker in the remote content process.",
+            "mode": "NULLABLE",
+            "name": "service_worker_launch_time_2",
             "type": "STRING"
           },
           {
@@ -10506,6 +10698,12 @@
             "description": "The time duration from tab's media was blocked to unblocked. Now we record from 1 to 90 seconds, but the record by milliseconds, so the bucket is like [1000ms, 2000ms], [2000ms, 3000ms], e.t.c.",
             "mode": "NULLABLE",
             "name": "tab_media_blocking_time_ms",
+            "type": "STRING"
+          },
+          {
+            "description": "How long (sec) a tab had been unloaded until it was reloaded.",
+            "mode": "NULLABLE",
+            "name": "tab_unload_to_reload",
             "type": "STRING"
           },
           {
@@ -12753,6 +12951,18 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document used the CSS property accent-color",
+            "mode": "NULLABLE",
+            "name": "use_counter2_css_property_accent_color_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page used the CSS property accent-color",
+            "mode": "NULLABLE",
+            "name": "use_counter2_css_property_accent_color_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document used the CSS property align-content",
             "mode": "NULLABLE",
             "name": "use_counter2_css_property_align_content_document",
@@ -12954,6 +13164,18 @@
             "description": "Whether a page used the CSS property aspect-ratio",
             "mode": "NULLABLE",
             "name": "use_counter2_css_property_aspect_ratio_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document used the CSS property backdrop-filter",
+            "mode": "NULLABLE",
+            "name": "use_counter2_css_property_backdrop_filter_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page used the CSS property backdrop-filter",
+            "mode": "NULLABLE",
+            "name": "use_counter2_css_property_backdrop_filter_page",
             "type": "STRING"
           },
           {
@@ -14121,6 +14343,18 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document used the CSS property color-scheme",
+            "mode": "NULLABLE",
+            "name": "use_counter2_css_property_color_scheme_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page used the CSS property color-scheme",
+            "mode": "NULLABLE",
+            "name": "use_counter2_css_property_color_scheme_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document used the CSS property column-count",
             "mode": "NULLABLE",
             "name": "use_counter2_css_property_column_count_document",
@@ -14262,6 +14496,18 @@
             "description": "Whether a page used the CSS property content",
             "mode": "NULLABLE",
             "name": "use_counter2_css_property_content_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document used the CSS property content-visibility",
+            "mode": "NULLABLE",
+            "name": "use_counter2_css_property_content_visibility_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page used the CSS property content-visibility",
+            "mode": "NULLABLE",
+            "name": "use_counter2_css_property_content_visibility_page",
             "type": "STRING"
           },
           {
@@ -20889,6 +21135,18 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document used DocumentReleaseCapture",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_document_release_capture_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page used DocumentReleaseCapture",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_document_release_capture_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document used DOMAttrModifiedEvent",
             "mode": "NULLABLE",
             "name": "use_counter2_deprecated_dom_attr_modified_event_document",
@@ -20934,6 +21192,30 @@
             "description": "Whether a page used DrawWindowCanvasRenderingContext2D",
             "mode": "NULLABLE",
             "name": "use_counter2_deprecated_draw_window_canvas_rendering_context2_d_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document used ElementReleaseCapture",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_element_release_capture_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page used ElementReleaseCapture",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_element_release_capture_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document used ElementSetCapture",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_element_set_capture_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page used ElementSetCapture",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_element_set_capture_page",
             "type": "STRING"
           },
           {
@@ -21801,6 +22083,66 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document calls execCommand with contentReadOnly",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentexeccommandcontentreadonly_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page calls execCommand with contentReadOnly",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentexeccommandcontentreadonly_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document calls execCommand with decreasefontsize",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentexeccommanddecreasefontsize_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page calls execCommand with decreasefontsize",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentexeccommanddecreasefontsize_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document calls execCommand with heading",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentexeccommandheading_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page calls execCommand with heading",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentexeccommandheading_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document calls execCommand with increasefontsize",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentexeccommandincreasefontsize_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page calls execCommand with increasefontsize",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentexeccommandincreasefontsize_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document calls execCommand with readonly",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentexeccommandreadonly_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page calls execCommand with readonly",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentexeccommandreadonly_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document calls document.open in a way that creates a new Window object",
             "mode": "NULLABLE",
             "name": "use_counter2_documentopen_document",
@@ -21822,6 +22164,150 @@
             "description": "Whether a page calls document.open in a way that creates a new Window object and replaces the old history entry.",
             "mode": "NULLABLE",
             "name": "use_counter2_documentopenreplace_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document calls queryCommandState or queryCommandValue with contentReadOnly",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentquerycommandstateorvaluecontentreadonly_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page calls queryCommandState or queryCommandValue with contentReadOnly",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentquerycommandstateorvaluecontentreadonly_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document calls queryCommandState or queryCommandValue with gethtml",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentquerycommandstateorvaluegethtml_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page calls queryCommandState or queryCommandValue with gethtml",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentquerycommandstateorvaluegethtml_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document calls queryCommandState or queryCommandValue with heading",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentquerycommandstateorvalueheading_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page calls queryCommandState or queryCommandValue with heading",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentquerycommandstateorvalueheading_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document calls queryCommandState or queryCommandValue with insertBrOnReturn",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentquerycommandstateorvalueinsertbronreturn_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page calls queryCommandState or queryCommandValue with insertBrOnReturn",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentquerycommandstateorvalueinsertbronreturn_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document calls queryCommandState or queryCommandValue with readonly",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentquerycommandstateorvaluereadonly_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page calls queryCommandState or queryCommandValue with readonly",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentquerycommandstateorvaluereadonly_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document calls queryCommandSupported or queryCommandEnabled with contentReadOnly",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentquerycommandsupportedorenabledcontentreadonly_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page calls queryCommandSupported or queryCommandEnabled with contentReadOnly",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentquerycommandsupportedorenabledcontentreadonly_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document calls queryCommandSupported or queryCommandEnabled with decreasefontsize",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentquerycommandsupportedorenableddecreasefontsize_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page calls queryCommandSupported or queryCommandEnabled with decreasefontsize",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentquerycommandsupportedorenableddecreasefontsize_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document calls queryCommandSupported or queryCommandEnabled with gethtml",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentquerycommandsupportedorenabledgethtml_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page calls queryCommandSupported or queryCommandEnabled with gethtml",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentquerycommandsupportedorenabledgethtml_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document calls queryCommandSupported or queryCommandEnabled with heading",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentquerycommandsupportedorenabledheading_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page calls queryCommandSupported or queryCommandEnabled with heading",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentquerycommandsupportedorenabledheading_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document calls queryCommandSupported or queryCommandEnabled with increasefontsize",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentquerycommandsupportedorenabledincreasefontsize_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page calls queryCommandSupported or queryCommandEnabled with increasefontsize",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentquerycommandsupportedorenabledincreasefontsize_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document calls queryCommandSupported or queryCommandEnabled with insertBrOnReturn",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentquerycommandsupportedorenabledinsertbronreturn_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page calls queryCommandSupported or queryCommandEnabled with insertBrOnReturn",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentquerycommandsupportedorenabledinsertbronreturn_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document calls queryCommandSupported or queryCommandEnabled with readonly",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentquerycommandsupportedorenabledreadonly_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page calls queryCommandSupported or queryCommandEnabled with readonly",
+            "mode": "NULLABLE",
+            "name": "use_counter2_documentquerycommandsupportedorenabledreadonly_page",
             "type": "STRING"
           },
           {
@@ -21909,6 +22395,18 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document called Element.releasePointerCapture",
+            "mode": "NULLABLE",
+            "name": "use_counter2_element_releasepointercapture_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Element.releasePointerCapture",
+            "mode": "NULLABLE",
+            "name": "use_counter2_element_releasepointercapture_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document called Element.setCapture",
             "mode": "NULLABLE",
             "name": "use_counter2_element_setcapture_document",
@@ -21918,6 +22416,30 @@
             "description": "Whether a page called Element.setCapture",
             "mode": "NULLABLE",
             "name": "use_counter2_element_setcapture_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Element.setHTML",
+            "mode": "NULLABLE",
+            "name": "use_counter2_element_sethtml_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Element.setHTML",
+            "mode": "NULLABLE",
+            "name": "use_counter2_element_sethtml_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Element.setPointerCapture",
+            "mode": "NULLABLE",
+            "name": "use_counter2_element_setpointercapture_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Element.setPointerCapture",
+            "mode": "NULLABLE",
+            "name": "use_counter2_element_setpointercapture_page",
             "type": "STRING"
           },
           {
@@ -21966,6 +22488,198 @@
             "description": "Whether a page called External.AddSearchProvider",
             "mode": "NULLABLE",
             "name": "use_counter2_external_addsearchprovider_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document uses the feBlend SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_feblend_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page uses the feBlend SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_feblend_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document uses the feColorMatrix SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_fecolormatrix_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page uses the feColorMatrix SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_fecolormatrix_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document uses the feComponentTransfer SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_fecomponenttransfer_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page uses the feComponentTransfer SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_fecomponenttransfer_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document uses the feComposite SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_fecomposite_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page uses the feComposite SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_fecomposite_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document uses the feConvolveMatrix SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_feconvolvematrix_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page uses the feConvolveMatrix SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_feconvolvematrix_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document uses the feDiffuseLighting SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_fediffuselighting_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page uses the feDiffuseLighting SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_fediffuselighting_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document uses the feDisplacementMap SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_fedisplacementmap_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page uses the feDisplacementMap SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_fedisplacementmap_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document uses the feFlood SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_feflood_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page uses the feFlood SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_feflood_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document uses the feGaussianBlur SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_fegaussianblur_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page uses the feGaussianBlur SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_fegaussianblur_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document uses the feImage SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_feimage_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page uses the feImage SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_feimage_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document uses the feMerge SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_femerge_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page uses the feMerge SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_femerge_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document uses the feMorphology SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_femorphology_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page uses the feMorphology SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_femorphology_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document uses the feOffset SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_feoffset_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page uses the feOffset SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_feoffset_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document uses the feSpecularLighting SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_fespecularlighting_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page uses the feSpecularLighting SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_fespecularlighting_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document uses the feTile SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_fetile_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page uses the feTile SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_fetile_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document uses the feTurbulence SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_feturbulence_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page uses the feTurbulence SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_feturbulence_page",
             "type": "STRING"
           },
           {
@@ -22974,6 +23688,42 @@
             "description": "Whether a page called PushSubscription.unsubscribe",
             "mode": "NULLABLE",
             "name": "use_counter2_pushsubscription_unsubscribe_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Sanitizer.constructor",
+            "mode": "NULLABLE",
+            "name": "use_counter2_sanitizer_constructor_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Sanitizer.constructor",
+            "mode": "NULLABLE",
+            "name": "use_counter2_sanitizer_constructor_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Sanitizer.sanitize",
+            "mode": "NULLABLE",
+            "name": "use_counter2_sanitizer_sanitize_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Sanitizer.sanitize",
+            "mode": "NULLABLE",
+            "name": "use_counter2_sanitizer_sanitize_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Sanitizer.sanitizeFor",
+            "mode": "NULLABLE",
+            "name": "use_counter2_sanitizer_sanitizefor_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Sanitizer.sanitizeFor",
+            "mode": "NULLABLE",
+            "name": "use_counter2_sanitizer_sanitizefor_page",
             "type": "STRING"
           },
           {
@@ -25077,6 +25827,18 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document triggers the blob fallback for an SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_wrfilterfallback_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page triggers the blob fallback for an SVG filter.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_wrfilterfallback_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document got XMLDocument.async",
             "mode": "NULLABLE",
             "name": "use_counter2_xmldocument_async_getter_document",
@@ -25263,7 +26025,7 @@
             "type": "STRING"
           },
           {
-            "description": "Total time spent playing video while element is hidden, in milliseconds. This reports the total hidden play time for a video element whenever the decoder stops. (eg. pausing media, encountering an error, changing to a new resource, page goes to the bf-cached or page gets discarded)",
+            "description": "Total time spent playing video while element is hidden, in milliseconds.",
             "mode": "NULLABLE",
             "name": "video_hidden_play_time_ms",
             "type": "STRING"
@@ -25275,7 +26037,7 @@
             "type": "STRING"
           },
           {
-            "description": "Total time spent playing video in milliseconds. This reports the total play time for a video element whenever the decoder stops. (eg. pausing media, encountering an error, changing to a new resource, page goes to the bf-cached or page gets discarded)",
+            "description": "Total time spent playing video in milliseconds.",
             "mode": "NULLABLE",
             "name": "video_play_time_ms",
             "type": "STRING"
@@ -26447,6 +27209,24 @@
                 "type": "STRING"
               },
               {
+                "description": "Percentage of time spent playing media with an audible audio track, regardless of the volume. Keyed by audio-only or video presence.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "audible_play_time_percent",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "Time (ms) that the main thread has been blocked on NPP_Destroy in an IPC plugin",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -27365,6 +28145,24 @@
                 "type": "STRING"
               },
               {
+                "description": "Users action on blocked download, keyed by verdict type (0=Number of blocked downloads, 1=Confirm block, 2=Confirm unblock)",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "downloads_user_action_on_blocked_download",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "Counts how often the external protocol handler dialog is shown. Labelled by protocol scheme. Keyed by the kind of browsing context the navigation was triggered from: TOPLEVEL: Top browser, SUB_SAMEORIGIN: Same origin iframe, SUB_CROSSORIGIN: Cross origin iframe, SUB_SANDBOX_ALLOW: Sandboxed iframe with relevant allow flags, SUB_SANDBOX_NOALLOW: Sandboxed iframe without relevant allow flags",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -28211,6 +29009,60 @@
                 "type": "STRING"
               },
               {
+                "description": "HTTP transaction upload time (ms) (keys: uses_http3_10_50 (load size 10M to 50M), uses_http3_50_100 (load size 50M to 100M), uses_http3_gt_100 (load size > 100M), supports_http3_10_50, supports_http3_50_100, supports_http3_gt_100",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http3_upload_time",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "HTTP transaction upload time (ms) (keys: uses_http3_10_50 (load size 10M to 50M), uses_http3_50_100 (load size 50M to 100M), supports_http3_10_50, supports_http3_50_100)",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http3_upload_time_10m_100m",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "HTTP transaction upload time for resources larger than 100M (ms) (keys: uses_http3, supports_http3)",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http3_upload_time_gt_100m",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "HTTP Cache v2 hit/miss stats keyed by content type.",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -28399,6 +29251,24 @@
             ],
             "mode": "REPEATED",
             "name": "https_rr_open_to_first_sent",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "The time that a transaction is waiting for HTTPS RR",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "https_rr_waiting_time",
             "type": "RECORD"
           },
           {
@@ -28607,6 +29477,24 @@
                 "type": "STRING"
               },
               {
+                "description": "Total time spent playing media in milliseconds, keyed by its content (Audio and video, audio only, video only, audio and video but audio inaudible, audio and video but audio muted).",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "media_play_time_ms",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "Absolute difference of each content process' USS and the mean of USS's, normalized by the mean, in percentage. It will be recorded with the rest of the memory probes when gatherMemory is called, if at least 2 content processes are alive. Example: in case of 4 content processes with USS's: 1G, 500MB, 1G, 1.5G, the reported numbers will be: 0, 50, 0, 50. Which indicates that 2 processes used 50% more or 50% less memory than the avarage and 2 used exactly as much as the avarage.",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -28615,6 +29503,24 @@
             ],
             "mode": "REPEATED",
             "name": "memory_distribution_among_content",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "Percentage of time spent playing media that has an audio track, with the audio muted. Keyed by audio-only or video presence.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "muted_play_time_percent",
             "type": "RECORD"
           },
           {
@@ -29381,6 +30287,24 @@
                 "type": "STRING"
               },
               {
+                "description": "Time (in ms) measured between when the fetch handler finished executing and when we reset the network channel.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "service_worker_fetch_event_channel_reset_ms_2",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "Time (in ms) measured between when the fetch event is dispatched by the Service Worker and before we execute the event listeners. This effectively measures the SW backlong, in the future this should also cover the IPC steps required to dispatch events to the SW.",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -29389,6 +30313,24 @@
             ],
             "mode": "REPEATED",
             "name": "service_worker_fetch_event_dispatch_ms",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "Time (in ms) measured between when the fetch event is dispatched by the Service Worker and before we execute the event listeners.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "service_worker_fetch_event_dispatch_ms_2",
             "type": "RECORD"
           },
           {
@@ -29417,6 +30359,24 @@
                 "type": "STRING"
               },
               {
+                "description": "Time (in ms) measured between when the respondWith promise resolves and when we provide the response through the intercepted channel.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "service_worker_fetch_event_finish_synthesized_response_ms_2",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "Time delta (ms) between when a network request is intercepted and the service worker provides a response. This includes: possible SW startup, worker thread dispatch, time until the respondWith() promise resolves, time to synthesize the response (including the body), worker thread to main thread dispatch. In the future this should include the IPC roundtrips involved in fetch interception.",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -29425,6 +30385,24 @@
             ],
             "mode": "REPEATED",
             "name": "service_worker_fetch_interception_duration_ms",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "Time delta (ms) between when a network request is intercepted in the parent process and the service worker provides a response.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "service_worker_fetch_interception_duration_ms_2",
             "type": "RECORD"
           },
           {
@@ -30065,7 +31043,7 @@
                 "type": "STRING"
               },
               {
-                "description": "Percentage of total time spent *not* fully decoding video while element is hidden (simulated, even when feature is not enabled). Keyed by audio presence and by height ranges (boundaries: 240. 480, 576, 720, 1080, 2160), e.g.: 'V,0<h<=240', 'AV,h>2160'; and 'All' will accumulate all percentages. This is reported whenever the decoder stops. (eg. pausing media, encountering an error, changing to a new resource, page goes to the bf-cached or page gets discarded)",
+                "description": "Percentage of total time spent *not* fully decoding video while element is hidden (simulated, even when feature is not enabled). Keyed by audio presence and by height ranges (boundaries: 240. 480, 576, 720, 1080, 2160), e.g.: 'V,0<h<=240', 'AV,h>2160'; and 'All' will accumulate all percentages.",
                 "mode": "NULLABLE",
                 "name": "value",
                 "type": "STRING"
@@ -30083,7 +31061,7 @@
                 "type": "STRING"
               },
               {
-                "description": "Average interval between video keyframes in played videos, in milliseconds. Keyed by audio presence and by height ranges (boundaries: 240. 480, 576, 720, 1080, 2160), e.g.: 'V,0<h<=240', 'AV,h>2160'; and 'All' will accumulate all percentages. This is reported whenever the decoder stops. (eg. pausing media, encountering an error, changing to a new resource, page goes to the bf-cached or page gets discarded)",
+                "description": "Average interval between video keyframes in played videos, in milliseconds. Keyed by audio presence and by height ranges (boundaries: 240. 480, 576, 720, 1080, 2160), e.g.: 'V,0<h<=240', 'AV,h>2160'; and 'All' will accumulate all percentages.",
                 "mode": "NULLABLE",
                 "name": "value",
                 "type": "STRING"
@@ -30127,6 +31105,24 @@
             ],
             "mode": "REPEATED",
             "name": "video_suspend_recovery_time_ms",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "Total time spent playing visible video in milliseconds.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "video_visible_play_time_ms",
             "type": "RECORD"
           },
           {
@@ -30739,6 +31735,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "AVIF alpha plane",
+                    "mode": "NULLABLE",
+                    "name": "avif_alpha",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Error code from aom_codec_decode when decoding AVIF image",
                     "mode": "NULLABLE",
                     "name": "avif_aom_decode_error",
@@ -30751,6 +31753,30 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "AVIF CICP colour primaries",
+                    "mode": "NULLABLE",
+                    "name": "avif_cicp_cp",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "AVIF CICP matrix coefficients",
+                    "mode": "NULLABLE",
+                    "name": "avif_cicp_mc",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "AVIF CICP transfer characteristics",
+                    "mode": "NULLABLE",
+                    "name": "avif_cicp_tc",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "AVIF colour information type",
+                    "mode": "NULLABLE",
+                    "name": "avif_colr",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Decode result of AVIF image",
                     "mode": "NULLABLE",
                     "name": "avif_decode_result",
@@ -30760,6 +31786,18 @@
                     "description": "Decoder of AVIF image",
                     "mode": "NULLABLE",
                     "name": "avif_decoder",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "AVIF spatial extents (image size)",
+                    "mode": "NULLABLE",
+                    "name": "avif_ispe",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "AVIF pixel information (bits per channel)",
+                    "mode": "NULLABLE",
+                    "name": "avif_pixi",
                     "type": "STRING"
                   },
                   {
@@ -30841,7 +31879,7 @@
                     "type": "STRING"
                   },
                   {
-                    "description": "The result of the startup default desktop browser check.",
+                    "description": "Whether Firefox is the system default browser on startup. A true value is also recorded here, and a false value is recorded to BROWSER_SET_DEFAULT_ERROR, if a user clicked 'Use Firefox as my default browser' on an in-product prompt. (Note that on Windows 8+ the latter action opens the right settings dialog but does not actually change the default browser without further user action.) On Windows, 'system default browser' is operationalized as whether Firefox is the default HTTP protocol handler.",
                     "mode": "NULLABLE",
                     "name": "browser_is_user_default",
                     "type": "STRING"
@@ -32143,6 +33181,24 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Size of deserialized data, in bytes",
+                    "mode": "NULLABLE",
+                    "name": "deserialize_bytes",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Size of deserialized data, in items",
+                    "mode": "NULLABLE",
+                    "name": "deserialize_items",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Time spent deserializing structured data",
+                    "mode": "NULLABLE",
+                    "name": "deserialize_us",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "GPU Device Reset Reason (ok, hung, removed, reset, internal error, invalid call, out of memory)",
                     "mode": "NULLABLE",
                     "name": "device_reset_reason",
@@ -32920,6 +33976,12 @@
                     "description": "Whether a toplevel document uses data: URI? (0=data-navigated, 1=data-typed, 2=nodata)",
                     "mode": "NULLABLE",
                     "name": "document_data_uri_loads",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Time spent waiting on the main-thread to be available to run AsyncOpen, for image preload requests",
+                    "mode": "NULLABLE",
+                    "name": "document_preload_image_asyncopen_delay",
                     "type": "STRING"
                   },
                   {
@@ -33997,6 +35059,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether the budget was increased due to taking too long or approaching the incremental limit",
+                    "mode": "NULLABLE",
+                    "name": "gc_budget_was_increased",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Time spent running JS GC compact phase (ms)",
                     "mode": "NULLABLE",
                     "name": "gc_compact_ms",
@@ -34213,6 +35281,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a GC slice took 1.5 times or 5ms more than its budget",
+                    "mode": "NULLABLE",
+                    "name": "gc_slice_was_long",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "The longest phase in any slice that goes over 2x the budget. The phase values are defined in js/src/gc/GenerateStatsPhases.py.",
                     "mode": "NULLABLE",
                     "name": "gc_slow_phase",
@@ -34246,6 +35320,12 @@
                     "description": "Time spent in between garbage collections slice for the main runtime (ms)",
                     "mode": "NULLABLE",
                     "name": "gc_time_between_slices_ms",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "The time a content process waits before the parent process said that it may begin a GC",
+                    "mode": "NULLABLE",
+                    "name": "gc_wait_for_idle_ms",
                     "type": "STRING"
                   },
                   {
@@ -35035,6 +36115,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Time spent waiting on the main-thread to be available to process OnStartRequest, for image preload requests",
+                    "mode": "NULLABLE",
+                    "name": "http_preload_image_startrequest_delay",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "HTTP Proxy Type (none, http, socks)",
                     "mode": "NULLABLE",
                     "name": "http_proxy_type",
@@ -35329,6 +36415,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "AVIF image decode speed (Kbytes/sec)",
+                    "mode": "NULLABLE",
+                    "name": "image_decode_speed_avif",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "GIF image decode speed (Kbytes/sec)",
                     "mode": "NULLABLE",
                     "name": "image_decode_speed_gif",
@@ -35431,7 +36523,7 @@
                     "type": "STRING"
                   },
                   {
-                    "description": "Time (ms) for the mouse click event to dispatch, but before handlers executing.",
+                    "description": "Time (ms) for the mouse up/down event to dispatch, but before handlers executing.",
                     "mode": "NULLABLE",
                     "name": "input_event_queued_click_ms",
                     "type": "STRING"
@@ -35542,6 +36634,48 @@
                     "description": "Percentage of page load time spent executing Javascript.",
                     "mode": "NULLABLE",
                     "name": "js_execution_proportion",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Time spent during page load baseline compiling Javascript in ms.",
+                    "mode": "NULLABLE",
+                    "name": "js_pageload_baseline_compile_ms",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Time spent during page load delazifying Javascript in ms.",
+                    "mode": "NULLABLE",
+                    "name": "js_pageload_delazification_ms",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Time spent during page load executing Javascript in ms.",
+                    "mode": "NULLABLE",
+                    "name": "js_pageload_execution_ms",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Time spent during page load in the GC in ms.",
+                    "mode": "NULLABLE",
+                    "name": "js_pageload_gc_ms",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Time spent during page load syntax parsing JS scripts on the main thread in ms.",
+                    "mode": "NULLABLE",
+                    "name": "js_pageload_parse_ms",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Time spent during page load protecting JIT executable memory.",
+                    "mode": "NULLABLE",
+                    "name": "js_pageload_protect_ms",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Time spent during page load XDR encoding Javascript in ms.",
+                    "mode": "NULLABLE",
+                    "name": "js_pageload_xdr_encoding_ms",
                     "type": "STRING"
                   },
                   {
@@ -35878,6 +37012,12 @@
                     "description": "Whether rust and stagefight mp4 parser video track results match.",
                     "mode": "NULLABLE",
                     "name": "media_rust_mp4parse_track_match_video",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "ISOBMFF brand pattern used to identify MP4 in media sniffer",
+                    "mode": "NULLABLE",
+                    "name": "media_sniffer_mp4_brand_pattern",
                     "type": "STRING"
                   },
                   {
@@ -37513,6 +38653,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a <form> is a username-only form. (0=Form has a possible username field but is not considered as a username-only form, 1=Form is considered as a username-only form)",
+                    "mode": "NULLABLE",
+                    "name": "pwmgr_is_username_only_form",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Time in days each saved login was last used",
                     "mode": "NULLABLE",
                     "name": "pwmgr_login_last_used_days",
@@ -37561,6 +38707,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "The number of documents that receive >= bucket number 'DOMFormHasPossibleUsernameEvent' event",
+                    "mode": "NULLABLE",
+                    "name": "pwmgr_num_form_has_possible_username_event_per_doc",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Number of HTTP Auth logins",
                     "mode": "NULLABLE",
                     "name": "pwmgr_num_httpauth_passwords",
@@ -37606,6 +38758,12 @@
                     "description": "Whether a saved login has a username",
                     "mode": "NULLABLE",
                     "name": "pwmgr_username_present",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "A count of the query stripping. ('Navigation' = There was a top-level loading via navigation, 'Redirect' = There was a top-level loading via redirect, 'StripForNavigation' = There was a stripping happened for a top-level navigation, 'StripForRedirect' = There was a stripping happened for a top-level redirect.",
+                    "mode": "NULLABLE",
+                    "name": "query_stripping_count",
                     "type": "STRING"
                   },
                   {
@@ -37864,6 +39022,12 @@
                     "description": "Time (ms) for a service worker to start up.",
                     "mode": "NULLABLE",
                     "name": "service_worker_launch_time",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Time (ms) for spawning a service worker in the remote content process.",
+                    "mode": "NULLABLE",
+                    "name": "service_worker_launch_time_2",
                     "type": "STRING"
                   },
                   {
@@ -40639,6 +41803,18 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document used the CSS property accent-color",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_css_property_accent_color_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page used the CSS property accent-color",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_css_property_accent_color_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document used the CSS property align-content",
                     "mode": "NULLABLE",
                     "name": "use_counter2_css_property_align_content_document",
@@ -40840,6 +42016,18 @@
                     "description": "Whether a page used the CSS property aspect-ratio",
                     "mode": "NULLABLE",
                     "name": "use_counter2_css_property_aspect_ratio_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document used the CSS property backdrop-filter",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_css_property_backdrop_filter_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page used the CSS property backdrop-filter",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_css_property_backdrop_filter_page",
                     "type": "STRING"
                   },
                   {
@@ -42007,6 +43195,18 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document used the CSS property color-scheme",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_css_property_color_scheme_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page used the CSS property color-scheme",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_css_property_color_scheme_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document used the CSS property column-count",
                     "mode": "NULLABLE",
                     "name": "use_counter2_css_property_column_count_document",
@@ -42148,6 +43348,18 @@
                     "description": "Whether a page used the CSS property content",
                     "mode": "NULLABLE",
                     "name": "use_counter2_css_property_content_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document used the CSS property content-visibility",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_css_property_content_visibility_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page used the CSS property content-visibility",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_css_property_content_visibility_page",
                     "type": "STRING"
                   },
                   {
@@ -48775,6 +49987,18 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document used DocumentReleaseCapture",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_document_release_capture_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page used DocumentReleaseCapture",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_document_release_capture_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document used DOMAttrModifiedEvent",
                     "mode": "NULLABLE",
                     "name": "use_counter2_deprecated_dom_attr_modified_event_document",
@@ -48820,6 +50044,30 @@
                     "description": "Whether a page used DrawWindowCanvasRenderingContext2D",
                     "mode": "NULLABLE",
                     "name": "use_counter2_deprecated_draw_window_canvas_rendering_context2_d_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document used ElementReleaseCapture",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_element_release_capture_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page used ElementReleaseCapture",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_element_release_capture_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document used ElementSetCapture",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_element_set_capture_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page used ElementSetCapture",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_element_set_capture_page",
                     "type": "STRING"
                   },
                   {
@@ -49687,6 +50935,66 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document calls execCommand with contentReadOnly",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentexeccommandcontentreadonly_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page calls execCommand with contentReadOnly",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentexeccommandcontentreadonly_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document calls execCommand with decreasefontsize",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentexeccommanddecreasefontsize_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page calls execCommand with decreasefontsize",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentexeccommanddecreasefontsize_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document calls execCommand with heading",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentexeccommandheading_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page calls execCommand with heading",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentexeccommandheading_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document calls execCommand with increasefontsize",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentexeccommandincreasefontsize_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page calls execCommand with increasefontsize",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentexeccommandincreasefontsize_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document calls execCommand with readonly",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentexeccommandreadonly_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page calls execCommand with readonly",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentexeccommandreadonly_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document calls document.open in a way that creates a new Window object",
                     "mode": "NULLABLE",
                     "name": "use_counter2_documentopen_document",
@@ -49708,6 +51016,150 @@
                     "description": "Whether a page calls document.open in a way that creates a new Window object and replaces the old history entry.",
                     "mode": "NULLABLE",
                     "name": "use_counter2_documentopenreplace_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document calls queryCommandState or queryCommandValue with contentReadOnly",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentquerycommandstateorvaluecontentreadonly_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page calls queryCommandState or queryCommandValue with contentReadOnly",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentquerycommandstateorvaluecontentreadonly_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document calls queryCommandState or queryCommandValue with gethtml",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentquerycommandstateorvaluegethtml_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page calls queryCommandState or queryCommandValue with gethtml",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentquerycommandstateorvaluegethtml_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document calls queryCommandState or queryCommandValue with heading",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentquerycommandstateorvalueheading_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page calls queryCommandState or queryCommandValue with heading",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentquerycommandstateorvalueheading_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document calls queryCommandState or queryCommandValue with insertBrOnReturn",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentquerycommandstateorvalueinsertbronreturn_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page calls queryCommandState or queryCommandValue with insertBrOnReturn",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentquerycommandstateorvalueinsertbronreturn_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document calls queryCommandState or queryCommandValue with readonly",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentquerycommandstateorvaluereadonly_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page calls queryCommandState or queryCommandValue with readonly",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentquerycommandstateorvaluereadonly_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document calls queryCommandSupported or queryCommandEnabled with contentReadOnly",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentquerycommandsupportedorenabledcontentreadonly_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page calls queryCommandSupported or queryCommandEnabled with contentReadOnly",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentquerycommandsupportedorenabledcontentreadonly_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document calls queryCommandSupported or queryCommandEnabled with decreasefontsize",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentquerycommandsupportedorenableddecreasefontsize_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page calls queryCommandSupported or queryCommandEnabled with decreasefontsize",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentquerycommandsupportedorenableddecreasefontsize_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document calls queryCommandSupported or queryCommandEnabled with gethtml",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentquerycommandsupportedorenabledgethtml_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page calls queryCommandSupported or queryCommandEnabled with gethtml",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentquerycommandsupportedorenabledgethtml_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document calls queryCommandSupported or queryCommandEnabled with heading",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentquerycommandsupportedorenabledheading_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page calls queryCommandSupported or queryCommandEnabled with heading",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentquerycommandsupportedorenabledheading_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document calls queryCommandSupported or queryCommandEnabled with increasefontsize",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentquerycommandsupportedorenabledincreasefontsize_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page calls queryCommandSupported or queryCommandEnabled with increasefontsize",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentquerycommandsupportedorenabledincreasefontsize_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document calls queryCommandSupported or queryCommandEnabled with insertBrOnReturn",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentquerycommandsupportedorenabledinsertbronreturn_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page calls queryCommandSupported or queryCommandEnabled with insertBrOnReturn",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentquerycommandsupportedorenabledinsertbronreturn_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document calls queryCommandSupported or queryCommandEnabled with readonly",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentquerycommandsupportedorenabledreadonly_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page calls queryCommandSupported or queryCommandEnabled with readonly",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_documentquerycommandsupportedorenabledreadonly_page",
                     "type": "STRING"
                   },
                   {
@@ -49795,6 +51247,18 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document called Element.releasePointerCapture",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_element_releasepointercapture_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Element.releasePointerCapture",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_element_releasepointercapture_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document called Element.setCapture",
                     "mode": "NULLABLE",
                     "name": "use_counter2_element_setcapture_document",
@@ -49804,6 +51268,30 @@
                     "description": "Whether a page called Element.setCapture",
                     "mode": "NULLABLE",
                     "name": "use_counter2_element_setcapture_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Element.setHTML",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_element_sethtml_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Element.setHTML",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_element_sethtml_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Element.setPointerCapture",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_element_setpointercapture_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Element.setPointerCapture",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_element_setpointercapture_page",
                     "type": "STRING"
                   },
                   {
@@ -49852,6 +51340,198 @@
                     "description": "Whether a page called External.AddSearchProvider",
                     "mode": "NULLABLE",
                     "name": "use_counter2_external_addsearchprovider_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document uses the feBlend SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_feblend_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page uses the feBlend SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_feblend_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document uses the feColorMatrix SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_fecolormatrix_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page uses the feColorMatrix SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_fecolormatrix_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document uses the feComponentTransfer SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_fecomponenttransfer_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page uses the feComponentTransfer SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_fecomponenttransfer_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document uses the feComposite SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_fecomposite_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page uses the feComposite SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_fecomposite_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document uses the feConvolveMatrix SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_feconvolvematrix_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page uses the feConvolveMatrix SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_feconvolvematrix_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document uses the feDiffuseLighting SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_fediffuselighting_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page uses the feDiffuseLighting SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_fediffuselighting_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document uses the feDisplacementMap SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_fedisplacementmap_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page uses the feDisplacementMap SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_fedisplacementmap_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document uses the feFlood SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_feflood_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page uses the feFlood SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_feflood_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document uses the feGaussianBlur SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_fegaussianblur_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page uses the feGaussianBlur SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_fegaussianblur_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document uses the feImage SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_feimage_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page uses the feImage SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_feimage_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document uses the feMerge SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_femerge_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page uses the feMerge SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_femerge_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document uses the feMorphology SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_femorphology_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page uses the feMorphology SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_femorphology_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document uses the feOffset SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_feoffset_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page uses the feOffset SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_feoffset_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document uses the feSpecularLighting SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_fespecularlighting_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page uses the feSpecularLighting SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_fespecularlighting_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document uses the feTile SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_fetile_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page uses the feTile SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_fetile_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document uses the feTurbulence SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_feturbulence_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page uses the feTurbulence SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_feturbulence_page",
                     "type": "STRING"
                   },
                   {
@@ -50860,6 +52540,42 @@
                     "description": "Whether a page called PushSubscription.unsubscribe",
                     "mode": "NULLABLE",
                     "name": "use_counter2_pushsubscription_unsubscribe_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Sanitizer.constructor",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_sanitizer_constructor_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Sanitizer.constructor",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_sanitizer_constructor_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Sanitizer.sanitize",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_sanitizer_sanitize_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Sanitizer.sanitize",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_sanitizer_sanitize_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Sanitizer.sanitizeFor",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_sanitizer_sanitizefor_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Sanitizer.sanitizeFor",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_sanitizer_sanitizefor_page",
                     "type": "STRING"
                   },
                   {
@@ -52963,6 +54679,18 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document triggers the blob fallback for an SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_wrfilterfallback_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page triggers the blob fallback for an SVG filter.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_wrfilterfallback_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document got XMLDocument.async",
                     "mode": "NULLABLE",
                     "name": "use_counter2_xmldocument_async_getter_document",
@@ -53089,7 +54817,7 @@
                     "type": "STRING"
                   },
                   {
-                    "description": "Total time spent playing Clearkey encrypted video in milliseconds. This reports the total play time for a video lement playing Clearkey encrypted content whenever the decoder stops. (eg. pausing media, encountering an error, changing to a new resource, page goes to the bf-cached or page gets discarded)",
+                    "description": "Total time spent playing Clearkey encrypted video in milliseconds.",
                     "mode": "NULLABLE",
                     "name": "video_clearkey_play_time_ms",
                     "type": "STRING"
@@ -53137,7 +54865,7 @@
                     "type": "STRING"
                   },
                   {
-                    "description": "Total time spent playing encrypted video in milliseconds. This reports the total play time for a video element playing encrypted content whenever the decoder stops. (eg. pausing media, encountering an error, changing to a new resource, page goes to the bf-cached or page gets discarded)",
+                    "description": "Total time spent playing encrypted video in milliseconds.",
                     "mode": "NULLABLE",
                     "name": "video_encrypted_play_time_ms",
                     "type": "STRING"
@@ -53155,7 +54883,7 @@
                     "type": "STRING"
                   },
                   {
-                    "description": "Total time spent playing video while element is hidden, in milliseconds. This reports the total hidden play time for a video element whenever the decoder stops. (eg. pausing media, encountering an error, changing to a new resource, page goes to the bf-cached or page gets discarded)",
+                    "description": "Total time spent playing video while element is hidden, in milliseconds.",
                     "mode": "NULLABLE",
                     "name": "video_hidden_play_time_ms",
                     "type": "STRING"
@@ -53179,7 +54907,7 @@
                     "type": "STRING"
                   },
                   {
-                    "description": "Total time spent playing video in milliseconds. This reports the total play time for a video element whenever the decoder stops. (eg. pausing media, encountering an error, changing to a new resource, page goes to the bf-cached or page gets discarded)",
+                    "description": "Total time spent playing video in milliseconds.",
                     "mode": "NULLABLE",
                     "name": "video_play_time_ms",
                     "type": "STRING"
@@ -53197,7 +54925,7 @@
                     "type": "STRING"
                   },
                   {
-                    "description": "Total time spent playing Widevine encrypted video in milliseconds. This reports the total play time for a video element playing Widevine encrypted content whenever the decoder stops. (eg. pausing media, encountering an error, changing to a new resource, page goes to the bf-cached or page gets discarded)",
+                    "description": "Total time spent playing Widevine encrypted video in milliseconds.",
                     "mode": "NULLABLE",
                     "name": "video_widevine_play_time_ms",
                     "type": "STRING"
@@ -54001,6 +55729,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether and how window.open opens a new popup or a new tab",
+                    "mode": "NULLABLE",
+                    "name": "window_open_type",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Word cache hits, chrome text (chars)",
                     "mode": "NULLABLE",
                     "name": "word_cache_hits_chrome",
@@ -54149,6 +55883,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "application_reputation_server_verdict_2",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Percentage of time spent playing media with an audible audio track, regardless of the volume. Keyed by audio-only or video presence.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "audible_play_time_percent",
                     "type": "RECORD"
                   },
                   {
@@ -55545,6 +57297,60 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "HTTP transaction upload time (ms) (keys: uses_http3_10_50 (load size 10M to 50M), uses_http3_50_100 (load size 50M to 100M), uses_http3_gt_100 (load size > 100M), supports_http3_10_50, supports_http3_50_100, supports_http3_gt_100",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_upload_time",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "HTTP transaction upload time (ms) (keys: uses_http3_10_50 (load size 10M to 50M), uses_http3_50_100 (load size 50M to 100M), supports_http3_10_50, supports_http3_50_100)",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_upload_time_10m_100m",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "HTTP transaction upload time for resources larger than 100M (ms) (keys: uses_http3, supports_http3)",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_upload_time_gt_100m",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "HTTP Cache v2 hit/miss stats keyed by content type.",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -55797,6 +57603,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "Total time spent playing media in milliseconds, keyed by its content (Audio and video, audio only, video only, audio and video but audio inaudible, audio and video but audio muted).",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "media_play_time_ms",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "Absolute difference of each content process' USS and the mean of USS's, normalized by the mean, in percentage. It will be recorded with the rest of the memory probes when gatherMemory is called, if at least 2 content processes are alive. Example: in case of 4 content processes with USS's: 1G, 500MB, 1G, 1.5G, the reported numbers will be: 0, 50, 0, 50. Which indicates that 2 processes used 50% more or 50% less memory than the avarage and 2 used exactly as much as the avarage.",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -55805,6 +57629,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "memory_distribution_among_content",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Percentage of time spent playing media that has an audio track, with the audio muted. Keyed by audio-only or video presence.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "muted_play_time_percent",
                     "type": "RECORD"
                   },
                   {
@@ -56229,6 +58071,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "Time (in ms) measured between when the fetch handler finished executing and when we reset the network channel.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "service_worker_fetch_event_channel_reset_ms_2",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "Time (in ms) measured between when the fetch event is dispatched by the Service Worker and before we execute the event listeners. This effectively measures the SW backlong, in the future this should also cover the IPC steps required to dispatch events to the SW.",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -56237,6 +58097,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "service_worker_fetch_event_dispatch_ms",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Time (in ms) measured between when the fetch event is dispatched by the Service Worker and before we execute the event listeners.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "service_worker_fetch_event_dispatch_ms_2",
                     "type": "RECORD"
                   },
                   {
@@ -56265,6 +58143,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "Time (in ms) measured between when the respondWith promise resolves and when we provide the response through the intercepted channel.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "service_worker_fetch_event_finish_synthesized_response_ms_2",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "Time delta (ms) between when a network request is intercepted and the service worker provides a response. This includes: possible SW startup, worker thread dispatch, time until the respondWith() promise resolves, time to synthesize the response (including the body), worker thread to main thread dispatch. In the future this should include the IPC roundtrips involved in fetch interception.",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -56273,6 +58169,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "service_worker_fetch_interception_duration_ms",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Time delta (ms) between when a network request is intercepted in the parent process and the service worker provides a response.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "service_worker_fetch_interception_duration_ms_2",
                     "type": "RECORD"
                   },
                   {
@@ -56769,7 +58683,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Percentage of total time spent *not* fully decoding video while element is hidden (simulated, even when feature is not enabled). Keyed by audio presence and by height ranges (boundaries: 240. 480, 576, 720, 1080, 2160), e.g.: 'V,0<h<=240', 'AV,h>2160'; and 'All' will accumulate all percentages. This is reported whenever the decoder stops. (eg. pausing media, encountering an error, changing to a new resource, page goes to the bf-cached or page gets discarded)",
+                        "description": "Percentage of total time spent *not* fully decoding video while element is hidden (simulated, even when feature is not enabled). Keyed by audio presence and by height ranges (boundaries: 240. 480, 576, 720, 1080, 2160), e.g.: 'V,0<h<=240', 'AV,h>2160'; and 'All' will accumulate all percentages.",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "STRING"
@@ -56787,7 +58701,7 @@
                         "type": "STRING"
                       },
                       {
-                        "description": "Average interval between video keyframes in played videos, in milliseconds. Keyed by audio presence and by height ranges (boundaries: 240. 480, 576, 720, 1080, 2160), e.g.: 'V,0<h<=240', 'AV,h>2160'; and 'All' will accumulate all percentages. This is reported whenever the decoder stops. (eg. pausing media, encountering an error, changing to a new resource, page goes to the bf-cached or page gets discarded)",
+                        "description": "Average interval between video keyframes in played videos, in milliseconds. Keyed by audio presence and by height ranges (boundaries: 240. 480, 576, 720, 1080, 2160), e.g.: 'V,0<h<=240', 'AV,h>2160'; and 'All' will accumulate all percentages.",
                         "mode": "NULLABLE",
                         "name": "value",
                         "type": "STRING"
@@ -56849,6 +58763,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "video_unblackinglisting_dxva_driver_runtime_status",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Total time spent playing visible video in milliseconds.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "video_visible_play_time_ms",
                     "type": "RECORD"
                   },
                   {
@@ -57108,6 +59040,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "media_decode_error_per_mime_type",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Record whether hardware decoding is supported for the specific video codec. The key is the type of video codec, eg. video/vp9.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "BOOL"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "media_video_hardware_decoding_support",
                     "type": "RECORD"
                   },
                   {
@@ -59392,6 +61342,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "The count URI loads triggered in a subsession from the urlbar via handoff, broken down by the originating action.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "browser_engagement_navigation_urlbar_handoff",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "The count URI loads triggered in a subsession from the urlbar's search mode, broken down by the originating action.\n",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -59644,6 +61612,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "The count URI loads triggered in a subsession from the urlbar via handoff, broken down by the originating action.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "browser_search_adclicks_urlbar_handoff",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "Records clicks of adverts on SERP pages where the search was started from the urlbar in search mode. The key format is ‘<provider>:<tagged|organic>’\n",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -59832,6 +61818,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "browser_search_content_urlbar",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "The count URI loads triggered in a subsession from the urlbar via handoff, broken down by the originating action.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "browser_search_content_urlbar_handoff",
                     "type": "RECORD"
                   },
                   {
@@ -60066,6 +62070,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "browser_search_withads_urlbar",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "The count URI loads triggered in a subsession from the urlbar via handoff, broken down by the originating action.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "browser_search_withads_urlbar_handoff",
                     "type": "RECORD"
                   },
                   {
@@ -60940,6 +62962,42 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "Record whether hardware decoding is supported for the specific video codec. The key is the type of video codec, eg. video/vp9.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "BOOL"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "media_video_hardware_decoding_support",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Collection of javascript modules that created a Sqlite.jsm transaction taking too long and timing out. This can be used to identify and optimize those modules transactions.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "mozstorage_sqlitejsm_transaction_timeout",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "How many bytes of HTTP data transferred by type, there are some categories separated by keys based on 4 parameters:\n  1. normal browsing or private browsing\n  2. first party or third party\n  3. class of service\n  4. tracking classification\n\nAvailable keys are:\n  Y=0|NormalFirstParty\n  Y=1|NormalThirdPartyOther\n  Y=2|NormalThirdPartyContentLeader\n  Y=3|NormalThirdPartyContentBackground\n  Y=4|NormalThirdPartyContentOther\n  Y=5|NormalThirdPartyBasicLeader\n  Y=6|NormalThirdPartyBasicBackground\n  Y=7|NormalThirdPartyBasicOther\n  Y=8|NormalThirdPartyFingerprintingLeader\n  Y=9|NormalThirdPartyFingerprintingBackground\n  Y=10|NormalThirdPartyFingerprintingOther\n  Y=11|PrivateFirstParty\n  Y=12|PrivateThirdPartyOther\n  Y=13|PrivateThirdPartyContentLeader\n  Y=14|PrivateThirdPartyContentBackground\n  Y=15|PrivateThirdPartyContentOther\n  Y=16|PrivateThirdPartyBasicLeader\n  Y=17|PrivateThirdPartyBasicBackground\n  Y=18|PrivateThirdPartyBasicOther\n  Y=19|PrivateThirdPartyFingerprintingLeader\n  Y=20|Priv…",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -61002,6 +63060,60 @@
                     ],
                     "mode": "REPEATED",
                     "name": "normandy_recipe_freshness",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Notifications for when the subframe crash UI is shown to the user. This only triggers when a tab containing the subframe is switched to.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "notificationbar_crash_subframe_ui",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Used to test notificationbar telemetry\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "notificationbar_testone",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Used to test notificationbar telemetry\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "notificationbar_testtwo",
                     "type": "RECORD"
                   },
                   {
@@ -62530,13 +64642,19 @@
                     "type": "STRING"
                   },
                   {
-                    "description": "Keep track of the timestamp of the most recent stash of the addons blocklist. Only meaningful when mlbf_enabled and mlbf_stashes are true. The value is a datetime string in UTC format, or \"Missing Date\" when unavailable.\n",
+                    "description": "The source of the RemoteSettings attachment that holds the bloom filter. Possible values are \"dump_match\", \"cache_match\", \"remote_match\", \"dump_fallback\", \"cache_fallback\", \"unknown\". \"dump_match\", \"cache_match\" and \"remote_match\" are expected known-good values, and means that the loaded bloomfilter matches the blocklist record in the RemoteSettings collection. The prefix denotes the immediate source of the loaded data: \"dump\" means packaged with the application, \"remote\" means a freshly downloaded bloomfilter, \"cache\" means a previously downloaded bloomfilter. \"dump_fallback\" and \"cache_fallback\" means that the last known bloomfilter was used, despite it not matching the latest record in the RemoteSettings collection. In this case the outdated bloomfilter is used as a fallback (e.g. because the latest version cannot be downloaded). \"unknown\" means that the bloomfilter cannot be loaded at all. This can happen if the blocklist is disabled via preferences or enterprise policies.\n",
+                    "mode": "NULLABLE",
+                    "name": "blocklist_mlbf_source",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Keep track of the timestamp of the most recent stash of the addons blocklist. Only meaningful when mlbf_enabled is true. The value is a datetime string in UTC format, or \"Missing Date\" when unavailable.\n",
                     "mode": "NULLABLE",
                     "name": "blocklist_mlbf_stash_time_newest",
                     "type": "STRING"
                   },
                   {
-                    "description": "Keep track of the timestamp of the oldest stash of the addons blocklist. Only meaningful when mlbf_enabled and mlbf_stashes are true. The value is a datetime string in UTC format, or \"Missing Date\" when unavailable.\n",
+                    "description": "Keep track of the timestamp of the oldest stash of the addons blocklist. Only meaningful when mlbf_enabled is true. The value is a datetime string in UTC format, or \"Missing Date\" when unavailable.\n",
                     "mode": "NULLABLE",
                     "name": "blocklist_mlbf_stash_time_oldest",
                     "type": "STRING"
@@ -62623,6 +64741,18 @@
                     "description": "The count of tab pinned events per subsession, across all windows, after the session has been restored. This includes tab pinned events from private windows.\n",
                     "mode": "NULLABLE",
                     "name": "browser_engagement_tab_pinned_event_count",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "The count of tab reload events by the user after unloaded.\n",
+                    "mode": "NULLABLE",
+                    "name": "browser_engagement_tab_reload_count",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "The count of tab unload events by TabUnloader due to a low-memory situation.\n",
+                    "mode": "NULLABLE",
+                    "name": "browser_engagement_tab_unload_count",
                     "type": "INT64"
                   },
                   {
@@ -62980,6 +65110,12 @@
                     "type": "INT64"
                   },
                   {
+                    "description": "An identifier to identify users for Contextual Services user interaction pings.\n",
+                    "mode": "NULLABLE",
+                    "name": "deletion_request_context_id",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "An identifier used by the ecosystem ping, to delete all ecosystem metrics collected from this profile if the user opts out of telemetry.\n",
                     "mode": "NULLABLE",
                     "name": "deletion_request_ecosystem_client_id",
@@ -63265,6 +65401,12 @@
                     "description": "The number of times the about:restartrequired page appeared due to a buildID mismatch between the parent and the content processes.\n",
                     "mode": "NULLABLE",
                     "name": "dom_contentprocess_build_id_mismatch",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "The number of times a process crashed early but we could verify it was not because of buildID mismatch between the parent and the content processes.\n",
+                    "mode": "NULLABLE",
+                    "name": "dom_contentprocess_build_id_mismatch_false_positive",
                     "type": "INT64"
                   },
                   {
@@ -63616,6 +65758,12 @@
                     "type": "BOOL"
                   },
                   {
+                    "description": "The gecko version at the last time a compositor was initialized.\n",
+                    "mode": "NULLABLE",
+                    "name": "gfx_last_compositor_gecko_version",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Windowing protocol on Linux. Can be Wayland, WaylandDRM, XWayland, or X11\n",
                     "mode": "NULLABLE",
                     "name": "gfx_linux_window_protocol",
@@ -63856,6 +66004,12 @@
                     "type": "BOOL"
                   },
                   {
+                    "description": "Whether this app was kept in macOS Dock on startup",
+                    "mode": "NULLABLE",
+                    "name": "os_environment_is_kept_in_dock",
+                    "type": "BOOL"
+                  },
+                  {
                     "description": "Whether this app was pinned to taskbar on startup",
                     "mode": "NULLABLE",
                     "name": "os_environment_is_taskbar_pinned",
@@ -63970,9 +66124,27 @@
                     "type": "INT64"
                   },
                   {
+                    "description": "The count of new screenshots created using the drag handles to draw the box size and position.\n",
+                    "mode": "NULLABLE",
+                    "name": "screenshots_custom",
+                    "type": "INT64"
+                  },
+                  {
                     "description": "The count of new screenshots created, then downloaded per session via the Firefox Screenshots feature. Excludes failed attempts due to any error.\n",
                     "mode": "NULLABLE",
                     "name": "screenshots_download",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "The count of new screenshots created using the highlighter to select element bounds.\n",
+                    "mode": "NULLABLE",
+                    "name": "screenshots_element",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "The count of new screenshots created by capturing the full, scrolled page.\n",
+                    "mode": "NULLABLE",
+                    "name": "screenshots_full_page",
                     "type": "INT64"
                   },
                   {
@@ -63982,9 +66154,21 @@
                     "type": "INT64"
                   },
                   {
+                    "description": "The count of new screenshots created using just the viewport, no scrolling.\n",
+                    "mode": "NULLABLE",
+                    "name": "screenshots_visible",
+                    "type": "INT64"
+                  },
+                  {
                     "description": "How many times we ended up recompiling a script from the script preloader on the main thread.",
                     "mode": "NULLABLE",
                     "name": "script_preloader_mainthread_recompile",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Measures user retention of the Global Privacy Control. 0 = never enabled, 1 = enabled, 2 = disabled (but was enabled)\n",
+                    "mode": "NULLABLE",
+                    "name": "security_global_privacy_control_enabled",
                     "type": "INT64"
                   },
                   {
@@ -64024,9 +66208,21 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Recorded on first run of a Firefox install on macOS, with a boolean value indicating whether Firefox is being run directly from .dmg without installing, or not. Note if running from a .dmg we will get a new ping everytime the .dmg is remounted due to App Translocation.\n",
+                    "mode": "NULLABLE",
+                    "name": "startup_first_run_is_from_dmg",
+                    "type": "BOOL"
+                  },
+                  {
                     "description": "Whether or not this startup is the first startup since OS reboot (according to our best guess.)\n",
                     "mode": "NULLABLE",
                     "name": "startup_is_cold",
+                    "type": "BOOL"
+                  },
+                  {
+                    "description": "Recorded on every run of a Firefox install on macOS, with a boolean value indicating whether Firefox is being run directly from .dmg without installing, or not.\n",
+                    "mode": "NULLABLE",
+                    "name": "startup_is_run_from_dmg",
                     "type": "BOOL"
                   },
                   {
@@ -64208,6 +66404,12 @@
                     "mode": "NULLABLE",
                     "name": "update_fix_permissions_attempted",
                     "type": "BOOL"
+                  },
+                  {
+                    "description": "On macOS, all browser windows can be closed without exiting Firefox. If there is an update pending in that case, and we can install it silently, we restart automatically in order to do so. This probe counts the number of times the browser restarts to silently install a pending update.\n",
+                    "mode": "NULLABLE",
+                    "name": "update_no_window_auto_restarts",
+                    "type": "INT64"
                   },
                   {
                     "description": "Records the total number of bytes downloaded using the BITS downloader for a complete update MAR file when the update has finished due to a failure before the application has exited and started. This value can be different than the size of the update MAR file because the value is only monitored during the initial download while the application is running and not if the download is resumed.\n",
@@ -64676,6 +66878,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "The time that a transaction is waiting for HTTPS RR",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "https_rr_waiting_time",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "Time from submission to dispatch of transaction when HTTPS RR is used (ms)",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -64781,6 +67001,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "http3_connection_close_code_3",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "The time that a transaction is waiting for HTTPS RR",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "https_rr_waiting_time",
                     "type": "RECORD"
                   },
                   {

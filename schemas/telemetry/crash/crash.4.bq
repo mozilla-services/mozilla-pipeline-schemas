@@ -797,6 +797,12 @@
           {
             "fields": [
               {
+                "description": "The status of Win32k Lockdown for Content process.",
+                "mode": "NULLABLE",
+                "name": "content_win32k_lockdown_state",
+                "type": "INT64"
+              },
+              {
                 "description": "The effective sandbox. The values are OS dependent.",
                 "mode": "NULLABLE",
                 "name": "effective_content_process_level",
@@ -824,6 +830,12 @@
                 "description": "The state of the `app.update.auto` pref.",
                 "mode": "NULLABLE",
                 "name": "auto_download",
+                "type": "BOOL"
+              },
+              {
+                "description": "Indicates whether updates may be installed when Firefox is not running.",
+                "mode": "NULLABLE",
+                "name": "background",
                 "type": "BOOL"
               },
               {
@@ -1282,6 +1294,12 @@
             "type": "RECORD"
           },
           {
+            "description": "Is the process running with a package identity (e.g. from an MSIX install)? See bug 1709892. This is Windows only.",
+            "mode": "NULLABLE",
+            "name": "has_win_package_id",
+            "type": "BOOL"
+          },
+          {
             "fields": [
               {
                 "fields": [
@@ -1557,6 +1575,12 @@
             "type": "STRING"
           },
           {
+            "description": "X-Foxsec-IP-Reputation header",
+            "mode": "NULLABLE",
+            "name": "x_foxsec_ip_reputation",
+            "type": "STRING"
+          },
+          {
             "description": "X-PingSender-Version HTTP header",
             "mode": "NULLABLE",
             "name": "x_pingsender_version",
@@ -1566,6 +1590,12 @@
             "description": "X-Source-Tags HTTP header",
             "mode": "NULLABLE",
             "name": "x_source_tags",
+            "type": "STRING"
+          },
+          {
+            "description": "X-Telemetry-Agent HTTP header",
+            "mode": "NULLABLE",
+            "name": "x_telemetry_agent",
             "type": "STRING"
           }
         ],
@@ -1789,6 +1819,12 @@
             "type": "STRING"
           },
           {
+            "description": "<integer>, Number of times the GPU process was launched.",
+            "mode": "NULLABLE",
+            "name": "gpu_process_launch_count",
+            "type": "STRING"
+          },
+          {
             "description": "<json>, This annotation is present if IndexedDB shutdown was not finished in time and the browser was crashed instead of waiting for IndexedDB shutdown to finish. The condition that caused the hang is contained in the annotation. The condition is constructed by stringifying status of objects which blocked IndexedDB shutdown. Objects are divided into three groups: FactoryOperations, LiveDatabases and DatabaseMaintenances. Each group is reported separately and contains the number of objects in the group and status of individual objects in the group (duplicit entries are removed): \"GroupName: N (objectStatus1, objectStatus2, ...)\" where N is the number of objects in the group. Status of individual objects is constructed by taking selected object properties. Properties which contain origin strings are anonymized.",
             "mode": "NULLABLE",
             "name": "indexed_db_shutdown_timeout",
@@ -1804,6 +1840,12 @@
             "description": "1, Optional, if set indicates that the crash occurred while the garbage collector was running",
             "mode": "NULLABLE",
             "name": "is_garbage_collecting",
+            "type": "STRING"
+          },
+          {
+            "description": "How long the user had been inactive in seconds if the user was inactive at crash. The value is not set if the user state was active.",
+            "mode": "NULLABLE",
+            "name": "last_interaction_duration",
             "type": "STRING"
           },
           {
@@ -1858,6 +1900,12 @@
             "description": "Firefox",
             "mode": "NULLABLE",
             "name": "product_name",
+            "type": "STRING"
+          },
+          {
+            "description": "<string>, When a child process shuts down, this describes if the profiler is running, and the point the profiler shutdown sequence has reached.",
+            "mode": "NULLABLE",
+            "name": "profiler_child_shutdown_phase",
             "type": "STRING"
           },
           {
@@ -1954,6 +2002,12 @@
             "description": "<version number>",
             "mode": "NULLABLE",
             "name": "version",
+            "type": "STRING"
+          },
+          {
+            "description": "<boolean>, Set to 1 if this crash was intercepted via the Windows Error Reporting runtime exception module.",
+            "mode": "NULLABLE",
+            "name": "windows_error_reporting",
             "type": "STRING"
           }
         ],
@@ -2096,6 +2150,33 @@
             ],
             "mode": "REPEATED",
             "name": "threads",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "base_addr",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "code_id",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "end_addr",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "filename",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "unloaded_modules",
             "type": "RECORD"
           }
         ],

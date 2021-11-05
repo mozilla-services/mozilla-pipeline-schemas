@@ -133,6 +133,12 @@
             "type": "STRING"
           },
           {
+            "description": "X-Foxsec-IP-Reputation header",
+            "mode": "NULLABLE",
+            "name": "x_foxsec_ip_reputation",
+            "type": "STRING"
+          },
+          {
             "description": "X-PingSender-Version HTTP header",
             "mode": "NULLABLE",
             "name": "x_pingsender_version",
@@ -142,6 +148,12 @@
             "description": "X-Source-Tags HTTP header",
             "mode": "NULLABLE",
             "name": "x_source_tags",
+            "type": "STRING"
+          },
+          {
+            "description": "X-Telemetry-Agent HTTP header",
+            "mode": "NULLABLE",
+            "name": "x_telemetry_agent",
             "type": "STRING"
           }
         ],
@@ -251,10 +263,22 @@
     "type": "STRING"
   },
   {
+    "description": "The request identfier for every Merino API request made by Firefox",
+    "mode": "NULLABLE",
+    "name": "request_id",
+    "type": "STRING"
+  },
+  {
     "description": "Hashed version of client_id (if present) useful for partitioning; ranges from 0 to 99",
     "mode": "NULLABLE",
     "name": "sample_id",
     "type": "INT64"
+  },
+  {
+    "description": "The scenario of the QuickSuggest user experience",
+    "mode": "NULLABLE",
+    "name": "scenario",
+    "type": "STRING"
   },
   {
     "description": "The user's typed-in search query in the AwesomeBar. Note that this ping is only sent when a QuickSuggest ad is shown for the current search query, so we don't have to limit its size here",
