@@ -366,6 +366,10 @@ schemas
 │   └── pioneer-enrollment
 ├── regrets-reporter
 │   └── regrets-reporter-update
+├── regrets-reporter-ucs
+│   ├── deletion-request
+│   ├── main-events
+│   └── video-index
 ├── telemetry
 │   ├── addon-install-blocked
 │   ├── advancedtelemetry
@@ -437,6 +441,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-427 directories
+431 directories
 ```
 
