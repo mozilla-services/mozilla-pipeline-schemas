@@ -1581,6 +1581,12 @@
             "type": "STRING"
           },
           {
+            "description": "X-LB-Tags HTTP header",
+            "mode": "NULLABLE",
+            "name": "x_lb_tags",
+            "type": "STRING"
+          },
+          {
             "description": "X-PingSender-Version HTTP header",
             "mode": "NULLABLE",
             "name": "x_pingsender_version",
@@ -5751,9 +5757,21 @@
             "type": "STRING"
           },
           {
-            "description": "Firefox: Time from request to Merino endpoint to response (ms)",
+            "description": "Firefox: Latency of the Merino source for quick suggest (ms)",
             "mode": "NULLABLE",
             "name": "fx_urlbar_merino_latency_ms",
+            "type": "STRING"
+          },
+          {
+            "description": "Firefox: Records whether each Merino fetch was successful or not. 'success' (0): The fetch completed without any error before the timeout elapsed. 'timeout' (1): The timeout elapsed before the fetch completed or otherwise failed. 'network_error' (2): The fetch failed due to a network error before the timeout elapsed. e.g., the user's network or the Merino server was down. 'http_error' (3): The fetch completed before the timeout elapsed but the server returned an error.",
+            "mode": "NULLABLE",
+            "name": "fx_urlbar_merino_response",
+            "type": "STRING"
+          },
+          {
+            "description": "Firefox: Latency of the remote settings source for quick suggest (ms)",
+            "mode": "NULLABLE",
+            "name": "fx_urlbar_quick_suggest_remote_settings_latency_ms",
             "type": "STRING"
           },
           {
@@ -59434,6 +59452,12 @@
                     "type": "INT64"
                   },
                   {
+                    "description": "How many times a PDF that sends Content-Disposition: attachment is opened.\n",
+                    "mode": "NULLABLE",
+                    "name": "pdf_viewer_is_attachment",
+                    "type": "INT64"
+                  },
+                  {
                     "description": "How many times PDF Viewer print functionality was used.\n",
                     "mode": "NULLABLE",
                     "name": "pdf_viewer_print",
@@ -62412,6 +62436,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "browser_ui_interaction_preferences_pane_home",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Records the items interacted with in the More From Mozilla section of preferences. See https://firefox-source-docs.mozilla.org/browser/BrowserUsageTelemetry.html\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "browser_ui_interaction_preferences_pane_more_from_mozilla",
                     "type": "RECORD"
                   },
                   {
@@ -66025,6 +66067,12 @@
                     "description": "How many times PDF Viewer fallback bar was shown.\n",
                     "mode": "NULLABLE",
                     "name": "pdf_viewer_fallback_shown",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "How many times a PDF that sends Content-Disposition: attachment is opened.\n",
+                    "mode": "NULLABLE",
+                    "name": "pdf_viewer_is_attachment",
                     "type": "INT64"
                   },
                   {

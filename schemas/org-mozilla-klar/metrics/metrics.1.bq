@@ -202,6 +202,12 @@
             "type": "STRING"
           },
           {
+            "description": "X-LB-Tags HTTP header",
+            "mode": "NULLABLE",
+            "name": "x_lb_tags",
+            "type": "STRING"
+          },
+          {
             "description": "X-PingSender-Version HTTP header",
             "mode": "NULLABLE",
             "name": "x_pingsender_version",
@@ -436,6 +442,43 @@
         ],
         "mode": "NULLABLE",
         "name": "counter",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "Number of opened tabs when the app has been send to background.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tab_count_app_backgrounded",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "custom_distribution",
         "type": "RECORD"
       },
       {
