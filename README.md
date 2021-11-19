@@ -369,6 +369,8 @@ schemas
 ├── regrets-reporter-ucs
 │   ├── deletion-request
 │   ├── main-events
+│   ├── regret-details
+│   ├── video-data
 │   └── video-index
 ├── telemetry
 │   ├── addon-install-blocked
@@ -441,6 +443,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-431 directories
+433 directories
 ```
 
