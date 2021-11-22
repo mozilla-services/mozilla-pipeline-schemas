@@ -26,6 +26,11 @@
           "description": "The logical format for the metadata struct in the destination BigQuery table",
           "enum": ["structured", "telemetry", "pioneer"]
         },
+        "submission_timestamp_granularity": {
+          "type": "string",
+          "description": "If specified, the submission_timestamp field will be truncated to the specified granularity in the pipeline before being output to BigQuery; this can be used to reduce the potential for using time-based attacks to correlate datasets using different client-level identifiers; see Java's ChronoUnit for additional granularities that could be considered for inclusion",
+            "enum": ["millis", "seconds", "minutes", "hours", "days"]
+        },
         "expiration_policy": {
           "type": "object",
           "description": "Various options controlling data lifecycle",
