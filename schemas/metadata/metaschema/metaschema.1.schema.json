@@ -47,6 +47,7 @@
         "jwe_mappings": {
           "description": "Mappings of encrypted JWE field paths to destinations where the value decrypted by the pipeline should be placed; initial use case is Account Ecosystem Telemetry; paths must be in [JSON Pointer format](https://tools.ietf.org/html/rfc6901) like '/payload/ecosystemAnonId'",
           "items": {
+            "additionalProperties": false,
             "properties": {
               "decrypted_field_path": {
                 "pattern": "^/.*$",
@@ -57,12 +58,45 @@
                 "type": "string"
               }
             },
+            "required": [
+              "source_field_path",
+              "decrypted_field_path"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "override_attributes": {
+          "description": "Mappings of Pub/Sub attribute names to static values; these are applied in the Decoder immediately before incorporating metadata into the payload, so can be used to overwrite values calculated in the pipeline; a null value will cause the pipeline to drop the named attribute; some attribute names differ from the nested metadata format in BigQuery, so for example you must use \"geo_city\" here in order to manipulate the value that shows up as metadata.geo.city; implemented for bug 1742172",
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "enum": [
+                  "geo_city",
+                  "geo_subdivision1",
+                  "geo_subdivision2",
+                  "normalized_channel"
+                ],
+                "type": "string"
+              },
+              "value": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "name",
+              "value"
+            ],
             "type": "object"
           },
           "type": "array"
         },
         "submission_timestamp_granularity": {
-          "description": "If specified, the submission_timestamp field will be truncated to the specified granularity in the pipeline before being output to BigQuery; this can be used to reduce the potential for using time-based attacks to correlate datasets using different client-level identifiers; see Java's ChronoUnit for additional granularities that could be considered for inclusion",
+          "description": "If specified, the submission_timestamp field will be truncated to the specified granularity in the pipeline before being output to BigQuery; this can be used to reduce the potential for using time-based attacks to correlate datasets using different client-level identifiers; see Java's ChronoUnit for additional granularities that could be considered for inclusion; implemented for bug 1742172",
           "enum": [
             "millis",
             "seconds",
