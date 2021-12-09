@@ -356,6 +356,12 @@ schemas
 │   ├── study-enrollment
 │   ├── study-unenrollment
 │   └── uninstall-deletion
+├── rally-markup-fb-pixel-hunt
+│   ├── deletion-request
+│   ├── fbpixelhunt-event
+│   ├── fbpixelhunt-journey
+│   ├── fbpixelhunt-pixel
+│   └── study-enrollment
 ├── rally-study-zero-one
 │   ├── deletion-request
 │   ├── rs01-event
@@ -443,6 +449,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-433 directories
+439 directories
 ```
 
