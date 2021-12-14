@@ -39,7 +39,7 @@ Note that Pioneer studies have a [slightly amended](README.pioneer.md) process.
 - [`CMake` (3.0+)](http://cmake.org/cmake/resources/software.html)
 - [`jq` (1.5+)](https://github.com/stedolan/jq)
 - `python` (3.6+)
-- Optional: `java 8`, `maven`
+- Optional: `java 11`, `maven`
 - Optional: [Docker](https://www.docker.com/get-started)
 
 On MacOS, these prerequisites can be installed using [homebrew](https://brew.sh/):
