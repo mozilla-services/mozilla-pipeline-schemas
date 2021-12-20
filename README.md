@@ -60,6 +60,9 @@ schemas
 │   └── launcher-process-failure
 ├── glean
 │   └── glean
+├── glean-dictionary
+│   ├── deletion-request
+│   └── page-view
 ├── messaging-system
 │   ├── cfr
 │   ├── infobar
@@ -449,6 +452,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-439 directories
+442 directories
 ```
 
