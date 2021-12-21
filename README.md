@@ -203,6 +203,12 @@ deployed to production BigQuery tables several times a week.
   do not receive a response within a few business days (or your request is
   urgent), please followup in the
   [#fx-metrics slack channel](https://mozilla.slack.com/messages/fx-metrics/).
+- If updating schemas associated with certain restricted-access datasets
+  (specified in [`CODEOWNERS`](/CODEOWNERS)), a CODEOWNER (usually
+  SRE) will automatically be assigned to review the PR. Please follow
+  additional [change control procedures](https://docs.google.com/document/d/1TTJi4ht7NuzX6BPG_KTr6omaZg70cEpxe9xlpfnHj9k/edit#heading=h.ttegrcfy18ck) 
+  for PRs referencing these schemas. The CODEOWNER will be responsible for
+  merging the PR once it has been approved.
 - If your PR is associated with a bugzilla bug, please title it `Bug XXX - Description of change`, that way the [Bugzilla PR Linker](https://github.com/mozilla/github-bugzilla-pr-linker) will automatically add an attachment with your PR to bugzilla, for future reference.
 
 ### Notes
