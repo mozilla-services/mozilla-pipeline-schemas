@@ -5,11 +5,13 @@ set -e
 cd "$(dirname "$0")/.."
 
 # NOTE: this will shadow java dependencies in `target/dependency`
-# TODO: only mount templates (r), schemas (w), validation (r), tests (r)
 # TODO: generate schemas from mounted templates, write to mounted schemas
 docker run \
     --rm \
-    --volume "$(pwd)":/app \
+    --volume "$(pwd)/templates":/app/templates:ro \
+    --volume "$(pwd)/schemas":/app/schemas \
+    --volume "$(pwd)/validation":/app/validation:ro \
+    --volume "$(pwd)/tests":/app/tests:ro \
     --entrypoint pytest \
     -it mozilla-pipeline-schemas:latest \
     "$@"
