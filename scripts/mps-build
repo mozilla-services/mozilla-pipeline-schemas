@@ -4,4 +4,5 @@ set -e
 
 cd "$(dirname "$0")/.."
 
-docker build -t mozilla-pipeline-schemas:latest .
+# We set --platform=amd64 to prevent default ARM build on Apple Silicon
+docker build --platform=amd64 -t mozilla-pipeline-schemas:latest .
