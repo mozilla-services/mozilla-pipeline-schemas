@@ -1,29 +1,23 @@
-FROM centos:centos8.1.1911
+# debian bullseye provides rust >= 1.46 needed to build jsonschema-transpiler
+# --platform=linux/amd64 added to prevent pulling ARM images when run on Apple Silicon
+FROM --platform=linux/amd64 python:3.8-slim-bullseye
 LABEL maintainer="Mozilla Data Platform"
 
-# Install the appropriate software
-RUN echo 'fastestmirror=1' >> /etc/dnf/dnf.conf && \
-    dnf -y update && \
-    dnf -y install epel-release && \
-    dnf -y install \
+# man directory is removed in upstream debian:slim, but needed by jdk install
+RUN mkdir -p /usr/share/man/man1 && \
+    apt-get update -qqy && \
+    apt-get install -qqy \
         cmake \
         diffutils \
         gcc \
-        gcc-c++ \
+        g++ \
         jq \
         make \
-        which \
         wget \
         git \
-        python36 \
-        java-11-openjdk-devel \
+        openjdk-11-jdk-headless \
         maven \
-        cargo \
-    && dnf clean all
-
-# ensure we're actually using java 11
-ENV JAVA_HOME=/etc/alternatives/java_sdk_11_openjdk
-RUN alternatives --set java `readlink $JAVA_HOME`/bin/java
+        cargo
 
 # Install jsonschema-transpiler
 ENV PATH=$PATH:/root/.cargo/bin
