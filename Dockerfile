@@ -1,8 +1,13 @@
-FROM centos:centos8.1.1911
+FROM centos:centos8.4.2105
 LABEL maintainer="Mozilla Data Platform"
 
 # Install the appropriate software
+# Must migrate from centos 8 to centos stream-8 before updating repos
+# because centos 8 hit EOL on 2021-12-31
 RUN echo 'fastestmirror=1' >> /etc/dnf/dnf.conf && \
+    dnf -y --disablerepo '*' --allowerasing install \
+        http://mirror.centos.org/centos/8-stream/BaseOS/x86_64/os/Packages/{centos-stream-release-8.6-1,centos-stream-repos-8-4,centos-gpg-keys-8-4}.el8.noarch.rpm && \
+    dnf -y distro-sync && \
     dnf -y update && \
     dnf -y install epel-release && \
     dnf -y install \
