@@ -82,3 +82,5 @@
   `labeled_number`, `labeled_string_list`, `enumeration`, `labeled_enumeration`,
   `labeled_timing_distribution`, `labeled_datetime`, `use_counter`,
   `labeled_use_counter`, `usage`, `labeled_usage`, and `labeled_uuid`.
+
+- Experiment `extra` field corrected to match Glean documented format
