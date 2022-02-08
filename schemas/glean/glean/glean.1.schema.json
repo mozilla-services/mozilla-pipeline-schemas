@@ -99,7 +99,7 @@
               "maxLength": 40,
               "type": "string"
             },
-            "type": ["object", "null"]
+            "type": "object"
           },
           "name": {
             "type": "string"
@@ -527,18 +527,16 @@
                 "type": "string"
               },
               "extra": {
-                "oneOf": [
-                  {
-                    "type": "null"
-                  },
-                  {
-                    "properties": {
-                      "type": {
-                        "type": "string"
-                      }
-                    },
-                    "type": "object"
-                  }
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "propertyNames": {
+                  "maxLength": 100,
+                  "type": "string"
+                },
+                "type": [
+                  "object",
+                  "null"
                 ]
               }
             },
