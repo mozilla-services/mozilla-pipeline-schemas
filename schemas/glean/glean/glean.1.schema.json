@@ -527,16 +527,18 @@
                 "type": "string"
               },
               "extra": {
-                "additionalProperties": {
-                  "type": "string"
-                },
-                "propertyNames": {
-                  "maxLength": 100,
-                  "type": "string"
-                },
-                "type": [
-                  "object",
-                  "null"
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "properties": {
+                      "type": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  }
                 ]
               }
             },
