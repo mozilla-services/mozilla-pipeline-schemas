@@ -58,6 +58,9 @@ schemas
 │   └── install
 ├── firefox-launcher-process
 │   └── launcher-process-failure
+├── firefox-translations
+│   ├── custom
+│   └── deletion-request
 ├── glean
 │   └── glean
 ├── glean-dictionary
@@ -452,6 +455,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-442 directories
+445 directories
 ```
 
