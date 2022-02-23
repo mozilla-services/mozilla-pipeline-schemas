@@ -295,6 +295,31 @@
       {
         "fields": [
           {
+            "description": "Translation of forms is enabled.\n",
+            "mode": "NULLABLE",
+            "name": "infobar_outbound_enabled",
+            "type": "BOOL"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "boolean",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "Failed to download translation engine module.\n",
+            "mode": "NULLABLE",
+            "name": "errors_engine_download",
+            "type": "INT64"
+          },
+          {
+            "description": "Failed to load translation engine wasm module in memory.\n",
+            "mode": "NULLABLE",
+            "name": "errors_engine_load",
+            "type": "INT64"
+          },
+          {
             "description": "Marian code related error.\n",
             "mode": "NULLABLE",
             "name": "errors_marian",
@@ -310,6 +335,12 @@
             "description": "Failed to download a model for a supported language pair.\n",
             "mode": "NULLABLE",
             "name": "errors_model_download",
+            "type": "INT64"
+          },
+          {
+            "description": "Failed to load translation model in memory.\n",
+            "mode": "NULLABLE",
+            "name": "errors_model_load",
             "type": "INT64"
           },
           {
@@ -416,6 +447,24 @@
       },
       {
         "fields": [
+          {
+            "description": "Total number of characters in all translated fields.\n",
+            "mode": "NULLABLE",
+            "name": "forms_character_count",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of text fields translated.\n",
+            "mode": "NULLABLE",
+            "name": "forms_field_count",
+            "type": "INT64"
+          },
+          {
+            "description": "Total number of words in all translated fields.\n",
+            "mode": "NULLABLE",
+            "name": "forms_word_count",
+            "type": "INT64"
+          },
           {
             "description": "Telemetry Environment `system.cpu.cores` metric\n",
             "mode": "NULLABLE",
@@ -614,6 +663,24 @@
             ],
             "mode": "NULLABLE",
             "name": "performance_model_load_time_num",
+            "type": "RECORD"
+          },
+          {
+            "description": "Timing from the first event to the last event.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "performance_total_usage_time",
             "type": "RECORD"
           },
           {
