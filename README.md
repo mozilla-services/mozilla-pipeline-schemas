@@ -153,7 +153,8 @@ schemas
 │   ├── migration
 │   ├── startup-timeline
 │   ├── sync
-│   └── tabs-sync
+│   ├── tabs-sync
+│   └── topsites-impression
 ├── org-mozilla-fenix-nightly
 │   ├── activation
 │   ├── addresses-sync
@@ -171,7 +172,8 @@ schemas
 │   ├── migration
 │   ├── startup-timeline
 │   ├── sync
-│   └── tabs-sync
+│   ├── tabs-sync
+│   └── topsites-impression
 ├── org-mozilla-fennec-aurora
 │   ├── activation
 │   ├── addresses-sync
@@ -189,7 +191,8 @@ schemas
 │   ├── migration
 │   ├── startup-timeline
 │   ├── sync
-│   └── tabs-sync
+│   ├── tabs-sync
+│   └── topsites-impression
 ├── org-mozilla-firefox
 │   ├── activation
 │   ├── addresses-sync
@@ -207,7 +210,8 @@ schemas
 │   ├── migration
 │   ├── startup-timeline
 │   ├── sync
-│   └── tabs-sync
+│   ├── tabs-sync
+│   └── topsites-impression
 ├── org-mozilla-firefox-beta
 │   ├── activation
 │   ├── addresses-sync
@@ -225,7 +229,8 @@ schemas
 │   ├── migration
 │   ├── startup-timeline
 │   ├── sync
-│   └── tabs-sync
+│   ├── tabs-sync
+│   └── topsites-impression
 ├── org-mozilla-firefoxreality
 │   ├── baseline
 │   ├── deletion-request
@@ -455,6 +460,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-445 directories
+450 directories
 ```
 
