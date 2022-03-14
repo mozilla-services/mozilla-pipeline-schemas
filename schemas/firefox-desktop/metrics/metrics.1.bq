@@ -38,6 +38,12 @@
         "type": "STRING"
       },
       {
+        "description": "The date & time the application was built",
+        "mode": "NULLABLE",
+        "name": "build_date",
+        "type": "STRING"
+      },
+      {
         "description": "A UUID uniquely identifying the client.",
         "mode": "NULLABLE",
         "name": "client_id",
@@ -301,6 +307,12 @@
             "type": "BOOL"
           },
           {
+            "description": "The value `true`, recorded when a Firefox Telemetry \"main\" ping is about\nto be assembled.\nTo be used to validate GIFFT.\n",
+            "mode": "NULLABLE",
+            "name": "gifft_validation_main_ping_assembling",
+            "type": "BOOL"
+          },
+          {
             "description": "Reports `true` if the client was successfully migrated from the Android-specific implementation of the Glean SDK to the cross-platform one.",
             "mode": "NULLABLE",
             "name": "glean_core_migration_successful",
@@ -319,6 +331,24 @@
       },
       {
         "fields": [
+          {
+            "description": "The number of five-second intervals ('ticks') the user was considered\n'active'.\n\n'active' means keyboard or mouse interaction with the application.\nIt doesn't take into account whether or not the window has focus or is in\nthe foreground, only if it is receiving these interaction events.\n\nMigrated from Telemetry's `browser.engagement.active_ticks`.\n",
+            "mode": "NULLABLE",
+            "name": "browser_engagement_active_ticks",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of total non-unique http(s) URIs visited, including page\nreloads, after the session has been restored. URIs on minimized or\nbackground tabs may also be counted. Private browsing uris are included.\n\nMigrated from Telemetry's\n`browser.engagement.total_uri_count_normal_and_private_mode`.\n",
+            "mode": "NULLABLE",
+            "name": "browser_engagement_uri_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of times we failed to flush all non-parent-process data,\nthrowing even partial results into the trash.\nIf this number is high, we might consider writing custom `MozPromise`-\nhandling code instead of using `MozPromise::All`.\n",
+            "mode": "NULLABLE",
+            "name": "fog_ipc_flush_failures",
+            "type": "INT64"
+          },
           {
             "description": "The number of times the ipc buffer failed to be replayed in the\nparent process.\n",
             "mode": "NULLABLE",
@@ -374,9 +404,27 @@
             "type": "INT64"
           },
           {
+            "description": "Impossibly large CPU time values that were discarded.\n",
+            "mode": "NULLABLE",
+            "name": "power_cpu_time_bogus_values",
+            "type": "INT64"
+          },
+          {
+            "description": "Impossibly large GPU time values that were discarded.\n",
+            "mode": "NULLABLE",
+            "name": "power_gpu_time_bogus_values",
+            "type": "INT64"
+          },
+          {
             "description": "Total CPU time used by all processes in ms.\n",
             "mode": "NULLABLE",
             "name": "power_total_cpu_time_ms",
+            "type": "INT64"
+          },
+          {
+            "description": "Total GPU time used by all processes in ms.\n",
+            "mode": "NULLABLE",
+            "name": "power_total_gpu_time_ms",
             "type": "INT64"
           }
         ],
@@ -412,6 +460,31 @@
         ],
         "mode": "REPEATED",
         "name": "jwe",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The outcome after the app detected that it was running from DMG and should offer to install and relaunch itself.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "BOOL"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "startup_run_from_dmg_install_outcome",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "labeled_boolean",
         "type": "RECORD"
       },
       {
@@ -522,6 +595,42 @@
             ],
             "mode": "REPEATED",
             "name": "glean_validation_pings_submitted",
+            "type": "RECORD"
+          },
+          {
+            "description": "CPU time used by each process type in ms.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_cpu_time_per_process_type_ms",
+            "type": "RECORD"
+          },
+          {
+            "description": "GPU time used by each process type in ms.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_gpu_time_per_process_type_ms",
             "type": "RECORD"
           }
         ],
@@ -695,6 +804,19 @@
         ],
         "mode": "NULLABLE",
         "name": "memory_distribution",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "browser.link.open_newwindow.restriction preference value, that is one of 0, 1, or 2, where 2 is desktop default\n",
+            "mode": "NULLABLE",
+            "name": "browser_link_open_newwindow_restriction",
+            "type": "INT64"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "quantity",
         "type": "RECORD"
       },
       {
@@ -906,6 +1028,19 @@
         ],
         "mode": "REPEATED",
         "name": "url",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The client_id according to Telemetry.\nMight not always have a value due to being too early for it to have\nloaded.\nValue may be the canary client id `c0ffeec0-ffee-c0ff-eec0-ffeec0ffeec0`\nin pings near when the data upload pref is disabled (if Telemetry gets\nto go first), or between when a client_id has been removed and when it\nhas been regenerated.\nDoes not need to be sent in the Glean \"deletion-request\" ping.\n",
+            "mode": "NULLABLE",
+            "name": "legacy_telemetry_client_id",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "uuid",
         "type": "RECORD"
       }
     ],

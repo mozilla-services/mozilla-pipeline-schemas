@@ -912,6 +912,12 @@
                 "type": "INT64"
               },
               {
+                "description": "Whether or not the system is Windows 10 or 11 in S Mode. S Mode existed prior to us being able to query it, so this is unreliable on Windows versions prior to 1810.",
+                "mode": "NULLABLE",
+                "name": "is_windows_s_mode",
+                "type": "BOOL"
+              },
+              {
                 "description": "The CPU L2 cache size in KB. `null` on failure. Desktop only.",
                 "mode": "NULLABLE",
                 "name": "l2cache_kb",
@@ -1498,6 +1504,12 @@
             "mode": "NULLABLE",
             "name": "virtual_max_mb",
             "type": "FLOAT64"
+          },
+          {
+            "description": "Windows package family name. This is only sent for Mozilla produced MSIX packages.",
+            "mode": "NULLABLE",
+            "name": "win_package_family_name",
+            "type": "STRING"
           }
         ],
         "mode": "NULLABLE",
@@ -1967,6 +1979,55 @@
             ],
             "mode": "REPEATED",
             "name": "parent",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "f0_",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "f1_",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "f2_",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "f3_",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "f4_",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "STRING"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "f5_",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "socket",
             "type": "RECORD"
           }
         ],

@@ -912,6 +912,12 @@
                 "type": "INT64"
               },
               {
+                "description": "Whether or not the system is Windows 10 or 11 in S Mode. S Mode existed prior to us being able to query it, so this is unreliable on Windows versions prior to 1810.",
+                "mode": "NULLABLE",
+                "name": "is_windows_s_mode",
+                "type": "BOOL"
+              },
+              {
                 "description": "The CPU L2 cache size in KB. `null` on failure. Desktop only.",
                 "mode": "NULLABLE",
                 "name": "l2cache_kb",
@@ -1498,6 +1504,12 @@
             "mode": "NULLABLE",
             "name": "virtual_max_mb",
             "type": "FLOAT64"
+          },
+          {
+            "description": "Windows package family name. This is only sent for Mozilla produced MSIX packages.",
+            "mode": "NULLABLE",
+            "name": "win_package_family_name",
+            "type": "STRING"
           }
         ],
         "mode": "NULLABLE",
@@ -1777,6 +1789,12 @@
             "type": "STRING"
           },
           {
+            "description": "<string>, If the app was invoked in background task mode via `--backgroundtask <task name>`, the string \"task name\".",
+            "mode": "NULLABLE",
+            "name": "background_task_name",
+            "type": "STRING"
+          },
+          {
             "description": "<list>, Windows-only, see WindowsDllBlocklist.cpp for details",
             "mode": "NULLABLE",
             "name": "blocked_dll_list",
@@ -1828,6 +1846,12 @@
             "description": "<integer>, Number of times the GPU process was launched.",
             "mode": "NULLABLE",
             "name": "gpu_process_launch_count",
+            "type": "STRING"
+          },
+          {
+            "description": "<boolean>, True if the app was invoked in headless mode via `--headless ...` or `--backgroundtask ...`, false otherwise.",
+            "mode": "NULLABLE",
+            "name": "headless_mode",
             "type": "STRING"
           },
           {
@@ -2014,6 +2038,12 @@
             "description": "<boolean>, Set to 1 if this crash was intercepted via the Windows Error Reporting runtime exception module.",
             "mode": "NULLABLE",
             "name": "windows_error_reporting",
+            "type": "STRING"
+          },
+          {
+            "description": "<string>, If running in a Windows package context, the package family name, per https://docs.microsoft.com/en-us/windows/win32/api/appmodel/nf-appmodel-getcurrentpackagefamilyname.\nThe package family name is only included when it is likely to have been produced by Mozilla: it starts \"Mozilla.\" or \"MozillaCorporation.\".",
+            "mode": "NULLABLE",
+            "name": "windows_package_family_name",
             "type": "STRING"
           }
         ],

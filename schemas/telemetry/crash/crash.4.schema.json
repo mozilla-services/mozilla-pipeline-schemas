@@ -753,6 +753,10 @@
                     "null"
                   ]
                 },
+                "isWindowsSMode": {
+                  "description": "Whether or not the system is Windows 10 or 11 in S Mode. S Mode existed prior to us being able to query it, so this is unreliable on Windows versions prior to 1810.",
+                  "type": "boolean"
+                },
                 "l2cacheKB": {
                   "description": "The CPU L2 cache size in KB. `null` on failure. Desktop only.",
                   "type": [
@@ -1344,6 +1348,13 @@
                 "number",
                 "null"
               ]
+            },
+            "winPackageFamilyName": {
+              "description": "Windows package family name. This is only sent for Mozilla produced MSIX packages.",
+              "type": [
+                "string",
+                "null"
+              ]
             }
           },
           "type": "object"
@@ -1400,6 +1411,10 @@
               "description": "<size>, Windows-only, available virtual memory in bytes",
               "type": "string"
             },
+            "BackgroundTaskName": {
+              "description": "<string>, If the app was invoked in background task mode via `--backgroundtask <task name>`, the string \"task name\".",
+              "type": "string"
+            },
             "BlockedDllList": {
               "description": "<list>, Windows-only, see WindowsDllBlocklist.cpp for details",
               "type": "string"
@@ -1434,6 +1449,10 @@
             },
             "GPUProcessLaunchCount": {
               "description": "<integer>, Number of times the GPU process was launched.",
+              "type": "string"
+            },
+            "HeadlessMode": {
+              "description": "<boolean>, True if the app was invoked in headless mode via `--headless ...` or `--backgroundtask ...`, false otherwise.",
               "type": "string"
             },
             "IndexedDBShutdownTimeout": {
@@ -1554,6 +1573,10 @@
             },
             "WindowsErrorReporting": {
               "description": "<boolean>, Set to 1 if this crash was intercepted via the Windows Error Reporting runtime exception module.",
+              "type": "string"
+            },
+            "WindowsPackageFamilyName": {
+              "description": "<string>, If running in a Windows package context, the package family name, per https://docs.microsoft.com/en-us/windows/win32/api/appmodel/nf-appmodel-getcurrentpackagefamilyname.\nThe package family name is only included when it is likely to have been produced by Mozilla: it starts \"Mozilla.\" or \"MozillaCorporation.\".",
               "type": "string"
             },
             "ipc_channel_error": {

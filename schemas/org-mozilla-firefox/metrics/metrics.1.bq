@@ -38,6 +38,12 @@
         "type": "STRING"
       },
       {
+        "description": "The date & time the application was built",
+        "mode": "NULLABLE",
+        "name": "build_date",
+        "type": "STRING"
+      },
+      {
         "description": "A UUID uniquely identifying the client.",
         "mode": "NULLABLE",
         "name": "client_id",
@@ -367,6 +373,12 @@
             "type": "BOOL"
           },
           {
+            "description": "The value `true`, recorded when a Firefox Telemetry \"main\" ping is about\nto be assembled.\nTo be used to validate GIFFT.\n",
+            "mode": "NULLABLE",
+            "name": "gifft_validation_main_ping_assembling",
+            "type": "BOOL"
+          },
+          {
             "description": "Reports `true` if the client was successfully migrated from the Android-specific implementation of the Glean SDK to the cross-platform one.",
             "mode": "NULLABLE",
             "name": "glean_core_migration_successful",
@@ -533,6 +545,12 @@
             "mode": "NULLABLE",
             "name": "recent_tabs_section_visible",
             "type": "BOOL"
+          },
+          {
+            "description": "Whether or not the user has discovered the wallpaper feature.\n",
+            "mode": "NULLABLE",
+            "name": "wallpapers_discovered_wallpaper_feature",
+            "type": "BOOL"
           }
         ],
         "mode": "NULLABLE",
@@ -572,6 +590,18 @@
             "type": "INT64"
           },
           {
+            "description": "A counter that indicates how many times open button has been clicked\nfor a downloaded pdf.\n",
+            "mode": "NULLABLE",
+            "name": "downloads_downloaded_pdf_open_count",
+            "type": "INT64"
+          },
+          {
+            "description": "A counter that indicates how many times a pdf has been downloaded.\n",
+            "mode": "NULLABLE",
+            "name": "downloads_pdf_download_count",
+            "type": "INT64"
+          },
+          {
             "description": "A counter of URIs visited by the user in the current session, including\npage reloads. This includes private browsing.  This does not include\nbackground page requests and URIs from embedded pages but may be\nincremented without user interaction by website scripts that\nprogrammatically redirect to a new location.\n",
             "mode": "NULLABLE",
             "name": "events_normal_and_private_uri_count",
@@ -581,6 +611,12 @@
             "description": "A counter of URIs visited by the user in the current session, including\npage reloads. This does not include background page requests and URIs from\nembedded pages or private browsing but may be incremented without user\ninteraction by website scripts that programmatically redirect to a new\nlocation.\n",
             "mode": "NULLABLE",
             "name": "events_total_uri_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of times we failed to flush all non-parent-process data,\nthrowing even partial results into the trash.\nIf this number is high, we might consider writing custom `MozPromise`-\nhandling code instead of using `MozPromise::All`.\n",
+            "mode": "NULLABLE",
+            "name": "fog_ipc_flush_failures",
             "type": "INT64"
           },
           {
@@ -635,6 +671,12 @@
             "description": "On mobile, the number of times the application went to foreground.\n",
             "mode": "NULLABLE",
             "name": "glean_validation_foreground_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of times the home screen was displayed to the user.\n",
+            "mode": "NULLABLE",
+            "name": "home_screen_home_screen_view_count",
             "type": "INT64"
           },
           {
@@ -734,9 +776,27 @@
             "type": "INT64"
           },
           {
+            "description": "Impossibly large CPU time values that were discarded.\n",
+            "mode": "NULLABLE",
+            "name": "power_cpu_time_bogus_values",
+            "type": "INT64"
+          },
+          {
+            "description": "Impossibly large GPU time values that were discarded.\n",
+            "mode": "NULLABLE",
+            "name": "power_gpu_time_bogus_values",
+            "type": "INT64"
+          },
+          {
             "description": "Total CPU time used by all processes in ms.\n",
             "mode": "NULLABLE",
             "name": "power_total_cpu_time_ms",
+            "type": "INT64"
+          },
+          {
+            "description": "Total GPU time used by all processes in ms.\n",
+            "mode": "NULLABLE",
+            "name": "power_total_gpu_time_ms",
             "type": "INT64"
           },
           {
@@ -1189,6 +1249,36 @@
             "mode": "NULLABLE",
             "name": "performance_clone_deserialize_items",
             "type": "RECORD"
+          },
+          {
+            "description": "The distribution of search term tab group sizes. Rather than reporting\nindividual sizes directly as integers, it is currently desired to\nreport the sizes according to certain size ranges.\nThe \"buckets\" for reporting group sizes will be mapped as follows:\n* 2 tabs -> 1\n* 3-5 tabs -> 2\n* 6-10 tabs -> 3\n* 11+ tabs -> 4\nWhere the reported number will be 1, 2, 3, or 4, accordingly.\nAs an example, say a user has three groups of sizes 3, 6, and 15. The\napp will report 2, 3, and 4 when this metric is tracked.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "search_terms_group_size_distribution",
+            "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
@@ -1227,6 +1317,42 @@
       },
       {
         "fields": [
+          {
+            "description": "AV1LayeredImageIndexingProperty (a1lx).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "avif_a1lx",
+            "type": "RECORD"
+          },
+          {
+            "description": "AVIF OperatingPointSelectorProperty (a1op).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "avif_a1op",
+            "type": "RECORD"
+          },
           {
             "description": "AVIF alpha plane.\n",
             "fields": [
@@ -1318,6 +1444,24 @@
             "type": "RECORD"
           },
           {
+            "description": "AVIF CleanApertureBox (clap).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "avif_clap",
+            "type": "RECORD"
+          },
+          {
             "description": "AVIF colour information type.\n",
             "fields": [
               {
@@ -1372,6 +1516,42 @@
             "type": "RECORD"
           },
           {
+            "description": "AVIF AVIF grid-based image.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "avif_grid",
+            "type": "RECORD"
+          },
+          {
+            "description": "AVIF ItemProtectionBox (ipro).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "avif_ipro",
+            "type": "RECORD"
+          },
+          {
             "description": "AVIF spatial extents (image size).\n",
             "fields": [
               {
@@ -1390,6 +1570,60 @@
             "type": "RECORD"
           },
           {
+            "description": "AVIF LayerSelectorProperty (lsel).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "avif_lsel",
+            "type": "RECORD"
+          },
+          {
+            "description": "AVIF major brand.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "avif_major_brand",
+            "type": "RECORD"
+          },
+          {
+            "description": "AVIF pixel aspect ratio.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "avif_pasp",
+            "type": "RECORD"
+          },
+          {
             "description": "AVIF pixel information (bits per channel).\n",
             "fields": [
               {
@@ -1405,6 +1639,24 @@
             ],
             "mode": "REPEATED",
             "name": "avif_pixi",
+            "type": "RECORD"
+          },
+          {
+            "description": "AVIF image sequence.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "avif_sequence",
             "type": "RECORD"
           },
           {
@@ -1802,6 +2054,60 @@
             "mode": "REPEATED",
             "name": "places_manager_write_query_error_count",
             "type": "RECORD"
+          },
+          {
+            "description": "CPU time used by each process type in ms.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_cpu_time_per_process_type_ms",
+            "type": "RECORD"
+          },
+          {
+            "description": "GPU time used by each process type in ms.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_gpu_time_per_process_type_ms",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many and which type of wallpapers were applied.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "wallpapers_new_wallpaper_applied",
+            "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
@@ -2135,7 +2441,7 @@
             "type": "INT64"
           },
           {
-            "description": "How many inactive tabs does the user have.\nValue will be 0 if the feature is disabled.\n",
+            "description": "How many inactive tabs does the user have, checked when the user opens\nthe tabs tray.\nValue will be 0 if the feature is disabled.\n",
             "mode": "NULLABLE",
             "name": "metrics_inactive_tabs_count",
             "type": "INT64"
@@ -8375,6 +8681,19 @@
         ],
         "mode": "REPEATED",
         "name": "url",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "If the search engine is pre-loaded with Fenix this value will be the base\nURL we use to build the search query for the search engine. For example:\nhttps://mysearchengine.com/?query=%s. If it's a custom search engine\n(defined: https://github.com/mozilla-mobile/fenix/issues/1607) the value\nwill not be set.\n",
+            "mode": "NULLABLE",
+            "name": "search_default_engine_search_url",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "url2",
         "type": "RECORD"
       }
     ],

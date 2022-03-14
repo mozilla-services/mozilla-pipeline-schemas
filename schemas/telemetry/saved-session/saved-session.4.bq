@@ -912,6 +912,12 @@
                 "type": "INT64"
               },
               {
+                "description": "Whether or not the system is Windows 10 or 11 in S Mode. S Mode existed prior to us being able to query it, so this is unreliable on Windows versions prior to 1810.",
+                "mode": "NULLABLE",
+                "name": "is_windows_s_mode",
+                "type": "BOOL"
+              },
+              {
                 "description": "The CPU L2 cache size in KB. `null` on failure. Desktop only.",
                 "mode": "NULLABLE",
                 "name": "l2cache_kb",
@@ -1498,6 +1504,12 @@
             "mode": "NULLABLE",
             "name": "virtual_max_mb",
             "type": "FLOAT64"
+          },
+          {
+            "description": "Windows package family name. This is only sent for Mozilla produced MSIX packages.",
+            "mode": "NULLABLE",
+            "name": "win_package_family_name",
+            "type": "STRING"
           }
         ],
         "mode": "NULLABLE",
@@ -1989,6 +2001,18 @@
             "type": "STRING"
           },
           {
+            "description": "AVIF AV1LayeredImageIndexingProperty (a1lx)",
+            "mode": "NULLABLE",
+            "name": "avif_a1lx",
+            "type": "STRING"
+          },
+          {
+            "description": "AVIF OperatingPointSelectorProperty (a1op)",
+            "mode": "NULLABLE",
+            "name": "avif_a1op",
+            "type": "STRING"
+          },
+          {
             "description": "AVIF alpha plane",
             "mode": "NULLABLE",
             "name": "avif_alpha",
@@ -2025,6 +2049,12 @@
             "type": "STRING"
           },
           {
+            "description": "AVIF CleanApertureBox (clap)",
+            "mode": "NULLABLE",
+            "name": "avif_clap",
+            "type": "STRING"
+          },
+          {
             "description": "AVIF colour information type",
             "mode": "NULLABLE",
             "name": "avif_colr",
@@ -2043,15 +2073,51 @@
             "type": "STRING"
           },
           {
+            "description": "AVIF AVIF grid-based image",
+            "mode": "NULLABLE",
+            "name": "avif_grid",
+            "type": "STRING"
+          },
+          {
+            "description": "AVIF ItemProtectionBox (ipro)",
+            "mode": "NULLABLE",
+            "name": "avif_ipro",
+            "type": "STRING"
+          },
+          {
             "description": "AVIF spatial extents (image size)",
             "mode": "NULLABLE",
             "name": "avif_ispe",
             "type": "STRING"
           },
           {
+            "description": "AVIF LayerSelectorProperty (lsel)",
+            "mode": "NULLABLE",
+            "name": "avif_lsel",
+            "type": "STRING"
+          },
+          {
+            "description": "AVIF major brand",
+            "mode": "NULLABLE",
+            "name": "avif_major_brand",
+            "type": "STRING"
+          },
+          {
+            "description": "AVIF pixel aspect ratio",
+            "mode": "NULLABLE",
+            "name": "avif_pasp",
+            "type": "STRING"
+          },
+          {
             "description": "AVIF pixel information (bits per channel)",
             "mode": "NULLABLE",
             "name": "avif_pixi",
+            "type": "STRING"
+          },
+          {
+            "description": "AVIF image sequence",
+            "mode": "NULLABLE",
+            "name": "avif_sequence",
             "type": "STRING"
           },
           {
@@ -4704,6 +4770,24 @@
             "description": "TLS handshake with and without EchConfig success rate.",
             "mode": "NULLABLE",
             "name": "echconfig_success_rate",
+            "type": "STRING"
+          },
+          {
+            "description": "The final response status code after one or more 103 responses.",
+            "mode": "NULLABLE",
+            "name": "eh_final_response",
+            "type": "STRING"
+          },
+          {
+            "description": "Number of 103 responses received for a top level load.",
+            "mode": "NULLABLE",
+            "name": "eh_num_of_hints_per_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Collect the time elapsed between receiving a 103 response and the final response for a page load.",
+            "mode": "NULLABLE",
+            "name": "eh_time_to_final_response",
             "type": "STRING"
           },
           {
@@ -9918,6 +10002,18 @@
             "description": "Number of service workers destroyed; used in conjunction with use counter histograms",
             "mode": "NULLABLE",
             "name": "service_worker_destroyed",
+            "type": "STRING"
+          },
+          {
+            "description": "The sampled number of simultaneous running ServiceWorkers handling Fetch in a session, sampled every minute",
+            "mode": "NULLABLE",
+            "name": "service_worker_fetch_running",
+            "type": "STRING"
+          },
+          {
+            "description": "Time (ms) for spawning a service worker in an isolated content process.",
+            "mode": "NULLABLE",
+            "name": "service_worker_isolated_launch_time",
             "type": "STRING"
           },
           {
@@ -15309,6 +15405,18 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document used the CSS property hyphenate-character",
+            "mode": "NULLABLE",
+            "name": "use_counter2_css_property_hyphenate_character_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page used the CSS property hyphenate-character",
+            "mode": "NULLABLE",
+            "name": "use_counter2_css_property_hyphenate_character_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document used the CSS property hyphens",
             "mode": "NULLABLE",
             "name": "use_counter2_css_property_hyphens_document",
@@ -17589,6 +17697,18 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document used the CSS property print-color-adjust",
+            "mode": "NULLABLE",
+            "name": "use_counter2_css_property_print_color_adjust_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page used the CSS property print-color-adjust",
+            "mode": "NULLABLE",
+            "name": "use_counter2_css_property_print_color_adjust_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document used the CSS property quotes",
             "mode": "NULLABLE",
             "name": "use_counter2_css_property_quotes_document",
@@ -18042,6 +18162,18 @@
             "description": "Whether a page used the CSS property scrollbar-color",
             "mode": "NULLABLE",
             "name": "use_counter2_css_property_scrollbar_color_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document used the CSS property scrollbar-gutter",
+            "mode": "NULLABLE",
+            "name": "use_counter2_css_property_scrollbar_gutter_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page used the CSS property scrollbar-gutter",
+            "mode": "NULLABLE",
+            "name": "use_counter2_css_property_scrollbar_gutter_page",
             "type": "STRING"
           },
           {
@@ -21345,6 +21477,30 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document used IDBDatabaseCreateMutableFile",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_idb_database_create_mutable_file_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page used IDBDatabaseCreateMutableFile",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_idb_database_create_mutable_file_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document used IDBMutableFileOpen",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_idb_mutable_file_open_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page used IDBMutableFileOpen",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_idb_mutable_file_open_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document used IDBOpenDBOptions_StorageType",
             "mode": "NULLABLE",
             "name": "use_counter2_deprecated_idb_open_db_options_storage_type_document",
@@ -21750,6 +21906,18 @@
             "description": "Whether a page used NodeValue",
             "mode": "NULLABLE",
             "name": "use_counter2_deprecated_node_value_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document used OffscreenCanvasToBlob",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_offscreen_canvas_to_blob_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page used OffscreenCanvasToBlob",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_offscreen_canvas_to_blob_page",
             "type": "STRING"
           },
           {
@@ -30287,6 +30455,24 @@
                 "type": "STRING"
               },
               {
+                "description": "Records the latencies (ms) of search suggestions fetches per search engine. Keys in this histogram are search engine IDs for built-in search engines and 'other' for non-built-in search engines.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "search_suggestions_latency_ms",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "Time (in ms) measured between when the fetch handler finished executing and when we reset the network channel.",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -30421,6 +30607,24 @@
             ],
             "mode": "REPEATED",
             "name": "service_worker_fetch_interception_duration_ms_2",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "The sampled number of simultaneous running ServiceWorkers in a session, sampled once each 10 seconds (lazily on state change)",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "service_worker_running",
             "type": "RECORD"
           },
           {
@@ -30755,6 +30959,78 @@
                 "type": "STRING"
               },
               {
+                "description": "Number of times we attempted TRR for a successful lookup in TRR-first mode. Keyed by provider.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "trr_attempt_count",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "When in TRR-first mode, if TRR was skipped and native failed, it lists the reason we may have skipped TRR, keyed by the provider. Does not include requests that intentionally skip TRR.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "trr_relevant_skip_reason_native_failed",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "When in TRR-first mode, if TRR was skipped and native succeeded, it lists the reason we may have skipped TRR, keyed by the provider. Does not include requests that intentionally skip TRR.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "trr_relevant_skip_reason_native_success",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "When in TRR-first mode, it lists the reason we may have skipped TRR, keyed by the provider. Does not include requests that intentionally skip TRR.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "trr_relevant_skip_reason_trr_first",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "When in TRR-first mode, if TRR was skipped and native failed, it lists the reason we may have skipped TRR, keyed by the provider.",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -30781,6 +31057,60 @@
             ],
             "mode": "REPEATED",
             "name": "trr_skip_reason_native_success",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "When in TRR-first mode, if TRR failed once and retried unsuccessfully, it lists the reason for the first failure, keyed by the provider.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "trr_skip_reason_retry_failed",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "When in TRR-first mode, if TRR failed once and was successfully retried, it lists the reason for the first failure, keyed by the provider.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "trr_skip_reason_retry_success",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "When in TRR-first mode, it lists the reason we may have skipped TRR. The key is like `<provider>|<skip reason of first attempt>` or just `<provider>` used when there was no second attempt.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "trr_skip_reason_strict_mode",
             "type": "RECORD"
           },
           {
@@ -31753,6 +32083,18 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "AVIF AV1LayeredImageIndexingProperty (a1lx)",
+                    "mode": "NULLABLE",
+                    "name": "avif_a1lx",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "AVIF OperatingPointSelectorProperty (a1op)",
+                    "mode": "NULLABLE",
+                    "name": "avif_a1op",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "AVIF alpha plane",
                     "mode": "NULLABLE",
                     "name": "avif_alpha",
@@ -31789,6 +32131,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "AVIF CleanApertureBox (clap)",
+                    "mode": "NULLABLE",
+                    "name": "avif_clap",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "AVIF colour information type",
                     "mode": "NULLABLE",
                     "name": "avif_colr",
@@ -31807,15 +32155,51 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "AVIF AVIF grid-based image",
+                    "mode": "NULLABLE",
+                    "name": "avif_grid",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "AVIF ItemProtectionBox (ipro)",
+                    "mode": "NULLABLE",
+                    "name": "avif_ipro",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "AVIF spatial extents (image size)",
                     "mode": "NULLABLE",
                     "name": "avif_ispe",
                     "type": "STRING"
                   },
                   {
+                    "description": "AVIF LayerSelectorProperty (lsel)",
+                    "mode": "NULLABLE",
+                    "name": "avif_lsel",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "AVIF major brand",
+                    "mode": "NULLABLE",
+                    "name": "avif_major_brand",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "AVIF pixel aspect ratio",
+                    "mode": "NULLABLE",
+                    "name": "avif_pasp",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "AVIF pixel information (bits per channel)",
                     "mode": "NULLABLE",
                     "name": "avif_pixi",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "AVIF image sequence",
+                    "mode": "NULLABLE",
+                    "name": "avif_sequence",
                     "type": "STRING"
                   },
                   {
@@ -39037,6 +39421,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Time (ms) for spawning a service worker in an isolated content process.",
+                    "mode": "NULLABLE",
+                    "name": "service_worker_isolated_launch_time",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Time (ms) for a service worker to start up.",
                     "mode": "NULLABLE",
                     "name": "service_worker_launch_time",
@@ -44161,6 +44551,18 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document used the CSS property hyphenate-character",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_css_property_hyphenate_character_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page used the CSS property hyphenate-character",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_css_property_hyphenate_character_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document used the CSS property hyphens",
                     "mode": "NULLABLE",
                     "name": "use_counter2_css_property_hyphens_document",
@@ -46441,6 +46843,18 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document used the CSS property print-color-adjust",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_css_property_print_color_adjust_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page used the CSS property print-color-adjust",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_css_property_print_color_adjust_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document used the CSS property quotes",
                     "mode": "NULLABLE",
                     "name": "use_counter2_css_property_quotes_document",
@@ -46894,6 +47308,18 @@
                     "description": "Whether a page used the CSS property scrollbar-color",
                     "mode": "NULLABLE",
                     "name": "use_counter2_css_property_scrollbar_color_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document used the CSS property scrollbar-gutter",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_css_property_scrollbar_gutter_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page used the CSS property scrollbar-gutter",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_css_property_scrollbar_gutter_page",
                     "type": "STRING"
                   },
                   {
@@ -50197,6 +50623,30 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document used IDBDatabaseCreateMutableFile",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_idb_database_create_mutable_file_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page used IDBDatabaseCreateMutableFile",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_idb_database_create_mutable_file_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document used IDBMutableFileOpen",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_idb_mutable_file_open_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page used IDBMutableFileOpen",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_idb_mutable_file_open_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document used IDBOpenDBOptions_StorageType",
                     "mode": "NULLABLE",
                     "name": "use_counter2_deprecated_idb_open_db_options_storage_type_document",
@@ -50602,6 +51052,18 @@
                     "description": "Whether a page used NodeValue",
                     "mode": "NULLABLE",
                     "name": "use_counter2_deprecated_node_value_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document used OffscreenCanvasToBlob",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_offscreen_canvas_to_blob_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page used OffscreenCanvasToBlob",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_offscreen_canvas_to_blob_page",
                     "type": "STRING"
                   },
                   {
@@ -54865,6 +55327,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Frames of of 10,000 decoded frames dropped in an HTMLVideoElement",
+                    "mode": "NULLABLE",
+                    "name": "video_dropped_frames_proportion_exponential",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "EME video playback success or failure",
                     "mode": "NULLABLE",
                     "name": "video_eme_play_success",
@@ -57009,6 +57477,42 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "The time between navigationStart and the first contentful paint of a foreground http or https root content document, in milliseconds. The contentful paint timestamp is taken during display list building and does not include rasterization or compositing of that paint. This is collected only on page load where the main document uses HTTP3. It is keyed based on whether a \"priority\" header has been received.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "h3p_perf_first_contentful_paint_ms",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Time in milliseconds from navigationStart to loadEventStart for the foreground http or https root content document. This is collected only on page load where the main document uses HTTP3. It is keyed based on whether a \"priority\" header has been received.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "h3p_perf_page_load_time_ms",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "The amount of time required for HSTS priming requests (ms), keyed by success or failure of the priming request. (success, failure)",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -59086,6 +59590,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "Record whether hardware decoding is supported for the specific video codec, this only records video in HD (1280*720) or higher resultion. The key is the type of video codec, eg. video/vp9.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "BOOL"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "media_video_hd_hardware_decoding_support",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "The number of times a Picture-in-Picture window was opened, per trigger mechanism (e.g.: the video toggle, the context menu).\n",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -59094,6 +59616,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "pictureinpicture_opened_method",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "CPU time used by each process type in ms.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "power_cpu_time_per_process_type_ms",
                     "type": "RECORD"
                   },
                   {
@@ -59476,6 +60016,18 @@
                     "type": "INT64"
                   },
                   {
+                    "description": "Impossibly large CPU time values that were discarded.\n",
+                    "mode": "NULLABLE",
+                    "name": "power_cpu_time_bogus_values",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Total CPU time used by all processes in ms.\n",
+                    "mode": "NULLABLE",
+                    "name": "power_total_cpu_time_ms",
+                    "type": "INT64"
+                  },
+                  {
                     "description": "A counter incremented every time the print dialog is opened from the old print preview.\n",
                     "mode": "NULLABLE",
                     "name": "printing_dialog_opened_via_preview",
@@ -59836,6 +60388,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "CPU time used by each process type in ms.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "power_cpu_time_per_process_type_ms",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "The count of attempted accumulations to unknown histogram keys for histograms that restrict the set of allowed keys ('keys' property). The names of the offending histograms are used as keys in this probe.\n",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -60044,6 +60614,24 @@
               },
               {
                 "fields": [
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "CPU time used by each process type in ms.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "power_cpu_time_per_process_type_ms",
+                    "type": "RECORD"
+                  },
                   {
                     "fields": [
                       {
@@ -60898,6 +61486,42 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "CPU time used by each process type in ms.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "power_cpu_time_per_process_type_ms",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "GPU time used by each process type in ms.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "power_gpu_time_per_process_type_ms",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "The count of attempted accumulations to unknown histogram keys for histograms that restrict the set of allowed keys ('keys' property). The names of the offending histograms are used as keys in this probe.\n",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -60985,6 +61609,30 @@
                     "description": "Number of times remote canvas 2D has been deactivated due to device creation failure.\n",
                     "mode": "NULLABLE",
                     "name": "gfx_canvas_remote_deactivated_no_device",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Impossibly large CPU time values that were discarded.\n",
+                    "mode": "NULLABLE",
+                    "name": "power_cpu_time_bogus_values",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Impossibly large GPU time values that were discarded.\n",
+                    "mode": "NULLABLE",
+                    "name": "power_gpu_time_bogus_values",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Total CPU time used by all processes in ms.\n",
+                    "mode": "NULLABLE",
+                    "name": "power_total_cpu_time_ms",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Total GPU time used by all processes in ms.\n",
+                    "mode": "NULLABLE",
+                    "name": "power_total_gpu_time_ms",
                     "type": "INT64"
                   },
                   {
@@ -63022,6 +63670,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "Record whether hardware decoding is supported for the specific video codec, this only records video in HD (1280*720) or higher resultion. The key is the type of video codec, eg. video/vp9.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "BOOL"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "media_video_hd_hardware_decoding_support",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "Collection of javascript modules that created a Sqlite.jsm transaction taking too long and timing out. This can be used to identify and optimize those modules transactions.\n",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -63084,6 +63750,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "networking_data_transferred_v3_kb",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Number of times we cycled the TRR connection during a subsession. Keyed by TRR provider URL.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "networking_trr_connection_cycle_count",
                     "type": "RECORD"
                   },
                   {
@@ -63166,6 +63850,60 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "Records counts for when Firefox was invoked (i.e., was already running and was not launched) to handle a file type or protocol with `-osint -url ...`.  The result is split into keys which represent the file extension: currently, the set of file types Firefox registers to handle, namely \".avif\", \".htm\", \".html\", \".pdf\", \".shtml\", \".xht\", \".xhtml\", \".svg\", \".webp\", and the set of protocol schemes that Firefox registers to handle, namely \"about\", \"http\", \"https\", \"mailto\".  If Firefox was invoked to handle a file type or protocol it does not register to handle by default, the count is recorded as \".<other extension>\" or \"<other protocol>\", respectively (neither of which are valid extension or protocol identifiers).\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "os_environment_invoked_to_handle",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Records whether Firefox was the default handler for particular file types or protocols.  The result is split into keys which represent the file extension: currently, a subset of the file types Firefox registers to handle, namely \".pdf\".  In the future, more file types may be recorded, and/or a subset of the protocol schemes that Firefox registers to may be recorded.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "BOOL"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "os_environment_is_default_handler",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Records counts for when Firefox was launched afresh (i.e., was not already running) to handle a file type or protocol with `-osint -url ...`.  The result is split into keys which represent the file extension: currently, the set of file types Firefox registers to handle, namely \".avif\", \".htm\", \".html\", \".pdf\", \".shtml\", \".xht\", \".xhtml\", \".svg\", \".webp\", and the set of protocol schemes that Firefox registers to handle, namely \"about\", \"http\", \"https\", \"mailto\".  If Firefox was launched to handle a file type or protocol it does not register to handle by default, the count is recorded as \".<other extension>\" or \"<other protocol>\", respectively (neither of which are valid extension or protocol identifiers).\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "os_environment_launched_to_handle",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "The number of times a Picture-in-Picture window was closed, per trigger mechanism (e.g.: the close button, the unpip button, originating tab going away, process shutdown, etc).\n",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -63174,6 +63912,42 @@
                     ],
                     "mode": "REPEATED",
                     "name": "pictureinpicture_closed_method",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "CPU time used by each process type in ms.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "power_cpu_time_per_process_type_ms",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "GPU time used by each process type in ms.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "power_gpu_time_per_process_type_ms",
                     "type": "RECORD"
                   },
                   {
@@ -63480,6 +64254,42 @@
                     ],
                     "mode": "REPEATED",
                     "name": "services_sync_sync_login_state_transitions",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Count how many registrations occur. File bugs in Core::DOM in case of a Telemetry regression.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "serviceworker_registrations",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "The maximum number of simultaneous running ServiceWorkers in a session.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "serviceworker_running_max",
                     "type": "RECORD"
                   },
                   {
@@ -64750,6 +65560,18 @@
                     "type": "INT64"
                   },
                   {
+                    "description": "The count of the number of five-second intervals ('ticks') the user was considered 'active' in a subsession. Session activity involves keyboard or mouse interaction with the application. It does not take into account whether or not the window has focus or is in the foreground, only if it is receiving these interaction events. Used for comparing with browser.engagement.active_ticks as a mirror for Glean's browser.engagement.active_ticks\n",
+                    "mode": "NULLABLE",
+                    "name": "browser_engagement_mirror_for_active_ticks",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "The count of the total non-unique http(s) URIs visited in a subsession, including page reloads, after the session has been restored. URIs on minimized or background tabs may also be counted towards this. Private browsing is included in this count. Used for comparing with browser.engagement.total_uri_count_normal_and_private_mode as a mirror of Glean's browser.engagement.uri_count.\n",
+                    "mode": "NULLABLE",
+                    "name": "browser_engagement_mirror_for_uri_count",
+                    "type": "INT64"
+                  },
+                  {
                     "description": "The count of the browser profiles on the current system. This counts profiles that have been used across all OS user accounts on machine since this probe was added. The value persists across installs. A value of 0 is reported if there is an error determining the correct count.\n",
                     "mode": "NULLABLE",
                     "name": "browser_engagement_profile_count",
@@ -65017,6 +65839,12 @@
                     "description": "The number of errors detected by a Cache API pragma_integrity_check() run in response to a constraint error detected by a VACUUM after performing a schema upgrade.\n",
                     "mode": "NULLABLE",
                     "name": "cache_integrity_check_count",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "The maximum number of content processes, submitted when a new maximum is reached.  Replaces CONTENT_PROCESS_MAX and CONTENT_PROCESS_PRECISE_MAX.\n",
+                    "mode": "NULLABLE",
+                    "name": "content_process_max_precise",
                     "type": "INT64"
                   },
                   {
@@ -65818,6 +66646,18 @@
                     "type": "BOOL"
                   },
                   {
+                    "description": "The value `true` recorded when a \"main\" ping is about to be assembled. To be used for validating GIFFT.\n",
+                    "mode": "NULLABLE",
+                    "name": "gifft_validation_main_ping_assembling",
+                    "type": "BOOL"
+                  },
+                  {
+                    "description": "The value `true` recorded when a \"main\" ping is about to be assembled. To be used for validating GIFFT. Mirror for Glean's `gifft.validation.main_ping_assembling`.\n",
+                    "mode": "NULLABLE",
+                    "name": "gifft_validation_mirror_for_main_ping_assembling",
+                    "type": "BOOL"
+                  },
+                  {
                     "description": "Tracking the number of failure due to missing fileInfo while doing structured clone.\n",
                     "mode": "NULLABLE",
                     "name": "idb_failure_fileinfo_error",
@@ -66094,9 +66934,39 @@
                     "type": "INT64"
                   },
                   {
+                    "description": "Whether the user has Picture-in-Picture enabled.",
+                    "mode": "NULLABLE",
+                    "name": "pictureinpicture_toggle_enabled",
+                    "type": "BOOL"
+                  },
+                  {
                     "description": "A uint with the number of active enterprise policies, collected once at startup.",
                     "mode": "NULLABLE",
                     "name": "policies_count",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Impossibly large CPU time values that were discarded.\n",
+                    "mode": "NULLABLE",
+                    "name": "power_cpu_time_bogus_values",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Impossibly large GPU time values that were discarded.\n",
+                    "mode": "NULLABLE",
+                    "name": "power_gpu_time_bogus_values",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Total CPU time used by all processes in ms.\n",
+                    "mode": "NULLABLE",
+                    "name": "power_total_cpu_time_ms",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Total GPU time used by all processes in ms.\n",
+                    "mode": "NULLABLE",
+                    "name": "power_total_gpu_time_ms",
                     "type": "INT64"
                   },
                   {
@@ -66145,6 +67015,12 @@
                     "description": "A counter incremented every time a user opens print preview.\n",
                     "mode": "NULLABLE",
                     "name": "printing_preview_opened_tm",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Records if a client is opted into dFPI in standard ETP mode as part of the rollout experiment. 0: opted out, 1: opted in, 2: not part of the experiment\n",
+                    "mode": "NULLABLE",
+                    "name": "privacy_dfpi_rollout_enabled_by_default",
                     "type": "INT64"
                   },
                   {
@@ -66700,6 +67576,12 @@
                     "type": "INT64"
                   },
                   {
+                    "description": "When an update is available and app.update.auto is disabled, a popup is opened prompting the user to download and install the update. The pref app.update.suppressPrompts causes Firefox Nightly to wait up to 7 days before showing the prompt, instead showing a badge and banner in the meantime. It also prevents Nightly from showing update restart prompts, instead showing a badge and banner immediately. This value is set for the users who set this pref to true.\n",
+                    "mode": "NULLABLE",
+                    "name": "update_suppress_prompts",
+                    "type": "BOOL"
+                  },
+                  {
                     "description": "How many microseconds we spent in the baseline WebAssembly compiler.",
                     "mode": "NULLABLE",
                     "name": "wasm_compile_time_baseline_us",
@@ -66908,6 +67790,168 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "DNS: lookup algorithm; Keyed by TRR domain",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "dns_lookup_disposition3",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "DNS check for TRR was blocked by blacklist; Keyed by TRR domain",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "dns_trr_blacklisted3",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Resolve success rate when in TRR-first and called TRR-disabled (fall-back mode); Keyed by TRR domain",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "dns_trr_disabled3",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "TRR-first mode distribution. 0=Worked, 1=fell back fine after TRR fail, 2=native worked, 3=both failed; Keyed by TRR domain",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "dns_trr_first4",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "HTTP version used by DoH endpoint",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "dns_trr_http_version2",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Time for a completed TRR resolution (msec); Keyed by TRR domain",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "dns_trr_lookup_time3",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "TRR managed to verify NS entry; Keyed by TRR domain",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "dns_trr_ns_verfified3",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "How often TRR (Trusted Recursive Resolver) requests are fine, time-out or error. Keyed by TRR domain",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "dns_trr_success3",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "The time a connection was in the zero rtt state, it is keyed by the zero rtt outcome.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_0rtt_state_duration",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "Error code when http3 connection is closed. Look at Http3Session for more details.",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -66916,6 +67960,114 @@
                     ],
                     "mode": "REPEATED",
                     "name": "http3_connection_close_code_3",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "HTTP3: the number of PTOs.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_counts_pto",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "HTTP3: the number of spurious retransmissions.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_late_ack",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "HTTP3: spurious retransmissions ratio (spurios_retransmission / packet sent * 10000).",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_late_ack_ratio",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "HTTP3: the number of received/sent packets.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_received_sent_dgrams",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "HTTP transaction upload time (ms) (keys: uses_http3_10_50 (load size 10M to 50M), uses_http3_50_100 (load size 50M to 100M), supports_http3_10_50, supports_http3_50_100)",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_upload_time_10m_100m",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "HTTP transaction upload time for resources larger than 100M (ms) (keys: uses_http3, supports_http3)",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_upload_time_gt_100m",
                     "type": "RECORD"
                   },
                   {
@@ -66962,6 +68114,78 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "Number of times we attempted TRR for a successful lookup in TRR-first mode. Keyed by provider.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "trr_attempt_count",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "When in TRR-first mode, if TRR was skipped and native failed, it lists the reason we may have skipped TRR, keyed by the provider. Does not include requests that intentionally skip TRR.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "trr_relevant_skip_reason_native_failed",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "When in TRR-first mode, if TRR was skipped and native succeeded, it lists the reason we may have skipped TRR, keyed by the provider. Does not include requests that intentionally skip TRR.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "trr_relevant_skip_reason_native_success",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "When in TRR-first mode, it lists the reason we may have skipped TRR, keyed by the provider. Does not include requests that intentionally skip TRR.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "trr_relevant_skip_reason_trr_first",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "When in TRR-first mode, if TRR was skipped and native failed, it lists the reason we may have skipped TRR, keyed by the provider.",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -66988,6 +68212,60 @@
                     ],
                     "mode": "REPEATED",
                     "name": "trr_skip_reason_native_success",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "When in TRR-first mode, if TRR failed once and retried unsuccessfully, it lists the reason for the first failure, keyed by the provider.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "trr_skip_reason_retry_failed",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "When in TRR-first mode, if TRR failed once and was successfully retried, it lists the reason for the first failure, keyed by the provider.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "trr_skip_reason_retry_success",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "When in TRR-first mode, it lists the reason we may have skipped TRR. The key is like `<provider>|<skip reason of first attempt>` or just `<provider>` used when there was no second attempt.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "trr_skip_reason_strict_mode",
                     "type": "RECORD"
                   },
                   {
@@ -67041,6 +68319,168 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "DNS: lookup algorithm; Keyed by TRR domain",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "dns_lookup_disposition3",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "DNS check for TRR was blocked by blacklist; Keyed by TRR domain",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "dns_trr_blacklisted3",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Resolve success rate when in TRR-first and called TRR-disabled (fall-back mode); Keyed by TRR domain",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "dns_trr_disabled3",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "TRR-first mode distribution. 0=Worked, 1=fell back fine after TRR fail, 2=native worked, 3=both failed; Keyed by TRR domain",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "dns_trr_first4",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "HTTP version used by DoH endpoint",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "dns_trr_http_version2",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Time for a completed TRR resolution (msec); Keyed by TRR domain",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "dns_trr_lookup_time3",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "TRR managed to verify NS entry; Keyed by TRR domain",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "dns_trr_ns_verfified3",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "How often TRR (Trusted Recursive Resolver) requests are fine, time-out or error. Keyed by TRR domain",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "dns_trr_success3",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "The time a connection was in the zero rtt state, it is keyed by the zero rtt outcome.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_0rtt_state_duration",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "Error code when http3 connection is closed. Look at Http3Session for more details.",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -67049,6 +68489,114 @@
                     ],
                     "mode": "REPEATED",
                     "name": "http3_connection_close_code_3",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "HTTP3: the number of PTOs.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_counts_pto",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "HTTP3: the number of spurious retransmissions.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_late_ack",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "HTTP3: spurious retransmissions ratio (spurios_retransmission / packet sent * 10000).",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_late_ack_ratio",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "HTTP3: the number of received/sent packets.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_received_sent_dgrams",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "HTTP transaction upload time (ms) (keys: uses_http3_10_50 (load size 10M to 50M), uses_http3_50_100 (load size 50M to 100M), supports_http3_10_50, supports_http3_50_100)",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_upload_time_10m_100m",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "HTTP transaction upload time for resources larger than 100M (ms) (keys: uses_http3, supports_http3)",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http3_upload_time_gt_100m",
                     "type": "RECORD"
                   },
                   {
@@ -67095,6 +68643,78 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "Number of times we attempted TRR for a successful lookup in TRR-first mode. Keyed by provider.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "trr_attempt_count",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "When in TRR-first mode, if TRR was skipped and native failed, it lists the reason we may have skipped TRR, keyed by the provider. Does not include requests that intentionally skip TRR.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "trr_relevant_skip_reason_native_failed",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "When in TRR-first mode, if TRR was skipped and native succeeded, it lists the reason we may have skipped TRR, keyed by the provider. Does not include requests that intentionally skip TRR.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "trr_relevant_skip_reason_native_success",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "When in TRR-first mode, it lists the reason we may have skipped TRR, keyed by the provider. Does not include requests that intentionally skip TRR.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "trr_relevant_skip_reason_trr_first",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "When in TRR-first mode, if TRR was skipped and native failed, it lists the reason we may have skipped TRR, keyed by the provider.",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -67121,6 +68741,60 @@
                     ],
                     "mode": "REPEATED",
                     "name": "trr_skip_reason_native_success",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "When in TRR-first mode, if TRR failed once and retried unsuccessfully, it lists the reason for the first failure, keyed by the provider.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "trr_skip_reason_retry_failed",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "When in TRR-first mode, if TRR failed once and was successfully retried, it lists the reason for the first failure, keyed by the provider.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "trr_skip_reason_retry_success",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "When in TRR-first mode, it lists the reason we may have skipped TRR. The key is like `<provider>|<skip reason of first attempt>` or just `<provider>` used when there was no second attempt.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "trr_skip_reason_strict_mode",
                     "type": "RECORD"
                   },
                   {
@@ -67166,6 +68840,42 @@
               },
               {
                 "fields": [
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Number of times we cycled the TRR connection during a subsession. Keyed by TRR provider URL.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "networking_trr_connection_cycle_count",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "CPU time used by each process type in ms.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "power_cpu_time_per_process_type_ms",
+                    "type": "RECORD"
+                  },
                   {
                     "fields": [
                       {
@@ -67231,6 +68941,36 @@
                     "description": "The number of times a graphite2 font has been loaded.\n",
                     "mode": "NULLABLE",
                     "name": "browser_usage_graphite",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Hom many KB has been transfer over a captive portal during a subsession.\n",
+                    "mode": "NULLABLE",
+                    "name": "networking_data_transferred_captive_portal",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Number of http connections transfer over a captive portal during a subsession.\n",
+                    "mode": "NULLABLE",
+                    "name": "networking_http_connections_captive_portal",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Number of http transactions transfer over a captive portal during a subsession.\n",
+                    "mode": "NULLABLE",
+                    "name": "networking_http_transactions_captive_portal",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Impossibly large CPU time values that were discarded.\n",
+                    "mode": "NULLABLE",
+                    "name": "power_cpu_time_bogus_values",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Total CPU time used by all processes in ms.\n",
+                    "mode": "NULLABLE",
+                    "name": "power_total_cpu_time_ms",
                     "type": "INT64"
                   },
                   {

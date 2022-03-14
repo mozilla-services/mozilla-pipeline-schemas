@@ -753,6 +753,10 @@
                     "null"
                   ]
                 },
+                "isWindowsSMode": {
+                  "description": "Whether or not the system is Windows 10 or 11 in S Mode. S Mode existed prior to us being able to query it, so this is unreliable on Windows versions prior to 1810.",
+                  "type": "boolean"
+                },
                 "l2cacheKB": {
                   "description": "The CPU L2 cache size in KB. `null` on failure. Desktop only.",
                   "type": [
@@ -1344,6 +1348,13 @@
                 "number",
                 "null"
               ]
+            },
+            "winPackageFamilyName": {
+              "description": "Windows package family name. This is only sent for Mozilla produced MSIX packages.",
+              "type": [
+                "string",
+                "null"
+              ]
             }
           },
           "type": "object"
@@ -1370,7 +1381,15 @@
               "minimum": 0,
               "type": "number"
             },
+            "tcpACD": {
+              "minimum": 0,
+              "type": "number"
+            },
             "tcpADO": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "tcpADOCD": {
               "minimum": 0,
               "type": "number"
             },
@@ -1382,7 +1401,15 @@
               "minimum": 0,
               "type": "number"
             },
+            "tcpNEWFOUR": {
+              "minimum": 0,
+              "type": "number"
+            },
             "tcpNEWONE": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "tcpNEWTHREE": {
               "minimum": 0,
               "type": "number"
             },
@@ -1402,7 +1429,15 @@
               "minimum": 0,
               "type": "number"
             },
+            "udpACD": {
+              "minimum": 0,
+              "type": "number"
+            },
             "udpADO": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "udpADOCD": {
               "minimum": 0,
               "type": "number"
             },
@@ -1419,7 +1454,15 @@
               "minimum": 0,
               "type": "number"
             },
+            "udpNEWFOUR": {
+              "minimum": 0,
+              "type": "number"
+            },
             "udpNEWONE": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "udpNEWTHREE": {
               "minimum": 0,
               "type": "number"
             },
@@ -1447,7 +1490,19 @@
               },
               "type": "array"
             },
+            "tcpACD": {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
             "tcpADO": {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            "tcpADOCD": {
               "items": {
                 "type": "integer"
               },
@@ -1465,7 +1520,19 @@
               },
               "type": "array"
             },
+            "tcpNEWFOUR": {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
             "tcpNEWONE": {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            "tcpNEWTHREE": {
               "items": {
                 "type": "integer"
               },
@@ -1495,7 +1562,19 @@
               },
               "type": "array"
             },
+            "udpACD": {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
             "udpADO": {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            "udpADOCD": {
               "items": {
                 "type": "integer"
               },
@@ -1520,7 +1599,19 @@
               },
               "type": "array"
             },
+            "udpNEWFOUR": {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
             "udpNEWONE": {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            "udpNEWTHREE": {
               "items": {
                 "type": "integer"
               },

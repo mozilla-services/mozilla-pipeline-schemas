@@ -753,6 +753,10 @@
                     "null"
                   ]
                 },
+                "isWindowsSMode": {
+                  "description": "Whether or not the system is Windows 10 or 11 in S Mode. S Mode existed prior to us being able to query it, so this is unreliable on Windows versions prior to 1810.",
+                  "type": "boolean"
+                },
                 "l2cacheKB": {
                   "description": "The CPU L2 cache size in KB. `null` on failure. Desktop only.",
                   "type": [
@@ -1344,6 +1348,13 @@
                 "number",
                 "null"
               ]
+            },
+            "winPackageFamilyName": {
+              "description": "Windows package family name. This is only sent for Mozilla produced MSIX packages.",
+              "type": [
+                "string",
+                "null"
+              ]
             }
           },
           "type": "object"
@@ -1526,6 +1537,46 @@
               "type": "array"
             },
             "parent": {
+              "items": {
+                "items": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  {
+                    "additionalProperties": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "type": [
+                      "object",
+                      "null"
+                    ]
+                  }
+                ],
+                "maxItems": 6,
+                "minItems": 4,
+                "type": "array"
+              },
+              "type": "array"
+            },
+            "socket": {
               "items": {
                 "items": [
                   {

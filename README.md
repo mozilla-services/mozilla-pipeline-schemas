@@ -58,8 +58,14 @@ schemas
 │   └── install
 ├── firefox-launcher-process
 │   └── launcher-process-failure
+├── firefox-translations
+│   ├── custom
+│   └── deletion-request
 ├── glean
 │   └── glean
+├── glean-dictionary
+│   ├── deletion-request
+│   └── page-view
 ├── messaging-system
 │   ├── cfr
 │   ├── infobar
@@ -147,7 +153,8 @@ schemas
 │   ├── migration
 │   ├── startup-timeline
 │   ├── sync
-│   └── tabs-sync
+│   ├── tabs-sync
+│   └── topsites-impression
 ├── org-mozilla-fenix-nightly
 │   ├── activation
 │   ├── addresses-sync
@@ -165,7 +172,8 @@ schemas
 │   ├── migration
 │   ├── startup-timeline
 │   ├── sync
-│   └── tabs-sync
+│   ├── tabs-sync
+│   └── topsites-impression
 ├── org-mozilla-fennec-aurora
 │   ├── activation
 │   ├── addresses-sync
@@ -183,7 +191,8 @@ schemas
 │   ├── migration
 │   ├── startup-timeline
 │   ├── sync
-│   └── tabs-sync
+│   ├── tabs-sync
+│   └── topsites-impression
 ├── org-mozilla-firefox
 │   ├── activation
 │   ├── addresses-sync
@@ -201,7 +210,8 @@ schemas
 │   ├── migration
 │   ├── startup-timeline
 │   ├── sync
-│   └── tabs-sync
+│   ├── tabs-sync
+│   └── topsites-impression
 ├── org-mozilla-firefox-beta
 │   ├── activation
 │   ├── addresses-sync
@@ -219,7 +229,8 @@ schemas
 │   ├── migration
 │   ├── startup-timeline
 │   ├── sync
-│   └── tabs-sync
+│   ├── tabs-sync
+│   └── topsites-impression
 ├── org-mozilla-firefoxreality
 │   ├── baseline
 │   ├── deletion-request
@@ -356,6 +367,12 @@ schemas
 │   ├── study-enrollment
 │   ├── study-unenrollment
 │   └── uninstall-deletion
+├── rally-markup-fb-pixel-hunt
+│   ├── deletion-request
+│   ├── fbpixelhunt-event
+│   ├── fbpixelhunt-journey
+│   ├── fbpixelhunt-pixel
+│   └── study-enrollment
 ├── rally-study-zero-one
 │   ├── deletion-request
 │   ├── rs01-event
@@ -369,6 +386,8 @@ schemas
 ├── regrets-reporter-ucs
 │   ├── deletion-request
 │   ├── main-events
+│   ├── regret-details
+│   ├── video-data
 │   └── video-index
 ├── telemetry
 │   ├── addon-install-blocked
@@ -441,6 +460,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-431 directories
+450 directories
 ```
 
