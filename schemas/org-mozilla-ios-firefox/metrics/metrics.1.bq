@@ -620,6 +620,12 @@
             "type": "INT64"
           },
           {
+            "description": "Counts the number of times a user has selected a\nsearch term group inside the history panel. Selecting\nthis item will navigate them to a view containing a list\nof all Site items that appear in that group.\n",
+            "mode": "NULLABLE",
+            "name": "history_group_list",
+            "type": "INT64"
+          },
+          {
             "description": "Recorded when a user is shown inactive tab view\n",
             "mode": "NULLABLE",
             "name": "inactive_tabs_tray_inactive_tab_shown",
@@ -1398,6 +1404,24 @@
             ],
             "mode": "REPEATED",
             "name": "glean_validation_pings_submitted",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of times a user selected an item from\nthe history panel. This labeled counter will tell apart\nitems that appear inside a group, and those that do not.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "history_selected_item",
             "type": "RECORD"
           },
           {

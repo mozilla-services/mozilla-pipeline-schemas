@@ -60,11 +60,13 @@ schemas
 │   └── launcher-process-failure
 ├── firefox-translations
 │   ├── custom
-│   └── deletion-request
+│   ├── deletion-request
+│   └── events
 ├── glean
 │   └── glean
 ├── glean-dictionary
 │   ├── deletion-request
+│   ├── events
 │   └── page-view
 ├── messaging-system
 │   ├── cfr
@@ -119,6 +121,7 @@ schemas
 │   └── usage
 ├── mozillavpn
 │   ├── deletion-request
+│   ├── events
 │   └── main
 ├── mozphab
 │   ├── baseline
@@ -130,7 +133,8 @@ schemas
 │   └── event
 ├── org-mozilla-bergamot
 │   ├── custom
-│   └── deletion-request
+│   ├── deletion-request
+│   └── events
 ├── org-mozilla-connect-firefox
 │   ├── baseline
 │   ├── deletion-request
@@ -357,6 +361,7 @@ schemas
 │   ├── deletion-request
 │   ├── demographics
 │   ├── enrollment
+│   ├── events
 │   ├── study-enrollment
 │   ├── study-unenrollment
 │   └── uninstall-deletion
@@ -364,17 +369,20 @@ schemas
 │   ├── deletion-request
 │   ├── demographics
 │   ├── enrollment
+│   ├── events
 │   ├── study-enrollment
 │   ├── study-unenrollment
 │   └── uninstall-deletion
 ├── rally-markup-fb-pixel-hunt
 │   ├── deletion-request
+│   ├── events
 │   ├── fbpixelhunt-event
 │   ├── fbpixelhunt-journey
 │   ├── fbpixelhunt-pixel
 │   └── study-enrollment
 ├── rally-study-zero-one
 │   ├── deletion-request
+│   ├── events
 │   ├── rs01-event
 │   └── study-enrollment
 ├── rally-zero-one
@@ -385,6 +393,7 @@ schemas
 │   └── regrets-reporter-update
 ├── regrets-reporter-ucs
 │   ├── deletion-request
+│   ├── events
 │   ├── main-events
 │   ├── regret-details
 │   ├── video-data
@@ -460,6 +469,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-450 directories
+459 directories
 ```
 
