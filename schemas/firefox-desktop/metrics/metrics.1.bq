@@ -426,6 +426,12 @@
             "mode": "NULLABLE",
             "name": "power_total_gpu_time_ms",
             "type": "INT64"
+          },
+          {
+            "description": "How many times threads woke up and could have woken up a CPU core.\n",
+            "mode": "NULLABLE",
+            "name": "power_total_thread_wakeups",
+            "type": "INT64"
           }
         ],
         "mode": "NULLABLE",
@@ -631,6 +637,24 @@
             ],
             "mode": "REPEATED",
             "name": "power_gpu_time_per_process_type_ms",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many times threads woke up and could have woken up a CPU core. Broken down by process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_wakeups_per_process_type",
             "type": "RECORD"
           }
         ],

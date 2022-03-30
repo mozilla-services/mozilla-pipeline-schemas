@@ -331,6 +331,12 @@
             "type": "BOOL"
           },
           {
+            "description": "An indication of whether Contile is enabled to be displayed\n",
+            "mode": "NULLABLE",
+            "name": "customize_home_contile",
+            "type": "BOOL"
+          },
+          {
             "description": "An indication of whether the Jump back\nin section is enabled to be displayed\n",
             "mode": "NULLABLE",
             "name": "customize_home_jump_back_in",
@@ -797,6 +803,12 @@
             "description": "Total GPU time used by all processes in ms.\n",
             "mode": "NULLABLE",
             "name": "power_total_gpu_time_ms",
+            "type": "INT64"
+          },
+          {
+            "description": "How many times threads woke up and could have woken up a CPU core.\n",
+            "mode": "NULLABLE",
+            "name": "power_total_thread_wakeups",
             "type": "INT64"
           },
           {
@@ -2089,6 +2101,24 @@
             ],
             "mode": "REPEATED",
             "name": "power_gpu_time_per_process_type_ms",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many times threads woke up and could have woken up a CPU core. Broken down by process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_wakeups_per_process_type",
             "type": "RECORD"
           },
           {
