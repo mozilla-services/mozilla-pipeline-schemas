@@ -824,6 +824,18 @@
             "type": "INT64"
           },
           {
+            "description": "Counts how often the loading placeholder is shown and the resulting tab\nis the same as it was before the load.\n",
+            "mode": "NULLABLE",
+            "name": "recent_synced_tabs_latest_synced_tab_is_stale",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts how many times \"show all synced tabs\" button has been clicked.\n",
+            "mode": "NULLABLE",
+            "name": "recent_synced_tabs_show_all_synced_tabs_clicked",
+            "type": "INT64"
+          },
+          {
             "description": "A counter that indicates how many INACTIVE tabs a user has closed.\n",
             "mode": "NULLABLE",
             "name": "tabs_tray_close_inactive_tab",
@@ -2137,6 +2149,60 @@
             ],
             "mode": "REPEATED",
             "name": "power_wakeups_per_process_type",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of times a recent synced tab is opened, labeled by the\ndevice type the tab originates from.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "recent_synced_tabs_recent_synced_tab_opened",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts impressions of a recent synced tab on the homepage, labeled by the\ndevice type the tab originates from.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "recent_synced_tabs_recent_synced_tab_shown",
+            "type": "RECORD"
+          },
+          {
+            "description": "The area that the tabs tray was accessed from.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "tabs_tray_access_point",
             "type": "RECORD"
           },
           {
@@ -8647,6 +8713,66 @@
             ],
             "mode": "NULLABLE",
             "name": "places_manager_write_query_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Measures the amount of time between the beginning of a sync and the end.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "recent_synced_tabs_recent_synced_tab_time_to_load",
             "type": "RECORD"
           },
           {
