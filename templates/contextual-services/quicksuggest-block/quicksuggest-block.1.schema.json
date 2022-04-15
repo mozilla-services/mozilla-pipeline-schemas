@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "quicksuggest-block",
+  "properties": {
+    @ACTIVITY-STREAM_EXPERIMENTS_1_JSON@,
+    "advertiser": {
+        "description": "Name of the advertiser, e.g. amazon, ebay, bestbuy etc",
+        "type": "string"
+    },
+    "block_id": {
+        "description": "A unique identifier for the QuickSuggest link",
+        "type": "integer"
+    },
+    "context_id": {
+      "description": "A UUID representing this user. Note that it's not client_id, nor can it be used to link to a client_id",
+      "type": "string",
+      "pattern": "^\\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\}$"
+    },
+    "iab_category": {
+      "description": "The IAB category of the suggestion",
+      "type": "string",
+      "enum": ["5 - Education", "22 - Shopping"]
+    },
+    "locale": {
+      "description": "User's current locale",
+      "type": "string"
+    },
+    "match_type": {
+      "description": "The match type of the suggestion",
+      "type": "string",
+      "enum": ["firefox-suggest", "best-match"]
+    },
+    "position": {
+      "description": "The placement of the QuickSuggest link (1-based)",
+      "type": "integer"
+    },
+    "release_channel": {
+      "description": "Firefox release channel",
+      "type": "string"
+    },
+    "request_id": {
+      "description": "The request identifier for every Merino API request made by Firefox",
+      "type": "string"
+    },
+    "scenario": {
+      "description": "The scenario of the QuickSuggest user experience",
+      "type": "string",
+      "enum": ["history", "offline", "online"]
+    },
+    "version": {
+      "description": "Firefox version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "context_id",
+    "block_id",
+    "version"
+  ]
+}
