@@ -357,6 +357,21 @@ schemas
 │   └── total-timing
 ├── pocket
 │   └── fire-tv-events
+├── rally-citp-search-engine-usage
+│   ├── ballot-interaction
+│   ├── ballot-response
+│   ├── clear-browser-history
+│   ├── deletion-request
+│   ├── events
+│   ├── modal-interaction
+│   ├── modal-response
+│   ├── notice-interaction
+│   ├── notice-response
+│   ├── online-service-navigation
+│   ├── serp-visit
+│   ├── study-enrollment
+│   ├── study-initalization
+│   └── study-initialization
 ├── rally-core
 │   ├── deletion-request
 │   ├── demographics
@@ -469,6 +484,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-459 directories
+474 directories
 ```
 
