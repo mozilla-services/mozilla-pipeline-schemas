@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "impression-stats",
+  "properties": {
+    @ACTIVITY-STREAM_IMPRESSIONID_1_JSON@,
+    @ACTIVITY-STREAM_PAGE_1_JSON@,
+    @ACTIVITY-STREAM_EXPERIMENTS_1_JSON@,
+    "addon_version": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "release_channel": {
+      "type": "string"
+    },
+    "locale": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "region": {
+      "type": "string"
+    },
+    "profile_creation_date": {
+      "type": "integer"
+    },
+    "user_prefs": {
+      "type": "integer"
+    },
+    "click": {
+      "description": "A 0-based index to record which tile in the 'tiles' list the user just interacted with",
+      "type": "integer"
+    },
+    "block": {
+      "description": "A 0-based index to record which tile in the 'tiles' list the user just interacted with",
+      "type": "integer"
+    },
+    "pocket": {
+      "description": "A 0-based index to record which tile in the 'tiles' list the user just interacted with",
+      "type": "integer"
+    },
+    "tiles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The 'tile_id' indicating which story the tile points to; this was previously an integer in the v1 schema",
+            "type": "string"
+          },
+          "pos": {
+            "type": "integer"
+          }
+        },
+        "required": [ "id" ]
+      }
+    },
+    "loaded": {
+      "description": "An integer to record the size of the loaded 'tiles' list",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "impression_id",
+    "addon_version",
+    "locale",
+    "page",
+    "user_prefs",
+    "tiles"
+  ]
+}
