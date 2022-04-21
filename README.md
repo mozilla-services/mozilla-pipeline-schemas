@@ -25,6 +25,7 @@ schemas
 │   ├── space-ship-ready
 │   └── starbase46
 ├── contextual-services
+│   ├── quicksuggest-block
 │   ├── quicksuggest-click
 │   ├── quicksuggest-impression
 │   ├── topsites-click
@@ -484,6 +485,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-474 directories
+475 directories
 ```
 
