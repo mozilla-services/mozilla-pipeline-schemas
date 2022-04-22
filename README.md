@@ -360,18 +360,13 @@ schemas
 │   └── fire-tv-events
 ├── rally-citp-search-engine-usage
 │   ├── ballot-interaction
-│   ├── ballot-response
-│   ├── clear-browser-history
 │   ├── deletion-request
 │   ├── events
 │   ├── modal-interaction
-│   ├── modal-response
 │   ├── notice-interaction
-│   ├── notice-response
 │   ├── online-service-navigation
 │   ├── serp-visit
 │   ├── study-enrollment
-│   ├── study-initalization
 │   └── study-initialization
 ├── rally-core
 │   ├── deletion-request
@@ -485,6 +480,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-475 directories
+470 directories
 ```
 
