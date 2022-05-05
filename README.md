@@ -264,17 +264,32 @@ schemas
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
-│   └── metrics
+│   ├── metrics
+│   ├── temp-bookmarks-sync
+│   ├── temp-history-sync
+│   ├── temp-logins-sync
+│   ├── temp-sync
+│   └── temp-tabs-sync
 ├── org-mozilla-ios-firefox
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
-│   └── metrics
+│   ├── metrics
+│   ├── temp-bookmarks-sync
+│   ├── temp-history-sync
+│   ├── temp-logins-sync
+│   ├── temp-sync
+│   └── temp-tabs-sync
 ├── org-mozilla-ios-firefoxbeta
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
-│   └── metrics
+│   ├── metrics
+│   ├── temp-bookmarks-sync
+│   ├── temp-history-sync
+│   ├── temp-logins-sync
+│   ├── temp-sync
+│   └── temp-tabs-sync
 ├── org-mozilla-ios-focus
 │   ├── baseline
 │   ├── deletion-request
@@ -480,6 +495,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-470 directories
+485 directories
 ```
 
