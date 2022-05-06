@@ -356,6 +356,12 @@
             "type": "INT64"
           },
           {
+            "description": "The number of times we tried to register shutdown flush routines for\ncontent child processes, and failed (probably because there was no main\nthread).\nAs a result there may be data loss from content child processes.\nLarge or rising number of clients experiencing this indicates we should\nperhaps refactor content child shutdown in FOG to try harder to register\nflush operations.\nWill likely be obsoleted by bug 1641989.\n",
+            "mode": "NULLABLE",
+            "name": "fog_ipc_shutdown_registration_failures",
+            "type": "INT64"
+          },
+          {
             "description": "The number of times we encountered an IO error\nwhen writing a pending ping to disk.\n",
             "mode": "NULLABLE",
             "name": "glean_error_io",
