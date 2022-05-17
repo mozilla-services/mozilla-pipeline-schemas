@@ -1281,6 +1281,36 @@
             "type": "RECORD"
           },
           {
+            "description": "Records how many percent of battery was available for each period of user activity.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "power_battery_percentage_when_user_active",
+            "type": "RECORD"
+          },
+          {
             "description": "The distribution of search term tab group sizes. Rather than reporting\nindividual sizes directly as integers, it is currently desired to\nreport the sizes according to certain size ranges.\nThe \"buckets\" for reporting group sizes will be mapped as follows:\n* 2 tabs -> 1\n* 3-5 tabs -> 2\n* 6-10 tabs -> 3\n* 11+ tabs -> 4\nWhere the reported number will be 1, 2, 3, or 4, accordingly.\nAs an example, say a user has three groups of sizes 3, 6, and 15. The\napp will report 2, 3, and 4 when this metric is tracked.\n",
             "fields": [
               {
