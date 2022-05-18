@@ -247,18 +247,21 @@ schemas
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
+│   ├── fog-validation
 │   └── metrics
 ├── org-mozilla-focus-beta
 │   ├── activation
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
+│   ├── fog-validation
 │   └── metrics
 ├── org-mozilla-focus-nightly
 │   ├── activation
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
+│   ├── fog-validation
 │   └── metrics
 ├── org-mozilla-ios-fennec
 │   ├── baseline
@@ -310,6 +313,7 @@ schemas
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
+│   ├── fog-validation
 │   └── metrics
 ├── org-mozilla-mozregression
 │   ├── baseline
@@ -340,6 +344,12 @@ schemas
 │   ├── session-end
 │   ├── sync
 │   └── tabs-sync
+├── pine
+│   ├── baseline
+│   ├── deletion-request
+│   ├── events
+│   ├── fog-validation
+│   └── metrics
 ├── pioneer-citp-news-disinfo
 │   ├── deletion-request
 │   ├── measurements
@@ -495,6 +505,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-485 directories
+495 directories
 ```
 
