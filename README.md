@@ -272,7 +272,8 @@ schemas
 │   ├── temp-history-sync
 │   ├── temp-logins-sync
 │   ├── temp-sync
-│   └── temp-tabs-sync
+│   ├── temp-tabs-sync
+│   └── topsites-impression
 ├── org-mozilla-ios-firefox
 │   ├── baseline
 │   ├── deletion-request
@@ -282,7 +283,8 @@ schemas
 │   ├── temp-history-sync
 │   ├── temp-logins-sync
 │   ├── temp-sync
-│   └── temp-tabs-sync
+│   ├── temp-tabs-sync
+│   └── topsites-impression
 ├── org-mozilla-ios-firefoxbeta
 │   ├── baseline
 │   ├── deletion-request
@@ -292,7 +294,8 @@ schemas
 │   ├── temp-history-sync
 │   ├── temp-logins-sync
 │   ├── temp-sync
-│   └── temp-tabs-sync
+│   ├── temp-tabs-sync
+│   └── topsites-impression
 ├── org-mozilla-ios-focus
 │   ├── baseline
 │   ├── deletion-request
@@ -505,6 +508,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-495 directories
+498 directories
 ```
 
