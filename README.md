@@ -16,6 +16,12 @@ schemas
 │   ├── pocket-button
 │   ├── sessions
 │   └── spoc-fills
+├── bedrock
+│   ├── deletion-request
+│   ├── events
+│   ├── interaction
+│   ├── non-interaction
+│   └── page-view
 ├── burnham
 │   ├── baseline
 │   ├── deletion-request
@@ -508,6 +514,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-498 directories
+504 directories
 ```
 
