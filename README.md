@@ -407,8 +407,10 @@ schemas
 │   ├── demographics
 │   ├── enrollment
 │   ├── events
+│   ├── onboarding
 │   ├── study-enrollment
 │   ├── study-unenrollment
+│   ├── unenrollment
 │   └── uninstall-deletion
 ├── rally-debug
 │   ├── deletion-request
@@ -514,6 +516,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-504 directories
+506 directories
 ```
 
