@@ -407,7 +407,6 @@ schemas
 │   ├── demographics
 │   ├── enrollment
 │   ├── events
-│   ├── onboarding
 │   ├── study-enrollment
 │   ├── study-unenrollment
 │   ├── unenrollment
@@ -516,6 +515,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-506 directories
+505 directories
 ```
 
