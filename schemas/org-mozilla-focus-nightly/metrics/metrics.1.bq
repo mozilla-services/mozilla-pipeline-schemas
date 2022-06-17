@@ -301,6 +301,24 @@
             "type": "BOOL"
           },
           {
+            "description": "True if the Proton default theme is enabled.\n",
+            "mode": "NULLABLE",
+            "name": "browser_ui_proton_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "True if we failed to register with the idle service. Absent otherwise.\nMeans IPC probably isn't working well.\nChild-process data will likely be absent, or incomplete.\n",
+            "mode": "NULLABLE",
+            "name": "fog_failed_idle_registration",
+            "type": "BOOL"
+          },
+          {
+            "description": "The value `true`, recorded when a Firefox Telemetry \"main\" ping is about\nto be assembled.\nTo be used to validate GIFFT.\n",
+            "mode": "NULLABLE",
+            "name": "gifft_validation_main_ping_assembling",
+            "type": "BOOL"
+          },
+          {
             "description": "Reports `true` if the client was successfully migrated from the Android-specific implementation of the Glean SDK to the cross-platform one.",
             "mode": "NULLABLE",
             "name": "glean_core_migration_successful",
@@ -392,13 +410,31 @@
             "type": "INT64"
           },
           {
+            "description": "The number of times we failed to flush all non-parent-process data,\nthrowing even partial results into the trash.\nIf this number is high, we might consider writing custom `MozPromise`-\nhandling code instead of using `MozPromise::All`.\n",
+            "mode": "NULLABLE",
+            "name": "fog_ipc_flush_failures",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of times the ipc buffer failed to be replayed in the\nparent process.\n",
+            "mode": "NULLABLE",
+            "name": "fog_ipc_replay_failures",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of times we tried to register shutdown flush routines for\ncontent child processes, and failed (probably because there was no main\nthread).\nAs a result there may be data loss from content child processes.\nLarge or rising number of clients experiencing this indicates we should\nperhaps refactor content child shutdown in FOG to try harder to register\nflush operations.\nWill likely be obsoleted by bug 1641989.\n",
+            "mode": "NULLABLE",
+            "name": "fog_ipc_shutdown_registration_failures",
+            "type": "INT64"
+          },
+          {
             "description": "The number of times we encountered an IO error\nwhen writing a pending ping to disk.\n",
             "mode": "NULLABLE",
             "name": "glean_error_io",
             "type": "INT64"
           },
           {
-            "description": "The number of tasks queued in the pre-initialization buffer.\nOnly sent if the buffer overflows.\n",
+            "description": "The number of tasks that overflowed the pre-initialization buffer.\nOnly sent if the buffer ever overflows.\n\nIn Version 0 this reported the total number of tasks enqueued.\n",
             "mode": "NULLABLE",
             "name": "glean_error_preinit_tasks_overflow",
             "type": "INT64"
@@ -440,6 +476,36 @@
             "type": "INT64"
           },
           {
+            "description": "Impossibly large CPU time values that were discarded.\n",
+            "mode": "NULLABLE",
+            "name": "power_cpu_time_bogus_values",
+            "type": "INT64"
+          },
+          {
+            "description": "Impossibly large GPU time values that were discarded.\n",
+            "mode": "NULLABLE",
+            "name": "power_gpu_time_bogus_values",
+            "type": "INT64"
+          },
+          {
+            "description": "Total CPU time used by all processes in ms.\n",
+            "mode": "NULLABLE",
+            "name": "power_total_cpu_time_ms",
+            "type": "INT64"
+          },
+          {
+            "description": "Total GPU time used by all processes in ms.\n",
+            "mode": "NULLABLE",
+            "name": "power_total_gpu_time_ms",
+            "type": "INT64"
+          },
+          {
+            "description": "How many times threads woke up and could have woken up a CPU core.\n",
+            "mode": "NULLABLE",
+            "name": "power_total_thread_wakeups",
+            "type": "INT64"
+          },
+          {
             "description": "A counter that indicates how many times a user has added\na website to the autocomplete list.\n",
             "mode": "NULLABLE",
             "name": "settings_screen_autocomplete_domain_added",
@@ -476,6 +542,36 @@
       },
       {
         "fields": [
+          {
+            "description": "Records how many percent of battery was available for each period of user activity.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "power_battery_percentage_when_user_active",
+            "type": "RECORD"
+          },
           {
             "description": "Number of opened tabs when the app has been send to background.",
             "fields": [
@@ -616,7 +712,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Counts the number of crashes that occur in the application. This measures only the counts of each crash in association with the labeled type of the crash. The labels correspond to the types of crashes handled by lib-crash.\nDeprecated: `native_code_crash` replaced by `fatal_native_code_crash` and `nonfatal_native_code_crash`\n",
+            "description": "Counts the number of crashes that occur in the application. This measures only the counts of each crash in association with the labeled type of the crash. The labels correspond to the types of crashes handled by lib-crash.\nDeprecated: `native_code_crash`, `fatal_native_code_crash` and `nonfatal_native_code_crash` replaced by `main_proc_native_code_crash`, `fg_proc_native_code_crash` and `bg_proc_native_code_crash`.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -742,6 +838,258 @@
             "type": "RECORD"
           },
           {
+            "description": "The result of Gecko fetching an update.xml from Balrog. This captures 3 different data points: success or failure of the request, if cert pinning or content signatures were used to verify the result, and the reason for failure, if the request failed.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "gmp_update_xml_fetch_result",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many miliseconds of CPU time were used. Broken down by thread name for a given process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_cpu_ms_per_thread_content_background",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many miliseconds of CPU time were used. Broken down by thread name for a given process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_cpu_ms_per_thread_content_foreground",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many miliseconds of CPU time were used. Broken down by thread name for a given process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_cpu_ms_per_thread_gpu_process",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many miliseconds of CPU time were used. Broken down by thread name for a given process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_cpu_ms_per_thread_parent_active",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many miliseconds of CPU time were used. Broken down by thread name for a given process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_cpu_ms_per_thread_parent_inactive",
+            "type": "RECORD"
+          },
+          {
+            "description": "CPU time used by each process type in ms.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_cpu_time_per_process_type_ms",
+            "type": "RECORD"
+          },
+          {
+            "description": "GPU time used by each process type in ms.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_gpu_time_per_process_type_ms",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many times threads woke up and could have woken up a CPU core. Broken down by process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_wakeups_per_process_type",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many times threads woke up and could have woken up a CPU core. Broken down by thread name for a given process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_wakeups_per_thread_content_background",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many times threads woke up and could have woken up a CPU core. Broken down by thread name for a given process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_wakeups_per_thread_content_foreground",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many times threads woke up and could have woken up a CPU core. Broken down by thread name for a given process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_wakeups_per_thread_gpu_process",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many times threads woke up and could have woken up a CPU core. Broken down by thread name for a given process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_wakeups_per_thread_parent_active",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many times threads woke up and could have woken up a CPU core. Broken down by thread name for a given process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_wakeups_per_thread_parent_inactive",
+            "type": "RECORD"
+          },
+          {
             "description": "A counter that indicates how many times a user has removed\na website from shortcuts.\nIt also indicates the screen it was removed from, home or browser.\n",
             "fields": [
               {
@@ -807,6 +1155,36 @@
       },
       {
         "fields": [
+          {
+            "description": "The number and size of the IPC buffers being received over FOG IPC.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "fog_ipc_buffer_sizes",
+            "type": "RECORD"
+          },
           {
             "description": "The size of the database file at startup.\n",
             "fields": [
@@ -936,6 +1314,18 @@
             "type": "STRING"
           },
           {
+            "description": "The Buildid of the Gecko engine, example: 20200205124310 Mirror of `geckoview.build_id` for validation of migrated data.\n",
+            "mode": "NULLABLE",
+            "name": "geckoview_validation_build_id",
+            "type": "STRING"
+          },
+          {
+            "description": "The version of the Gecko engine, example: 74.0a1 Mirror of `geckoview.version` for validation of migrated data.\n",
+            "mode": "NULLABLE",
+            "name": "geckoview_validation_version",
+            "type": "STRING"
+          },
+          {
             "description": "The optional reason the ping was submitted.\nThe specific values for reason are specific to each ping, and are\ndocumented in the ping's pings.yaml file.\n",
             "mode": "NULLABLE",
             "name": "ping_reason",
@@ -967,6 +1357,656 @@
         ],
         "mode": "REPEATED",
         "name": "text",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "Time the FOG initialization takes.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "fog_initialization",
+            "type": "RECORD"
+          },
+          {
+            "description": "Measures the time spent to download the nimbus experiments\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "nimbus_experiments_nimbus_initial_fetch",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "timespan",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The length of time between asking the child processes for their\nIPC buffers and all of them being received by the parent.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "fog_ipc_flush_durations",
+            "type": "RECORD"
+          },
+          {
+            "description": "The time to build a Gecko display list.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "paint_build_displaylist_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "The time to rasterize glyphs for consumption by WebRender.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "wr_framebuild_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "The time spent waiting for the GPU to complete previously issued drawing commands.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "wr_gpu_wait_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "The time to rasterize blobs for consumption by WebRender.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "wr_rasterize_blobs_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "The time to rasterize glyphs for consumption by WebRender.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "wr_rasterize_glyphs_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "WebRender renderer time.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "wr_renderer_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "WebRender scene build time.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "wr_scenebuild_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "WebRender scene swap time.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "wr_sceneswap_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time taken by WebRender to update the texture cache.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "wr_texture_cache_update_time",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "timing_distribution",
         "type": "RECORD"
       },
       {

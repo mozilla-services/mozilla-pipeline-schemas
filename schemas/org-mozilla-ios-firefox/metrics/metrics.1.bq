@@ -578,7 +578,7 @@
             "type": "INT64"
           },
           {
-            "description": "The number of tasks queued in the pre-initialization buffer.\nOnly sent if the buffer overflows.\n",
+            "description": "The number of tasks that overflowed the pre-initialization buffer.\nOnly sent if the buffer ever overflows.\n\nIn Version 0 this reported the total number of tasks enqueued.\n",
             "mode": "NULLABLE",
             "name": "glean_error_preinit_tasks_overflow",
             "type": "INT64"
@@ -617,6 +617,12 @@
             "description": "On mobile, the number of times the application went to foreground.\n",
             "mode": "NULLABLE",
             "name": "glean_validation_foreground_count",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user has selected a\nsearch term group inside the history panel. Selecting\nthis item will navigate them to a view containing a list\nof all Site items that appear in that group.\n",
+            "mode": "NULLABLE",
+            "name": "history_group_list",
             "type": "INT64"
           },
           {
@@ -1401,6 +1407,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Counts the number of times a user selected an item from\nthe history panel. This labeled counter will tell apart\nitems that appear inside a group, and those that do not.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "history_selected_item",
+            "type": "RECORD"
+          },
+          {
             "description": "Counts the number of times user toggle (expand or collapse)\ninactive tab section.\n",
             "fields": [
               {
@@ -1687,6 +1711,24 @@
             "mode": "REPEATED",
             "name": "top_site_pressed_tile_origin",
             "type": "RECORD"
+          },
+          {
+            "description": "Records an event when user taps on top site tile,\nwith a home page origin.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "top_sites_pressed_tile_origin",
+            "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
@@ -1829,6 +1871,25 @@
         ],
         "mode": "NULLABLE",
         "name": "memory_distribution",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "A snapshot of how many normal tabs a user has opened when he\ncloses the application.\n",
+            "mode": "NULLABLE",
+            "name": "tabs_normal_tabs_quantity",
+            "type": "INT64"
+          },
+          {
+            "description": "A snapshot of how many private tabs a user has opened when he\ncloses the application.\n",
+            "mode": "NULLABLE",
+            "name": "tabs_private_tabs_quantity",
+            "type": "INT64"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "quantity",
         "type": "RECORD"
       },
       {

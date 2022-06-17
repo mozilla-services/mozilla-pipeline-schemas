@@ -356,13 +356,19 @@
             "type": "INT64"
           },
           {
+            "description": "The number of times we tried to register shutdown flush routines for\ncontent child processes, and failed (probably because there was no main\nthread).\nAs a result there may be data loss from content child processes.\nLarge or rising number of clients experiencing this indicates we should\nperhaps refactor content child shutdown in FOG to try harder to register\nflush operations.\nWill likely be obsoleted by bug 1641989.\n",
+            "mode": "NULLABLE",
+            "name": "fog_ipc_shutdown_registration_failures",
+            "type": "INT64"
+          },
+          {
             "description": "The number of times we encountered an IO error\nwhen writing a pending ping to disk.\n",
             "mode": "NULLABLE",
             "name": "glean_error_io",
             "type": "INT64"
           },
           {
-            "description": "The number of tasks queued in the pre-initialization buffer.\nOnly sent if the buffer overflows.\n",
+            "description": "The number of tasks that overflowed the pre-initialization buffer.\nOnly sent if the buffer ever overflows.\n\nIn Version 0 this reported the total number of tasks enqueued.\n",
             "mode": "NULLABLE",
             "name": "glean_error_preinit_tasks_overflow",
             "type": "INT64"
@@ -426,10 +432,53 @@
             "mode": "NULLABLE",
             "name": "power_total_gpu_time_ms",
             "type": "INT64"
+          },
+          {
+            "description": "How many times threads woke up and could have woken up a CPU core.\n",
+            "mode": "NULLABLE",
+            "name": "power_total_thread_wakeups",
+            "type": "INT64"
           }
         ],
         "mode": "NULLABLE",
         "name": "counter",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "Records how many percent of battery was available for each period of user activity.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "power_battery_percentage_when_user_active",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "custom_distribution",
         "type": "RECORD"
       },
       {
@@ -465,7 +514,7 @@
       {
         "fields": [
           {
-            "description": "The outcome after the app detected that it was running from DMG and should offer to install and relaunch itself.\n",
+            "description": "The outcome after the app detected that it was running from DMG or an app translocated location and should offer to install and relaunch itself.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -598,6 +647,114 @@
             "type": "RECORD"
           },
           {
+            "description": "The result of Gecko fetching an update.xml from Balrog. This captures 3 different data points: success or failure of the request, if cert pinning or content signatures were used to verify the result, and the reason for failure, if the request failed.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "gmp_update_xml_fetch_result",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many miliseconds of CPU time were used. Broken down by thread name for a given process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_cpu_ms_per_thread_content_background",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many miliseconds of CPU time were used. Broken down by thread name for a given process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_cpu_ms_per_thread_content_foreground",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many miliseconds of CPU time were used. Broken down by thread name for a given process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_cpu_ms_per_thread_gpu_process",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many miliseconds of CPU time were used. Broken down by thread name for a given process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_cpu_ms_per_thread_parent_active",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many miliseconds of CPU time were used. Broken down by thread name for a given process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_cpu_ms_per_thread_parent_inactive",
+            "type": "RECORD"
+          },
+          {
             "description": "CPU time used by each process type in ms.\n",
             "fields": [
               {
@@ -631,6 +788,114 @@
             ],
             "mode": "REPEATED",
             "name": "power_gpu_time_per_process_type_ms",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many times threads woke up and could have woken up a CPU core. Broken down by process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_wakeups_per_process_type",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many times threads woke up and could have woken up a CPU core. Broken down by thread name for a given process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_wakeups_per_thread_content_background",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many times threads woke up and could have woken up a CPU core. Broken down by thread name for a given process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_wakeups_per_thread_content_foreground",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many times threads woke up and could have woken up a CPU core. Broken down by thread name for a given process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_wakeups_per_thread_gpu_process",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many times threads woke up and could have woken up a CPU core. Broken down by thread name for a given process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_wakeups_per_thread_parent_active",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many times threads woke up and could have woken up a CPU core. Broken down by thread name for a given process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_wakeups_per_thread_parent_inactive",
             "type": "RECORD"
           }
         ],
@@ -838,6 +1103,54 @@
             "mode": "NULLABLE",
             "name": "ping_reason",
             "type": "STRING"
+          },
+          {
+            "description": "The display name of the user's default engine.\n",
+            "mode": "NULLABLE",
+            "name": "search_engine_default_display_name",
+            "type": "STRING"
+          },
+          {
+            "description": "The telemetry id of the search engine.\nFor application provided engines, this is either supplied by the\nconfiguration or from the first part of the associated WebExtension Id.\nFor other engines, this is `other-<extensionName>`.\n",
+            "mode": "NULLABLE",
+            "name": "search_engine_default_engine_id",
+            "type": "STRING"
+          },
+          {
+            "description": "A path relating to where the search engine was installed/loaded from.\nFor example:\n  `[other]addEngineWithDetails:<extension id>` for a WebExtension based\n  engine.\n  `[https]developer.mozilla.org/mdn-web-docs.xml` for an OpenSearch based\n  engine.\nNote: this metric is truncated at 100 characters.\n",
+            "mode": "NULLABLE",
+            "name": "search_engine_default_load_path",
+            "type": "STRING"
+          },
+          {
+            "description": "The verified status of the search engine.\nFor application provided engines, this will always be `default`.\nFor other engines this will either be `verified` or `unverified` depending\non if the loadPathHash is valid.\n",
+            "mode": "NULLABLE",
+            "name": "search_engine_default_verified",
+            "type": "STRING"
+          },
+          {
+            "description": "The display name of the user's default engine.\nIf this string is an empty string (`\"\"`), this means that one or both of\nthe preferences `browser.search.separatePrivateDefault` and\n`browser.search.separatePrivateDefault.ui.enabled` are set to false.\nIt is possible that the user selects the same private engine as for the\ndefault engine, and hence both versions of these fields will be filled in.\n",
+            "mode": "NULLABLE",
+            "name": "search_engine_private_display_name",
+            "type": "STRING"
+          },
+          {
+            "description": "The telemetry id of the search engine.\nFor application provided engines, this is either supplied by the\nconfiguration or from the first part of the associated WebExtension Id.\nFor other engines, this is `other-<extensionName>`.\nIf this string is an empty string (`\"\"`), this means that one or both of\nthe preferences `browser.search.separatePrivateDefault` and\n`browser.search.separatePrivateDefault.ui.enabled` are set to false.\nIt is possible that the user selects the same private engine as for the\ndefault engine, and hence both versions of these fields will be filled in.\n",
+            "mode": "NULLABLE",
+            "name": "search_engine_private_engine_id",
+            "type": "STRING"
+          },
+          {
+            "description": "A path relating to where the search engine was installed/loaded from.\nFor example:\n  `[other]addEngineWithDetails:<extension id>` for a WebExtension based\n  engine.\n  `[https]developer.mozilla.org/mdn-web-docs.xml` for an OpenSearch based\n  engine.\nNote: this metric is truncated at 100 characters.\nIf this string is an empty string (`\"\"`), this means that one or both of\nthe preferences `browser.search.separatePrivateDefault` and\n`browser.search.separatePrivateDefault.ui.enabled` are set to false.\nIt is possible that the user selects the same private engine as for the\ndefault engine, and hence both versions of these fields will be filled in.\n",
+            "mode": "NULLABLE",
+            "name": "search_engine_private_load_path",
+            "type": "STRING"
+          },
+          {
+            "description": "The verified status of the search engine.\nFor application provided engines, this will always be `default`.\nFor other engines this will either be `verified` or `unverified` depending\non if the loadPathHash is valid.\nIf this string is an empty string (`\"\"`), this means that one or both of\nthe preferences `browser.search.separatePrivateDefault` and\n`browser.search.separatePrivateDefault.ui.enabled` are set to false.\nIt is possible that the user selects the same private engine as for the\ndefault engine, and hence both versions of these fields will be filled in.\n",
+            "mode": "NULLABLE",
+            "name": "search_engine_private_verified",
+            "type": "STRING"
           }
         ],
         "mode": "NULLABLE",
@@ -1007,6 +1320,486 @@
             "mode": "NULLABLE",
             "name": "paint_build_displaylist_time",
             "type": "RECORD"
+          },
+          {
+            "description": "The time to rasterize glyphs for consumption by WebRender.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "wr_framebuild_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "The time spent waiting for the GPU to complete previously issued drawing commands.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "wr_gpu_wait_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "The time to rasterize blobs for consumption by WebRender.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "wr_rasterize_blobs_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "The time to rasterize glyphs for consumption by WebRender.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "wr_rasterize_glyphs_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "WebRender renderer time.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "wr_renderer_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "WebRender scene build time.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "wr_scenebuild_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "WebRender scene swap time.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "wr_sceneswap_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time taken by WebRender to update the texture cache.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "wr_texture_cache_update_time",
+            "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
@@ -1028,6 +1821,25 @@
         ],
         "mode": "REPEATED",
         "name": "url",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The submission URL of the default engine. This is only reported in the\ncases where:\n  The engine is an application provided engine.\n  The engine has the same name as an application provided engine.\n  The engine matches one of a specific list of well known search engines.\n",
+            "mode": "NULLABLE",
+            "name": "search_engine_default_submission_url",
+            "type": "STRING"
+          },
+          {
+            "description": "The submission URL of the default engine. This is only reported in the\ncases where:\n  The engine is an application provided engine.\n  The engine has the same name as an application provided engine.\n  The engine matches one of a specific list of well known search engines.\nIf this string is an empty string (`\"\"`), this means that one or both of\nthe preferences `browser.search.separatePrivateDefault` and\n`browser.search.separatePrivateDefault.ui.enabled` are set to false.\nIt is possible that the user selects the same private engine as for the\ndefault engine, and hence both versions of these fields will be filled in.\n",
+            "mode": "NULLABLE",
+            "name": "search_engine_private_submission_url",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "url2",
         "type": "RECORD"
       },
       {

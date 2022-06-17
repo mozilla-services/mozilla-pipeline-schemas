@@ -16,6 +16,12 @@ schemas
 │   ├── pocket-button
 │   ├── sessions
 │   └── spoc-fills
+├── bedrock
+│   ├── deletion-request
+│   ├── events
+│   ├── interaction
+│   ├── non-interaction
+│   └── page-view
 ├── burnham
 │   ├── baseline
 │   ├── deletion-request
@@ -25,6 +31,7 @@ schemas
 │   ├── space-ship-ready
 │   └── starbase46
 ├── contextual-services
+│   ├── quicksuggest-block
 │   ├── quicksuggest-click
 │   ├── quicksuggest-impression
 │   ├── topsites-click
@@ -60,11 +67,13 @@ schemas
 │   └── launcher-process-failure
 ├── firefox-translations
 │   ├── custom
-│   └── deletion-request
+│   ├── deletion-request
+│   └── events
 ├── glean
 │   └── glean
 ├── glean-dictionary
 │   ├── deletion-request
+│   ├── events
 │   └── page-view
 ├── messaging-system
 │   ├── cfr
@@ -119,6 +128,7 @@ schemas
 │   └── usage
 ├── mozillavpn
 │   ├── deletion-request
+│   ├── events
 │   └── main
 ├── mozphab
 │   ├── baseline
@@ -130,7 +140,8 @@ schemas
 │   └── event
 ├── org-mozilla-bergamot
 │   ├── custom
-│   └── deletion-request
+│   ├── deletion-request
+│   └── events
 ├── org-mozilla-connect-firefox
 │   ├── baseline
 │   ├── deletion-request
@@ -242,34 +253,55 @@ schemas
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
+│   ├── fog-validation
 │   └── metrics
 ├── org-mozilla-focus-beta
 │   ├── activation
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
+│   ├── fog-validation
 │   └── metrics
 ├── org-mozilla-focus-nightly
 │   ├── activation
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
+│   ├── fog-validation
 │   └── metrics
 ├── org-mozilla-ios-fennec
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
-│   └── metrics
+│   ├── metrics
+│   ├── temp-bookmarks-sync
+│   ├── temp-history-sync
+│   ├── temp-logins-sync
+│   ├── temp-sync
+│   ├── temp-tabs-sync
+│   └── topsites-impression
 ├── org-mozilla-ios-firefox
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
-│   └── metrics
+│   ├── metrics
+│   ├── temp-bookmarks-sync
+│   ├── temp-history-sync
+│   ├── temp-logins-sync
+│   ├── temp-sync
+│   ├── temp-tabs-sync
+│   └── topsites-impression
 ├── org-mozilla-ios-firefoxbeta
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
-│   └── metrics
+│   ├── metrics
+│   ├── temp-bookmarks-sync
+│   ├── temp-history-sync
+│   ├── temp-logins-sync
+│   ├── temp-sync
+│   ├── temp-tabs-sync
+│   └── topsites-impression
 ├── org-mozilla-ios-focus
 │   ├── baseline
 │   ├── deletion-request
@@ -290,6 +322,7 @@ schemas
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
+│   ├── fog-validation
 │   └── metrics
 ├── org-mozilla-mozregression
 │   ├── baseline
@@ -320,6 +353,12 @@ schemas
 │   ├── session-end
 │   ├── sync
 │   └── tabs-sync
+├── pine
+│   ├── baseline
+│   ├── deletion-request
+│   ├── events
+│   ├── fog-validation
+│   └── metrics
 ├── pioneer-citp-news-disinfo
 │   ├── deletion-request
 │   ├── measurements
@@ -353,28 +392,43 @@ schemas
 │   └── total-timing
 ├── pocket
 │   └── fire-tv-events
+├── rally-citp-search-engine-usage
+│   ├── ballot-interaction
+│   ├── deletion-request
+│   ├── events
+│   ├── modal-interaction
+│   ├── notice-interaction
+│   ├── online-service-navigation
+│   ├── serp-visit
+│   ├── study-enrollment
+│   └── study-initialization
 ├── rally-core
 │   ├── deletion-request
 │   ├── demographics
 │   ├── enrollment
+│   ├── events
 │   ├── study-enrollment
 │   ├── study-unenrollment
+│   ├── unenrollment
 │   └── uninstall-deletion
 ├── rally-debug
 │   ├── deletion-request
 │   ├── demographics
 │   ├── enrollment
+│   ├── events
 │   ├── study-enrollment
 │   ├── study-unenrollment
 │   └── uninstall-deletion
 ├── rally-markup-fb-pixel-hunt
 │   ├── deletion-request
+│   ├── events
 │   ├── fbpixelhunt-event
 │   ├── fbpixelhunt-journey
 │   ├── fbpixelhunt-pixel
 │   └── study-enrollment
 ├── rally-study-zero-one
 │   ├── deletion-request
+│   ├── events
 │   ├── rs01-event
 │   └── study-enrollment
 ├── rally-zero-one
@@ -385,6 +439,7 @@ schemas
 │   └── regrets-reporter-update
 ├── regrets-reporter-ucs
 │   ├── deletion-request
+│   ├── events
 │   ├── main-events
 │   ├── regret-details
 │   ├── video-data
@@ -460,6 +515,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-450 directories
+505 directories
 ```
 

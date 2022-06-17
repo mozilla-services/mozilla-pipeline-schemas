@@ -1791,6 +1791,12 @@
             "type": "STRING"
           },
           {
+            "description": "Records the result of App Signature Verification. See the comments in OpenSignedAppFile. ",
+            "mode": "NULLABLE",
+            "name": "addon_signature_verification_status",
+            "type": "STRING"
+          },
+          {
             "description": "XUL-only: whether the user has toggled do not disturb.",
             "mode": "NULLABLE",
             "name": "alerts_service_dnd_enabled",
@@ -3144,6 +3150,12 @@
             "description": "The number of trackers that had user interaction at the time of purging.",
             "mode": "NULLABLE",
             "name": "cookie_purging_trackers_with_user_interaction",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a cookie was skipped in GetCookiesForURI because of a same-site issue. This is a bit field.",
+            "mode": "NULLABLE",
+            "name": "cookie_retrieval_samesite_problem",
             "type": "STRING"
           },
           {
@@ -7743,6 +7755,12 @@
             "type": "STRING"
           },
           {
+            "description": "Whether H264 encoding is an available capability for being sent to the content processes. 0=no h264, 1=h264 avaiable, 2=no h264 1 directory added, 3=no h264 >1 directories added, 4=directory adds in prorgress",
+            "mode": "NULLABLE",
+            "name": "media_gmp_update_content_process_has_h264",
+            "type": "STRING"
+          },
+          {
             "description": "Reports if a Firefox succeeded or failed in fetching the GMP update.xml from balrog, and which method was used to verify the download.",
             "mode": "NULLABLE",
             "name": "media_gmp_update_xml_fetch_result",
@@ -9741,6 +9759,18 @@
             "type": "STRING"
           },
           {
+            "description": "Counts how often specific query parameters are stripped.",
+            "mode": "NULLABLE",
+            "name": "query_stripping_count_by_param",
+            "type": "STRING"
+          },
+          {
+            "description": "If query params get stripped, how many per navigation/redirect.",
+            "mode": "NULLABLE",
+            "name": "query_stripping_param_count",
+            "type": "STRING"
+          },
+          {
             "description": "HTML document compat mode (quirks mode)",
             "mode": "NULLABLE",
             "name": "quirks_mode",
@@ -9858,6 +9888,12 @@
             "description": "Whether the script load has a MIME type of ...?  (unknown, javaScript, image, audio, video, text_plain, text_csv, text_xml, app_octet_stream, app_xml, app_json, text_json, text_html, empty). Whether the script load is from ...?  (serviceworker_load, worker_load, importSript_load, script_load). Whether the script load is of ...?  (same_origin, CORS_origin, cross_origin)",
             "mode": "NULLABLE",
             "name": "script_block_incorrect_mime_3",
+            "type": "STRING"
+          },
+          {
+            "description": "Script loaded from file:// has a correct MIME type.",
+            "mode": "NULLABLE",
+            "name": "script_file_protocol_correct_mime",
             "type": "STRING"
           },
           {
@@ -10443,6 +10479,18 @@
             "type": "STRING"
           },
           {
+            "description": "SSL handshake result for connections which used ECH 'Real', 0=success, 1-255=NSS error offset, 256-511=SEC error offset + 256, 512-639=NSPR error offset + 512, 640-670=PKIX error, 671=unknown err",
+            "mode": "NULLABLE",
+            "name": "ssl_handshake_result_ech",
+            "type": "STRING"
+          },
+          {
+            "description": "SSL handshake result for connections which used ECH GREASE, 0=success, 1-255=NSS error offset, 256-511=SEC error offset + 256, 512-639=NSPR error offset + 512, 640-670=PKIX error, 671=unknown err",
+            "mode": "NULLABLE",
+            "name": "ssl_handshake_result_ech_grease",
+            "type": "STRING"
+          },
+          {
             "description": "Type of handshake (1=resumption, 2=false started, 3=chose not to false start, 4=not allowed to false start)",
             "mode": "NULLABLE",
             "name": "ssl_handshake_type",
@@ -10584,6 +10632,18 @@
             "description": "ms of SSL wait time including TCP and proxy tunneling",
             "mode": "NULLABLE",
             "name": "ssl_time_until_ready",
+            "type": "STRING"
+          },
+          {
+            "description": "ms of SSL wait time including TCP and proxy tunneling for connections using ECH 'Real'",
+            "mode": "NULLABLE",
+            "name": "ssl_time_until_ready_ech",
+            "type": "STRING"
+          },
+          {
+            "description": "ms of SSL wait time including TCP and proxy tunneling for connections using ECH GREASE",
+            "mode": "NULLABLE",
+            "name": "ssl_time_until_ready_ech_grease",
             "type": "STRING"
           },
           {
@@ -17301,6 +17361,18 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document used the CSS property overflow-clip-margin",
+            "mode": "NULLABLE",
+            "name": "use_counter2_css_property_overflow_clip_margin_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page used the CSS property overflow-clip-margin",
+            "mode": "NULLABLE",
+            "name": "use_counter2_css_property_overflow_clip_margin_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document used the CSS property overflow",
             "mode": "NULLABLE",
             "name": "use_counter2_css_property_overflow_document",
@@ -21549,6 +21621,30 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document used InstallTriggerDeprecated",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_install_trigger_deprecated_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page used InstallTriggerDeprecated",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_install_trigger_deprecated_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document used InstallTriggerInstallDeprecated",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_install_trigger_install_deprecated_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page used InstallTriggerInstallDeprecated",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_install_trigger_install_deprecated_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document used LenientSetter",
             "mode": "NULLABLE",
             "name": "use_counter2_deprecated_lenient_setter_document",
@@ -21789,6 +21885,30 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document used MozCurrentTransform",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_moz_current_transform_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document used MozCurrentTransformInverse",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_moz_current_transform_inverse_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page used MozCurrentTransformInverse",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_moz_current_transform_inverse_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page used MozCurrentTransform",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_moz_current_transform_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document used MozGetAsFile",
             "mode": "NULLABLE",
             "name": "use_counter2_deprecated_moz_get_as_file_document",
@@ -21798,6 +21918,18 @@
             "description": "Whether a page used MozGetAsFile",
             "mode": "NULLABLE",
             "name": "use_counter2_deprecated_moz_get_as_file_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document used MozPreservesPitchDeprecatedPrefix",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_moz_preserves_pitch_deprecated_prefix_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page used MozPreservesPitchDeprecatedPrefix",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_moz_preserves_pitch_deprecated_prefix_page",
             "type": "STRING"
           },
           {
@@ -26013,6 +26145,18 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document calls window.open with an empty url argument",
+            "mode": "NULLABLE",
+            "name": "use_counter2_windowopenemptyurl_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page calls window.open with an empty url argument",
+            "mode": "NULLABLE",
+            "name": "use_counter2_windowopenemptyurl_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document triggers the blob fallback for an SVG filter.",
             "mode": "NULLABLE",
             "name": "use_counter2_wrfilterfallback_document",
@@ -26046,6 +26190,30 @@
             "description": "Whether a page set XMLDocument.async",
             "mode": "NULLABLE",
             "name": "use_counter2_xmldocument_async_setter_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document uses an XSL Stylesheet",
+            "mode": "NULLABLE",
+            "name": "use_counter2_xslstylesheet_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page uses an XSL Stylesheet",
+            "mode": "NULLABLE",
+            "name": "use_counter2_xslstylesheet_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called XSLTProcessor.constructor",
+            "mode": "NULLABLE",
+            "name": "use_counter2_xsltprocessor_constructor_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called XSLTProcessor.constructor",
+            "mode": "NULLABLE",
+            "name": "use_counter2_xsltprocessor_constructor_page",
             "type": "STRING"
           },
           {
@@ -26175,7 +26343,7 @@
             "type": "STRING"
           },
           {
-            "description": "Percentage of frames decoded frames dropped in an HTMLVideoElement",
+            "description": "Percentage of frames decoded frames dropped between starting and stopping a video",
             "mode": "NULLABLE",
             "name": "video_dropped_frames_proportion",
             "type": "STRING"
@@ -26679,6 +26847,30 @@
             "type": "STRING"
           },
           {
+            "description": "Counts of GMP codec initialization success and failure",
+            "mode": "NULLABLE",
+            "name": "webrtc_gmp_init_success",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether any kind of H264 is enabled",
+            "mode": "NULLABLE",
+            "name": "webrtc_h264_enabled",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether software H264 is enabled",
+            "mode": "NULLABLE",
+            "name": "webrtc_hardware_h264_enabled",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether the user has H264 hardware",
+            "mode": "NULLABLE",
+            "name": "webrtc_has_h264_hardware",
+            "type": "STRING"
+          },
+          {
             "description": "The length of time (in seconds) for the ICE state to transition from checking to connected or failed when hostname obfuscation is disabled.",
             "mode": "NULLABLE",
             "name": "webrtc_hostname_obfuscation_disabled_ice_duration",
@@ -26862,6 +27054,12 @@
             "description": "Was RTCP-MUX negotiated for a track",
             "mode": "NULLABLE",
             "name": "webrtc_rtcp_mux",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether hardware H264 is enabled",
+            "mode": "NULLABLE",
+            "name": "webrtc_software_h264_enabled",
             "type": "STRING"
           },
           {
@@ -27135,9 +27333,33 @@
             "type": "STRING"
           },
           {
+            "description": "The time spent waiting for the GPU to complete previously issued drawing commands in milliseconds",
+            "mode": "NULLABLE",
+            "name": "wr_gpu_wait_time",
+            "type": "STRING"
+          },
+          {
+            "description": "Time taken by WebRender to rasterize blobs",
+            "mode": "NULLABLE",
+            "name": "wr_rasterize_blobs_time",
+            "type": "STRING"
+          },
+          {
+            "description": "Time taken by WebRender to rasterize a set of glyphs",
+            "mode": "NULLABLE",
+            "name": "wr_rasterize_glyphs_time",
+            "type": "STRING"
+          },
+          {
             "description": "WebRender render time in milliseconds",
             "mode": "NULLABLE",
             "name": "wr_render_time",
+            "type": "STRING"
+          },
+          {
+            "description": "The time spent by WebRender in the Renderer in milliseconds.",
+            "mode": "NULLABLE",
+            "name": "wr_renderer_time",
             "type": "STRING"
           },
           {
@@ -27150,6 +27372,12 @@
             "description": "WebRender scene swap time in miliseconds",
             "mode": "NULLABLE",
             "name": "wr_sceneswap_time",
+            "type": "STRING"
+          },
+          {
+            "description": "Time taken by WebRender to update the texture cache in milliseconds.",
+            "mode": "NULLABLE",
+            "name": "wr_texture_cache_update_time",
             "type": "STRING"
           },
           {
@@ -29329,6 +29557,42 @@
             ],
             "mode": "REPEATED",
             "name": "http_channel_onstart_success_trr2",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "Successfully started HTTP channels for page loading when TRR is enabled; Keyed by TRR domain",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http_channel_page_onstart_success_trr3",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "Successfully started HTTP channels for resource loading when TRR is enabled; Keyed by TRR domain",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http_channel_sub_onstart_success_trr3",
             "type": "RECORD"
           },
           {
@@ -31867,6 +32131,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Records the result of App Signature Verification. See the comments in OpenSignedAppFile. ",
+                    "mode": "NULLABLE",
+                    "name": "addon_signature_verification_status",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "XUL-only: whether the user has toggled do not disturb.",
                     "mode": "NULLABLE",
                     "name": "alerts_service_dnd_enabled",
@@ -33076,6 +33346,12 @@
                     "description": "Strict Secure Cookies: 0=blocked secure cookie from http; 1=blocked shadowing secure cookie from http; 2=shadowing secure cookie from https; 3=evicted newer insecure cookie; 4=evicted oldest insecure cookie; 5=evicted secure cookie; 6=evicting secure cookie blocked; 7=blocked downgrading secure cookie from http; 8=downgraded secure cookie from https",
                     "mode": "NULLABLE",
                     "name": "cookie_leave_secure_alone",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a cookie was skipped in GetCookiesForURI because of a same-site issue. This is a bit field.",
+                    "mode": "NULLABLE",
+                    "name": "cookie_retrieval_samesite_problem",
                     "type": "STRING"
                   },
                   {
@@ -34594,6 +34870,18 @@
                     "description": "Labeling status of top-level page when overriding encoding",
                     "mode": "NULLABLE",
                     "name": "encoding_override_situation_2",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Labeling status of top-level page when overriding encoding for HTML",
+                    "mode": "NULLABLE",
+                    "name": "encoding_override_situation_html",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Labeling status of top-level page when overriding encoding for plain text",
+                    "mode": "NULLABLE",
+                    "name": "encoding_override_situation_text",
                     "type": "STRING"
                   },
                   {
@@ -39169,6 +39457,18 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Counts how often specific query parameters are stripped.",
+                    "mode": "NULLABLE",
+                    "name": "query_stripping_count_by_param",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "If query params get stripped, how many per navigation/redirect.",
+                    "mode": "NULLABLE",
+                    "name": "query_stripping_param_count",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "HTML document compat mode (quirks mode)",
                     "mode": "NULLABLE",
                     "name": "quirks_mode",
@@ -39280,6 +39580,12 @@
                     "description": "Whether the script load has a MIME type of ...?  (unknown, javaScript, image, audio, video, text_plain, text_csv, text_xml, app_octet_stream, app_xml, app_json, text_json, text_html, empty). Whether the script load is from ...?  (serviceworker_load, worker_load, importSript_load, script_load). Whether the script load is of ...?  (same_origin, CORS_origin, cross_origin)",
                     "mode": "NULLABLE",
                     "name": "script_block_incorrect_mime_3",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Script loaded from file:// has a correct MIME type.",
+                    "mode": "NULLABLE",
+                    "name": "script_file_protocol_correct_mime",
                     "type": "STRING"
                   },
                   {
@@ -39823,6 +40129,18 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "SSL handshake result for connections which used ECH 'Real', 0=success, 1-255=NSS error offset, 256-511=SEC error offset + 256, 512-639=NSPR error offset + 512, 640-670=PKIX error, 671=unknown err",
+                    "mode": "NULLABLE",
+                    "name": "ssl_handshake_result_ech",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "SSL handshake result for connections which used ECH GREASE, 0=success, 1-255=NSS error offset, 256-511=SEC error offset + 256, 512-639=NSPR error offset + 512, 640-670=PKIX error, 671=unknown err",
+                    "mode": "NULLABLE",
+                    "name": "ssl_handshake_result_ech_grease",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Type of handshake (1=resumption, 2=false started, 3=chose not to false start, 4=not allowed to false start)",
                     "mode": "NULLABLE",
                     "name": "ssl_handshake_type",
@@ -39964,6 +40282,18 @@
                     "description": "ms of SSL wait time including TCP and proxy tunneling",
                     "mode": "NULLABLE",
                     "name": "ssl_time_until_ready",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "ms of SSL wait time including TCP and proxy tunneling for connections using ECH 'Real'",
+                    "mode": "NULLABLE",
+                    "name": "ssl_time_until_ready_ech",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "ms of SSL wait time including TCP and proxy tunneling for connections using ECH GREASE",
+                    "mode": "NULLABLE",
+                    "name": "ssl_time_until_ready_ech_grease",
                     "type": "STRING"
                   },
                   {
@@ -46447,6 +46777,18 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document used the CSS property overflow-clip-margin",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_css_property_overflow_clip_margin_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page used the CSS property overflow-clip-margin",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_css_property_overflow_clip_margin_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document used the CSS property overflow",
                     "mode": "NULLABLE",
                     "name": "use_counter2_css_property_overflow_document",
@@ -50695,6 +51037,30 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document used InstallTriggerDeprecated",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_install_trigger_deprecated_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page used InstallTriggerDeprecated",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_install_trigger_deprecated_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document used InstallTriggerInstallDeprecated",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_install_trigger_install_deprecated_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page used InstallTriggerInstallDeprecated",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_install_trigger_install_deprecated_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document used LenientSetter",
                     "mode": "NULLABLE",
                     "name": "use_counter2_deprecated_lenient_setter_document",
@@ -50935,6 +51301,30 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document used MozCurrentTransform",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_moz_current_transform_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document used MozCurrentTransformInverse",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_moz_current_transform_inverse_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page used MozCurrentTransformInverse",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_moz_current_transform_inverse_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page used MozCurrentTransform",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_moz_current_transform_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document used MozGetAsFile",
                     "mode": "NULLABLE",
                     "name": "use_counter2_deprecated_moz_get_as_file_document",
@@ -50944,6 +51334,18 @@
                     "description": "Whether a page used MozGetAsFile",
                     "mode": "NULLABLE",
                     "name": "use_counter2_deprecated_moz_get_as_file_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document used MozPreservesPitchDeprecatedPrefix",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_moz_preserves_pitch_deprecated_prefix_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page used MozPreservesPitchDeprecatedPrefix",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_moz_preserves_pitch_deprecated_prefix_page",
                     "type": "STRING"
                   },
                   {
@@ -55159,6 +55561,18 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document calls window.open with an empty url argument",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_windowopenemptyurl_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page calls window.open with an empty url argument",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_windowopenemptyurl_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document triggers the blob fallback for an SVG filter.",
                     "mode": "NULLABLE",
                     "name": "use_counter2_wrfilterfallback_document",
@@ -55192,6 +55606,30 @@
                     "description": "Whether a page set XMLDocument.async",
                     "mode": "NULLABLE",
                     "name": "use_counter2_xmldocument_async_setter_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document uses an XSL Stylesheet",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_xslstylesheet_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page uses an XSL Stylesheet",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_xslstylesheet_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called XSLTProcessor.constructor",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_xsltprocessor_constructor_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called XSLTProcessor.constructor",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_xsltprocessor_constructor_page",
                     "type": "STRING"
                   },
                   {
@@ -55321,15 +55759,33 @@
                     "type": "STRING"
                   },
                   {
-                    "description": "Percentage of frames decoded frames dropped in an HTMLVideoElement",
+                    "description": "Ratio of compositor dropped frames per total decoded frames scaled by 10,000 between starting and stopping a video",
+                    "mode": "NULLABLE",
+                    "name": "video_dropped_compositor_frames_proportion_exponential",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Ratio of decoder dropped frames per total decoded frames scaled by 10,000 between starting and stopping a video",
+                    "mode": "NULLABLE",
+                    "name": "video_dropped_decoded_frames_proportion_exponential",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Percentage of frames decoded frames dropped between starting and stopping a video",
                     "mode": "NULLABLE",
                     "name": "video_dropped_frames_proportion",
                     "type": "STRING"
                   },
                   {
-                    "description": "Frames of of 10,000 decoded frames dropped in an HTMLVideoElement",
+                    "description": "Ratio of dropped frames per total decoded frames scaled by 10,000 between starting and stopping a video",
                     "mode": "NULLABLE",
                     "name": "video_dropped_frames_proportion_exponential",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Ratio of sink dropped frames per total decoded frames scaled by 10,000 between starting and stopping a video",
+                    "mode": "NULLABLE",
+                    "name": "video_dropped_sink_frames_proportion_exponential",
                     "type": "STRING"
                   },
                   {
@@ -55819,6 +56275,30 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Counts of GMP codec initialization success and failure",
+                    "mode": "NULLABLE",
+                    "name": "webrtc_gmp_init_success",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether any kind of H264 is enabled",
+                    "mode": "NULLABLE",
+                    "name": "webrtc_h264_enabled",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether software H264 is enabled",
+                    "mode": "NULLABLE",
+                    "name": "webrtc_hardware_h264_enabled",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether the user has H264 hardware",
+                    "mode": "NULLABLE",
+                    "name": "webrtc_has_h264_hardware",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "The length of time (in seconds) for the ICE state to transition from checking to connected or failed when hostname obfuscation is disabled.",
                     "mode": "NULLABLE",
                     "name": "webrtc_hostname_obfuscation_disabled_ice_duration",
@@ -56020,6 +56500,12 @@
                     "description": "Was RTCP-MUX negotiated for a track",
                     "mode": "NULLABLE",
                     "name": "webrtc_rtcp_mux",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether hardware H264 is enabled",
+                    "mode": "NULLABLE",
+                    "name": "webrtc_software_h264_enabled",
                     "type": "STRING"
                   },
                   {
@@ -59644,6 +60130,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "How many times threads woke up and could have woken up a CPU core. Broken down by process type.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "power_wakeups_per_process_type",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "A counter of the number of times a given paper size (recorded as \"width x height\" in points) is used for printing.\n",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -60028,6 +60532,12 @@
                     "type": "INT64"
                   },
                   {
+                    "description": "How many times threads woke up and could have woken up a CPU core.\n",
+                    "mode": "NULLABLE",
+                    "name": "power_total_thread_wakeups",
+                    "type": "INT64"
+                  },
+                  {
                     "description": "A counter incremented every time the print dialog is opened from the old print preview.\n",
                     "mode": "NULLABLE",
                     "name": "printing_dialog_opened_via_preview",
@@ -60406,6 +60916,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "How many times threads woke up and could have woken up a CPU core. Broken down by process type.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "power_wakeups_per_process_type",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "The count of attempted accumulations to unknown histogram keys for histograms that restrict the set of allowed keys ('keys' property). The names of the offending histograms are used as keys in this probe.\n",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -60463,6 +60991,18 @@
                     "description": "The number of times a graphite2 font has been loaded.\n",
                     "mode": "NULLABLE",
                     "name": "browser_usage_graphite",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Total CPU time used by all processes in ms.\n",
+                    "mode": "NULLABLE",
+                    "name": "power_total_cpu_time_ms",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "How many times threads woke up and could have woken up a CPU core.\n",
+                    "mode": "NULLABLE",
+                    "name": "power_total_thread_wakeups",
                     "type": "INT64"
                   },
                   {
@@ -60640,6 +61180,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "How many times threads woke up and could have woken up a CPU core. Broken down by process type.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "power_wakeups_per_process_type",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "The count of attempted accumulations to unknown histogram keys for histograms that restrict the set of allowed keys ('keys' property). The names of the offending histograms are used as keys in this probe.\n",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -60697,6 +61255,18 @@
                     "description": "The number of times a graphite2 font has been loaded.\n",
                     "mode": "NULLABLE",
                     "name": "browser_usage_graphite",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Total CPU time used by all processes in ms.\n",
+                    "mode": "NULLABLE",
+                    "name": "power_total_cpu_time_ms",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "How many times threads woke up and could have woken up a CPU core.\n",
+                    "mode": "NULLABLE",
+                    "name": "power_total_thread_wakeups",
                     "type": "INT64"
                   },
                   {
@@ -61267,9 +61837,33 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "The time spent waiting for the GPU to complete previously issued drawing commands in milliseconds",
+                    "mode": "NULLABLE",
+                    "name": "wr_gpu_wait_time",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Time taken by WebRender to rasterize blobs",
+                    "mode": "NULLABLE",
+                    "name": "wr_rasterize_blobs_time",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Time taken by WebRender to rasterize a set of glyphs",
+                    "mode": "NULLABLE",
+                    "name": "wr_rasterize_glyphs_time",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "WebRender render time in milliseconds",
                     "mode": "NULLABLE",
                     "name": "wr_render_time",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "The time spent by WebRender in the Renderer in milliseconds.",
+                    "mode": "NULLABLE",
+                    "name": "wr_renderer_time",
                     "type": "STRING"
                   },
                   {
@@ -61282,6 +61876,12 @@
                     "description": "WebRender scene swap time in miliseconds",
                     "mode": "NULLABLE",
                     "name": "wr_sceneswap_time",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Time taken by WebRender to update the texture cache in milliseconds.",
+                    "mode": "NULLABLE",
+                    "name": "wr_texture_cache_update_time",
                     "type": "STRING"
                   }
                 ],
@@ -61522,6 +62122,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "How many times threads woke up and could have woken up a CPU core. Broken down by process type.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "power_wakeups_per_process_type",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "The count of attempted accumulations to unknown histogram keys for histograms that restrict the set of allowed keys ('keys' property). The names of the offending histograms are used as keys in this probe.\n",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -61633,6 +62251,12 @@
                     "description": "Total GPU time used by all processes in ms.\n",
                     "mode": "NULLABLE",
                     "name": "power_total_gpu_time_ms",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "How many times threads woke up and could have woken up a CPU core.\n",
+                    "mode": "NULLABLE",
+                    "name": "power_total_thread_wakeups",
                     "type": "INT64"
                   },
                   {
@@ -63256,6 +63880,78 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "A keyed uint recording how many times the user has blocked/dismissed non-sponsored Firefox Suggest results in the urlbar, including best matches (a.k.a. top picks). The key is the 1-based index of each result.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "contextual_services_quicksuggest_block_nonsponsored",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "A keyed uint recording how many times the user has blocked/dismissed non-sponsored Firefox Suggest best match (a.k.a. top pick) results in the urlbar. The key is the 1-based index of each result.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "contextual_services_quicksuggest_block_nonsponsored_bestmatch",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "A keyed uint recording how many times the user has blocked/dismissed sponsored Firefox Suggest results in the urlbar, including best matches (a.k.a. top picks). The key is the 1-based index of each result.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "contextual_services_quicksuggest_block_sponsored",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "A keyed uint recording how many times the user has blocked/dismissed sponsored Firefox Suggest best match (a.k.a. top pick) results in the urlbar. The key is the 1-based index of each result.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "contextual_services_quicksuggest_block_sponsored_bestmatch",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "A keyed uint recording how many times the user has clicked on Firefox Suggests (a.k.a. Quick Suggest) results in the urlbar (not including the help button). The key is the 1-based index of each result.\n",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -63264,6 +63960,42 @@
                     ],
                     "mode": "REPEATED",
                     "name": "contextual_services_quicksuggest_click",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "A keyed uint recording how many times the user has clicked on non-sponsored Firefox Suggest best match (a.k.a. top pick) results in the urlbar (not including the help button). The key is the 1-based index of each result.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "contextual_services_quicksuggest_click_nonsponsored_bestmatch",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "A keyed uint recording how many times the user has clicked on sponsored Firefox Suggest best match (a.k.a. top pick) results in the urlbar (not including the help button). The key is the 1-based index of each result.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "contextual_services_quicksuggest_click_sponsored_bestmatch",
                     "type": "RECORD"
                   },
                   {
@@ -63292,6 +64024,42 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "A keyed uint recording how many times the user has clicked on the help button in non-sponsored Firefox Suggest best match (a.k.a. top pick) results in the urlbar (not including the help button). The key is the 1-based index of each result.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "contextual_services_quicksuggest_help_nonsponsored_bestmatch",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "A keyed uint recording how many times the user has clicked on the help button in sponsored Firefox Suggest best match (a.k.a. top pick) results in the urlbar (not including the help button). The key is the 1-based index of each result.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "contextual_services_quicksuggest_help_sponsored_bestmatch",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "A keyed uint recording how many times the user has viewed Firefox Suggest (a.k.a. Quick Suggest) results in the urlbar. The key is the 1-based index of each result.\n",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -63300,6 +64068,42 @@
                     ],
                     "mode": "REPEATED",
                     "name": "contextual_services_quicksuggest_impression",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "A keyed uint recording how many times the user has viewed non-sponsored Firefox Suggest best match (a.k.a. top pick) results in the urlbar. The key is the 1-based index of each result.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "contextual_services_quicksuggest_impression_nonsponsored_bestmatch",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "A keyed uint recording how many times the user has viewed sponsored Firefox Suggest best match (a.k.a. top pick) results in the urlbar. The key is the 1-based index of each result.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "contextual_services_quicksuggest_impression_sponsored_bestmatch",
                     "type": "RECORD"
                   },
                   {
@@ -63534,6 +64338,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "dom_ipc_rejected_window_actor_message",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "The amount of times an unexpected error has been raised while reading the Extensions StartupCache file\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "extensions_startup_cache_read_errors",
                     "type": "RECORD"
                   },
                   {
@@ -63948,6 +64770,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "power_gpu_time_per_process_type_ms",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "How many times threads woke up and could have woken up a CPU core. Broken down by process type.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "power_wakeups_per_process_type",
                     "type": "RECORD"
                   },
                   {
@@ -64552,6 +65392,114 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "Counts how many times an about-page autofill result (e.g., \"about:config\") was picked at a given index.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "urlbar_picked_autofill_about",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Counts how many times this result type was picked at a given index.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "urlbar_picked_autofill_adaptive",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Counts how many times an origin (domain) autofill result (e.g., \"mozilla.org\") was picked at a given index.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "urlbar_picked_autofill_origin",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Counts how many times some other type of autofill result that does not have a specific keyed scalar was picked at a given index. This is a fallback that is used when the code is not properly setting a specific autofill type, and it should not normally be used. If it appears in the data, it means we need to investigate and fix the code that is not properly setting a specific autofill type.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "urlbar_picked_autofill_other",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Counts how many times a preloaded site autofill result was picked at a given index.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "urlbar_picked_autofill_preloaded",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Counts how many times a URL autofill result (e.g., \"mozilla.org/firefox\") was picked at a given index.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "urlbar_picked_autofill_url",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "Counts how many times this result type was picked at a given index.\n",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -64650,6 +65598,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "urlbar_picked_keyword",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Counts how many times this result type was picked at a given index.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "urlbar_picked_quicksuggest",
                     "type": "RECORD"
                   },
                   {
@@ -66358,6 +67324,18 @@
                     "type": "BOOL"
                   },
                   {
+                    "description": "Time to load and deserialize the extensions startupCache data. This scalar is mirroring the never expiring Glean metric named extensions.startup_cache_load_time, which is defined in toolkit/components/extensions/metrics.yaml. Unlike the related glean metric, this scalar has an expiring date, set as a deadline to consider removing the mirrored scalar in favor to just use the Glean metric).\n",
+                    "mode": "NULLABLE",
+                    "name": "extensions_startup_cache_load_time",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "The amount of bytes writted into the Extensions StartupCache file.\n",
+                    "mode": "NULLABLE",
+                    "name": "extensions_startup_cache_write_byte_length",
+                    "type": "INT64"
+                  },
+                  {
                     "description": "The count of how many times the find next button was used per session.\n",
                     "mode": "NULLABLE",
                     "name": "findbar_find_next",
@@ -66892,13 +67870,19 @@
                     "type": "BOOL"
                   },
                   {
-                    "description": "Whether this app was pinned to taskbar on startup",
+                    "description": "Whether the non-Private Browsing version of this app was pinned to taskbar on startup",
                     "mode": "NULLABLE",
                     "name": "os_environment_is_taskbar_pinned",
                     "type": "BOOL"
                   },
                   {
-                    "description": "Records how Firefox was started on Windows. Currently will be one of \"Desktop\", \"StartMenu\" (including pins), \"Taskbar\", \"OtherShortcut\", or \"Other\"\n",
+                    "description": "Whether the Private Browsing version of this app was pinned to taskbar on startup",
+                    "mode": "NULLABLE",
+                    "name": "os_environment_is_taskbar_pinned_private",
+                    "type": "BOOL"
+                  },
+                  {
+                    "description": "Records how Firefox was started on Windows. Currently will be one of \"Desktop\", \"DesktopPrivate\", \"StartMenu\" (including pins), \"StartMenuPrivate\", \"Taskbar\", \"TaskbarPrivate\", \"OtherShortcut\", or \"Other\"\n",
                     "mode": "NULLABLE",
                     "name": "os_environment_launch_method",
                     "type": "STRING"
@@ -66970,6 +67954,12 @@
                     "type": "INT64"
                   },
                   {
+                    "description": "How many times threads woke up and could have woken up a CPU core.\n",
+                    "mode": "NULLABLE",
+                    "name": "power_total_thread_wakeups",
+                    "type": "INT64"
+                  },
+                  {
                     "description": "A boolean indicating that profile/prefs.js was not found and it is being created for the first time in this session.",
                     "mode": "NULLABLE",
                     "name": "preferences_created_new_user_prefs_file",
@@ -67022,6 +68012,12 @@
                     "mode": "NULLABLE",
                     "name": "privacy_dfpi_rollout_enabled_by_default",
                     "type": "INT64"
+                  },
+                  {
+                    "description": "Keeps track of whether the Nimbus tcpByDefault feature is enabled (true) or disabled (false) for a client.\n",
+                    "mode": "NULLABLE",
+                    "name": "privacy_dfpi_rollout_tcp_by_default_feature",
+                    "type": "BOOL"
                   },
                   {
                     "description": "The value of preference \"privacy.firstparty.isolate\"\n",
@@ -67141,6 +68137,12 @@
                     "description": "Whether or not this startup is the first startup since OS reboot (according to our best guess.)\n",
                     "mode": "NULLABLE",
                     "name": "startup_is_cold",
+                    "type": "BOOL"
+                  },
+                  {
+                    "description": "Recorded on every run of a Firefox install on macOS, with a boolean value indicating whether Firefox is being run from an app translocated location, or not. This is always false when `is_run_from_dmg` is true.\n",
+                    "mode": "NULLABLE",
+                    "name": "startup_is_run_from_app_translocated_location",
                     "type": "BOOL"
                   },
                   {
@@ -67580,6 +68582,24 @@
                     "mode": "NULLABLE",
                     "name": "update_suppress_prompts",
                     "type": "BOOL"
+                  },
+                  {
+                    "description": "The AppUpdatePin Enterprise Policy controls the maximum version that the browser can update to. If the policy is set, this probe will report the policy's value. The possible policy values are \"X.\" and \"X.Y.\", where X is the pinned major version and Y is the pinned minor version.\n",
+                    "mode": "NULLABLE",
+                    "name": "update_version_pin",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "A uint recording the number of abandoned engagements in the urlbar. An abandonment occurs when the user begins using the urlbar but stops before completing the engagement. This can happen when the user clicks outside the urlbar to focus a different part of the window. It can also happen when the user switches to another window while the urlbar is focused.\n",
+                    "mode": "NULLABLE",
+                    "name": "urlbar_abandonment",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "A uint recording the number of engagements the user completes in the urlbar.  An engagement occurs when the user navigates to a page using the urlbar, for example by picking a result in the urlbar panel or typing a search term or URL in the urlbar and pressing the enter key.\n",
+                    "mode": "NULLABLE",
+                    "name": "urlbar_engagement",
+                    "type": "INT64"
                   },
                   {
                     "description": "How many microseconds we spent in the baseline WebAssembly compiler.",
@@ -68884,6 +69904,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "How many times threads woke up and could have woken up a CPU core. Broken down by process type.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "power_wakeups_per_process_type",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "The count of attempted accumulations to unknown histogram keys for histograms that restrict the set of allowed keys ('keys' property). The names of the offending histograms are used as keys in this probe.\n",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -68971,6 +70009,12 @@
                     "description": "Total CPU time used by all processes in ms.\n",
                     "mode": "NULLABLE",
                     "name": "power_total_cpu_time_ms",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "How many times threads woke up and could have woken up a CPU core.\n",
+                    "mode": "NULLABLE",
+                    "name": "power_total_thread_wakeups",
                     "type": "INT64"
                   },
                   {
