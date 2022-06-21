@@ -242,6 +242,12 @@ schemas
 │   ├── sync
 │   ├── tabs-sync
 │   └── topsites-impression
+├── org-mozilla-firefox-vpn
+│   ├── baseline
+│   ├── deletion-request
+│   ├── events
+│   ├── main
+│   └── metrics
 ├── org-mozilla-firefoxreality
 │   ├── baseline
 │   ├── deletion-request
@@ -515,6 +521,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-505 directories
+511 directories
 ```
 
