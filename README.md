@@ -280,6 +280,7 @@ schemas
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
+│   ├── first-session
 │   ├── metrics
 │   ├── temp-bookmarks-sync
 │   ├── temp-history-sync
@@ -291,6 +292,7 @@ schemas
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
+│   ├── first-session
 │   ├── metrics
 │   ├── temp-bookmarks-sync
 │   ├── temp-history-sync
@@ -302,6 +304,7 @@ schemas
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
+│   ├── first-session
 │   ├── metrics
 │   ├── temp-bookmarks-sync
 │   ├── temp-history-sync
@@ -523,6 +526,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-513 directories
+516 directories
 ```
 
