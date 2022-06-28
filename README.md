@@ -283,8 +283,10 @@ schemas
 │   ├── first-session
 │   ├── metrics
 │   ├── temp-bookmarks-sync
+│   ├── temp-clients-sync
 │   ├── temp-history-sync
 │   ├── temp-logins-sync
+│   ├── temp-rust-tabs-sync
 │   ├── temp-sync
 │   ├── temp-tabs-sync
 │   └── topsites-impression
@@ -295,8 +297,10 @@ schemas
 │   ├── first-session
 │   ├── metrics
 │   ├── temp-bookmarks-sync
+│   ├── temp-clients-sync
 │   ├── temp-history-sync
 │   ├── temp-logins-sync
+│   ├── temp-rust-tabs-sync
 │   ├── temp-sync
 │   ├── temp-tabs-sync
 │   └── topsites-impression
@@ -307,8 +311,10 @@ schemas
 │   ├── first-session
 │   ├── metrics
 │   ├── temp-bookmarks-sync
+│   ├── temp-clients-sync
 │   ├── temp-history-sync
 │   ├── temp-logins-sync
+│   ├── temp-rust-tabs-sync
 │   ├── temp-sync
 │   ├── temp-tabs-sync
 │   └── topsites-impression
@@ -526,6 +532,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-516 directories
+522 directories
 ```
 
