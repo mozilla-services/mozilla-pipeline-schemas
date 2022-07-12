@@ -409,6 +409,11 @@ schemas
 │   └── total-timing
 ├── pocket
 │   └── fire-tv-events
+├── rally-attention-stream
+│   ├── deletion-request
+│   ├── events
+│   ├── study-enrollment
+│   └── user-journey
 ├── rally-citp-search-engine-usage
 │   ├── ballot-interaction
 │   ├── deletion-request
@@ -532,6 +537,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-522 directories
+527 directories
 ```
 
