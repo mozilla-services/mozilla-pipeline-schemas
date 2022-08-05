@@ -410,6 +410,8 @@ schemas
 ├── pocket
 │   └── fire-tv-events
 ├── rally-attention-stream
+│   ├── advertisements
+│   ├── article-contents
 │   ├── deletion-request
 │   ├── events
 │   ├── study-enrollment
@@ -537,6 +539,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-527 directories
+529 directories
 ```
 
