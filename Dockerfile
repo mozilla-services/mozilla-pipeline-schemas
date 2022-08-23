@@ -1,6 +1,6 @@
 # debian bullseye provides rust >= 1.46 needed to build jsonschema-transpiler
 # --platform=linux/amd64 added to prevent pulling ARM images when run on Apple Silicon
-FROM --platform=linux/amd64 python:3.8-slim-bullseye
+FROM --platform=linux/amd64 debian:bookworm-slim
 LABEL maintainer="Mozilla Data Platform"
 
 # man directory is removed in upstream debian:slim, but needed by jdk install
@@ -17,7 +17,8 @@ RUN mkdir -p /usr/share/man/man1 && \
         git \
         openjdk-11-jdk-headless \
         maven \
-        cargo
+        cargo \
+        python3-pip
 
 # Install jsonschema-transpiler
 ENV PATH=$PATH:/root/.cargo/bin
