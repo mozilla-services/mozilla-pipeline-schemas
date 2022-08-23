@@ -2,7 +2,7 @@
 FROM --platform=linux/amd64 python:3.8-slim-bullseye
 LABEL maintainer="Mozilla Data Platform"
 
-# copied from library/rust:1.63.0-slim-bullseye to install rust >= 1.46 and cargo >= 0.57 needed to build jsonschema-transpiler
+# copied from library/rust:1.63.0-slim-bullseye to install cargo >= 1.56 needed to build jsonschema-transpiler
 # https://github.com/rust-lang/docker-rust/blob/2301a502c3ff8bbf30c32a6ef2114f3b363c4553/1.63.0/bullseye/slim/Dockerfile#L3-L37
 ENV RUSTUP_HOME=/usr/local/rustup \
     CARGO_HOME=/usr/local/cargo \
