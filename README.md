@@ -55,7 +55,8 @@ schemas
 │   ├── events
 │   ├── fog-validation
 │   ├── metrics
-│   └── newtab
+│   ├── newtab
+│   └── pseudo-main
 ├── firefox-desktop-background-update
 │   ├── background-update
 │   ├── baseline
@@ -375,7 +376,8 @@ schemas
 │   ├── events
 │   ├── fog-validation
 │   ├── metrics
-│   └── newtab
+│   ├── newtab
+│   └── pseudo-main
 ├── pioneer-citp-news-disinfo
 │   ├── deletion-request
 │   ├── measurements
@@ -539,6 +541,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-529 directories
+531 directories
 ```
 
