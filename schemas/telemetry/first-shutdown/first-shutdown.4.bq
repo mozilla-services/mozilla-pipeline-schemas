@@ -10485,6 +10485,12 @@
             "type": "STRING"
           },
           {
+            "description": "0th bit - TLS13 used? 1th bit - Revocation Privacy, 2nd bit - DNS Privacy, 3rd bit - ECH Privacy",
+            "mode": "NULLABLE",
+            "name": "ssl_handshake_privacy",
+            "type": "STRING"
+          },
+          {
             "description": "SSL handshake result, 0=success, 1-255=NSS error offset, 256-511=SEC error offset + 256, 512-639=NSPR error offset + 512, 640-670=PKIX error, 671=unknown err",
             "mode": "NULLABLE",
             "name": "ssl_handshake_result",
@@ -66024,6 +66030,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "urlbar_picked_keyword",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Counts how many times this result type was picked at a given index.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "urlbar_picked_quickaction",
                     "type": "RECORD"
                   },
                   {
