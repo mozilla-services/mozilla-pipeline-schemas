@@ -77,6 +77,11 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   └── page-view
+├── mdn-yari
+│   ├── action
+│   ├── deletion-request
+│   ├── events
+│   └── page
 ├── messaging-system
 │   ├── cfr
 │   ├── infobar
@@ -417,7 +422,10 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── study-enrollment
-│   └── user-journey
+│   ├── user-journey
+│   ├── youtube-ads
+│   ├── youtube-video-details
+│   └── youtube-video-recommendations
 ├── rally-citp-search-engine-usage
 │   ├── ballot-interaction
 │   ├── deletion-request
@@ -541,6 +549,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-531 directories
+539 directories
 ```
 

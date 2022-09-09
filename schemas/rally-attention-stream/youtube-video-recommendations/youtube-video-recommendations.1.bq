@@ -295,39 +295,9 @@
       {
         "fields": [
           {
-            "description": "Whether the search input is enabled on the newtab. Corresponds to the value of the `browser.newtabpage.activity-stream.showSearch` pref.\n",
+            "description": "Whether this is the first set of recommendations\nthat was loaded on this page\n",
             "mode": "NULLABLE",
-            "name": "newtab_search_enabled",
-            "type": "BOOL"
-          },
-          {
-            "description": "Whether Pocket is enabled on the newtab. AKA the \"Recommended by Pocket\" section. Corresponds to the value of the `browser.newtabpage.activity-stream.feeds.section.topstories` pref.\n",
-            "mode": "NULLABLE",
-            "name": "pocket_enabled",
-            "type": "BOOL"
-          },
-          {
-            "description": "Whether the Firefox user is signed in to Pocket. Does not correspond to a pref, so its value is resampled at newtab's component init and whenever there is a Discovery Stream user event.\n",
-            "mode": "NULLABLE",
-            "name": "pocket_is_signed_in",
-            "type": "BOOL"
-          },
-          {
-            "description": "Whether Pocket sponsored stories are enabled on the newtab. Corresponds to the value of the `browser.newtabpage.activity-stream.showSponsored` pref. Can be `true` even if pocket.enabled is `false`.\n",
-            "mode": "NULLABLE",
-            "name": "pocket_sponsored_stories_enabled",
-            "type": "BOOL"
-          },
-          {
-            "description": "Whether \"topsites\" is enabled on the newtab. AKA the \"Shortcuts\" section. Corresponds to the value of the `browser.newtabpage.activity-stream.feeds.topsites` pref.\n",
-            "mode": "NULLABLE",
-            "name": "topsites_enabled",
-            "type": "BOOL"
-          },
-          {
-            "description": "Whether sponsored topsites are enabled on the newtab. AKA the \"Sponsored Shortcuts\" section. Corresponds to the value of the `browser.newtabpage.activity-stream.showSponsoredTopSites` pref. Can be `true` even if topsites.enabled is `false`.\n",
-            "mode": "NULLABLE",
-            "name": "topsites_sponsored_enabled",
+            "name": "youtube_video_recommendations_is_initial_set",
             "type": "BOOL"
           }
         ],
@@ -417,46 +387,53 @@
       {
         "fields": [
           {
-            "description": "The current setting of the home page. One of [\"enabled\", \"disabled\", \"extension\"] or any value from SiteClassifier like \"known-hijacker\" or \"social-media\". Similar to Activity Stream's PAGE_TAKEOVER_DATA event's `home_url_category`. Sampled once after newtab init.\n",
-            "mode": "NULLABLE",
-            "name": "newtab_homepage_category",
-            "type": "STRING"
-          },
-          {
-            "description": "The application's locale as of when newtab's TelemetryFeed was init. Comes from `Services.local.appLocaleAsBCP47`. Looks like `en-US`.\n",
-            "mode": "NULLABLE",
-            "name": "newtab_locale",
-            "type": "STRING"
-          },
-          {
-            "description": "The current setting of the newtab page. One of [\"enabled\", \"disabled\", \"extension\"] or any value from SiteClassifier like \"known-hijacker\" or \"social-media\". Similar to Activity Stream's PAGE_TAKEOVER_DATA event's `newtab_url_category`. Sampled once after newtab init.\n",
-            "mode": "NULLABLE",
-            "name": "newtab_newtab_category",
-            "type": "STRING"
-          },
-          {
-            "description": "The telemetry id of the search engine.\nFor application provided engines, this is either supplied by the\nconfiguration or from the first part of the associated WebExtension Id.\nFor other engines, this is `other-<extensionName>`.\n",
-            "mode": "NULLABLE",
-            "name": "search_engine_default_engine_id",
-            "type": "STRING"
-          },
-          {
-            "description": "The telemetry id of the search engine.\nFor application provided engines, this is either supplied by the\nconfiguration or from the first part of the associated WebExtension Id.\nFor other engines, this is `other-<extensionName>`.\nIf this string is an empty string (`\"\"`), this means that one or both of\nthe preferences `browser.search.separatePrivateDefault` and\n`browser.search.separatePrivateDefault.ui.enabled` are set to false.\nIt is possible that the user selects the same private engine as for the\ndefault engine, and hence both versions of these fields will be filled in.\n",
-            "mode": "NULLABLE",
-            "name": "search_engine_private_engine_id",
+            "mode": "REPEATED",
+            "name": "youtube_video_recommendations_first_twenty_video_ids",
             "type": "STRING"
           }
         ],
         "mode": "NULLABLE",
-        "name": "string",
+        "name": "string_list",
         "type": "RECORD"
       },
       {
         "fields": [
           {
-            "description": "The client_id according to Telemetry.\nMight not always have a value due to being too early for it to have\nloaded.\nValue may be the canary client id `c0ffeec0-ffee-c0ff-eec0-ffeec0ffeec0`\nin pings near when the data upload pref is disabled (if Telemetry gets\nto go first), or between when a client_id has been removed and when it\nhas been regenerated.\nDoes not need to be sent in the Glean \"deletion-request\" ping.\n",
+            "description": "A JSON array of all recommendations found\nalong with some parsed details\n",
             "mode": "NULLABLE",
-            "name": "legacy_telemetry_client_id",
+            "name": "youtube_video_recommendations_details_list",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "text2",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "URL for the current page\n",
+            "mode": "NULLABLE",
+            "name": "youtube_video_recommendations_url",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "url2",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The id of the Rally client. This is generated by\nthe Rally SDKs. A value of 00000000-0000-0000-0000-000000000000\nindicates a test payload. A value of 11111111-1111-1111-1111-111111111111\nindicates that the Rally id was not found or properly set.\n",
+            "mode": "NULLABLE",
+            "name": "rally_id",
+            "type": "STRING"
+          },
+          {
+            "description": "A unique ID for this page visit\n",
+            "mode": "NULLABLE",
+            "name": "youtube_video_recommendations_page_id",
             "type": "STRING"
           }
         ],
@@ -567,10 +544,28 @@
     "type": "RECORD"
   },
   {
+    "description": "Custom pioneer id, must not be Telemetry clientId",
+    "mode": "NULLABLE",
+    "name": "pioneer_id",
+    "type": "STRING"
+  },
+  {
+    "description": "Bug 1677567 - Rally id reported by the core addon; deprecated as part of bug 1708552.",
+    "mode": "NULLABLE",
+    "name": "rally_id",
+    "type": "STRING"
+  },
+  {
     "description": "Hashed version of client_id (if present) useful for partitioning; ranges from 0 to 99",
     "mode": "NULLABLE",
     "name": "sample_id",
     "type": "INT64"
+  },
+  {
+    "description": "Name of a particular study. Usually the addon_id. Not populated when using glean.js.",
+    "mode": "NULLABLE",
+    "name": "study_name",
+    "type": "STRING"
   },
   {
     "description": "Time when the ingestion edge server accepted this message",
