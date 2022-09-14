@@ -2686,6 +2686,36 @@
             "type": "RECORD"
           },
           {
+            "description": "Size of the db after executing `run_maintenance()`\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "places_manager_db_size_after_maintenance",
+            "type": "RECORD"
+          },
+          {
             "description": "The size of the app's APK and related files as installed: this is expected\nto be larger than download size. This is the output of\n[StorageStats.getAppBytes](https://developer.android.com/reference/android/app/usage/StorageStats#getAppBytes())\nso see that for details. This value is only available on Android 8+. A\nsimilar value may be available on the Google Play dashboard: we can use\nthis value to see if that value is reliable enough.\n",
             "fields": [
               {
@@ -8863,6 +8893,66 @@
             ],
             "mode": "NULLABLE",
             "name": "places_manager_read_query_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time taken to execute `run_maintenance()`",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "places_manager_run_maintenance_time",
             "type": "RECORD"
           },
           {
