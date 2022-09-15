@@ -419,10 +419,12 @@ schemas
 ├── rally-attention-stream
 │   ├── advertisements
 │   ├── article-contents
+│   ├── attribution
 │   ├── deletion-request
 │   ├── events
 │   ├── meta-pixel
 │   ├── study-enrollment
+│   ├── tracking-pixel
 │   ├── user-journey
 │   ├── youtube-ads
 │   ├── youtube-video-details
@@ -550,6 +552,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-540 directories
+542 directories
 ```
 

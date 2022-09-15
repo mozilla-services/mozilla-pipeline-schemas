@@ -26817,6 +26817,18 @@
             "type": "STRING"
           },
           {
+            "description": "The number of times an event page hit the idle timeout and results in one of the categories, keyed by addon id.",
+            "mode": "NULLABLE",
+            "name": "webext_eventpage_idle_result_count",
+            "type": "STRING"
+          },
+          {
+            "description": "The amount of time (keyed by addon id) that an event page has been running before being suspended, or the entire addon shutdown.",
+            "mode": "NULLABLE",
+            "name": "webext_eventpage_running_time_ms",
+            "type": "STRING"
+          },
+          {
             "description": "The amount of time it takes for a WebExtension to start up, from when the startup function is called to when the startup promise resolves.",
             "mode": "NULLABLE",
             "name": "webext_extension_startup_ms",
@@ -32089,6 +32101,42 @@
             ],
             "mode": "REPEATED",
             "name": "webext_content_script_injection_ms_by_addonid",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "The number of times an event page hit the idle timeout and results in one of the categories, keyed by addon id.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "webext_eventpage_idle_result_count_by_addonid",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "The amount of time (keyed by addon id) that an event page has been running before being suspended, or the entire addon shutdown.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "webext_eventpage_running_time_ms_by_addonid",
             "type": "RECORD"
           },
           {
