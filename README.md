@@ -422,7 +422,6 @@ schemas
 │   ├── attribution
 │   ├── deletion-request
 │   ├── events
-│   ├── meta-pixel
 │   ├── study-enrollment
 │   ├── tracking-pixel
 │   ├── user-journey
@@ -552,6 +551,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-542 directories
+541 directories
 ```
 
