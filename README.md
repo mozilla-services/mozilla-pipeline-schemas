@@ -548,9 +548,16 @@ schemas
 │   ├── voice-feedback
 │   ├── x-contextual-feature-recommendation
 │   └── xfocsp-error-report
+├── viu-politica
+│   ├── deletion-request
+│   ├── events
+│   ├── main-events
+│   ├── regret-details
+│   ├── video-data
+│   └── video-index
 └── webpagetest
     └── webpagetest-run
 
-541 directories
+548 directories
 ```
 
