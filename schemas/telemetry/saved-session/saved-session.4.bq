@@ -2787,6 +2787,12 @@
             "type": "STRING"
           },
           {
+            "description": "Which revocation checking mechanisms were used?",
+            "mode": "NULLABLE",
+            "name": "cert_revocation_mechanisms",
+            "type": "STRING"
+          },
+          {
             "description": "ms elapsed time of OCSP etc.. that was canceled",
             "mode": "NULLABLE",
             "name": "cert_validation_http_request_canceled_time",
@@ -15198,6 +15204,18 @@
             "description": "Whether a page used the CSS property font",
             "mode": "NULLABLE",
             "name": "use_counter2_css_property_font_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document used the CSS property font-palette",
+            "mode": "NULLABLE",
+            "name": "use_counter2_css_property_font_palette_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page used the CSS property font-palette",
+            "mode": "NULLABLE",
+            "name": "use_counter2_css_property_font_palette_page",
             "type": "STRING"
           },
           {
@@ -30443,6 +30461,24 @@
                 "type": "STRING"
               },
               {
+                "description": "The time spent from dns resolution to connect start, in milliseconds, keyed by protocol version and classOfService",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "network_dns_end_to_connect_start_ms",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "Count of the HTTP redirection that triggered by top-level document or by subresource, keyed by the URL scheme redirected to.",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -44935,6 +44971,18 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document used the CSS property font-palette",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_css_property_font_palette_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page used the CSS property font-palette",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_css_property_font_palette_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document used the CSS property font-size-adjust",
                     "mode": "NULLABLE",
                     "name": "use_counter2_css_property_font_size_adjust_document",
@@ -59271,6 +59319,42 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "The time spent from HttpChannelChild::AsyncOpen to adding the transactionto the nsHttpConnectionMgr, in milliseconds, keyed by classOfService",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "network_async_open_child_to_transaction_pending_ms",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "The time spent relaying response start from the socket thread of the parent process to the content process, in milliseconds, keyed by classOfService",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "network_response_start_parent_to_content_ms",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "Measures the number of milliseconds we spend synchronously notifying observers, keyed by topic. Note: only NotifyObservers calls which take over 500 microseconds are included in this probe.",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -67376,6 +67460,30 @@
                     "mode": "NULLABLE",
                     "name": "browser_searchinit_init_result_status_code",
                     "type": "STRING"
+                  },
+                  {
+                    "description": "Records the number of insecure (i.e., using http) OpenSearch search engines a given user has installed\n",
+                    "mode": "NULLABLE",
+                    "name": "browser_searchinit_insecure_opensearch_engine_count",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Records the number of OpenSearch search engines with insecure updates enabled (i.e., using http) a given user has installed\n",
+                    "mode": "NULLABLE",
+                    "name": "browser_searchinit_insecure_opensearch_update_count",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Records the number of secure (i.e., using https) OpenSearch search engines a given user has installed\n",
+                    "mode": "NULLABLE",
+                    "name": "browser_searchinit_secure_opensearch_engine_count",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Records the number of OpenSearch search engines with secure updates enabled (i.e., using https) a given user has installed\n",
+                    "mode": "NULLABLE",
+                    "name": "browser_searchinit_secure_opensearch_update_count",
+                    "type": "INT64"
                   },
                   {
                     "description": "The value of the browser.startup.page pref. This pref restores the tabs and windows automatically when set to 3.\n",
