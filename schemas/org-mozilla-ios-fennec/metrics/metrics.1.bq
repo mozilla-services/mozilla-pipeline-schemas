@@ -1984,6 +1984,18 @@
       {
         "fields": [
           {
+            "description": "The number of visits migrated to the places.db\n",
+            "mode": "NULLABLE",
+            "name": "places_history_migration_num_migrated",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of visits expected to migrate to the places.db\n",
+            "mode": "NULLABLE",
+            "name": "places_history_migration_num_to_migrate",
+            "type": "INT64"
+          },
+          {
             "description": "A snapshot of how many normal tabs a user has opened when he\ncloses the application.\n",
             "mode": "NULLABLE",
             "name": "tabs_normal_tabs_quantity",
@@ -1998,6 +2010,49 @@
         ],
         "mode": "NULLABLE",
         "name": "quantity",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "A Rate of how often migrations end\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "places_history_migration_migration_ended_rate",
+            "type": "RECORD"
+          },
+          {
+            "description": "A Rate of how often migrations error out\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "places_history_migration_migration_error_rate",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "rate",
         "type": "RECORD"
       },
       {
@@ -2373,6 +2428,66 @@
             ],
             "mode": "NULLABLE",
             "name": "logins_store_write_query_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "A time distribution of how long it took for the migration to occur\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "places_history_migration_duration",
             "type": "RECORD"
           }
         ],
