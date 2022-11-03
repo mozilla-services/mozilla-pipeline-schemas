@@ -936,6 +936,12 @@
                 "type": "INT64"
               },
               {
+                "description": "The CPU name, e.g. 'Intel(R) Core(TM) i9-8950HK CPU @ 2.90GHz', or `null` on failure. Desktop only.",
+                "mode": "NULLABLE",
+                "name": "name",
+                "type": "STRING"
+              },
+              {
                 "description": "Only available on Firefox desktop. The CPU clock speed in MHz.",
                 "mode": "NULLABLE",
                 "name": "speed_m_hz",
@@ -8013,7 +8019,7 @@
             "type": "STRING"
           },
           {
-            "description": "Total Memory Across All Processes (KB)",
+            "description": "Total Memory Across All Processes (KB) (inaccurate WRT shared memory. See MemoryTelemetry.cpp)",
             "mode": "NULLABLE",
             "name": "memory_total",
             "type": "STRING"
@@ -38281,7 +38287,7 @@
                     "type": "STRING"
                   },
                   {
-                    "description": "Total Memory Across All Processes (KB)",
+                    "description": "Total Memory Across All Processes (KB) (inaccurate WRT shared memory. See MemoryTelemetry.cpp)",
                     "mode": "NULLABLE",
                     "name": "memory_total",
                     "type": "STRING"
@@ -58157,6 +58163,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "devtools_webide_connected_runtime_version",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "The time between navigationStart and the first contentful paint of a foreground http or https root content document, in milliseconds. The contentful paint timestamp is taken during display list building and does not include rasterization or compositing of that paint. Keyed by TRR domain for DoH or 'Native' otherwise",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "dns_perf_first_contentful_paint_ms",
                     "type": "RECORD"
                   },
                   {
