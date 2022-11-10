@@ -189,6 +189,7 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
+│   ├── spoc
 │   ├── startup-timeline
 │   ├── sync
 │   ├── tabs-sync
@@ -208,6 +209,7 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
+│   ├── spoc
 │   ├── startup-timeline
 │   ├── sync
 │   ├── tabs-sync
@@ -227,6 +229,7 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
+│   ├── spoc
 │   ├── startup-timeline
 │   ├── sync
 │   ├── tabs-sync
@@ -560,6 +563,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-550 directories
+553 directories
 ```
 
