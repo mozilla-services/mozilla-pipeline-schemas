@@ -410,6 +410,12 @@
             "type": "INT64"
           },
           {
+            "description": "How many times PDF Viewer was used.\n",
+            "mode": "NULLABLE",
+            "name": "pdfjs_used",
+            "type": "INT64"
+          },
+          {
             "description": "The number of PingCentre send failures.\n",
             "mode": "NULLABLE",
             "name": "ping_centre_send_failures",
@@ -452,6 +458,41 @@
       },
       {
         "fields": [
+          {
+            "description": "Time spent to display first page in PDF Viewer (ms).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "pdfjs_time_to_view",
+            "type": "RECORD"
+          },
           {
             "description": "Records how many percent of battery was available for each period of user activity.\n",
             "fields": [
