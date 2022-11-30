@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
 """
-Script to parse in-tree list of Crash Annotations, compare with what's currently in the
-schema-- outputting a list of *new* annotations (in JSON format) to add to the payload
-in templates/telemetry/crash. You will want to take the output of this script and copy
-paste it into this file.
+Script to parse in-tree list of Crash Annotations, compare with what's
+currently in the schema-- outputting a list of *new* annotations (in JSON
+format) to add to the payload in templates/telemetry/crash. You will want to
+take the output of this script and copy paste it into this file.
 
 You should be able to get the latest set of crash annotations from:
 
@@ -61,11 +61,13 @@ def main():
     with open(annotation_file, "r") as fp:
         crash_annotations = yaml.load(fp.read(), Loader=yaml.SafeLoader)
 
+    suggested_changes = False
     for crash_annotation_name, crash_annotation_props in crash_annotations.items():
         if (
             crash_annotation_props.get("ping")
             and crash_annotation_name not in existing_payload_properties
         ):
+            suggested_changes = True
             print(
                 '"%s": {\n  "description": %s,\n  "type": "string"\n},'
                 % (
@@ -78,6 +80,15 @@ def main():
                     ),
                 )
             )
+
+    if suggested_changes:
+        print(
+            "Please make the above changes to these two files and submit "
+            + "a PR:"
+        )
+        print("")
+        print("* schemas/telemetry/crash/crash.4.schema.json")
+        print("* templates/telemetry/crash/crash.4.schema.json")
 
 
 if __name__ == "__main__":
