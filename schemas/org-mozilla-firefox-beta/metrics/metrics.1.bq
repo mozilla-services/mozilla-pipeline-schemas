@@ -818,6 +818,12 @@
             "type": "INT64"
           },
           {
+            "description": "How many times PDF Viewer was used.\n",
+            "mode": "NULLABLE",
+            "name": "pdfjs_used",
+            "type": "INT64"
+          },
+          {
             "description": "The total number of read operations performed on the places store. The count only includes operations triggered by the application, not e.g. incidental reads performed as part of a sync. It is intended to be used together with `read_query_error_count` to measure the overall error rate of read operations on the places store.\n",
             "mode": "NULLABLE",
             "name": "places_manager_read_query_count",
@@ -1367,6 +1373,41 @@
             ],
             "mode": "NULLABLE",
             "name": "js_xdr_encode_percentage",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time spent to display first page in PDF Viewer (ms).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "pdfjs_time_to_view",
             "type": "RECORD"
           },
           {
@@ -2524,6 +2565,42 @@
             ],
             "mode": "REPEATED",
             "name": "netwerk_eh_link_type",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of times some actions are executed in the PDF viewer.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "pdfjs_buttons",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of times some PDF editing features are used.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "pdfjs_editing",
             "type": "RECORD"
           },
           {
