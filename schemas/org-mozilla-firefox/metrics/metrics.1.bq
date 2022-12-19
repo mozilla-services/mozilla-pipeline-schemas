@@ -884,6 +884,18 @@
             "type": "INT64"
           },
           {
+            "description": "The number of RTCRtpSenders created.\n",
+            "mode": "NULLABLE",
+            "name": "rtcrtpsender_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of RTCRtpSenders created that use the compatibility mode for setParameters.\n",
+            "mode": "NULLABLE",
+            "name": "rtcrtpsender_count_setparameters_compat",
+            "type": "INT64"
+          },
+          {
             "description": "A counter that indicates how many INACTIVE tabs a user has closed.\n",
             "mode": "NULLABLE",
             "name": "tabs_tray_close_inactive_tab",
@@ -3313,6 +3325,247 @@
         ],
         "mode": "NULLABLE",
         "name": "quantity",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The proportion of RTCRtpSenders that have thrown an error at least once about a setParameters call that attempted to change the number of encodings.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "rtcrtpsender_setparameters_fail_length_changed",
+            "type": "RECORD"
+          },
+          {
+            "description": "The proportion of RTCRtpSenders configured with the setParameters compat mode that have thrown an error at least once about a setParameters call that had no encodings (we do not measure this against the general population of RTCRtpSenders, since without the compat mode this failure is never observed, because it fails the length change check).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "rtcrtpsender_setparameters_fail_no_encodings",
+            "type": "RECORD"
+          },
+          {
+            "description": "The proportion of RTCRtpSenders that have thrown an error at least once about a setParameters call because [[LastReturnedParameters]] was not set. (ie; there was not a recent enough call to getParameters)\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "rtcrtpsender_setparameters_fail_no_getparameters",
+            "type": "RECORD"
+          },
+          {
+            "description": "The proportion of RTCRtpSenders that have thrown an error at least once about a setParameters call that did not set the transactionId field.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "rtcrtpsender_setparameters_fail_no_transactionid",
+            "type": "RECORD"
+          },
+          {
+            "description": "The proportion of RTCRtpSenders that have thrown an error at least once about a setParameters call that had no encodings.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "rtcrtpsender_setparameters_fail_other",
+            "type": "RECORD"
+          },
+          {
+            "description": "The proportion of RTCRtpSenders that have thrown an error at least once about a setParameters call that attempted to change the rid on an encoding (note that we only check this if the encoding count did not change, see fail_length_changed).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "rtcrtpsender_setparameters_fail_rid_changed",
+            "type": "RECORD"
+          },
+          {
+            "description": "The proportion of RTCRtpSenders that have thrown an error at least once about a setParameters call that used a stale transaction id.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "rtcrtpsender_setparameters_fail_stale_transactionid",
+            "type": "RECORD"
+          },
+          {
+            "description": "The proportion of RTCRtpSenders configured with the setParameters compat mode that have warned at least once about a setParameters call that attempted to change the number of encodings.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "rtcrtpsender_setparameters_warn_length_changed",
+            "type": "RECORD"
+          },
+          {
+            "description": "The proportion of RTCRtpSenders configured with the setParameters compat mode that have warned at least once about a setParameters call because [[LastReturnedParameters]] was not set.  (ie; there was not a recent enough call to getParameters)\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "rtcrtpsender_setparameters_warn_no_getparameters",
+            "type": "RECORD"
+          },
+          {
+            "description": "The proportion of RTCRtpSenders configured with the setParameters compat mode that have warned at least once about a setParameters call that did not set the transactionId field.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "rtcrtpsender_setparameters_warn_no_transactionid",
+            "type": "RECORD"
+          },
+          {
+            "description": "The proportion of RTCRtpSenders configured with the setParameters compat mode that have warned at least once about a setParameters call that attempted to change the rid on an encoding (note that we only check this if the encoding count did not change, see warn_length_changed).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "rtcrtpsender_setparameters_warn_rid_changed",
+            "type": "RECORD"
+          },
+          {
+            "description": "The proportion of RTCRtpSenders configured with the setParameters compat mode that have warned at least once about a setParameters call that used a stale transaction id.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "rtcrtpsender_setparameters_warn_stale_transactionid",
+            "type": "RECORD"
+          },
+          {
+            "description": "The proportion of RTCRtpSenders that were created by an addTransceivers call that was passed a sendEncodings.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "rtcrtpsender_used_sendencodings",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "rate",
         "type": "RECORD"
       },
       {

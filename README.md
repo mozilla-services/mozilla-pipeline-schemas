@@ -57,6 +57,7 @@ schemas
 │   ├── metrics
 │   ├── new-metric-capture-emulation
 │   ├── newtab
+│   ├── pageload
 │   └── pseudo-main
 ├── firefox-desktop-background-update
 │   ├── background-update
@@ -170,6 +171,7 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
+│   ├── pageload
 │   ├── spoc
 │   ├── startup-timeline
 │   ├── sync
@@ -190,6 +192,7 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
+│   ├── pageload
 │   ├── spoc
 │   ├── startup-timeline
 │   ├── sync
@@ -210,6 +213,7 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
+│   ├── pageload
 │   ├── spoc
 │   ├── startup-timeline
 │   ├── sync
@@ -230,6 +234,7 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
+│   ├── pageload
 │   ├── spoc
 │   ├── startup-timeline
 │   ├── sync
@@ -250,6 +255,7 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
+│   ├── pageload
 │   ├── spoc
 │   ├── startup-timeline
 │   ├── sync
@@ -273,21 +279,24 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
-│   └── metrics
+│   ├── metrics
+│   └── pageload
 ├── org-mozilla-focus-beta
 │   ├── activation
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
-│   └── metrics
+│   ├── metrics
+│   └── pageload
 ├── org-mozilla-focus-nightly
 │   ├── activation
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
-│   └── metrics
+│   ├── metrics
+│   └── pageload
 ├── org-mozilla-ios-fennec
 │   ├── baseline
 │   ├── deletion-request
@@ -351,7 +360,8 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
-│   └── metrics
+│   ├── metrics
+│   └── pageload
 ├── org-mozilla-mozregression
 │   ├── baseline
 │   ├── deletion-request
@@ -389,6 +399,7 @@ schemas
 │   ├── metrics
 │   ├── new-metric-capture-emulation
 │   ├── newtab
+│   ├── pageload
 │   └── pseudo-main
 ├── pioneer-citp-news-disinfo
 │   ├── deletion-request
@@ -565,6 +576,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-555 directories
+566 directories
 ```
 
