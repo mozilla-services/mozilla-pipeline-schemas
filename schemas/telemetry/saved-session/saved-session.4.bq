@@ -28115,6 +28115,24 @@
                 "type": "STRING"
               },
               {
+                "description": "How many times each saved autofill profile(address or credit card) has ever been autofilled. Rewritten after each autofill; always contains one entry per each count of uses. Example: If user has 3 cards, and he used 2 of them 5 times, and one of them 3 times, the value will be: `{3: 1, 5: 2}.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "autofill_profile_num_uses",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "Time (ms) that the main thread has been blocked on NPP_Destroy in an IPC plugin",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -61408,6 +61426,18 @@
                     "type": "BOOL"
                   },
                   {
+                    "description": "Count at detection time number of address form sections. A single form can contain more than one address form section.\n",
+                    "mode": "NULLABLE",
+                    "name": "formautofill_addresses_detected_sections_count",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Count at submission time number of credit card form sections submitted.\n",
+                    "mode": "NULLABLE",
+                    "name": "formautofill_addresses_submitted_sections_count",
+                    "type": "INT64"
+                  },
+                  {
                     "description": "Count at detection time number of credit card form sections. A single form can contain more than one credit card form section.\n",
                     "mode": "NULLABLE",
                     "name": "formautofill_credit_cards_detected_sections_count",
@@ -68983,6 +69013,12 @@
                     "description": "How many Telemetry stopwatch errors did we have while trying to measure window raising? These could be attempts to start a started timer or finish an unstarted timer or so forth. See Stopwatch::Start and Stopwatch::Finish for details. For use in evaluating baseline engagement for Project FOG.\n",
                     "mode": "NULLABLE",
                     "name": "fog_eval_window_raised_error",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Count at store time how many address autofill profiles user has.\n",
+                    "mode": "NULLABLE",
+                    "name": "formautofill_addresses_autofill_profiles_count",
                     "type": "INT64"
                   },
                   {
