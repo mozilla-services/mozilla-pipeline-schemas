@@ -1381,6 +1381,14 @@
     },
     "payload": {
       "properties": {
+        "addonVersion": {
+          "description": "The version of the add-on",
+          "type": "string"
+        },
+        "apexDomain": {
+          "description": "The apex domain for the study",
+          "type": "string"
+        },
         "dnsAttempts": {
           "description": "parent object for DNS query attempts for each RRTYPE and socket type",
           "properties": {
@@ -1742,7 +1750,7 @@
               "type": "number"
             },
             "udpAWebExt": {
-              "description": "Number of attempted dns.resolve() calls made using a domain name we control",
+              "description": "Deprecated",
               "minimum": 0,
               "type": "number"
             },
@@ -1812,6 +1820,14 @@
               "type": "number"
             },
             "udpSMIMEA-U": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "webext-A": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "webext-A-U": {
               "minimum": 0,
               "type": "number"
             }
@@ -2357,7 +2373,7 @@
               "type": "array"
             },
             "udpAWebExt": {
-              "description": "Results from dns.resolve() call made using a domain name we control",
+              "description": "Deprecated",
               "items": {
                 "type": "string"
               },
@@ -2463,6 +2479,20 @@
             "udpSMIMEA-U": {
               "items": {
                 "type": "integer"
+              },
+              "type": "array"
+            },
+            "webext-A": {
+              "description": "Results from dns.resolve() call made using a domain name we control",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "webext-A-U": {
+              "description": "Results from dns.resolve() with a per-client domain name we control",
+              "items": {
+                "type": "string"
               },
               "type": "array"
             }
