@@ -5883,9 +5883,21 @@
             "type": "STRING"
           },
           {
+            "description": "Firefox: Latency of Merino weather suggestions (ms)",
+            "mode": "NULLABLE",
+            "name": "fx_urlbar_merino_latency_weather_ms",
+            "type": "STRING"
+          },
+          {
             "description": "Firefox: Records whether each Merino fetch was successful or not. 'success' (0): The fetch completed without any error before the timeout elapsed. 'timeout' (1): The timeout elapsed before the fetch completed or otherwise failed. 'network_error' (2): The fetch failed due to a network error before the timeout elapsed. e.g., the user's network or the Merino server was down. 'http_error' (3): The fetch completed before the timeout elapsed but the server returned an error.",
             "mode": "NULLABLE",
             "name": "fx_urlbar_merino_response",
+            "type": "STRING"
+          },
+          {
+            "description": "For weather suggestions, this histogram is updated in addition to FX_URLBAR_MERINO_RESPONSE. The categories are the same.",
+            "mode": "NULLABLE",
+            "name": "fx_urlbar_merino_response_weather",
             "type": "STRING"
           },
           {
@@ -5916,6 +5928,12 @@
             "description": "Firefox: The type of the selected result in the URL bar popup. See UrlbarUtils.jsm:SELECTED_RESULT_TYPES for the result types.",
             "mode": "NULLABLE",
             "name": "fx_urlbar_selected_result_type_2",
+            "type": "STRING"
+          },
+          {
+            "description": "Firefox: Records how long the user is exposed to the zero-prefix results panel (ms)",
+            "mode": "NULLABLE",
+            "name": "fx_urlbar_zero_prefix_dwell_time_ms",
             "type": "STRING"
           },
           {
@@ -65200,6 +65218,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "A keyed uint recording how many times the user has blocked/dismissed Firefox Suggest weather results in the urlbar. The key is the 1-based index of each result.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "contextual_services_quicksuggest_block_weather",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "A keyed uint recording how many times the user has clicked on Firefox Suggests (a.k.a. Quick Suggest) results in the urlbar (not including the help button). The key is the 1-based index of each result.\n",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -65298,6 +65334,42 @@
                     ],
                     "mode": "REPEATED",
                     "name": "contextual_services_quicksuggest_click_sponsored_bestmatch",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "A keyed uint recording how many times the user has clicked on Firefox Suggests (a.k.a. Quick Suggest) weather results in the urlbar (not including the help and dismiss buttons). The key is the 1-based index of each result.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "contextual_services_quicksuggest_click_weather",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "A keyed uint recording how many times the user has been exposed to a Firefox Suggest weather result in the urlbar. The key is the 1-based index of each result.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "contextual_services_quicksuggest_exposure_weather",
                     "type": "RECORD"
                   },
                   {
@@ -65416,6 +65488,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "A keyed uint recording how many times the user has clicked on the help button in Firefox Suggests (a.k.a. Quick Suggest) weather results in the urlbar. The key is the 1-based index of each result.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "contextual_services_quicksuggest_help_weather",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "A keyed uint recording how many times the user has viewed Firefox Suggest (a.k.a. Quick Suggest) results in the urlbar. The key is the 1-based index of each result.\n",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -65514,6 +65604,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "contextual_services_quicksuggest_impression_sponsored_bestmatch",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "A keyed uint recording how many times the user has viewed Firefox Suggest (a.k.a. Quick Suggest) weather result in the urlbar. The key is the 1-based index of each result.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "contextual_services_quicksuggest_impression_weather",
                     "type": "RECORD"
                   },
                   {
@@ -70255,6 +70363,24 @@
                     "description": "Counts how many times url type was autofilled per engagement.\n",
                     "mode": "NULLABLE",
                     "name": "urlbar_impression_autofill_url",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Counts how many times the zero-prefix urlbar results panel was abandoned.\n",
+                    "mode": "NULLABLE",
+                    "name": "urlbar_zeroprefix_abandonment",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Counts how many times a result was picked in the zero-prefix urlbar results panel.\n",
+                    "mode": "NULLABLE",
+                    "name": "urlbar_zeroprefix_engagement",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "Counts how many times the zero-prefix urlbar results panel was shown to the user.\n",
+                    "mode": "NULLABLE",
+                    "name": "urlbar_zeroprefix_exposure",
                     "type": "INT64"
                   },
                   {
