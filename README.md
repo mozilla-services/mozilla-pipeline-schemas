@@ -567,6 +567,7 @@ schemas
 │   ├── x-contextual-feature-recommendation
 │   └── xfocsp-error-report
 ├── treeherder
+│   ├── classified
 │   ├── deletion-request
 │   └── events
 ├── viu-politica
@@ -579,6 +580,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-569 directories
+570 directories
 ```
 
