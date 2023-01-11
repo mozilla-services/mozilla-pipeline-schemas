@@ -6,12 +6,20 @@
     "payload": {
       "type": "object",
       "minProperties": 3,
-      "maxProperties": 3,
+      "maxProperties": 4,
       "properties": {
         "structVersion": {
           "type": "integer",
           "minimum": 1,
           "maximum": 1
+        },
+        "blockedModules": {
+          "description": "The names of third-party modules that the user has blocked. Windows only.",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 100,
+          "type": "array"
         },
         "modules": {
           "type": "array",
