@@ -64,7 +64,9 @@ schemas
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
-│   └── metrics
+│   ├── fog-validation
+│   ├── metrics
+│   └── pageload
 ├── firefox-installer
 │   └── install
 ├── firefox-launcher-process
@@ -580,6 +582,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-570 directories
+572 directories
 ```
 
