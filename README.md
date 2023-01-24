@@ -51,6 +51,7 @@ schemas
 │   └── amplitude-event
 ├── firefox-desktop
 │   ├── baseline
+│   ├── crash
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
@@ -62,6 +63,7 @@ schemas
 ├── firefox-desktop-background-update
 │   ├── background-update
 │   ├── baseline
+│   ├── crash
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
@@ -163,6 +165,7 @@ schemas
 │   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── crash
 │   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
@@ -184,6 +187,7 @@ schemas
 │   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── crash
 │   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
@@ -205,6 +209,7 @@ schemas
 │   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── crash
 │   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
@@ -226,6 +231,7 @@ schemas
 │   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── crash
 │   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
@@ -247,6 +253,7 @@ schemas
 │   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── crash
 │   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
@@ -278,6 +285,7 @@ schemas
 ├── org-mozilla-focus
 │   ├── activation
 │   ├── baseline
+│   ├── crash
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
@@ -286,6 +294,7 @@ schemas
 ├── org-mozilla-focus-beta
 │   ├── activation
 │   ├── baseline
+│   ├── crash
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
@@ -294,6 +303,7 @@ schemas
 ├── org-mozilla-focus-nightly
 │   ├── activation
 │   ├── baseline
+│   ├── crash
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
@@ -359,6 +369,7 @@ schemas
 ├── org-mozilla-klar
 │   ├── activation
 │   ├── baseline
+│   ├── crash
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
@@ -395,6 +406,7 @@ schemas
 │   └── tabs-sync
 ├── pine
 │   ├── baseline
+│   ├── crash
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
@@ -582,6 +594,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-572 directories
+584 directories
 ```
 
