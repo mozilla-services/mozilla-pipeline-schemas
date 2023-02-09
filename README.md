@@ -60,6 +60,12 @@ schemas
 │   ├── newtab
 │   ├── pageload
 │   └── pseudo-main
+├── firefox-desktop-background-tasks
+│   ├── background-tasks
+│   ├── baseline
+│   ├── deletion-request
+│   ├── events
+│   └── metrics
 ├── firefox-desktop-background-update
 │   ├── background-update
 │   ├── baseline
@@ -140,9 +146,11 @@ schemas
 │   ├── metrics
 │   └── usage
 ├── mozillavpn
+│   ├── baseline
 │   ├── deletion-request
 │   ├── events
-│   └── main
+│   ├── main
+│   └── metrics
 ├── mozphab
 │   ├── baseline
 │   ├── deletion-request
@@ -594,6 +602,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-584 directories
+592 directories
 ```
 
