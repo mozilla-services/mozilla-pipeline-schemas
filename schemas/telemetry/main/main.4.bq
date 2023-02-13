@@ -9183,6 +9183,12 @@
             "type": "STRING"
           },
           {
+            "description": "PLACES: Time to recalculate frecency for a chunk of pages (ms)",
+            "mode": "NULLABLE",
+            "name": "places_frecency_recalc_chunk_time_ms",
+            "type": "STRING"
+          },
+          {
             "description": "PLACES: Time to search the history library (ms)",
             "mode": "NULLABLE",
             "name": "places_history_library_search_time_ms",
@@ -66334,6 +66340,42 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "Number of bytes we transferred in private browsing keyed by \"contentType\"\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "networking_data_transferred_pb_per_content_type",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Number of bytes we transferred keyed by \"contentType\"\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "networking_data_transferred_per_content_type",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "How many KB of HTTP data transferred by type, there are some categories separated by keys based on 5 parameters:\n  1. normal browsing or private browsing\n  2. system principal or not\n  3. first party or third party\n  4. class of service (Leader/Background/Others)\n  5. tracking classification (Basic/Content/FingerprintingContent)\n\nAvailable keys are:\n  \"Y0_N1Sys\",\n  \"Y1_N1\",\n  \"Y2_N3Oth\",\n  \"Y3_N3BasicLead\",\n  \"Y4_N3BasicBg\",\n  \"Y5_N3BasicOth\",\n  \"Y6_N3ContentLead\",\n  \"Y7_N3ContentBg\",\n  \"Y8_N3ContentOth\",\n  \"Y9_N3FpLead\",\n  \"Y10_N3FpBg\",\n  \"Y11_N3FpOth\",\n  \"Y12_P1Sys\",\n  \"Y13_P1\",\n  \"Y14_P3Oth\",\n  \"Y15_P3BasicLead\",\n  \"Y16_P3BasicBg\",\n  \"Y17_P3BasicOth\",\n  \"Y18_P3ContentLead\",\n  \"Y19_P3ContentBg\",\n  \"Y20_P3ContentOth\",\n  \"Y21_P3FpLead\",\n  \"Y22_P3FpBg\",\n  \"Y23_P3FpOth\"\n",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -69868,6 +69910,12 @@
                     "type": "BOOL"
                   },
                   {
+                    "description": "Number of pages that need a frecency recalculation.\n",
+                    "mode": "NULLABLE",
+                    "name": "places_pages_need_frecency_recalculation",
+                    "type": "INT64"
+                  },
+                  {
                     "description": "Number of sponsored visits that could not find their triggering URL in history. We expect this to be a small number just due to the navigation layer manipulating URLs. A large or growing value may be a concern.\n",
                     "mode": "NULLABLE",
                     "name": "places_sponsored_visit_no_triggering_url",
@@ -70549,6 +70597,12 @@
                     "description": "A uint recording the number of abandoned engagements in the urlbar. An abandonment occurs when the user begins using the urlbar but stops before completing the engagement. This can happen when the user clicks outside the urlbar to focus a different part of the window. It can also happen when the user switches to another window while the urlbar is focused.\n",
                     "mode": "NULLABLE",
                     "name": "urlbar_abandonment",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "A uint recording the deletion count for autofilled string in the urlbar. This occurs when the user deletes whole autofilled string by BACKSPACE or DELETE key while the autofilled string is selected.\n",
+                    "mode": "NULLABLE",
+                    "name": "urlbar_autofill_deletion",
                     "type": "INT64"
                   },
                   {
