@@ -398,6 +398,18 @@
             "type": "INT64"
           },
           {
+            "description": "How many pings were dropped because we found them already in-flight.\n",
+            "mode": "NULLABLE",
+            "name": "glean_upload_in_flight_pings_dropped",
+            "type": "INT64"
+          },
+          {
+            "description": "How many ping upload responses did we not record as a success or failure\n(in `glean.upload.send_success` or `glean.upload.send_failue`,\nrespectively) due to an inconsistency in our internal bookkeeping?\n",
+            "mode": "NULLABLE",
+            "name": "glean_upload_missing_send_ids",
+            "type": "INT64"
+          },
+          {
             "description": "The total number of pending pings at startup.\nThis does not include deletion-request pings.\n",
             "mode": "NULLABLE",
             "name": "glean_upload_pending_pings",
@@ -559,6 +571,12 @@
       },
       {
         "fields": [
+          {
+            "description": "Last time the background update was triggered.\n",
+            "mode": "NULLABLE",
+            "name": "background_update_time_last_update_scheduled",
+            "type": "STRING"
+          },
           {
             "description": "The hour of the first run of the application.\n",
             "mode": "NULLABLE",
@@ -1960,6 +1978,18 @@
         ],
         "mode": "NULLABLE",
         "name": "string",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "mode": "REPEATED",
+            "name": "background_update_reasons_to_not_update",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "string_list",
         "type": "RECORD"
       },
       {
