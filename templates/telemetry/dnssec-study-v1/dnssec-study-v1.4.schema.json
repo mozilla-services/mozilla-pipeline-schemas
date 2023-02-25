@@ -187,7 +187,12 @@
               }
             },
             "udpRRSIG": {
-              "description": "This property is deprecated and no longer used",
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "udp-RRSIG-U": {
               "type": "array",
               "items": {
                 "type": "integer"
@@ -225,6 +230,12 @@
               }
             },
             "udpDS": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "udp-DSDO": {
               "type": "array",
               "items": {
                 "type": "integer"
@@ -862,7 +873,10 @@
               "minimum": 0
             },
             "udpRRSIG": {
-              "description": "This property is deprecated and no longer used",
+              "type": "number",
+              "minimum": 0
+            },
+            "udp-RRSIG-U": {
               "type": "number",
               "minimum": 0
             },
@@ -888,6 +902,10 @@
               "minimum": 0
             },
             "udpDS": {
+              "type": "number",
+              "minimum": 0
+            },
+            "udp-DSDO": {
               "type": "number",
               "minimum": 0
             },
@@ -1549,14 +1567,43 @@
               }
             },
             "udpRRSIG": {
-              "description": "This property is deprecated and no longer used",
-              "type": "number",
-              "minimum": 0
+              "type": "object",
+              "properties": {
+                "timestamp": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "order": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            },
+            "udp-RRSIG-U": {
+              "type": "object",
+              "properties": {
+                "timestamp": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "order": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
             },
             "tcpRRSIG": {
-              "description": "This property is deprecated and no longer used",
-              "type": "number",
-              "minimum": 0
+              "type": "object",
+              "properties": {
+                "timestamp": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "order": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
             },
             "udpDNSKEY": {
               "type": "object",
@@ -1611,6 +1658,19 @@
               }
             },
             "udpDS": {
+              "type": "object",
+              "properties": {
+                "timestamp": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "order": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            },
+            "udp-DSDO": {
               "type": "object",
               "properties": {
                 "timestamp": {
