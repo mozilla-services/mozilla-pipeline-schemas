@@ -1617,7 +1617,27 @@
               "minimum": 0,
               "type": "number"
             },
+            "udp-A-N-prefix": {
+              "minimum": 0,
+              "type": "number"
+            },
             "udp-A-U": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "udp-A-afirst": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "udp-A-afirst-U": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "udp-A-alast": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "udp-A-alast-U": {
               "minimum": 0,
               "type": "number"
             },
@@ -1661,6 +1681,10 @@
               "minimum": 0,
               "type": "number"
             },
+            "udp-DSDO": {
+              "minimum": 0,
+              "type": "number"
+            },
             "udp-HTTPS": {
               "minimum": 0,
               "type": "number"
@@ -1685,6 +1709,22 @@
               "minimum": 0,
               "type": "number"
             },
+            "udp-NEWONE-afirst": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "udp-NEWONE-afirst-U": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "udp-NEWONE-alast": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "udp-NEWONE-alast-U": {
+              "minimum": 0,
+              "type": "number"
+            },
             "udp-NEWTHREE": {
               "minimum": 0,
               "type": "number"
@@ -1698,6 +1738,10 @@
               "type": "number"
             },
             "udp-NEWTWO-U": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "udp-RRSIG-U": {
               "minimum": 0,
               "type": "number"
             },
@@ -1811,7 +1855,6 @@
               "type": "number"
             },
             "udpRRSIG": {
-              "description": "This property is deprecated and no longer used",
               "minimum": 0,
               "type": "number"
             },
@@ -1828,6 +1871,10 @@
               "type": "number"
             },
             "webext-A-U": {
+              "minimum": 0,
+              "type": "number"
+            },
+            "webext-A-prefix": {
               "minimum": 0,
               "type": "number"
             }
@@ -2174,7 +2221,37 @@
               },
               "type": "array"
             },
+            "udp-A-N-prefix": {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
             "udp-A-U": {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            "udp-A-afirst": {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            "udp-A-afirst-U": {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            "udp-A-alast": {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            "udp-A-alast-U": {
               "items": {
                 "type": "integer"
               },
@@ -2240,6 +2317,12 @@
               },
               "type": "array"
             },
+            "udp-DSDO": {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
             "udp-HTTPS": {
               "items": {
                 "type": "integer"
@@ -2276,6 +2359,30 @@
               },
               "type": "array"
             },
+            "udp-NEWONE-afirst": {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            "udp-NEWONE-afirst-U": {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            "udp-NEWONE-alast": {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            "udp-NEWONE-alast-U": {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
             "udp-NEWTHREE": {
               "items": {
                 "type": "integer"
@@ -2295,6 +2402,12 @@
               "type": "array"
             },
             "udp-NEWTWO-U": {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            "udp-RRSIG-U": {
               "items": {
                 "type": "integer"
               },
@@ -2464,7 +2577,6 @@
               "type": "array"
             },
             "udpRRSIG": {
-              "description": "This property is deprecated and no longer used",
               "items": {
                 "type": "integer"
               },
@@ -2495,6 +2607,13 @@
                 "type": "string"
               },
               "type": "array"
+            },
+            "webext-A-prefix": {
+              "description": "Results from dns.resolve() with a prefixed domain name we control",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
             }
           },
           "type": "object"
@@ -2517,6 +2636,1572 @@
             "type": "object"
           },
           "type": "array"
+        },
+        "dnsQueryInfo": {
+          "description": "parent object for DNS query attempts for each RRTYPE and socket type",
+          "properties": {
+            "tcp-A": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcp-A-N": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcp-A-N-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcp-A-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcp-ACD": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcp-ACD-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcp-ADO": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcp-ADO-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcp-ADOCD": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcp-ADOCD-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcp-DNSKEYDO": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcp-DNSKEYDO-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcp-DS": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcp-DS-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcp-HTTPS": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcp-HTTPS-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcp-NEWFOUR": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcp-NEWFOUR-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcp-NEWONE": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcp-NEWONE-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcp-NEWTHREE": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcp-NEWTHREE-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcp-NEWTWO": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcp-NEWTWO-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcp-SMIMEA": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcp-SMIMEA-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcpA": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcpA-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcpACD": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcpACD-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcpADO": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcpADO-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcpADOCD": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcpADOCD-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcpAN": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcpAN-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcpDNSKEY": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcpDNSKEY-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcpDS": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcpDS-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcpHTTPS": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcpHTTPS-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcpNEWFOUR": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcpNEWFOUR-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcpNEWONE": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcpNEWONE-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcpNEWTHREE": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcpNEWTHREE-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcpNEWTWO": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcpNEWTWO-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcpRRSIG": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcpSMIMEA": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "tcpSMIMEA-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-A": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-A-N": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-A-N-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-A-N-prefix": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-A-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-A-afirst": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-A-afirst-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-A-alast": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-A-alast-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-ACD": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-ACD-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-ADO": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-ADO-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-ADOCD": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-ADOCD-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-DNSKEYDO": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-DNSKEYDO-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-DS": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-DS-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-DSDO": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-HTTPS": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-HTTPS-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-NEWFOUR": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-NEWFOUR-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-NEWONE": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-NEWONE-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-NEWONE-afirst": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-NEWONE-afirst-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-NEWONE-alast": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-NEWONE-alast-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-NEWTHREE": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-NEWTHREE-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-NEWTWO": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-NEWTWO-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-RRSIG-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-SMIMEA": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udp-SMIMEA-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udpA": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udpA-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udpACD": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udpACD-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udpADO": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udpADO-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udpADOCD": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udpADOCD-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udpAN": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udpAN-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udpDNSKEY": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udpDNSKEY-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udpDS": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udpDS-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udpHTTPS": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udpHTTPS-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udpNEWFOUR": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udpNEWFOUR-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udpNEWONE": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udpNEWONE-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udpNEWTHREE": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udpNEWTHREE-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udpNEWTWO": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udpNEWTWO-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udpRRSIG": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udpSMIMEA": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "udpSMIMEA-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "webext-A": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "webext-A-U": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "webext-A-prefix": {
+              "properties": {
+                "order": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
         },
         "errorAttempt": {
           "minimum": 0,
