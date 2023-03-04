@@ -54,6 +54,7 @@ schemas
 │   ├── crash
 │   ├── deletion-request
 │   ├── events
+│   ├── first-startup
 │   ├── fog-validation
 │   ├── metrics
 │   ├── new-metric-capture-emulation
@@ -171,7 +172,6 @@ schemas
 │   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
-│   ├── crash
 │   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
@@ -193,7 +193,6 @@ schemas
 │   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
-│   ├── crash
 │   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
@@ -215,7 +214,6 @@ schemas
 │   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
-│   ├── crash
 │   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
@@ -237,7 +235,6 @@ schemas
 │   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
-│   ├── crash
 │   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
@@ -259,7 +256,6 @@ schemas
 │   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
-│   ├── crash
 │   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
@@ -291,7 +287,6 @@ schemas
 ├── org-mozilla-focus
 │   ├── activation
 │   ├── baseline
-│   ├── crash
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
@@ -300,7 +295,6 @@ schemas
 ├── org-mozilla-focus-beta
 │   ├── activation
 │   ├── baseline
-│   ├── crash
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
@@ -309,7 +303,6 @@ schemas
 ├── org-mozilla-focus-nightly
 │   ├── activation
 │   ├── baseline
-│   ├── crash
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
@@ -375,7 +368,6 @@ schemas
 ├── org-mozilla-klar
 │   ├── activation
 │   ├── baseline
-│   ├── crash
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
@@ -412,7 +404,6 @@ schemas
 │   └── tabs-sync
 ├── pine
 │   ├── baseline
-│   ├── crash
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
@@ -600,6 +591,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-590 directories
+581 directories
 ```
 

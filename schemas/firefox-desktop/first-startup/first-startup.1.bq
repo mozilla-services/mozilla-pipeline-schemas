@@ -301,32 +301,6 @@
       {
         "fields": [
           {
-            "description": "If true, the crash occurred during process startup.\n",
-            "mode": "NULLABLE",
-            "name": "crash_startup",
-            "type": "BOOL"
-          }
-        ],
-        "mode": "NULLABLE",
-        "name": "boolean",
-        "type": "RECORD"
-      },
-      {
-        "fields": [
-          {
-            "description": "The time at which the crash occurred.\n",
-            "mode": "NULLABLE",
-            "name": "crash_time",
-            "type": "STRING"
-          }
-        ],
-        "mode": "NULLABLE",
-        "name": "datetime",
-        "type": "RECORD"
-      },
-      {
-        "fields": [
-          {
             "description": "Counts the number of times a metric was set with an invalid label.\nThe labels are the `category.name` identifier of the metric.\n",
             "fields": [
               {
@@ -406,39 +380,20 @@
       {
         "fields": [
           {
-            "description": "The type of process that experienced a crash. See the full list of options [here](https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/data/crash-ping.html#process-types).\n",
+            "description": "Number of milliseconds the FirstStartup service took to run.\n",
             "mode": "NULLABLE",
-            "name": "crash_process_type",
-            "type": "STRING"
-          }
-        ],
-        "mode": "NULLABLE",
-        "name": "string",
-        "type": "RECORD"
-      },
-      {
-        "fields": [
+            "name": "first_startup_elapsed",
+            "type": "INT64"
+          },
           {
-            "description": "The application uptime. This is equivalent to the legacy crash ping's `UptimeTS` field.\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "time_unit",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "INT64"
-              }
-            ],
+            "description": "Status of the FirstStartup service, which runs\npost-install/early-startup in Firefox.\n",
             "mode": "NULLABLE",
-            "name": "crash_uptime",
-            "type": "RECORD"
+            "name": "first_startup_status_code",
+            "type": "INT64"
           }
         ],
         "mode": "NULLABLE",
-        "name": "timespan",
+        "name": "quantity",
         "type": "RECORD"
       }
     ],
