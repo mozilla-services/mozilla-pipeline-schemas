@@ -173,6 +173,7 @@ schemas
 │   ├── baseline
 │   ├── bookmarks-sync
 │   ├── client-deduplication
+│   ├── crash
 │   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
@@ -195,6 +196,7 @@ schemas
 │   ├── baseline
 │   ├── bookmarks-sync
 │   ├── client-deduplication
+│   ├── crash
 │   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
@@ -217,6 +219,7 @@ schemas
 │   ├── baseline
 │   ├── bookmarks-sync
 │   ├── client-deduplication
+│   ├── crash
 │   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
@@ -239,6 +242,7 @@ schemas
 │   ├── baseline
 │   ├── bookmarks-sync
 │   ├── client-deduplication
+│   ├── crash
 │   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
@@ -261,6 +265,7 @@ schemas
 │   ├── baseline
 │   ├── bookmarks-sync
 │   ├── client-deduplication
+│   ├── crash
 │   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
@@ -292,6 +297,7 @@ schemas
 ├── org-mozilla-focus
 │   ├── activation
 │   ├── baseline
+│   ├── crash
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
@@ -300,6 +306,7 @@ schemas
 ├── org-mozilla-focus-beta
 │   ├── activation
 │   ├── baseline
+│   ├── crash
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
@@ -308,6 +315,7 @@ schemas
 ├── org-mozilla-focus-nightly
 │   ├── activation
 │   ├── baseline
+│   ├── crash
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
@@ -373,6 +381,7 @@ schemas
 ├── org-mozilla-klar
 │   ├── activation
 │   ├── baseline
+│   ├── crash
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
@@ -386,6 +395,7 @@ schemas
 │   └── usage
 ├── org-mozilla-reference-browser
 │   ├── baseline
+│   ├── crash
 │   ├── deletion-request
 │   ├── events
 │   └── metrics
@@ -596,6 +606,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-586 directories
+596 directories
 ```
 

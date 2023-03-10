@@ -1747,6 +1747,54 @@
               {
                 "fields": [
                   {
+                    "description": "Will always be false if attribution.provenance.zone_id.data_exists is false. Will be true if the provenance data indicates that the :Zone.Identifier Alternate Data Stream existed on the installer.\n",
+                    "mode": "NULLABLE",
+                    "name": "attribution_provenance_ads_exists",
+                    "type": "BOOL"
+                  },
+                  {
+                    "description": "Will be true if the \"zoneIdProvenanceData\" file is present in the installation directory and we were able to successfully read it.\n",
+                    "mode": "NULLABLE",
+                    "name": "attribution_provenance_data_exists",
+                    "type": "BOOL"
+                  },
+                  {
+                    "description": "The file system that the installer resided on at installation time. Possible values are: \"NTFS\", \"FAT32\", \"other\". In error cases, it can also be \"missing\", \"error\" or \"readIniError\". Only sent if attribution.provenance.zone_id.data_exists is true.\n",
+                    "mode": "NULLABLE",
+                    "name": "attribution_provenance_file_system",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Will be true if the zone identifier ADS contained a host URL. Will be false if a host URL is specified, but it isn't a valid URL. Only sent if attribution.provenance.zone_id.ads_exists is true.\n",
+                    "mode": "NULLABLE",
+                    "name": "attribution_provenance_host_url_exists",
+                    "type": "BOOL"
+                  },
+                  {
+                    "description": "Will be true if the host URL from the zone identifier ADS appeared to be a Mozilla URL. Only sent if attribution.provenance.zone_id.host_url_exists is true.\n",
+                    "mode": "NULLABLE",
+                    "name": "attribution_provenance_host_url_is_mozilla",
+                    "type": "BOOL"
+                  },
+                  {
+                    "description": "Will be true if the zone identifier ADS contained a referrer URL. Will be false if a referrer URL is specified, but it isn't a valid URL. Only sent if attribution.provenance.zone_id.ads_exists is true.\n",
+                    "mode": "NULLABLE",
+                    "name": "attribution_provenance_referrer_url_exists",
+                    "type": "BOOL"
+                  },
+                  {
+                    "description": "Will be true if the referrer URL from the zone identifier ADS appeared to be a Mozilla URL. Only sent if attribution.provenance.zone_id.referrer_url_exists is true.\n",
+                    "mode": "NULLABLE",
+                    "name": "attribution_provenance_referrer_url_is_mozilla",
+                    "type": "BOOL"
+                  },
+                  {
+                    "description": "The zone identifier in the installer's :Zone.Identifier ADS. Possible values are integers between 0 and 4, inclusive. In error cases, it can also be \"unexpected\", \"missing\", \"error\", or \"readIniError\". Only sent if attribution.provenance.zone_id.ads_exists is true.\n",
+                    "mode": "NULLABLE",
+                    "name": "attribution_provenance_security_zone",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "How the profile was selected during startup. One of the following reasons:\n  unknown:\n    Generally should not happen, set as a default in case no other reason\n    occured.\n  profile-manager:\n    The profile was selected by the profile manager.\n  profile-reset:\n    The profile was selected for reset, normally this would mean a restart.\n  restart:\n    The user restarted the application, the same profile as previous will\n    be used.\n  argument-profile:\n    The profile was selected by the --profile command line argument.\n  argument-p:\n    The profile was selected by the -p command line argument.\n  firstrun-claimed-default:\n    A first run of a dedicated profiles build chose the old default\n    profile to be the default for this install.\n  firstrun-skipped-default:\n    A first run of a dedicated profiles build skipped over the old default\n    profile and created a new profile.\n  restart-claimed-default:\n    A first run of a dedicated profiles build after a restart chose the\n    old defaul…",
                     "mode": "NULLABLE",
                     "name": "startup_profile_selection_reason",
