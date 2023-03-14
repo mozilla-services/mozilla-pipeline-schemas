@@ -94,6 +94,17 @@
               "decrypted_field_path"
             ]
           }
+        },
+        "sample_id_source_uuid_attribute": {
+          "description": "If specified, sample_id will be calculated from a hash of the specified attribute if it is a valid UUID after removing curly brackets; if neither this nor sample_id_source_uuid_payload_path are specified, the client_id attribute will be used; implemented for DENG-547",
+          "type": "string"
+        },
+        "sample_id_source_uuid_payload_path": {
+          "description": "If specified and sample_id was not set due to sample_id_source_uuid_attribute, then sample_id will be calculated from a hash of the specified payload path; this is specified as a list strings to allow indicating nested fields, so for example metrics.uuid.legacy_ids_client_id would be specified as [\"metrics\",\"uuid\",\"legacy_ids_client_id\"]; if neither this nor sample_id_source_uuid_attribute are specified, the client_id attribute will be used; implemented for DENG-547",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         }
       }
     }
