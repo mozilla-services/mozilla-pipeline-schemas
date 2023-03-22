@@ -297,6 +297,7 @@ schemas
 ├── org-mozilla-focus
 │   ├── activation
 │   ├── baseline
+│   ├── cookie-banner-report-site
 │   ├── crash
 │   ├── deletion-request
 │   ├── events
@@ -306,6 +307,7 @@ schemas
 ├── org-mozilla-focus-beta
 │   ├── activation
 │   ├── baseline
+│   ├── cookie-banner-report-site
 │   ├── crash
 │   ├── deletion-request
 │   ├── events
@@ -315,6 +317,7 @@ schemas
 ├── org-mozilla-focus-nightly
 │   ├── activation
 │   ├── baseline
+│   ├── cookie-banner-report-site
 │   ├── crash
 │   ├── deletion-request
 │   ├── events
@@ -381,6 +384,7 @@ schemas
 ├── org-mozilla-klar
 │   ├── activation
 │   ├── baseline
+│   ├── cookie-banner-report-site
 │   ├── crash
 │   ├── deletion-request
 │   ├── events
@@ -606,6 +610,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-596 directories
+600 directories
 ```
 
