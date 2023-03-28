@@ -403,6 +403,11 @@
                           "required": [
                             "reconciled"
                           ]
+                        },
+                        {
+                          "required": [
+                            "failedReasons"
+                          ]
                         }
                       ],
                       "properties": {
@@ -413,6 +418,26 @@
                         "failed": {
                           "minimum": 0,
                           "type": "integer"
+                        },
+                        "failedReasons": {
+                          "description": "A named count for the most commonly occuring reasons an incoming record failed to sync",
+                          "items": {
+                            "properties": {
+                              "count": {
+                                "type": "integer"
+                              },
+                              "name": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "count"
+                            ],
+                            "type": "object"
+                          },
+                          "minItems": 1,
+                          "type": "array"
                         },
                         "newFailed": {
                           "minimum": 0,
@@ -439,6 +464,26 @@
                           "failed": {
                             "minimum": 0,
                             "type": "integer"
+                          },
+                          "failedReasons": {
+                            "description": "A named count for the most commonly occuring reasons an outgoing record failed to sync",
+                            "items": {
+                              "properties": {
+                                "count": {
+                                  "type": "integer"
+                                },
+                                "name": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "count"
+                              ],
+                              "type": "object"
+                            },
+                            "minItems": 1,
+                            "type": "array"
                           },
                           "sent": {
                             "minimum": 1,
