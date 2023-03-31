@@ -173,6 +173,7 @@ schemas
 │   ├── baseline
 │   ├── bookmarks-sync
 │   ├── client-deduplication
+│   ├── cookie-banner-report-site
 │   ├── crash
 │   ├── creditcards-sync
 │   ├── deletion-request
@@ -196,6 +197,7 @@ schemas
 │   ├── baseline
 │   ├── bookmarks-sync
 │   ├── client-deduplication
+│   ├── cookie-banner-report-site
 │   ├── crash
 │   ├── creditcards-sync
 │   ├── deletion-request
@@ -219,6 +221,7 @@ schemas
 │   ├── baseline
 │   ├── bookmarks-sync
 │   ├── client-deduplication
+│   ├── cookie-banner-report-site
 │   ├── crash
 │   ├── creditcards-sync
 │   ├── deletion-request
@@ -242,6 +245,7 @@ schemas
 │   ├── baseline
 │   ├── bookmarks-sync
 │   ├── client-deduplication
+│   ├── cookie-banner-report-site
 │   ├── crash
 │   ├── creditcards-sync
 │   ├── deletion-request
@@ -265,6 +269,7 @@ schemas
 │   ├── baseline
 │   ├── bookmarks-sync
 │   ├── client-deduplication
+│   ├── cookie-banner-report-site
 │   ├── crash
 │   ├── creditcards-sync
 │   ├── deletion-request
@@ -610,6 +615,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-600 directories
+605 directories
 ```
 
