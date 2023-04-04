@@ -311,6 +311,18 @@
             "mode": "NULLABLE",
             "name": "glean_error_preinit_tasks_timeout",
             "type": "BOOL"
+          },
+          {
+            "description": "The status of whether the VPN is activated on device start\n",
+            "mode": "NULLABLE",
+            "name": "settings_connect_on_startup_active",
+            "type": "BOOL"
+          },
+          {
+            "description": "Status of whether app is being used in language of the operating system\n",
+            "mode": "NULLABLE",
+            "name": "settings_using_system_language",
+            "type": "BOOL"
           }
         ],
         "mode": "NULLABLE",
@@ -832,6 +844,71 @@
             ],
             "mode": "NULLABLE",
             "name": "glean_validation_shutdown_wait",
+            "type": "RECORD"
+          },
+          {
+            "description": "The time the app took between starting and rendering the main screen.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "performance_time_to_main_screen",
             "type": "RECORD"
           }
         ],

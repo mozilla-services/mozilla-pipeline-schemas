@@ -149,7 +149,8 @@ schemas
 ├── mozillavpn
 │   ├── deletion-request
 │   ├── events
-│   └── main
+│   ├── main
+│   └── vpnsession
 ├── mozphab
 │   ├── baseline
 │   ├── deletion-request
@@ -292,7 +293,8 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── main
-│   └── metrics
+│   ├── metrics
+│   └── vpnsession
 ├── org-mozilla-firefoxreality
 │   ├── baseline
 │   ├── deletion-request
@@ -615,6 +617,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-605 directories
+607 directories
 ```
 
