@@ -27255,6 +27255,42 @@
             "type": "STRING"
           },
           {
+            "description": "Amount of time it takes to evaluate DNR rules.",
+            "mode": "NULLABLE",
+            "name": "webext_dnr_evaluate_rules_ms",
+            "type": "STRING"
+          },
+          {
+            "description": "Amount of data read from the DNR startup cache file.",
+            "mode": "NULLABLE",
+            "name": "webext_dnr_startupcache_read_bytes",
+            "type": "STRING"
+          },
+          {
+            "description": "Amount of time it takes to read data from the DNR startup cache file.",
+            "mode": "NULLABLE",
+            "name": "webext_dnr_startupcache_read_ms",
+            "type": "STRING"
+          },
+          {
+            "description": "Amount of data written to the DNR startup cache file.",
+            "mode": "NULLABLE",
+            "name": "webext_dnr_startupcache_write_bytes",
+            "type": "STRING"
+          },
+          {
+            "description": "Amount of time it takes to write data to the DNR startup cache file.",
+            "mode": "NULLABLE",
+            "name": "webext_dnr_startupcache_write_ms",
+            "type": "STRING"
+          },
+          {
+            "description": "Amount of time it takes to validate DNR rules.",
+            "mode": "NULLABLE",
+            "name": "webext_dnr_validate_rules_ms",
+            "type": "STRING"
+          },
+          {
             "description": "The number of times an event page hit the idle timeout and results in one of the categories, keyed by addon id.",
             "mode": "NULLABLE",
             "name": "webext_eventpage_idle_result_count",
@@ -66490,6 +66526,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "Counters for startup cache data hits or misses on initializating DNR rules for extensions loaded on application startup. The expected keys are 'hit' and 'miss'. This probe is mirrored from a Glean metric with the same name.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "extensions_apis_dnr_startup_cache_entries",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "The amount of times an unexpected error has been raised while reading the Extensions StartupCache file\n",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -69892,6 +69946,12 @@
                     "type": "BOOL"
                   },
                   {
+                    "description": "Max amount of DNR rules being evaluated.\n",
+                    "mode": "NULLABLE",
+                    "name": "extensions_apis_dnr_evaluate_rules_count_max",
+                    "type": "INT64"
+                  },
+                  {
                     "description": "Time to load and deserialize the extensions startupCache data. This scalar is mirroring the never expiring Glean metric named extensions.startup_cache_load_time, which is defined in toolkit/components/extensions/metrics.yaml. Unlike the related glean metric, this scalar has an expiring date, set as a deadline to consider removing the mirrored scalar in favor to just use the Glean metric).\n",
                     "mode": "NULLABLE",
                     "name": "extensions_startup_cache_load_time",
@@ -70538,6 +70598,12 @@
                     "mode": "NULLABLE",
                     "name": "policies_count",
                     "type": "INT64"
+                  },
+                  {
+                    "description": "Attempt to determine if the user is an enterprise user based on various signals.",
+                    "mode": "NULLABLE",
+                    "name": "policies_is_enterprise",
+                    "type": "BOOL"
                   },
                   {
                     "description": "Impossibly large CPU time values that were discarded.\n",
