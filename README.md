@@ -373,6 +373,12 @@ schemas
 │   ├── temp-sync
 │   ├── temp-tabs-sync
 │   └── topsites-impression
+├── org-mozilla-ios-firefoxvpn
+│   ├── baseline
+│   ├── deletion-request
+│   ├── events
+│   ├── metrics
+│   └── vpnsession
 ├── org-mozilla-ios-focus
 │   ├── baseline
 │   ├── deletion-request
@@ -617,6 +623,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-607 directories
+613 directories
 ```
 
