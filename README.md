@@ -48,7 +48,7 @@ On MacOS, these prerequisites can be installed using [homebrew](https://brew.sh/
 brew install cmake
 brew install jq
 brew install python
-brew cask install docker
+brew install --cask docker
 ```
 
 ### CMake Build Instructions
