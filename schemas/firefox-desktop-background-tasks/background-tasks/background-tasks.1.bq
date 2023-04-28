@@ -301,6 +301,67 @@
       {
         "fields": [
           {
+            "description": "Whether the target directory removal succeeded.",
+            "mode": "NULLABLE",
+            "name": "background_tasks_rmdir_base_succeeded",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether removing the suffixed directories ever failed.",
+            "mode": "NULLABLE",
+            "name": "background_tasks_rmdir_base_suffix_ever_failed",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether this task is the first one removing the directory.\n",
+            "mode": "NULLABLE",
+            "name": "background_tasks_rmdir_base_was_first",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the target directory removal succeeded.",
+            "mode": "NULLABLE",
+            "name": "background_tasks_rmdir_http_cache_succeeded",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether removing the suffixed directories ever failed.",
+            "mode": "NULLABLE",
+            "name": "background_tasks_rmdir_http_cache_suffix_ever_failed",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether this task is the first one removing the directory.\n",
+            "mode": "NULLABLE",
+            "name": "background_tasks_rmdir_http_cache_was_first",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the target directory removal succeeded.",
+            "mode": "NULLABLE",
+            "name": "background_tasks_rmdir_quota_succeeded",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether removing the suffixed directories ever failed.",
+            "mode": "NULLABLE",
+            "name": "background_tasks_rmdir_quota_suffix_ever_failed",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether this task is the first one removing the directory.\n",
+            "mode": "NULLABLE",
+            "name": "background_tasks_rmdir_quota_was_first",
+            "type": "BOOL"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "boolean",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
             "description": "Counts the number of times a metric was set with an invalid label.\nThe labels are the `category.name` identifier of the metric.\n",
             "fields": [
               {
@@ -375,6 +436,85 @@
         ],
         "mode": "NULLABLE",
         "name": "labeled_counter",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The amount of time the task took for removing the directories.\n",
+            "mode": "NULLABLE",
+            "name": "background_tasks_rmdir_base_elapsed_ms",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of the removed entries at each call, even if the target directory itself couldn't be removed.\n",
+            "mode": "NULLABLE",
+            "name": "background_tasks_rmdir_base_removal_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of retries before the task started removing the child directory. This can happen when the target directory doesn't exist.\n",
+            "mode": "NULLABLE",
+            "name": "background_tasks_rmdir_base_retry_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of the removed entries of the suffixed directories.\n",
+            "mode": "NULLABLE",
+            "name": "background_tasks_rmdir_base_suffix_removal_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The amount of time the task took for removing the directories.\n",
+            "mode": "NULLABLE",
+            "name": "background_tasks_rmdir_http_cache_elapsed_ms",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of the removed entries at each call, even if the target directory itself couldn't be removed.\n",
+            "mode": "NULLABLE",
+            "name": "background_tasks_rmdir_http_cache_removal_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of retries before the task started removing the child directory. This can happen when the target directory doesn't exist.\n",
+            "mode": "NULLABLE",
+            "name": "background_tasks_rmdir_http_cache_retry_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of the removed entries of the suffixed directories.\n",
+            "mode": "NULLABLE",
+            "name": "background_tasks_rmdir_http_cache_suffix_removal_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The amount of time the task took for removing the directories.\n",
+            "mode": "NULLABLE",
+            "name": "background_tasks_rmdir_quota_elapsed_ms",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of the removed entries at each call, even if the target directory itself couldn't be removed.\n",
+            "mode": "NULLABLE",
+            "name": "background_tasks_rmdir_quota_removal_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of retries before the task started removing the child directory. This can happen when the target directory doesn't exist.\n",
+            "mode": "NULLABLE",
+            "name": "background_tasks_rmdir_quota_retry_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of the removed entries of the suffixed directories.\n",
+            "mode": "NULLABLE",
+            "name": "background_tasks_rmdir_quota_suffix_removal_count",
+            "type": "INT64"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "quantity",
         "type": "RECORD"
       }
     ],
