@@ -147,6 +147,7 @@ schemas
 │   ├── metrics
 │   └── usage
 ├── mozillavpn
+│   ├── daemonsession
 │   ├── deletion-request
 │   ├── events
 │   ├── main
@@ -290,6 +291,7 @@ schemas
 │   └── topsites-impression
 ├── org-mozilla-firefox-vpn
 │   ├── baseline
+│   ├── daemonsession
 │   ├── deletion-request
 │   ├── events
 │   ├── main
@@ -375,6 +377,7 @@ schemas
 │   └── topsites-impression
 ├── org-mozilla-ios-firefoxvpn
 │   ├── baseline
+│   ├── daemonsession
 │   ├── deletion-request
 │   ├── events
 │   ├── metrics
@@ -623,6 +626,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-613 directories
+616 directories
 ```
 
