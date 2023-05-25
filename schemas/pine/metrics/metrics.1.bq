@@ -446,6 +446,12 @@
             "type": "INT64"
           },
           {
+            "description": "How often something went awry within\n`AboutWelcome.submitGleanPingForPing`, preventing ping submission.\n",
+            "mode": "NULLABLE",
+            "name": "messaging_system_glean_ping_for_ping_failures",
+            "type": "INT64"
+          },
+          {
             "description": "How many times PDF Viewer was used.\n",
             "mode": "NULLABLE",
             "name": "pdfjs_used",
@@ -1162,6 +1168,24 @@
             ],
             "mode": "REPEATED",
             "name": "ipc_sent_messages_parent_inactive",
+            "type": "RECORD"
+          },
+          {
+            "description": "We received a ping with non-scalar data on a field of this name.\nIf this is existing pre-PingCentre-replacement data, you may need to\naugment the logic in\n`AboutWelcome.submitGleanPingForPing` like the other `handledKeys`.\nIf this is for new, post-PingCentre-replacement data, you should\nprobably prefer a flat structure.\nIf you're unsure, please ask in\n[the #glean channel](https://chat.mozilla.org/#/room/#glean:mozilla.org).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "messaging_system_invalid_nested_data",
             "type": "RECORD"
           },
           {

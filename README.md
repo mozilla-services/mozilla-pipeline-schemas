@@ -56,6 +56,7 @@ schemas
 │   ├── events
 │   ├── first-startup
 │   ├── fog-validation
+│   ├── messaging-system
 │   ├── metrics
 │   ├── new-metric-capture-emulation
 │   ├── newtab
@@ -442,6 +443,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
+│   ├── messaging-system
 │   ├── metrics
 │   ├── new-metric-capture-emulation
 │   ├── newtab
@@ -626,6 +628,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-616 directories
+618 directories
 ```
 
