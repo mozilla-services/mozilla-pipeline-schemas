@@ -9,6 +9,14 @@ to [gcp-ingestion](https://github.com/mozilla/gcp-ingestion) and BigQuery.
 
 ```bash
 schemas
+├── accounts-backend
+│   ├── baseline
+│   ├── deletion-request
+│   ├── events
+│   └── metrics
+├── accounts-frontend
+│   ├── deletion-request
+│   └── events
 ├── activity-stream
 │   ├── events
 │   ├── impression-stats
@@ -628,6 +636,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-618 directories
+626 directories
 ```
 
