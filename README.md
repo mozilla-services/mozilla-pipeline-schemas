@@ -15,6 +15,7 @@ schemas
 │   ├── events
 │   └── metrics
 ├── accounts-frontend
+│   ├── accounts-events
 │   ├── deletion-request
 │   └── events
 ├── activity-stream
@@ -637,6 +638,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-627 directories
+628 directories
 ```
 
