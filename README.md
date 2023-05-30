@@ -389,6 +389,7 @@ schemas
 │   ├── daemonsession
 │   ├── deletion-request
 │   ├── events
+│   ├── main
 │   ├── metrics
 │   └── vpnsession
 ├── org-mozilla-ios-focus
@@ -636,6 +637,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-626 directories
+627 directories
 ```
 
