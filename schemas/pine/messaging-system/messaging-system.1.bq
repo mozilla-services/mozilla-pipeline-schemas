@@ -410,6 +410,24 @@
             "type": "RECORD"
           },
           {
+            "description": "We received a ping with non-scalar data on a field of this name.\nIf this is existing pre-PingCentre-replacement data, you may need to\naugment the logic in\n`AboutWelcome.submitGleanPingForPing` like the other `handledKeys`.\nIf this is for new, post-PingCentre-replacement data, you should\nprobably prefer a flat structure.\nIf you're unsure, please ask in\n[the #glean channel](https://chat.mozilla.org/#/room/#glean:mozilla.org).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "messaging_system_invalid_nested_data",
+            "type": "RECORD"
+          },
+          {
             "description": "Ping keys supplied to the messaging system for which\nwe did not have a corresponding metric mapped to how often they attempted\nto be recorded.\nYou may have forgotten to define an appropriate metric in\n`browser/components/newtab/metrics.yaml`.\n",
             "fields": [
               {
