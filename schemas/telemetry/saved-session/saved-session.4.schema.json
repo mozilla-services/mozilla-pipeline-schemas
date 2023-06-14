@@ -4,7 +4,23 @@
   "mozPipelineMetadata": {
     "bq_dataset_family": "telemetry",
     "bq_metadata_format": "telemetry",
-    "bq_table": "saved_session_v4"
+    "bq_table": "saved_session_v4",
+    "split_config": {
+      "preserve_original": true,
+      "remainder": {
+        "document_namespace": "telemetry",
+        "document_type": "saved-session-remainder",
+        "document_version": "4"
+      },
+      "subsets": [
+        {
+          "document_namespace": "telemetry",
+          "document_type": "saved-session-use-counter",
+          "document_version": "4",
+          "pattern": ".*[.]USE_COUNTER2_[^.]+"
+        }
+      ]
+    }
   },
   "properties": {
     "application": {

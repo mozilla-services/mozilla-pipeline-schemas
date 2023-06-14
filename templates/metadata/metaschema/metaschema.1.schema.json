@@ -105,6 +105,72 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "split_config": {
+          "type": "object",
+          "description": "Configuration for splitting a ping into multiple pings by field",
+          "additionalProperties": false,
+          "properties": {
+            "preserve_original": {
+              "type": "boolean",
+              "description": "Whether or not to output the unmodified original ping in addition to any generated pings."
+            },
+            "remainder": {
+              "type": "object",
+              "description": "If present, generate a ping containing all fields not included in any subset ping.",
+              "additionalProperties": false,
+              "properties": {
+                "document_namespace": {
+                  "type": "string"
+                },
+                "document_type": {
+                  "type": "string"
+                },
+                "document_version": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "document_namespace",
+                "document_type",
+                "document_version"
+              ]
+            },
+            "subsets": {
+              "type": "array",
+              "description": "Array of subset pings to generate.",
+              "items": {
+                "type": "object",
+                "description": "Configuration for generating a ping that is a subset of fields from the original ping.",
+                "additionalProperties": false,
+                "properties": {
+                  "document_namespace": {
+                    "type": "string"
+                  },
+                  "document_type": {
+                    "type": "string"
+                  },
+                  "document_version": {
+                    "type": "string"
+                  },
+                  "pattern": {
+                    "type": "string",
+                    "description": "Regular expression matching .-delimited property names that should be moved to this subset ping. Only properties explictly defined in the non-generic json schema of the original ping are supported, because property names are matched during schema generation."
+                  }
+                },
+                "required": [
+                  "document_namespace",
+                  "document_type",
+                  "document_version",
+                  "pattern"
+                ]
+              }
+            }
+          },
+          "required": [
+            "preserve_original",
+            "subsets"
+          ]
         }
       }
     }
