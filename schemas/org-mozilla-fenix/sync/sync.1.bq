@@ -454,6 +454,24 @@
             "mode": "REPEATED",
             "name": "sync_failure_reason",
             "type": "RECORD"
+          },
+          {
+            "description": "Records a global sync failure: either due to an authentication error, unexpected exception, or other error that caused the sync to fail. Error strings are truncated and sanitized to omit PII, like URLs and file system paths.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "sync_v2_failure_reason",
+            "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
@@ -500,6 +518,12 @@
             "description": "Unique identifier for this sync, used to correlate together individual pings for data types that were synchronized together (history, bookmarks, logins). If a data type is synchronized by itself via the legacy 'sync' API (as opposed to the Sync Manager), then this field will not be set on the corresponding ping.\n",
             "mode": "NULLABLE",
             "name": "sync_sync_uuid",
+            "type": "STRING"
+          },
+          {
+            "description": "Unique identifier for this sync, used to correlate together individual pings for data types that were synchronized together (history, bookmarks, logins). If a data type is synchronized by itself via the legacy 'sync' API (as opposed to the Sync Manager), then this field will not be set on the corresponding ping.\n",
+            "mode": "NULLABLE",
+            "name": "sync_v2_sync_uuid",
             "type": "STRING"
           }
         ],

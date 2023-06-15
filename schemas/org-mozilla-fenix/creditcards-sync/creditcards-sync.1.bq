@@ -305,6 +305,12 @@
             "mode": "NULLABLE",
             "name": "creditcards_sync_outgoing_batches",
             "type": "INT64"
+          },
+          {
+            "description": "Records the number of batches needed to upload all outgoing records. The Sync server has a hard limit on the number of records (and request body bytes) on the number of records that can fit into a single batch, and large syncs may require multiple batches.\n",
+            "mode": "NULLABLE",
+            "name": "creditcards_sync_v2_outgoing_batches",
+            "type": "INT64"
           }
         ],
         "mode": "NULLABLE",
@@ -323,6 +329,18 @@
             "description": "Records when the credit cards sync started.\n",
             "mode": "NULLABLE",
             "name": "creditcards_sync_started_at",
+            "type": "STRING"
+          },
+          {
+            "description": "Records when the credit cards sync finished. This includes the time to download, apply, and upload all records.\n",
+            "mode": "NULLABLE",
+            "name": "creditcards_sync_v2_finished_at",
+            "type": "STRING"
+          },
+          {
+            "description": "Records when the credit cards sync started.\n",
+            "mode": "NULLABLE",
+            "name": "creditcards_sync_v2_started_at",
             "type": "STRING"
           }
         ],
@@ -383,6 +401,42 @@
             ],
             "mode": "REPEATED",
             "name": "creditcards_sync_outgoing",
+            "type": "RECORD"
+          },
+          {
+            "description": "Records incoming credit cards record counts. `applied` is the number of incoming records that were successfully stored or updated in the local database. `failed_to_apply` is the number of records that were ignored due to errors. `reconciled` is the number of merged records.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "creditcards_sync_v2_incoming",
+            "type": "RECORD"
+          },
+          {
+            "description": "Records outgoing credit cards record counts. `uploaded` is the number of records that were successfully sent to the server. `failed_to_upload` is the number of records that weren't uploaded, and will be retried on the next sync.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "creditcards_sync_v2_outgoing",
             "type": "RECORD"
           },
           {
@@ -522,6 +576,24 @@
             "mode": "REPEATED",
             "name": "creditcards_sync_failure_reason",
             "type": "RECORD"
+          },
+          {
+            "description": "Records why the credit cards sync failed: either due to an authentication error, unexpected exception, or other error. The error strings are truncated and sanitized to omit PII, like URLs and file system paths.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "creditcards_sync_v2_failure_reason",
+            "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
@@ -534,6 +606,12 @@
             "description": "The user's hashed Firefox Account ID.\n",
             "mode": "NULLABLE",
             "name": "creditcards_sync_uid",
+            "type": "STRING"
+          },
+          {
+            "description": "The user's hashed Firefox Account ID.\n",
+            "mode": "NULLABLE",
+            "name": "creditcards_sync_v2_uid",
             "type": "STRING"
           }
         ],
