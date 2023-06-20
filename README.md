@@ -353,6 +353,7 @@ schemas
 │   ├── metrics
 │   ├── temp-bookmarks-sync
 │   ├── temp-clients-sync
+│   ├── temp-credit-cards-sync
 │   ├── temp-history-sync
 │   ├── temp-logins-sync
 │   ├── temp-rust-tabs-sync
@@ -367,6 +368,7 @@ schemas
 │   ├── metrics
 │   ├── temp-bookmarks-sync
 │   ├── temp-clients-sync
+│   ├── temp-credit-cards-sync
 │   ├── temp-history-sync
 │   ├── temp-logins-sync
 │   ├── temp-rust-tabs-sync
@@ -381,6 +383,7 @@ schemas
 │   ├── metrics
 │   ├── temp-bookmarks-sync
 │   ├── temp-clients-sync
+│   ├── temp-credit-cards-sync
 │   ├── temp-history-sync
 │   ├── temp-logins-sync
 │   ├── temp-rust-tabs-sync
@@ -575,6 +578,8 @@ schemas
 │   ├── downgrade
 │   ├── event
 │   ├── first-shutdown
+│   ├── first-shutdown-remainder
+│   ├── first-shutdown-use-counter
 │   ├── flash-shield-study
 │   ├── focus-event
 │   ├── frecency-update
@@ -583,6 +588,8 @@ schemas
 │   ├── heartbeat
 │   ├── installation
 │   ├── main
+│   ├── main-remainder
+│   ├── main-use-counter
 │   ├── malware-addon-states
 │   ├── mobile-event
 │   ├── mobile-metrics
@@ -596,6 +603,8 @@ schemas
 │   ├── prio
 │   ├── regrets-reporter-update
 │   ├── saved-session
+│   ├── saved-session-remainder
+│   ├── saved-session-use-counter
 │   ├── searchvol
 │   ├── searchvolextra
 │   ├── shield-icq-v1
@@ -640,6 +649,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-630 directories
+639 directories
 ```
 
