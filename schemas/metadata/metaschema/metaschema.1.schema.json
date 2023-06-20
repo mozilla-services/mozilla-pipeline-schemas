@@ -106,6 +106,72 @@
           },
           "type": "array"
         },
+        "split_config": {
+          "additionalProperties": false,
+          "description": "Configuration for splitting a ping into multiple pings by field",
+          "properties": {
+            "preserve_original": {
+              "description": "Whether or not to output the unmodified original ping in addition to any generated pings.",
+              "type": "boolean"
+            },
+            "remainder": {
+              "additionalProperties": false,
+              "description": "If present, generate a ping containing all fields not included in any subset ping.",
+              "properties": {
+                "document_namespace": {
+                  "type": "string"
+                },
+                "document_type": {
+                  "type": "string"
+                },
+                "document_version": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "document_namespace",
+                "document_type",
+                "document_version"
+              ],
+              "type": "object"
+            },
+            "subsets": {
+              "description": "Array of subset pings to generate.",
+              "items": {
+                "additionalProperties": false,
+                "description": "Configuration for generating a ping that is a subset of fields from the original ping.",
+                "properties": {
+                  "document_namespace": {
+                    "type": "string"
+                  },
+                  "document_type": {
+                    "type": "string"
+                  },
+                  "document_version": {
+                    "type": "string"
+                  },
+                  "pattern": {
+                    "description": "Regular expression matching .-delimited property names that should be moved to this subset ping. Only properties explictly defined in the non-generic json schema of the original ping are supported, because property names are matched during schema generation.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "document_namespace",
+                  "document_type",
+                  "document_version",
+                  "pattern"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "preserve_original",
+            "subsets"
+          ],
+          "type": "object"
+        },
         "submission_timestamp_granularity": {
           "description": "If specified, the submission_timestamp field will be truncated to the specified granularity in the pipeline before being output to BigQuery; this can be used to reduce the potential for using time-based attacks to correlate datasets using different client-level identifiers; see Java's ChronoUnit for additional granularities that could be considered for inclusion; implemented for bug 1742172",
           "enum": [
