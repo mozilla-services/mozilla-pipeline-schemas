@@ -626,6 +626,12 @@
             "type": "INT64"
           },
           {
+            "description": "Counts the number of times a user has clicked \"sign into sync\" from the settings page.\n",
+            "mode": "NULLABLE",
+            "name": "app_menu_sign_into_sync",
+            "type": "INT64"
+          },
+          {
             "description": "A counter of the number of times the user has autofilled\na credit card.\n",
             "mode": "NULLABLE",
             "name": "credit_cards_autofill_card",
@@ -842,6 +848,12 @@
             "type": "INT64"
           },
           {
+            "description": "A counter that indicates how many PRIVATE tabs a user has open. This\nvalue will only be set if the user has at least *one* open tab. If they\nhave 0, this ping will not get sent, resulting in a null value. To\ndisambiguate between a failed `private_tabs_open_count` ping and 0 open tabs,\nplease see `has_open_tabs`\n",
+            "mode": "NULLABLE",
+            "name": "metrics_private_tabs_open_count",
+            "type": "INT64"
+          },
+          {
             "description": "A counter that indicates how many PWAs a user has recently used.\nThreshold for \"recency\" set in HomeActivity#PWA_RECENTLY_USED_THRESHOLD.\nCurrently we are not told by the OS when a PWA is removed by the user,\nso we use the \"recently used\" heuristic to judge how many PWAs are still\nactive, as a proxy for \"installed\". This value will only be set if the\nuser has at least *one* recently used PWA. If they have 0, this metric\nwill not be sent, resulting in a null value during analysis on the\nserver-side. To disambiguate between a failed `recently_used_pwa_count`\nmetric and 0 recent PWAs, please see `has_recent_pwas`.\n",
             "mode": "NULLABLE",
             "name": "metrics_recently_used_pwa_count",
@@ -941,6 +953,12 @@
             "description": "The number of RTCRtpSenders created that use the compatibility mode for setParameters.\n",
             "mode": "NULLABLE",
             "name": "rtcrtpsender_count_setparameters_compat",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user has clicked \"sign into sync\" from the settings page.\n",
+            "mode": "NULLABLE",
+            "name": "settings_sign_into_sync",
             "type": "INT64"
           },
           {
@@ -2706,6 +2724,78 @@
             ],
             "mode": "REPEATED",
             "name": "media_audio_init_failure",
+            "type": "RECORD"
+          },
+          {
+            "description": "A counter that indicates how many bookmarks a user has added.\n\nThe label for this counter is `<source>`.\n\n`source` will be: `page_action_menu` as that is the only\nentry point right now to add bookmarks.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "metrics_bookmarks_add",
+            "type": "RECORD"
+          },
+          {
+            "description": "A counter that indicates how many bookmarks a user has deleted.\n\nThe label for this counter is `<source>`.\n\n`source` will be: `add_bookmark_toast` or `bookmark_panel`.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "metrics_bookmarks_delete",
+            "type": "RECORD"
+          },
+          {
+            "description": "A counter that indicates how many bookmarks a user has edited.\n\nThe label for this counter is `<source>`.\n\n`source` will be: `bookmark_edit_page` or `bookmark_panel`.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "metrics_bookmarks_edit",
+            "type": "RECORD"
+          },
+          {
+            "description": "A counter that indicates how many bookmarks a user has opened.\n\nThe label for this counter is `<source>`.\n\n`source` will be: `top_sites`, `awesomebar_results`, `bookmark_panel`.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "metrics_bookmarks_open",
             "type": "RECORD"
           },
           {
