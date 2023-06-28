@@ -782,6 +782,24 @@
             "type": "INT64"
           },
           {
+            "description": "Counter of number of passwords that have been deleted by user.\n",
+            "mode": "NULLABLE",
+            "name": "logins_deleted",
+            "type": "INT64"
+          },
+          {
+            "description": "Counter of number of passwords that have been modified by user.\n",
+            "mode": "NULLABLE",
+            "name": "logins_modified",
+            "type": "INT64"
+          },
+          {
+            "description": "Counter of number of passwords that have been saved by user (including deleted).\n",
+            "mode": "NULLABLE",
+            "name": "logins_saved",
+            "type": "INT64"
+          },
+          {
             "description": "The total number of login records which failed to migrate\n",
             "mode": "NULLABLE",
             "name": "logins_store_migration_num_failed",
@@ -3923,6 +3941,12 @@
       {
         "fields": [
           {
+            "description": "A counter of the number of all addresses that are currently saved by user.\n",
+            "mode": "NULLABLE",
+            "name": "addresses_saved_all",
+            "type": "INT64"
+          },
+          {
             "description": "Image-decode Error from AOM decoder\n",
             "mode": "NULLABLE",
             "name": "avif_aom_decode_error",
@@ -3932,6 +3956,12 @@
             "description": "Image-decode Error from dav1d decoder\n",
             "mode": "NULLABLE",
             "name": "avif_dav1d_decode_error",
+            "type": "INT64"
+          },
+          {
+            "description": "Counter of number of credit cards that are currently stored by user.\n",
+            "mode": "NULLABLE",
+            "name": "credit_cards_saved_all",
             "type": "INT64"
           },
           {
@@ -3962,6 +3992,12 @@
             "description": "Width of the primary display, takes device rotation into account.\n",
             "mode": "NULLABLE",
             "name": "gfx_display_primary_width",
+            "type": "INT64"
+          },
+          {
+            "description": "Counter of number of passwords currently saved by user.\n",
+            "mode": "NULLABLE",
+            "name": "logins_saved_all",
             "type": "INT64"
           },
           {
@@ -5167,6 +5203,71 @@
             ],
             "mode": "NULLABLE",
             "name": "extensions_apis_dnr_validate_rules_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts how long to generate canvas random noises.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "fingerprinting_protection_canvas_noise_calculate_time",
             "type": "RECORD"
           },
           {

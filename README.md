@@ -70,7 +70,9 @@ schemas
 │   ├── new-metric-capture-emulation
 │   ├── newtab
 │   ├── pageload
-│   └── pseudo-main
+│   ├── pseudo-main
+│   ├── quick-suggest
+│   └── top-sites
 ├── firefox-desktop-background-tasks
 │   ├── background-tasks
 │   ├── baseline
@@ -463,7 +465,8 @@ schemas
 │   ├── new-metric-capture-emulation
 │   ├── newtab
 │   ├── pageload
-│   └── pseudo-main
+│   ├── pseudo-main
+│   └── top-sites
 ├── pioneer-citp-news-disinfo
 │   ├── deletion-request
 │   ├── measurements
@@ -649,6 +652,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-639 directories
+642 directories
 ```
 
