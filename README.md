@@ -348,11 +348,18 @@ schemas
 │   ├── metrics
 │   └── pageload
 ├── org-mozilla-ios-fennec
+│   ├── addresses-sync
 │   ├── baseline
+│   ├── bookmarks-sync
+│   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
+│   ├── history-sync
+│   ├── logins-sync
 │   ├── metrics
+│   ├── sync
+│   ├── tabs-sync
 │   ├── temp-bookmarks-sync
 │   ├── temp-clients-sync
 │   ├── temp-credit-cards-sync
@@ -363,11 +370,18 @@ schemas
 │   ├── temp-tabs-sync
 │   └── topsites-impression
 ├── org-mozilla-ios-firefox
+│   ├── addresses-sync
 │   ├── baseline
+│   ├── bookmarks-sync
+│   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
+│   ├── history-sync
+│   ├── logins-sync
 │   ├── metrics
+│   ├── sync
+│   ├── tabs-sync
 │   ├── temp-bookmarks-sync
 │   ├── temp-clients-sync
 │   ├── temp-credit-cards-sync
@@ -378,11 +392,18 @@ schemas
 │   ├── temp-tabs-sync
 │   └── topsites-impression
 ├── org-mozilla-ios-firefoxbeta
+│   ├── addresses-sync
 │   ├── baseline
+│   ├── bookmarks-sync
+│   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
+│   ├── history-sync
+│   ├── logins-sync
 │   ├── metrics
+│   ├── sync
+│   ├── tabs-sync
 │   ├── temp-bookmarks-sync
 │   ├── temp-clients-sync
 │   ├── temp-credit-cards-sync
@@ -652,6 +673,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-642 directories
+663 directories
 ```
 
