@@ -337,6 +337,24 @@
             "type": "BOOL"
           },
           {
+            "description": "Indicates if the user has opted out of using the shopping component.\nSet during shopping component init and updated when changed in browser.\n",
+            "mode": "NULLABLE",
+            "name": "shopping_settings_component_opted_out",
+            "type": "BOOL"
+          },
+          {
+            "description": "Indicates if the user has completed the Shopping product Onboarding\nexperience. Set during shopping component init and updated when changed\nin browser.\n",
+            "mode": "NULLABLE",
+            "name": "shopping_settings_has_onboarded",
+            "type": "BOOL"
+          },
+          {
+            "description": "Indicates if Nimbus has disabled the use the shopping component.\n",
+            "mode": "NULLABLE",
+            "name": "shopping_settings_nimbus_disabled_shopping",
+            "type": "BOOL"
+          },
+          {
             "description": "Recorded on every launch of a Firefox install on macOS, with a boolean value indicating whether Firefox was restored by macOS or if it was manually launched by a user.\n",
             "mode": "NULLABLE",
             "name": "startup_is_restored_by_macos",
@@ -2165,6 +2183,12 @@
             "mode": "NULLABLE",
             "name": "extensions_quarantined_domains_listsize",
             "type": "INT64"
+          },
+          {
+            "description": "Count at store time how many credit card autofill profiles the user has.\n",
+            "mode": "NULLABLE",
+            "name": "formautofill_creditcards_autofill_profiles_count",
+            "type": "INT64"
           }
         ],
         "mode": "NULLABLE",
@@ -2526,6 +2550,16 @@
           {
             "mode": "REPEATED",
             "name": "background_update_reasons_to_not_update",
+            "type": "STRING"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "browser_migration_matched_extensions",
+            "type": "STRING"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "browser_migration_unmatched_extensions",
             "type": "STRING"
           }
         ],
