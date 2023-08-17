@@ -44,6 +44,10 @@
           },
           "type": "object"
         },
+        "geoip_skip_entries": {
+          "description": "If present, how many additional entries (beyond two) to skip in x_forwarded_for when performing geoip decoding, useful when submissions are ingested from trusted proxies; if there are fewer entries in x_forwarded_for than (N+1) the last entry is used instead of (N+3)rd-to-last",
+          "type": "integer"
+        },
         "jwe_mappings": {
           "description": "Mappings of encrypted JWE field paths to destinations where the value decrypted by the pipeline should be placed; initial use case is Account Ecosystem Telemetry; paths must be in [JSON Pointer format](https://tools.ietf.org/html/rfc6901) like '/payload/ecosystemAnonId'",
           "items": {
