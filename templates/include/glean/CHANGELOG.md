@@ -1,5 +1,7 @@
 # Version 1
 
+- Update pattern and increased length limit for `dot_separated_short_id`. See [Bug 1849615](https://bugzilla.mozilla.org/show_bug.cgi?id=1849615).
+
 - Added optional `windows_build_number` client info field. See [Bug 1802094](https://bugzilla.mozilla.org/show_bug.cgi?id=1802094).
 
 - Added optional `build_date` client info field. See [Bug 1742448](https://bugzilla.mozilla.org/show_bug.cgi?id=1742448).
