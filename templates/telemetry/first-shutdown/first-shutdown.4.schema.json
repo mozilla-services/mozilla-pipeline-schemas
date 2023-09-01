@@ -1,48 +1,49 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    @TELEMETRY_MAINSCHEMAID_1_JSON@,
-    "mozPipelineMetadata": {
-        "split_config": {
-            "preserve_original": true,
-            "subsets": [
-                {
-                    "document_namespace": "telemetry",
-                    "document_type": "first-shutdown-use-counter",
-                    "document_version": "4",
-                    "pattern": ".*[.]USE_COUNTER2_[^.]+"
-                }
-            ],
-            "remainder": {
-                "document_namespace": "telemetry",
-                "document_type": "first-shutdown-remainder",
-                "document_version": "4"
-            }
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  @TELEMETRY_MAINSCHEMAID_1_JSON@,
+  "mozPipelineMetadata": {
+    "split_config": {
+      "preserve_original": true,
+      "subsets": [
+        {
+          "document_namespace": "telemetry",
+          "document_type": "first-shutdown-use-counter",
+          "document_version": "4",
+          "pattern": ".*[.]USE_COUNTER2_[^.]+",
+          "extra_pattern": ".*[.]((TOP_LEVEL_)?CONTENT_DOCUMENTS|[^.]+_WORKER)_DESTROYED"
         }
-    },
-    "type": "object",
-    "title": "first-shutdown",
-    "properties": {
-      @TELEMETRY_APPLICATION_1_JSON@,
-      @TELEMETRY_CLIENTID_1_JSON@,
-      @TELEMETRY_CREATIONDATE_1_JSON@,
-      @TELEMETRY_ENVIRONMENT_1_JSON@,
-      @TELEMETRY_ID_1_JSON@,
-      @TELEMETRY_MAINPAYLOAD_1_JSON@,
-      "type": {
-        "type": "string",
-        "enum": [ "first-shutdown" ]
-      },
-      "version": {
-        "type": "number",
-        "minimum": 4,
-        "maximum": 4
+      ],
+      "remainder": {
+        "document_namespace": "telemetry",
+        "document_type": "first-shutdown-remainder",
+        "document_version": "4"
       }
+    }
+  },
+  "type": "object",
+  "title": "first-shutdown",
+  "properties": {
+    @TELEMETRY_APPLICATION_1_JSON@,
+    @TELEMETRY_CLIENTID_1_JSON@,
+    @TELEMETRY_CREATIONDATE_1_JSON@,
+    @TELEMETRY_ENVIRONMENT_1_JSON@,
+    @TELEMETRY_ID_1_JSON@,
+    @TELEMETRY_MAINPAYLOAD_1_JSON@,
+    "type": {
+      "type": "string",
+      "enum": [ "first-shutdown" ]
     },
-    "required": [
-      "application",
-      "creationDate",
-      "id",
-      "type",
-      "version"
-    ]
+    "version": {
+      "type": "number",
+      "minimum": 4,
+      "maximum": 4
+    }
+  },
+  "required": [
+    "application",
+    "creationDate",
+    "id",
+    "type",
+    "version"
+  ]
 }
