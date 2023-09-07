@@ -626,6 +626,18 @@
       {
         "fields": [
           {
+            "description": "A counter that indicates the number of times that a user\nhas clicked on the button continue with add-ons\ndisabled on the dialog for when the extensions\nprocess crashed.\n",
+            "mode": "NULLABLE",
+            "name": "addons_extensions_process_ui_disable",
+            "type": "INT64"
+          },
+          {
+            "description": "A counter that indicates the number of times that a user\nhas clicked on the button try to restart add-ons\non the dialog for when the extensions process crashed.\n",
+            "mode": "NULLABLE",
+            "name": "addons_extensions_process_ui_retry",
+            "type": "INT64"
+          },
+          {
             "description": "A counter of the number of addresses that have been deleted by\nthe user.\n",
             "mode": "NULLABLE",
             "name": "addresses_deleted",
@@ -1964,6 +1976,24 @@
             "mode": "REPEATED",
             "name": "cookie_banners_private_window_service_mode",
             "type": "RECORD"
+          },
+          {
+            "description": "Indicates whether or not migration was successful for each nsIDataStorage.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "BOOL"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "data_storage_migration",
+            "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
@@ -2456,6 +2486,24 @@
             ],
             "mode": "REPEATED",
             "name": "crash_metrics_crash_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of entries stored in each nsIDataStorage.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "data_storage_entries",
             "type": "RECORD"
           },
           {
