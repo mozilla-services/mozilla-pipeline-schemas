@@ -90,6 +90,12 @@
         "mode": "NULLABLE",
         "name": "telemetry_sdk_build",
         "type": "STRING"
+      },
+      {
+        "description": "The optional Windows build number, reported by Windows (e.g. 22000) and not set for other platforms",
+        "mode": "NULLABLE",
+        "name": "windows_build_number",
+        "type": "INT64"
       }
     ],
     "mode": "NULLABLE",
@@ -301,6 +307,24 @@
             "type": "BOOL"
           },
           {
+            "description": "Tracks the value of the cookiebanners.service.detectOnly pref.\n",
+            "mode": "NULLABLE",
+            "name": "cookie_banners_service_detect_only",
+            "type": "BOOL"
+          },
+          {
+            "description": "Corresponds to the value of `WebExtensionPolicy.useRemoteWebExtensions`.\n",
+            "mode": "NULLABLE",
+            "name": "extensions_use_remote_policy",
+            "type": "BOOL"
+          },
+          {
+            "description": "Corresponds to the value of `extensions.webextensions.remote` pref.\n",
+            "mode": "NULLABLE",
+            "name": "extensions_use_remote_pref",
+            "type": "BOOL"
+          },
+          {
             "description": "True if we failed to register with the idle service. Absent otherwise.\nMeans IPC probably isn't working well.\nChild-process data will likely be absent, or incomplete.\n",
             "mode": "NULLABLE",
             "name": "fog_failed_idle_registration",
@@ -323,6 +347,30 @@
             "mode": "NULLABLE",
             "name": "glean_error_preinit_tasks_timeout",
             "type": "BOOL"
+          },
+          {
+            "description": "Indicates if the user has opted out of using the shopping component.\nSet during shopping component init and updated when changed in browser.\n",
+            "mode": "NULLABLE",
+            "name": "shopping_settings_component_opted_out",
+            "type": "BOOL"
+          },
+          {
+            "description": "Indicates if the user has completed the Shopping product Onboarding\nexperience. Set during shopping component init and updated when changed\nin browser.\n",
+            "mode": "NULLABLE",
+            "name": "shopping_settings_has_onboarded",
+            "type": "BOOL"
+          },
+          {
+            "description": "Indicates if Nimbus has disabled the use the shopping component.\n",
+            "mode": "NULLABLE",
+            "name": "shopping_settings_nimbus_disabled_shopping",
+            "type": "BOOL"
+          },
+          {
+            "description": "Recorded on every launch of a Firefox install on macOS, with a boolean value indicating whether Firefox was restored by macOS or if it was manually launched by a user.\n",
+            "mode": "NULLABLE",
+            "name": "startup_is_restored_by_macos",
+            "type": "BOOL"
           }
         ],
         "mode": "NULLABLE",
@@ -331,6 +379,12 @@
       },
       {
         "fields": [
+          {
+            "description": "Counts how many times we do not resolve a blob URL because of different partition keys\n",
+            "mode": "NULLABLE",
+            "name": "bloburl_resolve_stopped",
+            "type": "INT64"
+          },
           {
             "description": "The number of five-second intervals ('ticks') the user was considered\n'active'.\n\n'active' means keyboard or mouse interaction with the application.\nIt doesn't take into account whether or not the window has focus or is in\nthe foreground, only if it is receiving these interaction events.\n\nMigrated from Telemetry's `browser.engagement.active_ticks`.\n",
             "mode": "NULLABLE",
@@ -341,6 +395,24 @@
             "description": "The number of total non-unique http(s) URIs visited, including page\nreloads, after the session has been restored. URIs on minimized or\nbackground tabs may also be counted. Private browsing uris are included.\n\nMigrated from Telemetry's\n`browser.engagement.total_uri_count_normal_and_private_mode`.\n",
             "mode": "NULLABLE",
             "name": "browser_engagement_uri_count",
+            "type": "INT64"
+          },
+          {
+            "description": "Opening the Android print dialog was requested via window.print.\n",
+            "mode": "NULLABLE",
+            "name": "dotprint_android_dialog_requested",
+            "type": "INT64"
+          },
+          {
+            "description": "How many times window.print was requested.\n",
+            "mode": "NULLABLE",
+            "name": "dotprint_requested",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times init had to be called during shutdown.\nShould never have a value for any session long enough to grow idle.\n",
+            "mode": "NULLABLE",
+            "name": "fog_inits_during_shutdown",
             "type": "INT64"
           },
           {
@@ -386,6 +458,18 @@
             "type": "INT64"
           },
           {
+            "description": "How many pings were dropped because we found them already in-flight.\n",
+            "mode": "NULLABLE",
+            "name": "glean_upload_in_flight_pings_dropped",
+            "type": "INT64"
+          },
+          {
+            "description": "How many ping upload responses did we not record as a success or failure\n(in `glean.upload.send_success` or `glean.upload.send_failue`,\nrespectively) due to an inconsistency in our internal bookkeeping?\n",
+            "mode": "NULLABLE",
+            "name": "glean_upload_missing_send_ids",
+            "type": "INT64"
+          },
+          {
             "description": "The total number of pending pings at startup.\nThis does not include deletion-request pings.\n",
             "mode": "NULLABLE",
             "name": "glean_upload_pending_pings",
@@ -407,6 +491,24 @@
             "description": "On mobile, the number of times the application went to foreground.\n",
             "mode": "NULLABLE",
             "name": "glean_validation_foreground_count",
+            "type": "INT64"
+          },
+          {
+            "description": "How often something went awry within\n`AboutWelcome.submitGleanPingForPing`, preventing ping submission.\n",
+            "mode": "NULLABLE",
+            "name": "messaging_system_glean_ping_for_ping_failures",
+            "type": "INT64"
+          },
+          {
+            "description": "How many times PDF Viewer was used.\n",
+            "mode": "NULLABLE",
+            "name": "pdfjs_used",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of PingCentre send failures.\n",
+            "mode": "NULLABLE",
+            "name": "ping_centre_send_failures",
             "type": "INT64"
           },
           {
@@ -438,6 +540,24 @@
             "mode": "NULLABLE",
             "name": "power_total_thread_wakeups",
             "type": "INT64"
+          },
+          {
+            "description": "The number of RTCRtpSenders created.\n",
+            "mode": "NULLABLE",
+            "name": "rtcrtpsender_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of RTCRtpSenders created that use the compatibility mode for setParameters.\n",
+            "mode": "NULLABLE",
+            "name": "rtcrtpsender_count_setparameters_compat",
+            "type": "INT64"
+          },
+          {
+            "description": "The count of translation requests.\n",
+            "mode": "NULLABLE",
+            "name": "translations_requests_count",
+            "type": "INT64"
           }
         ],
         "mode": "NULLABLE",
@@ -447,8 +567,230 @@
       {
         "fields": [
           {
+            "description": "If we fix up a cookie lastAccessed timestamp that is in the future this metric records the number of seconds that timestamp was off from NOW.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "networking_cookie_access_fixup_diff",
+            "type": "RECORD"
+          },
+          {
+            "description": "If we fix up a cookie creation timestamp that is in the future this metric records the number of seconds that timestamp was off from NOW.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "networking_cookie_creation_fixup_diff",
+            "type": "RECORD"
+          },
+          {
+            "description": "The download throughput for  http/1.0, http/1.1 requests larger than 10MB. Measured in megabits per second, Mbps.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "networking_http_1_download_throughput",
+            "type": "RECORD"
+          },
+          {
+            "description": "The download throughput for http/2 requests larger than 10MB. Measured in megabits per second, Mbps.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "networking_http_2_download_throughput",
+            "type": "RECORD"
+          },
+          {
+            "description": "The download throughput for http/3 requests larger than 10MB. Measured in megabits per second, Mbps.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "networking_http_3_download_throughput",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time spent to display first page in PDF Viewer (ms).\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "pdfjs_time_to_view",
+            "type": "RECORD"
+          },
+          {
             "description": "Records how many percent of battery was available for each period of user activity.\n",
             "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
               {
                 "mode": "NULLABLE",
                 "name": "sum",
@@ -475,6 +817,42 @@
             "mode": "NULLABLE",
             "name": "power_battery_percentage_when_user_active",
             "type": "RECORD"
+          },
+          {
+            "description": "How many timers were processed in a single wake-up of the Timer Thread.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "timer_thread_timers_fired_per_wakeup",
+            "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
@@ -483,6 +861,36 @@
       },
       {
         "fields": [
+          {
+            "description": "Last time the background update was triggered.\n",
+            "mode": "NULLABLE",
+            "name": "background_update_time_last_update_scheduled",
+            "type": "STRING"
+          },
+          {
+            "description": "Keep track of the last time the \"addons-bloomfilters\" remotesetting blocklist has been successfully updated.\n",
+            "mode": "NULLABLE",
+            "name": "blocklist_last_modified_rs_addons_mblf",
+            "type": "STRING"
+          },
+          {
+            "description": "Keep track of the generation time of the addon blocklist's bloom filter. This marks the point in time until which signed add-ons are recognized by the selected bloom filter from the addons-bloomfilters collection.\n",
+            "mode": "NULLABLE",
+            "name": "blocklist_mlbf_generation_time",
+            "type": "STRING"
+          },
+          {
+            "description": "Keep track of the timestamp of the most recent stash of the addons blocklist. Only meaningful when mlbf_enabled is true.\n",
+            "mode": "NULLABLE",
+            "name": "blocklist_mlbf_stash_time_newest",
+            "type": "STRING"
+          },
+          {
+            "description": "Keep track of the timestamp of the oldest stash of the addons blocklist. Only meaningful when mlbf_enabled is true.\n",
+            "mode": "NULLABLE",
+            "name": "blocklist_mlbf_stash_time_oldest",
+            "type": "STRING"
+          },
           {
             "description": "The hour of the first run of the application.\n",
             "mode": "NULLABLE",
@@ -514,6 +922,60 @@
       {
         "fields": [
           {
+            "description": "The pref value of the cookie banner service mode for normal windows.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "BOOL"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "cookie_banners_normal_window_service_mode",
+            "type": "RECORD"
+          },
+          {
+            "description": "The pref value of the cookie banner service mode for private windows.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "BOOL"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "cookie_banners_private_window_service_mode",
+            "type": "RECORD"
+          },
+          {
+            "description": "Indicates whether or not migration was successful for each nsIDataStorage.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "BOOL"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "data_storage_migration",
+            "type": "RECORD"
+          },
+          {
             "description": "The outcome after the app detected that it was running from DMG or an app translocated location and should offer to install and relaunch itself.\n",
             "fields": [
               {
@@ -538,6 +1000,168 @@
       },
       {
         "fields": [
+          {
+            "description": "Given a matching cookie banner rule, how often do we handle or fail to handle cookie banners, labelled by reason. The 'success' and 'fail' counters count the total numbers independently of the reason counters. Counters are incremented after the content window has been destroyed. This metric additionally reports cookie injections after which we didn't see a banner as \"success_cookie_injected\".\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "cookie_banners_click_result",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of hit/miss of cookie banner rule lookups for domain. We collect three types of counters, including counters for overall rule lookup, counters for cookie rule lookup and counters for click rule lookup. We also divide the counter by top-level loads and iframe loads. For each domain, we will only collect once.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "cookie_banners_rule_lookup_by_domain",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of hit/miss of cookie banner rule lookups for every load. We collect three types of counters, including counters for overall rule lookup, counters for cookie rule lookup and counters for click rule lookup. We also divide the counter by top-level loads and iframe loads.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "cookie_banners_rule_lookup_by_load",
+            "type": "RECORD"
+          },
+          {
+            "description": "The result of trying to generate a DAP report.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dap_report_generation_status",
+            "type": "RECORD"
+          },
+          {
+            "description": "The result of trying to upload a report to the DAP server.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dap_upload_status",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of entries stored in each nsIDataStorage.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "data_storage_entries",
+            "type": "RECORD"
+          },
+          {
+            "description": "An error occured while setting up for printing. Default label is 'unknown'.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dotprint_failure",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counters for startup cache data hits or misses on initializating\nDNR rules for extensions loaded on application startup.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "extensions_apis_dnr_startup_cache_entries",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counters for how many times the extension process has crashed or been created.\nThe labels with \"_fg\" / \"_bg\" suffixes are only recorded in Android builds,\nwhile the \"created\" and \"crashed\" labels are recorded on both Desktop and Android\nbuilds. \n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "extensions_process_event",
+            "type": "RECORD"
+          },
           {
             "description": "Counts the number of times a metric was set with an invalid label.\nThe labels are the `category.name` identifier of the metric.\n",
             "fields": [
@@ -665,6 +1289,438 @@
             "type": "RECORD"
           },
           {
+            "description": "How many times each IPC message type was received, Broken down by process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "ipc_received_messages_content_background",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many times each IPC message type was received, Broken down by process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "ipc_received_messages_content_foreground",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many times each IPC message type was received, Broken down by process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "ipc_received_messages_gpu_process",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many times each IPC message type was received, Broken down by process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "ipc_received_messages_parent_active",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many times each IPC message type was received, Broken down by process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "ipc_received_messages_parent_inactive",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many times each IPC message type was sent. Broken down by process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "ipc_sent_messages_content_background",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many times each IPC message type was sent. Broken down by process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "ipc_sent_messages_content_foreground",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many times each IPC message type was sent. Broken down by process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "ipc_sent_messages_gpu_process",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many times each IPC message type was sent. Broken down by process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "ipc_sent_messages_parent_active",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many times each IPC message type was sent. Broken down by process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "ipc_sent_messages_parent_inactive",
+            "type": "RECORD"
+          },
+          {
+            "description": "We received a ping with non-scalar data on a field of this name.\nIf this is existing pre-PingCentre-replacement data, you may need to\naugment the logic in\n`AboutWelcome.submitGleanPingForPing` like the other `handledKeys`.\nIf this is for new, post-PingCentre-replacement data, you should\nprobably prefer a flat structure.\nIf you're unsure, please ask in\n[the #glean channel](https://chat.mozilla.org/#/room/#glean:mozilla.org).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "messaging_system_invalid_nested_data",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the different type of resources that are sent for early hints.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "netwerk_early_hints",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts different type of link headers that are sent in early hint\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "netwerk_eh_link_type",
+            "type": "RECORD"
+          },
+          {
+            "description": "Count how many times we see `Authorization` header in `Access-Control-Request-Headers` header and the possible outcomes.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "network_cors_authorization_header",
+            "type": "RECORD"
+          },
+          {
+            "description": "Number of KB we transferred keyed by \"contentType\"\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "network_data_size_pb_per_type",
+            "type": "RECORD"
+          },
+          {
+            "description": "Number of KB we transferred keyed by \"contentType\"\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "network_data_size_per_type",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of times a cookie's invalid timestamp was fixed when reading it from the DB.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_cookie_timestamp_fixed_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the occurrence of each outcome of a speculative connection\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_speculative_connect_outcome",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the occurrence of each outcome of a speculative connection\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_speculative_connection_outcome",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of times some actions are executed in the PDF viewer.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "pdfjs_buttons",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of times some PDF editing features are used.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "pdfjs_editing",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of times some actions are executed in the PDF viewer.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "pdfjs_geckoview",
+            "type": "RECORD"
+          },
+          {
+            "description": "The number of PingCentre send failures,\nbroken down by structured ingestion namespace.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "ping_centre_send_failures_by_namespace",
+            "type": "RECORD"
+          },
+          {
+            "description": "The number of PingCentre send successes,\nbroken down by structured ingestion namespace.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "ping_centre_send_successes_by_namespace",
+            "type": "RECORD"
+          },
+          {
             "description": "How many miliseconds of CPU time were used. Broken down by thread name for a given process type.\n",
             "fields": [
               {
@@ -770,6 +1826,24 @@
             ],
             "mode": "REPEATED",
             "name": "power_cpu_time_per_process_type_ms",
+            "type": "RECORD"
+          },
+          {
+            "description": "CPU time used by content processes used only for tracking resources, labeled by the category of the tracker.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_cpu_time_per_tracker_type_ms",
             "type": "RECORD"
           },
           {
@@ -897,6 +1971,96 @@
             "mode": "REPEATED",
             "name": "power_wakeups_per_thread_parent_inactive",
             "type": "RECORD"
+          },
+          {
+            "description": "The result of auto-filling a login form.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "pwmgr_form_autofill_result",
+            "type": "RECORD"
+          },
+          {
+            "description": "The number of RTCRtpSenders that have warned at least once about a `setParameters` call that attempted to change the number of encodings, broken down by the eTLD+1 of the site. Collected only on EARLY_BETA_OR_EARLIER.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "rtcrtpsender_setparameters_blame_length_changed",
+            "type": "RECORD"
+          },
+          {
+            "description": "The number of RTCRtpSenders that have warned at least once about a `setParameters` call because `[[LastReturnedParameters]]` was not set, broken down by the eTLD+1 of the site. (ie; there was not a recent enough call to `getParameters`) Collected only on EARLY_BETA_OR_EARLIER.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "rtcrtpsender_setparameters_blame_no_getparameters",
+            "type": "RECORD"
+          },
+          {
+            "description": "The number of RTCRtpSenders that have warned at least once about a `setParameters` call that did not set the transactionId field, broken down by the eTLD+1 of the site. Collected only on EARLY_BETA_OR_EARLIER.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "rtcrtpsender_setparameters_blame_no_transactionid",
+            "type": "RECORD"
+          },
+          {
+            "description": "The number of RTCRtpSenders that have warned at least once about a `setParameters` call that used a stale transaction id, broken down by the eTLD+1 of the site. Collected only on EARLY_BETA_OR_EARLIER.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "rtcrtpsender_setparameters_blame_stale_transactionid",
+            "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
@@ -947,8 +2111,86 @@
       {
         "fields": [
           {
+            "description": "Amount of data read from the DNR startup cache file.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "extensions_apis_dnr_startup_cache_read_size",
+            "type": "RECORD"
+          },
+          {
+            "description": "Amount of data written to the DNR startup cache file.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "extensions_apis_dnr_startup_cache_write_size",
+            "type": "RECORD"
+          },
+          {
             "description": "The number and size of the IPC buffers being received over FOG IPC.\n",
             "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
               {
                 "mode": "NULLABLE",
                 "name": "sum",
@@ -980,6 +2222,12 @@
             "description": "The size of the database file at startup.\n",
             "fields": [
               {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
                 "mode": "NULLABLE",
                 "name": "sum",
                 "type": "INT64"
@@ -1010,6 +2258,12 @@
             "description": "The size of pings that exceeded the maximum ping size allowed for upload.\n",
             "fields": [
               {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
                 "mode": "NULLABLE",
                 "name": "sum",
                 "type": "INT64"
@@ -1039,6 +2293,12 @@
           {
             "description": "The size of the pending pings directory upon initialization of Glean.\nThis does not include the size of the deletion request pings directory.\n",
             "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
               {
                 "mode": "NULLABLE",
                 "name": "sum",
@@ -1074,9 +2334,39 @@
       {
         "fields": [
           {
+            "description": "Windows only count of the browser profiles on the current system. This\ncounts profiles that have been used across all Windows user accounts on\nmachine since this probe was added. The value persists across installs.\nA value of 0 is reported if there is an error determining the correct\ncount. Unset on other platforms.\n",
+            "mode": "NULLABLE",
+            "name": "browser_engagement_profile_count",
+            "type": "INT64"
+          },
+          {
             "description": "browser.link.open_newwindow.restriction preference value, that is one of 0, 1, or 2, where 2 is desktop default\n",
             "mode": "NULLABLE",
             "name": "browser_link_open_newwindow_restriction",
+            "type": "INT64"
+          },
+          {
+            "description": "Max amount of DNR rules being evaluated.\n",
+            "mode": "NULLABLE",
+            "name": "extensions_apis_dnr_evaluate_rules_count_max",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of domains listed in the quarantined domains list pref for the client during this session.\n",
+            "mode": "NULLABLE",
+            "name": "extensions_quarantined_domains_listsize",
+            "type": "INT64"
+          },
+          {
+            "description": "Value of the configurable rate limit, in pings per minute, for Glean pings as set at init.\n",
+            "mode": "NULLABLE",
+            "name": "fog_max_pings_per_minute",
+            "type": "INT64"
+          },
+          {
+            "description": "Count at store time how many credit card autofill profiles the user has.\n",
+            "mode": "NULLABLE",
+            "name": "formautofill_creditcards_autofill_profiles_count",
             "type": "INT64"
           }
         ],
@@ -1086,6 +2376,283 @@
       },
       {
         "fields": [
+          {
+            "description": "The proportion of RTCRtpSenders that have thrown an error at least once about a setParameters call that attempted to change the number of encodings.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "rtcrtpsender_setparameters_fail_length_changed",
+            "type": "RECORD"
+          },
+          {
+            "description": "The proportion of RTCRtpSenders configured with the setParameters compat mode that have thrown an error at least once about a setParameters call that had no encodings (we do not measure this against the general population of RTCRtpSenders, since without the compat mode this failure is never observed, because it fails the length change check).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "rtcrtpsender_setparameters_fail_no_encodings",
+            "type": "RECORD"
+          },
+          {
+            "description": "The proportion of RTCRtpSenders that have thrown an error at least once about a setParameters call because [[LastReturnedParameters]] was not set. (ie; there was not a recent enough call to getParameters)\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "rtcrtpsender_setparameters_fail_no_getparameters",
+            "type": "RECORD"
+          },
+          {
+            "description": "The proportion of RTCRtpSenders that have thrown an error at least once about a setParameters call that did not set the transactionId field.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "rtcrtpsender_setparameters_fail_no_transactionid",
+            "type": "RECORD"
+          },
+          {
+            "description": "The proportion of RTCRtpSenders that have thrown an error at least once about a setParameters call that had no encodings.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "rtcrtpsender_setparameters_fail_other",
+            "type": "RECORD"
+          },
+          {
+            "description": "The proportion of RTCRtpSenders that have thrown an error at least once about a setParameters call that attempted to change the rid on an encoding (note that we only check this if the encoding count did not change, see fail_length_changed).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "rtcrtpsender_setparameters_fail_rid_changed",
+            "type": "RECORD"
+          },
+          {
+            "description": "The proportion of RTCRtpSenders that have thrown an error at least once about a setParameters call that used a stale transaction id.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "rtcrtpsender_setparameters_fail_stale_transactionid",
+            "type": "RECORD"
+          },
+          {
+            "description": "The proportion of RTCRtpSenders configured with the setParameters compat mode that have warned at least once about a setParameters call that attempted to change the number of encodings.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "rtcrtpsender_setparameters_warn_length_changed",
+            "type": "RECORD"
+          },
+          {
+            "description": "The proportion of RTCRtpSenders configured with the setParameters compat mode that have warned at least once about a setParameters call because [[LastReturnedParameters]] was not set.  (ie; there was not a recent enough call to getParameters)\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "rtcrtpsender_setparameters_warn_no_getparameters",
+            "type": "RECORD"
+          },
+          {
+            "description": "The proportion of RTCRtpSenders configured with the setParameters compat mode that have warned at least once about a setParameters call that did not set the transactionId field.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "rtcrtpsender_setparameters_warn_no_transactionid",
+            "type": "RECORD"
+          },
+          {
+            "description": "The proportion of RTCRtpSenders configured with the setParameters compat mode that have warned at least once about a setParameters call that attempted to change the rid on an encoding (note that we only check this if the encoding count did not change, see warn_length_changed).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "rtcrtpsender_setparameters_warn_rid_changed",
+            "type": "RECORD"
+          },
+          {
+            "description": "The proportion of RTCRtpSenders configured with the setParameters compat mode that have warned at least once about a setParameters call that used a stale transaction id.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "rtcrtpsender_setparameters_warn_stale_transactionid",
+            "type": "RECORD"
+          },
+          {
+            "description": "The proportion of RTCRtpSenders that were created by an addTransceivers call that was passed a sendEncodings.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "rtcrtpsender_used_sendencodings",
+            "type": "RECORD"
+          },
+          {
+            "description": "The rate of failed translations requests.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "translations_error_rate",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "rate",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The source of the RemoteSettings attachment that holds the bloom filter. Possible values are \"dump_match\", \"cache_match\", \"remote_match\",\"dump_fallback\", \"cache_fallback\", \"unknown\". \"dump_match\", \"cache_match\" and \"remote_match\" are expected known-good values, and means that the loaded bloomfilter matches the blocklist record in the RemoteSettings collection. The prefix denotes the immediate source of the loaded data: \"dump\" means packaged with the application, \"remote\" means a freshly downloaded bloomfilter, \"cache\" means a previously downloaded bloomfilter. \"dump_fallback\" and \"cache_fallback\" means that the last known bloomfilter was used, despite it not matching the latest record in the RemoteSettings collection. In this case the outdated bloomfilter is used as a fallback (e.g. because the latest version cannot be downloaded). \"unknown\"  means that the bloomfilter cannot be loaded at all. This can happen if the blocklist is disabled via preferences or enterprise policies.\n",
+            "mode": "NULLABLE",
+            "name": "blocklist_mlbf_source",
+            "type": "STRING"
+          },
+          {
+            "description": "SHA1 cryptographic hash of the quarantined domains string pref.\n",
+            "mode": "NULLABLE",
+            "name": "extensions_quarantined_domains_listhash",
+            "type": "STRING"
+          },
+          {
+            "description": "SHA1 cryptographic hash of the quarantined domains string pref as it was set based on the value got synced from the RemoteSettings collection. AMRemoteSettings will be re-processing the entries on the next application startup and so this metric lifetime can be set to application and expect it to be always set to the value got from the RemoteSettings collection.\n",
+            "mode": "NULLABLE",
+            "name": "extensions_quarantined_domains_remotehash",
+            "type": "STRING"
+          },
           {
             "description": "The Buildid of the Gecko engine, example: 20200205124310 Mirror of `geckoview.build_id` for validation of migrated data.\n",
             "mode": "NULLABLE",
@@ -1117,7 +2684,7 @@
             "type": "STRING"
           },
           {
-            "description": "A path relating to where the search engine was installed/loaded from.\nFor example:\n  `[other]addEngineWithDetails:<extension id>` for a WebExtension based\n  engine.\n  `[https]developer.mozilla.org/mdn-web-docs.xml` for an OpenSearch based\n  engine.\nNote: this metric is truncated at 100 characters.\n",
+            "description": "A path relating to where the search engine was installed/loaded from.\nFor example:\n  `[addon]<extension id>` for a WebExtension based\n  engine.\n  `[https]developer.mozilla.org/mdn-web-docs.xml` for an OpenSearch based\n  engine.\nNote: this metric is truncated at 100 characters.\n",
             "mode": "NULLABLE",
             "name": "search_engine_default_load_path",
             "type": "STRING"
@@ -1141,7 +2708,7 @@
             "type": "STRING"
           },
           {
-            "description": "A path relating to where the search engine was installed/loaded from.\nFor example:\n  `[other]addEngineWithDetails:<extension id>` for a WebExtension based\n  engine.\n  `[https]developer.mozilla.org/mdn-web-docs.xml` for an OpenSearch based\n  engine.\nNote: this metric is truncated at 100 characters.\nIf this string is an empty string (`\"\"`), this means that one or both of\nthe preferences `browser.search.separatePrivateDefault` and\n`browser.search.separatePrivateDefault.ui.enabled` are set to false.\nIt is possible that the user selects the same private engine as for the\ndefault engine, and hence both versions of these fields will be filled in.\n",
+            "description": "A path relating to where the search engine was installed/loaded from.\nFor example:\n  `[addon]<extension id>` for a WebExtension based\n  engine.\n  `[https]developer.mozilla.org/mdn-web-docs.xml` for an OpenSearch based\n  engine.\nNote: this metric is truncated at 100 characters.\nIf this string is an empty string (`\"\"`), this means that one or both of\nthe preferences `browser.search.separatePrivateDefault` and\n`browser.search.separatePrivateDefault.ui.enabled` are set to false.\nIt is possible that the user selects the same private engine as for the\ndefault engine, and hence both versions of these fields will be filled in.\n",
             "mode": "NULLABLE",
             "name": "search_engine_private_load_path",
             "type": "STRING"
@@ -1155,6 +2722,28 @@
         ],
         "mode": "NULLABLE",
         "name": "string",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "mode": "REPEATED",
+            "name": "background_update_reasons_to_not_update",
+            "type": "STRING"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "browser_migration_matched_extensions",
+            "type": "STRING"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "browser_migration_unmatched_extensions",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "string_list",
         "type": "RECORD"
       },
       {
@@ -1176,6 +2765,24 @@
       },
       {
         "fields": [
+          {
+            "description": "Time to load and deserialize the extensions startupCache data.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "extensions_startup_cache_load_time",
+            "type": "RECORD"
+          },
           {
             "description": "Time the FOG initialization takes.\n",
             "fields": [
@@ -1202,11 +2809,413 @@
       {
         "fields": [
           {
+            "description": "Counts how long it takes to handle cookie banners successfully from DOMContentLoaded until click.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "cookie_banners_click_handle_duration",
+            "type": "RECORD"
+          },
+          {
+            "description": "Amount of time it takes to evaluate DNR rules for one network request.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "extensions_apis_dnr_evaluate_rules_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Amount of time it takes to read data into the DNR startup cache file.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "extensions_apis_dnr_startup_cache_read_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Amount of time it takes to write data into the DNR startup cache file.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "extensions_apis_dnr_startup_cache_write_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Amount of time it takes to validate DNR rules of individual ruleset\nwhen dynamic or static rulesets have been loaded from disk.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "extensions_apis_dnr_validate_rules_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts how long to generate canvas random noises.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "fingerprinting_protection_canvas_noise_calculate_time",
+            "type": "RECORD"
+          },
+          {
             "description": "The length of time between asking the child processes for their\nIPC buffers and all of them being received by the parent.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
                 "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
                 "type": "INT64"
               },
               {
@@ -1262,11 +3271,743 @@
             "type": "RECORD"
           },
           {
+            "description": "Time needed for a failed send of a ping to the servers and getting a reply back.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "glean_upload_send_failure",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time needed for a successful send of a ping to the servers and getting a reply back\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "glean_upload_send_success",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time waited for the dispatcher to unblock during shutdown.\nMost samples are expected to be below the 10s timeout used.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "glean_validation_shutdown_dispatcher_wait",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time waited for the uploader at shutdown.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "glean_validation_shutdown_wait",
+            "type": "RECORD"
+          },
+          {
+            "description": "The time spent from HttpChannelChild::AsyncOpen to adding the transaction to the nsHttpConnectionMgr\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "network_open_to_transaction_pending",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time for an unsuccessful DNS OS resolution (msec) | Migrated from Firefox Telemetry's `DNS_FAILED_LOOKUP_TIME`.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "networking_dns_failed_lookup_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time for a successful DNS resolution (msec) | Migrated from Firefox Telemetry's `DNS_LOOKUP_TIME`.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "networking_dns_lookup_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time for a renewed DNS OS resolution (msec) | Migrated from Firefox Telemetry's `DNS_RENEWAL_TIME`.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "networking_dns_renewal_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time for a DNS OS resolution (msec) used to get TTL | Migrated from Firefox Telemetry's `DNS_RENEWAL_TIME_FOR_TTL`.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "networking_dns_renewal_time_for_ttl",
+            "type": "RECORD"
+          },
+          {
+            "description": "The time between dispatching OnStartRequest from the socket thread and processing it on the main thread (content process).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "networking_http_content_onstart_delay",
+            "type": "RECORD"
+          },
+          {
+            "description": "The time between dispatching OnStopRequest from the socket thread and processing it on the main thread (content process).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "networking_http_content_onstop_delay",
+            "type": "RECORD"
+          },
+          {
             "description": "The time to build a Gecko display list.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
                 "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
                 "type": "INT64"
               },
               {
@@ -1322,11 +4063,149 @@
             "type": "RECORD"
           },
           {
+            "description": "The time duration it takes for the search service to start up.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "search_service_startup_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "The time it takes to categorize elements on a SERP.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "serp_categorization_duration",
+            "type": "RECORD"
+          },
+          {
             "description": "The time to rasterize glyphs for consumption by WebRender.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
                 "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
                 "type": "INT64"
               },
               {
@@ -1390,6 +4269,12 @@
                 "type": "INT64"
               },
               {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
                 "mode": "NULLABLE",
                 "name": "histogram_type",
                 "type": "STRING"
@@ -1447,6 +4332,12 @@
               {
                 "mode": "NULLABLE",
                 "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
                 "type": "INT64"
               },
               {
@@ -1510,6 +4401,12 @@
                 "type": "INT64"
               },
               {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
                 "mode": "NULLABLE",
                 "name": "histogram_type",
                 "type": "STRING"
@@ -1570,6 +4467,12 @@
                 "type": "INT64"
               },
               {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
                 "mode": "NULLABLE",
                 "name": "histogram_type",
                 "type": "STRING"
@@ -1622,11 +4525,83 @@
             "type": "RECORD"
           },
           {
+            "description": "WebRender renderer time excluding frames in which shader compilation took place.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "wr_renderer_time_no_sc",
+            "type": "RECORD"
+          },
+          {
             "description": "WebRender scene build time.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
                 "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
                 "type": "INT64"
               },
               {
@@ -1690,6 +4665,12 @@
                 "type": "INT64"
               },
               {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
                 "mode": "NULLABLE",
                 "name": "histogram_type",
                 "type": "STRING"
@@ -1750,6 +4731,12 @@
                 "type": "INT64"
               },
               {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
                 "mode": "NULLABLE",
                 "name": "histogram_type",
                 "type": "STRING"
@@ -1799,6 +4786,138 @@
             ],
             "mode": "NULLABLE",
             "name": "wr_texture_cache_update_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time elapsed between the construction of a transaction and the associated frame build beginning.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "wr_time_to_frame_build",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time elapsed between the construction of a frame and the start of rendering.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "wr_time_to_render_start",
             "type": "RECORD"
           }
         ],
@@ -1912,6 +5031,11 @@
               },
               {
                 "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "enrollment_id",
+                    "type": "STRING"
+                  },
                   {
                     "mode": "NULLABLE",
                     "name": "type",

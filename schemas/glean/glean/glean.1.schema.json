@@ -71,6 +71,10 @@
         "telemetry_sdk_build": {
           "description": "The version of the Glean SDK",
           "type": "string"
+        },
+        "windows_build_number": {
+          "description": "The optional Windows build number, reported by Windows (e.g. 22000) and not set for other platforms",
+          "type": "integer"
         }
       },
       "required": [
@@ -126,8 +130,8 @@
             "type": "boolean"
           },
           "propertyNames": {
-            "maxLength": 61,
-            "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
+            "maxLength": 111,
+            "pattern": "^[a-z_][a-z0-9_\\.]+$",
             "type": "string"
           },
           "type": "object"
@@ -137,8 +141,8 @@
             "type": "integer"
           },
           "propertyNames": {
-            "maxLength": 61,
-            "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
+            "maxLength": 111,
+            "pattern": "^[a-z_][a-z0-9_\\.]+$",
             "type": "string"
           },
           "type": "object"
@@ -146,6 +150,10 @@
         "custom_distribution": {
           "additionalProperties": {
             "properties": {
+              "count": {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "type": "integer"
+              },
               "sum": {
                 "type": "integer"
               },
@@ -166,8 +174,8 @@
             "type": "object"
           },
           "propertyNames": {
-            "maxLength": 61,
-            "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
+            "maxLength": 111,
+            "pattern": "^[a-z_][a-z0-9_\\.]+$",
             "type": "string"
           },
           "type": "object"
@@ -178,8 +186,8 @@
             "type": "string"
           },
           "propertyNames": {
-            "maxLength": 61,
-            "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
+            "maxLength": 111,
+            "pattern": "^[a-z_][a-z0-9_\\.]+$",
             "type": "string"
           },
           "type": "object"
@@ -189,8 +197,8 @@
             "type": "string"
           },
           "propertyNames": {
-            "maxLength": 61,
-            "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
+            "maxLength": 111,
+            "pattern": "^[a-z_][a-z0-9_\\.]+$",
             "type": "string"
           },
           "type": "object"
@@ -208,8 +216,8 @@
             "type": "object"
           },
           "propertyNames": {
-            "maxLength": 61,
-            "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
+            "maxLength": 111,
+            "pattern": "^[a-z_][a-z0-9_\\.]+$",
             "type": "string"
           },
           "type": "object"
@@ -227,8 +235,8 @@
             "type": "object"
           },
           "propertyNames": {
-            "maxLength": 61,
-            "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
+            "maxLength": 111,
+            "pattern": "^[a-z_][a-z0-9_\\.]+$",
             "type": "string"
           },
           "type": "object"
@@ -261,8 +269,8 @@
             "type": "object"
           },
           "propertyNames": {
-            "maxLength": 61,
-            "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
+            "maxLength": 111,
+            "pattern": "^[a-z_][a-z0-9_\\.]+$",
             "type": "string"
           },
           "type": "object"
@@ -280,8 +288,8 @@
             "type": "object"
           },
           "propertyNames": {
-            "maxLength": 61,
-            "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
+            "maxLength": 111,
+            "pattern": "^[a-z_][a-z0-9_\\.]+$",
             "type": "string"
           },
           "type": "object"
@@ -289,6 +297,10 @@
         "memory_distribution": {
           "additionalProperties": {
             "properties": {
+              "count": {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "type": "integer"
+              },
               "sum": {
                 "type": "integer"
               },
@@ -308,8 +320,8 @@
             "type": "object"
           },
           "propertyNames": {
-            "maxLength": 61,
-            "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
+            "maxLength": 111,
+            "pattern": "^[a-z_][a-z0-9_\\.]+$",
             "type": "string"
           },
           "type": "object"
@@ -319,8 +331,8 @@
             "type": "integer"
           },
           "propertyNames": {
-            "maxLength": 61,
-            "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
+            "maxLength": 111,
+            "pattern": "^[a-z_][a-z0-9_\\.]+$",
             "type": "string"
           },
           "type": "object"
@@ -345,8 +357,8 @@
             "type": "object"
           },
           "propertyNames": {
-            "maxLength": 61,
-            "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
+            "maxLength": 111,
+            "pattern": "^[a-z_][a-z0-9_\\.]+$",
             "type": "string"
           },
           "type": "object"
@@ -356,8 +368,8 @@
             "type": "string"
           },
           "propertyNames": {
-            "maxLength": 61,
-            "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
+            "maxLength": 111,
+            "pattern": "^[a-z_][a-z0-9_\\.]+$",
             "type": "string"
           },
           "type": "object"
@@ -370,8 +382,8 @@
             "type": "array"
           },
           "propertyNames": {
-            "maxLength": 61,
-            "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
+            "maxLength": 111,
+            "pattern": "^[a-z_][a-z0-9_\\.]+$",
             "type": "string"
           },
           "type": "object"
@@ -382,8 +394,8 @@
             "type": "string"
           },
           "propertyNames": {
-            "maxLength": 61,
-            "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
+            "maxLength": 111,
+            "pattern": "^[a-z_][a-z0-9_\\.]+$",
             "type": "string"
           },
           "type": "object"
@@ -414,8 +426,8 @@
             "type": "object"
           },
           "propertyNames": {
-            "maxLength": 61,
-            "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
+            "maxLength": 111,
+            "pattern": "^[a-z_][a-z0-9_\\.]+$",
             "type": "string"
           },
           "type": "object"
@@ -424,6 +436,10 @@
           "additionalProperties": {
             "properties": {
               "bucket_count": {
+                "type": "integer"
+              },
+              "count": {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
                 "type": "integer"
               },
               "histogram_type": {
@@ -478,8 +494,8 @@
             "type": "object"
           },
           "propertyNames": {
-            "maxLength": 61,
-            "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
+            "maxLength": 111,
+            "pattern": "^[a-z_][a-z0-9_\\.]+$",
             "type": "string"
           },
           "type": "object"
@@ -490,8 +506,8 @@
             "type": "string"
           },
           "propertyNames": {
-            "maxLength": 61,
-            "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
+            "maxLength": 111,
+            "pattern": "^[a-z_][a-z0-9_\\.]+$",
             "type": "string"
           },
           "type": "object"
@@ -502,8 +518,8 @@
             "type": "string"
           },
           "propertyNames": {
-            "maxLength": 61,
-            "pattern": "^[a-z_][a-z0-9_]{0,29}(\\.[a-z_][a-z0-9_]{0,29})+$",
+            "maxLength": 111,
+            "pattern": "^[a-z_][a-z0-9_\\.]+$",
             "type": "string"
           },
           "type": "object"
@@ -533,6 +549,9 @@
                   },
                   {
                     "properties": {
+                      "enrollment_id": {
+                        "type": "string"
+                      },
                       "type": {
                         "type": "string"
                       }

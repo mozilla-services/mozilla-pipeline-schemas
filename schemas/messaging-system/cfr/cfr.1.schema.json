@@ -17,9 +17,12 @@
     "bq_metadata_format": "structured",
     "bq_table": "cfr_v1",
     "expiration_policy": {
-      "collect_through_date": "2022-01-01",
       "delete_after_days": 180
-    }
+    },
+    "sample_id_source_uuid_attribute": "client_id",
+    "sample_id_source_uuid_payload_path": [
+      "impression_id"
+    ]
   },
   "oneOf": [
     {
@@ -83,6 +86,10 @@
     },
     "shield_id": {
       "description": "[DEPRECATED]: use `experiments` instead. A semicolon separated string to store a list of Shield study IDs",
+      "type": "string"
+    },
+    "source": {
+      "description": "Added to reduce validation exceptions: see #1787882",
       "type": "string"
     },
     "version": {

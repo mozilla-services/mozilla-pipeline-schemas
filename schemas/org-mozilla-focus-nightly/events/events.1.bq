@@ -90,6 +90,12 @@
         "mode": "NULLABLE",
         "name": "telemetry_sdk_build",
         "type": "STRING"
+      },
+      {
+        "description": "The optional Windows build number, reported by Windows (e.g. 22000) and not set for other platforms",
+        "mode": "NULLABLE",
+        "name": "windows_build_number",
+        "type": "INT64"
       }
     ],
     "mode": "NULLABLE",
@@ -462,6 +468,19 @@
         "mode": "REPEATED",
         "name": "url",
         "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "Sets the legacy client ID as part of the deletion-reqest and other pings.\n",
+            "mode": "NULLABLE",
+            "name": "legacy_ids_client_id",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "uuid",
+        "type": "RECORD"
       }
     ],
     "mode": "NULLABLE",
@@ -520,6 +539,11 @@
               },
               {
                 "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "enrollment_id",
+                    "type": "STRING"
+                  },
                   {
                     "mode": "NULLABLE",
                     "name": "type",

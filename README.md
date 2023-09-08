@@ -9,6 +9,16 @@ to [gcp-ingestion](https://github.com/mozilla/gcp-ingestion) and BigQuery.
 
 ```bash
 schemas
+├── accounts-backend
+│   ├── accounts-events
+│   ├── baseline
+│   ├── deletion-request
+│   ├── events
+│   └── metrics
+├── accounts-frontend
+│   ├── accounts-events
+│   ├── deletion-request
+│   └── events
 ├── activity-stream
 │   ├── events
 │   ├── impression-stats
@@ -51,16 +61,34 @@ schemas
 │   └── amplitude-event
 ├── firefox-desktop
 │   ├── baseline
+│   ├── crash
 │   ├── deletion-request
 │   ├── events
+│   ├── first-startup
 │   ├── fog-validation
-│   └── metrics
-├── firefox-desktop-background-update
-│   ├── background-update
+│   ├── messaging-system
+│   ├── metrics
+│   ├── new-metric-capture-emulation
+│   ├── newtab
+│   ├── pageload
+│   ├── pseudo-main
+│   ├── quick-suggest
+│   └── top-sites
+├── firefox-desktop-background-tasks
+│   ├── background-tasks
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
 │   └── metrics
+├── firefox-desktop-background-update
+│   ├── background-update
+│   ├── baseline
+│   ├── crash
+│   ├── deletion-request
+│   ├── events
+│   ├── fog-validation
+│   ├── metrics
+│   └── pageload
 ├── firefox-installer
 │   └── install
 ├── firefox-launcher-process
@@ -75,6 +103,11 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   └── page-view
+├── mdn-yari
+│   ├── action
+│   ├── deletion-request
+│   ├── events
+│   └── page
 ├── messaging-system
 │   ├── cfr
 │   ├── infobar
@@ -106,6 +139,11 @@ schemas
 │   └── metrics
 ├── mobile
 │   └── activation
+├── monitor-cirrus
+│   ├── baseline
+│   ├── deletion-request
+│   ├── events
+│   └── metrics
 ├── mozdata
 │   └── event
 ├── mozilla-lockbox
@@ -127,9 +165,13 @@ schemas
 │   ├── metrics
 │   └── usage
 ├── mozillavpn
+│   ├── baseline
+│   ├── daemonsession
 │   ├── deletion-request
 │   ├── events
-│   └── main
+│   ├── main
+│   ├── metrics
+│   └── vpnsession
 ├── mozphab
 │   ├── baseline
 │   ├── deletion-request
@@ -152,6 +194,9 @@ schemas
 │   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── client-deduplication
+│   ├── cookie-banner-report-site
+│   ├── crash
 │   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
@@ -162,6 +207,8 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
+│   ├── pageload
+│   ├── spoc
 │   ├── startup-timeline
 │   ├── sync
 │   ├── tabs-sync
@@ -171,6 +218,9 @@ schemas
 │   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── client-deduplication
+│   ├── cookie-banner-report-site
+│   ├── crash
 │   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
@@ -181,6 +231,8 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
+│   ├── pageload
+│   ├── spoc
 │   ├── startup-timeline
 │   ├── sync
 │   ├── tabs-sync
@@ -190,6 +242,9 @@ schemas
 │   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── client-deduplication
+│   ├── cookie-banner-report-site
+│   ├── crash
 │   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
@@ -200,6 +255,8 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
+│   ├── pageload
+│   ├── spoc
 │   ├── startup-timeline
 │   ├── sync
 │   ├── tabs-sync
@@ -209,6 +266,9 @@ schemas
 │   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── client-deduplication
+│   ├── cookie-banner-report-site
+│   ├── crash
 │   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
@@ -219,6 +279,8 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
+│   ├── pageload
+│   ├── spoc
 │   ├── startup-timeline
 │   ├── sync
 │   ├── tabs-sync
@@ -228,6 +290,9 @@ schemas
 │   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── client-deduplication
+│   ├── cookie-banner-report-site
+│   ├── crash
 │   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
@@ -238,10 +303,20 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
+│   ├── pageload
+│   ├── spoc
 │   ├── startup-timeline
 │   ├── sync
 │   ├── tabs-sync
 │   └── topsites-impression
+├── org-mozilla-firefox-vpn
+│   ├── baseline
+│   ├── daemonsession
+│   ├── deletion-request
+│   ├── events
+│   ├── main
+│   ├── metrics
+│   └── vpnsession
 ├── org-mozilla-firefoxreality
 │   ├── baseline
 │   ├── deletion-request
@@ -251,57 +326,110 @@ schemas
 ├── org-mozilla-focus
 │   ├── activation
 │   ├── baseline
+│   ├── cookie-banner-report-site
+│   ├── crash
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
-│   └── metrics
+│   ├── metrics
+│   └── pageload
 ├── org-mozilla-focus-beta
 │   ├── activation
 │   ├── baseline
+│   ├── cookie-banner-report-site
+│   ├── crash
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
-│   └── metrics
+│   ├── metrics
+│   └── pageload
 ├── org-mozilla-focus-nightly
 │   ├── activation
 │   ├── baseline
+│   ├── cookie-banner-report-site
+│   ├── crash
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
-│   └── metrics
+│   ├── metrics
+│   └── pageload
 ├── org-mozilla-ios-fennec
+│   ├── addresses-sync
 │   ├── baseline
+│   ├── bookmarks-sync
+│   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
+│   ├── first-session
+│   ├── history-sync
+│   ├── logins-sync
 │   ├── metrics
+│   ├── sync
+│   ├── tabs-sync
+│   ├── temp-baseline
 │   ├── temp-bookmarks-sync
+│   ├── temp-clients-sync
+│   ├── temp-credit-cards-sync
 │   ├── temp-history-sync
 │   ├── temp-logins-sync
+│   ├── temp-rust-tabs-sync
 │   ├── temp-sync
 │   ├── temp-tabs-sync
 │   └── topsites-impression
 ├── org-mozilla-ios-firefox
+│   ├── addresses-sync
 │   ├── baseline
+│   ├── bookmarks-sync
+│   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
+│   ├── first-session
+│   ├── history-sync
+│   ├── logins-sync
 │   ├── metrics
+│   ├── sync
+│   ├── tabs-sync
+│   ├── temp-baseline
 │   ├── temp-bookmarks-sync
+│   ├── temp-clients-sync
+│   ├── temp-credit-cards-sync
 │   ├── temp-history-sync
 │   ├── temp-logins-sync
+│   ├── temp-rust-tabs-sync
 │   ├── temp-sync
 │   ├── temp-tabs-sync
 │   └── topsites-impression
 ├── org-mozilla-ios-firefoxbeta
+│   ├── addresses-sync
 │   ├── baseline
+│   ├── bookmarks-sync
+│   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
+│   ├── first-session
+│   ├── history-sync
+│   ├── logins-sync
 │   ├── metrics
+│   ├── sync
+│   ├── tabs-sync
+│   ├── temp-baseline
 │   ├── temp-bookmarks-sync
+│   ├── temp-clients-sync
+│   ├── temp-credit-cards-sync
 │   ├── temp-history-sync
 │   ├── temp-logins-sync
+│   ├── temp-rust-tabs-sync
 │   ├── temp-sync
 │   ├── temp-tabs-sync
 │   └── topsites-impression
+├── org-mozilla-ios-firefoxvpn
+│   ├── baseline
+│   ├── daemonsession
+│   ├── deletion-request
+│   ├── events
+│   ├── main
+│   ├── metrics
+│   └── vpnsession
 ├── org-mozilla-ios-focus
 │   ├── baseline
 │   ├── deletion-request
@@ -320,10 +448,13 @@ schemas
 ├── org-mozilla-klar
 │   ├── activation
 │   ├── baseline
+│   ├── cookie-banner-report-site
+│   ├── crash
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
-│   └── metrics
+│   ├── metrics
+│   └── pageload
 ├── org-mozilla-mozregression
 │   ├── baseline
 │   ├── deletion-request
@@ -332,6 +463,7 @@ schemas
 │   └── usage
 ├── org-mozilla-reference-browser
 │   ├── baseline
+│   ├── crash
 │   ├── deletion-request
 │   ├── events
 │   └── metrics
@@ -358,7 +490,13 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
-│   └── metrics
+│   ├── messaging-system
+│   ├── metrics
+│   ├── new-metric-capture-emulation
+│   ├── newtab
+│   ├── pageload
+│   ├── pseudo-main
+│   └── top-sites
 ├── pioneer-citp-news-disinfo
 │   ├── deletion-request
 │   ├── measurements
@@ -392,6 +530,18 @@ schemas
 │   └── total-timing
 ├── pocket
 │   └── fire-tv-events
+├── rally-attention-stream
+│   ├── advertisements
+│   ├── article-contents
+│   ├── attribution
+│   ├── deletion-request
+│   ├── events
+│   ├── study-enrollment
+│   ├── tracking-pixel
+│   ├── user-journey
+│   ├── youtube-ads
+│   ├── youtube-video-details
+│   └── youtube-video-recommendations
 ├── rally-citp-search-engine-usage
 │   ├── ballot-interaction
 │   ├── deletion-request
@@ -461,6 +611,8 @@ schemas
 │   ├── downgrade
 │   ├── event
 │   ├── first-shutdown
+│   ├── first-shutdown-remainder
+│   ├── first-shutdown-use-counter
 │   ├── flash-shield-study
 │   ├── focus-event
 │   ├── frecency-update
@@ -469,6 +621,8 @@ schemas
 │   ├── heartbeat
 │   ├── installation
 │   ├── main
+│   ├── main-remainder
+│   ├── main-use-counter
 │   ├── malware-addon-states
 │   ├── mobile-event
 │   ├── mobile-metrics
@@ -482,6 +636,8 @@ schemas
 │   ├── prio
 │   ├── regrets-reporter-update
 │   ├── saved-session
+│   ├── saved-session-remainder
+│   ├── saved-session-use-counter
 │   ├── searchvol
 │   ├── searchvolextra
 │   ├── shield-icq-v1
@@ -512,9 +668,20 @@ schemas
 │   ├── voice-feedback
 │   ├── x-contextual-feature-recommendation
 │   └── xfocsp-error-report
+├── treeherder
+│   ├── classified
+│   ├── deletion-request
+│   └── events
+├── viu-politica
+│   ├── deletion-request
+│   ├── events
+│   ├── main-events
+│   ├── regret-details
+│   ├── video-data
+│   └── video-index
 └── webpagetest
     └── webpagetest-run
 
-505 directories
+672 directories
 ```
 

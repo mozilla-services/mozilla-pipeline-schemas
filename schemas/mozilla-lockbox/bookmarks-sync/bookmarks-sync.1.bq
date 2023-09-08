@@ -90,6 +90,12 @@
         "mode": "NULLABLE",
         "name": "telemetry_sdk_build",
         "type": "STRING"
+      },
+      {
+        "description": "The optional Windows build number, reported by Windows (e.g. 22000) and not set for other platforms",
+        "mode": "NULLABLE",
+        "name": "windows_build_number",
+        "type": "INT64"
       }
     ],
     "mode": "NULLABLE",
@@ -299,6 +305,12 @@
             "mode": "NULLABLE",
             "name": "bookmarks_sync_outgoing_batches",
             "type": "INT64"
+          },
+          {
+            "description": "Records the number of batches needed to upload all outgoing records.\n",
+            "mode": "NULLABLE",
+            "name": "bookmarks_sync_v2_outgoing_batches",
+            "type": "INT64"
           }
         ],
         "mode": "NULLABLE",
@@ -317,6 +329,18 @@
             "description": "Records when the bookmark sync started.\n",
             "mode": "NULLABLE",
             "name": "bookmarks_sync_started_at",
+            "type": "STRING"
+          },
+          {
+            "description": "Records when the bookmark sync finished.\n",
+            "mode": "NULLABLE",
+            "name": "bookmarks_sync_v2_finished_at",
+            "type": "STRING"
+          },
+          {
+            "description": "Records when the bookmark sync started.\n",
+            "mode": "NULLABLE",
+            "name": "bookmarks_sync_v2_started_at",
             "type": "STRING"
           }
         ],
@@ -395,6 +419,60 @@
             ],
             "mode": "REPEATED",
             "name": "bookmarks_sync_remote_tree_problems",
+            "type": "RECORD"
+          },
+          {
+            "description": "Records incoming bookmark record counts.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "bookmarks_sync_v2_incoming",
+            "type": "RECORD"
+          },
+          {
+            "description": "Records outgoing bookmark record counts.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "bookmarks_sync_v2_outgoing",
+            "type": "RECORD"
+          },
+          {
+            "description": "Records counts for structure problems and divergences in the remote bookmarks tree. These are documented in https://github.com/mozilla/dogear/blob/fbade15f2a4f11215e30b8f428a0a8df3defeaec/src/tree.rs#L1273-L1294.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "bookmarks_sync_v2_remote_tree_problems",
             "type": "RECORD"
           },
           {
@@ -534,6 +612,24 @@
             "mode": "REPEATED",
             "name": "bookmarks_sync_failure_reason",
             "type": "RECORD"
+          },
+          {
+            "description": "Records bookmark sync failure reasons.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "bookmarks_sync_v2_failure_reason",
+            "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
@@ -546,6 +642,12 @@
             "description": "The user's hashed Firefox Account ID.\n",
             "mode": "NULLABLE",
             "name": "bookmarks_sync_uid",
+            "type": "STRING"
+          },
+          {
+            "description": "The user's hashed Firefox Account ID.\n",
+            "mode": "NULLABLE",
+            "name": "bookmarks_sync_v2_uid",
             "type": "STRING"
           }
         ],
@@ -593,6 +695,12 @@
             "description": "Unique identifier for this sync, used to correlate together individual pings for data types that were synchronized together (history, bookmarks, logins). If a data type is synchronized by itself via the legacy 'sync' API (as opposed to the Sync Manager), then this field will not be set on the corresponding ping.\n",
             "mode": "NULLABLE",
             "name": "sync_sync_uuid",
+            "type": "STRING"
+          },
+          {
+            "description": "Unique identifier for this sync, used to correlate together individual pings for data types that were synchronized together (history, bookmarks, logins). If a data type is synchronized by itself via the legacy 'sync' API (as opposed to the Sync Manager), then this field will not be set on the corresponding ping.\n",
+            "mode": "NULLABLE",
+            "name": "sync_v2_sync_uuid",
             "type": "STRING"
           }
         ],
@@ -657,6 +765,11 @@
               },
               {
                 "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "enrollment_id",
+                    "type": "STRING"
+                  },
                   {
                     "mode": "NULLABLE",
                     "name": "type",

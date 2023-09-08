@@ -55,6 +55,12 @@
     "type": "RECORD"
   },
   {
+    "description": "A boolean indicating whether the user has opted in to improving the Firefox Suggest experience",
+    "mode": "NULLABLE",
+    "name": "improve_suggest_experience_checked",
+    "type": "BOOL"
+  },
+  {
     "description": "Whether or not the user has clicked on this QuickSuggest link",
     "mode": "NULLABLE",
     "name": "is_clicked",
@@ -287,7 +293,7 @@
     "type": "INT64"
   },
   {
-    "description": "The scenario of the QuickSuggest user experience",
+    "description": "[Deprecated, use `improve_suggest_experience_checked`]; The scenario of the QuickSuggest user experience",
     "mode": "NULLABLE",
     "name": "scenario",
     "type": "STRING"
@@ -296,6 +302,12 @@
     "description": "The user's typed-in search query in the AwesomeBar. Note that this ping is only sent when a QuickSuggest ad is shown for the current search query, so we don't have to limit its size here",
     "mode": "NULLABLE",
     "name": "search_query",
+    "type": "STRING"
+  },
+  {
+    "description": "The source of the suggestion, either “remote-settings” or “merino”. See bug 1779049",
+    "mode": "NULLABLE",
+    "name": "source",
     "type": "STRING"
   },
   {

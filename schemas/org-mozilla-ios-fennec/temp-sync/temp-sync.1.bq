@@ -90,6 +90,12 @@
         "mode": "NULLABLE",
         "name": "telemetry_sdk_build",
         "type": "STRING"
+      },
+      {
+        "description": "The optional Windows build number, reported by Windows (e.g. 22000) and not set for other platforms",
+        "mode": "NULLABLE",
+        "name": "windows_build_number",
+        "type": "INT64"
       }
     ],
     "mode": "NULLABLE",
@@ -392,7 +398,7 @@
       {
         "fields": [
           {
-            "description": "Unique identifier for this sync, used to correlate together individual pings for data types that were synchronized together (history, bookmarks, logins). If a data type is synchronized by itself via the legacy 'sync' API (as opposed to the Sync Manager), then this field will not be set on the corresponding ping.\n",
+            "description": "Unique identifier for this sync, used to correlate together individual pings for data types that were synchronized together (history, bookmarks, logins, and tabs). If a data type is synchronized by itself via the legacy 'sync' API (as opposed to the Sync Manager), then this field will not be set on the corresponding ping.\n",
             "mode": "NULLABLE",
             "name": "sync_sync_uuid",
             "type": "STRING"
@@ -459,6 +465,11 @@
               },
               {
                 "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "enrollment_id",
+                    "type": "STRING"
+                  },
                   {
                     "mode": "NULLABLE",
                     "name": "type",

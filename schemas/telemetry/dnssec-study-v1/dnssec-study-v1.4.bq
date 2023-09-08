@@ -597,6 +597,12 @@
                 "type": "STRING"
               },
               {
+                "description": "Identifier that indicates where installations of Firefox originate, see bug 1827233",
+                "mode": "NULLABLE",
+                "name": "dlsource",
+                "type": "STRING"
+              },
+              {
                 "description": "Unique token created at Firefox download time, see bug 1677497",
                 "mode": "NULLABLE",
                 "name": "dltoken",
@@ -934,6 +940,12 @@
                 "mode": "NULLABLE",
                 "name": "model",
                 "type": "INT64"
+              },
+              {
+                "description": "The CPU name, e.g. 'Intel(R) Core(TM) i9-8950HK CPU @ 2.90GHz', or `null` on failure. Desktop only.",
+                "mode": "NULLABLE",
+                "name": "name",
+                "type": "STRING"
               },
               {
                 "description": "Only available on Firefox desktop. The CPU clock speed in MHz.",
@@ -1293,6 +1305,12 @@
                 "mode": "REPEATED",
                 "name": "monitors",
                 "type": "RECORD"
+              },
+              {
+                "description": "Frame rate in Hz, typically 60 or more, see bug 1840381",
+                "mode": "NULLABLE",
+                "name": "target_frame_rate",
+                "type": "INT64"
               }
             ],
             "mode": "NULLABLE",
@@ -1735,6 +1753,18 @@
   {
     "fields": [
       {
+        "description": "The version of the add-on",
+        "mode": "NULLABLE",
+        "name": "addon_version",
+        "type": "STRING"
+      },
+      {
+        "description": "The apex domain for the study",
+        "mode": "NULLABLE",
+        "name": "apex_domain",
+        "type": "STRING"
+      },
+      {
         "description": "parent object for DNS query attempts for each RRTYPE and socket type",
         "fields": [
           {
@@ -1744,7 +1774,27 @@
           },
           {
             "mode": "NULLABLE",
+            "name": "tcp_a_n",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "tcp_a_n_u",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "tcp_a_u",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
             "name": "tcp_acd",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "tcp_acd_u",
             "type": "FLOAT64"
           },
           {
@@ -1754,7 +1804,27 @@
           },
           {
             "mode": "NULLABLE",
+            "name": "tcp_ado_u",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
             "name": "tcp_adocd",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "tcp_adocd_u",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "tcp_an",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "tcp_an_u",
             "type": "FLOAT64"
           },
           {
@@ -1764,7 +1834,37 @@
           },
           {
             "mode": "NULLABLE",
+            "name": "tcp_dnskey_u",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "tcp_dnskeydo",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "tcp_dnskeydo_u",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "tcp_ds",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "tcp_ds_u",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
             "name": "tcp_https",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "tcp_https_u",
             "type": "FLOAT64"
           },
           {
@@ -1774,7 +1874,17 @@
           },
           {
             "mode": "NULLABLE",
+            "name": "tcp_newfour_u",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
             "name": "tcp_newone",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "tcp_newone_u",
             "type": "FLOAT64"
           },
           {
@@ -1784,10 +1894,21 @@
           },
           {
             "mode": "NULLABLE",
+            "name": "tcp_newthree_u",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
             "name": "tcp_newtwo",
             "type": "FLOAT64"
           },
           {
+            "mode": "NULLABLE",
+            "name": "tcp_newtwo_u",
+            "type": "FLOAT64"
+          },
+          {
+            "description": "This property is deprecated and no longer used",
             "mode": "NULLABLE",
             "name": "tcp_rrsig",
             "type": "FLOAT64"
@@ -1799,11 +1920,56 @@
           },
           {
             "mode": "NULLABLE",
+            "name": "tcp_smimea_u",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
             "name": "udp_a",
             "type": "FLOAT64"
           },
           {
-            "description": "Number of attempted dns.resolve() calls made using a domain name we control",
+            "mode": "NULLABLE",
+            "name": "udp_a_afirst",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "udp_a_afirst_u",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "udp_a_alast",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "udp_a_alast_u",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "udp_a_n",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "udp_a_n_prefix",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "udp_a_n_u",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "udp_a_u",
+            "type": "FLOAT64"
+          },
+          {
+            "description": "Deprecated",
             "mode": "NULLABLE",
             "name": "udp_a_web_ext",
             "type": "FLOAT64"
@@ -1815,7 +1981,17 @@
           },
           {
             "mode": "NULLABLE",
+            "name": "udp_acd_u",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
             "name": "udp_ado",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "udp_ado_u",
             "type": "FLOAT64"
           },
           {
@@ -1825,7 +2001,52 @@
           },
           {
             "mode": "NULLABLE",
+            "name": "udp_adocd_u",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "udp_an",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "udp_an_u",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
             "name": "udp_dnskey",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "udp_dnskey_u",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "udp_dnskeydo",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "udp_dnskeydo_u",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "udp_ds",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "udp_ds_u",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "udp_dsdo",
             "type": "FLOAT64"
           },
           {
@@ -1835,7 +2056,17 @@
           },
           {
             "mode": "NULLABLE",
+            "name": "udp_https_u",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
             "name": "udp_newfour",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "udp_newfour_u",
             "type": "FLOAT64"
           },
           {
@@ -1845,7 +2076,57 @@
           },
           {
             "mode": "NULLABLE",
+            "name": "udp_newone_afirst",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "udp_newone_afirst_u",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "udp_newone_alast",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "udp_newone_alast_u",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "udp_newone_alt",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "udp_newone_alt_prefix",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "udp_newone_alt_u",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "udp_newone_prefix",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "udp_newone_u",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
             "name": "udp_newthree",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "udp_newthree_u",
             "type": "FLOAT64"
           },
           {
@@ -1855,12 +2136,42 @@
           },
           {
             "mode": "NULLABLE",
+            "name": "udp_newtwo_u",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
             "name": "udp_rrsig",
             "type": "FLOAT64"
           },
           {
             "mode": "NULLABLE",
+            "name": "udp_rrsig_u",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
             "name": "udp_smimea",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "udp_smimea_u",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "webext_a",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "webext_a_prefix",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "webext_a_u",
             "type": "FLOAT64"
           }
         ],
@@ -1878,7 +2189,27 @@
           },
           {
             "mode": "REPEATED",
+            "name": "tcp_a_n",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "tcp_a_n_u",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "tcp_a_u",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
             "name": "tcp_acd",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "tcp_acd_u",
             "type": "INT64"
           },
           {
@@ -1888,7 +2219,27 @@
           },
           {
             "mode": "REPEATED",
+            "name": "tcp_ado_u",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
             "name": "tcp_adocd",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "tcp_adocd_u",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "tcp_an",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "tcp_an_u",
             "type": "INT64"
           },
           {
@@ -1898,7 +2249,37 @@
           },
           {
             "mode": "REPEATED",
+            "name": "tcp_dnskey_u",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "tcp_dnskeydo",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "tcp_dnskeydo_u",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "tcp_ds",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "tcp_ds_u",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
             "name": "tcp_https",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "tcp_https_u",
             "type": "INT64"
           },
           {
@@ -1908,7 +2289,17 @@
           },
           {
             "mode": "REPEATED",
+            "name": "tcp_newfour_u",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
             "name": "tcp_newone",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "tcp_newone_u",
             "type": "INT64"
           },
           {
@@ -1918,7 +2309,17 @@
           },
           {
             "mode": "REPEATED",
+            "name": "tcp_newthree_u",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
             "name": "tcp_newtwo",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "tcp_newtwo_u",
             "type": "INT64"
           },
           {
@@ -1933,7 +2334,52 @@
           },
           {
             "mode": "REPEATED",
+            "name": "tcp_smimea_u",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
             "name": "udp_a",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "udp_a_afirst",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "udp_a_afirst_u",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "udp_a_alast",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "udp_a_alast_u",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "udp_a_n",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "udp_a_n_prefix",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "udp_a_n_u",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "udp_a_u",
             "type": "INT64"
           },
           {
@@ -1948,7 +2394,17 @@
           },
           {
             "mode": "REPEATED",
+            "name": "udp_acd_u",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
             "name": "udp_ado",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "udp_ado_u",
             "type": "INT64"
           },
           {
@@ -1958,7 +2414,52 @@
           },
           {
             "mode": "REPEATED",
+            "name": "udp_adocd_u",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "udp_an",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "udp_an_u",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
             "name": "udp_dnskey",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "udp_dnskey_u",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "udp_dnskeydo",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "udp_dnskeydo_u",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "udp_ds",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "udp_ds_u",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "udp_dsdo",
             "type": "INT64"
           },
           {
@@ -1968,7 +2469,17 @@
           },
           {
             "mode": "REPEATED",
+            "name": "udp_https_u",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
             "name": "udp_newfour",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "udp_newfour_u",
             "type": "INT64"
           },
           {
@@ -1978,7 +2489,57 @@
           },
           {
             "mode": "REPEATED",
+            "name": "udp_newone_afirst",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "udp_newone_afirst_u",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "udp_newone_alast",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "udp_newone_alast_u",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "udp_newone_alt",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "udp_newone_alt_prefix",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "udp_newone_alt_u",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "udp_newone_prefix",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "udp_newone_u",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
             "name": "udp_newthree",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "udp_newthree_u",
             "type": "INT64"
           },
           {
@@ -1988,17 +2549,1437 @@
           },
           {
             "mode": "REPEATED",
+            "name": "udp_newtwo_u",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
             "name": "udp_rrsig",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "udp_rrsig_u",
             "type": "INT64"
           },
           {
             "mode": "REPEATED",
             "name": "udp_smimea",
             "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "udp_smimea_u",
+            "type": "INT64"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "webext_a",
+            "type": "STRING"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "webext_a_prefix",
+            "type": "STRING"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "webext_a_u",
+            "type": "STRING"
           }
         ],
         "mode": "NULLABLE",
         "name": "dns_data",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "error_attempt",
+            "type": "FLOAT64"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "error_rrtype",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "reason",
+            "type": "STRING"
+          }
+        ],
+        "mode": "REPEATED",
+        "name": "dns_query_errors",
+        "type": "RECORD"
+      },
+      {
+        "description": "parent object for DNS query attempts for each RRTYPE and socket type",
+        "fields": [
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_a",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_a_n",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_a_n_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_a_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_acd",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_acd_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_ado",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_ado_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_adocd",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_adocd_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_an",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_an_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_dnskey",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_dnskey_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_dnskeydo",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_dnskeydo_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_ds",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_ds_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_https",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_https_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_newfour",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_newfour_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_newone",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_newone_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_newthree",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_newthree_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_newtwo",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_newtwo_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_rrsig",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_smimea",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "tcp_smimea_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_a",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_a_afirst",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_a_afirst_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_a_alast",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_a_alast_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_a_n",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_a_n_prefix",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_a_n_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_a_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_acd",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_acd_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_ado",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_ado_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_adocd",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_adocd_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_an",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_an_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_dnskey",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_dnskey_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_dnskeydo",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_dnskeydo_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_ds",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_ds_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_dsdo",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_https",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_https_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_newfour",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_newfour_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_newone",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_newone_afirst",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_newone_afirst_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_newone_alast",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_newone_alast_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_newone_alt",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_newone_alt_prefix",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_newone_alt_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_newone_prefix",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_newone_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_newthree",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_newthree_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_newtwo",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_newtwo_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_rrsig",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_rrsig_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_smimea",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "udp_smimea_u",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "webext_a",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "webext_a_prefix",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "order",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "timestamp",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "webext_a_u",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "dns_query_info",
         "type": "RECORD"
       },
       {
@@ -2010,6 +3991,12 @@
         "mode": "NULLABLE",
         "name": "error_rrtype",
         "type": "STRING"
+      },
+      {
+        "description": "Does the payload have errors any dns errors included?",
+        "mode": "NULLABLE",
+        "name": "has_errors",
+        "type": "BOOL"
       },
       {
         "mode": "NULLABLE",

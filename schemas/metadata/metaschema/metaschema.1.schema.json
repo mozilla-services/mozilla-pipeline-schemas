@@ -44,6 +44,10 @@
           },
           "type": "object"
         },
+        "geoip_skip_entries": {
+          "description": "If present, how many additional entries (beyond two) to skip in x_forwarded_for when performing geoip decoding, useful when submissions are ingested from trusted proxies; if there are fewer entries in x_forwarded_for than (N+1) the last entry is used instead of (N+3)rd-to-last",
+          "type": "integer"
+        },
         "jwe_mappings": {
           "description": "Mappings of encrypted JWE field paths to destinations where the value decrypted by the pipeline should be placed; initial use case is Account Ecosystem Telemetry; paths must be in [JSON Pointer format](https://tools.ietf.org/html/rfc6901) like '/payload/ecosystemAnonId'",
           "items": {
@@ -94,6 +98,87 @@
             "type": "object"
           },
           "type": "array"
+        },
+        "sample_id_source_uuid_attribute": {
+          "description": "If specified, sample_id will be calculated from a hash of the specified attribute if it is a valid UUID after removing curly brackets; if neither this nor sample_id_source_uuid_payload_path are specified, the client_id attribute will be used; implemented for DENG-547",
+          "type": "string"
+        },
+        "sample_id_source_uuid_payload_path": {
+          "description": "If specified and sample_id was not set due to sample_id_source_uuid_attribute, then sample_id will be calculated from a hash of the specified payload path; this is specified as a list strings to allow indicating nested fields, so for example metrics.uuid.legacy_ids_client_id would be specified as [\"metrics\",\"uuid\",\"legacy_ids_client_id\"]; if neither this nor sample_id_source_uuid_attribute are specified, the client_id attribute will be used; implemented for DENG-547",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "split_config": {
+          "additionalProperties": false,
+          "description": "Configuration for splitting a ping into multiple pings by field",
+          "properties": {
+            "preserve_original": {
+              "description": "Whether or not to output the unmodified original ping in addition to any generated pings.",
+              "type": "boolean"
+            },
+            "remainder": {
+              "additionalProperties": false,
+              "description": "If present, generate a ping containing all fields not included in any subset ping.",
+              "properties": {
+                "document_namespace": {
+                  "type": "string"
+                },
+                "document_type": {
+                  "type": "string"
+                },
+                "document_version": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "document_namespace",
+                "document_type",
+                "document_version"
+              ],
+              "type": "object"
+            },
+            "subsets": {
+              "description": "Array of subset pings to generate.",
+              "items": {
+                "additionalProperties": false,
+                "description": "Configuration for generating a ping that is a subset of fields from the original ping.",
+                "properties": {
+                  "document_namespace": {
+                    "type": "string"
+                  },
+                  "document_type": {
+                    "type": "string"
+                  },
+                  "document_version": {
+                    "type": "string"
+                  },
+                  "extra_pattern": {
+                    "description": "Like pattern, except the schema of matched properties must also be present in the remainder, because schemas cannot delete fields. Data for matched properties will only go to this subset ping.",
+                    "type": "string"
+                  },
+                  "pattern": {
+                    "description": "Regular expression matching .-delimited property names that should be moved to this subset ping. Only properties explictly defined in the non-generic json schema of the original ping are supported, because property names are matched during schema generation.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "document_namespace",
+                  "document_type",
+                  "document_version",
+                  "pattern"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "preserve_original",
+            "subsets"
+          ],
+          "type": "object"
         },
         "submission_timestamp_granularity": {
           "description": "If specified, the submission_timestamp field will be truncated to the specified granularity in the pipeline before being output to BigQuery; this can be used to reduce the potential for using time-based attacks to correlate datasets using different client-level identifiers; see Java's ChronoUnit for additional granularities that could be considered for inclusion; implemented for bug 1742172",

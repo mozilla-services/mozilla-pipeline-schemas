@@ -597,6 +597,12 @@
                 "type": "STRING"
               },
               {
+                "description": "Identifier that indicates where installations of Firefox originate, see bug 1827233",
+                "mode": "NULLABLE",
+                "name": "dlsource",
+                "type": "STRING"
+              },
+              {
                 "description": "Unique token created at Firefox download time, see bug 1677497",
                 "mode": "NULLABLE",
                 "name": "dltoken",
@@ -934,6 +940,12 @@
                 "mode": "NULLABLE",
                 "name": "model",
                 "type": "INT64"
+              },
+              {
+                "description": "The CPU name, e.g. 'Intel(R) Core(TM) i9-8950HK CPU @ 2.90GHz', or `null` on failure. Desktop only.",
+                "mode": "NULLABLE",
+                "name": "name",
+                "type": "STRING"
               },
               {
                 "description": "Only available on Firefox desktop. The CPU clock speed in MHz.",
@@ -1293,6 +1305,12 @@
                 "mode": "REPEATED",
                 "name": "monitors",
                 "type": "RECORD"
+              },
+              {
+                "description": "Frame rate in Hz, typically 60 or more, see bug 1840381",
+                "mode": "NULLABLE",
+                "name": "target_frame_rate",
+                "type": "INT64"
               }
             ],
             "mode": "NULLABLE",
@@ -1843,6 +1861,12 @@
             "type": "STRING"
           },
           {
+            "description": "<string>, Set before attempting to load a font to help diagnose crashes during loading.",
+            "mode": "NULLABLE",
+            "name": "font_name",
+            "type": "STRING"
+          },
+          {
             "description": "<integer>, Number of times the GPU process was launched.",
             "mode": "NULLABLE",
             "name": "gpu_process_launch_count",
@@ -1975,6 +1999,12 @@
             "type": "STRING"
           },
           {
+            "description": "Optional, contains a string describing the reason the crash occurred",
+            "mode": "NULLABLE",
+            "name": "shutdown_reason",
+            "type": "STRING"
+          },
+          {
             "description": "1, Optional, if set indicates that Firefox crashed during startup",
             "mode": "NULLABLE",
             "name": "startup_crash",
@@ -2026,6 +2056,12 @@
             "description": "1, Windows-only, present only if user32.dll was loaded before the DLL blocklist has been initialized",
             "mode": "NULLABLE",
             "name": "user32_before_blocklist",
+            "type": "STRING"
+          },
+          {
+            "description": "<string>, Comma-separated list of IPC actors name running on this Utility process instance",
+            "mode": "NULLABLE",
+            "name": "utility_actors_name",
             "type": "STRING"
           },
           {

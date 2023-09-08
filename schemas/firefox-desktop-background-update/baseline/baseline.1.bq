@@ -90,6 +90,12 @@
         "mode": "NULLABLE",
         "name": "telemetry_sdk_build",
         "type": "STRING"
+      },
+      {
+        "description": "The optional Windows build number, reported by Windows (e.g. 22000) and not set for other platforms",
+        "mode": "NULLABLE",
+        "name": "windows_build_number",
+        "type": "INT64"
       }
     ],
     "mode": "NULLABLE",
@@ -531,6 +537,19 @@
         "mode": "REPEATED",
         "name": "url",
         "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The legacy Telemetry client ID of this installation's default profile.\nThe default profile is as determined by the Profile Service, namely `nsIToolkitProfileService.defaultProfile`.  The majority of users have only one Firefox installation and only one profile, so the default profile is their regular browsing profile.\nIt is possible for a Firefox installation to not have a default profile, but in such cases the background update task will abort before sending any telemetry; therefore, the legacy Telemetry client ID should always be present.\n",
+            "mode": "NULLABLE",
+            "name": "background_update_client_id",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "uuid",
+        "type": "RECORD"
       }
     ],
     "mode": "NULLABLE",
@@ -589,6 +608,11 @@
               },
               {
                 "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "enrollment_id",
+                    "type": "STRING"
+                  },
                   {
                     "mode": "NULLABLE",
                     "name": "type",

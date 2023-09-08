@@ -90,6 +90,12 @@
         "mode": "NULLABLE",
         "name": "telemetry_sdk_build",
         "type": "STRING"
+      },
+      {
+        "description": "The optional Windows build number, reported by Windows (e.g. 22000) and not set for other platforms",
+        "mode": "NULLABLE",
+        "name": "windows_build_number",
+        "type": "INT64"
       }
     ],
     "mode": "NULLABLE",
@@ -295,6 +301,12 @@
       {
         "fields": [
           {
+            "description": "Records count of URIs visited by the user in the current session,\nincluding page reloads.\nIt does not include background page requests and URIs from embedded pages\nbut may be incremented without user interaction by website scripts\nthat programmatically redirect to a new location.\n",
+            "mode": "NULLABLE",
+            "name": "browser_total_uri_count",
+            "type": "INT64"
+          },
+          {
             "description": "The number of metrics pings sent during the lifetime of this baseline ping.",
             "mode": "NULLABLE",
             "name": "glean_validation_metrics_ping_count",
@@ -337,6 +349,60 @@
       },
       {
         "fields": [
+          {
+            "description": "Records clicks of adverts on SERP pages.\nThe key format is\n`<provider-name>.in-content.[sap|sap-follow-on|organic].[code|none](.[channel])?`,\nwhere:\n\n* `provider-name` is the name of the provider,\n* `sap|sap-follow-on|organic` is the search access point,\n* `code` is set when the url matches any of the provider's code prefixes,\n* `channel` is set to the url \"channel\" query parameter.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_search_ad_clicks",
+            "type": "RECORD"
+          },
+          {
+            "description": "Records the type of interaction a user has on SERP pages.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_search_in_content",
+            "type": "RECORD"
+          },
+          {
+            "description": "The labels for this counter are `<search-engine-name>.<source>`.\n\nIf the search engine is bundled with Focus `search-engine-name` will be\nthe name of the search engine. If it's a custom search engine (defined:\nhttps://github.com/mozilla-mobile/fenix/issues/1607) the value will be\n`custom`.\n\n`source` will be: `action`, `suggestion`\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_search_search_count",
+            "type": "RECORD"
+          },
           {
             "description": "Counts the number of times a metric was set with an invalid label.\nThe labels are the `category.name` identifier of the metric.\n",
             "fields": [
@@ -476,6 +542,12 @@
       {
         "fields": [
           {
+            "description": "A string containing the default search engine name.\n",
+            "mode": "NULLABLE",
+            "name": "browser_default_search_engine",
+            "type": "STRING"
+          },
+          {
             "description": "The locale of the application during initialization (e.g. \"es-ES\").\nIf the locale can't be determined on the system, the value is\n[\"und\"](https://unicode.org/reports/tr35/#Unknown_or_Invalid_Identifiers),\nto indicate \"undetermined\".\n",
             "mode": "NULLABLE",
             "name": "glean_baseline_locale",
@@ -544,6 +616,19 @@
         "mode": "REPEATED",
         "name": "url",
         "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "Sets the legacy client ID as part of the deletion-reqest and other pings.\n",
+            "mode": "NULLABLE",
+            "name": "legacy_ids_client_id",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "uuid",
+        "type": "RECORD"
       }
     ],
     "mode": "NULLABLE",
@@ -602,6 +687,11 @@
               },
               {
                 "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "enrollment_id",
+                    "type": "STRING"
+                  },
                   {
                     "mode": "NULLABLE",
                     "name": "type",

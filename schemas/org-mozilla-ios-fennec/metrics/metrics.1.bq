@@ -90,6 +90,12 @@
         "mode": "NULLABLE",
         "name": "telemetry_sdk_build",
         "type": "STRING"
+      },
+      {
+        "description": "The optional Windows build number, reported by Windows (e.g. 22000) and not set for other platforms",
+        "mode": "NULLABLE",
+        "name": "windows_build_number",
+        "type": "INT64"
       }
     ],
     "mode": "NULLABLE",
@@ -313,9 +319,33 @@
             "type": "BOOL"
           },
           {
+            "description": "A boolean that indicates if the user has bookmarks\nin the mobile folder.\n",
+            "mode": "NULLABLE",
+            "name": "bookmarks_has_mobile_bookmarks",
+            "type": "BOOL"
+          },
+          {
+            "description": "Recorded on startup to check if credit card\nautofill settings are enabled\n",
+            "mode": "NULLABLE",
+            "name": "credit_card_autofill_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Recorded on startup to check if credit card\nsync settings are enabled\n",
+            "mode": "NULLABLE",
+            "name": "credit_card_sync_enabled",
+            "type": "BOOL"
+          },
+          {
             "description": "True if the device support device owner authentication\nwith either biometrics or a passcode.\n",
             "mode": "NULLABLE",
             "name": "device_authentication",
+            "type": "BOOL"
+          },
+          {
+            "description": "Measures the state of the show Pocket stories preference.\n",
+            "mode": "NULLABLE",
+            "name": "firefox_home_page_pocket_stories_visible",
             "type": "BOOL"
           },
           {
@@ -355,6 +385,36 @@
             "type": "BOOL"
           },
           {
+            "description": "Measures the state of the fxa login.\n",
+            "mode": "NULLABLE",
+            "name": "preferences_fxa_logged_in",
+            "type": "BOOL"
+          },
+          {
+            "description": "An indication of whether the Jump back in section\nis enabled to be displayed.\n",
+            "mode": "NULLABLE",
+            "name": "preferences_jump_back_in",
+            "type": "BOOL"
+          },
+          {
+            "description": "An indication of whether Pocket is enabled to be displayed.\n",
+            "mode": "NULLABLE",
+            "name": "preferences_pocket",
+            "type": "BOOL"
+          },
+          {
+            "description": "An indication of whether the recently saved section\nis enabled to be displayed.\n",
+            "mode": "NULLABLE",
+            "name": "preferences_recently_saved",
+            "type": "BOOL"
+          },
+          {
+            "description": "An indication of whether the Recently visited section\nis enabled to be displayed.\n",
+            "mode": "NULLABLE",
+            "name": "preferences_recently_visited",
+            "type": "BOOL"
+          },
+          {
             "description": "Measures the state of the \"Save Logins\" preference.\n",
             "mode": "NULLABLE",
             "name": "preferences_save_logins",
@@ -367,6 +427,18 @@
             "type": "BOOL"
           },
           {
+            "description": "True if notifications for sync are allowed, otherwise false.\n",
+            "mode": "NULLABLE",
+            "name": "preferences_sync_notifs",
+            "type": "BOOL"
+          },
+          {
+            "description": "True if notifications for tips and features are allowed, otherwise false.\n",
+            "mode": "NULLABLE",
+            "name": "preferences_tips_and_features_notifs",
+            "type": "BOOL"
+          },
+          {
             "description": "Measures the state of the \"Manual/Automatic\" theme\npreference.\n",
             "mode": "NULLABLE",
             "name": "theme_automatic_mode",
@@ -376,6 +448,12 @@
             "description": "Measures the state of the \"Use System Light/Dark Mode\"\ntheme preference.\n",
             "mode": "NULLABLE",
             "name": "theme_use_system_theme",
+            "type": "BOOL"
+          },
+          {
+            "description": "Tracks if the user has enabled sponsored shortcuts\n",
+            "mode": "NULLABLE",
+            "name": "top_sites_sponsored_shortcuts",
             "type": "BOOL"
           },
           {
@@ -404,9 +482,27 @@
             "type": "INT64"
           },
           {
+            "description": "Counts the number of times a user taps Customize Homepage\nin the app menu\n",
+            "mode": "NULLABLE",
+            "name": "app_menu_customize_homepage",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user taps Help in the app menu\n",
+            "mode": "NULLABLE",
+            "name": "app_menu_help",
+            "type": "INT64"
+          },
+          {
             "description": "Counts the number of times a user taps Home in the app menu\n",
             "mode": "NULLABLE",
             "name": "app_menu_home",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user taps in the menu toolbar\non the homepage\n",
+            "mode": "NULLABLE",
+            "name": "app_menu_homepage_menu",
             "type": "INT64"
           },
           {
@@ -443,6 +539,12 @@
             "description": "Counts the number of times a user taps Sign Into Sync\nin the app menu\n",
             "mode": "NULLABLE",
             "name": "app_menu_sign_into_sync",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user taps in the menu toolbar\nfrom a website\n",
+            "mode": "NULLABLE",
+            "name": "app_menu_site_menu",
             "type": "INT64"
           },
           {
@@ -542,6 +644,12 @@
             "type": "INT64"
           },
           {
+            "description": "Counts the number of times a user sees a Jump Back In tile\nin the Jump Back In section on the homepage\n",
+            "mode": "NULLABLE",
+            "name": "firefox_home_page_jump_back_in_tile_view",
+            "type": "INT64"
+          },
+          {
             "description": "Counts when a user opens Firefox Home\nfrom awesomebar.\n",
             "mode": "NULLABLE",
             "name": "firefox_home_page_open_from_awesomebar",
@@ -572,6 +680,24 @@
             "type": "INT64"
           },
           {
+            "description": "Counts the number of times a user taps to open a\nsynced tab from the Jump Back In section\n",
+            "mode": "NULLABLE",
+            "name": "firefox_home_page_synced_tab_opened",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user taps the\nShow All button of Synced Tab in the Jump Back In section.\n",
+            "mode": "NULLABLE",
+            "name": "firefox_home_page_synced_tab_show_all",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user sees the\nSynced Tab tile on the homepage\n",
+            "mode": "NULLABLE",
+            "name": "firefox_home_page_synced_tab_tile_view",
+            "type": "INT64"
+          },
+          {
             "description": "The number of times we encountered an IO error\nwhen writing a pending ping to disk.\n",
             "mode": "NULLABLE",
             "name": "glean_error_io",
@@ -593,6 +719,18 @@
             "description": "The number of pings deleted after the quota\nfor the size of the pending pings directory or number of files is hit.\nSince quota is only calculated for the pending pings directory,\nand deletion request ping live in a different directory,\ndeletion request pings are never deleted.\n",
             "mode": "NULLABLE",
             "name": "glean_upload_deleted_pings_after_quota_hit",
+            "type": "INT64"
+          },
+          {
+            "description": "How many pings were dropped because we found them already in-flight.\n",
+            "mode": "NULLABLE",
+            "name": "glean_upload_in_flight_pings_dropped",
+            "type": "INT64"
+          },
+          {
+            "description": "How many ping upload responses did we not record as a success or failure\n(in `glean.upload.send_success` or `glean.upload.send_failue`,\nrespectively) due to an inconsistency in our internal bookkeeping?\n",
+            "mode": "NULLABLE",
+            "name": "glean_upload_missing_send_ids",
             "type": "INT64"
           },
           {
@@ -698,6 +836,12 @@
             "type": "INT64"
           },
           {
+            "description": "Counts the number of times a user runs the\nsd web image library cache cleanup\n",
+            "mode": "NULLABLE",
+            "name": "migration_image_sd_cache_cleanup",
+            "type": "INT64"
+          },
+          {
             "description": "The number of times a user is shown the second screen, the\nSync Screen, from the onboarding process.\n",
             "mode": "NULLABLE",
             "name": "onboarding_sync_screen",
@@ -758,6 +902,12 @@
             "type": "INT64"
           },
           {
+            "description": "Counts the number of times a user creates a new tab from the\npage action menu.\n",
+            "mode": "NULLABLE",
+            "name": "page_action_menu_create_new_tab",
+            "type": "INT64"
+          },
+          {
             "description": "Counts the number of times a user taps Find in Page\nin the page action menu\n",
             "mode": "NULLABLE",
             "name": "page_action_menu_find_in_page",
@@ -803,6 +953,18 @@
             "description": "Counts the number of times a user taps Share Page With in the\npage action menu\n",
             "mode": "NULLABLE",
             "name": "page_action_menu_share_page_with",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user navigates to the downloads panel\nfrom the page action menu.\n",
+            "mode": "NULLABLE",
+            "name": "page_action_menu_view_downloads_panel",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times a user navigates to the history panel\nfrom the page action menu.\n",
+            "mode": "NULLABLE",
+            "name": "page_action_menu_view_history_panel",
             "type": "INT64"
           },
           {
@@ -1083,7 +1245,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Counts the number of times a bookmark is opened from\nthe following:\n* Awesomebar results\n* Bookmarks Panel\n",
+            "description": "Counts the number of times a bookmark is opened from\nthe following:\n* Awesomebar results\n* Bookmarks Panel\n* Top sites\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -1119,7 +1281,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Records clicks of adverts on SERP pages.\nThe key format is ‘<provider-name>’.\n",
+            "description": "Records clicks of adverts on SERP pages.\nThe key format is `<provider-name>`.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -1137,7 +1299,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Records counts of SERP pages with adverts displayed.\nThe key format is ‘<provider-name>’.\n",
+            "description": "Records counts of SERP pages with adverts displayed.\nThe key format is `<provider-name>`.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -1278,6 +1440,42 @@
             ],
             "mode": "REPEATED",
             "name": "firefox_home_page_recently_saved_show_all_origin",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of times a user taps to open a\nsynced tab from the Jump Back In section,\nwith a home page origin.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "firefox_home_page_synced_tab_opened_origin",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of times a user taps the\nShow All button of Synced Tab in the Jump Back In section,\nwith a home page origin.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "firefox_home_page_synced_tab_show_all_origin",
             "type": "RECORD"
           },
           {
@@ -1729,6 +1927,24 @@
             "mode": "REPEATED",
             "name": "top_sites_pressed_tile_origin",
             "type": "RECORD"
+          },
+          {
+            "description": "Recorded when the user enters the background. This reports\nthe currently selected wallpaper if it's not the default.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "wallpaper_analytics_themed_wallpaper",
+            "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
@@ -1782,6 +1998,12 @@
             "description": "The size of the database file at startup.\n",
             "fields": [
               {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
                 "mode": "NULLABLE",
                 "name": "sum",
                 "type": "INT64"
@@ -1812,6 +2034,12 @@
             "description": "The size of pings that exceeded the maximum ping size allowed for upload.\n",
             "fields": [
               {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
                 "mode": "NULLABLE",
                 "name": "sum",
                 "type": "INT64"
@@ -1841,6 +2069,12 @@
           {
             "description": "The size of the pending pings directory upon initialization of Glean.\nThis does not include the size of the deletion request pings directory.\n",
             "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
               {
                 "mode": "NULLABLE",
                 "name": "sum",
@@ -1876,6 +2110,36 @@
       {
         "fields": [
           {
+            "description": "A quantity that indicates how many bookmarks a user\nhas in the mobile folder.\n",
+            "mode": "NULLABLE",
+            "name": "bookmarks_mobile_bookmarks_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of visits in a User's history database\n",
+            "mode": "NULLABLE",
+            "name": "history_num_visits",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of visits migrated to the places.db\n",
+            "mode": "NULLABLE",
+            "name": "places_history_migration_num_migrated",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of visits expected to migrate to the places.db\n",
+            "mode": "NULLABLE",
+            "name": "places_history_migration_num_to_migrate",
+            "type": "INT64"
+          },
+          {
+            "description": "A quantity that indicates how many INACTIVE tabs a user\ncurrently has open. This is reported when the user backgrounds\nthe app.\n",
+            "mode": "NULLABLE",
+            "name": "tabs_inactive_tabs_count",
+            "type": "INT64"
+          },
+          {
             "description": "A snapshot of how many normal tabs a user has opened when he\ncloses the application.\n",
             "mode": "NULLABLE",
             "name": "tabs_normal_tabs_quantity",
@@ -1894,6 +2158,73 @@
       },
       {
         "fields": [
+          {
+            "description": "A Rate of how often migrations end\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "places_history_migration_migration_ended_rate",
+            "type": "RECORD"
+          },
+          {
+            "description": "A Rate of how often migrations error out\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "places_history_migration_migration_error_rate",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "rate",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "A string containing the Adjust ad group ID from which the user installed\nFirefox-iOS.\n",
+            "mode": "NULLABLE",
+            "name": "adjust_ad_group",
+            "type": "STRING"
+          },
+          {
+            "description": "A string containing the Adjust campaign ID from which the user installed\nFirefox-iOS.\n",
+            "mode": "NULLABLE",
+            "name": "adjust_campaign",
+            "type": "STRING"
+          },
+          {
+            "description": "A string containing the Adjust creative ID from which the user installed\nFirefox-iOS.\n",
+            "mode": "NULLABLE",
+            "name": "adjust_creative",
+            "type": "STRING"
+          },
+          {
+            "description": "A string containing the Adjust network ID from which the user installed\nFirefox-iOS.\n",
+            "mode": "NULLABLE",
+            "name": "adjust_network",
+            "type": "STRING"
+          },
           {
             "description": "The optional reason the ping was submitted.\nThe specific values for reason are specific to each ping, and are\ndocumented in the ping's pings.yaml file.\n",
             "mode": "NULLABLE",
@@ -1916,6 +2247,12 @@
             "description": "The name of the view that the user wants to see on new tabs.\nFor example History, Homepage or Blank. It is used to measure\nusage of this feature, to see how effective feature promotion\ncampaigns are and to establish a baseline number for when we\nintroduce the new Activity Stream features.\n",
             "mode": "NULLABLE",
             "name": "preferences_new_tab_experience",
+            "type": "STRING"
+          },
+          {
+            "description": "What opening screen preference the user has selected under\n\"Customize Home\". \"homepage,\" \"last tab,\" or\n\"homepage after 4 hours\" default: \"homepage after 4 hours\".\n",
+            "mode": "NULLABLE",
+            "name": "preferences_opening_screen",
             "type": "STRING"
           },
           {
@@ -2004,11 +2341,347 @@
       {
         "fields": [
           {
+            "description": "The time a query against awesomebar took. This helps us understand the performance of the awesomebar in querying history and bookmarks. The query time will also help us verify that we are **not** introducing any performance regressions.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "awesomebar_query_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time needed for a failed send of a ping to the servers and getting a reply back.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "glean_upload_send_failure",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time needed for a successful send of a ping to the servers and getting a reply back\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "glean_upload_send_success",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time waited for the dispatcher to unblock during shutdown.\nMost samples are expected to be below the 10s timeout used.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "glean_validation_shutdown_dispatcher_wait",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time waited for the uploader at shutdown.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "glean_validation_shutdown_wait",
+            "type": "RECORD"
+          },
+          {
             "description": "The time taken to execute a read query on the logins store (such as listing all logins, or finding a specific login by id).\n",
             "fields": [
               {
                 "mode": "NULLABLE",
                 "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
                 "type": "INT64"
               },
               {
@@ -2072,6 +2745,12 @@
                 "type": "INT64"
               },
               {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
                 "mode": "NULLABLE",
                 "name": "histogram_type",
                 "type": "STRING"
@@ -2132,6 +2811,12 @@
                 "type": "INT64"
               },
               {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
                 "mode": "NULLABLE",
                 "name": "histogram_type",
                 "type": "STRING"
@@ -2181,6 +2866,204 @@
             ],
             "mode": "NULLABLE",
             "name": "logins_store_write_query_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Measure how long `applyPendingExperiments` takes.\n`applyPendingExperiments` uses disk I/O, and happens at\nstartup, as part of the initialization sequence.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "nimbus_health_apply_pending_experiments_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Measures how long `fetchExperiments` takes.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "nimbus_health_fetch_experiments_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "A time distribution of how long it took for the migration to occur\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "places_history_migration_duration",
             "type": "RECORD"
           }
         ],
@@ -2275,6 +3158,11 @@
               },
               {
                 "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "enrollment_id",
+                    "type": "STRING"
+                  },
                   {
                     "mode": "NULLABLE",
                     "name": "type",

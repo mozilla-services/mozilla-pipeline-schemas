@@ -90,6 +90,12 @@
         "mode": "NULLABLE",
         "name": "telemetry_sdk_build",
         "type": "STRING"
+      },
+      {
+        "description": "The optional Windows build number, reported by Windows (e.g. 22000) and not set for other platforms",
+        "mode": "NULLABLE",
+        "name": "windows_build_number",
+        "type": "INT64"
       }
     ],
     "mode": "NULLABLE",
@@ -344,9 +350,33 @@
       {
         "fields": [
           {
+            "description": "Recorded when a preference is changed and includes the\npreference that changed as well as the value changed to\nrecorded in the extra keys.\n",
+            "mode": "NULLABLE",
+            "name": "app_opened_as_default_browser",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times pdf view is opened in browser.\n",
+            "mode": "NULLABLE",
+            "name": "browser_pdf_viewer_used",
+            "type": "INT64"
+          },
+          {
             "description": "Records count of URIs visited by the user in the current session,\nincluding page reloads.\nIt does not include background page requests and URIs from embedded pages\nbut may be incremented without user interaction by website scripts\nthat programmatically redirect to a new location.\n",
             "mode": "NULLABLE",
             "name": "browser_total_uri_count",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times default browser onboarding is dismissed.\n",
+            "mode": "NULLABLE",
+            "name": "default_browser_onboarding_dismiss_pressed",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times the Go To Settings button on\ndefault browser onboarding is clicked.\n",
+            "mode": "NULLABLE",
+            "name": "default_browser_onboarding_go_to_settings_pressed",
             "type": "INT64"
           },
           {
@@ -374,6 +404,18 @@
             "type": "INT64"
           },
           {
+            "description": "How many pings were dropped because we found them already in-flight.\n",
+            "mode": "NULLABLE",
+            "name": "glean_upload_in_flight_pings_dropped",
+            "type": "INT64"
+          },
+          {
+            "description": "How many ping upload responses did we not record as a success or failure\n(in `glean.upload.send_success` or `glean.upload.send_failue`,\nrespectively) due to an inconsistency in our internal bookkeeping?\n",
+            "mode": "NULLABLE",
+            "name": "glean_upload_missing_send_ids",
+            "type": "INT64"
+          },
+          {
             "description": "The total number of pending pings at startup.\nThis does not include deletion-request pings.\n",
             "mode": "NULLABLE",
             "name": "glean_upload_pending_pings",
@@ -389,6 +431,12 @@
             "description": "A counter that indicates how many times a user has added\na website to the autocomplete list.\n",
             "mode": "NULLABLE",
             "name": "settings_screen_autocomplete_domain_added",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times setting as default\nbrowser menu option is tapped.\n",
+            "mode": "NULLABLE",
+            "name": "settings_screen_set_as_default_browser_pressed",
             "type": "INT64"
           },
           {
@@ -446,6 +494,78 @@
       },
       {
         "fields": [
+          {
+            "description": "Records clicks of adverts on SERP pages.\nThe key format is ‘<provider-name>’.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_search_ad_clicks",
+            "type": "RECORD"
+          },
+          {
+            "description": "Records the type of interaction a user has on SERP pages.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_search_in_content",
+            "type": "RECORD"
+          },
+          {
+            "description": "The labels for this counter are `<search-engine-name>.<source>`.\nIf the search engine is bundled with Focus `search-engine-name` will be\nthe name of the search engine. If it's a custom search engine (defined:\nhttps://github.com/mozilla-mobile/fenix/issues/1607) the value will be\n`custom`.\n`source` will be: `action`, `suggestion`, `widget`, `shortcut`, `topsite`\n(depending on the source from which the search started). Also added the\n`other` option for the source but it should never enter on this case.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_search_search_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "Records counts of SERP pages with adverts displayed.\nThe key format is ‘<provider-name>’.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_search_with_ads",
+            "type": "RECORD"
+          },
           {
             "description": "Counts the number of times a metric was set with an invalid label.\nThe labels are the `category.name` identifier of the metric.\n",
             "fields": [
@@ -624,6 +744,12 @@
             "description": "The size of the database file at startup.\n",
             "fields": [
               {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
                 "mode": "NULLABLE",
                 "name": "sum",
                 "type": "INT64"
@@ -654,6 +780,12 @@
             "description": "The size of pings that exceeded the maximum ping size allowed for upload.\n",
             "fields": [
               {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
                 "mode": "NULLABLE",
                 "name": "sum",
                 "type": "INT64"
@@ -683,6 +815,12 @@
           {
             "description": "The size of the pending pings directory upon initialization of Glean.\nThis does not include the size of the deletion request pings directory.\n",
             "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
               {
                 "mode": "NULLABLE",
                 "name": "sum",
@@ -731,6 +869,12 @@
       {
         "fields": [
           {
+            "description": "Records the name of the keyboard (custom or default) everytime\nthe keyboard appears on the screen.\n",
+            "mode": "NULLABLE",
+            "name": "app_keyboard_type",
+            "type": "STRING"
+          },
+          {
             "description": "The optional reason the ping was submitted.\nThe specific values for reason are specific to each ping, and are\ndocumented in the ping's pings.yaml file.\n",
             "mode": "NULLABLE",
             "name": "ping_reason",
@@ -740,6 +884,12 @@
             "description": "A string that indicates the theme. Can be one of \"Light\", \"Dark\", or \"Follow device\". Default is \"Follow device\".\n",
             "mode": "NULLABLE",
             "name": "preferences_user_theme",
+            "type": "STRING"
+          },
+          {
+            "description": "The default search engine name if the search engine is\npre-loaded with Focus.  If it's a custom search engine,\nthen the value will be 'custom'.\n",
+            "mode": "NULLABLE",
+            "name": "search_default_engine",
             "type": "STRING"
           }
         ],
@@ -762,6 +912,409 @@
         ],
         "mode": "REPEATED",
         "name": "text",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "Time needed for a failed send of a ping to the servers and getting a reply back.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "glean_upload_send_failure",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time needed for a successful send of a ping to the servers and getting a reply back\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "glean_upload_send_success",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time waited for the dispatcher to unblock during shutdown.\nMost samples are expected to be below the 10s timeout used.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "glean_validation_shutdown_dispatcher_wait",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time waited for the uploader at shutdown.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "glean_validation_shutdown_wait",
+            "type": "RECORD"
+          },
+          {
+            "description": "Measure how long `applyPendingExperiments` takes.\n`applyPendingExperiments` uses disk I/O, and happens at\nstartup, as part of the initialization sequence.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "nimbus_health_apply_pending_experiments_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Measures how long `fetchExperiments` takes.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "nimbus_health_fetch_experiments_time",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "timing_distribution",
         "type": "RECORD"
       },
       {
@@ -838,6 +1391,11 @@
               },
               {
                 "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "enrollment_id",
+                    "type": "STRING"
+                  },
                   {
                     "mode": "NULLABLE",
                     "name": "type",
