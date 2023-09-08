@@ -139,6 +139,11 @@ schemas
 │   └── metrics
 ├── mobile
 │   └── activation
+├── monitor-cirrus
+│   ├── baseline
+│   ├── deletion-request
+│   ├── events
+│   └── metrics
 ├── mozdata
 │   └── event
 ├── mozilla-lockbox
@@ -677,6 +682,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-667 directories
+672 directories
 ```
 
