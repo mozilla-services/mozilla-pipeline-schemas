@@ -48,6 +48,9 @@ schemas
 │   └── topsites-impression
 ├── coverage
 │   └── coverage
+├── debug-ping-view
+│   ├── deletion-request
+│   └── events
 ├── default-browser-agent
 │   └── default-browser
 ├── edge-validator
@@ -142,6 +145,7 @@ schemas
 ├── monitor-cirrus
 │   ├── baseline
 │   ├── deletion-request
+│   ├── enrollment
 │   ├── events
 │   └── metrics
 ├── mozdata
@@ -682,6 +686,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-672 directories
+676 directories
 ```
 
