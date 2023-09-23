@@ -1817,6 +1817,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Counts the number of times some PDF editing features are used.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "pdfjs_stamp",
+            "type": "RECORD"
+          },
+          {
             "description": "Indicates how the browser was started. The label is divided into two\nvariables. `state` is how cached the browser is when started. `path` is\nwhat code path we are expected to take. Together, they create a combined\nlabel: `state_path`. For brevity, the specific states are documented in\nthe [Fenix perf\nglossary](https://wiki.mozilla.org/index.php?title=Performance/Fenix/Glossary).\n<br><br>\nThis implementation is intended to be simple, not comprehensive. We list\nthe implications below.\n\n<br><br>\nThese ways of opening the app undesirably adds events to our primary\nbuckets (non-`unknown` cases):\n<br>- App switcher cold/warm: `cold/warm_` + duplicates path from\nprevious launch\n<br>- An Intent is sent internally that's uses `ACTION_MAIN` or\n`ACTION_VIEW` could be: `*_main/view` (unknown if this ever happens)\n<br>- A command-line launch uses `ACTION_MAIN` or `ACTION_VIEW` could be:\n`*_main/view`\n\n<br><br>\nThese ways of opening the app undesirably do not add their events to our\nprimary buckets:\n<br>- Close and reopen ",
             "fields": [
               {

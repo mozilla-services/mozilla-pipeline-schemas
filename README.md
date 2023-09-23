@@ -148,6 +148,9 @@ schemas
 │   ├── enrollment
 │   ├── events
 │   └── metrics
+├── monitor-frontend
+│   ├── deletion-request
+│   └── events
 ├── mozdata
 │   └── event
 ├── mozilla-lockbox
@@ -686,6 +689,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-676 directories
+679 directories
 ```
 
