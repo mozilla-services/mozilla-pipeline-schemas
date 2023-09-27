@@ -618,7 +618,6 @@ schemas
 │   ├── downgrade
 │   ├── event
 │   ├── first-shutdown
-│   ├── first-shutdown-remainder
 │   ├── first-shutdown-use-counter
 │   ├── flash-shield-study
 │   ├── focus-event
@@ -628,7 +627,6 @@ schemas
 │   ├── heartbeat
 │   ├── installation
 │   ├── main
-│   ├── main-remainder
 │   ├── main-use-counter
 │   ├── malware-addon-states
 │   ├── mobile-event
@@ -643,7 +641,6 @@ schemas
 │   ├── prio
 │   ├── regrets-reporter-update
 │   ├── saved-session
-│   ├── saved-session-remainder
 │   ├── saved-session-use-counter
 │   ├── searchvol
 │   ├── searchvolextra
@@ -689,6 +686,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-679 directories
+676 directories
 ```
 
