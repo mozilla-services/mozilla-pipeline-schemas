@@ -17177,7 +17177,7 @@
                 "type": "STRING"
               },
               {
-                "description": "Time (ms) for the QuotaManager to load quota information. Keyed by conditions during quota info loading, see RecordQuotaInfoLoadTimeHelper::Run in https://searchfox.org/mozilla-central/source/dom/quota/ActorsParent.cpp",
+                "description": "Time (ms) for the QuotaManager to load quota information. Keyed by conditions during quota info loading, see RecordTimeDeltaHelper::Run in https://searchfox.org/mozilla-central/source/dom/quota/ActorsParent.cpp",
                 "mode": "NULLABLE",
                 "name": "value",
                 "type": "STRING"
@@ -35058,6 +35058,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "media_decode_error_per_mime_type",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Record the hardware decoding availability on devices, the key is the name of video codec, eg. h264, av1.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "BOOL"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "media_device_hardware_decoding_support",
                     "type": "RECORD"
                   },
                   {
