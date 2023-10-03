@@ -437,6 +437,14 @@ schemas
 │   ├── main
 │   ├── metrics
 │   └── vpnsession
+├── org-mozilla-ios-firefoxvpn-network-extension
+│   ├── baseline
+│   ├── daemonsession
+│   ├── deletion-request
+│   ├── events
+│   ├── main
+│   ├── metrics
+│   └── vpnsession
 ├── org-mozilla-ios-focus
 │   ├── baseline
 │   ├── deletion-request
@@ -686,6 +694,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-676 directories
+684 directories
 ```
 
