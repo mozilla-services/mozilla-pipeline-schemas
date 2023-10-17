@@ -77,6 +77,12 @@ schemas
 │   ├── pseudo-main
 │   ├── quick-suggest
 │   └── top-sites
+├── firefox-desktop-background-defaultagent
+│   ├── baseline
+│   ├── default-agent
+│   ├── deletion-request
+│   ├── events
+│   └── metrics
 ├── firefox-desktop-background-tasks
 │   ├── background-tasks
 │   ├── baseline
@@ -694,6 +700,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-684 directories
+690 directories
 ```
 
