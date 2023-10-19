@@ -215,6 +215,7 @@ schemas
 │   ├── events
 │   ├── first-session
 │   ├── fog-validation
+│   ├── fx-suggest
 │   ├── history-sync
 │   ├── installation
 │   ├── logins-sync
@@ -239,6 +240,7 @@ schemas
 │   ├── events
 │   ├── first-session
 │   ├── fog-validation
+│   ├── fx-suggest
 │   ├── history-sync
 │   ├── installation
 │   ├── logins-sync
@@ -263,6 +265,7 @@ schemas
 │   ├── events
 │   ├── first-session
 │   ├── fog-validation
+│   ├── fx-suggest
 │   ├── history-sync
 │   ├── installation
 │   ├── logins-sync
@@ -287,6 +290,7 @@ schemas
 │   ├── events
 │   ├── first-session
 │   ├── fog-validation
+│   ├── fx-suggest
 │   ├── history-sync
 │   ├── installation
 │   ├── logins-sync
@@ -311,6 +315,7 @@ schemas
 │   ├── events
 │   ├── first-session
 │   ├── fog-validation
+│   ├── fx-suggest
 │   ├── history-sync
 │   ├── installation
 │   ├── logins-sync
@@ -700,6 +705,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-690 directories
+695 directories
 ```
 
