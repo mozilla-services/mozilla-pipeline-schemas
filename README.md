@@ -86,6 +86,8 @@ schemas
 ├── firefox-desktop-background-tasks
 │   ├── background-tasks
 │   ├── baseline
+│   ├── crash
+│   ├── default-agent
 │   ├── deletion-request
 │   ├── events
 │   └── metrics
@@ -705,6 +707,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-695 directories
+697 directories
 ```
 
