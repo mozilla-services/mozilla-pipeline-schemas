@@ -687,6 +687,42 @@
             "type": "RECORD"
           },
           {
+            "description": "Time between tab selection and first composite of the tab content onto the screen. Implemented alongside the Geckoview Streaming version to measure potential differences between the two.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "fog_validation_gvsv_number_of_unique_site_origins_all_tabs",
+            "type": "RECORD"
+          },
+          {
             "description": "If we fix up a cookie lastAccessed timestamp that is in the future this metric records the number of seconds that timestamp was off from NOW.\n",
             "fields": [
               {
@@ -1353,6 +1389,42 @@
             ],
             "mode": "REPEATED",
             "name": "extensions_process_event",
+            "type": "RECORD"
+          },
+          {
+            "description": "Incremented when an audio stream is initialized, recorded alongside the\nGeckoView Streaming API for the purposes of Validation (hence GVSV).\nUses a single label due to only labeled counters being supported\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "fog_validation_gvsv_audio_stream_init",
+            "type": "RECORD"
+          },
+          {
+            "description": "Incremented when an audio stream is initialized, recorded alongside the\nGlean API for the purposes of Validation (hence GVSV).\nUses a single label due to only labeled counters being supported\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "fog_validation_gvsv_audio_stream_init_gecko",
             "type": "RECORD"
           },
           {
@@ -2534,6 +2606,18 @@
             "type": "INT64"
           },
           {
+            "description": "Primary display pixel height, recorded alongside the GeckoView Streaming \nAPI for the purposes of Validation (hence GVSV).\n",
+            "mode": "NULLABLE",
+            "name": "fog_validation_gvsv_primary_height",
+            "type": "INT64"
+          },
+          {
+            "description": "Primary display pixel width, recorded alongside the GeckoView Streaming \nAPI for the purposes of Validation (hence GVSV).\n",
+            "mode": "NULLABLE",
+            "name": "fog_validation_gvsv_primary_width",
+            "type": "INT64"
+          },
+          {
             "description": "Count at store time how many credit card autofill profiles the user has.\n",
             "mode": "NULLABLE",
             "name": "formautofill_creditcards_autofill_profiles_count",
@@ -3417,6 +3501,72 @@
             ],
             "mode": "NULLABLE",
             "name": "fog_ipc_flush_durations",
+            "type": "RECORD"
+          },
+          {
+            "description": "Glean equivalent to the Geckoview Stream gfx Composite Time metric.  Represents The time taken to composite a frame. Differs between  non-webrender and webrender, see the non-validation version for more details.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "fog_validation_gvsv_composite_time",
             "type": "RECORD"
           },
           {
