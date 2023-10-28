@@ -74,6 +74,7 @@ schemas
 │   ├── new-metric-capture-emulation
 │   ├── newtab
 │   ├── pageload
+│   ├── pocket-button
 │   ├── pseudo-main
 │   ├── quick-suggest
 │   └── top-sites
@@ -707,6 +708,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-697 directories
+698 directories
 ```
 
