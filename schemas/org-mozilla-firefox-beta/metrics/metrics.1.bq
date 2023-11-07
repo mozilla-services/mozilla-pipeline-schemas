@@ -776,6 +776,12 @@
             "type": "INT64"
           },
           {
+            "description": "The total number of operations performed by the FxA client.",
+            "mode": "NULLABLE",
+            "name": "fxa_client_operation_count",
+            "type": "INT64"
+          },
+          {
             "description": "The number of times we encountered an IO error\nwhen writing a pending ping to disk.\n",
             "mode": "NULLABLE",
             "name": "glean_error_io",
@@ -2942,6 +2948,24 @@
             ],
             "mode": "REPEATED",
             "name": "fog_validation_gvsv_audio_stream_init_gecko",
+            "type": "RECORD"
+          },
+          {
+            "description": "The total number of errors encountered during FxA operations, labeled by type. It is intended to be used together with `operation_count` to measure the overall error rate of FxA operations operations.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "fxa_client_error_count",
             "type": "RECORD"
           },
           {
