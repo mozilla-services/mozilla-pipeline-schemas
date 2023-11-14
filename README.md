@@ -160,6 +160,11 @@ schemas
 ├── monitor-frontend
 │   ├── deletion-request
 │   └── events
+├── moso-mastodon-backend
+│   ├── baseline
+│   ├── deletion-request
+│   ├── events
+│   └── metrics
 ├── mozdata
 │   └── event
 ├── mozilla-lockbox
@@ -708,6 +713,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-698 directories
+703 directories
 ```
 
