@@ -155,6 +155,7 @@ schemas
 │   ├── baseline
 │   ├── deletion-request
 │   ├── enrollment
+│   ├── enrollment-status
 │   ├── events
 │   └── metrics
 ├── monitor-frontend
@@ -713,6 +714,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-703 directories
+704 directories
 ```
 
