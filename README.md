@@ -224,6 +224,7 @@ schemas
 │   ├── events
 │   ├── first-session
 │   ├── fog-validation
+│   ├── font-list
 │   ├── fx-suggest
 │   ├── history-sync
 │   ├── installation
@@ -249,6 +250,7 @@ schemas
 │   ├── events
 │   ├── first-session
 │   ├── fog-validation
+│   ├── font-list
 │   ├── fx-suggest
 │   ├── history-sync
 │   ├── installation
@@ -274,6 +276,7 @@ schemas
 │   ├── events
 │   ├── first-session
 │   ├── fog-validation
+│   ├── font-list
 │   ├── fx-suggest
 │   ├── history-sync
 │   ├── installation
@@ -299,6 +302,7 @@ schemas
 │   ├── events
 │   ├── first-session
 │   ├── fog-validation
+│   ├── font-list
 │   ├── fx-suggest
 │   ├── history-sync
 │   ├── installation
@@ -324,6 +328,7 @@ schemas
 │   ├── events
 │   ├── first-session
 │   ├── fog-validation
+│   ├── font-list
 │   ├── fx-suggest
 │   ├── history-sync
 │   ├── installation
@@ -714,6 +719,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-704 directories
+709 directories
 ```
 
