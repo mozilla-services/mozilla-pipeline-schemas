@@ -476,6 +476,12 @@
             "type": "INT64"
           },
           {
+            "description": "Counts how often we find a cache folder that wasn't purged at shutdown by a background task process.\n",
+            "mode": "NULLABLE",
+            "name": "networking_residual_cache_folder_count",
+            "type": "INT64"
+          },
+          {
             "description": "How many times PDF Viewer was used.\n",
             "mode": "NULLABLE",
             "name": "pdfjs_used",
@@ -1929,6 +1935,24 @@
             ],
             "mode": "REPEATED",
             "name": "networking_cookie_timestamp_fixed_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts how often succeed/fail in removing cache folder that wasn't purged at shutdown\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_residual_cache_folder_removal",
             "type": "RECORD"
           },
           {
