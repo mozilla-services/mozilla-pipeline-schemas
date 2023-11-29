@@ -1746,7 +1746,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Counters for how many times the extension process has crashed or been created.\nThe labels with \"_fg\" / \"_bg\" suffixes are only recorded in Android builds,\nwhile the \"created\" and \"crashed\" labels are recorded on both Desktop and Android\nbuilds. \n",
+            "description": "Counters for how many times the extension process has crashed or been created.\nThe labels with \"_fg\" / \"_bg\" suffixes are only recorded in Android builds,\nwhile the \"created\" and \"crashed\" labels are recorded on both Desktop and Android\nbuilds.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -1761,6 +1761,24 @@
             ],
             "mode": "REPEATED",
             "name": "extensions_process_event",
+            "type": "RECORD"
+          },
+          {
+            "description": "The number of times an unexpected error has been raised while reading\nthe extensions StartupCache file.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "extensions_startup_cache_read_errors",
             "type": "RECORD"
           },
           {
@@ -3005,6 +3023,12 @@
             "description": "Number of domains listed in the quarantined domains list pref for the client during this session.\n",
             "mode": "NULLABLE",
             "name": "extensions_quarantined_domains_listsize",
+            "type": "INT64"
+          },
+          {
+            "description": "The amount of bytes written to the extensions StartupCache file.\n",
+            "mode": "NULLABLE",
+            "name": "extensions_startup_cache_write_bytelength",
             "type": "INT64"
           },
           {
