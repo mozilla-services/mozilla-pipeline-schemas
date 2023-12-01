@@ -349,9 +349,21 @@
             "type": "BOOL"
           },
           {
+            "description": "Records whether the browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar preference is enabled or disabled\n",
+            "mode": "NULLABLE",
+            "name": "newtab_handoff_preference_enabled",
+            "type": "BOOL"
+          },
+          {
             "description": "Indicates if the user has opted out of using the shopping component.\nSet during shopping component init and updated when changed in browser.\n",
             "mode": "NULLABLE",
             "name": "shopping_settings_component_opted_out",
+            "type": "BOOL"
+          },
+          {
+            "description": "Indicates if the user has manually disabled ads. Set during shopping\ncomponent init and updated when changed in browser.\n",
+            "mode": "NULLABLE",
+            "name": "shopping_settings_disabled_ads",
             "type": "BOOL"
           },
           {
@@ -2387,6 +2399,24 @@
             "type": "RECORD"
           },
           {
+            "description": "The count of successful TRR requests keyed by regular/private browsing\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_trr_request_count",
+            "type": "RECORD"
+          },
+          {
             "description": "Counts the number of times some actions are executed in the PDF viewer.\n",
             "fields": [
               {
@@ -3198,13 +3228,13 @@
             "type": "INT64"
           },
           {
-            "description": "Primary display pixel height, recorded alongside the GeckoView Streaming \nAPI for the purposes of Validation (hence GVSV).\n",
+            "description": "Primary display pixel height, recorded alongside the GeckoView Streaming\nAPI for the purposes of Validation (hence GVSV).\n",
             "mode": "NULLABLE",
             "name": "fog_validation_gvsv_primary_height",
             "type": "INT64"
           },
           {
-            "description": "Primary display pixel width, recorded alongside the GeckoView Streaming \nAPI for the purposes of Validation (hence GVSV).\n",
+            "description": "Primary display pixel width, recorded alongside the GeckoView Streaming\nAPI for the purposes of Validation (hence GVSV).\n",
             "mode": "NULLABLE",
             "name": "fog_validation_gvsv_primary_width",
             "type": "INT64"
@@ -4801,7 +4831,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Glean equivalent to the Geckoview Stream gfx Composite Time metric.  Represents The time taken to composite a frame. Differs between  non-webrender and webrender, see the non-validation version for more details.\n",
+            "description": "Glean equivalent to the Geckoview Stream gfx Composite Time metric. Represents The time taken to composite a frame. Differs between non-webrender and webrender, see the non-validation version for more details.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
