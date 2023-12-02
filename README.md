@@ -78,6 +78,7 @@ schemas
 │   ├── pocket-button
 │   ├── pseudo-main
 │   ├── quick-suggest
+│   ├── spoc
 │   ├── top-sites
 │   └── use-counters
 ├── firefox-desktop-background-defaultagent
@@ -562,6 +563,7 @@ schemas
 │   ├── newtab
 │   ├── pageload
 │   ├── pseudo-main
+│   ├── spoc
 │   ├── top-sites
 │   └── use-counters
 ├── pioneer-citp-news-disinfo
@@ -746,6 +748,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-736 directories
+738 directories
 ```
 
