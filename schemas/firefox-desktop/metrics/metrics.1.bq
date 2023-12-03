@@ -524,6 +524,12 @@
             "type": "INT64"
           },
           {
+            "description": "This counts the number of times we set a cookie. Introduced as a denomenator for measuring CHIPS adoption.\n",
+            "mode": "NULLABLE",
+            "name": "networking_set_cookie",
+            "type": "INT64"
+          },
+          {
             "description": "How many times PDF Viewer was used.\n",
             "mode": "NULLABLE",
             "name": "pdfjs_used",
@@ -1624,6 +1630,78 @@
       },
       {
         "fields": [
+          {
+            "description": "Counts the preferred audio codec being signaled to us to identify preferred audio codec.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "codec_stats_audio_preferred_codec",
+            "type": "RECORD"
+          },
+          {
+            "description": "Count how many other fec options are being offered.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "codec_stats_other_fec_signaled",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of times that ulpfec is negotiated or not negotiated on the first negotiation for each video transceiver.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "codec_stats_ulpfec_negotiated",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the preferred video codec being signaled to us to identify preferred video codec.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "codec_stats_video_preferred_codec",
+            "type": "RECORD"
+          },
           {
             "description": "Given a matching cookie banner rule, how often do we handle or fail to handle cookie banners, labelled by reason. The 'success' and 'fail' counters count the total numbers independently of the reason counters. Counters are incremented after the content window has been destroyed. This metric additionally reports cookie injections after which we didn't see a banner as \"success_cookie_injected\".\n",
             "fields": [
@@ -3268,6 +3346,60 @@
             ],
             "mode": "NULLABLE",
             "name": "cookie_banners_cmp_ratio_handled_by_cmp_rule",
+            "type": "RECORD"
+          },
+          {
+            "description": "This counts the number of times we set a cookie from a foreign (not same-site) context. Introduced as a denomenator for measuring CHIPS adoption.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "networking_set_cookie_foreign",
+            "type": "RECORD"
+          },
+          {
+            "description": "This counts the number of times we set a cookie that has the Partitioned attribute in a foreign (not same-site) context. This tracks the adoption of CHIPS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "networking_set_cookie_foreign_partitioned",
+            "type": "RECORD"
+          },
+          {
+            "description": "This counts the number of times we set a cookie that has the Partitioned attribute. This tracks the adoption of CHIPS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "networking_set_cookie_partitioned",
             "type": "RECORD"
           },
           {
