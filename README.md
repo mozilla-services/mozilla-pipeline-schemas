@@ -202,6 +202,11 @@ schemas
 │   ├── main
 │   ├── metrics
 │   └── vpnsession
+├── mozillavpn-cirrus
+│   ├── baseline
+│   ├── deletion-request
+│   ├── events
+│   └── metrics
 ├── mozphab
 │   ├── baseline
 │   ├── deletion-request
@@ -748,6 +753,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-738 directories
+743 directories
 ```
 
