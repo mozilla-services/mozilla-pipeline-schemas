@@ -205,6 +205,8 @@ schemas
 ├── mozillavpn-cirrus
 │   ├── baseline
 │   ├── deletion-request
+│   ├── enrollment
+│   ├── enrollment-status
 │   ├── events
 │   └── metrics
 ├── mozphab
@@ -753,6 +755,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-743 directories
+745 directories
 ```
 
