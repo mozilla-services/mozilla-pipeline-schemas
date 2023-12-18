@@ -1,5 +1,7 @@
 # Version 1
 
+- Added optional `session_id` and optional `session_count` client info field. See [Bug 1862955](https://bugzilla.mozilla.org/show_bug.cgi?id=1862955).
+
 - Update pattern and increased length limit for `dot_separated_short_id`. See [Bug 1849615](https://bugzilla.mozilla.org/show_bug.cgi?id=1849615).
 
 - Added optional `windows_build_number` client info field. See [Bug 1802094](https://bugzilla.mozilla.org/show_bug.cgi?id=1802094).
