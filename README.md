@@ -424,6 +424,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
+│   ├── fx-suggest
 │   ├── history-sync
 │   ├── logins-sync
 │   ├── metrics
@@ -447,6 +448,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
+│   ├── fx-suggest
 │   ├── history-sync
 │   ├── logins-sync
 │   ├── metrics
@@ -470,6 +472,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
+│   ├── fx-suggest
 │   ├── history-sync
 │   ├── logins-sync
 │   ├── metrics
@@ -755,6 +758,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-745 directories
+748 directories
 ```
 
