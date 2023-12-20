@@ -162,7 +162,8 @@ schemas
 │   ├── enrollment
 │   ├── enrollment-status
 │   ├── events
-│   └── metrics
+│   ├── metrics
+│   └── startup
 ├── monitor-frontend
 │   ├── deletion-request
 │   └── events
@@ -208,7 +209,8 @@ schemas
 │   ├── enrollment
 │   ├── enrollment-status
 │   ├── events
-│   └── metrics
+│   ├── metrics
+│   └── startup
 ├── mozphab
 │   ├── baseline
 │   ├── deletion-request
@@ -758,6 +760,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-748 directories
+750 directories
 ```
 
