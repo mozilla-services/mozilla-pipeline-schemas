@@ -3929,6 +3929,24 @@
             "type": "RECORD"
           },
           {
+            "description": "How often we use different fallbacks when the GPU process crashes\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "gpu_process_crash_fallbacks",
+            "type": "RECORD"
+          },
+          {
             "description": "How many times each IPC message type was received, Broken down by process type.\n",
             "fields": [
               {
@@ -5550,6 +5568,18 @@
             "type": "INT64"
           },
           {
+            "description": "The number of total GPU process launch attempts.\n",
+            "mode": "NULLABLE",
+            "name": "gpu_process_total_launch_attempts",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of consecutive unstable launch attempts.\n",
+            "mode": "NULLABLE",
+            "name": "gpu_process_unstable_launch_attempts",
+            "type": "INT64"
+          },
+          {
             "description": "Counter of number of passwords currently saved by user.\n",
             "mode": "NULLABLE",
             "name": "logins_saved_all",
@@ -6053,6 +6083,12 @@
             "description": "If there was an error loading the RKV database, record it.\n",
             "mode": "NULLABLE",
             "name": "glean_database_rkv_load_error",
+            "type": "STRING"
+          },
+          {
+            "description": "Current status of the GPU process feature\n",
+            "mode": "NULLABLE",
+            "name": "gpu_process_feature_status",
             "type": "STRING"
           },
           {
