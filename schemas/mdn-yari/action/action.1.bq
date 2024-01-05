@@ -380,6 +380,31 @@
       {
         "fields": [
           {
+            "description": "The UTM parameters of the page, used to attribute the source of traffic:\n\"source\": which site sent the traffic\n\"medium\": what type of link was used\n\"campaign\": what specific campaign or experiment does this relate to\n\"term\": here for completeness, the search term that was purchased/bid on\n\"content\": what specifically was clicked to bring the user to the site\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "page_utm",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "labeled_string",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
             "description": "The ratio of viewport width to screen width, expressed as a percentage.\n",
             "mode": "NULLABLE",
             "name": "navigator_viewport_horizontal_coverage",
@@ -402,6 +427,12 @@
             "description": "The navigators ISO 3166 country name (not code) based on geo ip.\n",
             "mode": "NULLABLE",
             "name": "navigator_geo",
+            "type": "STRING"
+          },
+          {
+            "description": "The navigator's two-letter ISO 3166 country code based on geo ip.\n",
+            "mode": "NULLABLE",
+            "name": "navigator_geo_iso",
             "type": "STRING"
           },
           {
@@ -429,7 +460,7 @@
             "type": "STRING"
           },
           {
-            "description": "The Baseline status of the page:\nnull: the page has no baseline status\n\"baseline\": the page is baseline\n\"not_baseline\" the page is not baseline\n",
+            "description": "The Baseline status of the page:\nnull: the page has no baseline status\n\"baseline_high\": the page is baseline high\n\"baseline_low\": the page is baseline low\n\"not_baseline\" the page is not baseline\n",
             "mode": "NULLABLE",
             "name": "page_is_baseline",
             "type": "STRING"

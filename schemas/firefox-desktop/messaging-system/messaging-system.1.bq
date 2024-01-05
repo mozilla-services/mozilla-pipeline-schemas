@@ -453,6 +453,25 @@
       {
         "fields": [
           {
+            "description": "A number identifier of the screen index in a sequence of screens\n(e.g. 0 for first message).\n",
+            "mode": "NULLABLE",
+            "name": "messaging_system_event_screen_index",
+            "type": "INT64"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "quantity",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "An experimentation identifier derived and provided by the application\nfor the purpose of experimentation enrollment.\n",
+            "mode": "NULLABLE",
+            "name": "glean_client_annotation_experimentation_id",
+            "type": "STRING"
+          },
+          {
             "description": "What type of action resulted in the event. One of \"IMPRESSION\" or \"DISMISS\".\n",
             "mode": "NULLABLE",
             "name": "messaging_system_action",
@@ -531,7 +550,7 @@
             "type": "STRING"
           },
           {
-            "description": "The type of event. Any user defined string (e.g. “click”, “share”, “delete”, “more_items”)\n",
+            "description": "The type of event. Any user defined string (e.g. “IMPRESSION”, “CLICK_BUTTON”, \"INDEXEDDB_OPEN_FAILED\", “SESSION_END”)\n",
             "mode": "NULLABLE",
             "name": "messaging_system_event",
             "type": "STRING"
@@ -595,6 +614,24 @@
             "description": "The stringified JSON of `event_context`.\n",
             "mode": "NULLABLE",
             "name": "messaging_system_event_context",
+            "type": "STRING"
+          },
+          {
+            "description": "A string identifier of the message family derived from the message id\n(e.g. MR_WELCOME_DEFAULT).\n",
+            "mode": "NULLABLE",
+            "name": "messaging_system_event_screen_family",
+            "type": "STRING"
+          },
+          {
+            "description": "A string identifier of the message screen id\n(e.g. AW_MOBILE_DOWNLOAD).\n",
+            "mode": "NULLABLE",
+            "name": "messaging_system_event_screen_id",
+            "type": "STRING"
+          },
+          {
+            "description": "A string identifier of the message screen initials\n(e.g. 'EMAG' for EASY_SETUP, MOBILE_DOWNLOADS, AMO, GRATITUDE).\n",
+            "mode": "NULLABLE",
+            "name": "messaging_system_event_screen_initials",
             "type": "STRING"
           },
           {

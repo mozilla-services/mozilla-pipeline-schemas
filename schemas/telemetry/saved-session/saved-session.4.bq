@@ -5223,6 +5223,12 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a probable font fingerprinting attempt was detected",
+            "mode": "NULLABLE",
+            "name": "font_fingerprinting_per_tab",
+            "type": "STRING"
+          },
+          {
             "description": "Time(ms) spent activating additional fonts bundled with the product",
             "mode": "NULLABLE",
             "name": "fontlist_bundledfonts_activate",
@@ -5634,6 +5640,12 @@
             "description": "Session restore: If the browser is setup to auto-restore tabs, this probe measures the time elapsed between the instant we start Session Restore and the instant we have finished restoring tabs eagerly. At this stage, the tabs that are restored on demand are not restored yet.",
             "mode": "NULLABLE",
             "name": "fx_session_restore_auto_restore_duration_until_eager_tabs_restored_ms",
+            "type": "STRING"
+          },
+          {
+            "description": "Session restore: Number of closed tabs that are NOT saved due to lack of open tabs worth saving on window close.",
+            "mode": "NULLABLE",
+            "name": "fx_session_restore_closed_tabs_not_saved",
             "type": "STRING"
           },
           {
@@ -6177,6 +6189,12 @@
             "type": "STRING"
           },
           {
+            "description": "Whether parallel marking was used for this collection",
+            "mode": "NULLABLE",
+            "name": "gc_parallel_mark",
+            "type": "STRING"
+          },
+          {
             "description": "Number of interruptions/donations per slice during parallel marking.",
             "mode": "NULLABLE",
             "name": "gc_parallel_mark_interruptions",
@@ -6504,6 +6522,12 @@
             "description": "GeckoView: Time taken to initialize GeckoRuntime in ms.",
             "mode": "NULLABLE",
             "name": "gv_startup_runtime_ms",
+            "type": "STRING"
+          },
+          {
+            "description": "Incremented when an audio stream is initialized. For use as part of the GeckoView Streaming Validation.",
+            "mode": "NULLABLE",
+            "name": "gvsv_audio_stream_inits",
             "type": "STRING"
           },
           {
@@ -7335,6 +7359,78 @@
             "type": "STRING"
           },
           {
+            "description": "The upload throughput for http/1.0, http/1.1 requests larger than 10MB. Measured in megabits per second, Mbps.",
+            "mode": "NULLABLE",
+            "name": "http_upload_throughput_mbps_http_1",
+            "type": "STRING"
+          },
+          {
+            "description": "The upload throughput for http/1.0, http/1.1 requests larger than 100MB. Measured in megabits per second, Mbps.",
+            "mode": "NULLABLE",
+            "name": "http_upload_throughput_mbps_http_1_100",
+            "type": "STRING"
+          },
+          {
+            "description": "The upload throughput for http/1.0, http/1.1 request size between 10MB and 50MB. Measured in megabits per second, Mbps.",
+            "mode": "NULLABLE",
+            "name": "http_upload_throughput_mbps_http_1_10_50",
+            "type": "STRING"
+          },
+          {
+            "description": "The upload throughput for http/1.0, http/1.1 request size between 50MB and 100MB. Measured in megabits per second, Mbps.",
+            "mode": "NULLABLE",
+            "name": "http_upload_throughput_mbps_http_1_50_100",
+            "type": "STRING"
+          },
+          {
+            "description": "The upload throughput for http/2 requests larger than 10MB. Measured in megabits per second, Mbps.",
+            "mode": "NULLABLE",
+            "name": "http_upload_throughput_mbps_http_2",
+            "type": "STRING"
+          },
+          {
+            "description": "The upload throughput for http/2 requests larger than 100MB. Measured in megabits per second, Mbps.",
+            "mode": "NULLABLE",
+            "name": "http_upload_throughput_mbps_http_2_100",
+            "type": "STRING"
+          },
+          {
+            "description": "The upload throughput for http/2 request size between 10MB and 50MB. Measured in megabits per second, Mbps.",
+            "mode": "NULLABLE",
+            "name": "http_upload_throughput_mbps_http_2_10_50",
+            "type": "STRING"
+          },
+          {
+            "description": "The upload throughput for http/2 request size between 50MB and 100MB. Measured in megabits per second, Mbps.",
+            "mode": "NULLABLE",
+            "name": "http_upload_throughput_mbps_http_2_50_100",
+            "type": "STRING"
+          },
+          {
+            "description": "The upload throughput for http/3 requests larger than 10MB. Measured in megabits per second, Mbps.",
+            "mode": "NULLABLE",
+            "name": "http_upload_throughput_mbps_http_3",
+            "type": "STRING"
+          },
+          {
+            "description": "The upload throughput for http/3 requests larger than 100MB. Measured in megabits per second, Mbps.",
+            "mode": "NULLABLE",
+            "name": "http_upload_throughput_mbps_http_3_100",
+            "type": "STRING"
+          },
+          {
+            "description": "The upload throughput for http/3 request size between 10MB and 50MB. Measured in megabits per second, Mbps.",
+            "mode": "NULLABLE",
+            "name": "http_upload_throughput_mbps_http_3_10_50",
+            "type": "STRING"
+          },
+          {
+            "description": "The upload throughput for http/3 request size between 50MB and 100MB. Measured in megabits per second, Mbps.",
+            "mode": "NULLABLE",
+            "name": "http_upload_throughput_mbps_http_3_50_100",
+            "type": "STRING"
+          },
+          {
             "description": "How many speculative http connections are created",
             "mode": "NULLABLE",
             "name": "httpconnmgr_total_speculative_conn",
@@ -8094,6 +8190,24 @@
             "description": "Total JavaScript realms used for web pages.",
             "mode": "NULLABLE",
             "name": "memory_js_realms_user",
+            "type": "STRING"
+          },
+          {
+            "description": "Over-allocation due to PHC's rounding (aka internal fragmentation).  Measured in bytes.",
+            "mode": "NULLABLE",
+            "name": "memory_phc_slop",
+            "type": "STRING"
+          },
+          {
+            "description": "Number of PHC slots currently allocated",
+            "mode": "NULLABLE",
+            "name": "memory_phc_slots_allocated",
+            "type": "STRING"
+          },
+          {
+            "description": "Number of PHC slots allocated-then-freed",
+            "mode": "NULLABLE",
+            "name": "memory_phc_slots_freed",
             "type": "STRING"
           },
           {
@@ -11019,6 +11133,18 @@
             "type": "STRING"
           },
           {
+            "description": "The decrease in the length of the URL when strip on share is used, only if at least one parameter is stripped",
+            "mode": "NULLABLE",
+            "name": "strip_on_share_length_decrease",
+            "type": "STRING"
+          },
+          {
+            "description": "The number of query parameters removed, if any, when strip on share is used",
+            "mode": "NULLABLE",
+            "name": "strip_on_share_params_removed",
+            "type": "STRING"
+          },
+          {
             "description": "Number of OnSocketReady calls during a single poll.",
             "mode": "NULLABLE",
             "name": "sts_number_of_onsocketready_calls",
@@ -11700,6 +11826,12 @@
             "description": "Whether TLS 1.3 client authentication uses PHA (true) or regular in-handshake authentication (false)",
             "mode": "NULLABLE",
             "name": "tls_1_3_client_auth_uses_pha",
+            "type": "STRING"
+          },
+          {
+            "description": "Negotiated cipher suite in TLS handshake (see key in AccumulateCipherSuite in nsNSSCallbacks.cpp)",
+            "mode": "NULLABLE",
+            "name": "tls_cipher_suite",
             "type": "STRING"
           },
           {
@@ -13140,6 +13272,42 @@
             "description": "Whether a page sets -moz-appearance to textfield on an element that normally has some other non-none appearance",
             "mode": "NULLABLE",
             "name": "use_counter2_appearance_widget_textfield_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Clipboard.read",
+            "mode": "NULLABLE",
+            "name": "use_counter2_clipboard_read_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Clipboard.read",
+            "mode": "NULLABLE",
+            "name": "use_counter2_clipboard_read_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Clipboard.readText",
+            "mode": "NULLABLE",
+            "name": "use_counter2_clipboard_readtext_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Clipboard.readText",
+            "mode": "NULLABLE",
+            "name": "use_counter2_clipboard_readtext_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Clipboard.write",
+            "mode": "NULLABLE",
+            "name": "use_counter2_clipboard_write_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Clipboard.write",
+            "mode": "NULLABLE",
+            "name": "use_counter2_clipboard_write_page",
             "type": "STRING"
           },
           {
@@ -21771,6 +21939,18 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document called DataTransferItem.webkitGetAsEntry",
+            "mode": "NULLABLE",
+            "name": "use_counter2_datatransferitem_webkitgetasentry_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called DataTransferItem.webkitGetAsEntry",
+            "mode": "NULLABLE",
+            "name": "use_counter2_datatransferitem_webkitgetasentry_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document used AmbientLightEvent",
             "mode": "NULLABLE",
             "name": "use_counter2_deprecated_ambient_light_event_document",
@@ -22224,6 +22404,18 @@
             "description": "Whether a page used InstallTriggerInstallDeprecated",
             "mode": "NULLABLE",
             "name": "use_counter2_deprecated_install_trigger_install_deprecated_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document used IsExternalCTAP2SecurityKeySupported",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_is_external_ctap2_security_key_supported_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page used IsExternalCTAP2SecurityKeySupported",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_is_external_ctap2_security_key_supported_page",
             "type": "STRING"
           },
           {
@@ -22863,6 +23055,18 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document used SVGDeselectAll",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_svg_deselect_all_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page used SVGDeselectAll",
+            "mode": "NULLABLE",
+            "name": "use_counter2_deprecated_svg_deselect_all_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document used SVGFarthestViewportElement",
             "mode": "NULLABLE",
             "name": "use_counter2_deprecated_svg_farthest_viewport_element_document",
@@ -23091,6 +23295,42 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document called Document.caretRangeFromPoint",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_caretrangefrompoint_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Document.caretRangeFromPoint",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_caretrangefrompoint_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Document.exitPictureInPicture",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_exitpictureinpicture_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Document.exitPictureInPicture",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_exitpictureinpicture_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Document.featurePolicy",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_featurepolicy_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Document.featurePolicy",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_featurepolicy_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document called Document.mozSetImageElement",
             "mode": "NULLABLE",
             "name": "use_counter2_document_mozsetimageelement_document",
@@ -23100,6 +23340,306 @@
             "description": "Whether a page called Document.mozSetImageElement",
             "mode": "NULLABLE",
             "name": "use_counter2_document_mozsetimageelement_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Document.onbeforecopy",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_onbeforecopy_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Document.onbeforecopy",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_onbeforecopy_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Document.onbeforecut",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_onbeforecut_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Document.onbeforecut",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_onbeforecut_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Document.onbeforepaste",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_onbeforepaste_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Document.onbeforepaste",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_onbeforepaste_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Document.oncancel",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_oncancel_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Document.oncancel",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_oncancel_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Document.onfreeze",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_onfreeze_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Document.onfreeze",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_onfreeze_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Document.onmousewheel",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_onmousewheel_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Document.onmousewheel",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_onmousewheel_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Document.onresume",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_onresume_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Document.onresume",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_onresume_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Document.onsearch",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_onsearch_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Document.onsearch",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_onsearch_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Document.onwebkitfullscreenchange",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_onwebkitfullscreenchange_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Document.onwebkitfullscreenchange",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_onwebkitfullscreenchange_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Document.onwebkitfullscreenerror",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_onwebkitfullscreenerror_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Document.onwebkitfullscreenerror",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_onwebkitfullscreenerror_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Document.pictureInPictureElement",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_pictureinpictureelement_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Document.pictureInPictureElement",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_pictureinpictureelement_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Document.pictureInPictureEnabled",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_pictureinpictureenabled_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Document.pictureInPictureEnabled",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_pictureinpictureenabled_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Document.registerElement",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_registerelement_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Document.registerElement",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_registerelement_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Document.wasDiscarded",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_wasdiscarded_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Document.wasDiscarded",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_wasdiscarded_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Document.webkitCancelFullScreen",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_webkitcancelfullscreen_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Document.webkitCancelFullScreen",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_webkitcancelfullscreen_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Document.webkitCurrentFullScreenElement",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_webkitcurrentfullscreenelement_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Document.webkitCurrentFullScreenElement",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_webkitcurrentfullscreenelement_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Document.webkitExitFullscreen",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_webkitexitfullscreen_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Document.webkitExitFullscreen",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_webkitexitfullscreen_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Document.webkitFullscreenElement",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_webkitfullscreenelement_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Document.webkitFullscreenElement",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_webkitfullscreenelement_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Document.webkitFullscreenEnabled",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_webkitfullscreenenabled_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Document.webkitFullscreenEnabled",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_webkitfullscreenenabled_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Document.webkitHidden",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_webkithidden_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Document.webkitHidden",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_webkithidden_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Document.webkitIsFullScreen",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_webkitisfullscreen_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Document.webkitIsFullScreen",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_webkitisfullscreen_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Document.webkitVisibilityState",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_webkitvisibilitystate_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Document.webkitVisibilityState",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_webkitvisibilitystate_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Document.xmlEncoding",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_xmlencoding_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Document.xmlEncoding",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_xmlencoding_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Document.xmlStandalone",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_xmlstandalone_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Document.xmlStandalone",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_xmlstandalone_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Document.xmlVersion",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_xmlversion_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Document.xmlVersion",
+            "mode": "NULLABLE",
+            "name": "use_counter2_document_xmlversion_page",
             "type": "STRING"
           },
           {
@@ -23415,6 +23955,30 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document called Element.computedStyleMap",
+            "mode": "NULLABLE",
+            "name": "use_counter2_element_computedstylemap_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Element.computedStyleMap",
+            "mode": "NULLABLE",
+            "name": "use_counter2_element_computedstylemap_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Element.onmousewheel",
+            "mode": "NULLABLE",
+            "name": "use_counter2_element_onmousewheel_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Element.onmousewheel",
+            "mode": "NULLABLE",
+            "name": "use_counter2_element_onmousewheel_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document called Element.releaseCapture",
             "mode": "NULLABLE",
             "name": "use_counter2_element_releasecapture_document",
@@ -23436,6 +24000,18 @@
             "description": "Whether a page called Element.releasePointerCapture",
             "mode": "NULLABLE",
             "name": "use_counter2_element_releasepointercapture_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Element.scrollIntoViewIfNeeded",
+            "mode": "NULLABLE",
+            "name": "use_counter2_element_scrollintoviewifneeded_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Element.scrollIntoViewIfNeeded",
+            "mode": "NULLABLE",
+            "name": "use_counter2_element_scrollintoviewifneeded_page",
             "type": "STRING"
           },
           {
@@ -23772,6 +24348,30 @@
             "description": "Whether a page calls MediaDevices.getUserMedia from a cross origin context",
             "mode": "NULLABLE",
             "name": "use_counter2_getusermediaxorigin_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called HTMLButtonElement.popoverTargetAction",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlbuttonelement_popovertargetaction_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called HTMLButtonElement.popoverTargetAction",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlbuttonelement_popovertargetaction_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called HTMLButtonElement.popoverTargetElement",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlbuttonelement_popovertargetelement_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called HTMLButtonElement.popoverTargetElement",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlbuttonelement_popovertargetelement_page",
             "type": "STRING"
           },
           {
@@ -24159,6 +24759,270 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document called HTMLElement.attributeStyleMap",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlelement_attributestylemap_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called HTMLElement.attributeStyleMap",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlelement_attributestylemap_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called HTMLElement.hidePopover",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlelement_hidepopover_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called HTMLElement.hidePopover",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlelement_hidepopover_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called HTMLElement.popover",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlelement_popover_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called HTMLElement.popover",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlelement_popover_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called HTMLElement.showPopover",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlelement_showpopover_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called HTMLElement.showPopover",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlelement_showpopover_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called HTMLElement.togglePopover",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlelement_togglepopover_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called HTMLElement.togglePopover",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlelement_togglepopover_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called HTMLIFrameElement.loading",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmliframeelement_loading_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called HTMLIFrameElement.loading",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmliframeelement_loading_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called HTMLInputElement.capture",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlinputelement_capture_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called HTMLInputElement.capture",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlinputelement_capture_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called HTMLInputElement.incremental",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlinputelement_incremental_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called HTMLInputElement.incremental",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlinputelement_incremental_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called HTMLInputElement.onsearch",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlinputelement_onsearch_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called HTMLInputElement.onsearch",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlinputelement_onsearch_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called HTMLInputElement.popoverTargetAction",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlinputelement_popovertargetaction_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called HTMLInputElement.popoverTargetAction",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlinputelement_popovertargetaction_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called HTMLInputElement.popoverTargetElement",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlinputelement_popovertargetelement_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called HTMLInputElement.popoverTargetElement",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlinputelement_popovertargetelement_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called HTMLInputElement.webkitdirectory",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlinputelement_webkitdirectory_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called HTMLInputElement.webkitdirectory",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlinputelement_webkitdirectory_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called HTMLInputElement.webkitEntries",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlinputelement_webkitentries_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called HTMLInputElement.webkitEntries",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlinputelement_webkitentries_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called HTMLMediaElement.disableRemotePlayback",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlmediaelement_disableremoteplayback_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called HTMLMediaElement.disableRemotePlayback",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlmediaelement_disableremoteplayback_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called HTMLMediaElement.remote",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlmediaelement_remote_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called HTMLMediaElement.remote",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlmediaelement_remote_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called HTMLVideoElement.cancelVideoFrameCallback",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlvideoelement_cancelvideoframecallback_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called HTMLVideoElement.cancelVideoFrameCallback",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlvideoelement_cancelvideoframecallback_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called HTMLVideoElement.disablePictureInPicture",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlvideoelement_disablepictureinpicture_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called HTMLVideoElement.disablePictureInPicture",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlvideoelement_disablepictureinpicture_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called HTMLVideoElement.onenterpictureinpicture",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlvideoelement_onenterpictureinpicture_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called HTMLVideoElement.onenterpictureinpicture",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlvideoelement_onenterpictureinpicture_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called HTMLVideoElement.onleavepictureinpicture",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlvideoelement_onleavepictureinpicture_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called HTMLVideoElement.onleavepictureinpicture",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlvideoelement_onleavepictureinpicture_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called HTMLVideoElement.playsInline",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlvideoelement_playsinline_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called HTMLVideoElement.playsInline",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlvideoelement_playsinline_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called HTMLVideoElement.requestPictureInPicture",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlvideoelement_requestpictureinpicture_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called HTMLVideoElement.requestPictureInPicture",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlvideoelement_requestpictureinpicture_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called HTMLVideoElement.requestVideoFrameCallback",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlvideoelement_requestvideoframecallback_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called HTMLVideoElement.requestVideoFrameCallback",
+            "mode": "NULLABLE",
+            "name": "use_counter2_htmlvideoelement_requestvideoframecallback_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document called IDBDatabase.createMutableFile",
             "mode": "NULLABLE",
             "name": "use_counter2_idbdatabase_createmutablefile_document",
@@ -24207,6 +25071,18 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document called ImageData.colorSpace",
+            "mode": "NULLABLE",
+            "name": "use_counter2_imagedata_colorspace_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called ImageData.colorSpace",
+            "mode": "NULLABLE",
+            "name": "use_counter2_imagedata_colorspace_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document uses asm.js",
             "mode": "NULLABLE",
             "name": "use_counter2_js_asmjs_document",
@@ -24216,6 +25092,18 @@
             "description": "Whether a page uses asm.js",
             "mode": "NULLABLE",
             "name": "use_counter2_js_asmjs_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document parses a Date with day of week in an unexpected position",
+            "mode": "NULLABLE",
+            "name": "use_counter2_js_late_weekday_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page parses a Date with day of week in an unexpected position",
+            "mode": "NULLABLE",
+            "name": "use_counter2_js_late_weekday_page",
             "type": "STRING"
           },
           {
@@ -24240,6 +25128,18 @@
             "description": "Whether a page uses WebAssembly",
             "mode": "NULLABLE",
             "name": "use_counter2_js_wasm_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Location.ancestorOrigins",
+            "mode": "NULLABLE",
+            "name": "use_counter2_location_ancestororigins_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Location.ancestorOrigins",
+            "mode": "NULLABLE",
+            "name": "use_counter2_location_ancestororigins_page",
             "type": "STRING"
           },
           {
@@ -24279,6 +25179,150 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document includes a mixed content audio element that does not load.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_mixedcontentnotupgradedaudiofailure_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page includes a mixed content audio element that does not load.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_mixedcontentnotupgradedaudiofailure_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document includes a mixed content audio element that loads.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_mixedcontentnotupgradedaudiosuccess_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page includes a mixed content audio element that loads.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_mixedcontentnotupgradedaudiosuccess_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document includes a mixed content img element that does not load.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_mixedcontentnotupgradedimagefailure_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page includes a mixed content img element that does not load.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_mixedcontentnotupgradedimagefailure_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document includes a mixed content img element that loads.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_mixedcontentnotupgradedimagesuccess_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page includes a mixed content img element that loads.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_mixedcontentnotupgradedimagesuccess_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document includes a mixed content video element that does not laod.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_mixedcontentnotupgradedvideofailure_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page includes a mixed content video element that does not laod.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_mixedcontentnotupgradedvideofailure_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document includes a mixed content video element that loads.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_mixedcontentnotupgradedvideosuccess_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page includes a mixed content video element that loads.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_mixedcontentnotupgradedvideosuccess_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document includes a mixed content audio element that does not load.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_mixedcontentupgradedaudiofailure_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page includes a mixed content audio element that does not load.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_mixedcontentupgradedaudiofailure_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document includes a mixed content audio element that loads.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_mixedcontentupgradedaudiosuccess_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page includes a mixed content audio element that loads.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_mixedcontentupgradedaudiosuccess_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document includes a mixed content img element that does not load.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_mixedcontentupgradedimagefailure_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page includes a mixed content img element that does not load.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_mixedcontentupgradedimagefailure_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document includes a mixed content img element that loads.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_mixedcontentupgradedimagesuccess_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page includes a mixed content img element that loads.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_mixedcontentupgradedimagesuccess_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document includes a mixed content video element that does not laod.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_mixedcontentupgradedvideofailure_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page includes a mixed content video element that does not laod.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_mixedcontentupgradedvideofailure_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document includes a mixed content video element that loads.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_mixedcontentupgradedvideosuccess_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page includes a mixed content video element that loads.",
+            "mode": "NULLABLE",
+            "name": "use_counter2_mixedcontentupgradedvideosuccess_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document calls Navigator.mozGetUserMedia from an insecure context",
             "mode": "NULLABLE",
             "name": "use_counter2_mozgetusermediainsec_document",
@@ -24303,6 +25347,30 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document called Navigator.canShare",
+            "mode": "NULLABLE",
+            "name": "use_counter2_navigator_canshare_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Navigator.canShare",
+            "mode": "NULLABLE",
+            "name": "use_counter2_navigator_canshare_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Navigator.clearAppBadge",
+            "mode": "NULLABLE",
+            "name": "use_counter2_navigator_clearappbadge_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Navigator.clearAppBadge",
+            "mode": "NULLABLE",
+            "name": "use_counter2_navigator_clearappbadge_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document called Navigator.mozGetUserMedia",
             "mode": "NULLABLE",
             "name": "use_counter2_navigator_mozgetusermedia_document",
@@ -24312,6 +25380,54 @@
             "description": "Whether a page called Navigator.mozGetUserMedia",
             "mode": "NULLABLE",
             "name": "use_counter2_navigator_mozgetusermedia_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Navigator.setAppBadge",
+            "mode": "NULLABLE",
+            "name": "use_counter2_navigator_setappbadge_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Navigator.setAppBadge",
+            "mode": "NULLABLE",
+            "name": "use_counter2_navigator_setappbadge_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Navigator.share",
+            "mode": "NULLABLE",
+            "name": "use_counter2_navigator_share_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Navigator.share",
+            "mode": "NULLABLE",
+            "name": "use_counter2_navigator_share_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Navigator.userActivation",
+            "mode": "NULLABLE",
+            "name": "use_counter2_navigator_useractivation_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Navigator.userActivation",
+            "mode": "NULLABLE",
+            "name": "use_counter2_navigator_useractivation_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Navigator.wakeLock",
+            "mode": "NULLABLE",
+            "name": "use_counter2_navigator_wakelock_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Navigator.wakeLock",
+            "mode": "NULLABLE",
+            "name": "use_counter2_navigator_wakelock_page",
             "type": "STRING"
           },
           {
@@ -24879,6 +25995,18 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document called ShadowRoot.pictureInPictureElement",
+            "mode": "NULLABLE",
+            "name": "use_counter2_shadowroot_pictureinpictureelement_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called ShadowRoot.pictureInPictureElement",
+            "mode": "NULLABLE",
+            "name": "use_counter2_shadowroot_pictureinpictureelement_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document got SVGSVGElement.currentScale",
             "mode": "NULLABLE",
             "name": "use_counter2_svgsvgelement_currentscale_getter_document",
@@ -25227,6 +26355,18 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document called Window.CSSMathClamp",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_cssmathclamp_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Window.CSSMathClamp",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_cssmathclamp_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document called Window.CSSMathInvert",
             "mode": "NULLABLE",
             "name": "use_counter2_window_cssmathinvert_document",
@@ -25368,6 +26508,18 @@
             "description": "Whether a page called Window.CSSPositionValue",
             "mode": "NULLABLE",
             "name": "use_counter2_window_csspositionvalue_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Window.CSSPropertyRule",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_csspropertyrule_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Window.CSSPropertyRule",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_csspropertyrule_page",
             "type": "STRING"
           },
           {
@@ -25560,6 +26712,18 @@
             "description": "Whether a page called Window.DOMError",
             "mode": "NULLABLE",
             "name": "use_counter2_window_domerror_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Window.EncodedVideoChunk",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_encodedvideochunk_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Window.EncodedVideoChunk",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_encodedvideochunk_page",
             "type": "STRING"
           },
           {
@@ -25995,6 +27159,18 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document called Window.onorientationchange",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_onorientationchange_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Window.onorientationchange",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_onorientationchange_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document called Window.onsearch",
             "mode": "NULLABLE",
             "name": "use_counter2_window_onsearch_document",
@@ -26028,6 +27204,18 @@
             "description": "Whether a page called Window.openDatabase",
             "mode": "NULLABLE",
             "name": "use_counter2_window_opendatabase_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Window.orientation",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_orientation_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Window.orientation",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_orientation_page",
             "type": "STRING"
           },
           {
@@ -26199,6 +27387,18 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document called Window.PictureInPictureEvent",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_pictureinpictureevent_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Window.PictureInPictureEvent",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_pictureinpictureevent_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document called Window.PictureInPictureWindow",
             "mode": "NULLABLE",
             "name": "use_counter2_window_pictureinpicturewindow_document",
@@ -26331,6 +27531,30 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document called Window.Report",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_report_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Window.Report",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_report_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Window.ReportBody",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_reportbody_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Window.ReportBody",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_reportbody_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document called Window.ReportingObserver",
             "mode": "NULLABLE",
             "name": "use_counter2_window_reportingobserver_document",
@@ -26388,6 +27612,18 @@
             "description": "Whether a page called Window.RTCIceTransport",
             "mode": "NULLABLE",
             "name": "use_counter2_window_rtcicetransport_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Window.RTCPeerConnectionIceErrorEvent",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_rtcpeerconnectioniceerrorevent_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Window.RTCPeerConnectionIceErrorEvent",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_rtcpeerconnectioniceerrorevent_page",
             "type": "STRING"
           },
           {
@@ -26460,6 +27696,42 @@
             "description": "Whether a page set Window.sidebar",
             "mode": "NULLABLE",
             "name": "use_counter2_window_sidebar_setter_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Window.SpeechRecognitionAlternative",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_speechrecognitionalternative_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Window.SpeechRecognitionAlternative",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_speechrecognitionalternative_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Window.SpeechRecognitionResult",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_speechrecognitionresult_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Window.SpeechRecognitionResult",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_speechrecognitionresult_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Window.SpeechRecognitionResultList",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_speechrecognitionresultlist_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Window.SpeechRecognitionResultList",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_speechrecognitionresultlist_page",
             "type": "STRING"
           },
           {
@@ -26568,6 +27840,18 @@
             "description": "Whether a page called Window.TextEvent",
             "mode": "NULLABLE",
             "name": "use_counter2_window_textevent_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Window.ToggleEvent",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_toggleevent_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Window.ToggleEvent",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_toggleevent_page",
             "type": "STRING"
           },
           {
@@ -26787,6 +28071,54 @@
             "type": "STRING"
           },
           {
+            "description": "Whether a document called Window.VideoColorSpace",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_videocolorspace_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Window.VideoColorSpace",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_videocolorspace_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Window.VideoDecoder",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_videodecoder_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Window.VideoDecoder",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_videodecoder_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Window.VideoEncoder",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_videoencoder_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Window.VideoEncoder",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_videoencoder_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Window.VideoFrame",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_videoframe_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Window.VideoFrame",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_videoframe_page",
+            "type": "STRING"
+          },
+          {
             "description": "Whether a document called Window.visualViewport",
             "mode": "NULLABLE",
             "name": "use_counter2_window_visualviewport_document",
@@ -26796,6 +28128,30 @@
             "description": "Whether a page called Window.visualViewport",
             "mode": "NULLABLE",
             "name": "use_counter2_window_visualviewport_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Window.WakeLock",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_wakelock_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Window.WakeLock",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_wakelock_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called Window.WakeLockSentinel",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_wakelocksentinel_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called Window.WakeLockSentinel",
+            "mode": "NULLABLE",
+            "name": "use_counter2_window_wakelocksentinel_page",
             "type": "STRING"
           },
           {
@@ -26988,6 +28344,18 @@
             "description": "Whether a page calls window.open with an empty url argument",
             "mode": "NULLABLE",
             "name": "use_counter2_windowopenemptyurl_page",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a document called WorkerNavigator.permissions",
+            "mode": "NULLABLE",
+            "name": "use_counter2_workernavigator_permissions_document",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether a page called WorkerNavigator.permissions",
+            "mode": "NULLABLE",
+            "name": "use_counter2_workernavigator_permissions_page",
             "type": "STRING"
           },
           {
@@ -28657,6 +30025,24 @@
             ],
             "mode": "REPEATED",
             "name": "blocked_on_pluginasyncsurrogate_waitforinit_ms",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "Type of canvas fingerprinter detected (keyed by known_fingerprinting_text or unknown), 0 = none",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "canvas_fingerprinting_per_tab",
             "type": "RECORD"
           },
           {
@@ -30629,6 +32015,24 @@
                 "type": "STRING"
               },
               {
+                "description": "Reason for HTTP connection closure, keyed by properties like HTTP version and connection state.",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http_connection_close_reason",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
                 "description": "Numbers of HTTP transactions and connections by type. There are some categories separated by keys based on 4 parameters: 1. normal browsing or private browsing 2. first party or third party 3. class of service 4. tracking classification. Available keys are: ['Y=0|NormalFirstParty', 'Y=1|NormalThirdPartyOther', 'Y=2|NormalThirdPartyContentLeader', 'Y=3|NormalThirdPartyContentBackground', 'Y=4|NormalThirdPartyContentOther', 'Y=5|NormalThirdPartyBasicLeader', 'Y=6|NormalThirdPartyBasicBackground', 'Y=7|NormalThirdPartyBasicOther', 'Y=8|NormalThirdPartyFingerprintingLeader', 'Y=9|NormalThirdPartyFingerprintingBackground', 'Y=10|NormalThirdPartyFingerprintingOther', 'Y=11|PrivateFirstParty', 'Y=12|PrivateThirdPartyOther', 'Y=13|PrivateThirdPartyContentLeader', 'Y=14|PrivateThirdPartyContentBackground', 'Y=15|PrivateThirdPartyContentOther', 'Y=16|PrivateThirdPartyBasicLeader', 'Y=17|PrivateThirdPartyBasicBackground', 'Y=18|PrivateThirdPartyBasicOther', 'Y=19|PrivateThirdPartyFingerprintingLe…",
                 "mode": "NULLABLE",
                 "name": "value",
@@ -31781,7 +33185,7 @@
                 "type": "STRING"
               },
               {
-                "description": "Time (ms) for the QuotaManager to load quota information. Keyed by conditions during quota info loading, see RecordQuotaInfoLoadTimeHelper::Run in https://searchfox.org/mozilla-central/source/dom/quota/ActorsParent.cpp",
+                "description": "Time (ms) for the QuotaManager to load quota information. Keyed by conditions during quota info loading, see RecordTimeDeltaHelper::Run in https://searchfox.org/mozilla-central/source/dom/quota/ActorsParent.cpp",
                 "mode": "NULLABLE",
                 "name": "value",
                 "type": "STRING"
@@ -31789,6 +33193,24 @@
             ],
             "mode": "REPEATED",
             "name": "qm_quota_info_load_time_v0",
+            "type": "RECORD"
+          },
+          {
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "description": "Time (ms) for the QuotaManager to shutdown. Keyed by conditions during shutdown, see RecordTimeDeltaHelper::Run in https://searchfox.org/mozilla-central/source/dom/quota/ActorsParent.cpp",
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "qm_shutdown_time_v0",
             "type": "RECORD"
           },
           {
@@ -36673,6 +38095,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Session restore: Number of closed tabs that are NOT saved due to lack of open tabs worth saving on window close.",
+                    "mode": "NULLABLE",
+                    "name": "fx_session_restore_closed_tabs_not_saved",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Session restore: Time to collect all window data (ms)",
                     "mode": "NULLABLE",
                     "name": "fx_session_restore_collect_all_windows_data_ms",
@@ -37141,6 +38569,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether parallel marking was used for this collection",
+                    "mode": "NULLABLE",
+                    "name": "gc_parallel_mark",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Number of interruptions/donations per slice during parallel marking.",
                     "mode": "NULLABLE",
                     "name": "gc_parallel_mark_interruptions",
@@ -37462,6 +38896,12 @@
                     "description": "GeckoView: Time taken to initialize GeckoRuntime in ms.",
                     "mode": "NULLABLE",
                     "name": "gv_startup_runtime_ms",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Incremented when an audio stream is initialized. For use as part of the GeckoView Streaming Validation.",
+                    "mode": "NULLABLE",
+                    "name": "gvsv_audio_stream_inits",
                     "type": "STRING"
                   },
                   {
@@ -39085,6 +40525,24 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Over-allocation due to PHC's rounding (aka internal fragmentation).  Measured in bytes.",
+                    "mode": "NULLABLE",
+                    "name": "memory_phc_slop",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Number of PHC slots currently allocated",
+                    "mode": "NULLABLE",
+                    "name": "memory_phc_slots_allocated",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Number of PHC slots allocated-then-freed",
+                    "mode": "NULLABLE",
+                    "name": "memory_phc_slots_freed",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Resident memory size (KB)",
                     "mode": "NULLABLE",
                     "name": "memory_resident_fast",
@@ -39991,6 +41449,18 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "The time between responseStart and the largest contentful paint of a foreground http or https root content document, in milliseconds. The contentful paint timestamp is taken during display list building and does not include rasterization or compositing of that paint.",
+                    "mode": "NULLABLE",
+                    "name": "perf_largest_contentful_paint_from_response_start_ms",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "The time between navigationStart and the largest contentful paint of a foreground http or https root content document, in milliseconds. The contentful paint timestamp is taken during display list building and does not include rasterization or compositing of that paint.",
+                    "mode": "NULLABLE",
+                    "name": "perf_largest_contentful_paint_ms",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Proportion (%) of reschedulings of the main process to another CPU during the execution of code inside a JS compartment. Updated while we are measuring jank.",
                     "mode": "NULLABLE",
                     "name": "perf_monitoring_test_cpu_rescheduling_proportion_moved",
@@ -40870,6 +42340,18 @@
                     "description": "Whether the sandbox is enabled for media/GMP plugins",
                     "mode": "NULLABLE",
                     "name": "sandbox_media_enabled",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "How long a screen wake lock was held in ms",
+                    "mode": "NULLABLE",
+                    "name": "screenwakelock_held_duration_ms",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Battery level when discharging and the wake lock was released",
+                    "mode": "NULLABLE",
+                    "name": "screenwakelock_release_battery_level_discharging",
                     "type": "STRING"
                   },
                   {
@@ -43582,6 +45064,42 @@
                     "description": "Whether a page sets -moz-appearance to textfield on an element that normally has some other non-none appearance",
                     "mode": "NULLABLE",
                     "name": "use_counter2_appearance_widget_textfield_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Clipboard.read",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_clipboard_read_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Clipboard.read",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_clipboard_read_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Clipboard.readText",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_clipboard_readtext_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Clipboard.readText",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_clipboard_readtext_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Clipboard.write",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_clipboard_write_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Clipboard.write",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_clipboard_write_page",
                     "type": "STRING"
                   },
                   {
@@ -52213,6 +53731,18 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document called DataTransferItem.webkitGetAsEntry",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_datatransferitem_webkitgetasentry_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called DataTransferItem.webkitGetAsEntry",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_datatransferitem_webkitgetasentry_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document used AmbientLightEvent",
                     "mode": "NULLABLE",
                     "name": "use_counter2_deprecated_ambient_light_event_document",
@@ -52666,6 +54196,18 @@
                     "description": "Whether a page used InstallTriggerInstallDeprecated",
                     "mode": "NULLABLE",
                     "name": "use_counter2_deprecated_install_trigger_install_deprecated_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document used IsExternalCTAP2SecurityKeySupported",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_is_external_ctap2_security_key_supported_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page used IsExternalCTAP2SecurityKeySupported",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_is_external_ctap2_security_key_supported_page",
                     "type": "STRING"
                   },
                   {
@@ -53305,6 +54847,18 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document used SVGDeselectAll",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_svg_deselect_all_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page used SVGDeselectAll",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_deprecated_svg_deselect_all_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document used SVGFarthestViewportElement",
                     "mode": "NULLABLE",
                     "name": "use_counter2_deprecated_svg_farthest_viewport_element_document",
@@ -53533,6 +55087,42 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document called Document.caretRangeFromPoint",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_caretrangefrompoint_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Document.caretRangeFromPoint",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_caretrangefrompoint_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Document.exitPictureInPicture",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_exitpictureinpicture_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Document.exitPictureInPicture",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_exitpictureinpicture_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Document.featurePolicy",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_featurepolicy_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Document.featurePolicy",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_featurepolicy_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document called Document.mozSetImageElement",
                     "mode": "NULLABLE",
                     "name": "use_counter2_document_mozsetimageelement_document",
@@ -53542,6 +55132,306 @@
                     "description": "Whether a page called Document.mozSetImageElement",
                     "mode": "NULLABLE",
                     "name": "use_counter2_document_mozsetimageelement_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Document.onbeforecopy",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_onbeforecopy_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Document.onbeforecopy",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_onbeforecopy_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Document.onbeforecut",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_onbeforecut_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Document.onbeforecut",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_onbeforecut_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Document.onbeforepaste",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_onbeforepaste_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Document.onbeforepaste",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_onbeforepaste_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Document.oncancel",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_oncancel_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Document.oncancel",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_oncancel_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Document.onfreeze",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_onfreeze_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Document.onfreeze",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_onfreeze_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Document.onmousewheel",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_onmousewheel_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Document.onmousewheel",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_onmousewheel_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Document.onresume",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_onresume_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Document.onresume",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_onresume_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Document.onsearch",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_onsearch_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Document.onsearch",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_onsearch_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Document.onwebkitfullscreenchange",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_onwebkitfullscreenchange_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Document.onwebkitfullscreenchange",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_onwebkitfullscreenchange_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Document.onwebkitfullscreenerror",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_onwebkitfullscreenerror_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Document.onwebkitfullscreenerror",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_onwebkitfullscreenerror_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Document.pictureInPictureElement",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_pictureinpictureelement_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Document.pictureInPictureElement",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_pictureinpictureelement_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Document.pictureInPictureEnabled",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_pictureinpictureenabled_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Document.pictureInPictureEnabled",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_pictureinpictureenabled_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Document.registerElement",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_registerelement_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Document.registerElement",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_registerelement_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Document.wasDiscarded",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_wasdiscarded_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Document.wasDiscarded",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_wasdiscarded_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Document.webkitCancelFullScreen",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_webkitcancelfullscreen_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Document.webkitCancelFullScreen",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_webkitcancelfullscreen_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Document.webkitCurrentFullScreenElement",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_webkitcurrentfullscreenelement_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Document.webkitCurrentFullScreenElement",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_webkitcurrentfullscreenelement_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Document.webkitExitFullscreen",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_webkitexitfullscreen_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Document.webkitExitFullscreen",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_webkitexitfullscreen_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Document.webkitFullscreenElement",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_webkitfullscreenelement_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Document.webkitFullscreenElement",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_webkitfullscreenelement_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Document.webkitFullscreenEnabled",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_webkitfullscreenenabled_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Document.webkitFullscreenEnabled",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_webkitfullscreenenabled_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Document.webkitHidden",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_webkithidden_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Document.webkitHidden",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_webkithidden_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Document.webkitIsFullScreen",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_webkitisfullscreen_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Document.webkitIsFullScreen",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_webkitisfullscreen_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Document.webkitVisibilityState",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_webkitvisibilitystate_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Document.webkitVisibilityState",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_webkitvisibilitystate_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Document.xmlEncoding",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_xmlencoding_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Document.xmlEncoding",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_xmlencoding_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Document.xmlStandalone",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_xmlstandalone_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Document.xmlStandalone",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_xmlstandalone_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Document.xmlVersion",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_xmlversion_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Document.xmlVersion",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_document_xmlversion_page",
                     "type": "STRING"
                   },
                   {
@@ -53857,6 +55747,30 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document called Element.computedStyleMap",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_element_computedstylemap_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Element.computedStyleMap",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_element_computedstylemap_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Element.onmousewheel",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_element_onmousewheel_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Element.onmousewheel",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_element_onmousewheel_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document called Element.releaseCapture",
                     "mode": "NULLABLE",
                     "name": "use_counter2_element_releasecapture_document",
@@ -53878,6 +55792,18 @@
                     "description": "Whether a page called Element.releasePointerCapture",
                     "mode": "NULLABLE",
                     "name": "use_counter2_element_releasepointercapture_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Element.scrollIntoViewIfNeeded",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_element_scrollintoviewifneeded_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Element.scrollIntoViewIfNeeded",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_element_scrollintoviewifneeded_page",
                     "type": "STRING"
                   },
                   {
@@ -54214,6 +56140,30 @@
                     "description": "Whether a page calls MediaDevices.getUserMedia from a cross origin context",
                     "mode": "NULLABLE",
                     "name": "use_counter2_getusermediaxorigin_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called HTMLButtonElement.popoverTargetAction",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlbuttonelement_popovertargetaction_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called HTMLButtonElement.popoverTargetAction",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlbuttonelement_popovertargetaction_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called HTMLButtonElement.popoverTargetElement",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlbuttonelement_popovertargetelement_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called HTMLButtonElement.popoverTargetElement",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlbuttonelement_popovertargetelement_page",
                     "type": "STRING"
                   },
                   {
@@ -54601,6 +56551,270 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document called HTMLElement.attributeStyleMap",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlelement_attributestylemap_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called HTMLElement.attributeStyleMap",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlelement_attributestylemap_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called HTMLElement.hidePopover",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlelement_hidepopover_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called HTMLElement.hidePopover",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlelement_hidepopover_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called HTMLElement.popover",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlelement_popover_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called HTMLElement.popover",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlelement_popover_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called HTMLElement.showPopover",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlelement_showpopover_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called HTMLElement.showPopover",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlelement_showpopover_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called HTMLElement.togglePopover",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlelement_togglepopover_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called HTMLElement.togglePopover",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlelement_togglepopover_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called HTMLIFrameElement.loading",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmliframeelement_loading_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called HTMLIFrameElement.loading",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmliframeelement_loading_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called HTMLInputElement.capture",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlinputelement_capture_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called HTMLInputElement.capture",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlinputelement_capture_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called HTMLInputElement.incremental",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlinputelement_incremental_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called HTMLInputElement.incremental",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlinputelement_incremental_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called HTMLInputElement.onsearch",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlinputelement_onsearch_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called HTMLInputElement.onsearch",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlinputelement_onsearch_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called HTMLInputElement.popoverTargetAction",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlinputelement_popovertargetaction_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called HTMLInputElement.popoverTargetAction",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlinputelement_popovertargetaction_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called HTMLInputElement.popoverTargetElement",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlinputelement_popovertargetelement_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called HTMLInputElement.popoverTargetElement",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlinputelement_popovertargetelement_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called HTMLInputElement.webkitdirectory",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlinputelement_webkitdirectory_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called HTMLInputElement.webkitdirectory",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlinputelement_webkitdirectory_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called HTMLInputElement.webkitEntries",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlinputelement_webkitentries_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called HTMLInputElement.webkitEntries",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlinputelement_webkitentries_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called HTMLMediaElement.disableRemotePlayback",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlmediaelement_disableremoteplayback_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called HTMLMediaElement.disableRemotePlayback",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlmediaelement_disableremoteplayback_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called HTMLMediaElement.remote",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlmediaelement_remote_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called HTMLMediaElement.remote",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlmediaelement_remote_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called HTMLVideoElement.cancelVideoFrameCallback",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlvideoelement_cancelvideoframecallback_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called HTMLVideoElement.cancelVideoFrameCallback",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlvideoelement_cancelvideoframecallback_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called HTMLVideoElement.disablePictureInPicture",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlvideoelement_disablepictureinpicture_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called HTMLVideoElement.disablePictureInPicture",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlvideoelement_disablepictureinpicture_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called HTMLVideoElement.onenterpictureinpicture",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlvideoelement_onenterpictureinpicture_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called HTMLVideoElement.onenterpictureinpicture",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlvideoelement_onenterpictureinpicture_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called HTMLVideoElement.onleavepictureinpicture",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlvideoelement_onleavepictureinpicture_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called HTMLVideoElement.onleavepictureinpicture",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlvideoelement_onleavepictureinpicture_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called HTMLVideoElement.playsInline",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlvideoelement_playsinline_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called HTMLVideoElement.playsInline",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlvideoelement_playsinline_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called HTMLVideoElement.requestPictureInPicture",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlvideoelement_requestpictureinpicture_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called HTMLVideoElement.requestPictureInPicture",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlvideoelement_requestpictureinpicture_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called HTMLVideoElement.requestVideoFrameCallback",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlvideoelement_requestvideoframecallback_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called HTMLVideoElement.requestVideoFrameCallback",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_htmlvideoelement_requestvideoframecallback_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document called IDBDatabase.createMutableFile",
                     "mode": "NULLABLE",
                     "name": "use_counter2_idbdatabase_createmutablefile_document",
@@ -54649,6 +56863,18 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document called ImageData.colorSpace",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_imagedata_colorspace_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called ImageData.colorSpace",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_imagedata_colorspace_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document uses asm.js",
                     "mode": "NULLABLE",
                     "name": "use_counter2_js_asmjs_document",
@@ -54658,6 +56884,18 @@
                     "description": "Whether a page uses asm.js",
                     "mode": "NULLABLE",
                     "name": "use_counter2_js_asmjs_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document parses a Date with day of week in an unexpected position",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_js_late_weekday_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page parses a Date with day of week in an unexpected position",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_js_late_weekday_page",
                     "type": "STRING"
                   },
                   {
@@ -54682,6 +56920,18 @@
                     "description": "Whether a page uses WebAssembly",
                     "mode": "NULLABLE",
                     "name": "use_counter2_js_wasm_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Location.ancestorOrigins",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_location_ancestororigins_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Location.ancestorOrigins",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_location_ancestororigins_page",
                     "type": "STRING"
                   },
                   {
@@ -54721,6 +56971,150 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document includes a mixed content audio element that does not load.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_mixedcontentnotupgradedaudiofailure_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page includes a mixed content audio element that does not load.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_mixedcontentnotupgradedaudiofailure_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document includes a mixed content audio element that loads.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_mixedcontentnotupgradedaudiosuccess_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page includes a mixed content audio element that loads.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_mixedcontentnotupgradedaudiosuccess_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document includes a mixed content img element that does not load.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_mixedcontentnotupgradedimagefailure_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page includes a mixed content img element that does not load.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_mixedcontentnotupgradedimagefailure_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document includes a mixed content img element that loads.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_mixedcontentnotupgradedimagesuccess_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page includes a mixed content img element that loads.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_mixedcontentnotupgradedimagesuccess_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document includes a mixed content video element that does not laod.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_mixedcontentnotupgradedvideofailure_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page includes a mixed content video element that does not laod.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_mixedcontentnotupgradedvideofailure_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document includes a mixed content video element that loads.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_mixedcontentnotupgradedvideosuccess_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page includes a mixed content video element that loads.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_mixedcontentnotupgradedvideosuccess_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document includes a mixed content audio element that does not load.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_mixedcontentupgradedaudiofailure_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page includes a mixed content audio element that does not load.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_mixedcontentupgradedaudiofailure_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document includes a mixed content audio element that loads.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_mixedcontentupgradedaudiosuccess_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page includes a mixed content audio element that loads.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_mixedcontentupgradedaudiosuccess_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document includes a mixed content img element that does not load.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_mixedcontentupgradedimagefailure_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page includes a mixed content img element that does not load.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_mixedcontentupgradedimagefailure_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document includes a mixed content img element that loads.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_mixedcontentupgradedimagesuccess_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page includes a mixed content img element that loads.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_mixedcontentupgradedimagesuccess_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document includes a mixed content video element that does not laod.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_mixedcontentupgradedvideofailure_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page includes a mixed content video element that does not laod.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_mixedcontentupgradedvideofailure_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document includes a mixed content video element that loads.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_mixedcontentupgradedvideosuccess_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page includes a mixed content video element that loads.",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_mixedcontentupgradedvideosuccess_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document calls Navigator.mozGetUserMedia from an insecure context",
                     "mode": "NULLABLE",
                     "name": "use_counter2_mozgetusermediainsec_document",
@@ -54745,6 +57139,30 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document called Navigator.canShare",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_navigator_canshare_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Navigator.canShare",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_navigator_canshare_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Navigator.clearAppBadge",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_navigator_clearappbadge_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Navigator.clearAppBadge",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_navigator_clearappbadge_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document called Navigator.mozGetUserMedia",
                     "mode": "NULLABLE",
                     "name": "use_counter2_navigator_mozgetusermedia_document",
@@ -54754,6 +57172,54 @@
                     "description": "Whether a page called Navigator.mozGetUserMedia",
                     "mode": "NULLABLE",
                     "name": "use_counter2_navigator_mozgetusermedia_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Navigator.setAppBadge",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_navigator_setappbadge_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Navigator.setAppBadge",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_navigator_setappbadge_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Navigator.share",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_navigator_share_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Navigator.share",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_navigator_share_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Navigator.userActivation",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_navigator_useractivation_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Navigator.userActivation",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_navigator_useractivation_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Navigator.wakeLock",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_navigator_wakelock_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Navigator.wakeLock",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_navigator_wakelock_page",
                     "type": "STRING"
                   },
                   {
@@ -55321,6 +57787,18 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document called ShadowRoot.pictureInPictureElement",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_shadowroot_pictureinpictureelement_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called ShadowRoot.pictureInPictureElement",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_shadowroot_pictureinpictureelement_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document got SVGSVGElement.currentScale",
                     "mode": "NULLABLE",
                     "name": "use_counter2_svgsvgelement_currentscale_getter_document",
@@ -55669,6 +58147,18 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document called Window.CSSMathClamp",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_cssmathclamp_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Window.CSSMathClamp",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_cssmathclamp_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document called Window.CSSMathInvert",
                     "mode": "NULLABLE",
                     "name": "use_counter2_window_cssmathinvert_document",
@@ -55810,6 +58300,18 @@
                     "description": "Whether a page called Window.CSSPositionValue",
                     "mode": "NULLABLE",
                     "name": "use_counter2_window_csspositionvalue_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Window.CSSPropertyRule",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_csspropertyrule_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Window.CSSPropertyRule",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_csspropertyrule_page",
                     "type": "STRING"
                   },
                   {
@@ -56002,6 +58504,18 @@
                     "description": "Whether a page called Window.DOMError",
                     "mode": "NULLABLE",
                     "name": "use_counter2_window_domerror_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Window.EncodedVideoChunk",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_encodedvideochunk_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Window.EncodedVideoChunk",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_encodedvideochunk_page",
                     "type": "STRING"
                   },
                   {
@@ -56437,6 +58951,18 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document called Window.onorientationchange",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_onorientationchange_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Window.onorientationchange",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_onorientationchange_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document called Window.onsearch",
                     "mode": "NULLABLE",
                     "name": "use_counter2_window_onsearch_document",
@@ -56470,6 +58996,18 @@
                     "description": "Whether a page called Window.openDatabase",
                     "mode": "NULLABLE",
                     "name": "use_counter2_window_opendatabase_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Window.orientation",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_orientation_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Window.orientation",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_orientation_page",
                     "type": "STRING"
                   },
                   {
@@ -56641,6 +59179,18 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document called Window.PictureInPictureEvent",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_pictureinpictureevent_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Window.PictureInPictureEvent",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_pictureinpictureevent_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document called Window.PictureInPictureWindow",
                     "mode": "NULLABLE",
                     "name": "use_counter2_window_pictureinpicturewindow_document",
@@ -56773,6 +59323,30 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document called Window.Report",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_report_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Window.Report",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_report_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Window.ReportBody",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_reportbody_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Window.ReportBody",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_reportbody_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document called Window.ReportingObserver",
                     "mode": "NULLABLE",
                     "name": "use_counter2_window_reportingobserver_document",
@@ -56830,6 +59404,18 @@
                     "description": "Whether a page called Window.RTCIceTransport",
                     "mode": "NULLABLE",
                     "name": "use_counter2_window_rtcicetransport_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Window.RTCPeerConnectionIceErrorEvent",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_rtcpeerconnectioniceerrorevent_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Window.RTCPeerConnectionIceErrorEvent",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_rtcpeerconnectioniceerrorevent_page",
                     "type": "STRING"
                   },
                   {
@@ -56902,6 +59488,42 @@
                     "description": "Whether a page set Window.sidebar",
                     "mode": "NULLABLE",
                     "name": "use_counter2_window_sidebar_setter_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Window.SpeechRecognitionAlternative",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_speechrecognitionalternative_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Window.SpeechRecognitionAlternative",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_speechrecognitionalternative_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Window.SpeechRecognitionResult",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_speechrecognitionresult_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Window.SpeechRecognitionResult",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_speechrecognitionresult_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Window.SpeechRecognitionResultList",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_speechrecognitionresultlist_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Window.SpeechRecognitionResultList",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_speechrecognitionresultlist_page",
                     "type": "STRING"
                   },
                   {
@@ -57010,6 +59632,18 @@
                     "description": "Whether a page called Window.TextEvent",
                     "mode": "NULLABLE",
                     "name": "use_counter2_window_textevent_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Window.ToggleEvent",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_toggleevent_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Window.ToggleEvent",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_toggleevent_page",
                     "type": "STRING"
                   },
                   {
@@ -57229,6 +59863,54 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Whether a document called Window.VideoColorSpace",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_videocolorspace_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Window.VideoColorSpace",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_videocolorspace_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Window.VideoDecoder",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_videodecoder_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Window.VideoDecoder",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_videodecoder_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Window.VideoEncoder",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_videoencoder_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Window.VideoEncoder",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_videoencoder_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Window.VideoFrame",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_videoframe_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Window.VideoFrame",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_videoframe_page",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "Whether a document called Window.visualViewport",
                     "mode": "NULLABLE",
                     "name": "use_counter2_window_visualviewport_document",
@@ -57238,6 +59920,30 @@
                     "description": "Whether a page called Window.visualViewport",
                     "mode": "NULLABLE",
                     "name": "use_counter2_window_visualviewport_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Window.WakeLock",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_wakelock_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Window.WakeLock",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_wakelock_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called Window.WakeLockSentinel",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_wakelocksentinel_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called Window.WakeLockSentinel",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_window_wakelocksentinel_page",
                     "type": "STRING"
                   },
                   {
@@ -57430,6 +60136,18 @@
                     "description": "Whether a page calls window.open with an empty url argument",
                     "mode": "NULLABLE",
                     "name": "use_counter2_windowopenemptyurl_page",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a document called WorkerNavigator.permissions",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_workernavigator_permissions_document",
+                    "type": "STRING"
+                  },
+                  {
+                    "description": "Whether a page called WorkerNavigator.permissions",
+                    "mode": "NULLABLE",
+                    "name": "use_counter2_workernavigator_permissions_page",
                     "type": "STRING"
                   },
                   {
@@ -63745,6 +66463,12 @@
                     "type": "STRING"
                   },
                   {
+                    "description": "Incremented when an audio stream is initialized. For use as part of the GeckoView Streaming Validation.",
+                    "mode": "NULLABLE",
+                    "name": "gvsv_audio_stream_inits",
+                    "type": "STRING"
+                  },
+                  {
                     "fields": [
                       {
                         "mode": "NULLABLE",
@@ -64266,6 +66990,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "media_decode_error_per_mime_type",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Record the hardware decoding availability on devices, the key is the name of video codec, eg. h264, av1.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "BOOL"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "media_device_hardware_decoding_support",
                     "type": "RECORD"
                   },
                   {
@@ -67534,6 +70276,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "True if this heuristic (key) was ever tripped during the session.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "BOOL"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "networking_doh_heuristic_ever_tripped",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "Counts the occurrence of each outcome of a speculative connection\n",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -68603,6 +71363,24 @@
                       }
                     ],
                     "mode": "REPEATED",
+                    "name": "urlbar_picked_clipboard",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Counts how many times this result type was picked at a given index.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
                     "name": "urlbar_picked_dynamic",
                     "type": "RECORD"
                   },
@@ -68766,6 +71544,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "urlbar_picked_quicksuggest",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Counts how many times this result type was picked at a given index.\n",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "urlbar_picked_recent_search",
                     "type": "RECORD"
                   },
                   {
@@ -69613,6 +72409,24 @@
                     "mode": "REPEATED",
                     "name": "widget_ime_name_on_windows",
                     "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Same data as ime_name_on_windows, but only collecting IME names which inserted CRLF to check whether the feature works.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "BOOL"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "widget_ime_name_on_windows_inserted_crlf",
+                    "type": "RECORD"
                   }
                 ],
                 "mode": "NULLABLE",
@@ -69621,6 +72435,12 @@
               },
               {
                 "fields": [
+                  {
+                    "description": "Bool tracking if the user has always underline links enabled in firefox.\n",
+                    "mode": "NULLABLE",
+                    "name": "a11y_always_underline_links",
+                    "type": "BOOL"
+                  },
                   {
                     "description": "Boolean tracking if the user has the backplate preference enabled or disabled.\n",
                     "mode": "NULLABLE",
@@ -69784,13 +72604,13 @@
                     "type": "STRING"
                   },
                   {
-                    "description": "Keep track of the timestamp of the most recent stash of the addons blocklist. Only meaningful when mlbf_enabled is true. The value is a datetime string in UTC format, or \"Missing Date\" when unavailable.\n",
+                    "description": "Keep track of the timestamp of the most recent stash of the addons blocklist. The value is a datetime string in UTC format, or \"Missing Date\" when unavailable.\n",
                     "mode": "NULLABLE",
                     "name": "blocklist_mlbf_stash_time_newest",
                     "type": "STRING"
                   },
                   {
-                    "description": "Keep track of the timestamp of the oldest stash of the addons blocklist. Only meaningful when mlbf_enabled is true. The value is a datetime string in UTC format, or \"Missing Date\" when unavailable.\n",
+                    "description": "Keep track of the timestamp of the oldest stash of the addons blocklist. The value is a datetime string in UTC format, or \"Missing Date\" when unavailable.\n",
                     "mode": "NULLABLE",
                     "name": "blocklist_mlbf_stash_time_oldest",
                     "type": "STRING"
@@ -71230,6 +74050,24 @@
                     "type": "INT64"
                   },
                   {
+                    "description": "The number of times we ran DoH heuristics.\n",
+                    "mode": "NULLABLE",
+                    "name": "networking_doh_heuristics_attempts",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "The number of times we passed DoH heuristics.\n",
+                    "mode": "NULLABLE",
+                    "name": "networking_doh_heuristics_pass_count",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "The value of this scalar indicates the result of the last heuristic run. 0: \"incomplete\" 1: \"pass\" 2: \"opt-out\" 3: \"manually-disabled\" 4: \"manually-enabled\" 5: \"enterprise-disabled\" 6: \"enterprise-present\" 7: \"enterprise-enabled\" 8: \"vpn\" 9: \"proxy\" 10: \"nrpt\" 11: \"parental\" 12: \"modifiedRoots\" 13: \"thirdPartyRoots\" 14: \"google\" 15: \"youtube\" 16: \"zscaler\" 17: \"canary\" 18: \"ignored\"\n",
+                    "mode": "NULLABLE",
+                    "name": "networking_doh_heuristics_result",
+                    "type": "INT64"
+                  },
+                  {
                     "description": "Number of FTP channels opened for files.\n",
                     "mode": "NULLABLE",
                     "name": "networking_ftp_opened_channels_files",
@@ -71602,6 +74440,12 @@
                     "type": "BOOL"
                   },
                   {
+                    "description": "Indicates if the user has manually disabled ads. Set during shopping component init and updated when changed in browser.\n",
+                    "mode": "NULLABLE",
+                    "name": "shopping_disabled_ads",
+                    "type": "BOOL"
+                  },
+                  {
                     "description": "Indicates if the user has completed the Shopping product Onboarding experience. Set during shopping component init and updated when changed in browser. This scalar is mirroring the Glean metric named shopping.settings.has_onboarded, which is defined in toolkit/components/shopping/metrics.yaml.\n",
                     "mode": "NULLABLE",
                     "name": "shopping_has_onboarded",
@@ -71612,6 +74456,12 @@
                     "mode": "NULLABLE",
                     "name": "shopping_nimbus_disabled",
                     "type": "BOOL"
+                  },
+                  {
+                    "description": "Counts number of visits to a supported retailer product page while enrolled in either the control or treatment branches of the shopping experiment.\n",
+                    "mode": "NULLABLE",
+                    "name": "shopping_product_page_visits",
+                    "type": "INT64"
                   },
                   {
                     "description": "Recorded on first run of a Firefox install on macOS, with a boolean value indicating whether Firefox is being run directly from .dmg without installing, or not. Note if running from a .dmg we will get a new ping everytime the .dmg is remounted due to App Translocation.\n",
@@ -72668,6 +75518,24 @@
                         "type": "STRING"
                       },
                       {
+                        "description": "Reason for HTTP connection closure, keyed by properties like HTTP version and connection state.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http_connection_close_reason",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
                         "description": "The time that a transaction is waiting for HTTPS RR",
                         "mode": "NULLABLE",
                         "name": "value",
@@ -73205,6 +76073,24 @@
                     ],
                     "mode": "REPEATED",
                     "name": "http3_upload_time_gt_100m",
+                    "type": "RECORD"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "description": "Reason for HTTP connection closure, keyed by properties like HTTP version and connection state.",
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "STRING"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "http_connection_close_reason",
                     "type": "RECORD"
                   },
                   {

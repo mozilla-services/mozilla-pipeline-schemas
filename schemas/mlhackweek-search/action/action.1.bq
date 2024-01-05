@@ -301,6 +301,19 @@
       {
         "fields": [
           {
+            "description": "Indicates whether the URL was selected by user\n",
+            "mode": "NULLABLE",
+            "name": "search_selected",
+            "type": "BOOL"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "boolean",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
             "description": "Timestamp of selection action\n",
             "mode": "NULLABLE",
             "name": "search_meta_url_select_timestamp",
@@ -352,6 +365,24 @@
             ],
             "mode": "REPEATED",
             "name": "search_meta_selected",
+            "type": "RECORD"
+          },
+          {
+            "description": "Indicates whether the URL was selected by user\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "BOOL"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "search_selected",
             "type": "RECORD"
           }
         ],
@@ -450,6 +481,24 @@
             "mode": "REPEATED",
             "name": "search_meta_position",
             "type": "RECORD"
+          },
+          {
+            "description": "Search result position in list of results\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "search_position",
+            "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
@@ -499,6 +548,24 @@
       },
       {
         "fields": [
+          {
+            "description": "Search result hostname (domain)\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "search_hostname",
+            "type": "RECORD"
+          },
           {
             "description": "Search result hostname (domain)\n",
             "fields": [
@@ -587,6 +654,60 @@
             ],
             "mode": "REPEATED",
             "name": "search_meta_url",
+            "type": "RECORD"
+          },
+          {
+            "description": "Search result starting text (e.g. 'x days ago', '1 of 20')\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "search_preamble",
+            "type": "RECORD"
+          },
+          {
+            "description": "Initial text of search result\nSearch result short description\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "search_short_description",
+            "type": "RECORD"
+          },
+          {
+            "description": "Search result title\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "search_title",
             "type": "RECORD"
           },
           {
@@ -696,6 +817,24 @@
             "mode": "REPEATED",
             "name": "search_unselected_url",
             "type": "RECORD"
+          },
+          {
+            "description": "Search result url\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "search_url",
+            "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
@@ -723,6 +862,12 @@
       },
       {
         "fields": [
+          {
+            "description": "An experimentation identifier derived and provided by the application\nfor the purpose of experimentation enrollment.\n",
+            "mode": "NULLABLE",
+            "name": "glean_client_annotation_experimentation_id",
+            "type": "STRING"
+          },
           {
             "description": "Search result hostname (domain)\n",
             "mode": "NULLABLE",

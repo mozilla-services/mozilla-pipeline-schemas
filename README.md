@@ -48,6 +48,9 @@ schemas
 │   └── topsites-impression
 ├── coverage
 │   └── coverage
+├── debug-ping-view
+│   ├── deletion-request
+│   └── events
 ├── default-browser-agent
 │   └── default-browser
 ├── edge-validator
@@ -61,6 +64,7 @@ schemas
 │   └── amplitude-event
 ├── firefox-desktop
 │   ├── baseline
+│   ├── broken-site-report
 │   ├── crash
 │   ├── deletion-request
 │   ├── events
@@ -71,24 +75,37 @@ schemas
 │   ├── new-metric-capture-emulation
 │   ├── newtab
 │   ├── pageload
+│   ├── pocket-button
 │   ├── pseudo-main
 │   ├── quick-suggest
-│   └── top-sites
+│   ├── spoc
+│   ├── top-sites
+│   └── use-counters
+├── firefox-desktop-background-defaultagent
+│   ├── baseline
+│   ├── default-agent
+│   ├── deletion-request
+│   ├── events
+│   └── metrics
 ├── firefox-desktop-background-tasks
 │   ├── background-tasks
 │   ├── baseline
+│   ├── crash
+│   ├── default-agent
 │   ├── deletion-request
 │   ├── events
 │   └── metrics
 ├── firefox-desktop-background-update
 │   ├── background-update
 │   ├── baseline
+│   ├── broken-site-report
 │   ├── crash
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
 │   ├── metrics
-│   └── pageload
+│   ├── pageload
+│   └── use-counters
 ├── firefox-installer
 │   └── install
 ├── firefox-launcher-process
@@ -142,8 +159,22 @@ schemas
 ├── monitor-cirrus
 │   ├── baseline
 │   ├── deletion-request
+│   ├── enrollment
+│   ├── enrollment-status
+│   ├── events
+│   ├── metrics
+│   └── startup
+├── monitor-frontend
+│   ├── deletion-request
+│   └── events
+├── moso-mastodon-backend
+│   ├── baseline
+│   ├── deletion-request
 │   ├── events
 │   └── metrics
+├── moso-mastodon-web
+│   ├── deletion-request
+│   └── events
 ├── mozdata
 │   └── event
 ├── mozilla-lockbox
@@ -172,6 +203,14 @@ schemas
 │   ├── main
 │   ├── metrics
 │   └── vpnsession
+├── mozillavpn-backend-cirrus
+│   ├── baseline
+│   ├── deletion-request
+│   ├── enrollment
+│   ├── enrollment-status
+│   ├── events
+│   ├── metrics
+│   └── startup
 ├── mozphab
 │   ├── baseline
 │   ├── deletion-request
@@ -194,6 +233,7 @@ schemas
 │   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── broken-site-report
 │   ├── client-deduplication
 │   ├── cookie-banner-report-site
 │   ├── crash
@@ -202,6 +242,8 @@ schemas
 │   ├── events
 │   ├── first-session
 │   ├── fog-validation
+│   ├── font-list
+│   ├── fx-suggest
 │   ├── history-sync
 │   ├── installation
 │   ├── logins-sync
@@ -212,12 +254,14 @@ schemas
 │   ├── startup-timeline
 │   ├── sync
 │   ├── tabs-sync
-│   └── topsites-impression
+│   ├── topsites-impression
+│   └── use-counters
 ├── org-mozilla-fenix-nightly
 │   ├── activation
 │   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── broken-site-report
 │   ├── client-deduplication
 │   ├── cookie-banner-report-site
 │   ├── crash
@@ -226,6 +270,8 @@ schemas
 │   ├── events
 │   ├── first-session
 │   ├── fog-validation
+│   ├── font-list
+│   ├── fx-suggest
 │   ├── history-sync
 │   ├── installation
 │   ├── logins-sync
@@ -236,12 +282,14 @@ schemas
 │   ├── startup-timeline
 │   ├── sync
 │   ├── tabs-sync
-│   └── topsites-impression
+│   ├── topsites-impression
+│   └── use-counters
 ├── org-mozilla-fennec-aurora
 │   ├── activation
 │   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── broken-site-report
 │   ├── client-deduplication
 │   ├── cookie-banner-report-site
 │   ├── crash
@@ -250,6 +298,8 @@ schemas
 │   ├── events
 │   ├── first-session
 │   ├── fog-validation
+│   ├── font-list
+│   ├── fx-suggest
 │   ├── history-sync
 │   ├── installation
 │   ├── logins-sync
@@ -260,12 +310,14 @@ schemas
 │   ├── startup-timeline
 │   ├── sync
 │   ├── tabs-sync
-│   └── topsites-impression
+│   ├── topsites-impression
+│   └── use-counters
 ├── org-mozilla-firefox
 │   ├── activation
 │   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── broken-site-report
 │   ├── client-deduplication
 │   ├── cookie-banner-report-site
 │   ├── crash
@@ -274,6 +326,8 @@ schemas
 │   ├── events
 │   ├── first-session
 │   ├── fog-validation
+│   ├── font-list
+│   ├── fx-suggest
 │   ├── history-sync
 │   ├── installation
 │   ├── logins-sync
@@ -284,12 +338,14 @@ schemas
 │   ├── startup-timeline
 │   ├── sync
 │   ├── tabs-sync
-│   └── topsites-impression
+│   ├── topsites-impression
+│   └── use-counters
 ├── org-mozilla-firefox-beta
 │   ├── activation
 │   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── broken-site-report
 │   ├── client-deduplication
 │   ├── cookie-banner-report-site
 │   ├── crash
@@ -298,6 +354,8 @@ schemas
 │   ├── events
 │   ├── first-session
 │   ├── fog-validation
+│   ├── font-list
+│   ├── fx-suggest
 │   ├── history-sync
 │   ├── installation
 │   ├── logins-sync
@@ -308,7 +366,8 @@ schemas
 │   ├── startup-timeline
 │   ├── sync
 │   ├── tabs-sync
-│   └── topsites-impression
+│   ├── topsites-impression
+│   └── use-counters
 ├── org-mozilla-firefox-vpn
 │   ├── baseline
 │   ├── daemonsession
@@ -326,33 +385,39 @@ schemas
 ├── org-mozilla-focus
 │   ├── activation
 │   ├── baseline
+│   ├── broken-site-report
 │   ├── cookie-banner-report-site
 │   ├── crash
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
 │   ├── metrics
-│   └── pageload
+│   ├── pageload
+│   └── use-counters
 ├── org-mozilla-focus-beta
 │   ├── activation
 │   ├── baseline
+│   ├── broken-site-report
 │   ├── cookie-banner-report-site
 │   ├── crash
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
 │   ├── metrics
-│   └── pageload
+│   ├── pageload
+│   └── use-counters
 ├── org-mozilla-focus-nightly
 │   ├── activation
 │   ├── baseline
+│   ├── broken-site-report
 │   ├── cookie-banner-report-site
 │   ├── crash
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
 │   ├── metrics
-│   └── pageload
+│   ├── pageload
+│   └── use-counters
 ├── org-mozilla-ios-fennec
 │   ├── addresses-sync
 │   ├── baseline
@@ -361,6 +426,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
+│   ├── fx-suggest
 │   ├── history-sync
 │   ├── logins-sync
 │   ├── metrics
@@ -384,6 +450,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
+│   ├── fx-suggest
 │   ├── history-sync
 │   ├── logins-sync
 │   ├── metrics
@@ -407,6 +474,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
+│   ├── fx-suggest
 │   ├── history-sync
 │   ├── logins-sync
 │   ├── metrics
@@ -423,6 +491,14 @@ schemas
 │   ├── temp-tabs-sync
 │   └── topsites-impression
 ├── org-mozilla-ios-firefoxvpn
+│   ├── baseline
+│   ├── daemonsession
+│   ├── deletion-request
+│   ├── events
+│   ├── main
+│   ├── metrics
+│   └── vpnsession
+├── org-mozilla-ios-firefoxvpn-network-extension
 │   ├── baseline
 │   ├── daemonsession
 │   ├── deletion-request
@@ -448,13 +524,15 @@ schemas
 ├── org-mozilla-klar
 │   ├── activation
 │   ├── baseline
+│   ├── broken-site-report
 │   ├── cookie-banner-report-site
 │   ├── crash
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
 │   ├── metrics
-│   └── pageload
+│   ├── pageload
+│   └── use-counters
 ├── org-mozilla-mozregression
 │   ├── baseline
 │   ├── deletion-request
@@ -487,6 +565,7 @@ schemas
 │   └── tabs-sync
 ├── pine
 │   ├── baseline
+│   ├── broken-site-report
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
@@ -496,7 +575,9 @@ schemas
 │   ├── newtab
 │   ├── pageload
 │   ├── pseudo-main
-│   └── top-sites
+│   ├── spoc
+│   ├── top-sites
+│   └── use-counters
 ├── pioneer-citp-news-disinfo
 │   ├── deletion-request
 │   ├── measurements
@@ -611,7 +692,6 @@ schemas
 │   ├── downgrade
 │   ├── event
 │   ├── first-shutdown
-│   ├── first-shutdown-remainder
 │   ├── first-shutdown-use-counter
 │   ├── flash-shield-study
 │   ├── focus-event
@@ -621,7 +701,6 @@ schemas
 │   ├── heartbeat
 │   ├── installation
 │   ├── main
-│   ├── main-remainder
 │   ├── main-use-counter
 │   ├── malware-addon-states
 │   ├── mobile-event
@@ -636,7 +715,6 @@ schemas
 │   ├── prio
 │   ├── regrets-reporter-update
 │   ├── saved-session
-│   ├── saved-session-remainder
 │   ├── saved-session-use-counter
 │   ├── searchvol
 │   ├── searchvolextra
@@ -682,6 +760,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-672 directories
+750 directories
 ```
 

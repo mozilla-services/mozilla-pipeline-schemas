@@ -439,6 +439,30 @@
             "type": "BOOL"
           },
           {
+            "description": "Indicates if the user has opted out of using the shopping component.\nSet in BrowserViewController and updated when changed by user.\n",
+            "mode": "NULLABLE",
+            "name": "shopping_settings_component_opted_out",
+            "type": "BOOL"
+          },
+          {
+            "description": "Indicates if the user has opted out of being shown ads in the Fakespot screen\nexperience. Set in BrowserViewController and updated when changed by user.\n",
+            "mode": "NULLABLE",
+            "name": "shopping_settings_disabled_ads",
+            "type": "BOOL"
+          },
+          {
+            "description": "Indicates if Nimbus has disabled the use the shopping component.\n",
+            "mode": "NULLABLE",
+            "name": "shopping_settings_nimbus_disabled_shopping",
+            "type": "BOOL"
+          },
+          {
+            "description": "Indicates if the user has completed the Shopping product Onboarding\nexperience. Set in BrowserViewController and updated when changed by user.\n",
+            "mode": "NULLABLE",
+            "name": "shopping_settings_user_has_onboarded",
+            "type": "BOOL"
+          },
+          {
             "description": "Measures the state of the \"Manual/Automatic\" theme\npreference.\n",
             "mode": "NULLABLE",
             "name": "theme_automatic_mode",
@@ -557,6 +581,24 @@
             "description": "Counts the number of times the app is opened from an external\nlink, implying the client has Firefox set as a default browser.\n\nCurrently this is our most accurate way of measuring how\noften Firefox is set as the default browser.\n",
             "mode": "NULLABLE",
             "name": "app_opened_as_default_browser",
+            "type": "INT64"
+          },
+          {
+            "description": "A counter of the number of credit cards that have been deleted by the user.\n",
+            "mode": "NULLABLE",
+            "name": "credit_card_deleted",
+            "type": "INT64"
+          },
+          {
+            "description": "A counter of the number of credit cards that have been modified by the user.\n",
+            "mode": "NULLABLE",
+            "name": "credit_card_modified",
+            "type": "INT64"
+          },
+          {
+            "description": "A counter of the number of credit cards that have been saved by the user.\n",
+            "mode": "NULLABLE",
+            "name": "credit_card_saved",
             "type": "INT64"
           },
           {
@@ -800,6 +842,24 @@
             "type": "INT64"
           },
           {
+            "description": "A counter of the number of passwords that have been deleted by the user.\n",
+            "mode": "NULLABLE",
+            "name": "logins_deleted",
+            "type": "INT64"
+          },
+          {
+            "description": "A counter of the number of passwords that have been modified by the user.\n",
+            "mode": "NULLABLE",
+            "name": "logins_modified",
+            "type": "INT64"
+          },
+          {
+            "description": "A counter of the number of passwords that have been saved by the user.\n",
+            "mode": "NULLABLE",
+            "name": "logins_saved",
+            "type": "INT64"
+          },
+          {
             "description": "The total number of login records which failed to migrate\n",
             "mode": "NULLABLE",
             "name": "logins_store_migration_num_failed",
@@ -1028,6 +1088,12 @@
             "type": "INT64"
           },
           {
+            "description": "A count of the number of eligible product pages the user has visited.\n",
+            "mode": "NULLABLE",
+            "name": "shopping_product_page_visits",
+            "type": "INT64"
+          },
+          {
             "description": "Counts the number of times a user taps\non create account button in sync library view\n",
             "mode": "NULLABLE",
             "name": "sync_create_account_pressed",
@@ -1055,6 +1121,12 @@
             "description": "Measures the current open tab count as the application\ngoes to background. Each background event adds to this\nmetric, making it the cumulative sum of all open tabs\nwhen the app goes to background during the period of\ntime covered by a single metrics ping. This can be\ndivided by the number of baseline pings with\n`ping_info.reason=\"inactive\"` from the `start_time` to\nthe `end_time` of the metrics ping to determine the\naverage open tabs per foreground \"session\".\n",
             "mode": "NULLABLE",
             "name": "tabs_cumulative_count",
+            "type": "INT64"
+          },
+          {
+            "description": "Recorded when a user closes the tab in a group\n",
+            "mode": "NULLABLE",
+            "name": "tabs_grouped_tab_closed",
             "type": "INT64"
           },
           {
@@ -2116,9 +2188,21 @@
             "type": "INT64"
           },
           {
+            "description": "Record the number of ALL the credit cards that have been currently stored by the user.\n",
+            "mode": "NULLABLE",
+            "name": "credit_card_saved_all",
+            "type": "INT64"
+          },
+          {
             "description": "The number of visits in a User's history database\n",
             "mode": "NULLABLE",
             "name": "history_num_visits",
+            "type": "INT64"
+          },
+          {
+            "description": "Record the number of ALL the passwords that have been currently stored by the user.\n",
+            "mode": "NULLABLE",
+            "name": "logins_saved_all",
             "type": "INT64"
           },
           {
@@ -2223,6 +2307,18 @@
             "description": "A string containing the Adjust network ID from which the user installed\nFirefox-iOS.\n",
             "mode": "NULLABLE",
             "name": "adjust_network",
+            "type": "STRING"
+          },
+          {
+            "description": "An experimentation identifier derived and provided by the application\nfor the purpose of experimentation enrollment.\n",
+            "mode": "NULLABLE",
+            "name": "glean_client_annotation_experimentation_id",
+            "type": "STRING"
+          },
+          {
+            "description": "If there was an error loading the RKV database, record it.\n",
+            "mode": "NULLABLE",
+            "name": "glean_database_rkv_load_error",
             "type": "STRING"
           },
           {
