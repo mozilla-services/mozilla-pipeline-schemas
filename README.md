@@ -78,6 +78,7 @@ schemas
 │   ├── pocket-button
 │   ├── pseudo-main
 │   ├── quick-suggest
+│   ├── search-with
 │   ├── spoc
 │   ├── top-sites
 │   └── use-counters
@@ -760,6 +761,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-750 directories
+751 directories
 ```
 
