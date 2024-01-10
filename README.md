@@ -522,6 +522,11 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   └── metrics
+├── org-mozilla-ios-tiktok-reporter
+│   ├── baseline
+│   ├── deletion-request
+│   ├── events
+│   └── metrics
 ├── org-mozilla-klar
 │   ├── activation
 │   ├── baseline
@@ -543,6 +548,11 @@ schemas
 ├── org-mozilla-reference-browser
 │   ├── baseline
 │   ├── crash
+│   ├── deletion-request
+│   ├── events
+│   └── metrics
+├── org-mozilla-tiktokreporter
+│   ├── baseline
 │   ├── deletion-request
 │   ├── events
 │   └── metrics
@@ -761,6 +771,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-751 directories
+761 directories
 ```
 
