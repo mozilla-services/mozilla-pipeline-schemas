@@ -525,8 +525,12 @@ schemas
 ├── org-mozilla-ios-tiktok-reporter
 │   ├── baseline
 │   ├── deletion-request
+│   ├── download-data
+│   ├── email
 │   ├── events
-│   └── metrics
+│   ├── metrics
+│   ├── screen-recording
+│   └── tiktok-report
 ├── org-mozilla-klar
 │   ├── activation
 │   ├── baseline
@@ -554,8 +558,12 @@ schemas
 ├── org-mozilla-tiktokreporter
 │   ├── baseline
 │   ├── deletion-request
+│   ├── download-data
+│   ├── email
 │   ├── events
-│   └── metrics
+│   ├── metrics
+│   ├── screen-recording
+│   └── tiktok-report
 ├── org-mozilla-tv-firefox
 │   ├── baseline
 │   ├── deletion-request
@@ -771,6 +779,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-761 directories
+769 directories
 ```
 
