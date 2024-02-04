@@ -42946,6 +42946,18 @@
                     "type": "BOOL"
                   },
                   {
+                    "description": "This records the number of known profiles after startup completes. This includes any profiles that were created during startup.\n",
+                    "mode": "NULLABLE",
+                    "name": "startup_profile_count",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "The version of the profiles.ini database loaded during startup. A value of \"0\" is used to indicate that no file was present during startup.\n",
+                    "mode": "NULLABLE",
+                    "name": "startup_profile_database_version",
+                    "type": "STRING"
+                  },
+                  {
                     "description": "How the profile was selected during startup. One of the following reasons:\n  unknown:\n    Generally should not happen, set as a default in case no other reason\n    occured.\n  profile-manager:\n    The profile was selected by the profile manager.\n  profile-reset:\n    The profile was selected for reset, normally this would mean a restart.\n  restart:\n    The user restarted the application, the same profile as previous will\n    be used.\n  argument-profile:\n    The profile was selected by the --profile command line argument.\n  argument-p:\n    The profile was selected by the -p command line argument.\n  firstrun-claimed-default:\n    A first run of a dedicated profiles build chose the old default\n    profile to be the default for this install.\n  firstrun-skipped-default:\n    A first run of a dedicated profiles build skipped over the old default\n    profile and created a new profile.\n  restart-claimed-default:\n    A first run of a dedicated profiles build after a restart chose the\n    old defaul…",
                     "mode": "NULLABLE",
                     "name": "startup_profile_selection_reason",
