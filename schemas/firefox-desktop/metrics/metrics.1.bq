@@ -3071,6 +3071,24 @@
             "type": "RECORD"
           },
           {
+            "description": "The count of calls to the native DNS APIs\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_dns_native_count",
+            "type": "RECORD"
+          },
+          {
             "description": "Successfully started HTTP channels when HTTPS RR is used\n",
             "fields": [
               {
@@ -3086,6 +3104,24 @@
             ],
             "mode": "REPEATED",
             "name": "networking_http_channel_onstart_success_https_rr",
+            "type": "RECORD"
+          },
+          {
+            "description": "HTTP protocol version used on response from nsHttp.h\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_http_response_version",
             "type": "RECORD"
           },
           {
@@ -3698,6 +3734,24 @@
             ],
             "mode": "REPEATED",
             "name": "search_service_initialization_status",
+            "type": "RECORD"
+          },
+          {
+            "description": "The error that was returned from a failed TLS 1.3 handshake in which the client sent a Xyber key share (see tlsIntoleranceTelemetryBucket() in nsNSSIOLayer.cpp).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "tls_xyber_intolerance_reason",
             "type": "RECORD"
           }
         ],
@@ -6613,6 +6667,336 @@
             "type": "RECORD"
           },
           {
+            "description": "Time to open existing cache entry file. (Migrated from the geckoview metric of the same name).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "network_cache_hit_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "In the HTTP page channel, time from the DNS request being issued to the response. Corresponds to Legacy histogram HTTP_PAGE_DNS_LOOKUP_TIME in Desktop. (Migrated from the geckoview metric of the same name).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "network_dns_end",
+            "type": "RECORD"
+          },
+          {
+            "description": "In the HTTP page channel, time from connection open to the DNS request being issued. Corresponds to Legacy histogram HTTP_PAGE_DNS_ISSUE_TIME in Desktop. (Migrated from the geckoview metric of the same name).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "network_dns_start",
+            "type": "RECORD"
+          },
+          {
+            "description": "In the HTTP page channel, time from connection open to cache read start. Corresponds to Legacy histogram HTTP_PAGE_OPEN_TO_FIRST_FROM_CACHE_V2 in Desktop.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "network_first_from_cache",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time after navigationStart that all webfont downloads are completed. (Migrated from the geckoview metric of the same name).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "network_font_download_end",
+            "type": "RECORD"
+          },
+          {
             "description": "The time spent from HttpChannelChild::AsyncOpen to adding the transaction to the nsHttpConnectionMgr\n",
             "fields": [
               {
@@ -6676,6 +7060,138 @@
             ],
             "mode": "NULLABLE",
             "name": "network_open_to_transaction_pending",
+            "type": "RECORD"
+          },
+          {
+            "description": "In the HTTP page channel, time from the TCP SYN packet is received to the connection is established and ready for HTTP. Corresponds to Legacy histogram HTTP_PAGE_TCP_CONNECTION_2 in Desktop (Migrated from the geckoview metric of the same name).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "network_tcp_connection",
+            "type": "RECORD"
+          },
+          {
+            "description": "In the HTTP page channel, time from after the TCP SYN packet is received to the secure connection is established and ready for HTTP. Corresponds to Legacy histogram HTTP_PAGE_TLS_HANDSHAKE in Desktop. (Migrated from the geckoview metric of the same name).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "network_tls_handshake",
             "type": "RECORD"
           },
           {
