@@ -555,6 +555,11 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   └── metrics
+├── org-mozilla-social-nightly
+│   ├── baseline
+│   ├── deletion-request
+│   ├── events
+│   └── metrics
 ├── org-mozilla-tiktokreporter
 │   ├── baseline
 │   ├── deletion-request
@@ -779,6 +784,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-769 directories
+774 directories
 ```
 

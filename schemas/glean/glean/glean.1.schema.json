@@ -3,6 +3,12 @@
   "$schema": "http://json-schema.org/draft-06/schema#",
   "additionalProperties": false,
   "description": "Schema for the ping content sent by Mozilla's glean telemetry SDK\n",
+  "mozPipelineMetadata": {
+    "bq_dataset_family": "glean",
+    "bq_metadata_format": "structured",
+    "bq_table": "glean_v1",
+    "json_object_path_regex": "metrics\\.object\\..*"
+  },
   "properties": {
     "$schema": {
       "enum": [
@@ -318,6 +324,23 @@
               "values"
             ],
             "type": "object"
+          },
+          "propertyNames": {
+            "maxLength": 111,
+            "pattern": "^[a-z_][a-z0-9_\\.]+$",
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "object": {
+          "additionalProperties": {
+            "items": {
+              "format": "json"
+            },
+            "type": [
+              "object",
+              "array"
+            ]
           },
           "propertyNames": {
             "maxLength": 111,
