@@ -54,17 +54,20 @@ if __name__ == "__main__":
             else:
                 merge_where_empty(meta, namespace_defaults)
 
-    # Prepare some default metadata if not overridden in the template schema.
-    bq_dataset_family = namespace.replace("-", "_")
-    bq_doctype = doctype.replace("-", "_")
-    version = schema_basename.split(".")[1]
-    bq_table = "{}_v{}".format(bq_doctype, version)
-    defaults = {
-        "bq_dataset_family": bq_dataset_family,
-        "bq_table": bq_table,
-        "bq_metadata_format": "structured",
-    }
-    merge_where_empty(meta, defaults)
+    # Prepare some default metadata if not overridden in the template schema,
+    # except for the core `glean/glean` schema.
+    if not (namespace == "glean" and doctype == "glean"):
+        bq_dataset_family = namespace.replace("-", "_")
+        bq_doctype = doctype.replace("-", "_")
+        version = schema_basename.split(".")[1]
+        bq_table = "{}_v{}".format(bq_doctype, version)
+        defaults = {
+            "bq_dataset_family": bq_dataset_family,
+            "bq_table": bq_table,
+            "bq_metadata_format": "structured",
+        }
+        merge_where_empty(meta, defaults)
+
     if inject_metadata:
         schema[MOZ_PIPELINE_METADATA] = meta
     else:
