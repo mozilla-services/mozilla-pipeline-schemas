@@ -40,7 +40,8 @@ if __name__ == "__main__":
     # Parse the schema and extract metadata.
     schema = json.load(sys.stdin)
     meta = schema.get(MOZ_PIPELINE_METADATA, {})
-    inject_metadata = True
+    propagate_metadata = bool(meta)
+    inject_default_metadata = True
 
     # Namespace-level defaults.
     defaults_path = TEMPLATES_DIR / namespace / "defaults.schema.json"
@@ -50,22 +51,26 @@ if __name__ == "__main__":
             if namespace_defaults is False:
                 # A namespace defaults file that sets '"mozPipelineMetadata" = false'
                 # is a special flag to exempt the namespace from metadata injection.
-                inject_metadata = False
+                inject_default_metadata = False
             else:
+                propagate_metadata = True
                 merge_where_empty(meta, namespace_defaults)
+    else:
+        propagate_metadata = True
 
     # Prepare some default metadata if not overridden in the template schema.
-    bq_dataset_family = namespace.replace("-", "_")
-    bq_doctype = doctype.replace("-", "_")
-    version = schema_basename.split(".")[1]
-    bq_table = "{}_v{}".format(bq_doctype, version)
-    defaults = {
-        "bq_dataset_family": bq_dataset_family,
-        "bq_table": bq_table,
-        "bq_metadata_format": "structured",
-    }
-    merge_where_empty(meta, defaults)
-    if inject_metadata:
+    if inject_default_metadata:
+        bq_dataset_family = namespace.replace("-", "_")
+        bq_doctype = doctype.replace("-", "_")
+        version = schema_basename.split(".")[1]
+        bq_table = "{}_v{}".format(bq_doctype, version)
+        defaults = {
+            "bq_dataset_family": bq_dataset_family,
+            "bq_table": bq_table,
+            "bq_metadata_format": "structured",
+        }
+        merge_where_empty(meta, defaults)
+    if propagate_metadata:
         schema[MOZ_PIPELINE_METADATA] = meta
     else:
         schema.pop(MOZ_PIPELINE_METADATA, None)
