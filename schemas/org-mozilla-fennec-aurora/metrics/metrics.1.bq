@@ -992,6 +992,48 @@
             "type": "INT64"
           },
           {
+            "description": "Counts the number of times the user changes the color of a highlight.\n",
+            "mode": "NULLABLE",
+            "name": "pdfjs_editing_highlight_color_changed",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times the user deletes highlights.\n",
+            "mode": "NULLABLE",
+            "name": "pdfjs_editing_highlight_deleted",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times the user edits highlights.\n",
+            "mode": "NULLABLE",
+            "name": "pdfjs_editing_highlight_edited",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times the user prints a PDF with highlights.\n",
+            "mode": "NULLABLE",
+            "name": "pdfjs_editing_highlight_print",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times the user saves a PDF with highlights.\n",
+            "mode": "NULLABLE",
+            "name": "pdfjs_editing_highlight_save",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times the user changes the thickness of a free highlight.\n",
+            "mode": "NULLABLE",
+            "name": "pdfjs_editing_highlight_thickness_changed",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times the user toggles the visibility of highlights.\n",
+            "mode": "NULLABLE",
+            "name": "pdfjs_editing_highlight_toggle_visibility",
+            "type": "INT64"
+          },
+          {
             "description": "How many times PDF Viewer was used.\n",
             "mode": "NULLABLE",
             "name": "pdfjs_used",
@@ -2667,6 +2709,42 @@
             "type": "RECORD"
           },
           {
+            "description": "The thickness used to draw a free highlight.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "pdfjs_editing_highlight_thickness",
+            "type": "RECORD"
+          },
+          {
             "description": "Time spent to display first page in PDF Viewer (ms).\n",
             "fields": [
               {
@@ -4247,7 +4325,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Failure occurs when initializing the audio stream. (Migrated from the geckoview metric of the same name).\n",
+            "description": "Failure occurs when initializing the audio stream.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -4676,6 +4754,78 @@
             ],
             "mode": "REPEATED",
             "name": "pdfjs_editing",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of times a given color is used to highlight.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "pdfjs_editing_highlight_color",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of times a given kind is used to highlight.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "pdfjs_editing_highlight_kind",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of times a given method is used to highlight.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "pdfjs_editing_highlight_method",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of different colors used to highlight.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "pdfjs_editing_highlight_number_of_colors",
             "type": "RECORD"
           },
           {
