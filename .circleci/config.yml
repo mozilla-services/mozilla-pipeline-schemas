@@ -17,7 +17,8 @@ jobs:
             git fetch --all
       - setup_remote_docker:
           docker_layer_caching: true
-          version: 20.10.7
+          # `default` is recommended by CircleCI: https://discuss.circleci.com/t/remote-docker-image-deprecations-and-eol-for-2024/50176#what-do-i-need-to-do-2
+          version: default
       - run:
           name: Build Docker image
           command: docker build --pull -t mps .
