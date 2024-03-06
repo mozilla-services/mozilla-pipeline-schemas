@@ -81,7 +81,8 @@ schemas
 │   ├── search-with
 │   ├── spoc
 │   ├── top-sites
-│   └── use-counters
+│   ├── use-counters
+│   └── user-characteristics
 ├── firefox-desktop-background-defaultagent
 │   ├── baseline
 │   ├── default-agent
@@ -793,6 +794,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-783 directories
+784 directories
 ```
 
