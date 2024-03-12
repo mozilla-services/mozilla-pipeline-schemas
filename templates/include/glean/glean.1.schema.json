@@ -7,7 +7,21 @@
   "mozPipelineMetadata": {
     "json_object_path_regex": "metrics\\.object\\..*"
   },
-  "properties": @GLEAN_GLEAN_BASE_1_JSON@,
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "enum": [
+        "moz://mozilla.org/schemas/glean/ping/1"
+      ]
+    },
+    "client_info": @GLEAN_CLIENT_INFO_1_JSON@,
+    "ping_info": @GLEAN_PING_INFO_1_JSON@,
+    "metrics": @GLEAN_METRICS_1_JSON@,
+    "events": {
+      "type": "array",
+      "items": @GLEAN_EVENT_1_JSON@
+    }
+  },
   "required": [
     "ping_info",
     "client_info"

@@ -1,0 +1,63 @@
+{
+  "type": "object",
+  "properties": {
+    "ping_type": {
+      "type": "string",
+      "pattern": "^[a-z-_][a-z0-9-_]*$",
+      "maxLength": 30
+    },
+    "seq": {
+      "type": "integer"
+    },
+    "start_time": @GLEAN_DATETIME_1_JSON@,
+    "end_time": @GLEAN_DATETIME_1_JSON@,
+    "experiments": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "maxLength": 100
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "branch": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "extra": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "enrollment_id": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "required": [
+          "branch"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "reason": {
+      "type": "string",
+      "maxLength": 30
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "seq",
+    "start_time",
+    "end_time"
+  ]
+}
