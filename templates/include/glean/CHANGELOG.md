@@ -1,5 +1,7 @@
 # Version 1
 
+- Added new schema "glean-min" which contains `metrics` and `events` but does not have `*_info` top level properties. Used to support pings that are configured to exclude the standard Glean `info` fields.
+
 - Added optional `session_id` and optional `session_count` client info field. See [Bug 1862955](https://bugzilla.mozilla.org/show_bug.cgi?id=1862955).
 
 - Add `enrollment_id` to Glean experiments. See [Bug 1751739](https://bugzilla.mozilla.org/show_bug.cgi?id=1751739).
