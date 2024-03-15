@@ -79,6 +79,7 @@ schemas
 │   ├── pseudo-main
 │   ├── quick-suggest
 │   ├── search-with
+│   ├── serp-categorization
 │   ├── spoc
 │   ├── top-sites
 │   ├── use-counters
@@ -794,6 +795,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-784 directories
+785 directories
 ```
 
