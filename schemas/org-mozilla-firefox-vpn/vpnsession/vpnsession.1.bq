@@ -313,6 +313,24 @@
       {
         "fields": [
           {
+            "description": "Count of times that the connection health check results\nin no signal.\n\nThe health check counters must not be considered as markers of time. There is a possible\nsituation in the health check (which calls the telemetry) which frequently results in more\nthan one count per second. The situation: A health check is conducted because a network\ncheck did not return, and milliseconds later that network check returns and another health\ncheck is started because of the return.\n",
+            "mode": "NULLABLE",
+            "name": "connection_health_no_signal_count",
+            "type": "INT64"
+          },
+          {
+            "description": "Count of times that the connection health check succeeds.\n\nThe health check counters must not be considered as markers of time. There is a possible\nsituation in the health check (which calls the telemetry) which frequently results in more\nthan one count per second. The situation: A health check is conducted because a network\ncheck did not return, and milliseconds later that network check returns and another health\ncheck is started because of the return.\n",
+            "mode": "NULLABLE",
+            "name": "connection_health_stable_count",
+            "type": "INT64"
+          },
+          {
+            "description": "Count of times that the connection health check results\nin unstable.\n\nThe health check counters must not be considered as markers of time. There is a possible\nsituation in the health check (which calls the telemetry) which frequently results in more\nthan one count per second. The situation: A health check is conducted because a network\ncheck did not return, and milliseconds later that network check returns and another health\ncheck is started because of the return.\n",
+            "mode": "NULLABLE",
+            "name": "connection_health_unstable_count",
+            "type": "INT64"
+          },
+          {
             "description": "Count of times that the connection health check succeeds.\nCollected only on mobile apps.\n",
             "mode": "NULLABLE",
             "name": "session_connection_health_stable_count",
@@ -451,6 +469,211 @@
         ],
         "mode": "NULLABLE",
         "name": "string",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "Time spent in no signal state.\n\nOnly collected on desktop for vpnsession, as mobile apps\nfrequently are relaunched during VPN sessions. It is\ncollected in daemonsession, currently only on Android.\nTo be done on iOS: https://mozilla-hub.atlassian.net/browse/VPN-4979\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "connection_health_no_signal_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time spent in stable state.\n\nOnly collected on desktop for vpnsession, as mobile apps\nfrequently are relaunched during VPN sessions. It is\ncollected in daemonsession, currently only on Android.\nTo be done on iOS: https://mozilla-hub.atlassian.net/browse/VPN-4979\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "connection_health_stable_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time spent in unstable state.\n\nOnly collected on desktop for vpnsession, as mobile apps\nfrequently are relaunched during VPN sessions. It is\ncollected in daemonsession, currently only on Android.\nTo be done on iOS: https://mozilla-hub.atlassian.net/browse/VPN-4979\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "connection_health_unstable_time",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "timing_distribution",
         "type": "RECORD"
       },
       {
