@@ -2801,6 +2801,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Counts the number of times different CRLite statuses were returned.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "cert_verifier_crlite_status",
+            "type": "RECORD"
+          },
+          {
             "description": "Counts the preferred audio codec being signaled to us to identify preferred audio codec.\n",
             "fields": [
               {
@@ -4802,6 +4820,12 @@
       {
         "fields": [
           {
+            "description": "The total size of the current profiles storage.local legacy JSON backend in the browser-extension-data directory, rounded to the nearest 10 kilobytes.\n",
+            "mode": "NULLABLE",
+            "name": "browser_backup_browser_extension_data_size",
+            "type": "INT64"
+          },
+          {
             "description": "The total file size of the cookies.sqlite db located in the current profile directory, in kilobytes.\n",
             "mode": "NULLABLE",
             "name": "browser_backup_cookies_size",
@@ -4811,6 +4835,30 @@
             "description": "The total size of logins, payment method, and form autofill related files in the current profile directory, in kilobytes.\n",
             "mode": "NULLABLE",
             "name": "browser_backup_credentials_data_size",
+            "type": "INT64"
+          },
+          {
+            "description": "The file size of the current profiles extension-store-permissions/data.safe.bin file, rounded to the nearest 10 kilobytes.\n",
+            "mode": "NULLABLE",
+            "name": "browser_backup_extension_store_permissions_data_size",
+            "type": "INT64"
+          },
+          {
+            "description": "The total file size of the current profiles extensions metadata files, rounded to the nearest 10 kilobytes. Files included are:\n  - extensions.json\n  - extension-settings.json\n  - extension-preferences.json\n  - addonStartup.json.lz4\n",
+            "mode": "NULLABLE",
+            "name": "browser_backup_extensions_json_size",
+            "type": "INT64"
+          },
+          {
+            "description": "The total size of all extensions storage directories, rounded to the nearest 10 kilobytes.\n",
+            "mode": "NULLABLE",
+            "name": "browser_backup_extensions_storage_size",
+            "type": "INT64"
+          },
+          {
+            "description": "The total size of the current profiles extensions directory, rounded to the nearest 10 kilobytes.\n",
+            "mode": "NULLABLE",
+            "name": "browser_backup_extensions_xpi_directory_size",
             "type": "INT64"
           },
           {
@@ -4826,7 +4874,7 @@
             "type": "INT64"
           },
           {
-            "description": "The total size of files for telemetry, site storage, media device origin mapping and Mozilla Accounts in the current profile directory, rounded to the nearest tenth kilobyte.\n",
+            "description": "The total size of files for telemetry, site storage, media device origin mapping, chrome privileged IndexedDB databases, and Mozilla Accounts in the current profile directory, rounded to the nearest tenth kilobyte.\n",
             "mode": "NULLABLE",
             "name": "browser_backup_misc_data_size",
             "type": "INT64"
@@ -4865,6 +4913,12 @@
             "description": "The size of uncompressed session store json, in kilobytes.\n",
             "mode": "NULLABLE",
             "name": "browser_backup_session_store_size",
+            "type": "INT64"
+          },
+          {
+            "description": "The file size of the current profiles storage-sync-v2.sqlite db, rounded to the nearest 10 kilobytes.\n",
+            "mode": "NULLABLE",
+            "name": "browser_backup_storage_sync_size",
             "type": "INT64"
           },
           {
@@ -5708,6 +5762,72 @@
       },
       {
         "fields": [
+          {
+            "description": "Measures how long we take to evaluate the trust status of a certificate.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "cert_verifier_cert_trust_evaluation_time",
+            "type": "RECORD"
+          },
           {
             "description": "Counts how long it takes to handle cookie banners successfully from DOMContentLoaded until click.\n",
             "fields": [
