@@ -90,6 +90,7 @@ schemas
 │   ├── serp-categorization
 │   ├── spoc
 │   ├── top-sites
+│   ├── urlbar-potential-exposure
 │   ├── use-counters
 │   └── user-characteristics
 ├── firefox-desktop-background-defaultagent
@@ -803,6 +804,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-793 directories
+794 directories
 ```
 
