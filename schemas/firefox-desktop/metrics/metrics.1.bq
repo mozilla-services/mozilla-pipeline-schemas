@@ -8103,7 +8103,7 @@
             "type": "RECORD"
           },
           {
-            "description": "If a HTTPS-First (`dom.security.https_first` enabled) upgrade isn't successful, measures the timespan between the navigation start and the downgrade. This is essentially the overhead caused by HTTPS-First if a site does not support HTTPS.\n",
+            "description": "If a HTTPS-First (`dom.security.https_first` enabled) upgrade isn't successful, measures the timespan between the navigation start and the downgrade. This does not include the case in which the https request times out and the http request sent after 3s gets a response faster.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -8169,7 +8169,7 @@
             "type": "RECORD"
           },
           {
-            "description": "If a schemeless HTTPS-First (`dom.security.https_first` disabled, but load marked as schemeless) upgrade isn't successful, measures the timespan between the navigation start and the downgrade. This is essentially the overhead caused by HTTPS-First if a site does not support HTTPS.\n",
+            "description": "If a schemeless HTTPS-First (`dom.security.https_first` disabled, but load marked as schemeless) upgrade isn't successful, measures the timespan between the navigation start and the downgrade. This does not include the case in which the https request times out and the http request sent after 3s gets a response faster.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -12522,6 +12522,72 @@
             ],
             "mode": "NULLABLE",
             "name": "privacy_sanitize_load_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Record the duration (in ms) of a successful classification.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "relevancy_classify_duration",
             "type": "RECORD"
           },
           {
