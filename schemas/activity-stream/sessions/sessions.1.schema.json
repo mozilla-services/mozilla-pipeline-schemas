@@ -30,7 +30,10 @@
         "type": "object"
       },
       "description": "An object to record all active experiments, experiments IDs are stored as keys, and the value object stores the branch information. Example: {\"experiment_1\": {\"branch\": \"control\"}, \"experiment_2\": {\"branch\": \"treatment\"}}. This deprecates the \"shield_id\" used in activity-stream and messaging-system.",
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "locale": {
       "type": "string"
@@ -51,15 +54,24 @@
       "properties": {
         "highlights_data_late_by_ms": {
           "description": "Latency of the data availability for Highlights",
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         },
         "is_preloaded": {
           "description": "Whether or not this session is preloaded",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "load_trigger_ts": {
           "description": "To store the timestamp (ms since Unix epoch) when this session gets triggered",
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         },
         "load_trigger_type": {
           "enum": [
@@ -71,47 +83,83 @@
         },
         "topsites_data_late_by_ms": {
           "description": "Latency of the data availability for Top Sites",
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         },
         "topsites_first_painted_ts": {
           "description": "To store the timestamp (ms since Unix epoch) when the Top Sites is first painted",
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         },
         "topsites_icon_stats": {
           "description": "Icon stats for Top Sites, only sent if Top Sites is enabled",
           "properties": {
             "custom_screenshot": {
-              "type": "integer"
+              "type": [
+                "integer",
+                "null"
+              ]
             },
             "no_image": {
-              "type": "integer"
+              "type": [
+                "integer",
+                "null"
+              ]
             },
             "rich_icon": {
-              "type": "integer"
+              "type": [
+                "integer",
+                "null"
+              ]
             },
             "screenshot": {
-              "type": "integer"
+              "type": [
+                "integer",
+                "null"
+              ]
             },
             "screenshot_with_icon": {
-              "type": "integer"
+              "type": [
+                "integer",
+                "null"
+              ]
             },
             "tippytop": {
-              "type": "integer"
+              "type": [
+                "integer",
+                "null"
+              ]
             }
           },
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         },
         "topsites_pinned": {
           "description": "The total number of pinned Top Sites in this session",
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         },
         "topsites_search_shortcuts": {
           "description": "The total number of search shortcuts in this session",
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         },
         "visibility_event_rcvd_ts": {
           "description": "To store the timestamp (ms since Unix epoch) when the page is made visible to the user in this session",
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         }
       },
       "required": [
@@ -124,7 +172,10 @@
       "type": "integer"
     },
     "release_channel": {
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "session_duration": {
       "description": "The duration of this session in milliseconds. The session begins at `perf.visibility_event_rcvd_ts` and ends when the page is navigated away",
@@ -137,7 +188,10 @@
     },
     "shield_id": {
       "description": "[DEPRECATED]: use `experiments` instead. A semicolon separated string to store a list of Shield study IDs",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "user_prefs": {
       "description": "An encoded integer representing user's preferences of Activity Stream",

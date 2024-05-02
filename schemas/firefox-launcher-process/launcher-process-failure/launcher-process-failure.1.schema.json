@@ -8,11 +8,17 @@
   "properties": {
     "build_id": {
       "description": "Build ID of the failing binary",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "build_version": {
       "description": "Version of the failing binary",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "cpu_arch": {
       "description": "One of the values from the Windows SYSTEM_INFO::wProcessorArchitecture field",
@@ -20,34 +26,55 @@
     },
     "creationDate": {
       "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{3}Z$",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "id": {
       "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "is_admin_without_uac": {
       "description": "True if the process was launched with Administrator privileges but without User Account Control (= UAC)",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "launcher_error": {
       "description": "The error that raised the launcher process failure",
       "properties": {
         "detour_orig_bytes": {
           "description": "First sixteen bytes of a function that we failed to hook (Nightly-only).  This field is added only on detour failures.",
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "hresult": {
           "description": "The HRESULT error code from the launcher failure",
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         },
         "source_file": {
           "description": "The leaf name of the source file where the failure originated",
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "source_line": {
           "description": "The line in the source code where the failure originated",
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         }
       },
       "type": "object"
@@ -57,22 +84,37 @@
       "properties": {
         "avail_page_file": {
           "description": "Free space available in the page file, in bytes",
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         },
         "avail_phys": {
           "description": "Available physical memory on the machine, in bytes",
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         },
         "avail_virt": {
           "description": "Available virtual memory on the machine, in bytes",
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         },
         "total_phys": {
           "description": "Total physical memory on the machine, in bytes",
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         }
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "modules": {
       "additionalProperties": {
@@ -93,7 +135,10 @@
       "description": "List of leaf names of all modules found in the launcher process at the time of failure",
       "maxProperties": 1000,
       "minProperties": 1,
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "num_logical_cpus": {
       "description": "The number of logical CPUs on the host machine",
@@ -101,15 +146,24 @@
     },
     "os_locale": {
       "description": "The current user's OS locale setting",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "os_version": {
       "description": "Windows version numnber in major.minor.build.UBR format (UBR is optional, only available on Win10)",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "process_type": {
       "description": "The type of the process which failed to start as a sandboxed process",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "security": {
       "description": "Information about the security applications registered with Windows on the host computer",
@@ -120,7 +174,10 @@
             "type": "string"
           },
           "maxItems": 1000,
-          "type": "array"
+          "type": [
+            "array",
+            "null"
+          ]
         },
         "av": {
           "description": "Names of antivirus products registred on the host system",
@@ -128,7 +185,10 @@
             "type": "string"
           },
           "maxItems": 1000,
-          "type": "array"
+          "type": [
+            "array",
+            "null"
+          ]
         },
         "firewall": {
           "description": "Names of firewall products registred on the host system",
@@ -136,14 +196,23 @@
             "type": "string"
           },
           "maxItems": 1000,
-          "type": "array"
+          "type": [
+            "array",
+            "null"
+          ]
         }
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "server_os": {
       "description": "True if this build was running atop a Windows Server OS",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "signatures": {
       "description": "Array of all the signatures that were found during module enumeration",
@@ -151,7 +220,10 @@
         "type": "string"
       },
       "maxItems": 1000,
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     },
     "type": {
       "enum": [

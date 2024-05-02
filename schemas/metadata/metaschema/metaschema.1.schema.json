@@ -13,20 +13,30 @@
         },
         "bq_dataset_family": {
           "description": "NOT YET IMPLEMENTED: The base name for the destination BigQuery dataset; if this is set to 'telemetry', the pipeline will write into 'telemetry_live'",
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "bq_metadata_format": {
           "description": "The logical format for the metadata struct in the destination BigQuery table",
           "enum": [
             "structured",
             "telemetry",
-            "pioneer"
+            "pioneer",
+            null
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "bq_table": {
           "description": "NOT YET IMPLEMENTED: The name of the destination BigQuery table",
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "expiration_policy": {
           "additionalProperties": false,
@@ -35,22 +45,37 @@
             "collect_through_date": {
               "description": "If present, the pipeline will reject new data with submission_timestamp after the given date, sending it to error output",
               "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
-              "type": "string"
+              "type": [
+                "string",
+                "null"
+              ]
             },
             "delete_after_days": {
               "description": "If present, a time_partitioning_expiration policy will be set on the destination stable table in BigQuery",
-              "type": "integer"
+              "type": [
+                "integer",
+                "null"
+              ]
             }
           },
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         },
         "geoip_skip_entries": {
           "description": "If present, how many additional entries (beyond two) to skip in x_forwarded_for when performing geoip decoding, useful when submissions are ingested from trusted proxies; if there are fewer entries in x_forwarded_for than (N+1) the last entry is used instead of (N+3)rd-to-last",
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         },
         "json_object_path_regex": {
           "description": "The path for which a JSON column will be enforced. This should be a regular expression which is used by the jsonschema-transpiler to match against the fully qualified name of a metric",
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "jwe_mappings": {
           "description": "Mappings of encrypted JWE field paths to destinations where the value decrypted by the pipeline should be placed; initial use case is Account Ecosystem Telemetry; paths must be in [JSON Pointer format](https://tools.ietf.org/html/rfc6901) like '/payload/ecosystemAnonId'",
@@ -72,7 +97,10 @@
             ],
             "type": "object"
           },
-          "type": "array"
+          "type": [
+            "array",
+            "null"
+          ]
         },
         "override_attributes": {
           "description": "Mappings of Pub/Sub attribute names to static values; these are applied in the Decoder immediately before incorporating metadata into the payload, so can be used to overwrite values calculated in the pipeline; a null value will cause the pipeline to drop the named attribute; some attribute names differ from the nested metadata format in BigQuery, so for example you must use \"geo_city\" here in order to manipulate the value that shows up as metadata.geo.city; implemented for bug 1742172",
@@ -101,18 +129,27 @@
             ],
             "type": "object"
           },
-          "type": "array"
+          "type": [
+            "array",
+            "null"
+          ]
         },
         "sample_id_source_uuid_attribute": {
           "description": "If specified, sample_id will be calculated from a hash of the specified attribute if it is a valid UUID after removing curly brackets; if neither this nor sample_id_source_uuid_payload_path are specified, the client_id attribute will be used; implemented for DENG-547",
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "sample_id_source_uuid_payload_path": {
           "description": "If specified and sample_id was not set due to sample_id_source_uuid_attribute, then sample_id will be calculated from a hash of the specified payload path; this is specified as a list strings to allow indicating nested fields, so for example metrics.uuid.legacy_ids_client_id would be specified as [\"metrics\",\"uuid\",\"legacy_ids_client_id\"]; if neither this nor sample_id_source_uuid_attribute are specified, the client_id attribute will be used; implemented for DENG-547",
           "items": {
             "type": "string"
           },
-          "type": "array"
+          "type": [
+            "array",
+            "null"
+          ]
         },
         "split_config": {
           "additionalProperties": false,
@@ -141,7 +178,10 @@
                 "document_type",
                 "document_version"
               ],
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             },
             "subsets": {
               "description": "Array of subset pings to generate.",
@@ -160,7 +200,10 @@
                   },
                   "extra_pattern": {
                     "description": "Like pattern, except the schema of matched properties must also be present in the remainder, because schemas cannot delete fields. Data for matched properties will only go to this subset ping.",
-                    "type": "string"
+                    "type": [
+                      "string",
+                      "null"
+                    ]
                   },
                   "pattern": {
                     "description": "Regular expression matching .-delimited property names that should be moved to this subset ping. Only properties explictly defined in the non-generic json schema of the original ping are supported, because property names are matched during schema generation.",
@@ -182,7 +225,10 @@
             "preserve_original",
             "subsets"
           ],
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         },
         "submission_timestamp_granularity": {
           "description": "If specified, the submission_timestamp field will be truncated to the specified granularity in the pipeline before being output to BigQuery; this can be used to reduce the potential for using time-based attacks to correlate datasets using different client-level identifiers; see Java's ChronoUnit for additional granularities that could be considered for inclusion; implemented for bug 1742172",
@@ -191,12 +237,19 @@
             "seconds",
             "minutes",
             "hours",
-            "days"
+            "days",
+            null
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         }
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     }
   },
   "type": "object"
