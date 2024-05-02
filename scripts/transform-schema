@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 
 """
-Accept a template schema on stdin and inject default metadata fields
-before writing to stdout.
+Accept a template schema on stdin and transform it before writing to stdout.
+
+Transformations applied:
+  * Inject default metadata fields
+  * Allow nulls for non-required fields
 
 Expects the target schema path to be passed as a command-line argument.
 """
@@ -25,6 +28,34 @@ def merge_where_empty(a, b):
             a[key] = b_value
         elif isinstance(a_value, Mapping) and isinstance(b_value, Mapping):
             merge_where_empty(a_value, b_value)
+
+
+def allow_null_nonrequired_properties(schema):
+    """Add "null" as an allowed type for non-required properties if it isn't already present."""
+    required_properties = schema.get("required", []).copy()
+    for validations_name in ("allOf", "anyOf", "oneOf"):
+        for validation_schema in schema.get(validations_name, []):
+            required_properties.extend(validation_schema.get("required", []))
+            allow_null_nonrequired_properties(validation_schema)
+    for property_name, property_schema in schema.get("properties", {}).items():
+        if property_name not in required_properties and not property_name.startswith("$"):
+            property_type = property_schema.get("type")
+            if isinstance(property_type, str) and property_type != "null":
+                property_schema["type"] = [property_type, "null"]
+            elif isinstance(property_type, list) and "null" not in property_type:
+                property_type.append("null")
+            property_enum = property_schema.get("enum")
+            if property_enum and None not in property_enum:
+                property_enum.append(None)
+        allow_null_nonrequired_properties(property_schema)
+    items = schema.get("items")
+    if isinstance(items, dict):
+        allow_null_nonrequired_properties(items)
+    elif isinstance(items, list):
+        for item in items:
+            allow_null_nonrequired_properties(item)
+    for prefix_item in schema.get("prefixItems", []):
+        allow_null_nonrequired_properties(prefix_item)
 
 
 if __name__ == "__main__":
@@ -74,6 +105,8 @@ if __name__ == "__main__":
         schema[MOZ_PIPELINE_METADATA] = meta
     else:
         schema.pop(MOZ_PIPELINE_METADATA, None)
+
+    allow_null_nonrequired_properties(schema)
 
     # Output.
     json.dump(schema, sys.stdout, sort_keys=True, ensure_ascii=False, indent=2)

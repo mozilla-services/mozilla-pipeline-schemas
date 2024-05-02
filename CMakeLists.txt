@@ -16,7 +16,7 @@ set(CPACK_RPM_PACKAGE_LICENSE    "MPLv2.0")
 
 find_program(PYTHON_EXE python3)
 if(NOT PYTHON_EXE)
-  message(FATAL_ERROR "python3 is required for output formatting and metadata injection")
+  message(FATAL_ERROR "python3 is required for output formatting and schema transformation")
 endif()
 
 find_program(PARQUETFMT_EXE parquetfmt)
@@ -67,12 +67,12 @@ foreach(ITEM IN ITEMS ${SCHEMAS})
     # NOTE the artifacts are written back into the source repository (see the README)
     set(IN_FILE "${CMAKE_SOURCE_DIR}/templates/${ITEM}")
     set(OUT_FILE "${CMAKE_SOURCE_DIR}/schemas/${ITEM}")
-    if(ITEM MATCHES "\\.json$") # inject metadata and pretty print
+    if(ITEM MATCHES "\\.json$") # transform schema and pretty print
       set(TMP_FILE "${OUT_FILE}.tmp")
       configure_file(${IN_FILE} ${TMP_FILE} @ONLY)
-      execute_process(COMMAND ${PYTHON_EXE} ../scripts/inject-metadata ${ITEM} RESULT_VARIABLE INJECT_RV INPUT_FILE ${TMP_FILE} OUTPUT_FILE ${OUT_FILE})
-      if(NOT INJECT_RV EQUAL 0)
-        message(FATAL_ERROR "python output error ${INJECT_RV} ${ITEM}")
+      execute_process(COMMAND ${PYTHON_EXE} ../scripts/transform-schema ${ITEM} RESULT_VARIABLE TRANSFORM_RV INPUT_FILE ${TMP_FILE} OUTPUT_FILE ${OUT_FILE})
+      if(NOT TRANSFORM_RV EQUAL 0)
+        message(FATAL_ERROR "python output error ${TRANSFORM_RV} ${ITEM}")
       endif()
       file(REMOVE ${TMP_FILE}) # the tmp file is intentionally not removed on failure so it can be examined
     elseif(ITEM MATCHES "\\.parquetmr\\.txt$")
