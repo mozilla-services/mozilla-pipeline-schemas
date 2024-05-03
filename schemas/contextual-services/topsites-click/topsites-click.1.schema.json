@@ -18,7 +18,10 @@
   "properties": {
     "advertiser": {
       "description": "Name of the advertiser, e.g. amazon, ebay, bestbuy etc",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "context_id": {
       "description": "A UUID representing this user. Note that it's not client_id, nor can it be used to link to a client_id",
@@ -35,31 +38,50 @@
         "type": "object"
       },
       "description": "An object to record all active experiments, experiments IDs are stored as keys, and the value object stores the branch information. Example: {\"experiment_1\": {\"branch\": \"control\"}, \"experiment_2\": {\"branch\": \"treatment\"}}. This deprecates the \"shield_id\" used in activity-stream and messaging-system.",
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "locale": {
       "description": "User's current locale",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "position": {
       "description": "The placement of the tile (1-based)",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "release_channel": {
       "description": "Firefox release channel",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "reporting_url": {
       "description": "The reporting URL of the ad, normally pointing to the ad partner's reporting endpoint. It's URL encoded",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "source": {
       "description": "The browser location where the click was triggered",
       "enum": [
         "newtab",
-        "urlbar"
+        "urlbar",
+        null
       ],
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "tile_id": {
       "description": "A unique identifier for the sponsored tile",

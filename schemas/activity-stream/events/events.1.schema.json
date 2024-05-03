@@ -15,14 +15,20 @@
   "properties": {
     "action_position": {
       "description": "A zero based integer indicating the position of this event",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "addon_version": {
       "type": "string"
     },
     "browser_session_id": {
       "description": "A mirror of the browser sessionId, as defined in https://github.com/mozilla-services/mozilla-pipeline-schemas/blob/main/schemas/telemetry/main/main.4.schema.json",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "client_id": {
       "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
@@ -42,7 +48,10 @@
         "type": "object"
       },
       "description": "An object to record all active experiments, experiments IDs are stored as keys, and the value object stores the branch information. Example: {\"experiment_1\": {\"branch\": \"control\"}, \"experiment_2\": {\"branch\": \"treatment\"}}. This deprecates the \"shield_id\" used in activity-stream and messaging-system.",
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "locale": {
       "type": "string"
@@ -55,38 +64,66 @@
         "unknown",
         "n/a",
         "both",
-        "https://newtab.firefoxchina.cn/newtab/as/activity-stream.html"
+        "https://newtab.firefoxchina.cn/newtab/as/activity-stream.html",
+        null
       ],
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "profile_creation_date": {
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "region": {
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "release_channel": {
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "session_id": {
       "description": "A UUID representing an Activity Stream session. This can be used to do table joins between `sessions` and `events` in Activity Stream. Note that `n/a` denotes that the session is not applicable in the context.",
       "pattern": "^\\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\}$|^n/a$",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "shield_id": {
       "description": "[DEPRECATED]: use `experiments` instead. A semicolon separated string to store a list of Shield study IDs",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "source": {
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "user_prefs": {
       "description": "An encoded integer representing user's preferences of Activity Stream",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "value": {
       "description": "A string that describes the context about this event",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "version": {
       "type": "string"

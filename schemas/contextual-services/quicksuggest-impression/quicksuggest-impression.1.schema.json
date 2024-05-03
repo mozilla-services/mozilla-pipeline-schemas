@@ -18,7 +18,10 @@
   "properties": {
     "advertiser": {
       "description": "Name of the advertiser, e.g. amazon, ebay, bestbuy etc",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "block_id": {
       "description": "A unique identifier for the QuickSuggest link",
@@ -39,11 +42,17 @@
         "type": "object"
       },
       "description": "An object to record all active experiments, experiments IDs are stored as keys, and the value object stores the branch information. Example: {\"experiment_1\": {\"branch\": \"control\"}, \"experiment_2\": {\"branch\": \"treatment\"}}. This deprecates the \"shield_id\" used in activity-stream and messaging-system.",
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "improve_suggest_experience_checked": {
       "description": "A boolean indicating whether the user has opted in to improving the Firefox Suggest experience",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "is_clicked": {
       "description": "Whether or not the user has clicked on this QuickSuggest link",
@@ -51,52 +60,84 @@
     },
     "locale": {
       "description": "User's current locale",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "match_type": {
       "description": "The match type of the suggestion",
       "enum": [
         "firefox-suggest",
-        "best-match"
+        "best-match",
+        null
       ],
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "matched_keywords": {
       "description": "The matched keywords when a QuickSuggest link is shown",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "position": {
       "description": "The placement of the QuickSuggest link (1-based)",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "release_channel": {
       "description": "Firefox release channel",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "reporting_url": {
       "description": "The reporting URL of the ad, normally pointing to the ad partner's reporting endpoint. It's URL encoded",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "request_id": {
       "description": "The request identfier for every Merino API request made by Firefox",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "scenario": {
       "description": "[Deprecated, use `improve_suggest_experience_checked`]; The scenario of the QuickSuggest user experience",
       "enum": [
         "history",
         "offline",
-        "online"
+        "online",
+        null
       ],
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "search_query": {
       "description": "The user's typed-in search query in the AwesomeBar. Note that this ping is only sent when a QuickSuggest ad is shown for the current search query, so we don't have to limit its size here",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "source": {
       "description": "The source of the suggestion, either “remote-settings” or “merino”. See bug 1779049",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "version": {
       "description": "Firefox version",

@@ -34,7 +34,13 @@ def is_valid_telemetry_version(schema: Dict[str, Any]) -> (bool, Optional[str]):
         return False, f"invalid minimum version number"
     if not version["maximum"] == 4:
         return False, f"invalid maximum version number"
-    if not version["type"] in {"integer", "number"}:
+    if not (
+        (isinstance(version["type"], str) and version["type"] in {"integer", "number"})
+        or (
+            isinstance(version["type"], list)
+            and ("integer" in version["type"] or "number" in version["type"])
+        )
+    ):
         return False, f"version must be a number or integer"
     return True, None
 

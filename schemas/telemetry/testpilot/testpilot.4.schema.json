@@ -21,7 +21,10 @@
         },
         "displayVersion": {
           "pattern": "^[0-9]{2,3}\\.",
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "name": {
           "type": "string"
@@ -168,18 +171,30 @@
                 },
                 "type": "object"
               },
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             },
             "activeExperiment": {
               "properties": {
                 "branch": {
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "id": {
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 }
               },
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             },
             "activeGMPlugins": {
               "additionalProperties": {
@@ -202,42 +217,72 @@
                 },
                 "type": "object"
               },
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             },
             "activePlugins": {
               "items": {
                 "properties": {
                   "blocklisted": {
-                    "type": "boolean"
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
                   },
                   "clicktoplay": {
-                    "type": "boolean"
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
                   },
                   "description": {
-                    "type": "string"
+                    "type": [
+                      "string",
+                      "null"
+                    ]
                   },
                   "disabled": {
-                    "type": "boolean"
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
                   },
                   "mimeTypes": {
                     "items": {
                       "type": "string"
                     },
-                    "type": "array"
+                    "type": [
+                      "array",
+                      "null"
+                    ]
                   },
                   "name": {
-                    "type": "string"
+                    "type": [
+                      "string",
+                      "null"
+                    ]
                   },
                   "updateDay": {
-                    "type": "integer"
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
                   },
                   "version": {
-                    "type": "string"
+                    "type": [
+                      "string",
+                      "null"
+                    ]
                   }
                 },
                 "type": "object"
               },
-              "type": "array"
+              "type": [
+                "array",
+                "null"
+              ]
             },
             "persona": {
               "description": "The id of the active persona (theme).",
@@ -250,11 +295,17 @@
               "properties": {
                 "appDisabled": {
                   "description": "True if this theme cannot be used in the application based on version compatibility, dependencies, and blocklisting.",
-                  "type": "boolean"
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
                 },
                 "blocklisted": {
                   "description": "Whether or not the theme appears in the blocklist.",
-                  "type": "boolean"
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
                 },
                 "description": {
                   "type": [
@@ -266,16 +317,23 @@
                   "description": "True or false depending on whether the theme is a third party theme installation or not.",
                   "type": [
                     "boolean",
-                    "integer"
+                    "integer",
+                    "null"
                   ]
                 },
                 "hasBinaryComponents": {
                   "description": "True or false depending on whether the theme has binary components. This is always false since Firefox 60.",
-                  "type": "boolean"
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
                 },
                 "id": {
                   "description": "The id of the theme.",
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "installDay": {
                   "description": "The days since epoch that the theme was first installed.",
@@ -287,11 +345,17 @@
                 },
                 "name": {
                   "description": "The theme name, limited to 100 characters.",
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "scope": {
                   "description": "Indicates what scope the theme is installed in, per profile, user, system, or application.",
-                  "type": "integer"
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
                 },
                 "updateDay": {
                   "description": "The day the theme was last updated.",
@@ -303,17 +367,29 @@
                 },
                 "userDisabled": {
                   "description": "Whether or not the user disabled the theme.",
-                  "type": "boolean"
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
                 },
                 "version": {
                   "description": "The version of the theme.",
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 }
               },
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             }
           },
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         },
         "build": {
           "properties": {
@@ -331,7 +407,10 @@
             },
             "architecturesInBinary": {
               "description": "For Mac universal builds, this is a string containing a list of architectures delimited by '-'. Architecture sets are always in the same order: ppc > i386 > ppc64 > x86_64 > (future additions). This is only available on Mac.",
-              "type": "string"
+              "type": [
+                "string",
+                "null"
+              ]
             },
             "buildId": {
               "description": "The build ID/date of the application.",
@@ -341,7 +420,10 @@
             "displayVersion": {
               "description": "The display version of the application.",
               "pattern": "^[0-9]{2,3}\\.",
-              "type": "string"
+              "type": [
+                "string",
+                "null"
+              ]
             },
             "hotfixVersion": {
               "type": [
@@ -356,7 +438,10 @@
             },
             "updaterAvailable": {
               "description": "True if the application was built with the support for the updater component.",
-              "type": "boolean"
+              "type": [
+                "boolean",
+                "null"
+              ]
             },
             "vendor": {
               "description": "The application vendor.",
@@ -402,7 +487,10 @@
             },
             "type": "object"
           },
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         },
         "partner": {
           "properties": {
@@ -446,7 +534,10 @@
               "items": {
                 "type": "string"
               },
-              "type": "array"
+              "type": [
+                "array",
+                "null"
+              ]
             }
           },
           "type": "object"
@@ -455,85 +546,148 @@
           "properties": {
             "creationDate": {
               "description": "The creation date of the user profile as the integer number of days since UNIX epoch.",
-              "type": "number"
+              "type": [
+                "number",
+                "null"
+              ]
             },
             "firstUseDate": {
-              "type": "number"
+              "type": [
+                "number",
+                "null"
+              ]
             },
             "isStubProfile": {
-              "type": "boolean"
+              "type": [
+                "boolean",
+                "null"
+              ]
             },
             "resetDate": {
               "description": "The date the user profile was reset, as the integer number of days since UNIX epoch. This is optional.",
-              "type": "number"
+              "type": [
+                "number",
+                "null"
+              ]
             }
           },
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         },
         "services": {
           "properties": {
             "accountEnabled": {
-              "type": "boolean"
+              "type": [
+                "boolean",
+                "null"
+              ]
             },
             "syncEnabled": {
-              "type": "boolean"
+              "type": [
+                "boolean",
+                "null"
+              ]
             }
           },
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         },
         "settings": {
           "properties": {
             "addonCompatibilityCheckEnabled": {
               "description": "Whether application compatibility is respected for add-ons.",
-              "type": "boolean"
+              "type": [
+                "boolean",
+                "null"
+              ]
             },
             "attribution": {
               "properties": {
                 "campaign": {
                   "description": "Identifier of the particular campaign that led to the download of the product.",
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "content": {
                   "description": "Identifier to indicate the particular link within a campaign.",
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "dlsource": {
                   "description": "Identifier that indicates where installations of Firefox originate, see bug 1827233",
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "dltoken": {
                   "description": "Unique token created at Firefox download time, see bug 1677497",
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "experiment": {
                   "description": "funnel experiment parameters, see bug 1567339",
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "medium": {
                   "description": "Category of the source, such as 'organic' for a search engine.",
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "source": {
                   "description": "Referring partner domain, when install happens via a known partner.",
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "ua": {
                   "description": "derived user agent, see bug 1595063",
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "variation": {
                   "description": "funnel experiment parameters, see bug 1567339",
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 }
               },
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             },
             "blocklistEnabled": {
               "description": "True if the blocklist is enabled.",
-              "type": "boolean"
+              "type": [
+                "boolean",
+                "null"
+              ]
             },
             "defaultPrivateSearchEngine": {
-              "type": "string"
+              "type": [
+                "string",
+                "null"
+              ]
             },
             "defaultPrivateSearchEngineData": {
               "properties": {
@@ -544,20 +698,35 @@
                   ]
                 },
                 "name": {
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "origin": {
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "submissionURL": {
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 }
               },
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             },
             "defaultSearchEngine": {
               "description": "Contains the string identifier or name of the default search engine provider. Deprecated.",
-              "type": "string"
+              "type": [
+                "string",
+                "null"
+              ]
             },
             "defaultSearchEngineData": {
               "properties": {
@@ -570,33 +739,57 @@
                 },
                 "name": {
                   "description": "The name of the default search engine.",
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "origin": {
                   "description": "The origin of the search engine: the value will be default for engines that are built-in or from distribution partners, verified for user-installed engines with valid verification hashes, unverified for non-default engines without verification hash, and invalid for engines with broken verification hashes.",
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "submissionURL": {
                   "description": "The HTTP url we would use to search. For privacy, we don’t record this for user-installed engines.",
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 }
               },
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             },
             "e10sCohort": {
-              "type": "string"
+              "type": [
+                "string",
+                "null"
+              ]
             },
             "e10sEnabled": {
               "description": "True if the E10S is enabled.",
-              "type": "boolean"
+              "type": [
+                "boolean",
+                "null"
+              ]
             },
             "e10sMultiProcesses": {
               "description": "maximum number of processes that will be launched for regular web content",
-              "type": "integer"
+              "type": [
+                "integer",
+                "null"
+              ]
             },
             "fissionEnabled": {
               "description": "whether fission is enabled this session, and subframes can load in a different process",
-              "type": "boolean"
+              "type": [
+                "boolean",
+                "null"
+              ]
             },
             "intl": {
               "properties": {
@@ -604,19 +797,28 @@
                   "items": {
                     "type": "string"
                   },
-                  "type": "array"
+                  "type": [
+                    "array",
+                    "null"
+                  ]
                 },
                 "appLocales": {
                   "items": {
                     "type": "string"
                   },
-                  "type": "array"
+                  "type": [
+                    "array",
+                    "null"
+                  ]
                 },
                 "availableLocales": {
                   "items": {
                     "type": "string"
                   },
-                  "type": "array"
+                  "type": [
+                    "array",
+                    "null"
+                  ]
                 },
                 "regionalPrefsLocales": {
                   "items": {
@@ -631,7 +833,10 @@
                   "items": {
                     "type": "string"
                   },
-                  "type": "array"
+                  "type": [
+                    "array",
+                    "null"
+                  ]
                 },
                 "systemLocales": {
                   "items": {
@@ -643,7 +848,10 @@
                   ]
                 }
               },
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             },
             "isDefaultBrowser": {
               "description": "Identifier to indicate the particular link within a campaign.",
@@ -659,11 +867,17 @@
               ]
             },
             "launcherProcessState": {
-              "type": "integer"
+              "type": [
+                "integer",
+                "null"
+              ]
             },
             "locale": {
               "description": "The best locale that the application should be localized to.",
-              "type": "string"
+              "type": [
+                "string",
+                "null"
+              ]
             },
             "sandbox": {
               "properties": {
@@ -682,7 +896,10 @@
                   ]
                 }
               },
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             },
             "searchCohort": {
               "type": [
@@ -692,28 +909,46 @@
             },
             "telemetryEnabled": {
               "description": "The state of the `toolkit.telemetry.enabled` pref.",
-              "type": "boolean"
+              "type": [
+                "boolean",
+                "null"
+              ]
             },
             "update": {
               "properties": {
                 "autoDownload": {
                   "description": "The state of the `app.update.auto` pref.",
-                  "type": "boolean"
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
                 },
                 "background": {
                   "description": "Indicates whether updates may be installed when Firefox is not running.",
-                  "type": "boolean"
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
                 },
                 "channel": {
                   "description": "The update channel from the defaults only. Does not include the partner bits.",
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "enabled": {
                   "description": "The state of the `app.update.enabled` pref.",
-                  "type": "boolean"
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
                 }
               },
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             },
             "userPrefs": {
               "additionalProperties": {
@@ -724,7 +959,10 @@
                   "null"
                 ]
               },
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             }
           },
           "type": "object"
@@ -753,14 +991,20 @@
                   "description": "The number of logical CPUs. Desktop only, e.g. 8, or `null` on failure.",
                   "maximum": 1024,
                   "minimum": 1,
-                  "type": "integer"
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
                 },
                 "extensions": {
                   "description": "This lists the avaible CPU extensions as strings. E.g.: 'hasMMX', 'hasSSE', 'hasSSE2', 'hasSSE3', 'hasSSSE3', 'hasSSE4A', 'hasSSE4_1', 'hasSSE4_2', 'hasAVX', 'hasAVX2', 'hasAES', 'hasEDSP', 'hasARMv6', 'hasARMv7', 'hasNEON'.",
                   "items": {
                     "type": "string"
                   },
-                  "type": "array"
+                  "type": [
+                    "array",
+                    "null"
+                  ]
                 },
                 "family": {
                   "description": "The CPU family, `null` on failure. Desktop only.",
@@ -771,7 +1015,10 @@
                 },
                 "isWindowsSMode": {
                   "description": "Whether or not the system is Windows 10 or 11 in S Mode. S Mode existed prior to us being able to query it, so this is unreliable on Windows versions prior to 1810.",
-                  "type": "boolean"
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
                 },
                 "l2cacheKB": {
                   "description": "The CPU L2 cache size in KB. `null` on failure. Desktop only.",
@@ -823,30 +1070,51 @@
                   ]
                 }
               },
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             },
             "device": {
               "properties": {
                 "hardware": {
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "isTablet": {
-                  "type": "boolean"
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
                 },
                 "manufacturer": {
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "model": {
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 }
               },
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             },
             "gfx": {
               "properties": {
                 "ContentBackend": {
                   "description": "The name of the content backend.",
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "D2DEnabled": {
                   "description": "Whether or not Direct2D is enabled. This is Windows only.",
@@ -876,11 +1144,17 @@
                   ]
                 },
                 "LowEndMachine": {
-                  "type": "boolean"
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
                 },
                 "TargetFrameRate": {
                   "description": "Frame rate in Hz, typically 60 or more, see bug 1840381",
-                  "type": "integer"
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
                 },
                 "adapters": {
                   "items": {
@@ -948,7 +1222,10 @@
                     },
                     "type": "object"
                   },
-                  "type": "array"
+                  "type": [
+                    "array",
+                    "null"
+                  ]
                 },
                 "features": {
                   "properties": {
@@ -967,7 +1244,10 @@
                           ]
                         }
                       },
-                      "type": "object"
+                      "type": [
+                        "object",
+                        "null"
+                      ]
                     },
                     "compositor": {
                       "description": "The name of the compositor. This is one of 'd3d9', 'd3d11', 'opengl', 'basic', or 'none' ('none' indicates no compositors have been created).",
@@ -991,7 +1271,10 @@
                           ]
                         }
                       },
-                      "type": "object"
+                      "type": [
+                        "object",
+                        "null"
+                      ]
                     },
                     "d3d11": {
                       "properties": {
@@ -1034,7 +1317,10 @@
                           ]
                         }
                       },
-                      "type": "object"
+                      "type": [
+                        "object",
+                        "null"
+                      ]
                     },
                     "gpuProcess": {
                       "properties": {
@@ -1045,7 +1331,10 @@
                           ]
                         }
                       },
-                      "type": "object"
+                      "type": [
+                        "object",
+                        "null"
+                      ]
                     },
                     "hwCompositing": {
                       "properties": {
@@ -1056,7 +1345,10 @@
                           ]
                         }
                       },
-                      "type": "object"
+                      "type": [
+                        "object",
+                        "null"
+                      ]
                     },
                     "omtp": {
                       "description": "Indicates whether the off-main-thread painting is enabled.",
@@ -1068,7 +1360,10 @@
                           ]
                         }
                       },
-                      "type": "object"
+                      "type": [
+                        "object",
+                        "null"
+                      ]
                     },
                     "openglCompositing": {
                       "properties": {
@@ -1079,7 +1374,10 @@
                           ]
                         }
                       },
-                      "type": "object"
+                      "type": [
+                        "object",
+                        "null"
+                      ]
                     },
                     "webrender": {
                       "properties": {
@@ -1090,7 +1388,10 @@
                           ]
                         }
                       },
-                      "type": "object"
+                      "type": [
+                        "object",
+                        "null"
+                      ]
                     },
                     "wrCompositor": {
                       "properties": {
@@ -1101,7 +1402,10 @@
                           ]
                         }
                       },
-                      "type": "object"
+                      "type": [
+                        "object",
+                        "null"
+                      ]
                     },
                     "wrQualified": {
                       "properties": {
@@ -1112,7 +1416,10 @@
                           ]
                         }
                       },
-                      "type": "object"
+                      "type": [
+                        "object",
+                        "null"
+                      ]
                     },
                     "wrSoftware": {
                       "description": "Indicates whether the software backend to WebRender is enabled.",
@@ -1124,36 +1431,63 @@
                           ]
                         }
                       },
-                      "type": "object"
+                      "type": [
+                        "object",
+                        "null"
+                      ]
                     }
                   },
-                  "type": "object"
+                  "type": [
+                    "object",
+                    "null"
+                  ]
                 },
                 "monitors": {
                   "items": {
                     "properties": {
                       "pseudoDisplay": {
-                        "type": "boolean"
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
                       },
                       "refreshRate": {
-                        "type": "number"
+                        "type": [
+                          "number",
+                          "null"
+                        ]
                       },
                       "scale": {
-                        "type": "number"
+                        "type": [
+                          "number",
+                          "null"
+                        ]
                       },
                       "screenHeight": {
-                        "type": "integer"
+                        "type": [
+                          "integer",
+                          "null"
+                        ]
                       },
                       "screenWidth": {
-                        "type": "integer"
+                        "type": [
+                          "integer",
+                          "null"
+                        ]
                       }
                     },
                     "type": "object"
                   },
-                  "type": "array"
+                  "type": [
+                    "array",
+                    "null"
+                  ]
                 }
               },
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             },
             "hasWinPackageId": {
               "description": "Is the process running with a package identity (e.g. from an MSIX install)? See bug 1709892. This is Windows only.",
@@ -1192,7 +1526,10 @@
                       ]
                     }
                   },
-                  "type": "object"
+                  "type": [
+                    "object",
+                    "null"
+                  ]
                 },
                 "profile": {
                   "properties": {
@@ -1222,7 +1559,10 @@
                       ]
                     }
                   },
-                  "type": "object"
+                  "type": [
+                    "object",
+                    "null"
+                  ]
                 },
                 "system": {
                   "properties": {
@@ -1252,14 +1592,23 @@
                       ]
                     }
                   },
-                  "type": "object"
+                  "type": [
+                    "object",
+                    "null"
+                  ]
                 }
               },
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             },
             "isWow64": {
               "description": "The availability of the WoW64 subsystem. This is Windows only.",
-              "type": "boolean"
+              "type": [
+                "boolean",
+                "null"
+              ]
             },
             "isWowARM64": {
               "type": [
@@ -1269,7 +1618,10 @@
             },
             "memoryMB": {
               "description": "The machines amount of RAM.",
-              "type": "number"
+              "type": [
+                "number",
+                "null"
+              ]
             },
             "os": {
               "properties": {
@@ -1310,33 +1662,52 @@
                 },
                 "kernelVersion": {
                   "description": "The kernel version of Android. This is Android only. `null` on failure.",
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "locale": {
                   "description": "The locale of the OS, e.g. 'en'. This is `null` on failure.",
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "name": {
                   "description": "The name of the OS, e.g. 'Windows_NT'. This is `null` on failure.",
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "servicePackMajor": {
                   "description": "The Windows service pack major version. This is Windows only. `null` on failure.",
-                  "type": "number"
+                  "type": [
+                    "number",
+                    "null"
+                  ]
                 },
                 "servicePackMinor": {
                   "description": "The Windows service pack minor version. This is Windows only. `null` on failure.",
-                  "type": "number"
+                  "type": [
+                    "number",
+                    "null"
+                  ]
                 },
                 "version": {
                   "description": "The version of the OS, e.g. '6.1'. This is `null` on failure.",
                   "type": [
-                    "string"
+                    "string",
+                    "null"
                   ]
                 },
                 "windowsBuildNumber": {
                   "description": "The Windows build number. This is Windows only. `null` on failure.",
-                  "type": "number"
+                  "type": [
+                    "number",
+                    "null"
+                  ]
                 },
                 "windowsUBR": {
                   "description": "The Windows UBR. This is Windows 10 only. `null` on failure.",
@@ -1346,7 +1717,10 @@
                   ]
                 }
               },
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             },
             "sec": {
               "properties": {
@@ -1381,7 +1755,10 @@
                   ]
                 }
               },
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             },
             "virtualMaxMB": {
               "description": "Total virtual memory size in MB. This is Windows only. `null` on failure.",
@@ -1419,14 +1796,23 @@
           "items": {
             "properties": {
               "event": {
-                "type": "string"
+                "type": [
+                  "string",
+                  "null"
+                ]
               },
               "object": {
-                "type": "string"
+                "type": [
+                  "string",
+                  "null"
+                ]
               },
               "timestamp": {
                 "minimum": 0,
-                "type": "number"
+                "type": [
+                  "number",
+                  "null"
+                ]
               }
             },
             "type": "object"

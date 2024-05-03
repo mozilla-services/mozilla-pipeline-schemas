@@ -53,7 +53,10 @@
     },
     "event_context": {
       "description": "A string that describes the context about this event",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "experiments": {
       "additionalProperties": {
@@ -65,7 +68,10 @@
         "type": "object"
       },
       "description": "An object to record all active experiments, experiments IDs are stored as keys, and the value object stores the branch information. Example: {\"experiment_1\": {\"branch\": \"control\"}, \"experiment_2\": {\"branch\": \"treatment\"}}. This deprecates the \"shield_id\" used in activity-stream and messaging-system.",
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "impression_id": {
       "description": "A UUID representing this user. Note that it's not client_id, nor can it be used to link to a client_id",
@@ -79,18 +85,30 @@
       "type": "string"
     },
     "profile_creation_date": {
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "release_channel": {
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "shield_id": {
       "description": "[DEPRECATED]: use `experiments` instead. A semicolon separated string to store a list of Shield study IDs",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "source": {
       "description": "Added to reduce validation exceptions: see #1787882",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "version": {
       "type": "string"
