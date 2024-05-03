@@ -32,11 +32,12 @@ def merge_where_empty(a, b):
 
 def allow_null_nonrequired_properties(schema):
     """Add "null" as an allowed type for non-required properties if it isn't already present."""
-    required_properties = schema.get("required", []).copy()
+    required_properties = set(schema.get("required", []))
     for validations_name in ("allOf", "anyOf", "oneOf"):
         for validation_schema in schema.get(validations_name, []):
-            required_properties.extend(validation_schema.get("required", []))
+            required_properties.update(validation_schema.get("required", []))
             allow_null_nonrequired_properties(validation_schema)
+
     for property_name, property_schema in schema.get("properties", {}).items():
         if property_name not in required_properties and not property_name.startswith("$"):
             property_type = property_schema.get("type")
@@ -44,10 +45,12 @@ def allow_null_nonrequired_properties(schema):
                 property_schema["type"] = [property_type, "null"]
             elif isinstance(property_type, list) and "null" not in property_type:
                 property_type.append("null")
+            # If an `enum` is defined, a literal null value must be added to it (`None` in Python).
             property_enum = property_schema.get("enum")
             if property_enum and None not in property_enum:
                 property_enum.append(None)
         allow_null_nonrequired_properties(property_schema)
+
     items = schema.get("items")
     if isinstance(items, dict):
         allow_null_nonrequired_properties(items)
