@@ -36,6 +36,8 @@ def is_valid_telemetry_version(schema: Dict[str, Any]) -> (bool, Optional[str]):
         return False, f"invalid maximum version number"
     if not version["type"] in {"integer", "number"}:
         return False, f"version must be a number or integer"
+    if "version" in schema["properties"] and "version" not in schema.get("required", []):
+        return False, "version property must be required"
     return True, None
 
 
