@@ -11,10 +11,7 @@ to [gcp-ingestion](https://github.com/mozilla/gcp-ingestion) and BigQuery.
 schemas
 ├── accounts-backend
 │   ├── accounts-events
-│   ├── baseline
-│   ├── deletion-request
-│   ├── events
-│   └── metrics
+│   └── events
 ├── accounts-cirrus
 │   ├── baseline
 │   ├── deletion-request
@@ -84,6 +81,7 @@ schemas
 │   ├── newtab
 │   ├── pageload
 │   ├── pocket-button
+│   ├── prototype-no-code-events
 │   ├── pseudo-main
 │   ├── quick-suggest
 │   ├── search-with
@@ -180,10 +178,7 @@ schemas
 │   ├── deletion-request
 │   └── events
 ├── moso-mastodon-backend
-│   ├── baseline
-│   ├── deletion-request
-│   ├── events
-│   └── metrics
+│   └── events
 ├── moso-mastodon-web
 │   ├── deletion-request
 │   └── events
@@ -804,6 +799,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-794 directories
+789 directories
 ```
 
