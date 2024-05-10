@@ -714,6 +714,8 @@ schemas
 │   ├── regret-details
 │   ├── video-data
 │   └── video-index
+├── relay-backend
+│   └── events
 ├── telemetry
 │   ├── addon-install-blocked
 │   ├── advancedtelemetry
@@ -799,6 +801,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-789 directories
+791 directories
 ```
 
