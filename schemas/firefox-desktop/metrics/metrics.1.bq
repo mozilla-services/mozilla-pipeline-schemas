@@ -379,6 +379,54 @@
             "type": "BOOL"
           },
           {
+            "description": "Whether the installer is running from an elevated admin user\n",
+            "mode": "NULLABLE",
+            "name": "installation_first_seen_admin_user",
+            "type": "BOOL"
+          },
+          {
+            "description": "(optional, present if installer_type is \"full\") Whether the default path was used\n",
+            "mode": "NULLABLE",
+            "name": "installation_first_seen_default_path",
+            "type": "BOOL"
+          },
+          {
+            "description": "(optional, present if installer_type is \"full\") Whether this was an MSI install\n",
+            "mode": "NULLABLE",
+            "name": "installation_first_seen_from_msi",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether there was already an install in this location\n",
+            "mode": "NULLABLE",
+            "name": "installation_first_seen_install_existed",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether there was already any non-MSIX install on this system\n",
+            "mode": "NULLABLE",
+            "name": "installation_first_seen_other_inst",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether there was already any MSIX install on this system\n",
+            "mode": "NULLABLE",
+            "name": "installation_first_seen_other_msix_inst",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the top-level profile directory existed\n",
+            "mode": "NULLABLE",
+            "name": "installation_first_seen_profdir_existed",
+            "type": "BOOL"
+          },
+          {
+            "description": "(optional, present if installer_type is \"full\") Whether this was a silent install\n",
+            "mode": "NULLABLE",
+            "name": "installation_first_seen_silent",
+            "type": "BOOL"
+          },
+          {
             "description": "Records whether the browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar preference is enabled or disabled\n",
             "mode": "NULLABLE",
             "name": "newtab_handoff_preference_enabled",
@@ -560,25 +608,25 @@
             "type": "INT64"
           },
           {
-            "description": "How many regular HTTPS-First (`dom.security.https_first` enabled) upgrades get downgraded again.\n",
+            "description": "How many regular HTTPS-First (`dom.security.https_first` enabled) upgrades fail and get downgraded again.\n",
             "mode": "NULLABLE",
             "name": "httpsfirst_downgraded",
             "type": "INT64"
           },
           {
-            "description": "How many schemeless HTTPS-First (`dom.security.https_first` disabled, but load marked as schemeless) upgrades get downgraded again.\n",
+            "description": "How many schemeless HTTPS-First (`dom.security.https_first` disabled, but load marked as schemeless) upgrades fail and get downgraded again.\n",
             "mode": "NULLABLE",
             "name": "httpsfirst_downgraded_schemeless",
             "type": "INT64"
           },
           {
-            "description": "Counts how often a load is marked to be upgraded to HTTPS because of HTTPS-First (`dom.security.https_first` enabled).\n",
+            "description": "Counts how often a load is successfully upgraded to HTTPS because of HTTPS-First (`dom.security.https_first` enabled). This does not include loads that get downgraded again.\n",
             "mode": "NULLABLE",
             "name": "httpsfirst_upgraded",
             "type": "INT64"
           },
           {
-            "description": "Counts how often a load is marked to be upgraded to HTTPS because of schemeless HTTPS-First (`dom.security.https_first` disabled, but load marked as schemeless).\n",
+            "description": "Counts how often a load is successfully upgraded to HTTPS because of schemeless HTTPS-First (`dom.security.https_first` disabled, but load marked as schemeless). This does not include loads that get downgraded again.\n",
             "mode": "NULLABLE",
             "name": "httpsfirst_upgraded_schemeless",
             "type": "INT64"
@@ -5782,6 +5830,24 @@
             "type": "STRING"
           },
           {
+            "description": "Only sent if unable to collect firstSeen data. Can have value \"NotFoundError\" if file not found or other values depending on the failure reason.\n",
+            "mode": "NULLABLE",
+            "name": "installation_first_seen_failure_reason",
+            "type": "STRING"
+          },
+          {
+            "description": "The type of installer used to install Firefox. The value is one of \"stub\", \"full\", or \"msix\"\n",
+            "mode": "NULLABLE",
+            "name": "installation_first_seen_installer_type",
+            "type": "STRING"
+          },
+          {
+            "description": "The application version installed by the installer (not necessarily the current version)\n",
+            "mode": "NULLABLE",
+            "name": "installation_first_seen_version",
+            "type": "STRING"
+          },
+          {
             "description": "The optional reason the ping was submitted.\nThe specific values for reason are specific to each ping, and are\ndocumented in the ping's pings.yaml file.\n",
             "mode": "NULLABLE",
             "name": "ping_reason",
@@ -8235,7 +8301,7 @@
             "type": "RECORD"
           },
           {
-            "description": "If a HTTPS-First (`dom.security.https_first` enabled) upgrade isn't successful, measures the timespan between the navigation start and the downgrade. This does not include the case in which the https request times out and the http request sent after 3s gets a response faster.\n",
+            "description": "If a HTTPS-First (`dom.security.https_first` enabled) upgrade isn't successful, measures the timespan between the navigation start and the downgrade.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -8301,7 +8367,7 @@
             "type": "RECORD"
           },
           {
-            "description": "If a schemeless HTTPS-First (`dom.security.https_first` disabled, but load marked as schemeless) upgrade isn't successful, measures the timespan between the navigation start and the downgrade. This does not include the case in which the https request times out and the http request sent after 3s gets a response faster.\n",
+            "description": "If a schemeless HTTPS-First (`dom.security.https_first` disabled, but load marked as schemeless) upgrade isn't successful, measures the timespan between the navigation start and the downgrade.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
