@@ -3551,6 +3551,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Counts how often we purge trackers. Giving a high level overview about the effectivness of bounce tracking protection. Allows determining error rate with failed/success label. When in dry mode, we count the purges that would have happened under the dry label.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "bounce_tracking_protection_purge_count",
+            "type": "RECORD"
+          },
+          {
             "description": "Records clicks of adverts on SERP pages.\nThe key format is\n`<provider-name>.in-content.[sap|sap-follow-on|organic].[code|none](.[channel])?`,\nwhere:\n\n* `provider-name` is the name of the provider,\n* `sap|sap-follow-on|organic` is the search access point,\n* `code` is set when the url matches any of the provider's code prefixes,\n* `channel` is set to the url \"channel\" query parameter.\n",
             "fields": [
               {
