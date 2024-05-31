@@ -1317,6 +1317,42 @@
             "type": "RECORD"
           },
           {
+            "description": "Amount of bytes sent using TLS early data at the start of a TLS connection for a given channel.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "network_tls_early_data_bytes_written",
+            "type": "RECORD"
+          },
+          {
             "description": "If we fix up a cookie lastAccessed timestamp that is in the future this metric records the number of seconds that timestamp was off from NOW.\n",
             "fields": [
               {
@@ -3803,6 +3839,42 @@
             "type": "RECORD"
           },
           {
+            "description": "TLS early data was used and it was accepted or rejected by the remote host.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "network_tls_early_data_accepted",
+            "type": "RECORD"
+          },
+          {
+            "description": "Sending TLS early data was not possible, possible and used, or possible but not used.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "network_tls_early_data_negotiated",
+            "type": "RECORD"
+          },
+          {
             "description": "Counts the number of times a cookie's invalid timestamp was fixed when reading it from the DB.\n",
             "fields": [
               {
@@ -3854,6 +3926,42 @@
             ],
             "mode": "REPEATED",
             "name": "networking_http_channel_onstart_success_https_rr",
+            "type": "RECORD"
+          },
+          {
+            "description": "Count of the HTTP redirection that triggered by subresource, keyed by the URL scheme redirected to\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_http_redirect_to_scheme_subresource",
+            "type": "RECORD"
+          },
+          {
+            "description": "Count of the HTTP redirection that triggered by top-level document, keyed by the URL scheme redirected to\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_http_redirect_to_scheme_top_level",
             "type": "RECORD"
           },
           {

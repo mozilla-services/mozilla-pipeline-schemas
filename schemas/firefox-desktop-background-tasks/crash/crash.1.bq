@@ -313,9 +313,39 @@
       {
         "fields": [
           {
+            "description": "Indicates that the crash occurred while the garbage collector was running.\n",
+            "mode": "NULLABLE",
+            "name": "crash_is_garbage_collecting",
+            "type": "BOOL"
+          },
+          {
             "description": "If true, the crash occurred during process startup.\n",
             "mode": "NULLABLE",
             "name": "crash_startup",
+            "type": "BOOL"
+          },
+          {
+            "description": "Indicates if the crash was intercepted by the Windows Error Reporting runtime exception module.\n",
+            "mode": "NULLABLE",
+            "name": "crash_windows_error_reporting",
+            "type": "BOOL"
+          },
+          {
+            "description": "Indicates whether initialization of the DLL blocklist failed.\n",
+            "mode": "NULLABLE",
+            "name": "dll_blocklist_init_failed",
+            "type": "BOOL"
+          },
+          {
+            "description": "Indicates whether `user32.dll` was loaded before the DLL blocklist was initialized.\n",
+            "mode": "NULLABLE",
+            "name": "dll_blocklist_user32_loaded_before",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the app was invoked in headless mode via `--headless` or `--backgroundtask`.\n",
+            "mode": "NULLABLE",
+            "name": "environment_headless_mode",
             "type": "BOOL"
           }
         ],
@@ -418,9 +448,203 @@
       {
         "fields": [
           {
+            "description": "Present when a shutdown blocker failed to respond within a reasonable amount of time.\n",
+            "mode": "NULLABLE",
+            "name": "crash_async_shutdown_timeout",
+            "type": "JSON"
+          },
+          {
+            "description": "Contains a list of shutdown steps and status of the quota manager clients.\n",
+            "mode": "NULLABLE",
+            "name": "crash_quota_manager_shutdown_timeout",
+            "type": "JSON"
+          },
+          {
+            "description": "Stack trace and module information of the crashing process.\n",
+            "mode": "NULLABLE",
+            "name": "crash_stack_traces",
+            "type": "JSON"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "object",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "Indicates the nesting level of the event loop.\n",
+            "mode": "NULLABLE",
+            "name": "crash_event_loop_nesting_level",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of times that the GPU process was launched.\n",
+            "mode": "NULLABLE",
+            "name": "crash_gpu_process_launch",
+            "type": "INT64"
+          },
+          {
+            "description": "Available commit size.\n",
+            "mode": "NULLABLE",
+            "name": "memory_available_commit",
+            "type": "INT64"
+          },
+          {
+            "description": "Available physical memory.\n",
+            "mode": "NULLABLE",
+            "name": "memory_available_physical",
+            "type": "INT64"
+          },
+          {
+            "description": "Available swap memory.\n",
+            "mode": "NULLABLE",
+            "name": "memory_available_swap",
+            "type": "INT64"
+          },
+          {
+            "description": "Available virtual memory.\n",
+            "mode": "NULLABLE",
+            "name": "memory_available_virtual",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of times the available memory tracker has detected that free physical memory is running low.\n",
+            "mode": "NULLABLE",
+            "name": "memory_low_physical",
+            "type": "INT64"
+          },
+          {
+            "description": "The size of the allocation that caused on OOM crash.\n",
+            "mode": "NULLABLE",
+            "name": "memory_oom_allocation_size",
+            "type": "INT64"
+          },
+          {
+            "description": "The amount of memory that can be deallocated by the OS in case of memory pressure.\n",
+            "mode": "NULLABLE",
+            "name": "memory_purgeable_physical",
+            "type": "INT64"
+          },
+          {
+            "description": "The percentage of memory in use.\n",
+            "mode": "NULLABLE",
+            "name": "memory_system_use_percentage",
+            "type": "INT64"
+          },
+          {
+            "description": "The amount of memory used in textures.\n",
+            "mode": "NULLABLE",
+            "name": "memory_texture",
+            "type": "INT64"
+          },
+          {
+            "description": "The total page file size.\n",
+            "mode": "NULLABLE",
+            "name": "memory_total_page_file",
+            "type": "INT64"
+          },
+          {
+            "description": "The total physical memory.\n",
+            "mode": "NULLABLE",
+            "name": "memory_total_physical",
+            "type": "INT64"
+          },
+          {
+            "description": "The total virtual memory.\n",
+            "mode": "NULLABLE",
+            "name": "memory_total_virtual",
+            "type": "INT64"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "quantity",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The build id of the application. This may differ from `client_info` because a main process crash may be reported later by a different (e.g. updated) client.\n",
+            "mode": "NULLABLE",
+            "name": "crash_app_build",
+            "type": "STRING"
+          },
+          {
+            "description": "The release channel of the application. This may differ from `client_info` because a main process crash may be reported later by a different (e.g. updated) client.\n",
+            "mode": "NULLABLE",
+            "name": "crash_app_channel",
+            "type": "STRING"
+          },
+          {
+            "description": "The version of the application. This may differ from `client_info` because a main process crash may be reported later by a different (e.g. updated) client.\n",
+            "mode": "NULLABLE",
+            "name": "crash_app_display_version",
+            "type": "STRING"
+          },
+          {
+            "description": "The name of the background task if launched as one.\n",
+            "mode": "NULLABLE",
+            "name": "crash_background_task_name",
+            "type": "STRING"
+          },
+          {
+            "description": "The font family name that is being loaded when the crash occurred.\n",
+            "mode": "NULLABLE",
+            "name": "crash_font_name",
+            "type": "STRING"
+          },
+          {
+            "description": "The error reason for an ipc-based content crash.\n",
+            "mode": "NULLABLE",
+            "name": "crash_ipc_channel_error",
+            "type": "STRING"
+          },
+          {
+            "description": "Name of the currently executing `nsIRunnable` on the main thread. Nightly-only.\n",
+            "mode": "NULLABLE",
+            "name": "crash_main_thread_runnable_name",
+            "type": "STRING"
+          },
+          {
+            "description": "The SHA256 hash of the associated minidump file, if any.\n",
+            "mode": "NULLABLE",
+            "name": "crash_minidump_sha256_hash",
+            "type": "STRING"
+          },
+          {
+            "description": "Contains the string passed to `MOZ_CRASH()`.\n",
+            "mode": "NULLABLE",
+            "name": "crash_moz_crash_reason",
+            "type": "STRING"
+          },
+          {
             "description": "The type of process that experienced a crash. See the full list of options [here](https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/data/crash-ping.html#process-types).\n",
             "mode": "NULLABLE",
             "name": "crash_process_type",
+            "type": "STRING"
+          },
+          {
+            "description": "The shutdown phase of the profiler.\n",
+            "mode": "NULLABLE",
+            "name": "crash_profiler_child_shutdown_phase",
+            "type": "STRING"
+          },
+          {
+            "description": "The type of the content process. See the full list of options [here](https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/data/crash-ping.html#remote-process-types).\n",
+            "mode": "NULLABLE",
+            "name": "crash_remote_type",
+            "type": "STRING"
+          },
+          {
+            "description": "The shutdown phase in which the crash occurred.\n",
+            "mode": "NULLABLE",
+            "name": "crash_shutdown_progress",
+            "type": "STRING"
+          },
+          {
+            "description": "The HRESULT returned from a Win32 system call leading to termination of the file-dialog utility process. MozCrashReason is expected to provide context for the value.\n",
+            "mode": "NULLABLE",
+            "name": "crash_windows_file_dialog_error_code",
             "type": "STRING"
           },
           {
@@ -428,10 +652,33 @@
             "mode": "NULLABLE",
             "name": "glean_client_annotation_experimentation_id",
             "type": "STRING"
+          },
+          {
+            "description": "The Package Family Name of Firefox, if installed through an MSIX package.\n",
+            "mode": "NULLABLE",
+            "name": "windows_package_family_name",
+            "type": "STRING"
           }
         ],
         "mode": "NULLABLE",
         "name": "string",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "mode": "REPEATED",
+            "name": "dll_blocklist_list",
+            "type": "STRING"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "environment_experimental_features",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "string_list",
         "type": "RECORD"
       },
       {
@@ -452,6 +699,24 @@
             ],
             "mode": "NULLABLE",
             "name": "crash_uptime",
+            "type": "RECORD"
+          },
+          {
+            "description": "The start time of the application.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "environment_uptime",
             "type": "RECORD"
           }
         ],
