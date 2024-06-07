@@ -630,6 +630,36 @@
             "mode": "NULLABLE",
             "name": "translations_requests_count",
             "type": "INT64"
+          },
+          {
+            "description": "The total number of failed calls to navigator.credentials.create.",
+            "mode": "NULLABLE",
+            "name": "webauthn_create_failure",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of client-side discoverable credentials (passkeys) created.",
+            "mode": "NULLABLE",
+            "name": "webauthn_create_passkey",
+            "type": "INT64"
+          },
+          {
+            "description": "The total number of successful calls to navigator.credentials.create.",
+            "mode": "NULLABLE",
+            "name": "webauthn_create_success",
+            "type": "INT64"
+          },
+          {
+            "description": "The total number of failed calls to navigator.credentials.get.",
+            "mode": "NULLABLE",
+            "name": "webauthn_get_failure",
+            "type": "INT64"
+          },
+          {
+            "description": "The total number of successful calls to navigator.credentials.get.",
+            "mode": "NULLABLE",
+            "name": "webauthn_get_success",
+            "type": "INT64"
           }
         ],
         "mode": "NULLABLE",
@@ -638,6 +668,78 @@
       },
       {
         "fields": [
+          {
+            "description": "The difference between the length of encoded certificate vs the actual certificate.",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "cert_compression_brotli_saved_bytes",
+            "type": "RECORD"
+          },
+          {
+            "description": "The difference between the length of encoded certificate vs the actual certificate.",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "cert_compression_zlib_saved_bytes",
+            "type": "RECORD"
+          },
           {
             "description": "How often a query selector is run during the lifetime of a sub-frame content window.\n",
             "fields": [
@@ -2777,6 +2879,42 @@
             "type": "RECORD"
           },
           {
+            "description": "The number of times each certificate compression algorithm returned an error.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "cert_compression_failures",
+            "type": "RECORD"
+          },
+          {
+            "description": "The number of times each certificate compression algorithm was used.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "cert_compression_used",
+            "type": "RECORD"
+          },
+          {
             "description": "Counts the number of times different CRLite statuses were returned.\n",
             "fields": [
               {
@@ -4430,6 +4568,42 @@
             ],
             "mode": "REPEATED",
             "name": "translations_request_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "The number of successfully created credentials by authenticator attachment modality.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "webauthn_create_authenticator_attachment",
+            "type": "RECORD"
+          },
+          {
+            "description": "The number of successfully asserted credentials by authenticator attachment modality.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "webauthn_get_authenticator_attachment",
             "type": "RECORD"
           },
           {
