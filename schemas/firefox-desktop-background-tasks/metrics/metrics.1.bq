@@ -326,6 +326,24 @@
       {
         "fields": [
           {
+            "description": "How many ping upload responses did we not record as a success or failure\n(in `glean.upload.send_success` or `glean.upload.send_failue`,\nrespectively) due to an inconsistency in our internal bookkeeping?\n",
+            "mode": "NULLABLE",
+            "name": "crash_submission_failure",
+            "type": "INT64"
+          },
+          {
+            "description": "How many ping upload responses did we not record as a success or failure\n(in `glean.upload.send_success` or `glean.upload.send_failue`,\nrespectively) due to an inconsistency in our internal bookkeeping?\n",
+            "mode": "NULLABLE",
+            "name": "crash_submission_pending",
+            "type": "INT64"
+          },
+          {
+            "description": "How many ping upload responses did we not record as a success or failure\n(in `glean.upload.send_success` or `glean.upload.send_failue`,\nrespectively) due to an inconsistency in our internal bookkeeping?\n",
+            "mode": "NULLABLE",
+            "name": "crash_submission_success",
+            "type": "INT64"
+          },
+          {
             "description": "The number of times we encountered an IO error\nwhen writing a pending ping to disk.\n",
             "mode": "NULLABLE",
             "name": "glean_error_io",
@@ -399,6 +417,24 @@
       },
       {
         "fields": [
+          {
+            "description": "A count of the pings submitted, by ping type.\n\nThis metric appears in both the metrics and baseline pings.\n\n- On the metrics ping, the counts include the number of pings sent since\n  the last metrics ping (including the last metrics ping)\n- On the baseline ping, the counts include the number of pings send since\n  the last baseline ping (including the last baseline ping)\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "crash_submission_collector_errors",
+            "type": "RECORD"
+          },
           {
             "description": "Counts the number of times a metric was set with an invalid label.\nThe labels are the `category.name` identifier of the metric.\n",
             "fields": [
