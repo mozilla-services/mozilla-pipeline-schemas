@@ -4805,6 +4805,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Counts of cacheable/non-cacheable byte-range requests\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "network_byte_range_request",
+            "type": "RECORD"
+          },
+          {
             "description": "Count how many times we see `Authorization` header in `Access-Control-Request-Headers` header and the possible outcomes.\n",
             "fields": [
               {
@@ -7057,6 +7075,12 @@
             "description": "SHA1 cryptographic hash of the quarantined domains string pref as it was set based on the value got synced from the RemoteSettings collection. AMRemoteSettings will be re-processing the entries on the next application startup and so this metric lifetime can be set to application and expect it to be always set to the value got from the RemoteSettings collection.\n",
             "mode": "NULLABLE",
             "name": "extensions_quarantined_domains_remotehash",
+            "type": "STRING"
+          },
+          {
+            "description": "Used to identify the source the app was installed from.\n",
+            "mode": "NULLABLE",
+            "name": "first_session_install_source",
             "type": "STRING"
           },
           {
