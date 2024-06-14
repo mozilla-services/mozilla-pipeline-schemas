@@ -130,6 +130,9 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   └── page-view
+├── gleanjs-docs
+│   ├── deletion-request
+│   └── events
 ├── mdn-yari
 │   ├── action
 │   ├── deletion-request
@@ -801,6 +804,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-791 directories
+794 directories
 ```
 
