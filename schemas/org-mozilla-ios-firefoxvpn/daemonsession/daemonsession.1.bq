@@ -319,6 +319,12 @@
             "type": "INT64"
           },
           {
+            "description": "(iOS only) Count of times that the connection health check is in pending.\n\nThe health check counters must not be considered as markers of time.\nThere is a possible situation in the health check (which calls the\ntelemetry) which frequently results in more than one count per second.\nThe situation: A health check is conducted because a network check did not\nreturn, and milliseconds later that network check returns and another\nhealth check is started because of the return.\n",
+            "mode": "NULLABLE",
+            "name": "connection_health_pending_count",
+            "type": "INT64"
+          },
+          {
             "description": "Count of times that the connection health check succeeds.\n\nThe health check counters must not be considered as markers of time.\nThere is a possible situation in the health check (which calls the\ntelemetry) which frequently results in more than one count per second.\nThe situation: A health check is conducted because a network check did not\nreturn, and milliseconds later that network check returns and another\nhealth check is started because of the return.\n",
             "mode": "NULLABLE",
             "name": "connection_health_stable_count",
@@ -524,6 +530,72 @@
             ],
             "mode": "NULLABLE",
             "name": "connection_health_no_signal_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "(iOS only) Time spent in pending state.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "connection_health_pending_time",
             "type": "RECORD"
           },
           {
