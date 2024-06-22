@@ -69,6 +69,7 @@ schemas
 │   └── amplitude-event
 ├── firefox-desktop
 │   ├── baseline
+│   ├── bounce-tracking-protection
 │   ├── broken-site-report
 │   ├── crash
 │   ├── deletion-request
@@ -109,6 +110,7 @@ schemas
 ├── firefox-desktop-background-update
 │   ├── background-update
 │   ├── baseline
+│   ├── bounce-tracking-protection
 │   ├── broken-site-report
 │   ├── crash
 │   ├── deletion-request
@@ -244,6 +246,7 @@ schemas
 │   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── bounce-tracking-protection
 │   ├── broken-site-report
 │   ├── client-deduplication
 │   ├── cookie-banner-report-site
@@ -272,6 +275,7 @@ schemas
 │   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── bounce-tracking-protection
 │   ├── broken-site-report
 │   ├── client-deduplication
 │   ├── cookie-banner-report-site
@@ -300,6 +304,7 @@ schemas
 │   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── bounce-tracking-protection
 │   ├── broken-site-report
 │   ├── client-deduplication
 │   ├── cookie-banner-report-site
@@ -328,6 +333,7 @@ schemas
 │   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── bounce-tracking-protection
 │   ├── broken-site-report
 │   ├── client-deduplication
 │   ├── cookie-banner-report-site
@@ -356,6 +362,7 @@ schemas
 │   ├── addresses-sync
 │   ├── baseline
 │   ├── bookmarks-sync
+│   ├── bounce-tracking-protection
 │   ├── broken-site-report
 │   ├── client-deduplication
 │   ├── cookie-banner-report-site
@@ -396,6 +403,7 @@ schemas
 ├── org-mozilla-focus
 │   ├── activation
 │   ├── baseline
+│   ├── bounce-tracking-protection
 │   ├── broken-site-report
 │   ├── cookie-banner-report-site
 │   ├── crash
@@ -408,6 +416,7 @@ schemas
 ├── org-mozilla-focus-beta
 │   ├── activation
 │   ├── baseline
+│   ├── bounce-tracking-protection
 │   ├── broken-site-report
 │   ├── cookie-banner-report-site
 │   ├── crash
@@ -420,6 +429,7 @@ schemas
 ├── org-mozilla-focus-nightly
 │   ├── activation
 │   ├── baseline
+│   ├── bounce-tracking-protection
 │   ├── broken-site-report
 │   ├── cookie-banner-report-site
 │   ├── crash
@@ -553,6 +563,7 @@ schemas
 ├── org-mozilla-klar
 │   ├── activation
 │   ├── baseline
+│   ├── bounce-tracking-protection
 │   ├── broken-site-report
 │   ├── cookie-banner-report-site
 │   ├── crash
@@ -608,6 +619,7 @@ schemas
 │   └── tabs-sync
 ├── pine
 │   ├── baseline
+│   ├── bounce-tracking-protection
 │   ├── broken-site-report
 │   ├── deletion-request
 │   ├── events
@@ -805,6 +817,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-795 directories
+807 directories
 ```
 
