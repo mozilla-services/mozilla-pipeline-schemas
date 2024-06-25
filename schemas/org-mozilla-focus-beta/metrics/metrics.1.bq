@@ -819,6 +819,42 @@
       {
         "fields": [
           {
+            "description": "Number of bounce trackers purged successfully per scheduled purge.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "bounce_tracking_protection_num_hosts_per_purge_run",
+            "type": "RECORD"
+          },
+          {
             "description": "The difference between the length of encoded certificate vs the actual certificate.",
             "fields": [
               {
@@ -4322,6 +4358,24 @@
             ],
             "mode": "REPEATED",
             "name": "networking_http_redirect_to_scheme_top_level",
+            "type": "RECORD"
+          },
+          {
+            "description": "HTTP Response Status Code (200, 301, 302, 304, 307, 308, 400, 401, 403, 404, 421, 425, 429, other 400 and 500)\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_http_response_status_code",
             "type": "RECORD"
           },
           {

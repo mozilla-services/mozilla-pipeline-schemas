@@ -355,6 +355,18 @@
             "type": "BOOL"
           },
           {
+            "description": "Indicates if the chatbot feature is enabled.\n",
+            "mode": "NULLABLE",
+            "name": "genai_chatbot_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Indicates if the chatbot feature would open in sidebar.\n",
+            "mode": "NULLABLE",
+            "name": "genai_chatbot_sidebar",
+            "type": "BOOL"
+          },
+          {
             "description": "Boolean indicated whether graphics is running in headless (no display) mode (Migrated from the geckoview metric of the same name).\n",
             "mode": "NULLABLE",
             "name": "gfx_status_headless",
@@ -824,6 +836,42 @@
       },
       {
         "fields": [
+          {
+            "description": "Number of bounce trackers purged successfully per scheduled purge.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "bounce_tracking_protection_num_hosts_per_purge_run",
+            "type": "RECORD"
+          },
           {
             "description": "The difference between the length of encoded certificate vs the actual certificate.",
             "fields": [
@@ -4301,6 +4349,24 @@
             "type": "RECORD"
           },
           {
+            "description": "HTTP Response Status Code (200, 301, 302, 304, 307, 308, 400, 401, 403, 404, 421, 425, 429, other 400 and 500)\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_http_response_status_code",
+            "type": "RECORD"
+          },
+          {
             "description": "HTTP protocol version used on response from nsHttp.h\n",
             "fields": [
               {
@@ -6337,6 +6403,12 @@
             "description": "The version of the Gecko engine, example: 74.0a1 Mirror of `geckoview.version` for validation of migrated data.\n",
             "mode": "NULLABLE",
             "name": "geckoview_validation_version",
+            "type": "STRING"
+          },
+          {
+            "description": "Indicates id of activated chatbot provider or \"custom\" or \"none\"\n",
+            "mode": "NULLABLE",
+            "name": "genai_chatbot_provider",
             "type": "STRING"
           },
           {
