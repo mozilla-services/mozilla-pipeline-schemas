@@ -1389,6 +1389,42 @@
             "type": "RECORD"
           },
           {
+            "description": "The difference between the length of encoded certificate vs the actual certificate.",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "cert_compression_zstd_saved_bytes",
+            "type": "RECORD"
+          },
+          {
             "description": "How often a query selector is run during the lifetime of a sub-frame content window.\n",
             "fields": [
               {
@@ -4679,7 +4715,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Failure occurs when initializing the audio stream. (Migrated from the geckoview metric of the same name).\n",
+            "description": "Failure occurs when initializing the audio stream.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -4838,6 +4874,24 @@
             ],
             "mode": "REPEATED",
             "name": "netwerk_eh_link_type",
+            "type": "RECORD"
+          },
+          {
+            "description": "HTTP protocol version from Early Hints response\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "netwerk_eh_response_version",
             "type": "RECORD"
           },
           {
