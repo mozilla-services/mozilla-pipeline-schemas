@@ -1521,6 +1521,42 @@
             "type": "RECORD"
           },
           {
+            "description": "The number of cookie bytes exceeding chips partition limit capacity for a single partition\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "networking_cookie_chips_partition_limit_overflow",
+            "type": "RECORD"
+          },
+          {
             "description": "A distribution of the partitioned cookies in storage belonging to a particular cookie key (host + origin attributes)\n",
             "fields": [
               {
