@@ -41,10 +41,6 @@ def transpile_schemas(output_path: Path, schema_paths: List[Path]):
     for path in schema_paths:
         namespace, doctype, filename = path.parts[-3:]
         version = int(filename.split(".")[-3])
-        # pioneer-study schemas were done incorrectly and are ignored here
-        if namespace == "schemas":
-            print(f"skipping {path} due to wrong directory level")
-            continue
         out = output_path / f"{namespace}.{doctype}.{version}.bq"
         with out.open("w") as fp:
             print(f"writing {out}")
