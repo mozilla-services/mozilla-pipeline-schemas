@@ -313,6 +313,12 @@
       {
         "fields": [
           {
+            "description": "True if this command is being run on Mozilla Automation/CI",
+            "mode": "NULLABLE",
+            "name": "mach_moz_automation",
+            "type": "BOOL"
+          },
+          {
             "description": "True if the mach invocation succeeded.",
             "mode": "NULLABLE",
             "name": "mach_success",
@@ -625,6 +631,12 @@
             "mode": "NULLABLE",
             "name": "mozbuild_project",
             "type": "STRING"
+          },
+          {
+            "description": "The target architecture for the build, such as \"x86_64-pc-mingw32\".",
+            "mode": "NULLABLE",
+            "name": "mozbuild_target",
+            "type": "STRING"
           }
         ],
         "mode": "NULLABLE",
@@ -678,6 +690,150 @@
             ],
             "mode": "NULLABLE",
             "name": "mach_duration",
+            "type": "RECORD"
+          },
+          {
+            "description": "How long it took for the artifact tier of the build to complete.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "mozbuild_tier_artifact_duration",
+            "type": "RECORD"
+          },
+          {
+            "description": "How long it took for the compile tier of the build to complete.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "mozbuild_tier_compile_duration",
+            "type": "RECORD"
+          },
+          {
+            "description": "How long it took for the configure tier of the build to complete.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "mozbuild_tier_configure_duration",
+            "type": "RECORD"
+          },
+          {
+            "description": "How long it took for the export tier of the build to complete.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "mozbuild_tier_export_duration",
+            "type": "RECORD"
+          },
+          {
+            "description": "How long it took for the libs tier of the build to complete.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "mozbuild_tier_libs_duration",
+            "type": "RECORD"
+          },
+          {
+            "description": "How long it took for the misc tier of the build to complete.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "mozbuild_tier_misc_duration",
+            "type": "RECORD"
+          },
+          {
+            "description": "How long it took for the pre-export tier of the build to complete.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "mozbuild_tier_pre_export_duration",
+            "type": "RECORD"
+          },
+          {
+            "description": "How long it took for the tools tier of the build to complete.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "mozbuild_tier_tools_duration",
             "type": "RECORD"
           }
         ],

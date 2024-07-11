@@ -542,6 +542,12 @@
             "type": "INT64"
           },
           {
+            "description": "Counts the number of times the os socket limit was reached. i.e. CanAttachSocket() returned false.\n",
+            "mode": "NULLABLE",
+            "name": "networking_os_socket_limit_reached",
+            "type": "INT64"
+          },
+          {
             "description": "Counts how often we find a cache folder that wasn't purged at shutdown by a background task process.\n",
             "mode": "NULLABLE",
             "name": "networking_residual_cache_folder_count",
@@ -8276,6 +8282,72 @@
             ],
             "mode": "NULLABLE",
             "name": "gfx_scroll_present_latency",
+            "type": "RECORD"
+          },
+          {
+            "description": "The time it takes for a write-commit for the Glean database.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "glean_database_write_time",
             "type": "RECORD"
           },
           {
