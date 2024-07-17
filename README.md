@@ -158,9 +158,6 @@ schemas
 │   ├── decoded
 │   ├── error
 │   ├── metaschema
-│   ├── pioneer-decoded
-│   ├── pioneer-error
-│   ├── pioneer-ingestion
 │   ├── raw
 │   ├── sources
 │   ├── structured-ingestion
@@ -637,43 +634,8 @@ schemas
 │   ├── spoc
 │   ├── top-sites
 │   └── use-counters
-├── pioneer-citp-news-disinfo
-│   ├── deletion-request
-│   ├── measurements
-│   ├── pioneer-enrollment
-│   └── rallymeasurements
-├── pioneer-citp-news-disinfo-two
-│   ├── deletion-request
-│   ├── measurements
-│   ├── pioneer-enrollment
-│   └── rallymeasurements
-├── pioneer-core
-│   ├── deletion-request
-│   ├── demographic-survey
-│   ├── pioneer-enrollment
-│   ├── probes
-│   ├── survey
-│   └── uninstall-deletion
-├── pioneer-debug
-│   ├── debug
-│   ├── deletion-request
-│   └── pioneer-enrollment
-├── pioneer-meta
-│   └── pioneer-enrollment
-├── pioneer-sgsb-beyond-the-paywall
-│   ├── advertisement
-│   ├── article-content
-│   ├── deletion-request
-│   ├── page-nav
-│   ├── page-nav-sensitive
-│   ├── pioneer-enrollment
-│   └── total-timing
 ├── pocket
 │   └── fire-tv-events
-├── rally-zero-one
-│   ├── deletion-request
-│   ├── measurements
-│   └── pioneer-enrollment
 ├── regrets-reporter
 │   └── regrets-reporter-update
 ├── regrets-reporter-ucs
@@ -720,7 +682,6 @@ schemas
 │   ├── normandy-login-study
 │   ├── optout
 │   ├── outofdate-notifications-system-addon
-│   ├── pioneer-study
 │   ├── pre-account
 │   ├── prio
 │   ├── regrets-reporter-update
@@ -770,6 +731,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-760 directories
+721 directories
 ```
 
