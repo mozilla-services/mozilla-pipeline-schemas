@@ -260,6 +260,87 @@
                     },
                     "type":"object"
                 },
+                "labeled_custom_distribution":{
+                    "additionalProperties":{
+                        "additionalProperties":{
+                            "properties":{
+                                "count":{
+                                    "description":"This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                                    "type":"integer"
+                                },
+                                "sum":{
+                                    "type":"integer"
+                                },
+                                "values":{
+                                    "additionalProperties":{
+                                        "type":"integer"
+                                    },
+                                    "propertyNames":{
+                                        "pattern":"^[0-9]+$"
+                                    },
+                                    "type":"object"
+                                }
+                            },
+                            "required":[
+                                "sum",
+                                "values"
+                            ],
+                            "type":"object"
+                        },
+                        "propertyNames":{
+                            "comment":"This must be at least the length of 'category.name' metric names to support error reporting",
+                            "maxLength":61,
+                            "type":"string"
+                        },
+                        "type":"object"
+                    },
+                    "propertyNames":{
+                        "maxLength":111,
+                        "pattern":"^[a-z_][a-z0-9_\\.]+$",
+                        "type":"string"
+                    },
+                    "type":"object"
+                },
+                "labeled_memory_distribution":{
+                    "additionalProperties":{
+                        "additionalProperties":{
+                            "properties":{
+                                "count":{
+                                    "description":"This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                                    "type":"integer"
+                                },
+                                "sum":{
+                                    "type":"integer"
+                                },
+                                "values":{
+                                    "additionalProperties":{
+                                        "type":"integer"
+                                    },
+                                    "propertyNames":{
+                                        "pattern":"^[0-9]+$"
+                                    },
+                                    "type":"object"
+                                }
+                            },
+                            "required":[
+                                "values"
+                            ],
+                            "type":"object"
+                        },
+                        "propertyNames":{
+                            "comment":"This must be at least the length of 'category.name' metric names to support error reporting",
+                            "maxLength":61,
+                            "type":"string"
+                        },
+                        "type":"object"
+                    },
+                    "propertyNames":{
+                        "maxLength":111,
+                        "pattern":"^[a-z_][a-z0-9_\\.]+$",
+                        "type":"string"
+                    },
+                    "type":"object"
+                },
                 "labeled_rate":{
                     "additionalProperties":{
                         "additionalProperties":{
@@ -298,6 +379,82 @@
                     "additionalProperties":{
                         "additionalProperties":{
                             "type":"string"
+                        },
+                        "propertyNames":{
+                            "comment":"This must be at least the length of 'category.name' metric names to support error reporting",
+                            "maxLength":61,
+                            "type":"string"
+                        },
+                        "type":"object"
+                    },
+                    "propertyNames":{
+                        "maxLength":111,
+                        "pattern":"^[a-z_][a-z0-9_\\.]+$",
+                        "type":"string"
+                    },
+                    "type":"object"
+                },
+                "labeled_timing_distribution":{
+                    "additionalProperties":{
+                        "additionalProperties":{
+                            "properties":{
+                                "bucket_count":{
+                                    "type":"integer"
+                                },
+                                "count":{
+                                    "description":"This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                                    "type":"integer"
+                                },
+                                "histogram_type":{
+                                    "enum":[
+                                        "linear",
+                                        "exponential"
+                                    ],
+                                    "type":"string"
+                                },
+                                "overflow":{
+                                    "type":"integer"
+                                },
+                                "range":{
+                                    "items":{
+                                        "type":"number"
+                                    },
+                                    "maxItems":2,
+                                    "minItems":2,
+                                    "type":"array"
+                                },
+                                "sum":{
+                                    "type":"integer"
+                                },
+                                "time_unit":{
+                                    "enum":[
+                                        "nanosecond",
+                                        "microsecond",
+                                        "millisecond",
+                                        "second",
+                                        "minute",
+                                        "hour",
+                                        "day"
+                                    ],
+                                    "type":"string"
+                                },
+                                "underflow":{
+                                    "type":"integer"
+                                },
+                                "values":{
+                                    "additionalProperties":{
+                                        "type":"integer"
+                                    },
+                                    "propertyNames":{
+                                        "pattern":"^[0-9]+$"
+                                    },
+                                    "type":"object"
+                                }
+                            },
+                            "required":[
+                                "values"
+                            ],
+                            "type":"object"
                         },
                         "propertyNames":{
                             "comment":"This must be at least the length of 'category.name' metric names to support error reporting",

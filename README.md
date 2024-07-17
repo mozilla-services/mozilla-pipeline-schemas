@@ -670,57 +670,6 @@ schemas
 │   └── total-timing
 ├── pocket
 │   └── fire-tv-events
-├── rally-attention-stream
-│   ├── advertisements
-│   ├── article-contents
-│   ├── attribution
-│   ├── deletion-request
-│   ├── events
-│   ├── study-enrollment
-│   ├── tracking-pixel
-│   ├── user-journey
-│   ├── youtube-ads
-│   ├── youtube-video-details
-│   └── youtube-video-recommendations
-├── rally-citp-search-engine-usage
-│   ├── ballot-interaction
-│   ├── deletion-request
-│   ├── events
-│   ├── modal-interaction
-│   ├── notice-interaction
-│   ├── online-service-navigation
-│   ├── serp-visit
-│   ├── study-enrollment
-│   └── study-initialization
-├── rally-core
-│   ├── deletion-request
-│   ├── demographics
-│   ├── enrollment
-│   ├── events
-│   ├── study-enrollment
-│   ├── study-unenrollment
-│   ├── unenrollment
-│   └── uninstall-deletion
-├── rally-debug
-│   ├── deletion-request
-│   ├── demographics
-│   ├── enrollment
-│   ├── events
-│   ├── study-enrollment
-│   ├── study-unenrollment
-│   └── uninstall-deletion
-├── rally-markup-fb-pixel-hunt
-│   ├── deletion-request
-│   ├── events
-│   ├── fbpixelhunt-event
-│   ├── fbpixelhunt-journey
-│   ├── fbpixelhunt-pixel
-│   └── study-enrollment
-├── rally-study-zero-one
-│   ├── deletion-request
-│   ├── events
-│   ├── rs01-event
-│   └── study-enrollment
 ├── rally-zero-one
 │   ├── deletion-request
 │   ├── measurements
@@ -821,6 +770,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-811 directories
+760 directories
 ```
 

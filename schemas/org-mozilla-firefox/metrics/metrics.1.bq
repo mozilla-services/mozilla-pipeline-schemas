@@ -1725,6 +1725,42 @@
             "type": "RECORD"
           },
           {
+            "description": "Accuracy returned by the Geolocation API\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "geolocation_accuracy",
+            "type": "RECORD"
+          },
+          {
             "description": "The peak number of CSS pixels that checkerboarded during a checkerboard event. The minimum value of the largest histogram bucket is the size of a 4k display with maximum APZ zooming. (Migrated from the geckoview metric of the same name).\n",
             "fields": [
               {
@@ -3388,6 +3424,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Which system provider are we using on Linux\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "BOOL"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "geolocation_linux_provider",
+            "type": "RECORD"
+          },
+          {
             "description": "The results of hardware decoder support for different video codecs. True means that codec can be decoded by hardware on user's device.",
             "fields": [
               {
@@ -4346,6 +4400,42 @@
             ],
             "mode": "REPEATED",
             "name": "fxa_client_error_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "Whether the default provider falled back to NetworkGeolocationProvider.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "geolocation_fallback",
+            "type": "RECORD"
+          },
+          {
+            "description": "The result for each geolocation request. Success label will only happen once for each request, even if it's a watch request.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "geolocation_request_result",
             "type": "RECORD"
           },
           {
