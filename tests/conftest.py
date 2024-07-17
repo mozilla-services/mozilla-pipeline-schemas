@@ -36,7 +36,7 @@ def load_schemas():
             len(path.relative_to(ROOT).parts) <= 4
         ), f"schemas directory too deep: {path}"
         # Using the path parts allows proper handling of schemas that are not
-        # placed in the expected directory structure, like pioneer-study.
+        # placed in the expected directory structure.
         #
         #   >>> path.relative_to(ROOT).parts
         #   ('validation', 'pocket', 'fire-tv-events.1.sample.pass.json')
