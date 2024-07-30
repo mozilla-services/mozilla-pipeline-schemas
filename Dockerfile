@@ -69,7 +69,7 @@ COPY --from=mozilla/ingestion-sink:latest /app/ingestion-sink/target /app/target
 
 # Install python dependencies
 COPY requirements.txt requirements-dev.txt ./
-RUN pip3 install --upgrade pip setuptools && \
+RUN pip3 install --upgrade pip setuptools==70.3.0 && \
     pip3 install -r requirements.txt -r requirements-dev.txt
 
 # Install Java dependencies

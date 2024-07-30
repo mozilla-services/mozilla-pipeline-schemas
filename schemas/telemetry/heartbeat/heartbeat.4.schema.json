@@ -3,7 +3,10 @@
   "mozPipelineMetadata": {
     "bq_dataset_family": "telemetry",
     "bq_metadata_format": "telemetry",
-    "bq_table": "heartbeat_v4"
+    "bq_table": "heartbeat_v4",
+    "expiration_policy": {
+      "delete_after_days": 10000
+    }
   },
   "properties": {
     "application": {
@@ -1152,6 +1155,14 @@
                 "monitors": {
                   "items": {
                     "properties": {
+                      "contentsScaleFactor": {
+                        "description": "The number of device pixels per desktop pixel for this screen.",
+                        "type": "number"
+                      },
+                      "defaultCSSScaleFactor": {
+                        "description": "The default number of device pixels per unscaled CSS pixel for this screen.",
+                        "type": "number"
+                      },
                       "pseudoDisplay": {
                         "type": "boolean"
                       },
@@ -1171,6 +1182,10 @@
                     "type": "object"
                   },
                   "type": "array"
+                },
+                "textScaleFactor": {
+                  "description": "Text scale supported by GTK and Windows. 1 corresponds to 100%.",
+                  "type": "number"
                 }
               },
               "type": "object"
@@ -1508,6 +1523,11 @@
         "surveyVersion"
       ],
       "type": "object"
+    },
+    "profileGroupId": {
+      "description": "A UUID identifying the profile's group on a single device and allowing user-oriented correlation of data",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "type": "string"
     },
     "type": {
       "enum": [

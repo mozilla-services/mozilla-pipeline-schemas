@@ -3,7 +3,10 @@
   "mozPipelineMetadata": {
     "bq_dataset_family": "telemetry",
     "bq_metadata_format": "telemetry",
-    "bq_table": "health_v4"
+    "bq_table": "health_v4",
+    "expiration_policy": {
+      "delete_after_days": 10000
+    }
   },
   "properties": {
     "application": {
@@ -128,6 +131,11 @@
         "reason"
       ],
       "type": "object"
+    },
+    "profileGroupId": {
+      "description": "A UUID identifying the profile's group on a single device and allowing user-oriented correlation of data",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "type": "string"
     },
     "type": {
       "enum": [
