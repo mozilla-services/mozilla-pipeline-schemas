@@ -60,8 +60,6 @@ schemas
 │   └── events
 ├── default-browser-agent
 │   └── default-browser
-├── edge-validator
-│   └── error-report
 ├── eng-workflow
 │   ├── bmobugs
 │   ├── build
@@ -189,8 +187,6 @@ schemas
 ├── moso-mastodon-web
 │   ├── deletion-request
 │   └── events
-├── mozdata
-│   └── event
 ├── mozilla-lockbox
 │   ├── addresses-sync
 │   ├── baseline
@@ -231,8 +227,6 @@ schemas
 │   ├── events
 │   ├── metrics
 │   └── usage
-├── mozza
-│   └── event
 ├── org-mozilla-bergamot
 │   ├── custom
 │   ├── deletion-request
@@ -731,6 +725,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-721 directories
+715 directories
 ```
 
