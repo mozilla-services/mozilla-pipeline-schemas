@@ -711,6 +711,16 @@ schemas
 │   ├── voice-feedback
 │   ├── x-contextual-feature-recommendation
 │   └── xfocsp-error-report
+├── thunderbird-desktop
+│   ├── baseline
+│   ├── bounce-tracking-protection
+│   ├── broken-site-report
+│   ├── deletion-request
+│   ├── events
+│   ├── fog-validation
+│   ├── metrics
+│   ├── pageload
+│   └── use-counters
 ├── treeherder
 │   ├── classified
 │   ├── deletion-request
@@ -725,6 +735,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-715 directories
+725 directories
 ```
 
