@@ -392,6 +392,12 @@
             "type": "INT64"
           },
           {
+            "description": "How many emails were sent by the user.",
+            "mode": "NULLABLE",
+            "name": "compose_mails_sent",
+            "type": "INT64"
+          },
+          {
             "description": "Counts how often the cookie banner is still shown even if we have injected cookies.\n",
             "mode": "NULLABLE",
             "name": "cookie_banners_cookie_injection_fail",
@@ -407,6 +413,12 @@
             "description": "How many times window.print was requested.\n",
             "mode": "NULLABLE",
             "name": "dotprint_requested",
+            "type": "INT64"
+          },
+          {
+            "description": "How many times suggestion to use FileLink were ignored.",
+            "mode": "NULLABLE",
+            "name": "filelink_filelink_ignored",
             "type": "INT64"
           },
           {
@@ -515,6 +527,12 @@
             "description": "Counts how often a load is successfully upgraded to HTTPS because of schemeless HTTPS-First (`dom.security.https_first` disabled, but load marked as schemeless). This does not include loads that get downgraded again.\n",
             "mode": "NULLABLE",
             "name": "httpsfirst_upgraded_schemeless",
+            "type": "INT64"
+          },
+          {
+            "description": "How many emails were read by the user.",
+            "mode": "NULLABLE",
+            "name": "mail_mails_read",
             "type": "INT64"
           },
           {
@@ -2741,6 +2759,42 @@
             "type": "RECORD"
           },
           {
+            "description": "Values of boolean preferences.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "BOOL"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "mail_preferences_boolean",
+            "type": "RECORD"
+          },
+          {
+            "description": "Configuration of the folder and message panes. Whether they are set to be shown or not.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "BOOL"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "mail_ui_configuration_pane_visibility",
+            "type": "RECORD"
+          },
+          {
             "description": "The results of hardware decoder support for different video codecs. True means that codec can be decoded by hardware on user's device.",
             "fields": [
               {
@@ -3324,6 +3378,42 @@
             "type": "RECORD"
           },
           {
+            "description": "How many times messages were written in HTML composition mode, vs. how many were written in plain text composition mode. Label names are from nsIMsgCompFormat.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "compose_compose_format",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many times each message compose type was used when creating a message.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "compose_compose_type",
+            "type": "RECORD"
+          },
+          {
             "description": "Given a matching cookie banner rule, how often do we handle or fail to handle cookie banners, labelled by reason. The 'success' and 'fail' counters count the total numbers independently of the reason counters. Counters are incremented after the content window has been destroyed. This metric additionally reports cookie injections after which we didn't see a banner as \"success_cookie_injected\".\n",
             "fields": [
               {
@@ -3537,6 +3627,24 @@
             ],
             "mode": "REPEATED",
             "name": "extensions_startup_cache_read_errors",
+            "type": "RECORD"
+          },
+          {
+            "description": "Accumulated file size (bytes) uploaded to FileLink services, keyed by FileLink provider type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "filelink_uploaded_size",
             "type": "RECORD"
           },
           {
@@ -3969,6 +4077,78 @@
             ],
             "mode": "REPEATED",
             "name": "ipc_sent_messages_parent_inactive",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many times email accounts setup failed, keyed by account config source.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "mail_failed_email_account_setup",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many times folders of each type are opened.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "mail_folder_opened",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many times email accounts setup succeeded, keyed by account config source.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "mail_successful_email_account_setup",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many times search the web was used, keyed by search engine name.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "mail_websearch_usage",
             "type": "RECORD"
           },
           {
@@ -5293,6 +5473,78 @@
       {
         "fields": [
           {
+            "description": "How many addressbooks were set up, keyed by addressbook directory URI scheme.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "addrbook_addressbook_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "Count of contacts in all addressbooks, keyed by addressbook directory URI scheme.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "addrbook_contact_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many calendars were set up, keyed by calendar type Types are e.g. \"storage\", \"caldav\", \"ics\" and various types from add-ons.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "calendar_calendar_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many read-only calendars were set up, keyed by calendar type. Types are e.g. \"storage\", \"caldav\", \"ics\" and various types from add-ons.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "calendar_read_only_calendar_count",
+            "type": "RECORD"
+          },
+          {
             "description": "Records the GDPR choice on Google Search based on the \"SOCS\" cookie of the Google Search domains. The value could be \"Accept\", \"Reject\" or \"Custom\". We use the label to record different choices on different Google domains. We only collect this if the default search engine is Google.\n",
             "fields": [
               {
@@ -5308,6 +5560,114 @@
             ],
             "mode": "REPEATED",
             "name": "cookie_banners_google_gdpr_choice_cookie",
+            "type": "RECORD"
+          },
+          {
+            "description": "Count of how many accounts were set up, keyed by account type.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "mail_account_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many bytes each type of folder takes on disk.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "mail_folder_size_on_disk",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many messages each type of folder has.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "mail_folder_total_messages",
+            "type": "RECORD"
+          },
+          {
+            "description": "A count of incoming mail accounts using OAuth2 for authentication, keyed by OAuth2 issuer.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "mail_oauth2_provider_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "Values of integer preferences.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "mail_preferences_integer",
+            "type": "RECORD"
+          },
+          {
+            "description": "Configuration of the message header display. Customization state; expected values are \"true\" or \"false\". For buttonStyle values are \"default\", \"only-icons\", \"only-text\".\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "STRING"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "mail_ui_configuration_message_header",
             "type": "RECORD"
           }
         ],
@@ -6404,6 +6764,18 @@
         ],
         "mode": "NULLABLE",
         "name": "string",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "mode": "REPEATED",
+            "name": "mail_ui_configuration_folder_tree_modes",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "string_list",
         "type": "RECORD"
       },
       {
