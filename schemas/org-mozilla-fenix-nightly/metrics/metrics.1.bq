@@ -553,6 +553,12 @@
             "type": "BOOL"
           },
           {
+            "description": "Whether gesture navigation is used instead of the traditional navigation bar.\n",
+            "mode": "NULLABLE",
+            "name": "navigation_bar_os_navigation_uses_gestures",
+            "type": "BOOL"
+          },
+          {
             "description": "Whether or not the user has enabled bookmark search suggestions\ndefault: true\n",
             "mode": "NULLABLE",
             "name": "preferences_bookmarks_suggestion",
@@ -5021,7 +5027,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Failure occurs when initializing the audio stream.\n",
+            "description": "Failure occurs when initializing the audio stream. (Migrated from the geckoview metric of the same name).\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -5504,6 +5510,24 @@
             ],
             "mode": "REPEATED",
             "name": "networking_fetch_keepalive_request_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "Number of paths known to be ECN capable or not-capable.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_http_3_ecn_path_capability",
             "type": "RECORD"
           },
           {
@@ -6715,6 +6739,61 @@
         ],
         "mode": "NULLABLE",
         "name": "labeled_counter",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "HTTP3: ECN CE to ECT0 ratio (multiply by 10000).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_http_3_ecn_ce_ect0_ratio",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "labeled_custom_distribution",
         "type": "RECORD"
       },
       {

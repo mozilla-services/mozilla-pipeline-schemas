@@ -90,6 +90,7 @@ schemas
 │   ├── serp-categorization
 │   ├── spoc
 │   ├── top-sites
+│   ├── urlbar-keyword-exposure
 │   ├── urlbar-potential-exposure
 │   ├── use-counters
 │   └── user-characteristics
@@ -735,6 +736,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-725 directories
+726 directories
 ```
 
