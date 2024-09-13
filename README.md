@@ -119,7 +119,8 @@ schemas
 │   ├── fog-validation
 │   ├── metrics
 │   ├── pageload
-│   └── use-counters
+│   ├── use-counters
+│   └── user-characteristics
 ├── firefox-installer
 │   └── install
 ├── firefox-launcher-process
@@ -265,7 +266,8 @@ schemas
 │   ├── sync
 │   ├── tabs-sync
 │   ├── topsites-impression
-│   └── use-counters
+│   ├── use-counters
+│   └── user-characteristics
 ├── org-mozilla-fenix-nightly
 │   ├── activation
 │   ├── addresses-sync
@@ -294,7 +296,8 @@ schemas
 │   ├── sync
 │   ├── tabs-sync
 │   ├── topsites-impression
-│   └── use-counters
+│   ├── use-counters
+│   └── user-characteristics
 ├── org-mozilla-fennec-aurora
 │   ├── activation
 │   ├── addresses-sync
@@ -323,7 +326,8 @@ schemas
 │   ├── sync
 │   ├── tabs-sync
 │   ├── topsites-impression
-│   └── use-counters
+│   ├── use-counters
+│   └── user-characteristics
 ├── org-mozilla-firefox
 │   ├── activation
 │   ├── addresses-sync
@@ -352,7 +356,8 @@ schemas
 │   ├── sync
 │   ├── tabs-sync
 │   ├── topsites-impression
-│   └── use-counters
+│   ├── use-counters
+│   └── user-characteristics
 ├── org-mozilla-firefox-beta
 │   ├── activation
 │   ├── addresses-sync
@@ -381,7 +386,8 @@ schemas
 │   ├── sync
 │   ├── tabs-sync
 │   ├── topsites-impression
-│   └── use-counters
+│   ├── use-counters
+│   └── user-characteristics
 ├── org-mozilla-firefox-vpn
 │   ├── baseline
 │   ├── daemonsession
@@ -408,7 +414,8 @@ schemas
 │   ├── fog-validation
 │   ├── metrics
 │   ├── pageload
-│   └── use-counters
+│   ├── use-counters
+│   └── user-characteristics
 ├── org-mozilla-focus-beta
 │   ├── activation
 │   ├── baseline
@@ -421,7 +428,8 @@ schemas
 │   ├── fog-validation
 │   ├── metrics
 │   ├── pageload
-│   └── use-counters
+│   ├── use-counters
+│   └── user-characteristics
 ├── org-mozilla-focus-nightly
 │   ├── activation
 │   ├── baseline
@@ -434,7 +442,8 @@ schemas
 │   ├── fog-validation
 │   ├── metrics
 │   ├── pageload
-│   └── use-counters
+│   ├── use-counters
+│   └── user-characteristics
 ├── org-mozilla-ios-fennec
 │   ├── addresses-sync
 │   ├── baseline
@@ -568,7 +577,8 @@ schemas
 │   ├── fog-validation
 │   ├── metrics
 │   ├── pageload
-│   └── use-counters
+│   ├── use-counters
+│   └── user-characteristics
 ├── org-mozilla-mozregression
 │   ├── baseline
 │   ├── deletion-request
@@ -628,7 +638,8 @@ schemas
 │   ├── pseudo-main
 │   ├── spoc
 │   ├── top-sites
-│   └── use-counters
+│   ├── use-counters
+│   └── user-characteristics
 ├── pocket
 │   └── fire-tv-events
 ├── regrets-reporter
@@ -721,7 +732,8 @@ schemas
 │   ├── fog-validation
 │   ├── metrics
 │   ├── pageload
-│   └── use-counters
+│   ├── use-counters
+│   └── user-characteristics
 ├── treeherder
 │   ├── classified
 │   ├── deletion-request
@@ -736,6 +748,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-726 directories
+738 directories
 ```
 
