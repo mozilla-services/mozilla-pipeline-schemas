@@ -67,6 +67,12 @@ schemas
 ├── firefox-accounts
 │   ├── activity-flow-metrics
 │   └── amplitude-event
+├── firefox-crashreporter
+│   ├── baseline
+│   ├── crash
+│   ├── deletion-request
+│   ├── events
+│   └── metrics
 ├── firefox-desktop
 │   ├── baseline
 │   ├── bounce-tracking-protection
@@ -229,6 +235,21 @@ schemas
 │   ├── events
 │   ├── metrics
 │   └── usage
+├── net-thunderbird-android
+│   ├── baseline
+│   ├── deletion-request
+│   ├── events
+│   └── metrics
+├── net-thunderbird-android-beta
+│   ├── baseline
+│   ├── deletion-request
+│   ├── events
+│   └── metrics
+├── net-thunderbird-android-daily
+│   ├── baseline
+│   ├── deletion-request
+│   ├── events
+│   └── metrics
 ├── org-mozilla-bergamot
 │   ├── custom
 │   ├── deletion-request
@@ -748,6 +769,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-738 directories
+759 directories
 ```
 
