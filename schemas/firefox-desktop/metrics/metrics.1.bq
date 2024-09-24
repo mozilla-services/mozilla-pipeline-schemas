@@ -842,6 +842,12 @@
             "type": "INT64"
           },
           {
+            "description": "Whether we saw a permission request from an insecure context.\n",
+            "mode": "NULLABLE",
+            "name": "web_notification_insecure_context_permission_request",
+            "type": "INT64"
+          },
+          {
             "description": "The total number of failed calls to navigator.credentials.create.",
             "mode": "NULLABLE",
             "name": "webauthn_create_failure",
@@ -5954,6 +5960,60 @@
             ],
             "mode": "REPEATED",
             "name": "translations_request_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "The category of the origin that retrieves Notification.permission.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "web_notification_permission_origin",
+            "type": "RECORD"
+          },
+          {
+            "description": "The category of the origin that calls Notification.requestPermission().\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "web_notification_request_permission_origin",
+            "type": "RECORD"
+          },
+          {
+            "description": "The category of the origin that calls new Notification/showNotification().\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "web_notification_show_origin",
             "type": "RECORD"
           },
           {
