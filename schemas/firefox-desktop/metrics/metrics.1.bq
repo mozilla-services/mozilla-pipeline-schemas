@@ -530,6 +530,12 @@
             "type": "INT64"
           },
           {
+            "description": "How many certificate signature verifications are performed.\n",
+            "mode": "NULLABLE",
+            "name": "cert_signature_cache_total",
+            "type": "INT64"
+          },
+          {
             "description": "Counts how often the cookie banner is still shown even if we have injected cookies.\n",
             "mode": "NULLABLE",
             "name": "cookie_banners_cookie_injection_fail",
@@ -821,6 +827,12 @@
             "description": "The number of RTCRtpSenders created that use the compatibility mode for setParameters.\n",
             "mode": "NULLABLE",
             "name": "rtcrtpsender_count_setparameters_compat",
+            "type": "INT64"
+          },
+          {
+            "description": "How many SCT signature verifications are performed.\n",
+            "mode": "NULLABLE",
+            "name": "sct_signature_cache_total",
             "type": "INT64"
           },
           {
@@ -7841,6 +7853,24 @@
       {
         "fields": [
           {
+            "description": "How often a certificate signature to be verified is in the cache already.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "cert_signature_cache_hits",
+            "type": "RECORD"
+          },
+          {
             "description": "The proportion of cookie banners handled by CMP rules within the total number of cases handled, including those handled by site-specific rules.\n",
             "fields": [
               {
@@ -8270,6 +8300,24 @@
             ],
             "mode": "NULLABLE",
             "name": "rtcrtpsender_used_sendencodings",
+            "type": "RECORD"
+          },
+          {
+            "description": "How often an SCT signature to be verified is in the cache already.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "sct_signature_cache_hits",
             "type": "RECORD"
           },
           {
