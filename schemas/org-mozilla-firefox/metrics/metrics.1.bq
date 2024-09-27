@@ -1314,6 +1314,18 @@
             "mode": "NULLABLE",
             "name": "webauthn_get_success",
             "type": "INT64"
+          },
+          {
+            "description": "The number of webrtc transports that have started a DTLS handshake as the client.\n",
+            "mode": "NULLABLE",
+            "name": "webrtcdtls_client_handshake_started_counter",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of webrtc transports that have started a DTLS handshake as the server.\n",
+            "mode": "NULLABLE",
+            "name": "webrtcdtls_server_handshake_started_counter",
+            "type": "INT64"
           }
         ],
         "mode": "NULLABLE",
@@ -3084,6 +3096,42 @@
             ],
             "mode": "NULLABLE",
             "name": "networking_http_3_download_throughput_50_100",
+            "type": "RECORD"
+          },
+          {
+            "description": "HTTP3: packet loss ratio (multiply by 10000).\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "networking_http_3_loss_ratio",
             "type": "RECORD"
           },
           {
@@ -5081,7 +5129,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Failure occurs when initializing the audio stream.\n",
+            "description": "Failure occurs when initializing the audio stream. (Migrated from the geckoview metric of the same name).\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -5816,6 +5864,24 @@
             ],
             "mode": "REPEATED",
             "name": "networking_http_channel_onstart_success_https_rr",
+            "type": "RECORD"
+          },
+          {
+            "description": "The number of times we see the IP address 0.0.0.0 or its IPv6 equivalent.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_http_ip_addr_any_count",
             "type": "RECORD"
           },
           {
