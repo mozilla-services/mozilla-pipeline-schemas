@@ -470,6 +470,7 @@ schemas
 │   ├── baseline
 │   ├── bookmarks-sync
 │   ├── creditcards-sync
+│   ├── dau-reporting
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
@@ -494,6 +495,7 @@ schemas
 │   ├── baseline
 │   ├── bookmarks-sync
 │   ├── creditcards-sync
+│   ├── dau-reporting
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
@@ -518,6 +520,7 @@ schemas
 │   ├── baseline
 │   ├── bookmarks-sync
 │   ├── creditcards-sync
+│   ├── dau-reporting
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
@@ -769,6 +772,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-759 directories
+762 directories
 ```
 
