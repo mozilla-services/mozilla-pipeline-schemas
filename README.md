@@ -78,6 +78,7 @@ schemas
 │   ├── bounce-tracking-protection
 │   ├── broken-site-report
 │   ├── crash
+│   ├── dau-reporting
 │   ├── deletion-request
 │   ├── events
 │   ├── first-startup
@@ -120,6 +121,7 @@ schemas
 │   ├── bounce-tracking-protection
 │   ├── broken-site-report
 │   ├── crash
+│   ├── dau-reporting
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
@@ -270,6 +272,7 @@ schemas
 │   ├── cookie-banner-report-site
 │   ├── crash
 │   ├── creditcards-sync
+│   ├── dau-reporting
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
@@ -300,6 +303,7 @@ schemas
 │   ├── cookie-banner-report-site
 │   ├── crash
 │   ├── creditcards-sync
+│   ├── dau-reporting
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
@@ -330,6 +334,7 @@ schemas
 │   ├── cookie-banner-report-site
 │   ├── crash
 │   ├── creditcards-sync
+│   ├── dau-reporting
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
@@ -360,6 +365,7 @@ schemas
 │   ├── cookie-banner-report-site
 │   ├── crash
 │   ├── creditcards-sync
+│   ├── dau-reporting
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
@@ -390,6 +396,7 @@ schemas
 │   ├── cookie-banner-report-site
 │   ├── crash
 │   ├── creditcards-sync
+│   ├── dau-reporting
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
@@ -430,6 +437,7 @@ schemas
 │   ├── broken-site-report
 │   ├── cookie-banner-report-site
 │   ├── crash
+│   ├── dau-reporting
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
@@ -444,6 +452,7 @@ schemas
 │   ├── broken-site-report
 │   ├── cookie-banner-report-site
 │   ├── crash
+│   ├── dau-reporting
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
@@ -458,6 +467,7 @@ schemas
 │   ├── broken-site-report
 │   ├── cookie-banner-report-site
 │   ├── crash
+│   ├── dau-reporting
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
@@ -596,6 +606,7 @@ schemas
 │   ├── broken-site-report
 │   ├── cookie-banner-report-site
 │   ├── crash
+│   ├── dau-reporting
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
@@ -651,6 +662,7 @@ schemas
 │   ├── baseline
 │   ├── bounce-tracking-protection
 │   ├── broken-site-report
+│   ├── dau-reporting
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
@@ -751,6 +763,7 @@ schemas
 │   ├── baseline
 │   ├── bounce-tracking-protection
 │   ├── broken-site-report
+│   ├── dau-reporting
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
@@ -772,6 +785,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-762 directories
+775 directories
 ```
 
