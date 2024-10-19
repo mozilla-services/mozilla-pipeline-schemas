@@ -535,6 +535,12 @@
             "type": "BOOL"
           },
           {
+            "description": "True if HTTP3 is enabled at the start of a session. This metric was generated to correspond to the Legacy Telemetry scalar networking.http3_enabled.\n",
+            "mode": "NULLABLE",
+            "name": "networking_http3_enabled",
+            "type": "BOOL"
+          },
+          {
             "description": "Records whether the browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar preference is enabled or disabled\n",
             "mode": "NULLABLE",
             "name": "newtab_handoff_preference_enabled",
@@ -800,6 +806,12 @@
             "type": "INT64"
           },
           {
+            "description": "The number of times a document hierarchy contained at least one HTMLMediaElement. In addition, the telemetry probe 'MIXED_CONTENT_UNBLOCK_COUNTER' records the total number of loaded top level content documents, which can help us calculate the result of the percentage of documents using media. This metric was generated to correspond to the Legacy Telemetry scalar media.element_in_page_count.\n",
+            "mode": "NULLABLE",
+            "name": "media_element_in_page_count",
+            "type": "INT64"
+          },
+          {
             "description": "How often something went awry within\n`AboutWelcome.submitGleanPingForPing`, preventing ping submission.\n",
             "mode": "NULLABLE",
             "name": "messaging_system_glean_ping_for_ping_failures",
@@ -827,6 +839,18 @@
             "description": "This counts the number of times we set a cookie. Introduced as a denomenator for measuring CHIPS adoption.\n",
             "mode": "NULLABLE",
             "name": "networking_set_cookie",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of loads of cross origin opaque resources. This metric was generated to correspond to the Legacy Telemetry scalar opaque.response.blocking.cross_origin_opaque_response_count.\n",
+            "mode": "NULLABLE",
+            "name": "opaque_response_blocking_cross_origin_opaque_response_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of times we run the JS validator. This metric was generated to correspond to the Legacy Telemetry scalar opaque.response.blocking.javascript_validation_count.\n",
+            "mode": "NULLABLE",
+            "name": "opaque_response_blocking_javascript_validation_count",
             "type": "INT64"
           },
           {
@@ -3251,6 +3275,42 @@
             "type": "RECORD"
           },
           {
+            "description": "Record whether hardware decoding is supported for the specific video codec. The key is the type of video codec, eg. video/vp9. This metric was generated to correspond to the Legacy Telemetry scalar media.video_hardware_decoding_support.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "BOOL"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "media_video_hardware_decoding_support",
+            "type": "RECORD"
+          },
+          {
+            "description": "Record whether hardware decoding is supported for the specific video codec, this only records video in HD (1280*720) or higher resultion. The key is the type of video codec, eg. video/vp9. This metric was generated to correspond to the Legacy Telemetry scalar media.video_hd_hardware_decoding_support.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "BOOL"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "media_video_hd_hardware_decoding_support",
+            "type": "RECORD"
+          },
+          {
             "description": "Whether or not each step of the OSKeyStore self test succeeded.",
             "fields": [
               {
@@ -4518,6 +4578,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Count the number of times the media with a specific mime type (Eg. audio/vorbis, that would be used as the key) encounters a decode error during playback. This metric was generated to correspond to the Legacy Telemetry scalar media.decode_error_per_mime_type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "media_decode_error_per_mime_type",
+            "type": "RECORD"
+          },
+          {
             "description": "Count the amount of times where video playback is failed to start due to the mime type is not supported by Firefox. The result is accumulated per mime type, eg. video/hevc.",
             "fields": [
               {
@@ -4788,7 +4866,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Counts the status of succeeded and failed requests to other mozilla.org domains",
+            "description": "Counts the status of succeeded and failed requests to other mozilla.org domains\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -4929,6 +5007,24 @@
             ],
             "mode": "REPEATED",
             "name": "networking_cookie_timestamp_fixed_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many KB of HTTP data transferred by type, there are some categories separated by keys based on 5 parameters:\n  1. normal browsing or private browsing\n  2. system principal or not\n  3. first party or third party\n  4. class of service (Leader/Background/Others)\n  5. tracking classification (Basic/Content/FingerprintingContent)\n\nAvailable keys are:\n  \"Y0_N1Sys\",\n  \"Y1_N1\",\n  \"Y2_N3Oth\",\n  \"Y3_N3BasicLead\",\n  \"Y4_N3BasicBg\",\n  \"Y5_N3BasicOth\",\n  \"Y6_N3ContentLead\",\n  \"Y7_N3ContentBg\",\n  \"Y8_N3ContentOth\",\n  \"Y9_N3FpLead\",\n  \"Y10_N3FpBg\",\n  \"Y11_N3FpOth\",\n  \"Y12_P1Sys\",\n  \"Y13_P1\",\n  \"Y14_P3Oth\",\n  \"Y15_P3BasicLead\",\n  \"Y16_P3BasicBg\",\n  \"Y17_P3BasicOth\",\n  \"Y18_P3ContentLead\",\n  \"Y19_P3ContentBg\",\n  \"Y20_P3ContentOth\",\n  \"Y21_P3FpLead\",\n  \"Y22_P3FpBg\",\n  \"Y23_P3FpOth\"\n\nThis metric was generated to correspond to the Legacy Telemetry scalar networking.data_transferred_v3_kb.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_data_transferred_v3_kb",
             "type": "RECORD"
           },
           {
@@ -5379,6 +5475,24 @@
             ],
             "mode": "REPEATED",
             "name": "networking_speculative_connection_outcome",
+            "type": "RECORD"
+          },
+          {
+            "description": "Number of times we cycled the TRR connection during a subsession. Keyed by TRR provider URL. This metric was generated to correspond to the Legacy Telemetry scalar networking.trr_connection_cycle_count.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_trr_connection_cycle_count",
             "type": "RECORD"
           },
           {
@@ -6135,6 +6249,42 @@
             ],
             "mode": "REPEATED",
             "name": "webauthn_get_authenticator_attachment",
+            "type": "RECORD"
+          },
+          {
+            "description": "The video codec used for receiving video on a WebRTC call. This metric was generated to correspond to the Legacy Telemetry scalar webrtc.video.recv_codec_used.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "webrtc_video_recv_codec_used",
+            "type": "RECORD"
+          },
+          {
+            "description": "The video codec used for sending video on a WebRTC call. This metric was generated to correspond to the Legacy Telemetry scalar webrtc.video.send_codec_used.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "webrtc_video_send_codec_used",
             "type": "RECORD"
           },
           {
@@ -7548,9 +7698,21 @@
             "type": "INT64"
           },
           {
+            "description": "A bitfield representation for the usage of HTTPS RR prefs. bit 0: network.dns.upgrade_with_https_rr is enabled or not. bit 1: network.dns.use_https_rr_as_altsvc is enabled or not. bit 2: network.dns.echconfig.enabled is enabled or not. This metric was generated to correspond to the Legacy Telemetry scalar networking.https_rr_prefs_usage.\n",
+            "mode": "NULLABLE",
+            "name": "networking_https_rr_prefs_usage",
+            "type": "INT64"
+          },
+          {
             "description": "The number of third-party PKCS#11 modules loaded.",
             "mode": "NULLABLE",
             "name": "pkcs11_third_party_modules_loaded",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of potentially breached passwords, as determined by LoginBreaches.getPotentialBreachesByLoginGUID. This metric was generated to correspond to the Legacy Telemetry scalar pwmgr.potentially_breached_passwords.\n",
+            "mode": "NULLABLE",
+            "name": "pwmgr_potentially_breached_passwords",
             "type": "INT64"
           }
         ],
