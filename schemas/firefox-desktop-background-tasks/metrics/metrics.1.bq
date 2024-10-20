@@ -385,9 +385,33 @@
             "type": "BOOL"
           },
           {
+            "description": "Whether this app was kept in macOS Dock on startup This metric was generated to correspond to the Legacy Telemetry scalar os.environment.is_kept_in_dock.\n",
+            "mode": "NULLABLE",
+            "name": "os_environment_is_kept_in_dock",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the non-Private Browsing version of this app was pinned to taskbar on startup This metric was generated to correspond to the Legacy Telemetry scalar os.environment.is_taskbar_pinned.\n",
+            "mode": "NULLABLE",
+            "name": "os_environment_is_taskbar_pinned",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the Private Browsing version of this app was pinned to taskbar on startup This metric was generated to correspond to the Legacy Telemetry scalar os.environment.is_taskbar_pinned_private.\n",
+            "mode": "NULLABLE",
+            "name": "os_environment_is_taskbar_pinned_private",
+            "type": "BOOL"
+          },
+          {
             "description": "Records whether TLS key logging has been enabled via the environment variable SSLKEYLOGFILE.\n",
             "mode": "NULLABLE",
             "name": "sslkeylogging_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether or not this startup is the first startup since OS reboot (according to our best guess.) This metric was generated to correspond to the Legacy Telemetry scalar startup.is_cold.\n",
+            "mode": "NULLABLE",
+            "name": "startup_is_cold",
             "type": "BOOL"
           }
         ],
@@ -485,6 +509,31 @@
         ],
         "mode": "NULLABLE",
         "name": "datetime",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "Records whether Firefox was the default handler for particular file types or protocols.  The result is split into keys which represent the file extension or scheme: currently, a subset of the file types Firefox registers to handle, namely \".pdf\" and \"mailto\" as protocol. In the future, more file types may be recorded. This metric was generated to correspond to the Legacy Telemetry scalar os.environment.is_default_handler.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "BOOL"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "os_environment_is_default_handler",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "labeled_boolean",
         "type": "RECORD"
       },
       {
@@ -632,6 +681,42 @@
             "mode": "REPEATED",
             "name": "glean_validation_pings_submitted",
             "type": "RECORD"
+          },
+          {
+            "description": "Records counts for when Firefox was invoked (i.e., was already running and was not launched) to handle a file type or protocol with `-osint -url ...`.  The result is split into keys which represent the file extension: currently, the set of file types Firefox registers to handle, namely \".avif\", \".htm\", \".html\", \".pdf\", \".shtml\", \".xht\", \".xhtml\", \".svg\", \".webp\", and the set of protocol schemes that Firefox registers to handle, namely \"about\", \"http\", \"https\", \"mailto\".  If Firefox was invoked to handle a file type or protocol it does not register to handle by default, the count is recorded as \".<other extension>\" or \"<other protocol>\", respectively (neither of which are valid extension or protocol identifiers). This metric was generated to correspond to the Legacy Telemetry scalar os.environment.invoked_to_handle.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "os_environment_invoked_to_handle",
+            "type": "RECORD"
+          },
+          {
+            "description": "Records counts for when Firefox was launched afresh (i.e., was not already running) to handle a file type or protocol with `-osint -url ...`.  The result is split into keys which represent the file extension: currently, the set of file types Firefox registers to handle, namely \".avif\", \".htm\", \".html\", \".pdf\", \".shtml\", \".xht\", \".xhtml\", \".svg\", \".webp\", and the set of protocol schemes that Firefox registers to handle, namely \"about\", \"http\", \"https\", \"mailto\".  If Firefox was launched to handle a file type or protocol it does not register to handle by default, the count is recorded as \".<other extension>\" or \"<other protocol>\", respectively (neither of which are valid extension or protocol identifiers). This metric was generated to correspond to the Legacy Telemetry scalar os.environment.launched_to_handle.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "os_environment_launched_to_handle",
+            "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
@@ -766,6 +851,12 @@
             "mode": "NULLABLE",
             "name": "datasanitization_session_permission_exceptions",
             "type": "INT64"
+          },
+          {
+            "description": "The time in seconds between the first browser window loading, and the time the OS started. This can give us an indication of whether starting the browser may have been the first thing the user did after starting their computer. This metric was generated to correspond to the Legacy Telemetry scalar startup.seconds_since_last_os_restart.\n",
+            "mode": "NULLABLE",
+            "name": "startup_seconds_since_last_os_restart",
+            "type": "INT64"
           }
         ],
         "mode": "NULLABLE",
@@ -784,6 +875,12 @@
             "description": "If there was an error loading the RKV database, record it.\n",
             "mode": "NULLABLE",
             "name": "glean_database_rkv_load_error",
+            "type": "STRING"
+          },
+          {
+            "description": "Records how Firefox was started on Windows. Currently will be one of \"Desktop\", \"DesktopPrivate\", \"StartMenu\" (including pins), \"StartMenuPrivate\", \"Taskbar\", \"TaskbarPrivate\", \"OtherShortcut\", or \"Other\" This metric was generated to correspond to the Legacy Telemetry scalar os.environment.launch_method.\n",
+            "mode": "NULLABLE",
+            "name": "os_environment_launch_method",
             "type": "STRING"
           },
           {
