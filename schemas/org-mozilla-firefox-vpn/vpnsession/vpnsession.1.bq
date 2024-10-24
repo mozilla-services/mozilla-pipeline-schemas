@@ -344,6 +344,85 @@
       {
         "fields": [
           {
+            "description": "The amount of data received through the VPN tunnel.\n\nThis metric is accumulated periodically on a 3hr interval\nwhile the VPN is turned on.\n\nThis metric is not collected on iOS.\n\n> **Note**: This metric is recorded on the vpnsession ping for\n> desktop platforms and on the daemonsession ping for mobile platforms.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "connection_health_data_transferred_rx",
+            "type": "RECORD"
+          },
+          {
+            "description": "The amount of data sent through the VPN tunnel.\n\nThis metric is accumulated periodically on a 3hr interval\nwhile the VPN is turned on.\n\nThis metric is not collected on iOS.\n\n> **Note**: This metric is recorded on the vpnsession ping for\n> desktop platforms and on the daemonsession ping for mobile platforms.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "connection_health_data_transferred_tx",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "custom_distribution",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
             "description": "The time the user ends a VPN session from the app\n",
             "mode": "NULLABLE",
             "name": "session_session_end",
