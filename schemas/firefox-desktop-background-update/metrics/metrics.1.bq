@@ -373,6 +373,12 @@
             "type": "BOOL"
           },
           {
+            "description": "Whether a private browsing window has been used in the session. This metric was generated to correspond to the Legacy Telemetry scalar dom.parentprocess.private_window_used.\n",
+            "mode": "NULLABLE",
+            "name": "dom_parentprocess_private_window_used",
+            "type": "BOOL"
+          },
+          {
             "description": "Corresponds to the value of `WebExtensionPolicy.useRemoteWebExtensions`.\n",
             "mode": "NULLABLE",
             "name": "extensions_use_remote_policy",
@@ -521,6 +527,36 @@
             "description": "Number of successfull crash report submissions\n",
             "mode": "NULLABLE",
             "name": "crash_submission_success",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of times the about:restartrequired page appeared due to a buildID mismatch between the parent and the content processes. This metric was generated to correspond to the Legacy Telemetry scalar dom.contentprocess.buildID_mismatch.\n",
+            "mode": "NULLABLE",
+            "name": "dom_contentprocess_build_id_mismatch",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of times a process crashed early but we could verify it was not because of buildID mismatch between the parent and the content processes. This metric was generated to correspond to the Legacy Telemetry scalar dom.contentprocess.buildID_mismatch_false_positive.\n",
+            "mode": "NULLABLE",
+            "name": "dom_contentprocess_build_id_mismatch_false_positive",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of times we've had the opportunity to change content process priority due to a tab switch or a tab being opened. This metric was generated to correspond to the Legacy Telemetry scalar dom.contentprocess.os_priority_change_considered.\n",
+            "mode": "NULLABLE",
+            "name": "dom_contentprocess_os_priority_change_considered",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of times a content process has had its OS priority lowered due to only containing background tabs without audible media playing. This metric was generated to correspond to the Legacy Telemetry scalar dom.contentprocess.os_priority_lowered.\n",
+            "mode": "NULLABLE",
+            "name": "dom_contentprocess_os_priority_lowered",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of times a content process has had its OS priority raised due to containing at least one foregrounded tab, or a tab with audible media has started playing in it. This metric was generated to correspond to the Legacy Telemetry scalar dom.contentprocess.os_priority_raised.\n",
+            "mode": "NULLABLE",
+            "name": "dom_contentprocess_os_priority_raised",
             "type": "INT64"
           },
           {
@@ -707,6 +743,12 @@
             "description": "Upticks whenever a LS request cancellation message is sent. This includes requests for ensuring either LSDatabase or LSObserver.\n",
             "mode": "NULLABLE",
             "name": "ls_request_send_cancellation",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of documents that contained enabled MathML elements. This metric was generated to correspond to the Legacy Telemetry scalar mathml.doc_count.\n",
+            "mode": "NULLABLE",
+            "name": "mathml_doc_count",
             "type": "INT64"
           },
           {
@@ -3968,6 +4010,24 @@
             ],
             "mode": "REPEATED",
             "name": "data_storage_entries",
+            "type": "RECORD"
+          },
+          {
+            "description": "Collect precise set of error code and calling site upon process creation failure path. This metric was generated to correspond to the Legacy Telemetry scalar dom.parentprocess.process_launch_errors.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dom_parentprocess_process_launch_errors",
             "type": "RECORD"
           },
           {
