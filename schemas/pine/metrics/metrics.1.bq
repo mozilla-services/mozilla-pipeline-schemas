@@ -9564,6 +9564,36 @@
             "type": "INT64"
           },
           {
+            "description": "The count of maximum number of tabs open during a subsession, across all windows, including tabs in private windows and restored at startup. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.max_concurrent_tab_count.\n",
+            "mode": "NULLABLE",
+            "name": "browser_engagement_max_concurrent_tab_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The count of maximum number of pinned tabs open during a subsession. This includes private windows and the ones opened when starting the browser. Starting Firefox 85 this includes number of restored pinned tabs at startup. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.max_concurrent_tab_pinned_count.\n",
+            "mode": "NULLABLE",
+            "name": "browser_engagement_max_concurrent_tab_pinned_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The count of maximum number of tabs with vertical tabs enabled. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.max_concurrent_vertical_tab_count.\n",
+            "mode": "NULLABLE",
+            "name": "browser_engagement_max_concurrent_vertical_tab_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The count of maximum number of pinned tabs with vertical tabs enabled. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.max_concurrent_vertical_tab_pinned_count.\n",
+            "mode": "NULLABLE",
+            "name": "browser_engagement_max_concurrent_vertical_tab_pinned_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The count of maximum number of browser windows open during a subsession. This includes private windows and the ones opened when starting the browser. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.max_concurrent_window_count.\n",
+            "mode": "NULLABLE",
+            "name": "browser_engagement_max_concurrent_window_count",
+            "type": "INT64"
+          },
+          {
             "description": "Windows only count of the browser profiles on the current system. This\ncounts profiles that have been used across all Windows user accounts on\nmachine since this probe was added. The value persists across installs.\nA value of 0 is reported if there is an error determining the correct\ncount. Unset on other platforms.\n",
             "mode": "NULLABLE",
             "name": "browser_engagement_profile_count",
@@ -14305,6 +14335,72 @@
             ],
             "mode": "NULLABLE",
             "name": "javascript_pageload_xdr_encode_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time it took between sending PBackgroundLSDatabase::RequestAllowToClose and receiving PBackgroundLSDatabase::AllowToClose message. These messages are issued when QuotaManager is shutting down or is aborting operations for a particular origin or process.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "localstorage_database_request_allow_to_close_response_time",
             "type": "RECORD"
           },
           {
