@@ -7630,6 +7630,54 @@
             "mode": "REPEATED",
             "name": "networking_http_3_ecn_ce_ect0_ratio",
             "type": "RECORD"
+          },
+          {
+            "description": "This metric logs the count of directory entries iterated within the QuotaManager::InitializeRepository function for each repository type. Each instance of this metric is labeled with one of three repository types: \"persistent\", \"temporary\" or \"default\" (there's also \"private\" repository but that should never be iterated by the function). The main purpose is to track and analyze iteration counts during the initialization process of each repository type, helping to identify performance trends or potential inefficiencies across these repositories. This can provide insight into the impacts of specific code changes, including potential optimizations or regressions.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "quotamanager_initialize_repository_number_of_iterations",
+            "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
@@ -9193,6 +9241,18 @@
             "description": "A bitfield representation for the usage of HTTPS RR prefs. bit 0: network.dns.upgrade_with_https_rr is enabled or not. bit 1: network.dns.use_https_rr_as_altsvc is enabled or not. bit 2: network.dns.echconfig.enabled is enabled or not. This metric was generated to correspond to the Legacy Telemetry scalar networking.https_rr_prefs_usage.\n",
             "mode": "NULLABLE",
             "name": "networking_https_rr_prefs_usage",
+            "type": "INT64"
+          },
+          {
+            "description": "The time in milliseconds to load any external certificates. This occurs off of the main-thread, but can block main-thread operations. This metric was generated to correspond to the Legacy Telemetry scalar networking.loading_certs_task.\n",
+            "mode": "NULLABLE",
+            "name": "networking_loading_certs_task",
+            "type": "INT64"
+          },
+          {
+            "description": "The time in milliseconds to initialize the NSS component in the parent process. This metric was generated to correspond to the Legacy Telemetry scalar networking.nss_initialization.\n",
+            "mode": "NULLABLE",
+            "name": "networking_nss_initialization",
             "type": "INT64"
           },
           {
