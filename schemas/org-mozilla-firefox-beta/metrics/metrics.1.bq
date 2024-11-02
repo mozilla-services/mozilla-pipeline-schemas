@@ -1550,6 +1550,12 @@
             "type": "INT64"
           },
           {
+            "description": "Counts the duplicated IDs from the server. The ability to detect depends on the pref `dom.push.maxRecentMessageIDsPerSubscription`.\n",
+            "mode": "NULLABLE",
+            "name": "web_push_detected_duplicated_message_ids",
+            "type": "INT64"
+          },
+          {
             "description": "The total number of failed calls to navigator.credentials.create.",
             "mode": "NULLABLE",
             "name": "webauthn_create_failure",
@@ -5561,7 +5567,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Failure occurs when initializing the audio stream. (Migrated from the geckoview metric of the same name).\n",
+            "description": "Failure occurs when initializing the audio stream.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -7430,6 +7436,42 @@
             ],
             "mode": "REPEATED",
             "name": "web_notification_show_origin",
+            "type": "RECORD"
+          },
+          {
+            "description": "Which content encoding is being used for push.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "web_push_content_encoding",
+            "type": "RECORD"
+          },
+          {
+            "description": "The code indicating why the push message couldn't be processed.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "web_push_error_code",
             "type": "RECORD"
           },
           {
