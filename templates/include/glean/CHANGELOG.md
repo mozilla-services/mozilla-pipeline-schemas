@@ -1,5 +1,7 @@
 # Version 1
 
+- Increase maximum character limit for metric labels from 61 to 71 [Bug 1929078](https://bugzilla.mozilla.org/show_bug.cgi?id=1929078)
+
 - New metric types `labeled_{custom|memory|timing}_distribution` [bug 1657947](https://bugzilla.mozilla.org/show_bug.cgi?id=1657947).
 
 - Added new schema "glean-min" which contains `metrics` and `events` but does not have `*_info` top level properties. Used to support pings that are configured to exclude the standard Glean `info` fields.
