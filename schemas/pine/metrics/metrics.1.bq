@@ -617,6 +617,12 @@
             "mode": "NULLABLE",
             "name": "telemetry_data_upload_optin",
             "type": "BOOL"
+          },
+          {
+            "description": "Whether the OS theme is dark. This metric was generated to correspond to the Legacy Telemetry scalar widget.dark_mode.\n",
+            "mode": "NULLABLE",
+            "name": "widget_dark_mode",
+            "type": "BOOL"
           }
         ],
         "mode": "NULLABLE",
@@ -3539,6 +3545,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Record the statuses related with the media decryption.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "BOOL"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "mediadrm_decryption",
+            "type": "RECORD"
+          },
+          {
             "description": "Records whether Firefox was the default handler for particular file types or protocols.  The result is split into keys which represent the file extension or scheme: currently, a subset of the file types Firefox registers to handle, namely \".pdf\" and \"mailto\" as protocol. In the future, more file types may be recorded. This metric was generated to correspond to the Legacy Telemetry scalar os.environment.is_default_handler.\n",
             "fields": [
               {
@@ -3608,6 +3632,24 @@
             ],
             "mode": "REPEATED",
             "name": "startup_run_from_dmg_install_outcome",
+            "type": "RECORD"
+          },
+          {
+            "description": "Whether the system has any matching pointing device for each label.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "BOOL"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "widget_pointing_devices",
             "type": "RECORD"
           }
         ],
