@@ -32,7 +32,9 @@ schemas
 │   ├── sessions
 │   └── spoc-fills
 ├── ads-backend
-│   └── events
+│   ├── events
+│   ├── interaction
+│   └── request-stats
 ├── bedrock
 │   ├── deletion-request
 │   ├── events
@@ -785,6 +787,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-775 directories
+777 directories
 ```
 
