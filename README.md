@@ -691,6 +691,8 @@ schemas
 │   └── video-index
 ├── relay-backend
 │   └── events
+├── syncstorage
+│   └── events
 ├── telemetry
 │   ├── addon-install-blocked
 │   ├── advancedtelemetry
@@ -787,6 +789,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-777 directories
+779 directories
 ```
 
