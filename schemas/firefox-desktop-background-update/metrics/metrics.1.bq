@@ -5879,6 +5879,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Gather the outcome of checking if a HTTPS record can be used: - \"invalid\" - \"succeeded\" - \"unmatched_cname\" - \"all_excluded\" - \"no_default_alpn\" - \"others\"\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_https_record_state",
+            "type": "RECORD"
+          },
+          {
             "description": "HTTPS RR is presented or not\n",
             "fields": [
               {
@@ -8599,6 +8617,18 @@
             "description": "This records the number of known profiles after startup completes. This includes any profiles that were created during startup. This metric was generated to correspond to the Legacy Telemetry scalar startup.profile_count.\n",
             "mode": "NULLABLE",
             "name": "startup_profile_count",
+            "type": "INT64"
+          },
+          {
+            "description": "Record the timestamp of the first content window paint, in milliseconds since process start. This metric was generated to correspond to the Legacy Telemetry scalar timestamps.first_paint.\n",
+            "mode": "NULLABLE",
+            "name": "timestamps_first_paint",
+            "type": "INT64"
+          },
+          {
+            "description": "Record the timestamp of the first main window paint, in milliseconds since process start. Intended to replace first_paint since first_paint is broken. This metric was generated to correspond to the Legacy Telemetry scalar timestamps.first_paint_two.\n",
+            "mode": "NULLABLE",
+            "name": "timestamps_first_paint_two",
             "type": "INT64"
           }
         ],
