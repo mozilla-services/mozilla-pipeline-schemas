@@ -101,6 +101,7 @@ schemas
 │   ├── top-sites
 │   ├── urlbar-keyword-exposure
 │   ├── urlbar-potential-exposure
+│   ├── usage-reporting
 │   ├── use-counters
 │   └── user-characteristics
 ├── firefox-desktop-background-defaultagent
@@ -292,6 +293,7 @@ schemas
 │   ├── sync
 │   ├── tabs-sync
 │   ├── topsites-impression
+│   ├── usage-reporting
 │   ├── use-counters
 │   └── user-characteristics
 ├── org-mozilla-fenix-nightly
@@ -323,6 +325,7 @@ schemas
 │   ├── sync
 │   ├── tabs-sync
 │   ├── topsites-impression
+│   ├── usage-reporting
 │   ├── use-counters
 │   └── user-characteristics
 ├── org-mozilla-fennec-aurora
@@ -354,6 +357,7 @@ schemas
 │   ├── sync
 │   ├── tabs-sync
 │   ├── topsites-impression
+│   ├── usage-reporting
 │   ├── use-counters
 │   └── user-characteristics
 ├── org-mozilla-firefox
@@ -385,6 +389,7 @@ schemas
 │   ├── sync
 │   ├── tabs-sync
 │   ├── topsites-impression
+│   ├── usage-reporting
 │   ├── use-counters
 │   └── user-characteristics
 ├── org-mozilla-firefox-beta
@@ -416,6 +421,7 @@ schemas
 │   ├── sync
 │   ├── tabs-sync
 │   ├── topsites-impression
+│   ├── usage-reporting
 │   ├── use-counters
 │   └── user-characteristics
 ├── org-mozilla-firefox-vpn
@@ -445,6 +451,7 @@ schemas
 │   ├── fog-validation
 │   ├── metrics
 │   ├── pageload
+│   ├── usage-reporting
 │   ├── use-counters
 │   └── user-characteristics
 ├── org-mozilla-focus-beta
@@ -460,6 +467,7 @@ schemas
 │   ├── fog-validation
 │   ├── metrics
 │   ├── pageload
+│   ├── usage-reporting
 │   ├── use-counters
 │   └── user-characteristics
 ├── org-mozilla-focus-nightly
@@ -475,6 +483,7 @@ schemas
 │   ├── fog-validation
 │   ├── metrics
 │   ├── pageload
+│   ├── usage-reporting
 │   ├── use-counters
 │   └── user-characteristics
 ├── org-mozilla-ios-fennec
@@ -614,6 +623,7 @@ schemas
 │   ├── fog-validation
 │   ├── metrics
 │   ├── pageload
+│   ├── usage-reporting
 │   ├── use-counters
 │   └── user-characteristics
 ├── org-mozilla-mozregression
@@ -676,6 +686,7 @@ schemas
 │   ├── pseudo-main
 │   ├── spoc
 │   ├── top-sites
+│   ├── usage-reporting
 │   ├── use-counters
 │   └── user-characteristics
 ├── pocket
@@ -789,6 +800,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-779 directories
+790 directories
 ```
 
