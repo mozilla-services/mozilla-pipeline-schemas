@@ -510,7 +510,8 @@ schemas
 │   ├── temp-rust-tabs-sync
 │   ├── temp-sync
 │   ├── temp-tabs-sync
-│   └── topsites-impression
+│   ├── topsites-impression
+│   └── usage-reporting
 ├── org-mozilla-ios-firefox
 │   ├── addresses-sync
 │   ├── baseline
@@ -535,7 +536,8 @@ schemas
 │   ├── temp-rust-tabs-sync
 │   ├── temp-sync
 │   ├── temp-tabs-sync
-│   └── topsites-impression
+│   ├── topsites-impression
+│   └── usage-reporting
 ├── org-mozilla-ios-firefoxbeta
 │   ├── addresses-sync
 │   ├── baseline
@@ -560,7 +562,8 @@ schemas
 │   ├── temp-rust-tabs-sync
 │   ├── temp-sync
 │   ├── temp-tabs-sync
-│   └── topsites-impression
+│   ├── topsites-impression
+│   └── usage-reporting
 ├── org-mozilla-ios-firefoxvpn
 │   ├── baseline
 │   ├── daemonsession
@@ -579,14 +582,18 @@ schemas
 │   └── vpnsession
 ├── org-mozilla-ios-focus
 │   ├── baseline
+│   ├── dau-reporting
 │   ├── deletion-request
 │   ├── events
-│   └── metrics
+│   ├── metrics
+│   └── usage-reporting
 ├── org-mozilla-ios-klar
 │   ├── baseline
+│   ├── dau-reporting
 │   ├── deletion-request
 │   ├── events
-│   └── metrics
+│   ├── metrics
+│   └── usage-reporting
 ├── org-mozilla-ios-lockbox
 │   ├── baseline
 │   ├── deletion-request
@@ -800,6 +807,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-790 directories
+797 directories
 ```
 
