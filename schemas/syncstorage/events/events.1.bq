@@ -309,6 +309,44 @@
     "type": "RECORD"
   },
   {
+    "fields": [
+      {
+        "fields": [
+          {
+            "description": "Device family from which sync action was initiated.\nDesktop PC, Tablet, Mobile, and Other.\n",
+            "mode": "NULLABLE",
+            "name": "syncstorage_device_family",
+            "type": "STRING"
+          },
+          {
+            "description": "Hashed device id that is associated with a given account. This is used\nentirely to associate opt-out or removal requests, as they make use of \nthe \"deletion-request\" ping associated with the client side of Sync.\n",
+            "mode": "NULLABLE",
+            "name": "syncstorage_hashed_device_id",
+            "type": "STRING"
+          },
+          {
+            "description": "User identifier. Uses `hashed_fxa_uid` for accurate count of sync actions. Used to determine which user has initiated sync activity. This is the Firefox Accounts (FxA) User Identifier (UID) value passed through a SHA-256 hash to render a value that is unique, but ensures the privacy of the original UID. A single user could make numerous sync actions in a given time and this id is required to ensure only a single count of daily active use is made, given a number of actions. Sync_id is not used due to possibility of new keys being generated during resets or timeouts, whenever encryption keys change.\n",
+            "mode": "NULLABLE",
+            "name": "syncstorage_hashed_fxa_uid",
+            "type": "STRING"
+          },
+          {
+            "description": "Platform from which sync action was initiated.\nFirefox Desktop, Fenix, or Firefox iOS.\n",
+            "mode": "NULLABLE",
+            "name": "syncstorage_platform",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "string",
+        "type": "RECORD"
+      }
+    ],
+    "mode": "NULLABLE",
+    "name": "metrics",
+    "type": "RECORD"
+  },
+  {
     "description": "Set to \"Other\" if this message contained an unrecognized app name",
     "mode": "NULLABLE",
     "name": "normalized_app_name",
