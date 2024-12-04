@@ -157,11 +157,11 @@
       "type": "boolean"
     },
     "disk_space_error": {
-      "description": "True if the installation failed because the drive we're trying to install to does not have enough space",
+      "description": "[DEPRECATED] Use `disk_space_req_not_met` instead.",
       "type": "boolean"
     },
     "no_write_access": {
-      "description": "True if the installation failed because the user doesn’t have permission to write to the path we’re trying to install to.",
+      "description": "[DEPRECATED] Use `writeable_req_not_met` instead.",
       "type": "boolean"
     },
     "user_cancelled": {
@@ -193,7 +193,7 @@
       "type": "boolean"
     },
     "old_running": {
-      "description": "True if the installation succeeded and we weren’t able to launch the newly installed application because a copy of Firefox was already running.",
+      "description": "[DEPRECATED] Should always be false since Firefox 74, since this check was removed in that version.",
       "type": "boolean"
     },
     "attribution": {
@@ -235,6 +235,30 @@
     "windows_ubr": {
       "description": "The Windows Update Build Revision of the installation device, 0 if it does not exist",
       "type": "integer"
+    },
+    "disk_space_req_not_met": {
+      "description": "True if the installation failed because the drive we're trying to install to does not have enough space.",
+      "type": "boolean"
+    },
+    "hardware_req_not_met": {
+      "description": "True if the system hardware does not meet the minimum hardware requirements.",
+      "type": "boolean"
+    },
+    "os_version_req_not_met": {
+      "description": " True if the system does not meet the minimum OS version requirements.",
+      "type": "boolean"
+    },
+    "sig_check_timeout": {
+      "description": "True if there was a timeout on the the certificate checks",
+      "type": "boolean"
+    },
+    "unknown_error": {
+      "description": "Default failure exit code. Seeing this in telemetry indicates that the stub installer has exited unsuccessfully, but no reason has been specified",
+      "type": "boolean"
+    },
+    "writeable_req_not_met": {
+      "description": "True if the installation failed because the user doesn't have permission to write to the path we're trying to install to.",
+      "type": "boolean"
     }
   }
 }
