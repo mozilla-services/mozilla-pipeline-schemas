@@ -54,9 +54,15 @@
     "type": "BOOL"
   },
   {
-    "description": "True if the installation failed because the drive we're trying to install to does not have enough space",
+    "description": "[DEPRECATED] Use `disk_space_req_not_met` instead.",
     "mode": "NULLABLE",
     "name": "disk_space_error",
+    "type": "BOOL"
+  },
+  {
+    "description": "True if the installation failed because the drive we're trying to install to does not have enough space.",
+    "mode": "NULLABLE",
+    "name": "disk_space_req_not_met",
     "type": "BOOL"
   },
   {
@@ -135,6 +141,12 @@
     "description": "True if at least one existing installation of Firefox was found on the system prior to this installation",
     "mode": "NULLABLE",
     "name": "had_old_install",
+    "type": "BOOL"
+  },
+  {
+    "description": "True if the system hardware does not meet the minimum hardware requirements.",
+    "mode": "NULLABLE",
+    "name": "hardware_req_not_met",
     "type": "BOOL"
   },
   {
@@ -341,7 +353,7 @@
     "type": "BOOL"
   },
   {
-    "description": "True if the installation failed because the user doesn’t have permission to write to the path we’re trying to install to.",
+    "description": "[DEPRECATED] Use `writeable_req_not_met` instead.",
     "mode": "NULLABLE",
     "name": "no_write_access",
     "type": "BOOL"
@@ -388,7 +400,7 @@
     "type": "BOOL"
   },
   {
-    "description": "True if the installation succeeded and we weren’t able to launch the newly installed application because a copy of Firefox was already running.",
+    "description": "[DEPRECATED] Should always be false since Firefox 74, since this check was removed in that version.",
     "mode": "NULLABLE",
     "name": "old_running",
     "type": "BOOL"
@@ -410,6 +422,12 @@
     "mode": "NULLABLE",
     "name": "os_version",
     "type": "STRING"
+  },
+  {
+    "description": " True if the system does not meet the minimum OS version requirements.",
+    "mode": "NULLABLE",
+    "name": "os_version_req_not_met",
+    "type": "BOOL"
   },
   {
     "description": "True if the installation failed because the download had to be retried too many times (currently 10)",
@@ -466,6 +484,12 @@
     "type": "BOOL"
   },
   {
+    "description": "True if there was a timeout on the the certificate checks",
+    "mode": "NULLABLE",
+    "name": "sig_check_timeout",
+    "type": "BOOL"
+  },
+  {
     "description": "True if the installation failed because the signature on the downloaded file wasn’t valid and/or wasn’t signed by a trusted authority",
     "mode": "NULLABLE",
     "name": "sig_not_trusted",
@@ -502,6 +526,12 @@
     "type": "BOOL"
   },
   {
+    "description": "Default failure exit code. Seeing this in telemetry indicates that the stub installer has exited unsuccessfully, but no reason has been specified",
+    "mode": "NULLABLE",
+    "name": "unknown_error",
+    "type": "BOOL"
+  },
+  {
     "description": "Value of MOZ_UPDATE_CHANNEL the installer was built with. Generally the same as build_channel",
     "mode": "NULLABLE",
     "name": "update_channel",
@@ -524,5 +554,11 @@
     "mode": "NULLABLE",
     "name": "windows_ubr",
     "type": "INT64"
+  },
+  {
+    "description": "True if the installation failed because the user doesn't have permission to write to the path we're trying to install to.",
+    "mode": "NULLABLE",
+    "name": "writeable_req_not_met",
+    "type": "BOOL"
   }
 ]

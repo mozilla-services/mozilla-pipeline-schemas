@@ -223,6 +223,7 @@ schemas
 │   ├── daemonsession
 │   ├── deletion-request
 │   ├── events
+│   ├── extensionsession
 │   ├── main
 │   ├── metrics
 │   └── vpnsession
@@ -429,6 +430,7 @@ schemas
 │   ├── daemonsession
 │   ├── deletion-request
 │   ├── events
+│   ├── extensionsession
 │   ├── main
 │   ├── metrics
 │   └── vpnsession
@@ -569,6 +571,7 @@ schemas
 │   ├── daemonsession
 │   ├── deletion-request
 │   ├── events
+│   ├── extensionsession
 │   ├── main
 │   ├── metrics
 │   └── vpnsession
@@ -577,6 +580,7 @@ schemas
 │   ├── daemonsession
 │   ├── deletion-request
 │   ├── events
+│   ├── extensionsession
 │   ├── main
 │   ├── metrics
 │   └── vpnsession
@@ -807,6 +811,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-797 directories
+801 directories
 ```
 
