@@ -90,6 +90,7 @@ schemas
 │   ├── metrics
 │   ├── new-metric-capture-emulation
 │   ├── newtab
+│   ├── nimbus-targeting-context
 │   ├── pageload
 │   ├── pocket-button
 │   ├── prototype-no-code-events
@@ -117,7 +118,8 @@ schemas
 │   ├── default-agent
 │   ├── deletion-request
 │   ├── events
-│   └── metrics
+│   ├── metrics
+│   └── nimbus-targeting-context
 ├── firefox-desktop-background-update
 │   ├── background-update
 │   ├── baseline
@@ -811,6 +813,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-801 directories
+803 directories
 ```
 
