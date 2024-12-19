@@ -1574,6 +1574,12 @@
             "type": "INT64"
           },
           {
+            "description": "Counts how many times Unified Search Button popup is opened. This metric was generated to correspond to the Legacy Telemetry scalar urlbar.unifiedsearchbutton.opened.\n",
+            "mode": "NULLABLE",
+            "name": "urlbar_unifiedsearchbutton_opened",
+            "type": "INT64"
+          },
+          {
             "description": "Counts how many times the zero-prefix urlbar results panel was abandoned. This metric was generated to correspond to the Legacy Telemetry scalar urlbar.zeroprefix.abandonment.\n",
             "mode": "NULLABLE",
             "name": "urlbar_zeroprefix_abandonment",
@@ -8159,6 +8165,24 @@
             "type": "RECORD"
           },
           {
+            "description": "The number of times we see the IP address 0.0.0.0 or its IPv6 equivalent used as hostnames\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_http_ip_addr_any_hostnames",
+            "type": "RECORD"
+          },
+          {
             "description": "Count of the HTTP redirection that triggered by subresource, keyed by the URL scheme redirected to\n",
             "fields": [
               {
@@ -9185,7 +9209,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Counts the type of initialization statuses on start up.\nfailedSettings - failed loading and migrating the search settings file.\nfailedFetchEngines - failed to load or parse the configuration from remote\n                     settings.\nfailedLoadEngines - failed to create all the search engines from the\n                    configuration or user installed engines.\nsuccess - search service successfully initialized.\n",
+            "description": "Counts the type of initialization statuses on start up.\nfailedSettings - failed loading and migrating the search settings file.\nfailedFetchEngines - failed to load or parse the configuration from remote\n                     settings.\nfailedLoadEngines - failed to create all the search engines from the\n                    configuration or user installed engines.\nfailedLoadSettingsAddonManager - the addon manager ready promise was rejected. (from FF135)\nsuccess - search service successfully initialized.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -10622,6 +10646,24 @@
             ],
             "mode": "REPEATED",
             "name": "urlbar_tips",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts how many times Unified Search Button items were selected. The key is followings. * builtin_search: Builtin search engine. * addon_search: Addon search engine. * local_search: Local search engine such as Bookmarks. * settings: Settings menu. This metric was generated to correspond to the Legacy Telemetry scalar urlbar.unifiedsearchbutton.picked.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "urlbar_unifiedsearchbutton_picked",
             "type": "RECORD"
           },
           {
