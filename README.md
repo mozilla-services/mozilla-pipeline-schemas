@@ -79,6 +79,7 @@ schemas
 │   ├── baseline
 │   ├── bounce-tracking-protection
 │   ├── broken-site-report
+│   ├── captcha-detection
 │   ├── crash
 │   ├── dau-reporting
 │   ├── deletion-request
@@ -813,6 +814,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-803 directories
+804 directories
 ```
 
