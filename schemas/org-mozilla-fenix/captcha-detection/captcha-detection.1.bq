@@ -313,9 +313,63 @@
       {
         "fields": [
           {
-            "description": "Set to true if the tasks that are queued prior to Glean initialization time out.",
+            "description": "Whether the user has enabled cookie partitioning at the time of data collection.\n",
             "mode": "NULLABLE",
-            "name": "glean_error_preinit_tasks_timeout",
+            "name": "captcha_detection_network_cookie_cookiebehavior_optinpartitioning",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the user has enabled cookie partioning in PBM at the time of data collection.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_network_cookie_cookiebehavior_optinpartitioning_pbm",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the user has enabled suspected fingerprinters protection at the time of data collection.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_privacy_fingerprintingprotection",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the user has enabled suspected fingerprinters protection in PBM at the time of data collection.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_privacy_fingerprintingprotection_pbm",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the user has enabled resist fingerprinting at the time of data collection.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_privacy_resistfingerprinting",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the user has enabled resist fingerprinting in PBM at the time of data collection.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_privacy_resistfingerprinting_pbmode",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the user has enabled cryptomining protection at the time of data collection.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_privacy_trackingprotection_cryptomining_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the user has enabled tracking protection at the time of data collection.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_privacy_trackingprotection_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the user has enabled known fingerprinters protection at the time of data collection.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_privacy_trackingprotection_fingerprinting_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the user has enabled tracking protection in PBM at the time of data collection.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_privacy_trackingprotection_pbm_enabled",
             "type": "BOOL"
           }
         ],
@@ -326,51 +380,207 @@
       {
         "fields": [
           {
-            "description": "The number of times we encountered an IO error\nwhen writing a pending ping to disk.\n",
+            "description": "How many times the ArkoseLabs challenge was successfully completed.\n",
             "mode": "NULLABLE",
-            "name": "glean_error_io",
+            "name": "captcha_detection_arkoselabs_pc",
             "type": "INT64"
           },
           {
-            "description": "The number of tasks that overflowed the pre-initialization buffer.\nOnly sent if the buffer ever overflows.\n\nIn Version 0 this reported the total number of tasks enqueued.\n",
+            "description": "How many times the ArkoseLabs challenge was successfully completed.\n",
             "mode": "NULLABLE",
-            "name": "glean_error_preinit_tasks_overflow",
+            "name": "captcha_detection_arkoselabs_pc_pbm",
             "type": "INT64"
           },
           {
-            "description": "Counts the number of times we encountered an invalid timezone offset\nwhen trying to get the current time.\nA timezone offset is invalid if it is outside [-24h, +24h].\nIf invalid a UTC offset is used (+0h).\n",
+            "description": "How many times the ArkoseLabs challenge was failed.\n",
             "mode": "NULLABLE",
-            "name": "glean_time_invalid_timezone_offset",
+            "name": "captcha_detection_arkoselabs_pf",
             "type": "INT64"
           },
           {
-            "description": "The number of pings deleted after the quota\nfor the size of the pending pings directory or number of files is hit.\nSince quota is only calculated for the pending pings directory,\nand deletion request ping live in a different directory,\ndeletion request pings are never deleted.\n",
+            "description": "How many times the ArkoseLabs challenge was failed.\n",
             "mode": "NULLABLE",
-            "name": "glean_upload_deleted_pings_after_quota_hit",
+            "name": "captcha_detection_arkoselabs_pf_pbm",
             "type": "INT64"
           },
           {
-            "description": "How many pings were dropped because we found them already in-flight.\n",
+            "description": "How many times the ArkoseLabs challenge was shown.\n",
             "mode": "NULLABLE",
-            "name": "glean_upload_in_flight_pings_dropped",
+            "name": "captcha_detection_arkoselabs_ps",
             "type": "INT64"
           },
           {
-            "description": "How many ping upload responses did we not record as a success or failure\n(in `glean.upload.send_success` or `glean.upload.send_failue`,\nrespectively) due to an inconsistency in our internal bookkeeping?\n",
+            "description": "How many times the ArkoseLabs challenge was shown.\n",
             "mode": "NULLABLE",
-            "name": "glean_upload_missing_send_ids",
+            "name": "captcha_detection_arkoselabs_ps_pbm",
             "type": "INT64"
           },
           {
-            "description": "The total number of pending pings at startup.\nThis does not include deletion-request pings.\n",
+            "description": "How many times the AWS WAF challenge was successfully completed.\n",
             "mode": "NULLABLE",
-            "name": "glean_upload_pending_pings",
+            "name": "captcha_detection_awswaf_pc",
             "type": "INT64"
           },
           {
-            "description": "On mobile, the number of times the application went to foreground.\n",
+            "description": "How many times the AWS WAF challenge was successfully completed.\n",
             "mode": "NULLABLE",
-            "name": "glean_validation_foreground_count",
+            "name": "captcha_detection_awswaf_pc_pbm",
+            "type": "INT64"
+          },
+          {
+            "description": "How many times the AWS WAF challenge was failed.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_awswaf_pf",
+            "type": "INT64"
+          },
+          {
+            "description": "How many times the AWS WAF challenge was failed.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_awswaf_pf_pbm",
+            "type": "INT64"
+          },
+          {
+            "description": "How many times the AWS WAF challenge was shown.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_awswaf_ps",
+            "type": "INT64"
+          },
+          {
+            "description": "How many times the AWS WAF challenge was shown.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_awswaf_ps_pbm",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the Cloudflare Turnstile challenge was successfully completed since last ping submission.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_cloudflare_turnstile_cc",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the Cloudflare Turnstile challenge was successfully completed since last ping submission.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_cloudflare_turnstile_cc_pbm",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the Cloudflare Turnstile challenge was failed since last ping submission.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_cloudflare_turnstile_cf",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the Cloudflare Turnstile challenge was failed since last ping submission.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_cloudflare_turnstile_cf_pbm",
+            "type": "INT64"
+          },
+          {
+            "description": "How many times the Datadome blocked a user.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_datadome_bl",
+            "type": "INT64"
+          },
+          {
+            "description": "How many times the Datadome blocked a user.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_datadome_bl_pbm",
+            "type": "INT64"
+          },
+          {
+            "description": "How many times the user passed a Datadome puzzle.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_datadome_pc",
+            "type": "INT64"
+          },
+          {
+            "description": "How many times the user completed a Datadome puzzle.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_datadome_pc_pbm",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of times the Datadome puzzle was shown.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_datadome_ps",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of times the Datadome puzzle was shown.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_datadome_ps_pbm",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the user completed a Google reCAPTCHA v2 challenge automatically since last ping submission.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_google_recaptcha_v2_ac",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the user completed a Google reCAPTCHA v2 challenge automatically since last ping submission.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_google_recaptcha_v2_ac_pbm",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the user completed a Google reCAPTCHA v2 puzzle since last ping submission.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_google_recaptcha_v2_pc",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the user completed a Google reCAPTCHA v2 puzzle since last ping submission.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_google_recaptcha_v2_pc_pbm",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the user has seen a Google reCAPTCHA v2 puzzle since last ping submission.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_google_recaptcha_v2_ps",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the user has seen a Google reCAPTCHA v2 puzzle since last ping submission.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_google_recaptcha_v2_ps_pbm",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the user completed an hCaptcha challenge automatically.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_hcaptcha_ac",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the user completed an hCaptcha challenge automatically.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_hcaptcha_ac_pbm",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the user completed an hCaptcha puzzle.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_hcaptcha_pc",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the user completed an hCaptcha puzzle.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_hcaptcha_pc_pbm",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the hCaptcha puzzle was shown.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_hcaptcha_ps",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the hCaptcha puzzle was shown.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_hcaptcha_ps_pbm",
             "type": "INT64"
           }
         ],
@@ -381,31 +591,152 @@
       {
         "fields": [
           {
-            "description": "The hour of the first run of the application.\n",
+            "description": "The number of solutions required to complete the ArkoseLabs challenge.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
             "mode": "NULLABLE",
-            "name": "glean_validation_first_run_hour",
-            "type": "STRING"
+            "name": "captcha_detection_arkoselabs_solutions_required",
+            "type": "RECORD"
+          },
+          {
+            "description": "The number of solutions required to complete the ArkoseLabs challenge.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "captcha_detection_arkoselabs_solutions_required_pbm",
+            "type": "RECORD"
+          },
+          {
+            "description": "The number of solutions required to complete the AWS WAF challenge.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "captcha_detection_awswaf_solutions_required",
+            "type": "RECORD"
+          },
+          {
+            "description": "The number of solutions required to complete the AWS WAF challenge.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "captcha_detection_awswaf_solutions_required_pbm",
+            "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
-        "name": "datetime",
-        "type": "RECORD"
-      },
-      {
-        "fields": [
-          {
-            "mode": "NULLABLE",
-            "name": "key",
-            "type": "STRING"
-          },
-          {
-            "mode": "NULLABLE",
-            "name": "value",
-            "type": "STRING"
-          }
-        ],
-        "mode": "REPEATED",
-        "name": "jwe",
+        "name": "custom_distribution",
         "type": "RECORD"
       },
       {
@@ -481,42 +812,6 @@
             "mode": "REPEATED",
             "name": "glean_error_invalid_value",
             "type": "RECORD"
-          },
-          {
-            "description": "Counts the number of ping upload failures, by type of failure.\nThis includes failures for all ping types,\nthough the counts appear in the next successfully sent `metrics` ping.\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "INT64"
-              }
-            ],
-            "mode": "REPEATED",
-            "name": "glean_upload_ping_upload_failure",
-            "type": "RECORD"
-          },
-          {
-            "description": "A count of the pings submitted, by ping type.\n\nThis metric appears in both the metrics and baseline pings.\n\n- On the metrics ping, the counts include the number of pings sent since\n  the last metrics ping (including the last metrics ping)\n- On the baseline ping, the counts include the number of pings send since\n  the last baseline ping (including the last baseline ping)\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "INT64"
-              }
-            ],
-            "mode": "REPEATED",
-            "name": "glean_validation_pings_submitted",
-            "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
@@ -526,553 +821,20 @@
       {
         "fields": [
           {
+            "description": "The user's cookie behavior setting at the time of data collection.\n",
             "mode": "NULLABLE",
-            "name": "key",
+            "name": "captcha_detection_network_cookie_cookiebehavior",
             "type": "STRING"
           },
-          {
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
-              },
-              {
-                "fields": [
-                  {
-                    "mode": "NULLABLE",
-                    "name": "denominator",
-                    "type": "INT64"
-                  },
-                  {
-                    "mode": "NULLABLE",
-                    "name": "numerator",
-                    "type": "INT64"
-                  }
-                ],
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "RECORD"
-              }
-            ],
-            "mode": "REPEATED",
-            "name": "value",
-            "type": "RECORD"
-          }
-        ],
-        "mode": "REPEATED",
-        "name": "labeled_rate",
-        "type": "RECORD"
-      },
-      {
-        "fields": [
-          {
-            "description": "The size of the database file at startup.\n",
-            "fields": [
-              {
-                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
-                "mode": "NULLABLE",
-                "name": "count",
-                "type": "INT64"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "sum",
-                "type": "INT64"
-              },
-              {
-                "fields": [
-                  {
-                    "mode": "NULLABLE",
-                    "name": "key",
-                    "type": "STRING"
-                  },
-                  {
-                    "mode": "NULLABLE",
-                    "name": "value",
-                    "type": "INT64"
-                  }
-                ],
-                "mode": "REPEATED",
-                "name": "values",
-                "type": "RECORD"
-              }
-            ],
-            "mode": "NULLABLE",
-            "name": "glean_database_size",
-            "type": "RECORD"
-          },
-          {
-            "description": "The size of pings that exceeded the maximum ping size allowed for upload.\n",
-            "fields": [
-              {
-                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
-                "mode": "NULLABLE",
-                "name": "count",
-                "type": "INT64"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "sum",
-                "type": "INT64"
-              },
-              {
-                "fields": [
-                  {
-                    "mode": "NULLABLE",
-                    "name": "key",
-                    "type": "STRING"
-                  },
-                  {
-                    "mode": "NULLABLE",
-                    "name": "value",
-                    "type": "INT64"
-                  }
-                ],
-                "mode": "REPEATED",
-                "name": "values",
-                "type": "RECORD"
-              }
-            ],
-            "mode": "NULLABLE",
-            "name": "glean_upload_discarded_exceeding_pings_size",
-            "type": "RECORD"
-          },
-          {
-            "description": "The size of the pending pings directory upon initialization of Glean.\nThis does not include the size of the deletion request pings directory.\n",
-            "fields": [
-              {
-                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
-                "mode": "NULLABLE",
-                "name": "count",
-                "type": "INT64"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "sum",
-                "type": "INT64"
-              },
-              {
-                "fields": [
-                  {
-                    "mode": "NULLABLE",
-                    "name": "key",
-                    "type": "STRING"
-                  },
-                  {
-                    "mode": "NULLABLE",
-                    "name": "value",
-                    "type": "INT64"
-                  }
-                ],
-                "mode": "REPEATED",
-                "name": "values",
-                "type": "RECORD"
-              }
-            ],
-            "mode": "NULLABLE",
-            "name": "glean_upload_pending_pings_directory_size",
-            "type": "RECORD"
-          }
-        ],
-        "mode": "NULLABLE",
-        "name": "memory_distribution",
-        "type": "RECORD"
-      },
-      {
-        "fields": [
           {
             "description": "An experimentation identifier derived and provided by the application\nfor the purpose of experimentation enrollment.\n",
             "mode": "NULLABLE",
             "name": "glean_client_annotation_experimentation_id",
             "type": "STRING"
-          },
-          {
-            "description": "If there was an error loading the RKV database, record it.\n",
-            "mode": "NULLABLE",
-            "name": "glean_database_rkv_load_error",
-            "type": "STRING"
-          },
-          {
-            "description": "The optional reason the ping was submitted.\nThe specific values for reason are specific to each ping, and are\ndocumented in the ping's pings.yaml file.\n",
-            "mode": "NULLABLE",
-            "name": "ping_reason",
-            "type": "STRING"
           }
         ],
         "mode": "NULLABLE",
         "name": "string",
-        "type": "RECORD"
-      },
-      {
-        "fields": [
-          {
-            "mode": "NULLABLE",
-            "name": "key",
-            "type": "STRING"
-          },
-          {
-            "mode": "NULLABLE",
-            "name": "value",
-            "type": "STRING"
-          }
-        ],
-        "mode": "REPEATED",
-        "name": "text",
-        "type": "RECORD"
-      },
-      {
-        "fields": [
-          {
-            "description": "The time it takes for a write-commit for the Glean database.\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "bucket_count",
-                "type": "INT64"
-              },
-              {
-                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
-                "mode": "NULLABLE",
-                "name": "count",
-                "type": "INT64"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "histogram_type",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "overflow",
-                "type": "INT64"
-              },
-              {
-                "mode": "REPEATED",
-                "name": "range",
-                "type": "FLOAT64"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "sum",
-                "type": "INT64"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "time_unit",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "underflow",
-                "type": "INT64"
-              },
-              {
-                "fields": [
-                  {
-                    "mode": "NULLABLE",
-                    "name": "key",
-                    "type": "STRING"
-                  },
-                  {
-                    "mode": "NULLABLE",
-                    "name": "value",
-                    "type": "INT64"
-                  }
-                ],
-                "mode": "REPEATED",
-                "name": "values",
-                "type": "RECORD"
-              }
-            ],
-            "mode": "NULLABLE",
-            "name": "glean_database_write_time",
-            "type": "RECORD"
-          },
-          {
-            "description": "Time needed for a failed send of a ping to the servers and getting a reply back.\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "bucket_count",
-                "type": "INT64"
-              },
-              {
-                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
-                "mode": "NULLABLE",
-                "name": "count",
-                "type": "INT64"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "histogram_type",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "overflow",
-                "type": "INT64"
-              },
-              {
-                "mode": "REPEATED",
-                "name": "range",
-                "type": "FLOAT64"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "sum",
-                "type": "INT64"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "time_unit",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "underflow",
-                "type": "INT64"
-              },
-              {
-                "fields": [
-                  {
-                    "mode": "NULLABLE",
-                    "name": "key",
-                    "type": "STRING"
-                  },
-                  {
-                    "mode": "NULLABLE",
-                    "name": "value",
-                    "type": "INT64"
-                  }
-                ],
-                "mode": "REPEATED",
-                "name": "values",
-                "type": "RECORD"
-              }
-            ],
-            "mode": "NULLABLE",
-            "name": "glean_upload_send_failure",
-            "type": "RECORD"
-          },
-          {
-            "description": "Time needed for a successful send of a ping to the servers and getting a reply back\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "bucket_count",
-                "type": "INT64"
-              },
-              {
-                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
-                "mode": "NULLABLE",
-                "name": "count",
-                "type": "INT64"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "histogram_type",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "overflow",
-                "type": "INT64"
-              },
-              {
-                "mode": "REPEATED",
-                "name": "range",
-                "type": "FLOAT64"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "sum",
-                "type": "INT64"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "time_unit",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "underflow",
-                "type": "INT64"
-              },
-              {
-                "fields": [
-                  {
-                    "mode": "NULLABLE",
-                    "name": "key",
-                    "type": "STRING"
-                  },
-                  {
-                    "mode": "NULLABLE",
-                    "name": "value",
-                    "type": "INT64"
-                  }
-                ],
-                "mode": "REPEATED",
-                "name": "values",
-                "type": "RECORD"
-              }
-            ],
-            "mode": "NULLABLE",
-            "name": "glean_upload_send_success",
-            "type": "RECORD"
-          },
-          {
-            "description": "Time waited for the dispatcher to unblock during shutdown.\nMost samples are expected to be below the 10s timeout used.\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "bucket_count",
-                "type": "INT64"
-              },
-              {
-                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
-                "mode": "NULLABLE",
-                "name": "count",
-                "type": "INT64"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "histogram_type",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "overflow",
-                "type": "INT64"
-              },
-              {
-                "mode": "REPEATED",
-                "name": "range",
-                "type": "FLOAT64"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "sum",
-                "type": "INT64"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "time_unit",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "underflow",
-                "type": "INT64"
-              },
-              {
-                "fields": [
-                  {
-                    "mode": "NULLABLE",
-                    "name": "key",
-                    "type": "STRING"
-                  },
-                  {
-                    "mode": "NULLABLE",
-                    "name": "value",
-                    "type": "INT64"
-                  }
-                ],
-                "mode": "REPEATED",
-                "name": "values",
-                "type": "RECORD"
-              }
-            ],
-            "mode": "NULLABLE",
-            "name": "glean_validation_shutdown_dispatcher_wait",
-            "type": "RECORD"
-          },
-          {
-            "description": "Time waited for the uploader at shutdown.\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "bucket_count",
-                "type": "INT64"
-              },
-              {
-                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
-                "mode": "NULLABLE",
-                "name": "count",
-                "type": "INT64"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "histogram_type",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "overflow",
-                "type": "INT64"
-              },
-              {
-                "mode": "REPEATED",
-                "name": "range",
-                "type": "FLOAT64"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "sum",
-                "type": "INT64"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "time_unit",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "underflow",
-                "type": "INT64"
-              },
-              {
-                "fields": [
-                  {
-                    "mode": "NULLABLE",
-                    "name": "key",
-                    "type": "STRING"
-                  },
-                  {
-                    "mode": "NULLABLE",
-                    "name": "value",
-                    "type": "INT64"
-                  }
-                ],
-                "mode": "REPEATED",
-                "name": "values",
-                "type": "RECORD"
-              }
-            ],
-            "mode": "NULLABLE",
-            "name": "glean_validation_shutdown_wait",
-            "type": "RECORD"
-          }
-        ],
-        "mode": "NULLABLE",
-        "name": "timing_distribution",
-        "type": "RECORD"
-      },
-      {
-        "fields": [
-          {
-            "mode": "NULLABLE",
-            "name": "key",
-            "type": "STRING"
-          },
-          {
-            "mode": "NULLABLE",
-            "name": "value",
-            "type": "STRING"
-          }
-        ],
-        "mode": "REPEATED",
-        "name": "url",
         "type": "RECORD"
       }
     ],

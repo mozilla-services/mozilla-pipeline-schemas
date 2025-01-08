@@ -126,6 +126,7 @@ schemas
 │   ├── baseline
 │   ├── bounce-tracking-protection
 │   ├── broken-site-report
+│   ├── captcha-detection
 │   ├── crash
 │   ├── dau-reporting
 │   ├── deletion-request
@@ -176,13 +177,6 @@ schemas
 │   ├── sources
 │   ├── structured-ingestion
 │   └── telemetry-ingestion
-├── mlhackweek-search
-│   ├── action
-│   ├── baseline
-│   ├── custom
-│   ├── deletion-request
-│   ├── events
-│   └── metrics
 ├── mobile
 │   └── activation
 ├── monitor-backend
@@ -275,6 +269,7 @@ schemas
 │   ├── bookmarks-sync
 │   ├── bounce-tracking-protection
 │   ├── broken-site-report
+│   ├── captcha-detection
 │   ├── client-deduplication
 │   ├── cookie-banner-report-site
 │   ├── crash
@@ -307,6 +302,7 @@ schemas
 │   ├── bookmarks-sync
 │   ├── bounce-tracking-protection
 │   ├── broken-site-report
+│   ├── captcha-detection
 │   ├── client-deduplication
 │   ├── cookie-banner-report-site
 │   ├── crash
@@ -339,6 +335,7 @@ schemas
 │   ├── bookmarks-sync
 │   ├── bounce-tracking-protection
 │   ├── broken-site-report
+│   ├── captcha-detection
 │   ├── client-deduplication
 │   ├── cookie-banner-report-site
 │   ├── crash
@@ -371,6 +368,7 @@ schemas
 │   ├── bookmarks-sync
 │   ├── bounce-tracking-protection
 │   ├── broken-site-report
+│   ├── captcha-detection
 │   ├── client-deduplication
 │   ├── cookie-banner-report-site
 │   ├── crash
@@ -403,6 +401,7 @@ schemas
 │   ├── bookmarks-sync
 │   ├── bounce-tracking-protection
 │   ├── broken-site-report
+│   ├── captcha-detection
 │   ├── client-deduplication
 │   ├── cookie-banner-report-site
 │   ├── crash
@@ -448,6 +447,7 @@ schemas
 │   ├── baseline
 │   ├── bounce-tracking-protection
 │   ├── broken-site-report
+│   ├── captcha-detection
 │   ├── cookie-banner-report-site
 │   ├── crash
 │   ├── dau-reporting
@@ -464,6 +464,7 @@ schemas
 │   ├── baseline
 │   ├── bounce-tracking-protection
 │   ├── broken-site-report
+│   ├── captcha-detection
 │   ├── cookie-banner-report-site
 │   ├── crash
 │   ├── dau-reporting
@@ -480,6 +481,7 @@ schemas
 │   ├── baseline
 │   ├── bounce-tracking-protection
 │   ├── broken-site-report
+│   ├── captcha-detection
 │   ├── cookie-banner-report-site
 │   ├── crash
 │   ├── dau-reporting
@@ -629,6 +631,7 @@ schemas
 │   ├── baseline
 │   ├── bounce-tracking-protection
 │   ├── broken-site-report
+│   ├── captcha-detection
 │   ├── cookie-banner-report-site
 │   ├── crash
 │   ├── dau-reporting
@@ -688,6 +691,7 @@ schemas
 │   ├── baseline
 │   ├── bounce-tracking-protection
 │   ├── broken-site-report
+│   ├── captcha-detection
 │   ├── dau-reporting
 │   ├── deletion-request
 │   ├── events
@@ -792,6 +796,7 @@ schemas
 │   ├── baseline
 │   ├── bounce-tracking-protection
 │   ├── broken-site-report
+│   ├── captcha-detection
 │   ├── dau-reporting
 │   ├── deletion-request
 │   ├── events
@@ -814,6 +819,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-804 directories
+809 directories
 ```
 

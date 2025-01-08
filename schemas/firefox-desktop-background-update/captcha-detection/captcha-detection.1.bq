@@ -313,9 +313,63 @@
       {
         "fields": [
           {
-            "description": "Indicates whether the URL was selected by user\n",
+            "description": "Whether the user has enabled cookie partitioning at the time of data collection.\n",
             "mode": "NULLABLE",
-            "name": "search_selected",
+            "name": "captcha_detection_network_cookie_cookiebehavior_optinpartitioning",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the user has enabled cookie partioning in PBM at the time of data collection.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_network_cookie_cookiebehavior_optinpartitioning_pbm",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the user has enabled suspected fingerprinters protection at the time of data collection.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_privacy_fingerprintingprotection",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the user has enabled suspected fingerprinters protection in PBM at the time of data collection.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_privacy_fingerprintingprotection_pbm",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the user has enabled resist fingerprinting at the time of data collection.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_privacy_resistfingerprinting",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the user has enabled resist fingerprinting in PBM at the time of data collection.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_privacy_resistfingerprinting_pbmode",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the user has enabled cryptomining protection at the time of data collection.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_privacy_trackingprotection_cryptomining_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the user has enabled tracking protection at the time of data collection.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_privacy_trackingprotection_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the user has enabled known fingerprinters protection at the time of data collection.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_privacy_trackingprotection_fingerprinting_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the user has enabled tracking protection in PBM at the time of data collection.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_privacy_trackingprotection_pbm_enabled",
             "type": "BOOL"
           }
         ],
@@ -326,80 +380,363 @@
       {
         "fields": [
           {
-            "description": "Timestamp of selection action\n",
+            "description": "How many times the ArkoseLabs challenge was successfully completed.\n",
             "mode": "NULLABLE",
-            "name": "search_meta_url_select_timestamp",
-            "type": "STRING"
+            "name": "captcha_detection_arkoselabs_pc",
+            "type": "INT64"
           },
           {
-            "description": "Timestamp of selection action\n",
+            "description": "How many times the ArkoseLabs challenge was successfully completed.\n",
             "mode": "NULLABLE",
-            "name": "search_url_select_timestamp",
-            "type": "STRING"
+            "name": "captcha_detection_arkoselabs_pc_pbm",
+            "type": "INT64"
+          },
+          {
+            "description": "How many times the ArkoseLabs challenge was failed.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_arkoselabs_pf",
+            "type": "INT64"
+          },
+          {
+            "description": "How many times the ArkoseLabs challenge was failed.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_arkoselabs_pf_pbm",
+            "type": "INT64"
+          },
+          {
+            "description": "How many times the ArkoseLabs challenge was shown.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_arkoselabs_ps",
+            "type": "INT64"
+          },
+          {
+            "description": "How many times the ArkoseLabs challenge was shown.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_arkoselabs_ps_pbm",
+            "type": "INT64"
+          },
+          {
+            "description": "How many times the AWS WAF challenge was successfully completed.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_awswaf_pc",
+            "type": "INT64"
+          },
+          {
+            "description": "How many times the AWS WAF challenge was successfully completed.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_awswaf_pc_pbm",
+            "type": "INT64"
+          },
+          {
+            "description": "How many times the AWS WAF challenge was failed.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_awswaf_pf",
+            "type": "INT64"
+          },
+          {
+            "description": "How many times the AWS WAF challenge was failed.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_awswaf_pf_pbm",
+            "type": "INT64"
+          },
+          {
+            "description": "How many times the AWS WAF challenge was shown.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_awswaf_ps",
+            "type": "INT64"
+          },
+          {
+            "description": "How many times the AWS WAF challenge was shown.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_awswaf_ps_pbm",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the Cloudflare Turnstile challenge was successfully completed since last ping submission.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_cloudflare_turnstile_cc",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the Cloudflare Turnstile challenge was successfully completed since last ping submission.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_cloudflare_turnstile_cc_pbm",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the Cloudflare Turnstile challenge was failed since last ping submission.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_cloudflare_turnstile_cf",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the Cloudflare Turnstile challenge was failed since last ping submission.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_cloudflare_turnstile_cf_pbm",
+            "type": "INT64"
+          },
+          {
+            "description": "How many times the Datadome blocked a user.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_datadome_bl",
+            "type": "INT64"
+          },
+          {
+            "description": "How many times the Datadome blocked a user.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_datadome_bl_pbm",
+            "type": "INT64"
+          },
+          {
+            "description": "How many times the user passed a Datadome puzzle.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_datadome_pc",
+            "type": "INT64"
+          },
+          {
+            "description": "How many times the user completed a Datadome puzzle.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_datadome_pc_pbm",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of times the Datadome puzzle was shown.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_datadome_ps",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of times the Datadome puzzle was shown.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_datadome_ps_pbm",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the user completed a Google reCAPTCHA v2 challenge automatically since last ping submission.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_google_recaptcha_v2_ac",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the user completed a Google reCAPTCHA v2 challenge automatically since last ping submission.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_google_recaptcha_v2_ac_pbm",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the user completed a Google reCAPTCHA v2 puzzle since last ping submission.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_google_recaptcha_v2_pc",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the user completed a Google reCAPTCHA v2 puzzle since last ping submission.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_google_recaptcha_v2_pc_pbm",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the user has seen a Google reCAPTCHA v2 puzzle since last ping submission.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_google_recaptcha_v2_ps",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the user has seen a Google reCAPTCHA v2 puzzle since last ping submission.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_google_recaptcha_v2_ps_pbm",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the user completed an hCaptcha challenge automatically.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_hcaptcha_ac",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the user completed an hCaptcha challenge automatically.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_hcaptcha_ac_pbm",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the user completed an hCaptcha puzzle.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_hcaptcha_pc",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the user completed an hCaptcha puzzle.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_hcaptcha_pc_pbm",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the hCaptcha puzzle was shown.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_hcaptcha_ps",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the hCaptcha puzzle was shown.\n",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_hcaptcha_ps_pbm",
+            "type": "INT64"
           }
         ],
         "mode": "NULLABLE",
-        "name": "datetime",
+        "name": "counter",
         "type": "RECORD"
       },
       {
         "fields": [
           {
-            "mode": "NULLABLE",
-            "name": "key",
-            "type": "STRING"
-          },
-          {
-            "mode": "NULLABLE",
-            "name": "value",
-            "type": "STRING"
-          }
-        ],
-        "mode": "REPEATED",
-        "name": "jwe",
-        "type": "RECORD"
-      },
-      {
-        "fields": [
-          {
-            "description": "Indicates whether the URL was selected by user\n",
+            "description": "The number of solutions required to complete the ArkoseLabs challenge.\n",
             "fields": [
               {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
                 "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
+                "name": "count",
+                "type": "INT64"
               },
               {
                 "mode": "NULLABLE",
-                "name": "value",
-                "type": "BOOL"
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
               }
             ],
-            "mode": "REPEATED",
-            "name": "search_meta_selected",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_arkoselabs_solutions_required",
             "type": "RECORD"
           },
           {
-            "description": "Indicates whether the URL was selected by user\n",
+            "description": "The number of solutions required to complete the ArkoseLabs challenge.\n",
             "fields": [
               {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
                 "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
+                "name": "count",
+                "type": "INT64"
               },
               {
                 "mode": "NULLABLE",
-                "name": "value",
-                "type": "BOOL"
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
               }
             ],
-            "mode": "REPEATED",
-            "name": "search_selected",
+            "mode": "NULLABLE",
+            "name": "captcha_detection_arkoselabs_solutions_required_pbm",
+            "type": "RECORD"
+          },
+          {
+            "description": "The number of solutions required to complete the AWS WAF challenge.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "captcha_detection_awswaf_solutions_required",
+            "type": "RECORD"
+          },
+          {
+            "description": "The number of solutions required to complete the AWS WAF challenge.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "captcha_detection_awswaf_solutions_required_pbm",
             "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
-        "name": "labeled_boolean",
+        "name": "custom_distribution",
         "type": "RECORD"
       },
       {
@@ -475,42 +812,6 @@
             "mode": "REPEATED",
             "name": "glean_error_invalid_value",
             "type": "RECORD"
-          },
-          {
-            "description": "Search result position in list of results\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "INT64"
-              }
-            ],
-            "mode": "REPEATED",
-            "name": "search_meta_position",
-            "type": "RECORD"
-          },
-          {
-            "description": "Search result position in list of results\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "INT64"
-              }
-            ],
-            "mode": "REPEATED",
-            "name": "search_position",
-            "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
@@ -520,494 +821,20 @@
       {
         "fields": [
           {
+            "description": "The user's cookie behavior setting at the time of data collection.\n",
             "mode": "NULLABLE",
-            "name": "key",
+            "name": "captcha_detection_network_cookie_cookiebehavior",
             "type": "STRING"
           },
-          {
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
-              },
-              {
-                "fields": [
-                  {
-                    "mode": "NULLABLE",
-                    "name": "denominator",
-                    "type": "INT64"
-                  },
-                  {
-                    "mode": "NULLABLE",
-                    "name": "numerator",
-                    "type": "INT64"
-                  }
-                ],
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "RECORD"
-              }
-            ],
-            "mode": "REPEATED",
-            "name": "value",
-            "type": "RECORD"
-          }
-        ],
-        "mode": "REPEATED",
-        "name": "labeled_rate",
-        "type": "RECORD"
-      },
-      {
-        "fields": [
-          {
-            "description": "Search result hostname (domain)\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "STRING"
-              }
-            ],
-            "mode": "REPEATED",
-            "name": "search_hostname",
-            "type": "RECORD"
-          },
-          {
-            "description": "Search result hostname (domain)\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "STRING"
-              }
-            ],
-            "mode": "REPEATED",
-            "name": "search_meta_hostname",
-            "type": "RECORD"
-          },
-          {
-            "description": "Search result starting text (e.g. 'x days ago', '1 of 20')\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "STRING"
-              }
-            ],
-            "mode": "REPEATED",
-            "name": "search_meta_preamble",
-            "type": "RECORD"
-          },
-          {
-            "description": "Initial text of search result\nSearch result short description\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "STRING"
-              }
-            ],
-            "mode": "REPEATED",
-            "name": "search_meta_short_description",
-            "type": "RECORD"
-          },
-          {
-            "description": "Search result title\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "STRING"
-              }
-            ],
-            "mode": "REPEATED",
-            "name": "search_meta_title",
-            "type": "RECORD"
-          },
-          {
-            "description": "Search result url\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "STRING"
-              }
-            ],
-            "mode": "REPEATED",
-            "name": "search_meta_url",
-            "type": "RECORD"
-          },
-          {
-            "description": "Search result starting text (e.g. 'x days ago', '1 of 20')\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "STRING"
-              }
-            ],
-            "mode": "REPEATED",
-            "name": "search_preamble",
-            "type": "RECORD"
-          },
-          {
-            "description": "Initial text of search result\nSearch result short description\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "STRING"
-              }
-            ],
-            "mode": "REPEATED",
-            "name": "search_short_description",
-            "type": "RECORD"
-          },
-          {
-            "description": "Search result title\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "STRING"
-              }
-            ],
-            "mode": "REPEATED",
-            "name": "search_title",
-            "type": "RECORD"
-          },
-          {
-            "description": "Unselected search result hostname (domain)\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "STRING"
-              }
-            ],
-            "mode": "REPEATED",
-            "name": "search_unselected_hostname",
-            "type": "RECORD"
-          },
-          {
-            "description": "Unselected search result position in list of results\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "STRING"
-              }
-            ],
-            "mode": "REPEATED",
-            "name": "search_unselected_position",
-            "type": "RECORD"
-          },
-          {
-            "description": "Unselected search result starting text (e.g. 'x days ago', '1 of 20')\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "STRING"
-              }
-            ],
-            "mode": "REPEATED",
-            "name": "search_unselected_preamble",
-            "type": "RECORD"
-          },
-          {
-            "description": "Initial text of search result\nUnselected search result short description\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "STRING"
-              }
-            ],
-            "mode": "REPEATED",
-            "name": "search_unselected_short_description",
-            "type": "RECORD"
-          },
-          {
-            "description": "Unselected search result title\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "STRING"
-              }
-            ],
-            "mode": "REPEATED",
-            "name": "search_unselected_title",
-            "type": "RECORD"
-          },
-          {
-            "description": "Unselected search result url\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "STRING"
-              }
-            ],
-            "mode": "REPEATED",
-            "name": "search_unselected_url",
-            "type": "RECORD"
-          },
-          {
-            "description": "Search result url\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "STRING"
-              }
-            ],
-            "mode": "REPEATED",
-            "name": "search_url",
-            "type": "RECORD"
-          }
-        ],
-        "mode": "NULLABLE",
-        "name": "labeled_string",
-        "type": "RECORD"
-      },
-      {
-        "fields": [
-          {
-            "description": "Search result position in list of results\n",
-            "mode": "NULLABLE",
-            "name": "search_position",
-            "type": "INT64"
-          },
-          {
-            "description": "Indicates whether the URL was selected by user\n",
-            "mode": "NULLABLE",
-            "name": "search_selected",
-            "type": "INT64"
-          }
-        ],
-        "mode": "NULLABLE",
-        "name": "quantity",
-        "type": "RECORD"
-      },
-      {
-        "fields": [
           {
             "description": "An experimentation identifier derived and provided by the application\nfor the purpose of experimentation enrollment.\n",
             "mode": "NULLABLE",
             "name": "glean_client_annotation_experimentation_id",
             "type": "STRING"
-          },
-          {
-            "description": "Search result hostname (domain)\n",
-            "mode": "NULLABLE",
-            "name": "search_hostname",
-            "type": "STRING"
-          },
-          {
-            "description": "Search engine used\n",
-            "mode": "NULLABLE",
-            "name": "search_meta_search_engine",
-            "type": "STRING"
-          },
-          {
-            "description": "Submitted search text\n",
-            "mode": "NULLABLE",
-            "name": "search_meta_search_text",
-            "type": "STRING"
-          },
-          {
-            "description": "Session id\n",
-            "mode": "NULLABLE",
-            "name": "search_meta_session_id",
-            "type": "STRING"
-          },
-          {
-            "description": "Search result starting text (e.g. 'x days ago', '1 of 20')\n",
-            "mode": "NULLABLE",
-            "name": "search_preamble",
-            "type": "STRING"
-          },
-          {
-            "description": "Search engine used\n",
-            "mode": "NULLABLE",
-            "name": "search_search_engine",
-            "type": "STRING"
-          },
-          {
-            "description": "Submitted search text\n",
-            "mode": "NULLABLE",
-            "name": "search_search_text",
-            "type": "STRING"
-          },
-          {
-            "description": "Session id\n",
-            "mode": "NULLABLE",
-            "name": "search_session_id",
-            "type": "STRING"
-          },
-          {
-            "description": "Initial text of search result\nSearch result short description\n",
-            "mode": "NULLABLE",
-            "name": "search_short_description",
-            "type": "STRING"
-          },
-          {
-            "description": "Search result title\n",
-            "mode": "NULLABLE",
-            "name": "search_title",
-            "type": "STRING"
-          },
-          {
-            "description": "Search result url\n",
-            "mode": "NULLABLE",
-            "name": "search_url",
-            "type": "STRING"
           }
         ],
         "mode": "NULLABLE",
         "name": "string",
-        "type": "RECORD"
-      },
-      {
-        "fields": [
-          {
-            "mode": "NULLABLE",
-            "name": "key",
-            "type": "STRING"
-          },
-          {
-            "mode": "NULLABLE",
-            "name": "value",
-            "type": "STRING"
-          }
-        ],
-        "mode": "REPEATED",
-        "name": "text",
-        "type": "RECORD"
-      },
-      {
-        "fields": [
-          {
-            "description": "Timespan between user selecting this URL and previous selection.\nFirst selection contains no data for this field.\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "time_unit",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "INT64"
-              }
-            ],
-            "mode": "NULLABLE",
-            "name": "search_timespan_since_previous_link",
-            "type": "RECORD"
-          }
-        ],
-        "mode": "NULLABLE",
-        "name": "timespan",
-        "type": "RECORD"
-      },
-      {
-        "fields": [
-          {
-            "mode": "NULLABLE",
-            "name": "key",
-            "type": "STRING"
-          },
-          {
-            "mode": "NULLABLE",
-            "name": "value",
-            "type": "STRING"
-          }
-        ],
-        "mode": "REPEATED",
-        "name": "url",
         "type": "RECORD"
       }
     ],
