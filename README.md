@@ -103,6 +103,7 @@ schemas
 │   ├── top-sites
 │   ├── urlbar-keyword-exposure
 │   ├── urlbar-potential-exposure
+│   ├── usage-deletion-request
 │   ├── usage-reporting
 │   ├── use-counters
 │   └── user-characteristics
@@ -704,6 +705,7 @@ schemas
 │   ├── pseudo-main
 │   ├── spoc
 │   ├── top-sites
+│   ├── usage-deletion-request
 │   ├── usage-reporting
 │   ├── use-counters
 │   └── user-characteristics
@@ -819,6 +821,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-809 directories
+811 directories
 ```
 
