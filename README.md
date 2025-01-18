@@ -97,6 +97,7 @@ schemas
 │   ├── prototype-no-code-events
 │   ├── pseudo-main
 │   ├── quick-suggest
+│   ├── quick-suggest-deletion-request
 │   ├── search-with
 │   ├── serp-categorization
 │   ├── spoc
@@ -821,6 +822,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-811 directories
+812 directories
 ```
 
