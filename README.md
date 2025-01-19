@@ -288,6 +288,7 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
+│   ├── onboarding-opt-out
 │   ├── pageload
 │   ├── spoc
 │   ├── startup-timeline
@@ -321,6 +322,7 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
+│   ├── onboarding-opt-out
 │   ├── pageload
 │   ├── spoc
 │   ├── startup-timeline
@@ -354,6 +356,7 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
+│   ├── onboarding-opt-out
 │   ├── pageload
 │   ├── spoc
 │   ├── startup-timeline
@@ -387,6 +390,7 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
+│   ├── onboarding-opt-out
 │   ├── pageload
 │   ├── spoc
 │   ├── startup-timeline
@@ -420,6 +424,7 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
+│   ├── onboarding-opt-out
 │   ├── pageload
 │   ├── spoc
 │   ├── startup-timeline
@@ -822,6 +827,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-812 directories
+817 directories
 ```
 
