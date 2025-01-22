@@ -13,7 +13,7 @@ TELEMETRY_VERSIONS = {
     "android-anr-report": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     "sync": [4, 5],
     "mobile-metrics": [1],
-    "block-autoplay": [1, 4],
+    "block-autoplay": [4],
 }
 
 
