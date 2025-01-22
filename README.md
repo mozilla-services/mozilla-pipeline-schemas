@@ -513,6 +513,7 @@ schemas
 │   ├── history-sync
 │   ├── logins-sync
 │   ├── metrics
+│   ├── onboarding-opt-out
 │   ├── sync
 │   ├── tabs-sync
 │   ├── temp-baseline
@@ -539,6 +540,7 @@ schemas
 │   ├── history-sync
 │   ├── logins-sync
 │   ├── metrics
+│   ├── onboarding-opt-out
 │   ├── sync
 │   ├── tabs-sync
 │   ├── temp-baseline
@@ -565,6 +567,7 @@ schemas
 │   ├── history-sync
 │   ├── logins-sync
 │   ├── metrics
+│   ├── onboarding-opt-out
 │   ├── sync
 │   ├── tabs-sync
 │   ├── temp-baseline
@@ -827,6 +830,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-817 directories
+820 directories
 ```
 
