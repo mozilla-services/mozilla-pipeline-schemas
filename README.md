@@ -284,6 +284,7 @@ schemas
 │   ├── font-list
 │   ├── fx-suggest
 │   ├── history-sync
+│   ├── home
 │   ├── installation
 │   ├── logins-sync
 │   ├── metrics
@@ -295,6 +296,7 @@ schemas
 │   ├── sync
 │   ├── tabs-sync
 │   ├── topsites-impression
+│   ├── usage-deletion-request
 │   ├── usage-reporting
 │   ├── use-counters
 │   └── user-characteristics
@@ -318,6 +320,7 @@ schemas
 │   ├── font-list
 │   ├── fx-suggest
 │   ├── history-sync
+│   ├── home
 │   ├── installation
 │   ├── logins-sync
 │   ├── metrics
@@ -329,6 +332,7 @@ schemas
 │   ├── sync
 │   ├── tabs-sync
 │   ├── topsites-impression
+│   ├── usage-deletion-request
 │   ├── usage-reporting
 │   ├── use-counters
 │   └── user-characteristics
@@ -352,6 +356,7 @@ schemas
 │   ├── font-list
 │   ├── fx-suggest
 │   ├── history-sync
+│   ├── home
 │   ├── installation
 │   ├── logins-sync
 │   ├── metrics
@@ -363,6 +368,7 @@ schemas
 │   ├── sync
 │   ├── tabs-sync
 │   ├── topsites-impression
+│   ├── usage-deletion-request
 │   ├── usage-reporting
 │   ├── use-counters
 │   └── user-characteristics
@@ -386,6 +392,7 @@ schemas
 │   ├── font-list
 │   ├── fx-suggest
 │   ├── history-sync
+│   ├── home
 │   ├── installation
 │   ├── logins-sync
 │   ├── metrics
@@ -397,6 +404,7 @@ schemas
 │   ├── sync
 │   ├── tabs-sync
 │   ├── topsites-impression
+│   ├── usage-deletion-request
 │   ├── usage-reporting
 │   ├── use-counters
 │   └── user-characteristics
@@ -420,6 +428,7 @@ schemas
 │   ├── font-list
 │   ├── fx-suggest
 │   ├── history-sync
+│   ├── home
 │   ├── installation
 │   ├── logins-sync
 │   ├── metrics
@@ -431,6 +440,7 @@ schemas
 │   ├── sync
 │   ├── tabs-sync
 │   ├── topsites-impression
+│   ├── usage-deletion-request
 │   ├── usage-reporting
 │   ├── use-counters
 │   └── user-characteristics
@@ -830,6 +840,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-820 directories
+830 directories
 ```
 
