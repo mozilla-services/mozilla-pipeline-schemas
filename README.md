@@ -536,6 +536,7 @@ schemas
 │   ├── temp-sync
 │   ├── temp-tabs-sync
 │   ├── topsites-impression
+│   ├── usage-deletion-request
 │   └── usage-reporting
 ├── org-mozilla-ios-firefox
 │   ├── addresses-sync
@@ -563,6 +564,7 @@ schemas
 │   ├── temp-sync
 │   ├── temp-tabs-sync
 │   ├── topsites-impression
+│   ├── usage-deletion-request
 │   └── usage-reporting
 ├── org-mozilla-ios-firefoxbeta
 │   ├── addresses-sync
@@ -590,6 +592,7 @@ schemas
 │   ├── temp-sync
 │   ├── temp-tabs-sync
 │   ├── topsites-impression
+│   ├── usage-deletion-request
 │   └── usage-reporting
 ├── org-mozilla-ios-firefoxvpn
 │   ├── baseline
@@ -840,6 +843,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-830 directories
+833 directories
 ```
 
