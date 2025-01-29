@@ -1508,6 +1508,12 @@
             "type": "INT64"
           },
           {
+            "description": "How many times the SmartBlock placeholders are shown on the page\n",
+            "mode": "NULLABLE",
+            "name": "security_ui_protectionspopup_smartblockembeds_shown",
+            "type": "INT64"
+          },
+          {
             "description": "Counts number of visits to a supported retailer product page\nwhile enrolled in either the control or treatment branches\nof the shopping experiment.\n",
             "mode": "NULLABLE",
             "name": "shopping_product_page_visits",
@@ -1683,6 +1689,42 @@
       {
         "fields": [
           {
+            "description": "A list of known accessibility clients that inject into Firefox process space (see https://searchfox.org/mozilla-central/source/accessible/windows/msaa/Compatibility.h).\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram A11Y_CONSUMERS.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "a11y_consumers",
+            "type": "RECORD"
+          },
+          {
             "description": "Application reputation local results (0=ALLOW, 1=BLOCK, 2=NONE)\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram APPLICATION_REPUTATION_LOCAL.\n",
             "fields": [
               {
@@ -1827,6 +1869,42 @@
             "type": "RECORD"
           },
           {
+            "description": "The browser that data is pulled from. The values correspond to the internal browser ID (see MigrationUtils.sys.mjs)\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram FX_MIGRATION_SOURCE_BROWSER.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "browser_migration_source_browser",
+            "type": "RECORD"
+          },
+          {
             "description": "The difference between the length of encoded certificate vs the actual certificate.",
             "fields": [
               {
@@ -1932,6 +2010,222 @@
             ],
             "mode": "NULLABLE",
             "name": "cert_compression_zstd_saved_bytes",
+            "type": "RECORD"
+          },
+          {
+            "description": "Records the cookie behavior pref at startup.\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram COOKIE_BEHAVIOR.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "contentblocking_cookie_behavior",
+            "type": "RECORD"
+          },
+          {
+            "description": "If query params get stripped, how many per navigation/redirect.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram QUERY_STRIPPING_PARAM_COUNT.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "contentblocking_query_stripping_param_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "The time remaining until expiration per storage access permissions, in days (one record per permission, not averaged).\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram STORAGE_ACCESS_REMAINING_DAYS.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "contentblocking_storage_access_remaining_days",
+            "type": "RECORD"
+          },
+          {
+            "description": "The decrease in the length of the URL when strip on share is used, only if at least one parameter is stripped\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram STRIP_ON_SHARE_LENGTH_DECREASE.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "contentblocking_strip_on_share_length_decrease",
+            "type": "RECORD"
+          },
+          {
+            "description": "The number of query parameters removed, if any, when strip on share is used\nThis metric was generated to correspond to the Legacy Telemetry linear histogram STRIP_ON_SHARE_PARAMS_REMOVED.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "contentblocking_strip_on_share_params_removed",
+            "type": "RECORD"
+          },
+          {
+            "description": "Status of the shield icon for each top-level pageload (outside of Private Browsing mode) when tracking protection is enabled (0 = there was a page load, this is used as a baseline, 1 = shield crossed out because CB was disabled on this page by the user, 2 = shield shown because some content was blocked)\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram TRACKING_PROTECTION_SHIELD.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "contentblocking_tracking_protection_shield",
             "type": "RECORD"
           },
           {
@@ -2076,6 +2370,78 @@
             ],
             "mode": "NULLABLE",
             "name": "cookie_banners_click_query_selector_run_duration_per_window_top_level",
+            "type": "RECORD"
+          },
+          {
+            "description": "The number of origins that were purged during one run of cookie purging.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram COOKIE_PURGING_ORIGINS_PURGED.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "cookie_purging_origins_purged",
+            "type": "RECORD"
+          },
+          {
+            "description": "The number of trackers that had user interaction at the time of purging.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram COOKIE_PURGING_TRACKERS_WITH_USER_INTERACTION.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "cookie_purging_trackers_with_user_interaction",
             "type": "RECORD"
           },
           {
@@ -2400,6 +2766,78 @@
             ],
             "mode": "NULLABLE",
             "name": "fog_validation_gvsv_number_of_unique_site_origins_all_tabs",
+            "type": "RECORD"
+          },
+          {
+            "description": "gfxDWriteFontList::DelayedInitFontList Font Family Count\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram DWRITEFONT_DELAYEDINITFONTLIST_COUNT.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "fontlist_dwritefont_delayedinit_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "DirectWrite system fontlist initialization problem (1=GDI interop, 2=system font collection, 3=no fonts)\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram DWRITEFONT_INIT_PROBLEM.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "fontlist_dwritefont_init_problem",
             "type": "RECORD"
           },
           {
@@ -4815,6 +5253,438 @@
             "type": "RECORD"
           },
           {
+            "description": "The base confidence calculated for a subresource\nThis metric was generated to correspond to the Legacy Telemetry linear histogram PREDICTOR_BASE_CONFIDENCE.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "predictor_base_confidence",
+            "type": "RECORD"
+          },
+          {
+            "description": "The final confidence calculated for a subresource\nThis metric was generated to correspond to the Legacy Telemetry linear histogram PREDICTOR_CONFIDENCE.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "predictor_confidence",
+            "type": "RECORD"
+          },
+          {
+            "description": "The global degradation calculated\nThis metric was generated to correspond to the Legacy Telemetry linear histogram PREDICTOR_GLOBAL_DEGRADATION.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "predictor_global_degradation",
+            "type": "RECORD"
+          },
+          {
+            "description": "Number of times nsINetworkPredictor::Learn is called and attempts to learn\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram PREDICTOR_LEARN_ATTEMPTS.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "predictor_learn_attempts",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many prediction calculations are performed\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram PREDICTOR_PREDICTIONS_CALCULATED.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "predictor_predictions_calculated",
+            "type": "RECORD"
+          },
+          {
+            "description": "Why the predictor determined a particular resource was eligible for future prefetch (or not). See PrefetchDecisionReason in Predictor.cpp for value meanings\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram PREDICTOR_PREFETCH_DECISION_REASON.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "predictor_prefetch_decision_reason",
+            "type": "RECORD"
+          },
+          {
+            "description": "Why the predictor determined a particular resource that was marked eligible for prefetch should not be prefetched. See PrefetchIgnoreReason in Predictor.cpp for value meanings\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram PREDICTOR_PREFETCH_IGNORE_REASON.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "predictor_prefetch_ignore_reason",
+            "type": "RECORD"
+          },
+          {
+            "description": "The degradation calculated for a subresource\nThis metric was generated to correspond to the Legacy Telemetry linear histogram PREDICTOR_SUBRESOURCE_DEGRADATION.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "predictor_subresource_degradation",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many actual preconnects happen\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram PREDICTOR_TOTAL_PRECONNECTS.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "predictor_total_preconnects",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many actual predictions (preresolves, preconnects, ...) happen\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram PREDICTOR_TOTAL_PREDICTIONS.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "predictor_total_predictions",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many actual prefetches happen\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram PREDICTOR_TOTAL_PREFETCHES.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "predictor_total_prefetches",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many actual preresolves happen\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram PREDICTOR_TOTAL_PRERESOLVES.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "predictor_total_preresolves",
+            "type": "RECORD"
+          },
+          {
             "description": "How many timers were processed in a single wake-up of the Timer Thread.\n",
             "fields": [
               {
@@ -5759,6 +6629,42 @@
             "type": "RECORD"
           },
           {
+            "description": "The common combinations of BFCacheStatus when we determine whether the page can be BFCached or not; If it's BFCached, we record BFCache_Success; Success_Not_Toplevel represents the number of not the only top level document in BrowsingContextGroup's documents that are BFCached, and BFCache_Success includes Success_Not_Toplevel; If it's not and it falls under common failure reasons combinations, we record the corresponding combination; Otherwise, we record Other to indicate this is not a common failure\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram BFCACHE_COMBO.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "bfcache_combo",
+            "type": "RECORD"
+          },
+          {
+            "description": "Whether bfcache is used when loading a page from session history\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram BFCACHE_PAGE_RESTORED.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "bfcache_page_restored",
+            "type": "RECORD"
+          },
+          {
             "description": "Counts how often we purge trackers. Giving a high level overview about the effectivness of bounce tracking protection. Allows determining error rate with failure/success label. When in dry mode, we count the purges that would have happened under the dry label.\n",
             "fields": [
               {
@@ -5954,6 +6860,24 @@
             ],
             "mode": "REPEATED",
             "name": "browser_engagement_sessionrestore_interstitial",
+            "type": "RECORD"
+          },
+          {
+            "description": "Where the migration wizard was entered from.\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram FX_MIGRATION_ENTRY_POINT_CATEGORICAL.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_migration_entry_point_categorical",
             "type": "RECORD"
           },
           {
@@ -7307,6 +8231,168 @@
             "type": "RECORD"
           },
           {
+            "description": "A count of the status of cryptominer blocking per top level page load. ('pageLoad' = There was a page load, 'blocked' = at least one cryptominer was blocked, 'allowed' = at least one cryptominer was detected and allowed.) Note, pageLoad is used as a baseline measurement.\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram CRYPTOMINERS_BLOCKED_COUNT.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "contentblocking_cryptominers_blocked_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "A count of the classified email trackers. ('base_normal' = The classified email tracker is in base category and loaded under a normal site, 'content_normal' = The classified email tracker is in content category and loaded under a normal site, 'base_email_webapp' = The classified email tracker is in base category and loaded under a known email webapp, 'content_email_webapp' = The classified email tracker is in content category and loaded under a known email webapp.)\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram EMAIL_TRACKER_COUNT.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "contentblocking_email_tracker_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "A count of the status of fingerprinter blocking per top level page load. ('pageLoad' = There was a page load, 'blocked' = at least one fingerprinter was blocked, 'allowed' = at least one fingerprinter was detected and allowed.) Note, pageLoad is used as a baseline measurement.\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram FINGERPRINTERS_BLOCKED_COUNT.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "contentblocking_fingerprinters_blocked_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "Whether a probable font fingerprinting attempt was detected\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram FONT_FINGERPRINTING_PER_TAB.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "contentblocking_font_fingerprinting_per_tab",
+            "type": "RECORD"
+          },
+          {
+            "description": "A count of the query stripping. ('Navigation' = There was a top-level loading via navigation, 'Redirect' = There was a top-level loading via redirect, 'StripForNavigation' = There was a stripping happened for a top-level navigation, 'StripForRedirect' = There was a stripping happened for a top-level redirect.\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram QUERY_STRIPPING_COUNT.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "contentblocking_query_stripping_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts how often specific query parameters are stripped.\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram QUERY_STRIPPING_COUNT_BY_PARAM.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "contentblocking_query_stripping_count_by_param",
+            "type": "RECORD"
+          },
+          {
+            "description": "A count of the granted storage access. ('StorageGranted' = There was a storage access granted, 'StorageAccessAPI' = the storage access was granted by the storage access API, 'OpenerAfterUserInteraction' = the storage access was granted due to the heuristic 'OpenerAfterUserInteraction', 'Opener' = the storage access was granted due to the heuristic 'Opener', 'Redirect' = the storage access was granted due to the heuristic 'Redirect', 'RedirectTracker' = the storage access was granted due to the heuristic 'RedirectTracker'.) Note, StorageGranted is used as a baseline measurement, which should be the sum of all other measurements.\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram STORAGE_ACCESS_GRANTED_COUNT.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "contentblocking_storage_access_granted_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "True if tracking protection is enabled globally at startup.\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram TRACKING_PROTECTION_ENABLED.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "contentblocking_tracking_protection_enabled",
+            "type": "RECORD"
+          },
+          {
+            "description": "True if tracking protection in Private Browsing mode is disabled at startup.\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram TRACKING_PROTECTION_PBM_DISABLED.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "contentblocking_tracking_protection_pbm_disabled",
+            "type": "RECORD"
+          },
+          {
             "description": "A keyed uint recording how many times the user has clicked on the sponsored TopSites on the newtab page. The key is a combination of the source and the placement of the TopSites tile (1-based). such as 'urlbar_1', 'newtab_2'. This metric was generated to correspond to the Legacy Telemetry scalar contextual.services.topsites.click.\n",
             "fields": [
               {
@@ -7934,6 +9020,42 @@
             ],
             "mode": "REPEATED",
             "name": "fog_validation_gvsv_audio_stream_init_gecko",
+            "type": "RECORD"
+          },
+          {
+            "description": "system fallback font can't be used\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram BAD_FALLBACK_FONT.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "fontlist_bad_fallback_font",
+            "type": "RECORD"
+          },
+          {
+            "description": "font cache hit\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram FONT_CACHE_HIT.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "fontlist_font_cache_hit",
             "type": "RECORD"
           },
           {
@@ -8873,6 +9995,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Counts the number of times we encountered a mismatched ALPN token and needed to reset the connection. Keyed by the negotiated NPN.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "network_alpn_mismatch_count",
+            "type": "RECORD"
+          },
+          {
             "description": "Counts of cacheable/non-cacheable byte-range requests\n",
             "fields": [
               {
@@ -9809,6 +10949,60 @@
             "type": "RECORD"
           },
           {
+            "description": "The initiator of this ORB blocked request.\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram ORB_BLOCK_INITIATOR.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "orb_block_initiator",
+            "type": "RECORD"
+          },
+          {
+            "description": "The reason of why this request was blocked by ORB\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram ORB_BLOCK_REASON.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "orb_block_reason",
+            "type": "RECORD"
+          },
+          {
+            "description": "If any opaque response was blocked for a given top-level window context.\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram ORB_DID_EVER_BLOCK_RESPONSE.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "orb_did_ever_block_response",
+            "type": "RECORD"
+          },
+          {
             "description": "Records counts for when Firefox was invoked (i.e., was already running and was not launched) to handle a file type or protocol with `-osint -url ...`.  The result is split into keys which represent the file extension: currently, the set of file types Firefox registers to handle, namely \".avif\", \".htm\", \".html\", \".pdf\", \".shtml\", \".xht\", \".xhtml\", \".svg\", \".webp\", and the set of protocol schemes that Firefox registers to handle, namely \"about\", \"http\", \"https\", \"mailto\".  If Firefox was invoked to handle a file type or protocol it does not register to handle by default, the count is recorded as \".<other extension>\" or \"<other protocol>\", respectively (neither of which are valid extension or protocol identifiers). This metric was generated to correspond to the Legacy Telemetry scalar os.environment.invoked_to_handle.\n",
             "fields": [
               {
@@ -10310,6 +11504,24 @@
             ],
             "mode": "REPEATED",
             "name": "power_wakeups_per_thread_parent_inactive",
+            "type": "RECORD"
+          },
+          {
+            "description": "If and why prefetches are used/unused.\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram PREDICTOR_PREFETCH_USE_STATUS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "predictor_prefetch_use_status",
             "type": "RECORD"
           },
           {
@@ -12318,6 +13530,486 @@
       {
         "fields": [
           {
+            "description": "How many bookmarks we imported from another browser, keyed by the name of the browser.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram FX_MIGRATION_BOOKMARKS_QUANTITY.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_migration_bookmarks_quantity",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many credit card entries we imported from another browser, keyed by the name of the browser.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram FX_MIGRATION_CARDS_QUANTITY.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_migration_cards_quantity",
+            "type": "RECORD"
+          },
+          {
+            "description": "Errors encountered during migration in buckets defined by the datatype, keyed by the string description of the browser.\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram FX_MIGRATION_ERRORS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_migration_errors",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many extensions were matched to be imported from another browser, keyed by the name of the browser.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram FX_MIGRATION_EXTENSIONS_QUANTITY.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_migration_extensions_quantity",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many history visits we imported from another browser, keyed by the name of the browser.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram FX_MIGRATION_HISTORY_QUANTITY.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_migration_history_quantity",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many logins (passwords) we imported from another browser, keyed by the name of the browser.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram FX_MIGRATION_LOGINS_QUANTITY.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_migration_logins_quantity",
+            "type": "RECORD"
+          },
+          {
+            "description": "Usage of migration for each datatype when migration is run through the post-firstrun flow which allows individual datatypes, keyed by the string description of the browser.\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram FX_MIGRATION_USAGE.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_migration_usage",
+            "type": "RECORD"
+          },
+          {
+            "description": "Type of canvas fingerprinter detected (keyed by known_fingerprinting_text or unknown), 0 = none\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram CANVAS_FINGERPRINTING_PER_TAB.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "contentblocking_canvas_fingerprinting_per_tab",
+            "type": "RECORD"
+          },
+          {
+            "description": "A count of the embedded third-party email trackers for known email web apps. ('base_normal' = The count of loaded base email trackers under normal sites, 'content_normal' = The count of loaded content email trackers under normal sites, 'all_normal' = The count of all loaded email trackers under normal sites, 'base_emailapp' = The count of loaded base email trackers under email webapps, 'content_emailapp' = The count of loaded content email trackers under email webapps, 'all_emailapp' = The count of all loaded email trackers under email webapps.)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram EMAIL_TRACKER_EMBEDDED_PER_TAB.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "contentblocking_email_tracker_embedded_per_tab",
+            "type": "RECORD"
+          },
+          {
+            "description": "Users action on blocked download, keyed by verdict type (0=Number of blocked downloads, 1=Confirm block, 2=Confirm unblock)\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram DOWNLOADS_USER_ACTION_ON_BLOCKED_DOWNLOAD.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "downloads_user_action_on_blocked_download",
+            "type": "RECORD"
+          },
+          {
             "description": "Hit rate for a specific cache size in file count. The hit rate is split into 20 buckets. The key is the cacheSize (20 buckets) and the value is between 0 and 100.\n",
             "fields": [
               {
@@ -14075,6 +15767,162 @@
             ],
             "mode": "REPEATED",
             "name": "networking_trr_tls_handshake",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time (in ms) that it takes for a ORB JavaScript validator to complete a validation, including IPC to the validator actor.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram ORB_JAVASCRIPT_VALIDATION_MS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "bucket_count",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "histogram_type",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "overflow",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "REPEATED",
+                    "name": "range",
+                    "type": "FLOAT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "time_unit",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "underflow",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "orb_javascript_validation",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time (in ms) that it takes to receive data for ORB JavaScript validation, including IPC to the validator actor.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram ORB_RECEIVE_DATA_FOR_VALIDATION_MS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "bucket_count",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "histogram_type",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "overflow",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "REPEATED",
+                    "name": "range",
+                    "type": "FLOAT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "time_unit",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "underflow",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "orb_receive_data_for_validation",
             "type": "RECORD"
           },
           {
@@ -16410,6 +18258,72 @@
       {
         "fields": [
           {
+            "description": "The amount of time taken to update the accessibility tree (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram A11Y_TREE_UPDATE_TIMING_MS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "a11y_tree_update_timing",
+            "type": "RECORD"
+          },
+          {
             "description": "Server response time to remote lookup request (ms).\nThis metric was generated to correspond to the Legacy Telemetry linear histogram APPLICATION_REPUTATION_REMOTE_LOOKUP_RESPONSE_TIME.\n",
             "fields": [
               {
@@ -17067,6 +18981,204 @@
             ],
             "mode": "NULLABLE",
             "name": "cookie_banners_cmp_handle_duration",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time spent per daily cookie purging activity, in milliseconds. This measures the time for all batch iterations of that day.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram COOKIE_PURGING_DURATION_MS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "cookie_purging_duration",
+            "type": "RECORD"
+          },
+          {
+            "description": "How much time (in hours) passed between the current cookie purging activity and the one before that (cookie purging is run on 'daily idle')\nThis metric was generated to correspond to the Legacy Telemetry linear histogram COOKIE_PURGING_INTERVAL_HOURS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "cookie_purging_interval_hours",
+            "type": "RECORD"
+          },
+          {
+            "description": "The time remaining until expiration per user interaction permissions of trackers at the time of purging, in days (one record per tracker, not averaged).\nThis metric was generated to correspond to the Legacy Telemetry linear histogram COOKIE_PURGING_TRACKERS_USER_INTERACTION_REMAINING_DAYS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "cookie_purging_trackers_user_interaction_remaining_days",
             "type": "RECORD"
           },
           {
@@ -18918,6 +21030,666 @@
             "type": "RECORD"
           },
           {
+            "description": "Time(ms) spent activating additional fonts bundled with the product\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram FONTLIST_BUNDLEDFONTS_ACTIVATE.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "fontlist_bundledfonts_activate",
+            "type": "RECORD"
+          },
+          {
+            "description": "gfxDWriteFontList::DelayedInitFontList GetSystemFontCollection (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram DWRITEFONT_DELAYEDINITFONTLIST_COLLECT.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "fontlist_dwritefont_delayedinit_collect",
+            "type": "RECORD"
+          },
+          {
+            "description": "gfxDWriteFontList::DelayedInitFontList Total (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram DWRITEFONT_DELAYEDINITFONTLIST_TOTAL.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "fontlist_dwritefont_delayedinit_total",
+            "type": "RECORD"
+          },
+          {
+            "description": "gfxGDIFontList::InitFontList Total (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram GDI_INITFONTLIST_TOTAL.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "fontlist_gdi_init_total",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time(ms) spent on reading family names from all fonts\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram FONTLIST_INITFACENAMELISTS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "fontlist_initfacenamelists",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time(ms) spent on reading other family names from all fonts\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram FONTLIST_INITOTHERFAMILYNAMES.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "fontlist_initotherfamilynames",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time(ms) spent on reading other family names from all fonts for no timeout case\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram FONTLIST_INITOTHERFAMILYNAMES_NO_DEFERRING.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "fontlist_initotherfamilynames_no_deferring",
+            "type": "RECORD"
+          },
+          {
+            "description": "gfxMacPlatformFontList::InitFontList Total (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram MAC_INITFONTLIST_TOTAL.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "fontlist_mac_init_total",
+            "type": "RECORD"
+          },
+          {
+            "description": "System font fallback (us)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram SYSTEM_FONT_FALLBACK.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "fontlist_system_font_fallback",
+            "type": "RECORD"
+          },
+          {
+            "description": "System font fallback, first call (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram SYSTEM_FONT_FALLBACK_FIRST.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "fontlist_system_font_fallback_first",
+            "type": "RECORD"
+          },
+          {
             "description": "The uptime of content processes. (Migrated from the geckoview metric of the same name).\n",
             "fields": [
               {
@@ -19971,6 +22743,138 @@
             ],
             "mode": "NULLABLE",
             "name": "glean_validation_shutdown_wait",
+            "type": "RECORD"
+          },
+          {
+            "description": "GPU process initialization (excluding XPCOM and fork time) time in milliseconds\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram GPU_PROCESS_INITIALIZATION_TIME_MS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "gpu_process_initialization_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "GPU process launch time in milliseconds\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram GPU_PROCESS_LAUNCH_TIME_MS_2.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "gpu_process_launch_time",
             "type": "RECORD"
           },
           {
@@ -27894,6 +30798,402 @@
             "type": "RECORD"
           },
           {
+            "description": "Amount of time spent doing the work for learn (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram PREDICTOR_LEARN_WORK_TIME.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "predictor_learn_work_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "How long it takes from the time Predict() is called to the time we take action\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram PREDICTOR_PREDICT_TIME_TO_ACTION.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "predictor_predict_time_to_action",
+            "type": "RECORD"
+          },
+          {
+            "description": "How long it takes from the time Predict() is called to the time we figure out there's nothing to do\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram PREDICTOR_PREDICT_TIME_TO_INACTION.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "predictor_predict_time_to_inaction",
+            "type": "RECORD"
+          },
+          {
+            "description": "Amount of time spent doing the work for predict (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram PREDICTOR_PREDICT_WORK_TIME.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "predictor_predict_work_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "How long it takes from OnStartRequest to OnStopRequest for a prefetch\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram PREDICTOR_PREFETCH_TIME.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "predictor_prefetch_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Amount of time a predictor event waits in the queue (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram PREDICTOR_WAIT_TIME.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "predictor_wait_time",
+            "type": "RECORD"
+          },
+          {
             "description": "How much time was spent to open the dialog, including loading data sizes\n",
             "fields": [
               {
@@ -28155,6 +31455,270 @@
             ],
             "mode": "NULLABLE",
             "name": "serp_categorization_duration",
+            "type": "RECORD"
+          },
+          {
+            "description": "The duraion of the socketThread cycle during shutdown, including polls and pending events. (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram STS_POLL_AND_EVENT_THE_LAST_CYCLE.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "sts_poll_and_event_the_last_cycle",
+            "type": "RECORD"
+          },
+          {
+            "description": "The duraion of a socketThread cycle, including polls and pending events. (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram STS_POLL_AND_EVENTS_CYCLE.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "sts_poll_and_events_cycle",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time spent blocked on poll (ms).\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram STS_POLL_BLOCK_TIME.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "sts_poll_block_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "The duration of poll. (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram STS_POLL_CYCLE.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "sts_poll_cycle",
             "type": "RECORD"
           },
           {

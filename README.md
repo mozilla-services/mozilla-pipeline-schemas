@@ -618,6 +618,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── metrics
+│   ├── usage-deletion-request
 │   └── usage-reporting
 ├── org-mozilla-ios-klar
 │   ├── baseline
@@ -625,6 +626,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── metrics
+│   ├── usage-deletion-request
 │   └── usage-reporting
 ├── org-mozilla-ios-lockbox
 │   ├── baseline
@@ -843,6 +845,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-833 directories
+835 directories
 ```
 
