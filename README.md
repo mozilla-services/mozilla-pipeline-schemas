@@ -473,6 +473,7 @@ schemas
 │   ├── fog-validation
 │   ├── metrics
 │   ├── pageload
+│   ├── usage-deletion-request
 │   ├── usage-reporting
 │   ├── use-counters
 │   └── user-characteristics
@@ -490,6 +491,7 @@ schemas
 │   ├── fog-validation
 │   ├── metrics
 │   ├── pageload
+│   ├── usage-deletion-request
 │   ├── usage-reporting
 │   ├── use-counters
 │   └── user-characteristics
@@ -507,6 +509,7 @@ schemas
 │   ├── fog-validation
 │   ├── metrics
 │   ├── pageload
+│   ├── usage-deletion-request
 │   ├── usage-reporting
 │   ├── use-counters
 │   └── user-characteristics
@@ -665,6 +668,7 @@ schemas
 │   ├── fog-validation
 │   ├── metrics
 │   ├── pageload
+│   ├── usage-deletion-request
 │   ├── usage-reporting
 │   ├── use-counters
 │   └── user-characteristics
@@ -845,6 +849,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-835 directories
+839 directories
 ```
 
