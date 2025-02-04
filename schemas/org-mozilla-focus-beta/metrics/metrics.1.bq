@@ -3411,6 +3411,114 @@
             "type": "RECORD"
           },
           {
+            "description": "How often would blocked mixed content be allowed if HSTS upgrades were allowed? 0=display/no-HSTS, 1=display/HSTS, 2=active/no-HSTS, 3=active/HSTS\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram MIXED_CONTENT_HSTS.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "mixed_content_hsts",
+            "type": "RECORD"
+          },
+          {
+            "description": "Accumulates type of content per page load (0=no mixed or non-secure page, 1=mixed passive, 2=mixed active, 3=mixed passive and mixed active)\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram MIXED_CONTENT_PAGE_LOAD.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "mixed_content_page_load",
+            "type": "RECORD"
+          },
+          {
+            "description": "A simple counter of daily mixed-content unblock operations and top documents loaded\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram MIXED_CONTENT_UNBLOCK_COUNTER.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "mixed_content_unblock_counter",
+            "type": "RECORD"
+          },
+          {
             "description": "Amount of bytes sent using TLS early data at the start of a TLS connection for a given channel.\n",
             "fields": [
               {
@@ -9188,6 +9296,60 @@
             ],
             "mode": "REPEATED",
             "name": "media_playback_not_supported_video_per_mime_type",
+            "type": "RECORD"
+          },
+          {
+            "description": "How often audio loads fail in regular mode and in upgrading mode?\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram MIXED_CONTENT_AUDIO.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "mixed_content_audio",
+            "type": "RECORD"
+          },
+          {
+            "description": "How often image loads fail in regular mode and in upgrading mode?\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram MIXED_CONTENT_IMAGES.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "mixed_content_images",
+            "type": "RECORD"
+          },
+          {
+            "description": "How often video loads fail in regular mode and in upgrading mode?\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram MIXED_CONTENT_VIDEO.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "mixed_content_video",
             "type": "RECORD"
           },
           {
