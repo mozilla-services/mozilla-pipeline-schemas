@@ -1676,6 +1676,60 @@
             "type": "INT64"
           },
           {
+            "description": "Number of Telemetry pings added to the archive during the session\nThis metric was generated to correspond to the Legacy Telemetry count histogram TELEMETRY_ARCHIVE_SESSION_PING_COUNT.\n",
+            "mode": "NULLABLE",
+            "name": "telemetry_archive_session_ping_count",
+            "type": "INT64"
+          },
+          {
+            "description": "Count of individual invalid payloads that were submitted to Telemetry.\nThis metric was generated to correspond to the Legacy Telemetry count histogram TELEMETRY_INVALID_PAYLOAD_SUBMITTED.\n",
+            "mode": "NULLABLE",
+            "name": "telemetry_invalid_payload_submitted",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of pending Telemetry pings that failed to parse once loaded from the disk\nThis metric was generated to correspond to the Legacy Telemetry count histogram TELEMETRY_PENDING_LOAD_FAILURE_PARSE.\n",
+            "mode": "NULLABLE",
+            "name": "telemetry_pending_load_failure_parse",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of pending Telemetry pings that failed to load from the disk\nThis metric was generated to correspond to the Legacy Telemetry count histogram TELEMETRY_PENDING_LOAD_FAILURE_READ.\n",
+            "mode": "NULLABLE",
+            "name": "telemetry_pending_load_failure_read",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of Telemetry ping files evicted due to server errors (4XX HTTP code received)\nThis metric was generated to correspond to the Legacy Telemetry count histogram TELEMETRY_PING_EVICTED_FOR_SERVER_ERRORS.\n",
+            "mode": "NULLABLE",
+            "name": "telemetry_ping_evicted_for_server_errors",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of archived Telemetry pings discarded because they exceeded the maximum size\nThis metric was generated to correspond to the Legacy Telemetry count histogram TELEMETRY_PING_SIZE_EXCEEDED_ARCHIVED.\n",
+            "mode": "NULLABLE",
+            "name": "telemetry_ping_size_exceeded_archived",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of Telemetry pending pings discarded because they exceeded the maximum size\nThis metric was generated to correspond to the Legacy Telemetry count histogram TELEMETRY_PING_SIZE_EXCEEDED_PENDING.\n",
+            "mode": "NULLABLE",
+            "name": "telemetry_ping_size_exceeded_pending",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of Telemetry pings discarded before sending because they exceeded the maximum size\nThis metric was generated to correspond to the Legacy Telemetry count histogram TELEMETRY_PING_SIZE_EXCEEDED_SEND.\n",
+            "mode": "NULLABLE",
+            "name": "telemetry_ping_size_exceeded_send",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of pings that were submitted and had to wait for a client id (i.e. before it was cached or loaded from disk)\nThis metric was generated to correspond to the Legacy Telemetry count histogram TELEMETRY_PING_SUBMISSION_WAITING_CLIENTID.\n",
+            "mode": "NULLABLE",
+            "name": "telemetry_ping_submission_waiting_clientid",
+            "type": "INT64"
+          },
+          {
             "description": "The total number of successful TLS server certificate verifications.\n",
             "mode": "NULLABLE",
             "name": "tls_certificate_verifications",
@@ -3402,6 +3456,78 @@
             ],
             "mode": "NULLABLE",
             "name": "cycle_collector_worker_visited_ref_counted",
+            "type": "RECORD"
+          },
+          {
+            "description": "The number of edges serialized into a heap snapshot.\nThis metric was generated to correspond to the Legacy Telemetry linear histogram DEVTOOLS_HEAP_SNAPSHOT_EDGE_COUNT.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "devtools_heap_snapshot_edge_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "The number of nodes serialized into a heap snapshot.\nThis metric was generated to correspond to the Legacy Telemetry linear histogram DEVTOOLS_HEAP_SNAPSHOT_NODE_COUNT.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "devtools_heap_snapshot_node_count",
             "type": "RECORD"
           },
           {
@@ -10314,6 +10440,222 @@
             ],
             "mode": "NULLABLE",
             "name": "ssl_version_fallback_inappropriate",
+            "type": "RECORD"
+          },
+          {
+            "description": "Number of directories in the archive at scan\nThis metric was generated to correspond to the Legacy Telemetry linear histogram TELEMETRY_ARCHIVE_DIRECTORIES_COUNT.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "telemetry_archive_directories_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "Number of Telemetry directories evicted from the archive during cleanup, because they were too old\nThis metric was generated to correspond to the Legacy Telemetry linear histogram TELEMETRY_ARCHIVE_EVICTED_OLD_DIRS.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "telemetry_archive_evicted_old_dirs",
+            "type": "RECORD"
+          },
+          {
+            "description": "Number of Telemetry pings evicted from the archive during cleanup, because they were over the quota\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram TELEMETRY_ARCHIVE_EVICTED_OVER_QUOTA.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "telemetry_archive_evicted_over_quota",
+            "type": "RECORD"
+          },
+          {
+            "description": "The age of the oldest Telemetry archive directory in months\nThis metric was generated to correspond to the Legacy Telemetry linear histogram TELEMETRY_ARCHIVE_OLDEST_DIRECTORY_AGE.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "telemetry_archive_oldest_directory_age",
+            "type": "RECORD"
+          },
+          {
+            "description": "Number of Telemetry pings in the archive at scan\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram TELEMETRY_ARCHIVE_SCAN_PING_COUNT.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "telemetry_archive_scan_ping_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "Number of Telemetry pings evicted from the pending pings directory during cleanup, because they were over the quota\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram TELEMETRY_PENDING_PINGS_EVICTED_OVER_QUOTA.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "telemetry_pending_pings_evicted_over_quota",
             "type": "RECORD"
           },
           {
@@ -19340,6 +19682,114 @@
             ],
             "mode": "REPEATED",
             "name": "telemetry_clamping_time_hgrams",
+            "type": "RECORD"
+          },
+          {
+            "description": "Number of 'event' pings sent, by reason\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram TELEMETRY_EVENT_PING_SENT.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "telemetry_event_ping_sent",
+            "type": "RECORD"
+          },
+          {
+            "description": "Number of event recording failures, by type of failure\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram TELEMETRY_EVENT_RECORDING_ERROR.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "telemetry_event_recording_error",
+            "type": "RECORD"
+          },
+          {
+            "description": "Number of event registration failures, by field causing the failure\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram TELEMETRY_EVENT_REGISTRATION_ERROR.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "telemetry_event_registration_error",
+            "type": "RECORD"
+          },
+          {
+            "description": "Count of individual invalid ping types that were submitted to Telemetry.\nThis metric was generated to correspond to the Legacy Telemetry count histogram TELEMETRY_INVALID_PING_TYPE_SUBMITTED.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "telemetry_invalid_ping_type_submitted",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts of the different ways sending a Telemetry ping can fail.\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram TELEMETRY_SEND_FAILURE_TYPE.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "telemetry_send_failure_type",
+            "type": "RECORD"
+          },
+          {
+            "description": "Successful telemetry submission\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram TELEMETRY_SUCCESS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "telemetry_success",
             "type": "RECORD"
           },
           {
@@ -28616,6 +29066,186 @@
             "mode": "NULLABLE",
             "name": "ssl_bytes_before_cert_callback",
             "type": "RECORD"
+          },
+          {
+            "description": "The size of the Telemetry archive (MB)\nThis metric was generated to correspond to the Legacy Telemetry linear histogram TELEMETRY_ARCHIVE_SIZE_MB.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "telemetry_archive_size",
+            "type": "RECORD"
+          },
+          {
+            "description": "The size (MB) of the Telemetry archived, compressed, pings exceeding the maximum file size\nThis metric was generated to correspond to the Legacy Telemetry linear histogram TELEMETRY_DISCARDED_ARCHIVED_PINGS_SIZE_MB.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "telemetry_discarded_archived_pings_size",
+            "type": "RECORD"
+          },
+          {
+            "description": "The size (MB) of the Telemetry pending pings exceeding the maximum file size\nThis metric was generated to correspond to the Legacy Telemetry linear histogram TELEMETRY_DISCARDED_PENDING_PINGS_SIZE_MB.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "telemetry_discarded_pending_pings_size",
+            "type": "RECORD"
+          },
+          {
+            "description": "The size (MB) of the ping data submitted to Telemetry exceeding the maximum size\nThis metric was generated to correspond to the Legacy Telemetry linear histogram TELEMETRY_DISCARDED_SEND_PINGS_SIZE_MB.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "telemetry_discarded_send_pings_size",
+            "type": "RECORD"
+          },
+          {
+            "description": "The size of the Telemetry pending pings directory (MB). The special value 17 is used to indicate over quota pings.\nThis metric was generated to correspond to the Legacy Telemetry linear histogram TELEMETRY_PENDING_PINGS_SIZE_MB.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "telemetry_pending_pings_size",
+            "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
@@ -33697,6 +34327,72 @@
             "type": "RECORD"
           },
           {
+            "description": "The time (in milliseconds) that it took to read a heap snapshot in mozilla::devtools::ChromeUtils::ReadHeapSnapshot.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram DEVTOOLS_READ_HEAP_SNAPSHOT_MS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "devtools_read_heap_snapshot",
+            "type": "RECORD"
+          },
+          {
             "description": "How long has the responsive view been active (seconds)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram DEVTOOLS_RESPONSIVE_TIME_ACTIVE_SECONDS.\n",
             "fields": [
               {
@@ -33826,6 +34522,72 @@
             ],
             "mode": "NULLABLE",
             "name": "devtools_ruleview_time_active",
+            "type": "RECORD"
+          },
+          {
+            "description": "The time (in milliseconds) that it took to save a heap snapshot in mozilla::devtools::ChromeUtils::SaveHeapSnapshot.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram DEVTOOLS_SAVE_HEAP_SNAPSHOT_MS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "devtools_save_heap_snapshot",
             "type": "RECORD"
           },
           {
@@ -51910,6 +52672,666 @@
             ],
             "mode": "NULLABLE",
             "name": "sts_poll_cycle",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time (ms) it takes for checking if the archive is over-quota\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram TELEMETRY_ARCHIVE_CHECKING_OVER_QUOTA_MS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "telemetry_archive_checking_over_quota",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time (ms) it takes for evicting old directories\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram TELEMETRY_ARCHIVE_EVICTING_DIRS_MS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "telemetry_archive_evicting_dirs",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time (ms) it takes for evicting over-quota pings\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram TELEMETRY_ARCHIVE_EVICTING_OVER_QUOTA_MS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "telemetry_archive_evicting_over_quota",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time taken to compress telemetry object (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram TELEMETRY_COMPRESS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "telemetry_compress",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time (ms) it takes for checking if the pending pings are over-quota\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram TELEMETRY_PENDING_CHECKING_OVER_QUOTA_MS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "telemetry_pending_checking_over_quota",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time (ms) it takes for evicting over-quota pending pings\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram TELEMETRY_PENDING_EVICTING_OVER_QUOTA_MS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "telemetry_pending_evicting_over_quota",
+            "type": "RECORD"
+          },
+          {
+            "description": "The age, in days, of the pending pings.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram TELEMETRY_PENDING_PINGS_AGE.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "telemetry_pending_pings_age",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time needed (in ms) for a failed send of a Telemetry ping to the servers and getting a reply back.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram TELEMETRY_SEND_FAILURE.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "telemetry_send_failure",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time needed (in ms) for a successful send of a Telemetry ping to the servers and getting a reply back.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram TELEMETRY_SEND_SUCCESS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "telemetry_send_success",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time to stringify telemetry object (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram TELEMETRY_STRINGIFY.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "telemetry_stringify",
             "type": "RECORD"
           },
           {
