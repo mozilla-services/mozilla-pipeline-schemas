@@ -493,6 +493,12 @@
             "type": "BOOL"
           },
           {
+            "description": "Whether password saving is enabled globally.\nTracks the pref `signon.rememberSignons`.\n",
+            "mode": "NULLABLE",
+            "name": "pwmgr_saving_enabled",
+            "type": "BOOL"
+          },
+          {
             "description": "Whether the OS theme is dark. This metric was generated to correspond to the Legacy Telemetry scalar widget.dark_mode.\n",
             "mode": "NULLABLE",
             "name": "widget_dark_mode",
@@ -1031,6 +1037,18 @@
             "description": "Counts how often a load is successfully upgraded to HTTPS because of schemeless HTTPS-First (`dom.security.https_first` disabled, but load marked as schemeless). This does not include loads that get downgraded again.\n",
             "mode": "NULLABLE",
             "name": "httpsfirst_upgraded_schemeless",
+            "type": "INT64"
+          },
+          {
+            "description": "Increments whenever a request cancellation message is successfully received. This includes cancellations for requests related to either databases or observers.\n",
+            "mode": "NULLABLE",
+            "name": "localstorage_request_recv_cancel_counter",
+            "type": "INT64"
+          },
+          {
+            "description": "Increments whenever a request cancellation message is successfully sent. This includes cancellations for requests related to either databases or observers.\n",
+            "mode": "NULLABLE",
+            "name": "localstorage_request_send_cancel_counter",
             "type": "INT64"
           },
           {
@@ -13500,6 +13518,78 @@
             "type": "RECORD"
           },
           {
+            "description": "Number of HTML editors whose dispatching beforeinput events are canceled\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram HTMLEDITORS_OVERRIDDEN_BY_BEFOREINPUT_LISTENERS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "htmleditors_overridden_by_beforeinput_listeners",
+            "type": "RECORD"
+          },
+          {
+            "description": "Number of HTML editors whose window or a node in it has had beforeinput event listeners\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram HTMLEDITORS_WITH_BEFOREINPUT_LISTENERS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "htmleditors_with_beforeinput_listeners",
+            "type": "RECORD"
+          },
+          {
+            "description": "Number of HTML editors whose window or a node in it has had mutation event listeners, but has not had beforeinput event listeners\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram HTMLEDITORS_WITH_MUTATION_LISTENERS_WITHOUT_BEFOREINPUT_LISTENERS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "htmleditors_with_mutation_listeners_without_beforeinput_listeners",
+            "type": "RECORD"
+          },
+          {
+            "description": "Number of HTML editors a node in the window has been observed by mutation observers, but has not had beforeinput event listeners\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram HTMLEDITORS_WITH_MUTATION_OBSERVERS_WITHOUT_BEFOREINPUT_LISTENERS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "htmleditors_with_mutation_observers_without_beforeinput_listeners",
+            "type": "RECORD"
+          },
+          {
             "description": "Whether or not a new alt-svc mapping would change the target hostname of the existing mapping\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram HTTP_ALTSVC_MAPPING_CHANGED_TARGET.\n",
             "fields": [
               {
@@ -23741,6 +23831,12 @@
             "description": "A uint with the number of active enterprise policies, collected once at startup. This metric was generated to correspond to the Legacy Telemetry scalar policies.count.\n",
             "mode": "NULLABLE",
             "name": "policies_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of saved logins, including those that cannot be decrypted.\nSimilar to the legacy telemetry histogram PWMGR_NUM_SAVED_PASSWORDS.\n",
+            "mode": "NULLABLE",
+            "name": "pwmgr_num_saved_passwords",
             "type": "INT64"
           },
           {
@@ -34122,6 +34218,72 @@
             "type": "RECORD"
           },
           {
+            "description": "Measures the time taken for the content process to fully set up a new database, including any time required for datastore preparation in the parent process. This duration can be significantly affected by datastore preloading, which is triggered when a page begins loading. If an error occurs, the time is not recorded.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "localstorage_database_new_object_setup_time",
+            "type": "RECORD"
+          },
+          {
             "description": "Time it took between sending PBackgroundLSDatabase::RequestAllowToClose and receiving PBackgroundLSDatabase::AllowToClose message. These messages are issued when QuotaManager is shutting down or is aborting operations for a particular origin or process.\n",
             "fields": [
               {
@@ -34185,6 +34347,72 @@
             ],
             "mode": "NULLABLE",
             "name": "localstorage_database_request_allow_to_close_response_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Measures the time taken by the parent process to prepare a datastore. This duration can be significantly affected by datastore preloading, which is triggered when a page begins to load. When a datastore is already preloaded, preparation is usually fast since no additional I/O is required. If an error occurs, the time is not recorded. In the future, we may introduce separate metrics to distinguish between different types of datastore preparations (e.g., loading data from disk vs. using preloaded data).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "localstorage_request_prepare_datastore_processing_time",
             "type": "RECORD"
           },
           {
