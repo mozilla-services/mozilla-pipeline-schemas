@@ -268,6 +268,7 @@ schemas
 ├── org-mozilla-fenix
 │   ├── activation
 │   ├── addresses-sync
+│   ├── adjust-attribution
 │   ├── baseline
 │   ├── bookmarks-sync
 │   ├── bounce-tracking-protection
@@ -292,6 +293,7 @@ schemas
 │   ├── migration
 │   ├── onboarding-opt-out
 │   ├── pageload
+│   ├── play-store-attribution
 │   ├── spoc
 │   ├── startup-timeline
 │   ├── sync
@@ -304,6 +306,7 @@ schemas
 ├── org-mozilla-fenix-nightly
 │   ├── activation
 │   ├── addresses-sync
+│   ├── adjust-attribution
 │   ├── baseline
 │   ├── bookmarks-sync
 │   ├── bounce-tracking-protection
@@ -328,6 +331,7 @@ schemas
 │   ├── migration
 │   ├── onboarding-opt-out
 │   ├── pageload
+│   ├── play-store-attribution
 │   ├── spoc
 │   ├── startup-timeline
 │   ├── sync
@@ -340,6 +344,7 @@ schemas
 ├── org-mozilla-fennec-aurora
 │   ├── activation
 │   ├── addresses-sync
+│   ├── adjust-attribution
 │   ├── baseline
 │   ├── bookmarks-sync
 │   ├── bounce-tracking-protection
@@ -364,6 +369,7 @@ schemas
 │   ├── migration
 │   ├── onboarding-opt-out
 │   ├── pageload
+│   ├── play-store-attribution
 │   ├── spoc
 │   ├── startup-timeline
 │   ├── sync
@@ -376,6 +382,7 @@ schemas
 ├── org-mozilla-firefox
 │   ├── activation
 │   ├── addresses-sync
+│   ├── adjust-attribution
 │   ├── baseline
 │   ├── bookmarks-sync
 │   ├── bounce-tracking-protection
@@ -400,6 +407,7 @@ schemas
 │   ├── migration
 │   ├── onboarding-opt-out
 │   ├── pageload
+│   ├── play-store-attribution
 │   ├── spoc
 │   ├── startup-timeline
 │   ├── sync
@@ -412,6 +420,7 @@ schemas
 ├── org-mozilla-firefox-beta
 │   ├── activation
 │   ├── addresses-sync
+│   ├── adjust-attribution
 │   ├── baseline
 │   ├── bookmarks-sync
 │   ├── bounce-tracking-protection
@@ -436,6 +445,7 @@ schemas
 │   ├── migration
 │   ├── onboarding-opt-out
 │   ├── pageload
+│   ├── play-store-attribution
 │   ├── spoc
 │   ├── startup-timeline
 │   ├── sync
@@ -851,6 +861,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-841 directories
+851 directories
 ```
 
