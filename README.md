@@ -537,6 +537,7 @@ schemas
 │   ├── history-sync
 │   ├── logins-sync
 │   ├── metrics
+│   ├── nimbus
 │   ├── onboarding-opt-out
 │   ├── sync
 │   ├── tabs-sync
@@ -565,6 +566,7 @@ schemas
 │   ├── history-sync
 │   ├── logins-sync
 │   ├── metrics
+│   ├── nimbus
 │   ├── onboarding-opt-out
 │   ├── sync
 │   ├── tabs-sync
@@ -593,6 +595,7 @@ schemas
 │   ├── history-sync
 │   ├── logins-sync
 │   ├── metrics
+│   ├── nimbus
 │   ├── onboarding-opt-out
 │   ├── sync
 │   ├── tabs-sync
@@ -861,6 +864,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-851 directories
+854 directories
 ```
 
