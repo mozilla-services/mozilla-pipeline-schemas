@@ -291,6 +291,7 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
+│   ├── nimbus
 │   ├── onboarding-opt-out
 │   ├── pageload
 │   ├── play-store-attribution
@@ -329,6 +330,7 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
+│   ├── nimbus
 │   ├── onboarding-opt-out
 │   ├── pageload
 │   ├── play-store-attribution
@@ -367,6 +369,7 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
+│   ├── nimbus
 │   ├── onboarding-opt-out
 │   ├── pageload
 │   ├── play-store-attribution
@@ -405,6 +408,7 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
+│   ├── nimbus
 │   ├── onboarding-opt-out
 │   ├── pageload
 │   ├── play-store-attribution
@@ -443,6 +447,7 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
+│   ├── nimbus
 │   ├── onboarding-opt-out
 │   ├── pageload
 │   ├── play-store-attribution
@@ -864,6 +869,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-854 directories
+859 directories
 ```
 
