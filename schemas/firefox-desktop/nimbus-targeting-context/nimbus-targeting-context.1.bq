@@ -669,6 +669,25 @@
         "mode": "NULLABLE",
         "name": "text2",
         "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The client_id according to Telemetry.\nMight not always have a value due to being too early for it to have\nloaded.\nValue may be the canary client id `c0ffeec0-ffee-c0ff-eec0-ffeec0ffeec0`\nin pings near when the data upload pref is disabled (if Telemetry gets\nto go first), or between when a client_id has been removed and when it\nhas been regenerated.\nDoes not need to be sent in the Glean \"deletion-request\" ping.\n",
+            "mode": "NULLABLE",
+            "name": "legacy_telemetry_client_id",
+            "type": "STRING"
+          },
+          {
+            "description": "The profile_group_id according to Telemetry.\nMight not always have a value due to being too early for it to have\nloaded.\nDoes not need to be sent in the Glean \"deletion-request\" ping.\n",
+            "mode": "NULLABLE",
+            "name": "legacy_telemetry_profile_group_id",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "uuid",
+        "type": "RECORD"
       }
     ],
     "mode": "NULLABLE",
