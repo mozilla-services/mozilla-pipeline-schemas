@@ -8583,6 +8583,114 @@
             "type": "RECORD"
           },
           {
+            "description": "The safety of a page where we see a password field. (0: safe page & safe submit; 1: safe page & unsafe submit; 2: safe page & unknown submit; 3: unsafe page & safe submit; 4: unsafe page & unsafe submit; 5: unsafe page & unknown submit)\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram PWMGR_LOGIN_PAGE_SAFETY.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "pwmgr_login_page_safety",
+            "type": "RECORD"
+          },
+          {
+            "description": "Action taken by user through prompt for creating a login. (0=Prompt displayed [always recorded], 1=Add login, 2=Don't save now, 3=Never save)\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram PWMGR_PROMPT_REMEMBER_ACTION.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "pwmgr_prompt_remember_action",
+            "type": "RECORD"
+          },
+          {
+            "description": "Action taken by user through prompt for modifying a login. (0=Prompt displayed [always recorded], 1=Update login, 2=Don't update, 3=Remove saved login)\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram PWMGR_PROMPT_UPDATE_ACTION.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "pwmgr_prompt_update_action",
+            "type": "RECORD"
+          },
+          {
             "description": "The result of trying to download a document to show in reader view (0=Success, 1=Error XHR, 2=Error no document)\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram READER_MODE_DOWNLOAD_RESULT.\n",
             "fields": [
               {
@@ -13247,6 +13355,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Count the number of times a new top page was starting to load\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram FX_TOTAL_TOP_VISITS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_engagement_total_top_visits",
+            "type": "RECORD"
+          },
+          {
             "description": "Records clicks of adverts on SERP pages.\nThe key format is\n`<provider-name>.in-content.[sap|sap-follow-on|organic].[code|none](.[channel])?`,\nwhere:\n\n* `provider-name` is the name of the provider,\n* `sap|sap-follow-on|organic` is the search access point,\n* `code` is set when the url matches any of the provider's code prefixes,\n* `channel` is set to the url \"channel\" query parameter.\n",
             "fields": [
               {
@@ -15389,7 +15515,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Failure occurs when initializing the audio stream.\n",
+            "description": "Failure occurs when initializing the audio stream. (Migrated from the geckoview metric of the same name).\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -17492,6 +17618,60 @@
             ],
             "mode": "REPEATED",
             "name": "pwmgr_form_autofill_result",
+            "type": "RECORD"
+          },
+          {
+            "description": "Results of login import from a CSV/TSV file, by category\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram PWMGR_IMPORT_LOGINS_FROM_FILE_CATEGORICAL.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "pwmgr_import_logins_from_file_categorical",
+            "type": "RECORD"
+          },
+          {
+            "description": "Whether a <form> is a username-only form. (0=Form has a possible username field but is not considered as a username-only form, 1=Form is considered as a username-only form)\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram PWMGR_IS_USERNAME_ONLY_FORM.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "pwmgr_is_username_only_form",
+            "type": "RECORD"
+          },
+          {
+            "description": "The number of passwords generated when 'signon.improvedPasswordRules.enabled' is true. 0 = Password generated by default rules, 1 = Password generated by custom rules\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram PWMGR_NUM_IMPROVED_GENERATED_PASSWORDS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "pwmgr_num_improved_generated_passwords",
             "type": "RECORD"
           },
           {
@@ -27483,6 +27663,336 @@
             ],
             "mode": "NULLABLE",
             "name": "bounce_tracking_protection_purge_duration",
+            "type": "RECORD"
+          },
+          {
+            "description": "Firefox: Time taken to open a new browser window (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram FX_NEW_WINDOW_MS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "browser_timings_new_window",
+            "type": "RECORD"
+          },
+          {
+            "description": "Firefox: Time taken to load a page (ms). This includes all static contents, no dynamic content. Page reloads and loading of about: pages are not included.\nThis metric was generated to correspond to the Legacy Telemetry linear histogram FX_PAGE_LOAD_MS_2.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "browser_timings_page_load",
+            "type": "RECORD"
+          },
+          {
+            "description": "Firefox: Time taken to reload a page (ms) when using the LOAD_RELOAD_NORMAL flag\nThis metric was generated to correspond to the Legacy Telemetry linear histogram FX_PAGE_RELOAD_NORMAL_MS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "browser_timings_page_reload_normal",
+            "type": "RECORD"
+          },
+          {
+            "description": "Firefox: Time taken to reload a page (ms) when caches are skipped\nThis metric was generated to correspond to the Legacy Telemetry linear histogram FX_PAGE_RELOAD_SKIP_CACHE_MS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "browser_timings_page_reload_skip_cache",
+            "type": "RECORD"
+          },
+          {
+            "description": "Firefox: Time in ms spent on switching tabs in response to a tab click\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram FX_TAB_CLICK_MS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "browser_timings_tab_click",
             "type": "RECORD"
           },
           {
@@ -39432,6 +39942,72 @@
             "type": "RECORD"
           },
           {
+            "description": "Time spent on cookie DB open with readahead (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram MOZ_SQLITE_COOKIES_OPEN_READAHEAD_MS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "network_cookies_sqlite_open_readahead",
+            "type": "RECORD"
+          },
+          {
             "description": "Time spent (ms) during shutdown deleting disk cache v2 for 'clear private data' option\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram NETWORK_DISK_CACHE2_SHUTDOWN_CLEAR_PRIVATE.\n",
             "fields": [
               {
@@ -49923,6 +50499,72 @@
             ],
             "mode": "NULLABLE",
             "name": "privacy_sanitize_load_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Elapsed time to detect whether a <form> element is a signup form.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram PWMGR_SIGNUP_FORM_DETECTION_MS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "pwmgr_signup_form_detection",
             "type": "RECORD"
           },
           {
