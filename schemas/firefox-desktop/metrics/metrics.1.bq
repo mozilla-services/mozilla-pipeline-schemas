@@ -16823,6 +16823,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Counts the amount of times that we get a record that is different (or identical) from the one that was used from the cache after a grace period induced renewal.\nThis is to keep track of the amount of possible breakage that is occuring due to the grace period and useful for evaluating experiments increasing the grace period.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dns_grace_period_renewal",
+            "type": "RECORD"
+          },
+          {
             "description": "DNS: lookup algorithm\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram DNS_LOOKUP_ALGORITHM.\n",
             "fields": [
               {
@@ -57346,6 +57364,72 @@
             ],
             "mode": "NULLABLE",
             "name": "thumbnails_store_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Update: How much longer langpacks took to download than the app update in seconds.\nThis metric was generated to correspond to the Legacy Telemetry linear histogram UPDATE_LANGPACK_OVERTIME.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "update_langpack_overtime",
             "type": "RECORD"
           },
           {
