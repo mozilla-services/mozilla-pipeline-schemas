@@ -1,5 +1,7 @@
 # Version 1
 
+- New client_info sections `attribution` and `distribution`, and their fields [Bug 1955428](https://bugzilla.mozilla.org/show_bug.cgi?id=1955428)
+
 - New metric type `labeled_quantity` [Bug 1932210](https://bugzilla.mozilla.org/show_bug.cgi?id=1932210)
 
 - Increase maximum character limit for metric labels from 61 to 71 [Bug 1929078](https://bugzilla.mozilla.org/show_bug.cgi?id=1929078)
