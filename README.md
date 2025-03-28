@@ -147,6 +147,9 @@ schemas
 │   ├── custom
 │   ├── deletion-request
 │   └── events
+├── glam
+│   ├── deletion-request
+│   └── events
 ├── glean
 │   └── glean
 ├── glean-dictionary
@@ -869,6 +872,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-859 directories
+862 directories
 ```
 
