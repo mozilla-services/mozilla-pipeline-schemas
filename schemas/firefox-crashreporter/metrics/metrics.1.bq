@@ -38,6 +38,43 @@
         "type": "STRING"
       },
       {
+        "fields": [
+          {
+            "description": "The attribution campaign (e.g. 'mozilla-org').",
+            "mode": "NULLABLE",
+            "name": "campaign",
+            "type": "STRING"
+          },
+          {
+            "description": "The attribution content (e.g. 'firefoxview').",
+            "mode": "NULLABLE",
+            "name": "content",
+            "type": "STRING"
+          },
+          {
+            "description": "The attribution medium (e.g. 'organic' for a search engine).",
+            "mode": "NULLABLE",
+            "name": "medium",
+            "type": "STRING"
+          },
+          {
+            "description": "The attribution source (e.g. 'google-play').",
+            "mode": "NULLABLE",
+            "name": "source",
+            "type": "STRING"
+          },
+          {
+            "description": "The attribution term (e.g. 'browser with developer tools for android').",
+            "mode": "NULLABLE",
+            "name": "term",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "attribution",
+        "type": "RECORD"
+      },
+      {
         "description": "The date & time the application was built",
         "mode": "NULLABLE",
         "name": "build_date",
@@ -60,6 +97,19 @@
         "mode": "NULLABLE",
         "name": "device_model",
         "type": "STRING"
+      },
+      {
+        "fields": [
+          {
+            "description": "The distribution name (e.g. 'MozillaOnline').",
+            "mode": "NULLABLE",
+            "name": "name",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "distribution",
+        "type": "RECORD"
       },
       {
         "description": "The date of the first run of the application.",
@@ -448,6 +498,24 @@
             "type": "RECORD"
           },
           {
+            "description": "An attempt to submit a crash. Keyed on the CrashManager Crash.type.\nThis metric was generated to correspond to the Legacy Telemetry count histogram PROCESS_CRASH_SUBMIT_ATTEMPT.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "crash_submit_attempt",
+            "type": "RECORD"
+          },
+          {
             "description": "Counts the number of times a metric was set with an invalid label.\nThe labels are the `category.name` identifier of the metric.\n",
             "fields": [
               {
@@ -562,6 +630,42 @@
       },
       {
         "fields": [
+          {
+            "description": "Size (in bytes) of the compressed crash store JSON file.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram CRASH_STORE_COMPRESSED_BYTES.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "crash_compressed_store_size",
+            "type": "RECORD"
+          },
           {
             "description": "The size of the database file at startup.\n",
             "fields": [

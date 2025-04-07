@@ -38,6 +38,43 @@
         "type": "STRING"
       },
       {
+        "fields": [
+          {
+            "description": "The attribution campaign (e.g. 'mozilla-org').",
+            "mode": "NULLABLE",
+            "name": "campaign",
+            "type": "STRING"
+          },
+          {
+            "description": "The attribution content (e.g. 'firefoxview').",
+            "mode": "NULLABLE",
+            "name": "content",
+            "type": "STRING"
+          },
+          {
+            "description": "The attribution medium (e.g. 'organic' for a search engine).",
+            "mode": "NULLABLE",
+            "name": "medium",
+            "type": "STRING"
+          },
+          {
+            "description": "The attribution source (e.g. 'google-play').",
+            "mode": "NULLABLE",
+            "name": "source",
+            "type": "STRING"
+          },
+          {
+            "description": "The attribution term (e.g. 'browser with developer tools for android').",
+            "mode": "NULLABLE",
+            "name": "term",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "attribution",
+        "type": "RECORD"
+      },
+      {
         "description": "The date & time the application was built",
         "mode": "NULLABLE",
         "name": "build_date",
@@ -60,6 +97,19 @@
         "mode": "NULLABLE",
         "name": "device_model",
         "type": "STRING"
+      },
+      {
+        "fields": [
+          {
+            "description": "The distribution name (e.g. 'MozillaOnline').",
+            "mode": "NULLABLE",
+            "name": "name",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "distribution",
+        "type": "RECORD"
       },
       {
         "description": "The date of the first run of the application.",
@@ -8881,6 +8931,12 @@
             "type": "INT64"
           },
           {
+            "description": "Whether a document used AfterScriptExecuteEvent. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "mode": "NULLABLE",
+            "name": "use_counter_deprecated_ops_doc_after_script_execute_event",
+            "type": "INT64"
+          },
+          {
             "description": "Whether a document used AmbientLightEvent. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_deprecated_ops_doc_ambient_light_event",
@@ -8890,6 +8946,12 @@
             "description": "Whether a document used AppCache. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_deprecated_ops_doc_app_cache",
+            "type": "INT64"
+          },
+          {
+            "description": "Whether a document used BeforeScriptExecuteEvent. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "mode": "NULLABLE",
+            "name": "use_counter_deprecated_ops_doc_before_script_execute_event",
             "type": "INT64"
           },
           {
@@ -9229,6 +9291,12 @@
             "type": "INT64"
           },
           {
+            "description": "Whether a page used AfterScriptExecuteEvent. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "mode": "NULLABLE",
+            "name": "use_counter_deprecated_ops_page_after_script_execute_event",
+            "type": "INT64"
+          },
+          {
             "description": "Whether a page used AmbientLightEvent. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_deprecated_ops_page_ambient_light_event",
@@ -9238,6 +9306,12 @@
             "description": "Whether a page used AppCache. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_deprecated_ops_page_app_cache",
+            "type": "INT64"
+          },
+          {
+            "description": "Whether a page used BeforeScriptExecuteEvent. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "mode": "NULLABLE",
+            "name": "use_counter_deprecated_ops_page_before_script_execute_event",
             "type": "INT64"
           },
           {
@@ -10273,19 +10347,19 @@
             "type": "INT64"
           },
           {
-            "description": "Whether a document called called Document.caretRangeFromPoint. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a document called called HTMLDocument.caretRangeFromPoint. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_htmldocument_caretrangefrompoint",
             "type": "INT64"
           },
           {
-            "description": "Whether a document called called Document.exitPictureInPicture. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a document called called HTMLDocument.exitPictureInPicture. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_htmldocument_exitpictureinpicture",
             "type": "INT64"
           },
           {
-            "description": "Whether a document called called Document.featurePolicy. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a document called called HTMLDocument.featurePolicy. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_htmldocument_featurepolicy",
             "type": "INT64"
@@ -10297,151 +10371,151 @@
             "type": "INT64"
           },
           {
-            "description": "Whether a document called called Document.onbeforecopy. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a document called called HTMLDocument.onbeforecopy. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_htmldocument_onbeforecopy",
             "type": "INT64"
           },
           {
-            "description": "Whether a document called called Document.onbeforecut. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a document called called HTMLDocument.onbeforecut. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_htmldocument_onbeforecut",
             "type": "INT64"
           },
           {
-            "description": "Whether a document called called Document.onbeforepaste. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a document called called HTMLDocument.onbeforepaste. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_htmldocument_onbeforepaste",
             "type": "INT64"
           },
           {
-            "description": "Whether a document called called Document.oncancel. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a document called called HTMLDocument.oncancel. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_htmldocument_oncancel",
             "type": "INT64"
           },
           {
-            "description": "Whether a document called called Document.onfreeze. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a document called called HTMLDocument.onfreeze. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_htmldocument_onfreeze",
             "type": "INT64"
           },
           {
-            "description": "Whether a document called called Document.onmousewheel. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a document called called HTMLDocument.onmousewheel. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_htmldocument_onmousewheel",
             "type": "INT64"
           },
           {
-            "description": "Whether a document called called Document.onresume. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a document called called HTMLDocument.onresume. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_htmldocument_onresume",
             "type": "INT64"
           },
           {
-            "description": "Whether a document called called Document.onsearch. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a document called called HTMLDocument.onsearch. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_htmldocument_onsearch",
             "type": "INT64"
           },
           {
-            "description": "Whether a document called called Document.onwebkitfullscreenchange. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a document called called HTMLDocument.onwebkitfullscreenchange. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_htmldocument_onwebkitfullscreenchange",
             "type": "INT64"
           },
           {
-            "description": "Whether a document called called Document.onwebkitfullscreenerror. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a document called called HTMLDocument.onwebkitfullscreenerror. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_htmldocument_onwebkitfullscreenerror",
             "type": "INT64"
           },
           {
-            "description": "Whether a document called called Document.pictureInPictureElement. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a document called called HTMLDocument.pictureInPictureElement. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_htmldocument_pictureinpictureelement",
             "type": "INT64"
           },
           {
-            "description": "Whether a document called called Document.pictureInPictureEnabled. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a document called called HTMLDocument.pictureInPictureEnabled. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_htmldocument_pictureinpictureenabled",
             "type": "INT64"
           },
           {
-            "description": "Whether a document called called Document.registerElement. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a document called called HTMLDocument.registerElement. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_htmldocument_registerelement",
             "type": "INT64"
           },
           {
-            "description": "Whether a document called called Document.wasDiscarded. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a document called called HTMLDocument.wasDiscarded. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_htmldocument_wasdiscarded",
             "type": "INT64"
           },
           {
-            "description": "Whether a document called called Document.webkitCancelFullScreen. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a document called called HTMLDocument.webkitCancelFullScreen. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_htmldocument_webkitcancelfullscreen",
             "type": "INT64"
           },
           {
-            "description": "Whether a document called called Document.webkitCurrentFullScreenElement. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a document called called HTMLDocument.webkitCurrentFullScreenElement. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_htmldocument_webkitcurrentfullscreenelement",
             "type": "INT64"
           },
           {
-            "description": "Whether a document called called Document.webkitExitFullscreen. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a document called called HTMLDocument.webkitExitFullscreen. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_htmldocument_webkitexitfullscreen",
             "type": "INT64"
           },
           {
-            "description": "Whether a document called called Document.webkitFullscreenElement. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a document called called HTMLDocument.webkitFullscreenElement. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_htmldocument_webkitfullscreenelement",
             "type": "INT64"
           },
           {
-            "description": "Whether a document called called Document.webkitFullscreenEnabled. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a document called called HTMLDocument.webkitFullscreenEnabled. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_htmldocument_webkitfullscreenenabled",
             "type": "INT64"
           },
           {
-            "description": "Whether a document called called Document.webkitHidden. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a document called called HTMLDocument.webkitHidden. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_htmldocument_webkithidden",
             "type": "INT64"
           },
           {
-            "description": "Whether a document called called Document.webkitIsFullScreen. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a document called called HTMLDocument.webkitIsFullScreen. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_htmldocument_webkitisfullscreen",
             "type": "INT64"
           },
           {
-            "description": "Whether a document called called Document.webkitVisibilityState. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a document called called HTMLDocument.webkitVisibilityState. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_htmldocument_webkitvisibilitystate",
             "type": "INT64"
           },
           {
-            "description": "Whether a document called called Document.xmlEncoding. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a document called called HTMLDocument.xmlEncoding. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_htmldocument_xmlencoding",
             "type": "INT64"
           },
           {
-            "description": "Whether a document called called Document.xmlStandalone. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a document called called HTMLDocument.xmlStandalone. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_htmldocument_xmlstandalone",
             "type": "INT64"
           },
           {
-            "description": "Whether a document called called Document.xmlVersion. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a document called called HTMLDocument.xmlVersion. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_htmldocument_xmlversion",
             "type": "INT64"
@@ -10633,7 +10707,7 @@
             "type": "INT64"
           },
           {
-            "description": "Whether a document OOMed while creating IC stub . Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a document OOMed while creating IC stub. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_js_ic_stub_oom",
             "type": "INT64"
@@ -10663,9 +10737,21 @@
             "type": "INT64"
           },
           {
+            "description": "Whether a document has modified builtin Array objects such that the ArraySpecies fuse is popped. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "mode": "NULLABLE",
+            "name": "use_counter_doc_js_optimize_array_species_fuse",
+            "type": "INT64"
+          },
+          {
             "description": "Whether a document has modified any builtins such that the GetIterator fuse is popped. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_js_optimize_get_iterator_fuse",
+            "type": "INT64"
+          },
+          {
+            "description": "Whether a document has modified builtin Promise objects such that the PromiseLookup fuse is popped. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "mode": "NULLABLE",
+            "name": "use_counter_doc_js_optimize_promise_lookup_fuse",
             "type": "INT64"
           },
           {
@@ -10732,6 +10818,12 @@
             "description": "Whether a document resolved a promise using thenable support rather than builtin methods. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_doc_js_thenable",
+            "type": "INT64"
+          },
+          {
+            "description": "Whether a document resolved a promise using thenable on a realms Object.prototype. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "mode": "NULLABLE",
+            "name": "use_counter_doc_js_thenable_object_proto",
             "type": "INT64"
           },
           {
@@ -12871,19 +12963,19 @@
             "type": "INT64"
           },
           {
-            "description": "Whether a page called called Document.caretRangeFromPoint. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a page called called HTMLDocument.caretRangeFromPoint. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_htmldocument_caretrangefrompoint",
             "type": "INT64"
           },
           {
-            "description": "Whether a page called called Document.exitPictureInPicture. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a page called called HTMLDocument.exitPictureInPicture. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_htmldocument_exitpictureinpicture",
             "type": "INT64"
           },
           {
-            "description": "Whether a page called called Document.featurePolicy. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a page called called HTMLDocument.featurePolicy. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_htmldocument_featurepolicy",
             "type": "INT64"
@@ -12895,151 +12987,151 @@
             "type": "INT64"
           },
           {
-            "description": "Whether a page called called Document.onbeforecopy. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a page called called HTMLDocument.onbeforecopy. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_htmldocument_onbeforecopy",
             "type": "INT64"
           },
           {
-            "description": "Whether a page called called Document.onbeforecut. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a page called called HTMLDocument.onbeforecut. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_htmldocument_onbeforecut",
             "type": "INT64"
           },
           {
-            "description": "Whether a page called called Document.onbeforepaste. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a page called called HTMLDocument.onbeforepaste. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_htmldocument_onbeforepaste",
             "type": "INT64"
           },
           {
-            "description": "Whether a page called called Document.oncancel. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a page called called HTMLDocument.oncancel. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_htmldocument_oncancel",
             "type": "INT64"
           },
           {
-            "description": "Whether a page called called Document.onfreeze. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a page called called HTMLDocument.onfreeze. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_htmldocument_onfreeze",
             "type": "INT64"
           },
           {
-            "description": "Whether a page called called Document.onmousewheel. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a page called called HTMLDocument.onmousewheel. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_htmldocument_onmousewheel",
             "type": "INT64"
           },
           {
-            "description": "Whether a page called called Document.onresume. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a page called called HTMLDocument.onresume. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_htmldocument_onresume",
             "type": "INT64"
           },
           {
-            "description": "Whether a page called called Document.onsearch. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a page called called HTMLDocument.onsearch. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_htmldocument_onsearch",
             "type": "INT64"
           },
           {
-            "description": "Whether a page called called Document.onwebkitfullscreenchange. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a page called called HTMLDocument.onwebkitfullscreenchange. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_htmldocument_onwebkitfullscreenchange",
             "type": "INT64"
           },
           {
-            "description": "Whether a page called called Document.onwebkitfullscreenerror. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a page called called HTMLDocument.onwebkitfullscreenerror. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_htmldocument_onwebkitfullscreenerror",
             "type": "INT64"
           },
           {
-            "description": "Whether a page called called Document.pictureInPictureElement. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a page called called HTMLDocument.pictureInPictureElement. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_htmldocument_pictureinpictureelement",
             "type": "INT64"
           },
           {
-            "description": "Whether a page called called Document.pictureInPictureEnabled. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a page called called HTMLDocument.pictureInPictureEnabled. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_htmldocument_pictureinpictureenabled",
             "type": "INT64"
           },
           {
-            "description": "Whether a page called called Document.registerElement. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a page called called HTMLDocument.registerElement. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_htmldocument_registerelement",
             "type": "INT64"
           },
           {
-            "description": "Whether a page called called Document.wasDiscarded. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a page called called HTMLDocument.wasDiscarded. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_htmldocument_wasdiscarded",
             "type": "INT64"
           },
           {
-            "description": "Whether a page called called Document.webkitCancelFullScreen. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a page called called HTMLDocument.webkitCancelFullScreen. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_htmldocument_webkitcancelfullscreen",
             "type": "INT64"
           },
           {
-            "description": "Whether a page called called Document.webkitCurrentFullScreenElement. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a page called called HTMLDocument.webkitCurrentFullScreenElement. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_htmldocument_webkitcurrentfullscreenelement",
             "type": "INT64"
           },
           {
-            "description": "Whether a page called called Document.webkitExitFullscreen. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a page called called HTMLDocument.webkitExitFullscreen. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_htmldocument_webkitexitfullscreen",
             "type": "INT64"
           },
           {
-            "description": "Whether a page called called Document.webkitFullscreenElement. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a page called called HTMLDocument.webkitFullscreenElement. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_htmldocument_webkitfullscreenelement",
             "type": "INT64"
           },
           {
-            "description": "Whether a page called called Document.webkitFullscreenEnabled. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a page called called HTMLDocument.webkitFullscreenEnabled. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_htmldocument_webkitfullscreenenabled",
             "type": "INT64"
           },
           {
-            "description": "Whether a page called called Document.webkitHidden. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a page called called HTMLDocument.webkitHidden. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_htmldocument_webkithidden",
             "type": "INT64"
           },
           {
-            "description": "Whether a page called called Document.webkitIsFullScreen. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a page called called HTMLDocument.webkitIsFullScreen. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_htmldocument_webkitisfullscreen",
             "type": "INT64"
           },
           {
-            "description": "Whether a page called called Document.webkitVisibilityState. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a page called called HTMLDocument.webkitVisibilityState. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_htmldocument_webkitvisibilitystate",
             "type": "INT64"
           },
           {
-            "description": "Whether a page called called Document.xmlEncoding. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a page called called HTMLDocument.xmlEncoding. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_htmldocument_xmlencoding",
             "type": "INT64"
           },
           {
-            "description": "Whether a page called called Document.xmlStandalone. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a page called called HTMLDocument.xmlStandalone. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_htmldocument_xmlstandalone",
             "type": "INT64"
           },
           {
-            "description": "Whether a page called called Document.xmlVersion. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a page called called HTMLDocument.xmlVersion. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_htmldocument_xmlversion",
             "type": "INT64"
@@ -13183,6 +13275,12 @@
             "type": "INT64"
           },
           {
+            "description": "Amount of pages where a text directive could be found after loading has finished\n",
+            "mode": "NULLABLE",
+            "name": "use_counter_page_invalid_text_directives",
+            "type": "INT64"
+          },
+          {
             "description": "Whether a page uses asm.js. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_js_asmjs",
@@ -13231,7 +13329,7 @@
             "type": "INT64"
           },
           {
-            "description": "Whether a page OOMed while creating IC stub . Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "description": "Whether a page OOMed while creating IC stub. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_js_ic_stub_oom",
             "type": "INT64"
@@ -13261,9 +13359,21 @@
             "type": "INT64"
           },
           {
+            "description": "Whether a page has modified builtin Array objects such that the ArraySpecies fuse is popped. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "mode": "NULLABLE",
+            "name": "use_counter_page_js_optimize_array_species_fuse",
+            "type": "INT64"
+          },
+          {
             "description": "Whether a page has modified any builtins such that the GetIterator fuse is popped. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_js_optimize_get_iterator_fuse",
+            "type": "INT64"
+          },
+          {
+            "description": "Whether a page has modified builtin Promise objects such that the PromiseLookup fuse is popped. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "mode": "NULLABLE",
+            "name": "use_counter_page_js_optimize_promise_lookup_fuse",
             "type": "INT64"
           },
           {
@@ -13330,6 +13440,12 @@
             "description": "Whether a page resolved a promise using thenable support rather than builtin methods. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_js_thenable",
+            "type": "INT64"
+          },
+          {
+            "description": "Whether a page resolved a promise using thenable on a realms Object.prototype. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "mode": "NULLABLE",
+            "name": "use_counter_page_js_thenable_object_proto",
             "type": "INT64"
           },
           {
@@ -13762,6 +13878,18 @@
             "description": "Whether a page called called SVGSVGElement.getElementById. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_page_svgsvgelement_getelementbyid",
+            "type": "INT64"
+          },
+          {
+            "description": "How often does FragmentDirective::CreateTextDirective() not find a text fragment\n",
+            "mode": "NULLABLE",
+            "name": "use_counter_page_text_directive_not_created",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of opened pages using text-fragments.\n",
+            "mode": "NULLABLE",
+            "name": "use_counter_page_text_directive_pages",
             "type": "INT64"
           },
           {

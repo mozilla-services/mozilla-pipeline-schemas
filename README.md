@@ -147,6 +147,9 @@ schemas
 │   ├── custom
 │   ├── deletion-request
 │   └── events
+├── glam
+│   ├── deletion-request
+│   └── events
 ├── glean
 │   └── glean
 ├── glean-dictionary
@@ -268,6 +271,7 @@ schemas
 ├── org-mozilla-fenix
 │   ├── activation
 │   ├── addresses-sync
+│   ├── adjust-attribution
 │   ├── baseline
 │   ├── bookmarks-sync
 │   ├── bounce-tracking-protection
@@ -290,8 +294,10 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
+│   ├── nimbus
 │   ├── onboarding-opt-out
 │   ├── pageload
+│   ├── play-store-attribution
 │   ├── spoc
 │   ├── startup-timeline
 │   ├── sync
@@ -304,6 +310,7 @@ schemas
 ├── org-mozilla-fenix-nightly
 │   ├── activation
 │   ├── addresses-sync
+│   ├── adjust-attribution
 │   ├── baseline
 │   ├── bookmarks-sync
 │   ├── bounce-tracking-protection
@@ -326,8 +333,10 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
+│   ├── nimbus
 │   ├── onboarding-opt-out
 │   ├── pageload
+│   ├── play-store-attribution
 │   ├── spoc
 │   ├── startup-timeline
 │   ├── sync
@@ -340,6 +349,7 @@ schemas
 ├── org-mozilla-fennec-aurora
 │   ├── activation
 │   ├── addresses-sync
+│   ├── adjust-attribution
 │   ├── baseline
 │   ├── bookmarks-sync
 │   ├── bounce-tracking-protection
@@ -362,8 +372,10 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
+│   ├── nimbus
 │   ├── onboarding-opt-out
 │   ├── pageload
+│   ├── play-store-attribution
 │   ├── spoc
 │   ├── startup-timeline
 │   ├── sync
@@ -376,6 +388,7 @@ schemas
 ├── org-mozilla-firefox
 │   ├── activation
 │   ├── addresses-sync
+│   ├── adjust-attribution
 │   ├── baseline
 │   ├── bookmarks-sync
 │   ├── bounce-tracking-protection
@@ -398,8 +411,10 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
+│   ├── nimbus
 │   ├── onboarding-opt-out
 │   ├── pageload
+│   ├── play-store-attribution
 │   ├── spoc
 │   ├── startup-timeline
 │   ├── sync
@@ -412,6 +427,7 @@ schemas
 ├── org-mozilla-firefox-beta
 │   ├── activation
 │   ├── addresses-sync
+│   ├── adjust-attribution
 │   ├── baseline
 │   ├── bookmarks-sync
 │   ├── bounce-tracking-protection
@@ -434,8 +450,10 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
+│   ├── nimbus
 │   ├── onboarding-opt-out
 │   ├── pageload
+│   ├── play-store-attribution
 │   ├── spoc
 │   ├── startup-timeline
 │   ├── sync
@@ -527,6 +545,7 @@ schemas
 │   ├── history-sync
 │   ├── logins-sync
 │   ├── metrics
+│   ├── nimbus
 │   ├── onboarding-opt-out
 │   ├── sync
 │   ├── tabs-sync
@@ -555,6 +574,7 @@ schemas
 │   ├── history-sync
 │   ├── logins-sync
 │   ├── metrics
+│   ├── nimbus
 │   ├── onboarding-opt-out
 │   ├── sync
 │   ├── tabs-sync
@@ -583,6 +603,7 @@ schemas
 │   ├── history-sync
 │   ├── logins-sync
 │   ├── metrics
+│   ├── nimbus
 │   ├── onboarding-opt-out
 │   ├── sync
 │   ├── tabs-sync
@@ -851,6 +872,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-841 directories
+862 directories
 ```
 

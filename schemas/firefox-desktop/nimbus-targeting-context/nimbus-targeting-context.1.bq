@@ -38,6 +38,43 @@
         "type": "STRING"
       },
       {
+        "fields": [
+          {
+            "description": "The attribution campaign (e.g. 'mozilla-org').",
+            "mode": "NULLABLE",
+            "name": "campaign",
+            "type": "STRING"
+          },
+          {
+            "description": "The attribution content (e.g. 'firefoxview').",
+            "mode": "NULLABLE",
+            "name": "content",
+            "type": "STRING"
+          },
+          {
+            "description": "The attribution medium (e.g. 'organic' for a search engine).",
+            "mode": "NULLABLE",
+            "name": "medium",
+            "type": "STRING"
+          },
+          {
+            "description": "The attribution source (e.g. 'google-play').",
+            "mode": "NULLABLE",
+            "name": "source",
+            "type": "STRING"
+          },
+          {
+            "description": "The attribution term (e.g. 'browser with developer tools for android').",
+            "mode": "NULLABLE",
+            "name": "term",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "attribution",
+        "type": "RECORD"
+      },
+      {
         "description": "The date & time the application was built",
         "mode": "NULLABLE",
         "name": "build_date",
@@ -60,6 +97,19 @@
         "mode": "NULLABLE",
         "name": "device_model",
         "type": "STRING"
+      },
+      {
+        "fields": [
+          {
+            "description": "The distribution name (e.g. 'MozillaOnline').",
+            "mode": "NULLABLE",
+            "name": "name",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "distribution",
+        "type": "RECORD"
       },
       {
         "description": "The date of the first run of the application.",
@@ -343,6 +393,12 @@
             "type": "BOOL"
           },
           {
+            "description": "Whether the user is logged in to Firefox Accounts.",
+            "mode": "NULLABLE",
+            "name": "nimbus_targeting_context_is_fx_a_signed_in",
+            "type": "BOOL"
+          },
+          {
             "description": "Is this copy of Firefox installed from an MSIX installer?",
             "mode": "NULLABLE",
             "name": "nimbus_targeting_context_is_msix",
@@ -537,6 +593,12 @@
             "type": "JSON"
           },
           {
+            "description": "The resolution of the primary display.",
+            "mode": "NULLABLE",
+            "name": "nimbus_targeting_context_primary_resolution",
+            "type": "JSON"
+          },
+          {
             "description": "Information about the user's activity over the last 28 days.",
             "mode": "NULLABLE",
             "name": "nimbus_targeting_context_user_monthly_activity",
@@ -656,6 +718,25 @@
         ],
         "mode": "NULLABLE",
         "name": "text2",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The client_id according to Telemetry.\nMight not always have a value due to being too early for it to have\nloaded.\nValue may be the canary client id `c0ffeec0-ffee-c0ff-eec0-ffeec0ffeec0`\nin pings near when the data upload pref is disabled (if Telemetry gets\nto go first), or between when a client_id has been removed and when it\nhas been regenerated.\nDoes not need to be sent in the Glean \"deletion-request\" ping.\n",
+            "mode": "NULLABLE",
+            "name": "legacy_telemetry_client_id",
+            "type": "STRING"
+          },
+          {
+            "description": "The profile_group_id according to Telemetry.\nMight not always have a value due to being too early for it to have\nloaded.\nDoes not need to be sent in the Glean \"deletion-request\" ping.\n",
+            "mode": "NULLABLE",
+            "name": "legacy_telemetry_profile_group_id",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "uuid",
         "type": "RECORD"
       }
     ],
