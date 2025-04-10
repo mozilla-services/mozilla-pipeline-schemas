@@ -773,6 +773,8 @@ schemas
 │   └── video-index
 ├── relay-backend
 │   └── events
+├── subscription-platform-backend
+│   └── events
 ├── syncstorage
 │   └── events
 ├── telemetry
@@ -872,6 +874,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-862 directories
+864 directories
 ```
 

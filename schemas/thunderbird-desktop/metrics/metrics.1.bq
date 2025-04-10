@@ -12957,6 +12957,42 @@
             "mode": "NULLABLE",
             "name": "webrtc_video_quality_outbound_packetloss_rate",
             "type": "RECORD"
+          },
+          {
+            "description": "Websockets Handshake Results (ws-ok-plain, ws-ok-proxy, ws-failed-plain, ws-failed-proxy, wss-ok-plain, wss-ok-proxy, wss-failed-plain, wss-failed-proxy)\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram WEBSOCKETS_HANDSHAKE_TYPE.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "websockets_handshake_type",
+            "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
@@ -16256,6 +16292,24 @@
             "type": "RECORD"
           },
           {
+            "description": "A count of how many times each new mail notification action is used. Labels identify the actions, as defined in MailNotificationManager.sys.mjs.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "mail_notification_used_actions",
+            "type": "RECORD"
+          },
+          {
             "description": "How many times email accounts setup succeeded, keyed by account config source.",
             "fields": [
               {
@@ -18359,6 +18413,24 @@
             ],
             "mode": "REPEATED",
             "name": "pwmgr_num_improved_generated_passwords",
+            "type": "RECORD"
+          },
+          {
+            "description": "Records if a detected region value was stored or ignored. A region might be ignored if it is the US but the set timezone is not the US.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "region_store_region_result",
             "type": "RECORD"
           },
           {
@@ -21607,6 +21679,102 @@
             ],
             "mode": "REPEATED",
             "name": "network_cache_size",
+            "type": "RECORD"
+          },
+          {
+            "description": "In TRR channel, the size of the HTTP request.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_trr_request_size",
+            "type": "RECORD"
+          },
+          {
+            "description": "In TRR channel, the size of the HTTP response.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_trr_response_size",
             "type": "RECORD"
           }
         ],
@@ -29496,6 +29664,11 @@
       },
       {
         "fields": [
+          {
+            "mode": "REPEATED",
+            "name": "mail_notification_enabled_actions",
+            "type": "STRING"
+          },
           {
             "mode": "REPEATED",
             "name": "mail_ui_configuration_folder_tree_modes",
