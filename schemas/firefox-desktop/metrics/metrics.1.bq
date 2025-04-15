@@ -387,6 +387,18 @@
             "type": "BOOL"
           },
           {
+            "description": "Whether application compatibility is enforced for add-ons.\n",
+            "mode": "NULLABLE",
+            "name": "addons_manager_compatibility_check_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the extension blocklist is enabled.\nCorresponds to the `extensions.blocklist.enabled` pref.\n",
+            "mode": "NULLABLE",
+            "name": "blocklist_enabled",
+            "type": "BOOL"
+          },
+          {
             "description": "Keeps track of whether the feature is enabled at startup.\n",
             "mode": "NULLABLE",
             "name": "bounce_tracking_protection_enabled_at_startup",
@@ -414,6 +426,12 @@
             "description": "True if the BackupService is configured to automatically create backups in the background.\n",
             "mode": "NULLABLE",
             "name": "browser_backup_scheduler_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the shell service identified this app as the default browser.\nChecked once near startup.\nOn Windows, this is operationalized as whether Firefox is the default\nHTTP protocol handler and the default HTML file handler.\n",
+            "mode": "NULLABLE",
+            "name": "browser_default_at_launch",
             "type": "BOOL"
           },
           {
@@ -531,6 +549,12 @@
             "type": "BOOL"
           },
           {
+            "description": "Whether e10s is on, i.e. browser tabs open by default in a different\nprocess.\nSee `nsIXULRuntime.browserTabsRemoteAutostart`\n",
+            "mode": "NULLABLE",
+            "name": "e10s_enabled",
+            "type": "BOOL"
+          },
+          {
             "description": "Corresponds to the value of `WebExtensionPolicy.useRemoteWebExtensions`.\n",
             "mode": "NULLABLE",
             "name": "extensions_use_remote_policy",
@@ -540,6 +564,12 @@
             "description": "Corresponds to the value of `extensions.webextensions.remote` pref.\n",
             "mode": "NULLABLE",
             "name": "extensions_use_remote_pref",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether fission is enabled this session, and subframes can load in a\ndifferent process.\nSee `nsIXULRuntime.fissionAutostart`\n",
+            "mode": "NULLABLE",
+            "name": "fission_enabled",
             "type": "BOOL"
           },
           {
@@ -822,6 +852,12 @@
             "description": "When an update is available and app.update.auto is disabled, a popup is opened prompting the user to download and install the update. The pref app.update.suppressPrompts causes Firefox Nightly to wait up to 7 days before showing the prompt, instead showing a badge and banner in the meantime. It also prevents Nightly from showing update restart prompts, instead showing a badge and banner immediately. This value is set for the users who set this pref to true. This metric was generated to correspond to the Legacy Telemetry scalar update.suppress_prompts.\n",
             "mode": "NULLABLE",
             "name": "update_suppress_prompts",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the app was built with the updater binary.\nCorresponds to the value of the `MOZ_UPDATER` define.\n",
+            "mode": "NULLABLE",
+            "name": "updater_available",
             "type": "BOOL"
           },
           {
@@ -27602,6 +27638,24 @@
             "mode": "REPEATED",
             "name": "tabgroup_tabs_per_active_group",
             "type": "RECORD"
+          },
+          {
+            "description": "Records statistics about the number of tabs per saved tab group: max, median, average and min.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "tabgroup_tabs_per_saved_group",
+            "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
@@ -35189,6 +35243,12 @@
             "mode": "NULLABLE",
             "name": "fog_validation_some_object",
             "type": "JSON"
+          },
+          {
+            "description": "The fossilized remains of the Legacy Telemetry Environment's\n`settings.userPrefs` structure.\nA list of pref names and values.\nSome values will be the string \"<user-set>\" to obscure the value.\nDo not add more prefs to this list.\nPrefer instead to instrument your prefs directly with individual metrics.\nSee Environment.sys.mjs' `DEFAULT_ENVIRONMENT_PREFS`.\n",
+            "mode": "NULLABLE",
+            "name": "preferences_user_prefs",
+            "type": "JSON"
           }
         ],
         "mode": "NULLABLE",
@@ -35456,6 +35516,12 @@
             "type": "INT64"
           },
           {
+            "description": "Maximum number of processes that will be launched for regular web content.\nSee `nsIXULRuntime.maxWebProcessCount`\n",
+            "mode": "NULLABLE",
+            "name": "e10s_multi_processes",
+            "type": "INT64"
+          },
+          {
             "description": "Max amount of DNR rules being evaluated.\n",
             "mode": "NULLABLE",
             "name": "extensions_apis_dnr_evaluate_rules_count_max",
@@ -35543,6 +35609,12 @@
             "description": "The number of consecutive unstable launch attempts.\n",
             "mode": "NULLABLE",
             "name": "gpu_process_unstable_launch_attempts",
+            "type": "INT64"
+          },
+          {
+            "description": "Whether, and in what mode, the launcher process is enabled (or not).\nSee `nsIXULRuntime.launcherProcessState`\n",
+            "mode": "NULLABLE",
+            "name": "launcher_process_state",
             "type": "INT64"
           },
           {
@@ -35645,6 +35717,12 @@
             "description": "The time in seconds between the first browser window loading, and the time the OS started. This can give us an indication of whether starting the browser may have been the first thing the user did after starting their computer. This metric was generated to correspond to the Legacy Telemetry scalar startup.seconds_since_last_os_restart.\n",
             "mode": "NULLABLE",
             "name": "startup_seconds_since_last_os_restart",
+            "type": "INT64"
+          },
+          {
+            "description": "Records the number of saved tab groups present in the user's session\n",
+            "mode": "NULLABLE",
+            "name": "tabgroup_saved_groups",
             "type": "INT64"
           },
           {
@@ -36553,6 +36631,12 @@
             "description": "The version of Gtk 3 in use. This metric was generated to correspond to the Legacy Telemetry scalar widget.gtk_version.\n",
             "mode": "NULLABLE",
             "name": "widget_gtk_version",
+            "type": "STRING"
+          },
+          {
+            "description": "A string tag identifying the binary ABI of the current processor and\ncompiler vtable. This is taken from the TARGET_XPCOM_ABI configure\nvariable. It may not be available on all platforms, especially\nunusual processor or compiler combinations.\n\nThe result takes the form <processor>-<compilerABI>, for example:\n  - x86-msvc\n  - ppc-gcc3\n\nThis value should almost always be used in combination with the\noperating system.\n",
+            "mode": "NULLABLE",
+            "name": "xpcom_abi",
             "type": "STRING"
           }
         ],

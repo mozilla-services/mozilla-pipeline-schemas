@@ -399,6 +399,12 @@
             "type": "BOOL"
           },
           {
+            "description": "Whether application compatibility is enforced for add-ons.\n",
+            "mode": "NULLABLE",
+            "name": "addons_manager_compatibility_check_enabled",
+            "type": "BOOL"
+          },
+          {
             "description": "Whether or not Firefox is the Android Autofill provider for this user.\nprovider.\n",
             "mode": "NULLABLE",
             "name": "android_autofill_enabled",
@@ -408,6 +414,12 @@
             "description": "Whether or not Android Autofill is supported by the device and is\nsupported for this user.\n",
             "mode": "NULLABLE",
             "name": "android_autofill_supported",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the extension blocklist is enabled.\nCorresponds to the `extensions.blocklist.enabled` pref.\n",
+            "mode": "NULLABLE",
+            "name": "blocklist_enabled",
             "type": "BOOL"
           },
           {
@@ -537,6 +549,12 @@
             "type": "BOOL"
           },
           {
+            "description": "Whether e10s is on, i.e. browser tabs open by default in a different\nprocess.\nSee `nsIXULRuntime.browserTabsRemoteAutostart`\n",
+            "mode": "NULLABLE",
+            "name": "e10s_enabled",
+            "type": "BOOL"
+          },
+          {
             "description": "True if marketing notifications are allowed, otherwise false.\n",
             "mode": "NULLABLE",
             "name": "events_marketing_notification_allowed",
@@ -552,6 +570,12 @@
             "description": "Corresponds to the value of `extensions.webextensions.remote` pref.\n",
             "mode": "NULLABLE",
             "name": "extensions_use_remote_pref",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether fission is enabled this session, and subframes can load in a\ndifferent process.\nSee `nsIXULRuntime.fissionAutostart`\n",
+            "mode": "NULLABLE",
+            "name": "fission_enabled",
             "type": "BOOL"
           },
           {
@@ -864,6 +888,12 @@
             "description": "Whether or not the tab strip feature is enabled\n",
             "mode": "NULLABLE",
             "name": "tab_strip_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the app was built with the updater binary.\nCorresponds to the value of the `MOZ_UPDATER` define.\n",
+            "mode": "NULLABLE",
+            "name": "updater_available",
             "type": "BOOL"
           },
           {
@@ -17059,7 +17089,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Failure occurs when initializing the audio stream. (Migrated from the geckoview metric of the same name).\n",
+            "description": "Failure occurs when initializing the audio stream.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -29561,6 +29591,12 @@
             "mode": "NULLABLE",
             "name": "nimbus_system_recorded_nimbus_context",
             "type": "JSON"
+          },
+          {
+            "description": "The fossilized remains of the Legacy Telemetry Environment's\n`settings.userPrefs` structure.\nA list of pref names and values.\nSome values will be the string \"<user-set>\" to obscure the value.\nDo not add more prefs to this list.\nPrefer instead to instrument your prefs directly with individual metrics.\nSee Environment.sys.mjs' `DEFAULT_ENVIRONMENT_PREFS`.\n",
+            "mode": "NULLABLE",
+            "name": "preferences_user_prefs",
+            "type": "JSON"
           }
         ],
         "mode": "NULLABLE",
@@ -29639,6 +29675,12 @@
             "description": "The number of entries stored in the SiteSecurityServiceState nsIDataStorage",
             "mode": "NULLABLE",
             "name": "data_storage_site_security_service_state",
+            "type": "INT64"
+          },
+          {
+            "description": "Maximum number of processes that will be launched for regular web content.\nSee `nsIXULRuntime.maxWebProcessCount`\n",
+            "mode": "NULLABLE",
+            "name": "e10s_multi_processes",
             "type": "INT64"
           },
           {
@@ -29735,6 +29777,12 @@
             "description": "The number of bookmarked items appearing in the\nBookmarks section on the home page. This was previously recent_bookmarks.recent_bookmarks_count.\n",
             "mode": "NULLABLE",
             "name": "home_bookmarks_bookmarks_count",
+            "type": "INT64"
+          },
+          {
+            "description": "Whether, and in what mode, the launcher process is enabled (or not).\nSee `nsIXULRuntime.launcherProcessState`\n",
+            "mode": "NULLABLE",
+            "name": "launcher_process_state",
             "type": "INT64"
           },
           {
@@ -30745,6 +30793,12 @@
             "description": "Record whether the user chooses an option from the dropdown.\n",
             "mode": "NULLABLE",
             "name": "webcompatreporting_reason_dropdown",
+            "type": "STRING"
+          },
+          {
+            "description": "A string tag identifying the binary ABI of the current processor and\ncompiler vtable. This is taken from the TARGET_XPCOM_ABI configure\nvariable. It may not be available on all platforms, especially\nunusual processor or compiler combinations.\n\nThe result takes the form <processor>-<compilerABI>, for example:\n  - x86-msvc\n  - ppc-gcc3\n\nThis value should almost always be used in combination with the\noperating system.\n",
+            "mode": "NULLABLE",
+            "name": "xpcom_abi",
             "type": "STRING"
           }
         ],

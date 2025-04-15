@@ -387,6 +387,18 @@
             "type": "BOOL"
           },
           {
+            "description": "Whether application compatibility is enforced for add-ons.\n",
+            "mode": "NULLABLE",
+            "name": "addons_manager_compatibility_check_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the extension blocklist is enabled.\nCorresponds to the `extensions.blocklist.enabled` pref.\n",
+            "mode": "NULLABLE",
+            "name": "blocklist_enabled",
+            "type": "BOOL"
+          },
+          {
             "description": "Keeps track of whether the feature is enabled at startup.\n",
             "mode": "NULLABLE",
             "name": "bounce_tracking_protection_enabled_at_startup",
@@ -453,6 +465,12 @@
             "type": "BOOL"
           },
           {
+            "description": "Whether e10s is on, i.e. browser tabs open by default in a different\nprocess.\nSee `nsIXULRuntime.browserTabsRemoteAutostart`\n",
+            "mode": "NULLABLE",
+            "name": "e10s_enabled",
+            "type": "BOOL"
+          },
+          {
             "description": "Corresponds to the value of `WebExtensionPolicy.useRemoteWebExtensions`.\n",
             "mode": "NULLABLE",
             "name": "extensions_use_remote_policy",
@@ -462,6 +480,12 @@
             "description": "Corresponds to the value of `extensions.webextensions.remote` pref.\n",
             "mode": "NULLABLE",
             "name": "extensions_use_remote_pref",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether fission is enabled this session, and subframes can load in a\ndifferent process.\nSee `nsIXULRuntime.fissionAutostart`\n",
+            "mode": "NULLABLE",
+            "name": "fission_enabled",
             "type": "BOOL"
           },
           {
@@ -624,6 +648,12 @@
             "description": "The user has changed the setting for enhanced tracking protection\nat least once.\n",
             "mode": "NULLABLE",
             "name": "tracking_protection_has_social_blocked",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the app was built with the updater binary.\nCorresponds to the value of the `MOZ_UPDATER` define.\n",
+            "mode": "NULLABLE",
+            "name": "updater_available",
             "type": "BOOL"
           },
           {
@@ -28523,6 +28553,12 @@
             "mode": "NULLABLE",
             "name": "fog_validation_some_object",
             "type": "JSON"
+          },
+          {
+            "description": "The fossilized remains of the Legacy Telemetry Environment's\n`settings.userPrefs` structure.\nA list of pref names and values.\nSome values will be the string \"<user-set>\" to obscure the value.\nDo not add more prefs to this list.\nPrefer instead to instrument your prefs directly with individual metrics.\nSee Environment.sys.mjs' `DEFAULT_ENVIRONMENT_PREFS`.\n",
+            "mode": "NULLABLE",
+            "name": "preferences_user_prefs",
+            "type": "JSON"
           }
         ],
         "mode": "NULLABLE",
@@ -28577,6 +28613,12 @@
             "description": "The number of entries stored in the SiteSecurityServiceState nsIDataStorage",
             "mode": "NULLABLE",
             "name": "data_storage_site_security_service_state",
+            "type": "INT64"
+          },
+          {
+            "description": "Maximum number of processes that will be launched for regular web content.\nSee `nsIXULRuntime.maxWebProcessCount`\n",
+            "mode": "NULLABLE",
+            "name": "e10s_multi_processes",
             "type": "INT64"
           },
           {
@@ -28667,6 +28709,12 @@
             "description": "The number of consecutive unstable launch attempts.\n",
             "mode": "NULLABLE",
             "name": "gpu_process_unstable_launch_attempts",
+            "type": "INT64"
+          },
+          {
+            "description": "Whether, and in what mode, the launcher process is enabled (or not).\nSee `nsIXULRuntime.launcherProcessState`\n",
+            "mode": "NULLABLE",
+            "name": "launcher_process_state",
             "type": "INT64"
           },
           {
@@ -29515,6 +29563,12 @@
             "description": "How the profile was selected during startup. One of the following reasons:\n  unknown:\n    Generally should not happen, set as a default in case no other reason\n    occured.\n  profile-manager:\n    The profile was selected by the profile manager.\n  profile-selector:\n    The profile was selected by the profile selector window.\n  profile-reset:\n    The profile was selected for reset, normally this would mean a restart.\n  restart:\n    The user restarted the application, the same profile as previous will\n    be used.\n  argument-profile:\n    The profile was selected by the --profile command line argument.\n  argument-p:\n    The profile was selected by the -p command line argument.\n  firstrun-claimed-default:\n    A first run of a dedicated profiles build chose the old default\n    profile to be the default for this install.\n  firstrun-skipped-default:\n    A first run of a dedicated profiles build skipped over the old default\n    profile and created a new profile.\n  restart-claimed-default:\n    A first run of a dedicate",
             "mode": "NULLABLE",
             "name": "startup_profile_selection_reason",
+            "type": "STRING"
+          },
+          {
+            "description": "A string tag identifying the binary ABI of the current processor and\ncompiler vtable. This is taken from the TARGET_XPCOM_ABI configure\nvariable. It may not be available on all platforms, especially\nunusual processor or compiler combinations.\n\nThe result takes the form <processor>-<compilerABI>, for example:\n  - x86-msvc\n  - ppc-gcc3\n\nThis value should almost always be used in combination with the\noperating system.\n",
+            "mode": "NULLABLE",
+            "name": "xpcom_abi",
             "type": "STRING"
           }
         ],
