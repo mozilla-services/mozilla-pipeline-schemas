@@ -87,6 +87,7 @@ schemas
 │   ├── first-startup
 │   ├── fog-validation
 │   ├── fx-accounts
+│   ├── hang-report
 │   ├── messaging-system
 │   ├── metrics
 │   ├── new-metric-capture-emulation
@@ -135,6 +136,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
+│   ├── hang-report
 │   ├── metrics
 │   ├── pageload
 │   ├── use-counters
@@ -288,6 +290,7 @@ schemas
 │   ├── fog-validation
 │   ├── font-list
 │   ├── fx-suggest
+│   ├── hang-report
 │   ├── history-sync
 │   ├── home
 │   ├── installation
@@ -327,6 +330,7 @@ schemas
 │   ├── fog-validation
 │   ├── font-list
 │   ├── fx-suggest
+│   ├── hang-report
 │   ├── history-sync
 │   ├── home
 │   ├── installation
@@ -366,6 +370,7 @@ schemas
 │   ├── fog-validation
 │   ├── font-list
 │   ├── fx-suggest
+│   ├── hang-report
 │   ├── history-sync
 │   ├── home
 │   ├── installation
@@ -405,6 +410,7 @@ schemas
 │   ├── fog-validation
 │   ├── font-list
 │   ├── fx-suggest
+│   ├── hang-report
 │   ├── history-sync
 │   ├── home
 │   ├── installation
@@ -444,6 +450,7 @@ schemas
 │   ├── fog-validation
 │   ├── font-list
 │   ├── fx-suggest
+│   ├── hang-report
 │   ├── history-sync
 │   ├── home
 │   ├── installation
@@ -490,6 +497,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
+│   ├── hang-report
 │   ├── metrics
 │   ├── pageload
 │   ├── usage-deletion-request
@@ -508,6 +516,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
+│   ├── hang-report
 │   ├── metrics
 │   ├── pageload
 │   ├── usage-deletion-request
@@ -526,6 +535,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
+│   ├── hang-report
 │   ├── metrics
 │   ├── pageload
 │   ├── usage-deletion-request
@@ -688,6 +698,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
+│   ├── hang-report
 │   ├── metrics
 │   ├── pageload
 │   ├── usage-deletion-request
@@ -747,6 +758,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
+│   ├── hang-report
 │   ├── messaging-system
 │   ├── metrics
 │   ├── new-metric-capture-emulation
@@ -856,6 +868,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
+│   ├── hang-report
 │   ├── metrics
 │   ├── pageload
 │   ├── use-counters
@@ -874,6 +887,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-864 directories
+877 directories
 ```
 
