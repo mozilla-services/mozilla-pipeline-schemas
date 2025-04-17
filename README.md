@@ -92,6 +92,7 @@ schemas
 │   ├── metrics
 │   ├── new-metric-capture-emulation
 │   ├── newtab
+│   ├── newtab-content
 │   ├── nimbus-targeting-context
 │   ├── onboarding-opt-out
 │   ├── pageload
@@ -763,6 +764,7 @@ schemas
 │   ├── metrics
 │   ├── new-metric-capture-emulation
 │   ├── newtab
+│   ├── newtab-content
 │   ├── onboarding-opt-out
 │   ├── pageload
 │   ├── pseudo-main
@@ -887,6 +889,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-877 directories
+879 directories
 ```
 
