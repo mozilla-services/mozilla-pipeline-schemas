@@ -573,6 +573,24 @@
             "type": "BOOL"
           },
           {
+            "description": "Whether Direct2D is enabled. (Windows-only)\n",
+            "mode": "NULLABLE",
+            "name": "gfx_d2d_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether DirectWrite is enabled. (Windows-only)\n",
+            "mode": "NULLABLE",
+            "name": "gfx_dwrite_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the app's running in headless mode (e.g. via `MOZ_HEADLESS`).\n",
+            "mode": "NULLABLE",
+            "name": "gfx_headless",
+            "type": "BOOL"
+          },
+          {
             "description": "Boolean indicating whether the os compositor is being used by WebRender. Only collected in the first subsession. This metric was generated to correspond to the Legacy Telemetry scalar gfx.os_compositor.\n",
             "mode": "NULLABLE",
             "name": "gfx_os_compositor",
@@ -759,9 +777,45 @@
             "type": "BOOL"
           },
           {
+            "description": "Whether the app has a package identity.\nWindows only.\n",
+            "mode": "NULLABLE",
+            "name": "system_has_win_package_id",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether we're in Windows32-on-Windows64 mode.\nWindows only.\n",
+            "mode": "NULLABLE",
+            "name": "system_is_wow_64",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether we're in Windows32-on-WindowsForArm64 mode.\nWindows only.\n",
+            "mode": "NULLABLE",
+            "name": "system_is_wow_arm_64",
+            "type": "BOOL"
+          },
+          {
             "description": "User opted into sending Telemetry data again. This metric was generated to correspond to the Legacy Telemetry scalar telemetry.data_upload_optin.\n",
             "mode": "NULLABLE",
             "name": "telemetry_data_upload_optin",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether app updates are set to auto-download.\n",
+            "mode": "NULLABLE",
+            "name": "update_settings_auto_download",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether updates can be delivered in the background.\n",
+            "mode": "NULLABLE",
+            "name": "update_settings_background",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether updates are available.\n",
+            "mode": "NULLABLE",
+            "name": "update_settings_enabled",
             "type": "BOOL"
           },
           {
@@ -31527,6 +31581,84 @@
             "type": "JSON"
           },
           {
+            "description": "Information about the primary (and secondary, if available) graphics adapter.\n* description - e.g. \"Intel(R) HD Graphics 4600\"\n* vendorID - Hex vendor id\n* deviceID - Hex device id\n* subsysID - Hex subsys id\n* RAM - reported RAM in megabytes.\n* driver - Platform-specific driver information.\n* driverVendor - Driver vendor information.\n* driverVersion - Driver version.\n* driverDate - Driver date.\n* GPUActive - Whether this adapter is active.\n",
+            "mode": "NULLABLE",
+            "name": "gfx_adapters",
+            "type": "JSON"
+          },
+          {
+            "description": "(Windows-only) information about the D2D compositor.\n* status - One of\n  * \"unused\"      - This feature has not been requested.\n  * \"unavailable\" - Safe Mode or OS restriction prevents use.\n  * \"blocked\"     - An internal condition (such as safe mode) prevents use.\n  * \"blocklisted\" - Blocked due to a blocklist restriction.\n  * \"denied\"      - Blocked due to allowlist restrictions.\n  * \"disabled\"    - User explicitly disabled this default feature.\n  * \"failed\"      - Feature failed to initialize.\n  * \"available\"   - User has this feature available by default.\n            optionally including \":\" followed by a reason\n            e.g. \"FEATURE_FAILURE_WEBRENDER_VIDEO_CRASH_INTEL_23.20.16.4973\".\n* version - The feature version, either \"1.0\" or \"1.1\"\n",
+            "mode": "NULLABLE",
+            "name": "gfx_features_d2d",
+            "type": "JSON"
+          },
+          {
+            "description": "(Windows-only) information about the D3D11 compositor.\n* status - One of\n  * \"unused\"      - This feature has not been requested.\n  * \"unavailable\" - Safe Mode or OS restriction prevents use.\n  * \"blocked\"     - An internal condition (such as safe mode) prevents use.\n  * \"blocklisted\" - Blocked due to a blocklist restriction.\n  * \"denied\"      - Blocked due to allowlist restrictions.\n  * \"disabled\"    - User explicitly disabled this default feature.\n  * \"failed\"      - Feature failed to initialize.\n  * \"available\"   - User has this feature available by default.\n            optionally including \":\" followed by a reason\n            e.g. \"FEATURE_FAILURE_WEBRENDER_VIDEO_CRASH_INTEL_23.20.16.4973\".\n* warp - Software rendering (WARP) mode was chosen.\n* textureSharing - Whether or not texture sharing works.\n* version - The D3D11 device feature level.\n* blocklisted - Whether D3D11 is blocklisted; use to see whether WARP\n                was blacklist induced or driver-failure induced.\n",
+            "mode": "NULLABLE",
+            "name": "gfx_features_d3d11",
+            "type": "JSON"
+          },
+          {
+            "description": "Information about the out-of-process compositing (\"GPU Process\") GFX feature.\n* status - One of\n  * \"unused\"      - This feature has not been requested.\n  * \"unavailable\" - Safe Mode or OS restriction prevents use.\n  * \"blocked\"     - An internal condition (such as safe mode) prevents use.\n  * \"blocklisted\" - Blocked due to a blocklist restriction.\n  * \"denied\"      - Blocked due to allowlist restrictions.\n  * \"disabled\"    - User explicitly disabled this default feature.\n  * \"failed\"      - Feature failed to initialize.\n  * \"available\"   - User has this feature available by default and it's in use.\n            optionally including \":\" followed by a reason\n            e.g. \"FEATURE_FAILURE_WEBRENDER_VIDEO_CRASH_INTEL_23.20.16.4973\".\n",
+            "mode": "NULLABLE",
+            "name": "gfx_features_gpu_process",
+            "type": "JSON"
+          },
+          {
+            "description": "Information about the hardware acceleration GFX feature.\n(i.e. whether we try using the GPU)\n* status - One of\n  * \"unused\"      - This feature has not been requested.\n  * \"unavailable\" - Safe Mode or OS restriction prevents use.\n  * \"blocked\"     - An internal condition (such as safe mode) prevents use.\n  * \"blocklisted\" - Blocked due to a blocklist restriction.\n  * \"denied\"      - Blocked due to allowlist restrictions.\n  * \"disabled\"    - User explicitly disabled this default feature.\n  * \"failed\"      - Feature failed to initialize.\n  * \"available\"   - User has this feature available by default.\n            optionally including \":\" followed by a reason\n            e.g. \"FEATURE_FAILURE_WEBRENDER_VIDEO_CRASH_INTEL_23.20.16.4973\".\n",
+            "mode": "NULLABLE",
+            "name": "gfx_features_hw_compositing",
+            "type": "JSON"
+          },
+          {
+            "description": "Information about the Off Main Thread Painting GFX feature.\n* status - One of\n  * \"unused\"      - This feature has not been requested.\n  * \"unavailable\" - Safe Mode or OS restriction prevents use.\n  * \"blocked\"     - An internal condition (such as safe mode) prevents use.\n  * \"blocklisted\" - Blocked due to a blocklist restriction.\n  * \"denied\"      - Blocked due to allowlist restrictions.\n  * \"disabled\"    - User explicitly disabled this default feature.\n  * \"failed\"      - Feature failed to initialize.\n  * \"available\"   - User has this feature available by default.\n            optionally including \":\" followed by a reason\n            e.g. \"FEATURE_FAILURE_WEBRENDER_VIDEO_CRASH_INTEL_23.20.16.4973\".\n",
+            "mode": "NULLABLE",
+            "name": "gfx_features_omtp",
+            "type": "JSON"
+          },
+          {
+            "description": "Information about the OpenGL Compositing GFX feature.\n* status - One of\n  * \"unused\"      - This feature has not been requested.\n  * \"unavailable\" - Safe Mode or OS restriction prevents use.\n  * \"blocked\"     - An internal condition (such as safe mode) prevents use.\n  * \"blocklisted\" - Blocked due to a blocklist restriction.\n  * \"denied\"      - Blocked due to allowlist restrictions.\n  * \"disabled\"    - User explicitly disabled this default feature.\n  * \"failed\"      - Feature failed to initialize.\n  * \"available\"   - User has this feature available by default.\n            optionally including \":\" followed by a reason\n            e.g. \"FEATURE_FAILURE_WEBRENDER_VIDEO_CRASH_INTEL_23.20.16.4973\".\n",
+            "mode": "NULLABLE",
+            "name": "gfx_features_opengl_compositing",
+            "type": "JSON"
+          },
+          {
+            "description": "Information about the Webrender GFX feature.\n* status - One of\n  * \"unused\"      - This feature has not been requested.\n  * \"unavailable\" - Safe Mode or OS restriction prevents use.\n  * \"blocked\"     - An internal condition (such as safe mode) prevents use.\n  * \"blocklisted\" - Blocked due to a blocklist restriction.\n  * \"denied\"      - Blocked due to allowlist restrictions.\n  * \"disabled\"    - User explicitly disabled this default feature.\n  * \"failed\"      - Feature failed to initialize.\n  * \"available\"   - User has this feature available by default.\n            optionally including \":\" followed by a reason\n            e.g. \"FEATURE_FAILURE_WEBRENDER_VIDEO_CRASH_INTEL_23.20.16.4973\".\n",
+            "mode": "NULLABLE",
+            "name": "gfx_features_webrender",
+            "type": "JSON"
+          },
+          {
+            "description": "Information about the native OS compositor (CA, DCamp, etc.).\n* status - One of\n  * \"unused\"      - This feature has not been requested.\n  * \"unavailable\" - Safe Mode or OS restriction prevents use.\n  * \"blocked\"     - An internal condition (such as safe mode) prevents use.\n  * \"blocklisted\" - Blocked due to a blocklist restriction.\n  * \"denied\"      - Blocked due to allowlist restrictions.\n  * \"disabled\"    - User explicitly disabled this default feature.\n  * \"failed\"      - Feature failed to initialize.\n  * \"available\"   - User has this feature available by default.\n            optionally including \":\" followed by a reason\n            e.g. \"FEATURE_FAILURE_WEBRENDER_VIDEO_CRASH_INTEL_23.20.16.4973\".\n",
+            "mode": "NULLABLE",
+            "name": "gfx_features_wr_compositor",
+            "type": "JSON"
+          },
+          {
+            "description": "Information about connected monitors.\nOn Linux only a single monitor is returned for the primary screen.\n* screenWidth - Screen width in pixels\n* screenHeight - Screen height in pixels\n* defaultCSSScaleFactor - The default number of device pixels per unscaled CSS pixel for this screen.\n* contentsScaleFactor - The number of device pixels per desktop pixel for this screen.\n* refreshRate - (Windows only) The target screen refresh rate, in Hz, or 0 if unknown.\n* pseudoDislay - (Windows only) Whether the screen is a pseudo display.\n",
+            "mode": "NULLABLE",
+            "name": "gfx_monitors",
+            "type": "JSON"
+          },
+          {
+            "description": "Information about the disk the application binary is stored on.\nWindows only.\n* model - The disk's self-reported model string\n* revision - The disk's self-reported revision string\n* diskType - Either \"HDD\" or \"SSD\"\n",
+            "mode": "NULLABLE",
+            "name": "hdd_binary",
+            "type": "JSON"
+          },
+          {
+            "description": "Information about the disk the profile is stored on.\nWindows only.\n* model - The disk's self-reported model string\n* revision - The disk's self-reported revision string\n* diskType - Either \"HDD\" or \"SSD\"\n",
+            "mode": "NULLABLE",
+            "name": "hdd_profile",
+            "type": "JSON"
+          },
+          {
+            "description": "Information about the disk the system files are stored on.\nWindows only.\n* model - The disk's self-reported model string\n* revision - The disk's self-reported revision string\n* diskType - Either \"HDD\" or \"SSD\"\n",
+            "mode": "NULLABLE",
+            "name": "hdd_system",
+            "type": "JSON"
+          },
+          {
             "description": "The fossilized remains of the Legacy Telemetry Environment's\n`settings.userPrefs` structure.\nA list of pref names and values.\nSome values will be the string \"<user-set>\" to obscure the value.\nDo not add more prefs to this list.\nPrefer instead to instrument your prefs directly with individual metrics.\nSee Environment.sys.mjs' `DEFAULT_ENVIRONMENT_PREFS`.\n",
             "mode": "NULLABLE",
             "name": "preferences_user_prefs",
@@ -31774,6 +31906,12 @@
             "type": "INT64"
           },
           {
+            "description": "The frame rate in Hz, typically 60 or more.\n",
+            "mode": "NULLABLE",
+            "name": "gfx_target_frame_rate",
+            "type": "INT64"
+          },
+          {
             "description": "The number of total GPU process launch attempts.\n",
             "mode": "NULLABLE",
             "name": "gpu_process_total_launch_attempts",
@@ -31828,6 +31966,30 @@
             "type": "INT64"
           },
           {
+            "description": "The day the profile was created,\nas determined by checking various file metadata in the profile directory.\nNot considered to be particularly reliable in practice.\nPrefer `client_info.first_run_date` in most cases.\ne.g. 16446\n",
+            "mode": "NULLABLE",
+            "name": "profiles_creation_date",
+            "type": "INT64"
+          },
+          {
+            "description": "Optional.\nThe day the profile was first used,\nas determined by noticing that `times.json` wasn't present.\nPrefer `client_info.first_run_date` in most cases.\ne.g. 16446\n",
+            "mode": "NULLABLE",
+            "name": "profiles_first_use_date",
+            "type": "INT64"
+          },
+          {
+            "description": "Optional.\nThe day the profile was recovered from backup,\npersisted in `times.json`.\ne.g. 16446\n",
+            "mode": "NULLABLE",
+            "name": "profiles_recovered_from_backup",
+            "type": "INT64"
+          },
+          {
+            "description": "Optional.\nThe day the profile was most recently reset,\npersisted in `times.json`.\ne.g. 16446\n",
+            "mode": "NULLABLE",
+            "name": "profiles_reset_date",
+            "type": "INT64"
+          },
+          {
             "description": "The number of saved logins, including those that cannot be decrypted.\nSimilar to the legacy telemetry histogram PWMGR_NUM_SAVED_PASSWORDS.\n",
             "mode": "NULLABLE",
             "name": "pwmgr_num_saved_passwords",
@@ -31837,6 +31999,18 @@
             "description": "The number of potentially breached passwords, as determined by LoginBreaches.getPotentialBreachesByLoginGUID. This metric was generated to correspond to the Legacy Telemetry scalar pwmgr.potentially_breached_passwords.\n",
             "mode": "NULLABLE",
             "name": "pwmgr_potentially_breached_passwords",
+            "type": "INT64"
+          },
+          {
+            "description": "The current win32k.sys lockdown state.\nPossible values are defined in the ContentWin32kLockdownState enum.\nReported even on non-Windows machines.\n",
+            "mode": "NULLABLE",
+            "name": "sandbox_content_win32k_lockdown_state",
+            "type": "INT64"
+          },
+          {
+            "description": "The current sandbox level.\nThe \"security.sandbox.content.level\" preference rounded up to the current minimum allowed level.\n0 if `MOZ_DISABLE_CONTENT_SANDBOX` is set.\n",
+            "mode": "NULLABLE",
+            "name": "sandbox_effective_content_process_level",
             "type": "INT64"
           },
           {
@@ -31933,6 +32107,42 @@
             "description": "CPU stepping.\n",
             "mode": "NULLABLE",
             "name": "system_cpu_stepping",
+            "type": "INT64"
+          },
+          {
+            "description": "The physical memory size in MB (2^20 bytes).\ne.g. 32211\n",
+            "mode": "NULLABLE",
+            "name": "system_memory",
+            "type": "INT64"
+          },
+          {
+            "description": "The Windows service pack's major version, according to WindowsVersionInfo.\nWindows only.\ne.g. 0\n",
+            "mode": "NULLABLE",
+            "name": "system_os_service_pack_major",
+            "type": "INT64"
+          },
+          {
+            "description": "The Windows service pack's minor version, according to WindowsVersionInfo.\nWindows only.\ne.g. 0\n",
+            "mode": "NULLABLE",
+            "name": "system_os_service_pack_minor",
+            "type": "INT64"
+          },
+          {
+            "description": "The Windows build number, according to WindowsVersionInfo.\nWindows only.\ne.g. 26100\nExpected in most cases to be identical to `client_info.windows_build_number`.\n",
+            "mode": "NULLABLE",
+            "name": "system_os_windows_build_number",
+            "type": "INT64"
+          },
+          {
+            "description": "The Windows update build revision number, according to\n`SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion`.\nWindows only.\ne.g. 3775\n",
+            "mode": "NULLABLE",
+            "name": "system_os_windows_ubr",
+            "type": "INT64"
+          },
+          {
+            "description": "The size of the user-mode portion of the virtual address space of the parent process.\nWindows only.\ne.g. 134217728\n",
+            "mode": "NULLABLE",
+            "name": "system_virtual_memory",
             "type": "INT64"
           },
           {
@@ -32646,9 +32856,21 @@
             "type": "STRING"
           },
           {
+            "description": "The content backend (e.g. \"Direct2D 1.1\", \"Skia\", \"Cairo\").\n",
+            "mode": "NULLABLE",
+            "name": "gfx_content_backend",
+            "type": "STRING"
+          },
+          {
             "description": "Whether webrender is enabled or disabled, and why. (Migrated from the geckoview metric of the same name).\n",
             "mode": "NULLABLE",
             "name": "gfx_feature_webrender",
+            "type": "STRING"
+          },
+          {
+            "description": "Layers backend for compositing.\nOne of \"d3d9\", \"d3d11\", \"opengl\", \"basic\", or \"none\".\n\"none\" indicates no compositors have been created.\n",
+            "mode": "NULLABLE",
+            "name": "gfx_features_compositor",
             "type": "STRING"
           },
           {
@@ -32667,6 +32889,12 @@
             "description": "The gecko version at the last time a compositor was initialized, and therefore when gfx_status_compositor was last updated. Due to gfx_status_compositor's user lifetime we see lots of unexpected values for the current gecko version. We believe this is because the user has not opened a tab since they were updated to a version where webrender should be enabled on their device. This can be used to verify that theory. (Migrated from the geckoview metric of the same name).\n",
             "mode": "NULLABLE",
             "name": "gfx_status_last_compositor_gecko_version",
+            "type": "STRING"
+          },
+          {
+            "description": "The text scale factor.\n",
+            "mode": "NULLABLE",
+            "name": "gfx_text_scale_factor",
             "type": "STRING"
           },
           {
@@ -32808,6 +33036,12 @@
             "type": "STRING"
           },
           {
+            "description": "The `hw.model` of the hardware running this software.\nMac only.\ne.g. \"MacBookPro14,1\"\n",
+            "mode": "NULLABLE",
+            "name": "system_apple_model_id",
+            "type": "STRING"
+          },
+          {
             "description": "The user readable CPU name. (e.g. \"Intel(R) Core(TM) i9-8950HK CPU @ 2.90GHz\")\n",
             "mode": "NULLABLE",
             "name": "system_cpu_name",
@@ -32817,6 +33051,48 @@
             "description": "The CPU vendor (e.g. \"GenuineIntel\").\n",
             "mode": "NULLABLE",
             "name": "system_cpu_vendor",
+            "type": "STRING"
+          },
+          {
+            "description": "The Operating System's distribution, according to sysinfo.\nLinux only.\ne.g. \"Linuxmint\"\n",
+            "mode": "NULLABLE",
+            "name": "system_os_distro",
+            "type": "STRING"
+          },
+          {
+            "description": "The Operating System's distribution's version, according to sysinfo.\nLinux only.\ne.g. \"22\"\n",
+            "mode": "NULLABLE",
+            "name": "system_os_distro_version",
+            "type": "STRING"
+          },
+          {
+            "description": "The Operating System's local, according to ospreferences.\ne.g. \"en-US\"\n",
+            "mode": "NULLABLE",
+            "name": "system_os_locale",
+            "type": "STRING"
+          },
+          {
+            "description": "The Operating System's name, according to sysinfo.\ne.g. \"Windows_NT\"\nExpected in most cases to be identical to `client_info.os`.\n",
+            "mode": "NULLABLE",
+            "name": "system_os_name",
+            "type": "STRING"
+          },
+          {
+            "description": "The Operating System's version, according to sysinfo.\ne.g. \"6.3\"\nExpected in most cases to be identical to `client_info.os_version`.\n",
+            "mode": "NULLABLE",
+            "name": "system_os_version",
+            "type": "STRING"
+          },
+          {
+            "description": "The full application package name without any of the components that might change\nduring the life cycle of the app (such as the version number or the architecture).\nUniquely identifies the application within one Windows installation.\nWindows only.\nOnly included if it begins with \"Mozilla.\" or \"MozillaCorporation.\".\ne.g. \"Mozilla.Firefox_n80bbvh6b1yt2\"\n",
+            "mode": "NULLABLE",
+            "name": "system_win_package_family_name",
+            "type": "STRING"
+          },
+          {
+            "description": "The update channel according to defaults,\nincluding partner bits.\ne.g. \"nightly-cck\"\n",
+            "mode": "NULLABLE",
+            "name": "update_settings_channel",
             "type": "STRING"
           },
           {
@@ -32835,6 +33111,11 @@
           {
             "mode": "REPEATED",
             "name": "background_update_reasons_to_not_update",
+            "type": "STRING"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "system_cpu_extensions",
             "type": "STRING"
           }
         ],
