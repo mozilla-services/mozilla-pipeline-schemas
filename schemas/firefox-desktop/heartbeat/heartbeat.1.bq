@@ -363,34 +363,45 @@
       {
         "fields": [
           {
-            "description": "Indicates that the crash occurred while the garbage collector was running.\n",
+            "description": "When the Heartbeat notification bar was closed.\n",
             "mode": "NULLABLE",
-            "name": "crash_is_garbage_collecting",
-            "type": "BOOL"
+            "name": "heartbeat_closed",
+            "type": "STRING"
           },
           {
-            "description": "If true, the crash occurred during process startup.\n",
+            "description": "When the user clicked on the survey-provided button\n(alternative to voting feature).\n",
             "mode": "NULLABLE",
-            "name": "crash_startup",
-            "type": "BOOL"
+            "name": "heartbeat_engaged",
+            "type": "STRING"
           },
           {
-            "description": "Whether the app was invoked in headless mode via `--headless` or `--backgroundtask`.\n",
+            "description": "When the survey expired, after 2 hours of no interaction.\n(threshold regulated by `browser.uitour.surveyDuration` pref.)\n",
             "mode": "NULLABLE",
-            "name": "environment_headless_mode",
-            "type": "BOOL"
-          }
-        ],
-        "mode": "NULLABLE",
-        "name": "boolean",
-        "type": "RECORD"
-      },
-      {
-        "fields": [
+            "name": "heartbeat_expired",
+            "type": "STRING"
+          },
           {
-            "description": "The time at which the crash occurred.\n",
+            "description": "When the user clicked on the \"Learn More\" link.\n",
             "mode": "NULLABLE",
-            "name": "crash_time",
+            "name": "heartbeat_learn_more",
+            "type": "STRING"
+          },
+          {
+            "description": "When the survey was shown to the user.\n",
+            "mode": "NULLABLE",
+            "name": "heartbeat_offered",
+            "type": "STRING"
+          },
+          {
+            "description": "When the user voted.\n",
+            "mode": "NULLABLE",
+            "name": "heartbeat_voted",
+            "type": "STRING"
+          },
+          {
+            "description": "When the user closed the Firefox window containing the survey,\nor when the whole browser is shut down during the survey,\nthus ending it.\n",
+            "mode": "NULLABLE",
+            "name": "heartbeat_window_closed",
             "type": "STRING"
           }
         ],
@@ -480,33 +491,9 @@
       {
         "fields": [
           {
-            "description": "Present when a shutdown blocker failed to respond within a reasonable amount of time.\n",
+            "description": "The list of currently enabled addons.\n\nSome of the addon fields are not available during startup. The fields\nthat will always be present are id, version, addonType, updateDay, scope,\nisSystem, isWebExtension, and multiprocessCompatible. All the other\nfields become present shortly after the `sessionstore-windows-restored`\nobserver topic is notified.\n\nThis metric is an echo of the Legacy Telemetry Environment field\naddons.activeAddons. Like its counterpart, it will only have data in\nFirefox Desktop and at times and on platforms where the environment would\nhave values.\n",
             "mode": "NULLABLE",
-            "name": "crash_async_shutdown_timeout",
-            "type": "JSON"
-          },
-          {
-            "description": "Crash breadcrumb information.\n",
-            "mode": "NULLABLE",
-            "name": "crash_breadcrumbs",
-            "type": "JSON"
-          },
-          {
-            "description": "Error and stack trace information for a java exception.\n",
-            "mode": "NULLABLE",
-            "name": "crash_java_exception",
-            "type": "JSON"
-          },
-          {
-            "description": "Contains a list of shutdown steps and status of the quota manager clients.\n",
-            "mode": "NULLABLE",
-            "name": "crash_quota_manager_shutdown_timeout",
-            "type": "JSON"
-          },
-          {
-            "description": "Stack trace and module information of the crashing process.\n",
-            "mode": "NULLABLE",
-            "name": "crash_stack_traces",
+            "name": "addons_active_addons",
             "type": "JSON"
           }
         ],
@@ -517,87 +504,21 @@
       {
         "fields": [
           {
-            "description": "Indicates the nesting level of the event loop.\n",
+            "description": "The user's rating.\n",
             "mode": "NULLABLE",
-            "name": "crash_event_loop_nesting_level",
+            "name": "heartbeat_score",
             "type": "INT64"
           },
           {
-            "description": "The number of times that the GPU process was launched.\n",
+            "description": "The day the profile was created,\nas determined by checking various file metadata in the profile directory.\nNot considered to be particularly reliable in practice.\nPrefer `client_info.first_run_date` in most cases.\ne.g. 16446\n",
             "mode": "NULLABLE",
-            "name": "crash_gpu_process_launch",
+            "name": "profiles_creation_date",
             "type": "INT64"
           },
           {
-            "description": "Available commit space.\n",
+            "description": "Optional.\nThe day the profile was first used,\nas determined by noticing that `times.json` wasn't present.\nPrefer `client_info.first_run_date` in most cases.\ne.g. 16446\n",
             "mode": "NULLABLE",
-            "name": "memory_available_commit",
-            "type": "INT64"
-          },
-          {
-            "description": "Available physical memory.\n",
-            "mode": "NULLABLE",
-            "name": "memory_available_physical",
-            "type": "INT64"
-          },
-          {
-            "description": "Available swap memory.\n",
-            "mode": "NULLABLE",
-            "name": "memory_available_swap",
-            "type": "INT64"
-          },
-          {
-            "description": "Available virtual memory.\n",
-            "mode": "NULLABLE",
-            "name": "memory_available_virtual",
-            "type": "INT64"
-          },
-          {
-            "description": "The number of times the available memory tracker has detected that free physical memory is running low.\n",
-            "mode": "NULLABLE",
-            "name": "memory_low_physical",
-            "type": "INT64"
-          },
-          {
-            "description": "The size of the allocation that caused on OOM crash.\n",
-            "mode": "NULLABLE",
-            "name": "memory_oom_allocation_size",
-            "type": "INT64"
-          },
-          {
-            "description": "The amount of memory that can be deallocated by the OS in case of memory pressure.\n",
-            "mode": "NULLABLE",
-            "name": "memory_purgeable_physical",
-            "type": "INT64"
-          },
-          {
-            "description": "The percentage of memory in use.\n",
-            "mode": "NULLABLE",
-            "name": "memory_system_use_percentage",
-            "type": "INT64"
-          },
-          {
-            "description": "The amount of memory used in textures.\n",
-            "mode": "NULLABLE",
-            "name": "memory_texture",
-            "type": "INT64"
-          },
-          {
-            "description": "The total page file size.\n",
-            "mode": "NULLABLE",
-            "name": "memory_total_page_file",
-            "type": "INT64"
-          },
-          {
-            "description": "The total physical memory.\n",
-            "mode": "NULLABLE",
-            "name": "memory_total_physical",
-            "type": "INT64"
-          },
-          {
-            "description": "The total virtual memory.\n",
-            "mode": "NULLABLE",
-            "name": "memory_total_virtual",
+            "name": "profiles_first_use_date",
             "type": "INT64"
           }
         ],
@@ -608,105 +529,15 @@
       {
         "fields": [
           {
-            "description": "The build id of the application. This may differ from `client_info` because a main process crash may be reported later by a different (e.g. updated) client.\n",
-            "mode": "NULLABLE",
-            "name": "crash_app_build",
-            "type": "STRING"
-          },
-          {
-            "description": "The release channel of the application. This may differ from `client_info` because a main process crash may be reported later by a different (e.g. updated) client.\n",
-            "mode": "NULLABLE",
-            "name": "crash_app_channel",
-            "type": "STRING"
-          },
-          {
-            "description": "The version of the application. This may differ from `client_info` because a main process crash may be reported later by a different (e.g. updated) client.\n",
-            "mode": "NULLABLE",
-            "name": "crash_app_display_version",
-            "type": "STRING"
-          },
-          {
-            "description": "The name of the background task if launched as one.\n",
-            "mode": "NULLABLE",
-            "name": "crash_background_task_name",
-            "type": "STRING"
-          },
-          {
-            "description": "The cause of the crash. May be one of `os_fault` or `java_exception`.\n",
-            "mode": "NULLABLE",
-            "name": "crash_cause",
-            "type": "STRING"
-          },
-          {
-            "description": "The font family name that is being loaded when the crash occurred.\n",
-            "mode": "NULLABLE",
-            "name": "crash_font_name",
-            "type": "STRING"
-          },
-          {
-            "description": "The error reason for an ipc-based content crash.\n",
-            "mode": "NULLABLE",
-            "name": "crash_ipc_channel_error",
-            "type": "STRING"
-          },
-          {
-            "description": "Name of the currently executing `nsIRunnable` on the main thread. Nightly-only.\n",
-            "mode": "NULLABLE",
-            "name": "crash_main_thread_runnable_name",
-            "type": "STRING"
-          },
-          {
-            "description": "The SHA256 hash of the associated minidump file, if any.\n",
-            "mode": "NULLABLE",
-            "name": "crash_minidump_sha256_hash",
-            "type": "STRING"
-          },
-          {
-            "description": "Contains the string passed to `MOZ_CRASH()`.\n",
-            "mode": "NULLABLE",
-            "name": "crash_moz_crash_reason",
-            "type": "STRING"
-          },
-          {
-            "description": "The type of process that experienced a crash. See the full list of options [here](https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/data/crash-ping.html#process-types).\n",
-            "mode": "NULLABLE",
-            "name": "crash_process_type",
-            "type": "STRING"
-          },
-          {
-            "description": "The shutdown phase of the profiler.\n",
-            "mode": "NULLABLE",
-            "name": "crash_profiler_child_shutdown_phase",
-            "type": "STRING"
-          },
-          {
-            "description": "Type of the child process, can be set to \"web\", \"file\" or \"extension\" but could also be unavailable.\n",
-            "mode": "NULLABLE",
-            "name": "crash_remote_type",
-            "type": "STRING"
-          },
-          {
-            "description": "The shutdown phase in which the crash occurred.\n",
-            "mode": "NULLABLE",
-            "name": "crash_shutdown_progress",
-            "type": "STRING"
-          },
-          {
             "description": "An experimentation identifier derived and provided by the application\nfor the purpose of experimentation enrollment.\n",
             "mode": "NULLABLE",
             "name": "glean_client_annotation_experimentation_id",
             "type": "STRING"
           },
           {
-            "description": "A large allocation couldn't be satisfied: What was its state when the crash happened.\n",
+            "description": "Identifies the specific survey.\nMay contain a `::` followed by the Normandy client id if the Heartbeat\nrecipe asks for it to be included.\ne.g. \"hb-out-of-date-en\" or \"new-user-survey-en-us::<the Normandy client id>\"\n",
             "mode": "NULLABLE",
-            "name": "memory_js_large_allocation_failure",
-            "type": "STRING"
-          },
-          {
-            "description": "A small allocation couldn't be satisfied: What was its state when the crash happened.\n",
-            "mode": "NULLABLE",
-            "name": "memory_js_out_of_memory",
+            "name": "heartbeat_survey_id",
             "type": "STRING"
           }
         ],
@@ -717,56 +548,14 @@
       {
         "fields": [
           {
-            "mode": "REPEATED",
-            "name": "environment_experimental_features",
+            "description": "An identifier for the rating flow, generated on the client.\n",
+            "mode": "NULLABLE",
+            "name": "heartbeat_flow_id",
             "type": "STRING"
           }
         ],
         "mode": "NULLABLE",
-        "name": "string_list",
-        "type": "RECORD"
-      },
-      {
-        "fields": [
-          {
-            "description": "The application uptime. This is equivalent to the legacy crash ping's `UptimeTS` field.\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "time_unit",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "INT64"
-              }
-            ],
-            "mode": "NULLABLE",
-            "name": "crash_uptime",
-            "type": "RECORD"
-          },
-          {
-            "description": "The start time of the application.\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "time_unit",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "INT64"
-              }
-            ],
-            "mode": "NULLABLE",
-            "name": "environment_uptime",
-            "type": "RECORD"
-          }
-        ],
-        "mode": "NULLABLE",
-        "name": "timespan",
+        "name": "uuid",
         "type": "RECORD"
       }
     ],

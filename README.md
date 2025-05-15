@@ -88,6 +88,7 @@ schemas
 │   ├── fog-validation
 │   ├── fx-accounts
 │   ├── hang-report
+│   ├── heartbeat
 │   ├── messaging-system
 │   ├── metrics
 │   ├── new-metric-capture-emulation
@@ -124,6 +125,7 @@ schemas
 │   ├── default-agent
 │   ├── deletion-request
 │   ├── events
+│   ├── heartbeat
 │   ├── metrics
 │   └── nimbus-targeting-context
 ├── firefox-desktop-background-update
@@ -889,6 +891,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-879 directories
+881 directories
 ```
 
