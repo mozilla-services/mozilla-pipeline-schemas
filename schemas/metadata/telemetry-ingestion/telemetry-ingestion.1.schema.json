@@ -78,9 +78,37 @@
         "isp": {
           "description": "Results of ISP lookup based on the client's IP address",
           "properties": {
+            "connection_type": {
+              "description": "The type of connection. This will be one of the following values: Cable/DSL, Cellular, Corporate, Satellite",
+              "type": "string"
+            },
             "db_version": {
               "description": "The specific geo ISP database version used for this lookup",
               "type": "string"
+            },
+            "is_anonymous": {
+              "description": "Whether or not the IP address belongs to any sort of anonymous network",
+              "type": "boolean"
+            },
+            "is_anonymous_vpn": {
+              "description": "Whether or not the IP address is registered to an anonymous VPN provider",
+              "type": "boolean"
+            },
+            "is_hosting_provider": {
+              "description": "Whether or not the IP address belongs to a hosting or VPN provider",
+              "type": "boolean"
+            },
+            "is_public_proxy": {
+              "description": "Whether or not the IP address belongs to a public proxy",
+              "type": "boolean"
+            },
+            "is_residential_proxy": {
+              "description": "Whether or not the IP address is on a suspected anonymizing network and belongs to a residential ISP",
+              "type": "boolean"
+            },
+            "is_tor_exit_node": {
+              "description": "Whether or not the IP address is a Tor exit node.",
+              "type": "boolean"
             },
             "name": {
               "description": "The name of the ISP associated with the client's IP address",
@@ -88,6 +116,10 @@
             },
             "organization": {
               "description": "The name of a specific business entity associated with the client's IP address when available; otherwise the ISP name",
+              "type": "string"
+            },
+            "user_type": {
+              "description": "The user type associated with the IP address, e.g. business, cafe, cellular, college",
               "type": "string"
             }
           },
