@@ -80,6 +80,7 @@ schemas
 │   ├── bounce-tracking-protection
 │   ├── broken-site-report
 │   ├── captcha-detection
+│   ├── context-id-deletion-request
 │   ├── crash
 │   ├── dau-reporting
 │   ├── deletion-request
@@ -87,10 +88,13 @@ schemas
 │   ├── first-startup
 │   ├── fog-validation
 │   ├── fx-accounts
+│   ├── hang-report
+│   ├── heartbeat
 │   ├── messaging-system
 │   ├── metrics
 │   ├── new-metric-capture-emulation
 │   ├── newtab
+│   ├── newtab-content
 │   ├── nimbus-targeting-context
 │   ├── onboarding-opt-out
 │   ├── pageload
@@ -122,6 +126,7 @@ schemas
 │   ├── default-agent
 │   ├── deletion-request
 │   ├── events
+│   ├── heartbeat
 │   ├── metrics
 │   └── nimbus-targeting-context
 ├── firefox-desktop-background-update
@@ -135,6 +140,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
+│   ├── hang-report
 │   ├── metrics
 │   ├── pageload
 │   ├── use-counters
@@ -288,6 +294,7 @@ schemas
 │   ├── fog-validation
 │   ├── font-list
 │   ├── fx-suggest
+│   ├── hang-report
 │   ├── history-sync
 │   ├── home
 │   ├── installation
@@ -327,6 +334,7 @@ schemas
 │   ├── fog-validation
 │   ├── font-list
 │   ├── fx-suggest
+│   ├── hang-report
 │   ├── history-sync
 │   ├── home
 │   ├── installation
@@ -366,6 +374,7 @@ schemas
 │   ├── fog-validation
 │   ├── font-list
 │   ├── fx-suggest
+│   ├── hang-report
 │   ├── history-sync
 │   ├── home
 │   ├── installation
@@ -405,6 +414,7 @@ schemas
 │   ├── fog-validation
 │   ├── font-list
 │   ├── fx-suggest
+│   ├── hang-report
 │   ├── history-sync
 │   ├── home
 │   ├── installation
@@ -444,6 +454,7 @@ schemas
 │   ├── fog-validation
 │   ├── font-list
 │   ├── fx-suggest
+│   ├── hang-report
 │   ├── history-sync
 │   ├── home
 │   ├── installation
@@ -490,6 +501,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
+│   ├── hang-report
 │   ├── metrics
 │   ├── pageload
 │   ├── usage-deletion-request
@@ -508,6 +520,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
+│   ├── hang-report
 │   ├── metrics
 │   ├── pageload
 │   ├── usage-deletion-request
@@ -526,6 +539,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
+│   ├── hang-report
 │   ├── metrics
 │   ├── pageload
 │   ├── usage-deletion-request
@@ -688,6 +702,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
+│   ├── hang-report
 │   ├── metrics
 │   ├── pageload
 │   ├── usage-deletion-request
@@ -747,10 +762,12 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
+│   ├── hang-report
 │   ├── messaging-system
 │   ├── metrics
 │   ├── new-metric-capture-emulation
 │   ├── newtab
+│   ├── newtab-content
 │   ├── onboarding-opt-out
 │   ├── pageload
 │   ├── pseudo-main
@@ -772,6 +789,8 @@ schemas
 │   ├── video-data
 │   └── video-index
 ├── relay-backend
+│   └── events
+├── subscription-platform-backend
 │   └── events
 ├── syncstorage
 │   └── events
@@ -854,6 +873,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
+│   ├── hang-report
 │   ├── metrics
 │   ├── pageload
 │   ├── use-counters
@@ -872,6 +892,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-862 directories
+882 directories
 ```
 

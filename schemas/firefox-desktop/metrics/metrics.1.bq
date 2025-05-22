@@ -387,6 +387,18 @@
             "type": "BOOL"
           },
           {
+            "description": "Whether application compatibility is enforced for add-ons.\n",
+            "mode": "NULLABLE",
+            "name": "addons_manager_compatibility_check_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the extension blocklist is enabled.\nCorresponds to the `extensions.blocklist.enabled` pref.\n",
+            "mode": "NULLABLE",
+            "name": "blocklist_enabled",
+            "type": "BOOL"
+          },
+          {
             "description": "Keeps track of whether the feature is enabled at startup.\n",
             "mode": "NULLABLE",
             "name": "bounce_tracking_protection_enabled_at_startup",
@@ -414,6 +426,12 @@
             "description": "True if the BackupService is configured to automatically create backups in the background.\n",
             "mode": "NULLABLE",
             "name": "browser_backup_scheduler_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the shell service identified this app as the default browser.\nChecked once near startup.\nOn Windows, this is operationalized as whether Firefox is the default\nHTTP protocol handler and the default HTML file handler.\n",
+            "mode": "NULLABLE",
+            "name": "browser_default_at_launch",
             "type": "BOOL"
           },
           {
@@ -531,6 +549,12 @@
             "type": "BOOL"
           },
           {
+            "description": "Whether e10s is on, i.e. browser tabs open by default in a different\nprocess.\nSee `nsIXULRuntime.browserTabsRemoteAutostart`\n",
+            "mode": "NULLABLE",
+            "name": "e10s_enabled",
+            "type": "BOOL"
+          },
+          {
             "description": "Corresponds to the value of `WebExtensionPolicy.useRemoteWebExtensions`.\n",
             "mode": "NULLABLE",
             "name": "extensions_use_remote_policy",
@@ -540,6 +564,12 @@
             "description": "Corresponds to the value of `extensions.webextensions.remote` pref.\n",
             "mode": "NULLABLE",
             "name": "extensions_use_remote_pref",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether fission is enabled this session, and subframes can load in a\ndifferent process.\nSee `nsIXULRuntime.fissionAutostart`\n",
+            "mode": "NULLABLE",
+            "name": "fission_enabled",
             "type": "BOOL"
           },
           {
@@ -558,6 +588,18 @@
             "description": "Check at startup whether OS Authentication has been enabled for credit cards.\n",
             "mode": "NULLABLE",
             "name": "formautofill_os_auth_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the user's logged in to an FxA account.\n",
+            "mode": "NULLABLE",
+            "name": "fxa_account_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the weave service is present and enabled.\nImplies `fxa.account_enabled`.\n",
+            "mode": "NULLABLE",
+            "name": "fxa_sync_enabled",
             "type": "BOOL"
           },
           {
@@ -588,6 +630,24 @@
             "description": "Records if the user has link previews enabled\n",
             "mode": "NULLABLE",
             "name": "genai_linkpreview_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether Direct2D is enabled. (Windows-only)\n",
+            "mode": "NULLABLE",
+            "name": "gfx_d2d_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether DirectWrite is enabled. (Windows-only)\n",
+            "mode": "NULLABLE",
+            "name": "gfx_dwrite_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the app's running in headless mode (e.g. via `MOZ_HEADLESS`).\n",
+            "mode": "NULLABLE",
+            "name": "gfx_headless",
             "type": "BOOL"
           },
           {
@@ -693,6 +753,18 @@
             "type": "BOOL"
           },
           {
+            "description": "Records technical data about whether Activity Stream construction completed successfully\n",
+            "mode": "NULLABLE",
+            "name": "newtab_activity_stream_ctor_success",
+            "type": "BOOL"
+          },
+          {
+            "description": "Records technical data about whether waiting for the newtab built-in addon readyPromise succeeded.\n",
+            "mode": "NULLABLE",
+            "name": "newtab_addon_ready_success",
+            "type": "BOOL"
+          },
+          {
             "description": "Records whether the browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar preference is enabled or disabled\n",
             "mode": "NULLABLE",
             "name": "newtab_handoff_preference_enabled",
@@ -729,6 +801,12 @@
             "type": "BOOL"
           },
           {
+            "description": "Whether or not an external trust anchor module was loaded.",
+            "mode": "NULLABLE",
+            "name": "pkcs11_external_trust_anchor_module_loaded",
+            "type": "BOOL"
+          },
+          {
             "description": "Attempt to determine if the user is an enterprise user based on various signals. This metric was generated to correspond to the Legacy Telemetry scalar policies.is_enterprise.\n",
             "mode": "NULLABLE",
             "name": "policies_is_enterprise",
@@ -756,6 +834,18 @@
             "description": "Whether password saving is enabled globally.\nTracks the pref `signon.rememberSignons`.\n",
             "mode": "NULLABLE",
             "name": "pwmgr_saving_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Set to true if the user's default search engine has been allowed to be\noverridden by a third-party add-on or OpenSearch engine.\n",
+            "mode": "NULLABLE",
+            "name": "search_engine_default_overridden_by_third_party",
+            "type": "BOOL"
+          },
+          {
+            "description": "Set to true if the user's default search engine has been allowed to be\noverridden by a third-party add-on or OpenSearch engine.\n",
+            "mode": "NULLABLE",
+            "name": "search_engine_private_overridden_by_third_party",
             "type": "BOOL"
           },
           {
@@ -813,15 +903,63 @@
             "type": "BOOL"
           },
           {
+            "description": "Whether the app has a package identity.\nWindows only.\n",
+            "mode": "NULLABLE",
+            "name": "system_has_win_package_id",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether we're in Windows32-on-Windows64 mode.\nWindows only.\n",
+            "mode": "NULLABLE",
+            "name": "system_is_wow_64",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether we're in Windows32-on-WindowsForArm64 mode.\nWindows only.\n",
+            "mode": "NULLABLE",
+            "name": "system_is_wow_arm_64",
+            "type": "BOOL"
+          },
+          {
+            "description": "Records if the user has smart tab groups enabled\n",
+            "mode": "NULLABLE",
+            "name": "tabgroup_smart_tab_enabled",
+            "type": "BOOL"
+          },
+          {
             "description": "User opted into sending Telemetry data again. This metric was generated to correspond to the Legacy Telemetry scalar telemetry.data_upload_optin.\n",
             "mode": "NULLABLE",
             "name": "telemetry_data_upload_optin",
             "type": "BOOL"
           },
           {
+            "description": "Whether app updates are set to auto-download.\n",
+            "mode": "NULLABLE",
+            "name": "update_settings_auto_download",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether updates can be delivered in the background.\n",
+            "mode": "NULLABLE",
+            "name": "update_settings_background",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether updates are available.\n",
+            "mode": "NULLABLE",
+            "name": "update_settings_enabled",
+            "type": "BOOL"
+          },
+          {
             "description": "When an update is available and app.update.auto is disabled, a popup is opened prompting the user to download and install the update. The pref app.update.suppressPrompts causes Firefox Nightly to wait up to 7 days before showing the prompt, instead showing a badge and banner in the meantime. It also prevents Nightly from showing update restart prompts, instead showing a badge and banner immediately. This value is set for the users who set this pref to true. This metric was generated to correspond to the Legacy Telemetry scalar update.suppress_prompts.\n",
             "mode": "NULLABLE",
             "name": "update_suppress_prompts",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the app was built with the updater binary.\nCorresponds to the value of the `MOZ_UPDATER` define.\n",
+            "mode": "NULLABLE",
+            "name": "updater_available",
             "type": "BOOL"
           },
           {
@@ -1783,6 +1921,12 @@
             "description": "A counter incremented every time a silent print (a print without a print settings dialog being opened) is initiated.  This happens when extensions invoke ExtensionAPI.tabs.saveAsPDF, for example, or when the print.always_print_silent pref is set. This metric was generated to correspond to the Legacy Telemetry scalar printing.silent_print.\n",
             "mode": "NULLABLE",
             "name": "printing_silent_print",
+            "type": "INT64"
+          },
+          {
+            "description": "Increments each time QuotaManager::RestoreDirectoryMetadata2 is called to restore origin directory metadata. This typically occurs when expected directory metadata is missing or needs to be regenerated. The counter is incremented regardless of whether the restoration ultimately succeeds or fails. This can provide insight into the impacts of specific code changes, including potential optimizations or regressions.\n",
+            "mode": "NULLABLE",
+            "name": "quotamanager_restore_origin_directory_metadata_counter",
             "type": "INT64"
           },
           {
@@ -5561,6 +5705,114 @@
             "type": "RECORD"
           },
           {
+            "description": "The reason why we failed to connect with an HTTPSSVC record\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram DNS_HTTPSSVC_CONNECTION_FAILED_REASON.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "http_dns_httpssvc_connection_failed_reason",
+            "type": "RECORD"
+          },
+          {
+            "description": "Record at which stage an HTTPSSVC record is received\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram DNS_HTTPSSVC_RECORD_RECEIVING_STAGE.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "http_dns_httpssvc_record_receiving_stage",
+            "type": "RECORD"
+          },
+          {
+            "description": "I want to be tracked, I do NOT want to be tracked, DNT unset\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram DNT_USAGE.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "http_dnt_usage",
+            "type": "RECORD"
+          },
+          {
             "description": "HTTP Proxy Type (none, http, socks)\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram HTTP_PROXY_TYPE.\n",
             "fields": [
               {
@@ -5774,6 +6026,42 @@
             ],
             "mode": "NULLABLE",
             "name": "http_saw_quic_alt_protocol",
+            "type": "RECORD"
+          },
+          {
+            "description": "Sending TLS early data was possible: 0 - not possible, 1 - possible but not used, 2 - possible and used.\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram TLS_EARLY_DATA_NEGOTIATED.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "http_tls_early_data_negotiated",
             "type": "RECORD"
           },
           {
@@ -7361,6 +7649,42 @@
             "type": "RECORD"
           },
           {
+            "description": "Maximum number of concurrent threads reached during a given download session\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram BACKGROUNDFILESAVER_THREAD_COUNT.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "network_backgroundfilesaver_thread_count",
+            "type": "RECORD"
+          },
+          {
             "description": "Final status of the CacheFileInputStream (0=ok, 1=other error, 2=out of memory, 3=disk full, 4=file corrupted, 5=file not found, 6=binding aborted)\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram NETWORK_CACHE_V2_INPUT_STREAM_STATUS.\n",
             "fields": [
               {
@@ -7466,6 +7790,78 @@
             ],
             "mode": "NULLABLE",
             "name": "network_http_cache_entry_reuse_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "Network identification (0=None, 1=New Ipv4, 2=Same, 3=New IPv6, 4=New dual)\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram NETWORK_ID2.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "network_id",
+            "type": "RECORD"
+          },
+          {
+            "description": "Count the number of 0) successful connections to an ipv4 address, 1) failed connection an ipv4 address, 2) successful connection to an ipv6 address and 3) failed connections to an ipv6 address.\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram IPV4_AND_IPV6_ADDRESS_CONNECTIVITY.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "network_ipv4_and_ipv6_address_connectivity",
             "type": "RECORD"
           },
           {
@@ -14451,6 +14847,42 @@
             "mode": "NULLABLE",
             "name": "webrtc_video_quality_outbound_packetloss_rate",
             "type": "RECORD"
+          },
+          {
+            "description": "Websockets Handshake Results (ws-ok-plain, ws-ok-proxy, ws-failed-plain, ws-failed-proxy, wss-ok-plain, wss-ok-proxy, wss-failed-plain, wss-failed-proxy)\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram WEBSOCKETS_HANDSHAKE_TYPE.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "websockets_handshake_type",
+            "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
@@ -14739,6 +15171,42 @@
             ],
             "mode": "REPEATED",
             "name": "networking_doh_heuristic_ever_tripped",
+            "type": "RECORD"
+          },
+          {
+            "description": "Records technical data about whether the metric registration at runtime succeeded\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "BOOL"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "newtab_metric_registered",
+            "type": "RECORD"
+          },
+          {
+            "description": "Records technical data about whether the ping registration at runtime succeeded\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "BOOL"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "newtab_ping_registered",
             "type": "RECORD"
           },
           {
@@ -18727,6 +19195,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Cache discovered inconsistent last-modified entry\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram CACHE_LM_INCONSISTENT.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http_cache_lm_inconsistent",
+            "type": "RECORD"
+          },
+          {
             "description": "Successfully started HTTP channels\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram HTTP_CHANNEL_ONSTART_SUCCESS.\n",
             "fields": [
               {
@@ -18763,6 +19249,42 @@
             "type": "RECORD"
           },
           {
+            "description": "TLS handshake with and without EchConfig success rate.\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram ECHCONFIG_SUCCESS_RATE.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http_echconfig_success_rate",
+            "type": "RECORD"
+          },
+          {
+            "description": "Whether an HTTP/2 session failed because the peer did not handshake properly\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram HTTP2_FAIL_BEFORE_SETTINGS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http_http2_fail_before_settings",
+            "type": "RECORD"
+          },
+          {
             "description": "Whether a HTTP page load was over SSL or not. Recorded during response processing for all first-party page loads.\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram HTTP_PAGELOAD_IS_SSL.\n",
             "fields": [
               {
@@ -18778,6 +19300,42 @@
             ],
             "mode": "REPEATED",
             "name": "http_pageload_is_ssl",
+            "type": "RECORD"
+          },
+          {
+            "description": "Whether the script load has a MIME type of ...?  (unknown, javaScript, image, audio, video, text_plain, text_csv, text_xml, app_octet_stream, app_xml, app_json, text_json, text_html, empty). Whether the script load is from ...?  (serviceworker_load, worker_load, importSript_load, script_load). Whether the script load is of ...?  (same_origin, CORS_origin, cross_origin)\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram SCRIPT_BLOCK_INCORRECT_MIME_3.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http_script_block_incorrect_mime",
+            "type": "RECORD"
+          },
+          {
+            "description": "TLS early data was used and it was accepted (true) or rejected (false) by the remote host.\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram TLS_EARLY_DATA_ACCEPTED.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http_tls_early_data_accepted",
             "type": "RECORD"
           },
           {
@@ -19861,6 +20419,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Network ID presence when the network connectivity checker reports that we have connectivity\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram NETWORK_ID_ONLINE.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "network_id_online",
+            "type": "RECORD"
+          },
+          {
             "description": "Stats for validation requests when cache won the race.\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram NETWORK_RACE_CACHE_VALIDATION.\n",
             "fields": [
               {
@@ -19894,6 +20470,24 @@
             ],
             "mode": "REPEATED",
             "name": "network_race_cache_with_network_usage",
+            "type": "RECORD"
+          },
+          {
+            "description": "Ratio of used and unused resources preloaded with link rel=preload tag or response header, broken down by supported resource type.\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram REL_PRELOAD_MISS_RATIO.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "network_rel_preload_miss_ratio",
             "type": "RECORD"
           },
           {
@@ -21571,6 +22165,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Records if a detected region value was stored or ignored. A region might be ignored if it is the US but the set timezone is not the US.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "region_store_region_result",
+            "type": "RECORD"
+          },
+          {
             "description": "The number of RTCRtpSenders that have warned at least once about a `setParameters` call that attempted to change the number of encodings, broken down by the eTLD+1 of the site. Collected only on EARLY_BETA_OR_EARLIER.\n",
             "fields": [
               {
@@ -21715,7 +22327,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Counts the type of initialization statuses on start up.\nfailedSettings - failed loading and migrating the search settings file.\nfailedFetchEngines - failed to load or parse the configuration from remote\n                     settings.\nfailedLoadEngines - failed to create all the search engines from the\n                    configuration or user installed engines.\nfailedLoadSettingsAddonManager - the addon manager ready promise was rejected. (from FF135)\nsuccess - search service successfully initialized.\n",
+            "description": "Counts the type of initialization statuses on start up.\nfailedSettings - failed loading and migrating the search settings file.\nfailedFetchEngines - failed to load or parse the configuration from remote\n                     settings.\nfailedLoadEngines - failed to create all the search engines from the\n                    configuration or user installed engines.\nfailedLoadSettingsAddonManager - the addon manager ready promise was rejected. (from FF135)\nsettingsCorrupt - the search settings were reset because of an exception, but\n                  the search service still finished initializing. (from FF136)\nsuccess - search service successfully initialized.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -21730,6 +22342,60 @@
             ],
             "mode": "REPEATED",
             "name": "search_service_initialization_status",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of aborted search suggestion fetches per search engine. Only records app provided engines using their short IDs ('id', not 'identifier') as labels.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "search_suggestions_aborted_requests",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of failed search suggestion fetches per search engine. Only records app provided engines using their short IDs ('id', not 'identifier') as labels.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "search_suggestions_failed_requests",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of successful search suggestion fetches per search engine. Only records app provided engines using their short IDs ('id', not 'identifier') as labels.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "search_suggestions_successful_requests",
             "type": "RECORD"
           },
           {
@@ -22018,6 +22684,42 @@
             ],
             "mode": "REPEATED",
             "name": "suggest_relevance_status",
+            "type": "RECORD"
+          },
+          {
+            "description": "Records interactions with tab groups: expand/collapse; rename, change color; save/reopen/delete; ungroup tabs; open from tab menu/recent/ Awesomebar; move to another window\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "tabgroup_group_interactions",
+            "type": "RECORD"
+          },
+          {
+            "description": "Records interactions with tabs related to a group: open, add tab to group, duplicate, create a new tab, close a tab, reorder, and remove from group\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "tabgroup_tab_interactions",
             "type": "RECORD"
           },
           {
@@ -26923,6 +27625,150 @@
             "mode": "REPEATED",
             "name": "network_cache_size",
             "type": "RECORD"
+          },
+          {
+            "description": "The size of the HTTP response for a document load, keyed by the page itself or the sum of subresources.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "network_page_load_size",
+            "type": "RECORD"
+          },
+          {
+            "description": "In TRR channel, the size of the HTTP request.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_trr_request_size",
+            "type": "RECORD"
+          },
+          {
+            "description": "In TRR channel, the size of the HTTP response.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_trr_response_size",
+            "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
@@ -26932,7 +27778,7 @@
       {
         "fields": [
           {
-            "description": "Records the WebExtension ID of a search engine where the WebExtension is not installed (= 1), disabled (= 2), search engine no longer specified (= 4), a different name (= 5), where the submission URL is different between the search engine and the WebExtension (= 6). The value '3' has been replaced by '6' to distinguish newer entries. This metric was generated to correspond to the Legacy Telemetry scalar browser.searchinit.engine_invalid_webextension.\n",
+            "description": "Records the WebExtension ID of a search engine where the WebExtension is not installed (= 1), disabled (= 2), search engine no longer specified (= 4), a different name (= 5), where the submission URL is different between the search engine and the WebExtension (= 6). The value '3' has been replaced by '6' to distinguish newer entries. This metric was generated to correspond to the Legacy Telemetry scalar browser.searchinit.engine_invalid_webextension, which was removed in Fx 139.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -27019,6 +27865,24 @@
             ],
             "mode": "REPEATED",
             "name": "tabgroup_tabs_per_active_group",
+            "type": "RECORD"
+          },
+          {
+            "description": "Records statistics about the number of tabs per saved tab group: max, median, average and min.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "tabgroup_tabs_per_saved_group",
             "type": "RECORD"
           }
         ],
@@ -31403,7 +32267,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Records the latencies (ms) of search suggestions fetches per search engine. Keys in this histogram are search engine IDs for built-in search engines and 'other' for non-built-in search engines.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram SEARCH_SUGGESTIONS_LATENCY_MS.\n",
+            "description": "Records the latencies (ms) of search suggestions fetches per search engine. Keys in this histogram are search engine identifiers for built-in search engines and 'other' for non-built-in search engines.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram SEARCH_SUGGESTIONS_LATENCY_MS.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -34597,6 +35461,24 @@
       {
         "fields": [
           {
+            "description": "The list of currently enabled addons.\n\nSome of the addon fields are not available during startup. The fields\nthat will always be present are id, version, addonType, updateDay, scope,\nisSystem, isWebExtension, and multiprocessCompatible. All the other\nfields become present shortly after the `sessionstore-windows-restored`\nobserver topic is notified.\n\nThis metric is an echo of the Legacy Telemetry Environment field\naddons.activeAddons. Like its counterpart, it will only have data in\nFirefox Desktop and at times and on platforms where the environment would\nhave values.\n",
+            "mode": "NULLABLE",
+            "name": "addons_active_addons",
+            "type": "JSON"
+          },
+          {
+            "description": "The list of currently enabled Gecko Media Plugins.\n\nSome of the addon fields are not available during startup. The fields\nthat will always be present are id and version. All the other\nfields become present shortly after the `sessionstore-windows-restored`\nobserver topic is notified.\n\nThis metric is an echo of the Legacy Telemetry Environment field\naddons.activeGMPlugins. Like its counterpart, it will only have data in\nFirefox Desktop and at times and on platforms where the environment would\nhave values.\n",
+            "mode": "NULLABLE",
+            "name": "addons_active_g_m_plugins",
+            "type": "JSON"
+          },
+          {
+            "description": "The currently active theme.\n\nSome of the addon fields are not available during startup. The fields\nthat will always be present are id, version, updateDay, and scope. All\nthe other fields become present shortly after the\n`sessionstore-windows-restored` observer topic is notified.\n\nThis metric is an echo of the Legacy Telemetry Environment field\naddons.theme. Like its counterpart, it will only have data in Firefox\nDesktop and at times and on platforms where the environment would have\nvalues.\n",
+            "mode": "NULLABLE",
+            "name": "addons_theme",
+            "type": "JSON"
+          },
+          {
             "description": "What widgets are in which toolbars. Not dissimilar from Telemetry's `browser.ui.toolbar_widgets`, but in a friendlier format. See https://firefox-source-docs.mozilla.org/browser/BrowserUsageTelemetry.html for how widget ids and positions are determined.\n",
             "mode": "NULLABLE",
             "name": "browser_ui_toolbar_widgets",
@@ -34606,6 +35488,102 @@
             "description": "Static data recorded to verify the new object metric type end-to-end.\n",
             "mode": "NULLABLE",
             "name": "fog_validation_some_object",
+            "type": "JSON"
+          },
+          {
+            "description": "Information about the primary (and secondary, if available) graphics adapter.\n* description - e.g. \"Intel(R) HD Graphics 4600\"\n* vendorID - Hex vendor id\n* deviceID - Hex device id\n* subsysID - Hex subsys id\n* RAM - reported RAM in megabytes.\n* driver - Platform-specific driver information.\n* driverVendor - Driver vendor information.\n* driverVersion - Driver version.\n* driverDate - Driver date.\n* GPUActive - Whether this adapter is active.\n",
+            "mode": "NULLABLE",
+            "name": "gfx_adapters",
+            "type": "JSON"
+          },
+          {
+            "description": "(Windows-only) information about the D2D compositor.\n* status - One of\n  * \"unused\"      - This feature has not been requested.\n  * \"unavailable\" - Safe Mode or OS restriction prevents use.\n  * \"blocked\"     - An internal condition (such as safe mode) prevents use.\n  * \"blocklisted\" - Blocked due to a blocklist restriction.\n  * \"denied\"      - Blocked due to allowlist restrictions.\n  * \"disabled\"    - User explicitly disabled this default feature.\n  * \"failed\"      - Feature failed to initialize.\n  * \"available\"   - User has this feature available by default.\n            optionally including \":\" followed by a reason\n            e.g. \"FEATURE_FAILURE_WEBRENDER_VIDEO_CRASH_INTEL_23.20.16.4973\".\n* version - The feature version, either \"1.0\" or \"1.1\"\n",
+            "mode": "NULLABLE",
+            "name": "gfx_features_d2d",
+            "type": "JSON"
+          },
+          {
+            "description": "(Windows-only) information about the D3D11 compositor.\n* status - One of\n  * \"unused\"      - This feature has not been requested.\n  * \"unavailable\" - Safe Mode or OS restriction prevents use.\n  * \"blocked\"     - An internal condition (such as safe mode) prevents use.\n  * \"blocklisted\" - Blocked due to a blocklist restriction.\n  * \"denied\"      - Blocked due to allowlist restrictions.\n  * \"disabled\"    - User explicitly disabled this default feature.\n  * \"failed\"      - Feature failed to initialize.\n  * \"available\"   - User has this feature available by default.\n            optionally including \":\" followed by a reason\n            e.g. \"FEATURE_FAILURE_WEBRENDER_VIDEO_CRASH_INTEL_23.20.16.4973\".\n* warp - Software rendering (WARP) mode was chosen.\n* textureSharing - Whether or not texture sharing works.\n* version - The D3D11 device feature level.\n* blocklisted - Whether D3D11 is blocklisted; use to see whether WARP\n                was blacklist induced or driver-failure induced.\n",
+            "mode": "NULLABLE",
+            "name": "gfx_features_d3d11",
+            "type": "JSON"
+          },
+          {
+            "description": "Information about the out-of-process compositing (\"GPU Process\") GFX feature.\n* status - One of\n  * \"unused\"      - This feature has not been requested.\n  * \"unavailable\" - Safe Mode or OS restriction prevents use.\n  * \"blocked\"     - An internal condition (such as safe mode) prevents use.\n  * \"blocklisted\" - Blocked due to a blocklist restriction.\n  * \"denied\"      - Blocked due to allowlist restrictions.\n  * \"disabled\"    - User explicitly disabled this default feature.\n  * \"failed\"      - Feature failed to initialize.\n  * \"available\"   - User has this feature available by default and it's in use.\n            optionally including \":\" followed by a reason\n            e.g. \"FEATURE_FAILURE_WEBRENDER_VIDEO_CRASH_INTEL_23.20.16.4973\".\n",
+            "mode": "NULLABLE",
+            "name": "gfx_features_gpu_process",
+            "type": "JSON"
+          },
+          {
+            "description": "Information about the hardware acceleration GFX feature.\n(i.e. whether we try using the GPU)\n* status - One of\n  * \"unused\"      - This feature has not been requested.\n  * \"unavailable\" - Safe Mode or OS restriction prevents use.\n  * \"blocked\"     - An internal condition (such as safe mode) prevents use.\n  * \"blocklisted\" - Blocked due to a blocklist restriction.\n  * \"denied\"      - Blocked due to allowlist restrictions.\n  * \"disabled\"    - User explicitly disabled this default feature.\n  * \"failed\"      - Feature failed to initialize.\n  * \"available\"   - User has this feature available by default.\n            optionally including \":\" followed by a reason\n            e.g. \"FEATURE_FAILURE_WEBRENDER_VIDEO_CRASH_INTEL_23.20.16.4973\".\n",
+            "mode": "NULLABLE",
+            "name": "gfx_features_hw_compositing",
+            "type": "JSON"
+          },
+          {
+            "description": "Information about the Off Main Thread Painting GFX feature.\n* status - One of\n  * \"unused\"      - This feature has not been requested.\n  * \"unavailable\" - Safe Mode or OS restriction prevents use.\n  * \"blocked\"     - An internal condition (such as safe mode) prevents use.\n  * \"blocklisted\" - Blocked due to a blocklist restriction.\n  * \"denied\"      - Blocked due to allowlist restrictions.\n  * \"disabled\"    - User explicitly disabled this default feature.\n  * \"failed\"      - Feature failed to initialize.\n  * \"available\"   - User has this feature available by default.\n            optionally including \":\" followed by a reason\n            e.g. \"FEATURE_FAILURE_WEBRENDER_VIDEO_CRASH_INTEL_23.20.16.4973\".\n",
+            "mode": "NULLABLE",
+            "name": "gfx_features_omtp",
+            "type": "JSON"
+          },
+          {
+            "description": "Information about the OpenGL Compositing GFX feature.\n* status - One of\n  * \"unused\"      - This feature has not been requested.\n  * \"unavailable\" - Safe Mode or OS restriction prevents use.\n  * \"blocked\"     - An internal condition (such as safe mode) prevents use.\n  * \"blocklisted\" - Blocked due to a blocklist restriction.\n  * \"denied\"      - Blocked due to allowlist restrictions.\n  * \"disabled\"    - User explicitly disabled this default feature.\n  * \"failed\"      - Feature failed to initialize.\n  * \"available\"   - User has this feature available by default.\n            optionally including \":\" followed by a reason\n            e.g. \"FEATURE_FAILURE_WEBRENDER_VIDEO_CRASH_INTEL_23.20.16.4973\".\n",
+            "mode": "NULLABLE",
+            "name": "gfx_features_opengl_compositing",
+            "type": "JSON"
+          },
+          {
+            "description": "Information about the Webrender GFX feature.\n* status - One of\n  * \"unused\"      - This feature has not been requested.\n  * \"unavailable\" - Safe Mode or OS restriction prevents use.\n  * \"blocked\"     - An internal condition (such as safe mode) prevents use.\n  * \"blocklisted\" - Blocked due to a blocklist restriction.\n  * \"denied\"      - Blocked due to allowlist restrictions.\n  * \"disabled\"    - User explicitly disabled this default feature.\n  * \"failed\"      - Feature failed to initialize.\n  * \"available\"   - User has this feature available by default.\n            optionally including \":\" followed by a reason\n            e.g. \"FEATURE_FAILURE_WEBRENDER_VIDEO_CRASH_INTEL_23.20.16.4973\".\n",
+            "mode": "NULLABLE",
+            "name": "gfx_features_webrender",
+            "type": "JSON"
+          },
+          {
+            "description": "Information about the native OS compositor (CA, DCamp, etc.).\n* status - One of\n  * \"unused\"      - This feature has not been requested.\n  * \"unavailable\" - Safe Mode or OS restriction prevents use.\n  * \"blocked\"     - An internal condition (such as safe mode) prevents use.\n  * \"blocklisted\" - Blocked due to a blocklist restriction.\n  * \"denied\"      - Blocked due to allowlist restrictions.\n  * \"disabled\"    - User explicitly disabled this default feature.\n  * \"failed\"      - Feature failed to initialize.\n  * \"available\"   - User has this feature available by default.\n            optionally including \":\" followed by a reason\n            e.g. \"FEATURE_FAILURE_WEBRENDER_VIDEO_CRASH_INTEL_23.20.16.4973\".\n",
+            "mode": "NULLABLE",
+            "name": "gfx_features_wr_compositor",
+            "type": "JSON"
+          },
+          {
+            "description": "Information about connected monitors.\nOn Linux only a single monitor is returned for the primary screen.\n* screenWidth - Screen width in pixels\n* screenHeight - Screen height in pixels\n* defaultCSSScaleFactor - The default number of device pixels per unscaled CSS pixel for this screen.\n* contentsScaleFactor - The number of device pixels per desktop pixel for this screen.\n* refreshRate - (Windows only) The target screen refresh rate, in Hz, or 0 if unknown.\n* pseudoDislay - (Windows only) Whether the screen is a pseudo display.\n",
+            "mode": "NULLABLE",
+            "name": "gfx_monitors",
+            "type": "JSON"
+          },
+          {
+            "description": "Extended attribution information.\nMapped to client_info.attribution.ext in datasets.\n* `experiment`: name/id of the enrolled funnel experiment\n* `variation`: name/id of the variation cohort used in the enrolled funnel experiment\n* `ua`: identifier derived from the user agent downloading the installer\n        e.g. chrome, Google Chrome 123\n* `dltoken`: Unique token created at Firefox download time.\n             e.g. c18f86a3-f228-4d98-91bb-f90135c0aa9c\n* `msstoresignedin`: only present if the installation was done through the Microsoft Store,\n                     and was able to retrieve the \"campaign ID\" it was first installed with.\n                     This value is \"true\" if the user was signed into the Microsoft Store\n                     when they first installed, and false otherwise.\n* `dlsource`: identifier that indicate where installations of Firefox originate\n",
+            "mode": "NULLABLE",
+            "name": "glean_attribution_ext",
+            "type": "JSON"
+          },
+          {
+            "description": "Extended distribution information.\nMapped to client_info.distribution.ext in datasets.\n* `distributionVersion`: pref `distribution.version`, `null` on failure\n* `partnerId`: pref `mozilla.partner.id`, `null` on failure\n* `distributor`:  pref `app.distributor`, `null` on failure\n* `distributorChannel`: pref `app.distributor.channel`, `null` on failure\n* `partnerNames`: list from prefs `app.partner.<name>=<name>`\n",
+            "mode": "NULLABLE",
+            "name": "glean_distribution_ext",
+            "type": "JSON"
+          },
+          {
+            "description": "Information about the disk the application binary is stored on.\nWindows only.\n* model - The disk's self-reported model string\n* revision - The disk's self-reported revision string\n* diskType - Either \"HDD\" or \"SSD\"\n",
+            "mode": "NULLABLE",
+            "name": "hdd_binary",
+            "type": "JSON"
+          },
+          {
+            "description": "Information about the disk the profile is stored on.\nWindows only.\n* model - The disk's self-reported model string\n* revision - The disk's self-reported revision string\n* diskType - Either \"HDD\" or \"SSD\"\n",
+            "mode": "NULLABLE",
+            "name": "hdd_profile",
+            "type": "JSON"
+          },
+          {
+            "description": "Information about the disk the system files are stored on.\nWindows only.\n* model - The disk's self-reported model string\n* revision - The disk's self-reported revision string\n* diskType - Either \"HDD\" or \"SSD\"\n",
+            "mode": "NULLABLE",
+            "name": "hdd_system",
+            "type": "JSON"
+          },
+          {
+            "description": "The fossilized remains of the Legacy Telemetry Environment's\n`settings.userPrefs` structure.\nA list of pref names and values.\nSome values will be the string \"<user-set>\" to obscure the value.\nDo not add more prefs to this list.\nPrefer instead to instrument your prefs directly with individual metrics.\nSee Environment.sys.mjs' `DEFAULT_ENVIRONMENT_PREFS`.\n",
+            "mode": "NULLABLE",
+            "name": "preferences_user_prefs",
             "type": "JSON"
           }
         ],
@@ -34874,6 +35852,12 @@
             "type": "INT64"
           },
           {
+            "description": "Maximum number of processes that will be launched for regular web content.\nSee `nsIXULRuntime.maxWebProcessCount`\n",
+            "mode": "NULLABLE",
+            "name": "e10s_multi_processes",
+            "type": "INT64"
+          },
+          {
             "description": "Max amount of DNR rules being evaluated.\n",
             "mode": "NULLABLE",
             "name": "extensions_apis_dnr_evaluate_rules_count_max",
@@ -34952,6 +35936,12 @@
             "type": "INT64"
           },
           {
+            "description": "The frame rate in Hz, typically 60 or more.\n",
+            "mode": "NULLABLE",
+            "name": "gfx_target_frame_rate",
+            "type": "INT64"
+          },
+          {
             "description": "The number of total GPU process launch attempts.\n",
             "mode": "NULLABLE",
             "name": "gpu_process_total_launch_attempts",
@@ -34961,6 +35951,12 @@
             "description": "The number of consecutive unstable launch attempts.\n",
             "mode": "NULLABLE",
             "name": "gpu_process_unstable_launch_attempts",
+            "type": "INT64"
+          },
+          {
+            "description": "Whether, and in what mode, the launcher process is enabled (or not).\nSee `nsIXULRuntime.launcherProcessState`\n",
+            "mode": "NULLABLE",
+            "name": "launcher_process_state",
             "type": "INT64"
           },
           {
@@ -35018,6 +36014,30 @@
             "type": "INT64"
           },
           {
+            "description": "The day the profile was created,\nas determined by checking various file metadata in the profile directory.\nNot considered to be particularly reliable in practice.\nPrefer `client_info.first_run_date` in most cases.\ne.g. 16446\n",
+            "mode": "NULLABLE",
+            "name": "profiles_creation_date",
+            "type": "INT64"
+          },
+          {
+            "description": "Optional.\nThe day the profile was first used,\nas determined by noticing that `times.json` wasn't present.\nPrefer `client_info.first_run_date` in most cases.\ne.g. 16446\n",
+            "mode": "NULLABLE",
+            "name": "profiles_first_use_date",
+            "type": "INT64"
+          },
+          {
+            "description": "Optional.\nThe day the profile was recovered from backup,\npersisted in `times.json`.\ne.g. 16446\n",
+            "mode": "NULLABLE",
+            "name": "profiles_recovered_from_backup",
+            "type": "INT64"
+          },
+          {
+            "description": "Optional.\nThe day the profile was most recently reset,\npersisted in `times.json`.\ne.g. 16446\n",
+            "mode": "NULLABLE",
+            "name": "profiles_reset_date",
+            "type": "INT64"
+          },
+          {
             "description": "The number of saved logins, including those that cannot be decrypted.\nSimilar to the legacy telemetry histogram PWMGR_NUM_SAVED_PASSWORDS.\n",
             "mode": "NULLABLE",
             "name": "pwmgr_num_saved_passwords",
@@ -35027,6 +36047,18 @@
             "description": "The number of potentially breached passwords, as determined by LoginBreaches.getPotentialBreachesByLoginGUID. This metric was generated to correspond to the Legacy Telemetry scalar pwmgr.potentially_breached_passwords.\n",
             "mode": "NULLABLE",
             "name": "pwmgr_potentially_breached_passwords",
+            "type": "INT64"
+          },
+          {
+            "description": "The current win32k.sys lockdown state.\nPossible values are defined in the ContentWin32kLockdownState enum.\nReported even on non-Windows machines.\n",
+            "mode": "NULLABLE",
+            "name": "sandbox_content_win32k_lockdown_state",
+            "type": "INT64"
+          },
+          {
+            "description": "The current sandbox level.\nThe \"security.sandbox.content.level\" preference rounded up to the current minimum allowed level.\n0 if `MOZ_DISABLE_CONTENT_SANDBOX` is set.\n",
+            "mode": "NULLABLE",
+            "name": "sandbox_effective_content_process_level",
             "type": "INT64"
           },
           {
@@ -35063,6 +36095,114 @@
             "description": "The time in seconds between the first browser window loading, and the time the OS started. This can give us an indication of whether starting the browser may have been the first thing the user did after starting their computer. This metric was generated to correspond to the Legacy Telemetry scalar startup.seconds_since_last_os_restart.\n",
             "mode": "NULLABLE",
             "name": "startup_seconds_since_last_os_restart",
+            "type": "INT64"
+          },
+          {
+            "description": "Big (or Performance) CPU cores.\n",
+            "mode": "NULLABLE",
+            "name": "system_cpu_big_cores",
+            "type": "INT64"
+          },
+          {
+            "description": "CPU family.\n",
+            "mode": "NULLABLE",
+            "name": "system_cpu_family",
+            "type": "INT64"
+          },
+          {
+            "description": "L2 cache size (only on Windows and Mac).\n",
+            "mode": "NULLABLE",
+            "name": "system_cpu_l2_cache",
+            "type": "INT64"
+          },
+          {
+            "description": "L3 cache size.\n",
+            "mode": "NULLABLE",
+            "name": "system_cpu_l3_cache",
+            "type": "INT64"
+          },
+          {
+            "description": "Little (or Efficient) CPU cores.\n",
+            "mode": "NULLABLE",
+            "name": "system_cpu_little_cores",
+            "type": "INT64"
+          },
+          {
+            "description": "Logical CPU cores.\n",
+            "mode": "NULLABLE",
+            "name": "system_cpu_logical_cores",
+            "type": "INT64"
+          },
+          {
+            "description": "Medium CPU cores.\n",
+            "mode": "NULLABLE",
+            "name": "system_cpu_medium_cores",
+            "type": "INT64"
+          },
+          {
+            "description": "CPU model.\n",
+            "mode": "NULLABLE",
+            "name": "system_cpu_model",
+            "type": "INT64"
+          },
+          {
+            "description": "Physical CPU cores.\n",
+            "mode": "NULLABLE",
+            "name": "system_cpu_physical_cores",
+            "type": "INT64"
+          },
+          {
+            "description": "CPU speed in MHz.\n",
+            "mode": "NULLABLE",
+            "name": "system_cpu_speed",
+            "type": "INT64"
+          },
+          {
+            "description": "CPU stepping.\n",
+            "mode": "NULLABLE",
+            "name": "system_cpu_stepping",
+            "type": "INT64"
+          },
+          {
+            "description": "The physical memory size in MB (2^20 bytes).\ne.g. 32211\n",
+            "mode": "NULLABLE",
+            "name": "system_memory",
+            "type": "INT64"
+          },
+          {
+            "description": "The Windows service pack's major version, according to WindowsVersionInfo.\nWindows only.\ne.g. 0\n",
+            "mode": "NULLABLE",
+            "name": "system_os_service_pack_major",
+            "type": "INT64"
+          },
+          {
+            "description": "The Windows service pack's minor version, according to WindowsVersionInfo.\nWindows only.\ne.g. 0\n",
+            "mode": "NULLABLE",
+            "name": "system_os_service_pack_minor",
+            "type": "INT64"
+          },
+          {
+            "description": "The Windows build number, according to WindowsVersionInfo.\nWindows only.\ne.g. 26100\nExpected in most cases to be identical to `client_info.windows_build_number`.\n",
+            "mode": "NULLABLE",
+            "name": "system_os_windows_build_number",
+            "type": "INT64"
+          },
+          {
+            "description": "The Windows update build revision number, according to\n`SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion`.\nWindows only.\ne.g. 3775\n",
+            "mode": "NULLABLE",
+            "name": "system_os_windows_ubr",
+            "type": "INT64"
+          },
+          {
+            "description": "The size of the user-mode portion of the virtual address space of the parent process.\nWindows only.\ne.g. 134217728\n",
+            "mode": "NULLABLE",
+            "name": "system_virtual_memory",
+            "type": "INT64"
+          },
+          {
+            "description": "Records the number of saved tab groups present in the user's session\n",
+            "mode": "NULLABLE",
+            "name": "tabgroup_saved_groups",
             "type": "INT64"
           },
           {
@@ -35800,9 +36940,21 @@
             "type": "STRING"
           },
           {
+            "description": "The content backend (e.g. \"Direct2D 1.1\", \"Skia\", \"Cairo\").\n",
+            "mode": "NULLABLE",
+            "name": "gfx_content_backend",
+            "type": "STRING"
+          },
+          {
             "description": "Whether webrender is enabled or disabled, and why. (Migrated from the geckoview metric of the same name).\n",
             "mode": "NULLABLE",
             "name": "gfx_feature_webrender",
+            "type": "STRING"
+          },
+          {
+            "description": "Layers backend for compositing.\nOne of \"d3d9\", \"d3d11\", \"opengl\", \"basic\", or \"none\".\n\"none\" indicates no compositors have been created.\n",
+            "mode": "NULLABLE",
+            "name": "gfx_features_compositor",
             "type": "STRING"
           },
           {
@@ -35821,6 +36973,12 @@
             "description": "The gecko version at the last time a compositor was initialized, and therefore when gfx_status_compositor was last updated. Due to gfx_status_compositor's user lifetime we see lots of unexpected values for the current gecko version. We believe this is because the user has not opened a tab since they were updated to a version where webrender should be enabled on their device. This can be used to verify that theory. (Migrated from the geckoview metric of the same name).\n",
             "mode": "NULLABLE",
             "name": "gfx_status_last_compositor_gecko_version",
+            "type": "STRING"
+          },
+          {
+            "description": "The text scale factor.\n",
+            "mode": "NULLABLE",
+            "name": "gfx_text_scale_factor",
             "type": "STRING"
           },
           {
@@ -35878,13 +37036,19 @@
             "type": "STRING"
           },
           {
+            "description": "Records the detected home region of the user. This is the general region of the user's machine.\nIf a machine moves location, there is a minimum 2-week delay before this will be updated.\nSee the [Region documentation](https://firefox-source-docs.mozilla.org/toolkit/modules/toolkit_modules/Region.html) for more information about updates.\n",
+            "mode": "NULLABLE",
+            "name": "region_home_region",
+            "type": "STRING"
+          },
+          {
             "description": "The display name of the user's default engine.\n",
             "mode": "NULLABLE",
             "name": "search_engine_default_display_name",
             "type": "STRING"
           },
           {
-            "description": "The telemetry id of the search engine.\nFor example: \"engine1\"\n\nFor application-provided engines, this is the identifier plus telemetry\nsuffix supplied by the configuration.\nFor other engines, this is `other-<engineName>`.\n",
+            "description": "Deprecated in Fx139, please use provider_id, partner_code,\noverridden_by_third_party and display_name instead.\n\nThe telemetry id of the search engine.\nFor example: \"engine1\"\n\nFor application-provided engines, this is the identifier plus telemetry\nsuffix supplied by the configuration.\nFor other engines, this is `other-<engineName>`.\n",
             "mode": "NULLABLE",
             "name": "search_engine_default_engine_id",
             "type": "STRING"
@@ -35893,6 +37057,18 @@
             "description": "A path relating to where the search engine was installed/loaded from.\nFor example:\n  `[app]appDefault` for an app-provided engine.\n  `[addon]<extension id>` for a WebExtension-based engine.\n  `[https]developer.mozilla.org/mdn-web-docs.xml` for an OpenSearch-based\n  engine.\n  `[policy]` for an enteprise policy engine.\n  `[user]` for a search engine defined by the user or generated from a\n  web page.\nNote: this metric is truncated at 100 characters.\n",
             "mode": "NULLABLE",
             "name": "search_engine_default_load_path",
+            "type": "STRING"
+          },
+          {
+            "description": "The partner code of the user's default search engine, if defined/known,\nthat is being used for the search. Not all search engines have partner\ncodes.\n\nMay be empty for engines that are overridden by a third-party add-on or\nOpenSearch engine.\n",
+            "mode": "NULLABLE",
+            "name": "search_engine_default_partner_code",
+            "type": "STRING"
+          },
+          {
+            "description": "The identifier of the user's default search engine if the search engine is\nan application provided engine. For user installed engines, this value will\nbe `other`.\n",
+            "mode": "NULLABLE",
+            "name": "search_engine_default_provider_id",
             "type": "STRING"
           },
           {
@@ -35908,7 +37084,7 @@
             "type": "STRING"
           },
           {
-            "description": "The telemetry id of the search engine.\nFor example: \"engine1\"\n\nFor application-provided engines, this is the identifier plus telemetry\nsuffix supplied by the configuration.\nFor other engines, this is `other-<engineName>`.\n\nIf this string is an empty string (`\"\"`), this means that one or both of\nthe preferences `browser.search.separatePrivateDefault` and\n`browser.search.separatePrivateDefault.ui.enabled` are set to false.\nIt is possible that the user selects the same private engine as for the\ndefault engine, and hence both versions of these fields will be filled in.\n",
+            "description": "Deprecated in Fx139, please use provider_id, partner_code,\noverridden_by_third_party and display_name instead.\n\nThe telemetry id of the search engine.\nFor example: \"engine1\"\n\nFor application-provided engines, this is the identifier plus telemetry\nsuffix supplied by the configuration.\nFor other engines, this is `other-<engineName>`.\n\nIf this string is an empty string (`\"\"`), this means that one or both of\nthe preferences `browser.search.separatePrivateDefault` and\n`browser.search.separatePrivateDefault.ui.enabled` are set to false.\nIt is possible that the user selects the same private engine as for the\ndefault engine, and hence both versions of these fields will be filled in.\n",
             "mode": "NULLABLE",
             "name": "search_engine_private_engine_id",
             "type": "STRING"
@@ -35917,6 +37093,18 @@
             "description": "A path relating to where the search engine was installed/loaded from.\nFor example:\n  `[app]appDefault` for an app-provided engine.\n  `[addon]<extension id>` for a WebExtension-based engine.\n  `[https]developer.mozilla.org/mdn-web-docs.xml` for an OpenSearch-based\n  engine.\n  `[policy]` for an enteprise policy engine.\n  `[user]` for a search engine defined by the user or generated from a\n  web page.\nNote: this metric is truncated at 100 characters.\n\nIf this string is an empty string (`\"\"`), this means that one or both of\nthe preferences `browser.search.separatePrivateDefault` and\n`browser.search.separatePrivateDefault.ui.enabled` are set to false.\nIt is possible that the user selects the same private engine as for the\ndefault engine, and hence both versions of these fields will be filled in.\n",
             "mode": "NULLABLE",
             "name": "search_engine_private_load_path",
+            "type": "STRING"
+          },
+          {
+            "description": "The partner code of the user's default search engine, if defined/known,\nthat is being used for the search. Not all search engines have partner\ncodes.\n\nMay be empty for engines that are overridden by a third-party add-on or\nOpenSearch engine.\n",
+            "mode": "NULLABLE",
+            "name": "search_engine_private_partner_code",
+            "type": "STRING"
+          },
+          {
+            "description": "The identifier of the user's default search engine if the search engine is\nan application provided engine. For user installed engines, this value will\nbe `other`.\n",
+            "mode": "NULLABLE",
+            "name": "search_engine_private_provider_id",
             "type": "STRING"
           },
           {
@@ -35956,6 +37144,66 @@
             "type": "STRING"
           },
           {
+            "description": "The `hw.model` of the hardware running this software.\nMac only.\ne.g. \"MacBookPro14,1\"\n",
+            "mode": "NULLABLE",
+            "name": "system_apple_model_id",
+            "type": "STRING"
+          },
+          {
+            "description": "The user readable CPU name. (e.g. \"Intel(R) Core(TM) i9-8950HK CPU @ 2.90GHz\")\n",
+            "mode": "NULLABLE",
+            "name": "system_cpu_name",
+            "type": "STRING"
+          },
+          {
+            "description": "The CPU vendor (e.g. \"GenuineIntel\").\n",
+            "mode": "NULLABLE",
+            "name": "system_cpu_vendor",
+            "type": "STRING"
+          },
+          {
+            "description": "The Operating System's distribution, according to sysinfo.\nLinux only.\ne.g. \"Linuxmint\"\n",
+            "mode": "NULLABLE",
+            "name": "system_os_distro",
+            "type": "STRING"
+          },
+          {
+            "description": "The Operating System's distribution's version, according to sysinfo.\nLinux only.\ne.g. \"22\"\n",
+            "mode": "NULLABLE",
+            "name": "system_os_distro_version",
+            "type": "STRING"
+          },
+          {
+            "description": "The Operating System's local, according to ospreferences.\ne.g. \"en-US\"\n",
+            "mode": "NULLABLE",
+            "name": "system_os_locale",
+            "type": "STRING"
+          },
+          {
+            "description": "The Operating System's name, according to sysinfo.\ne.g. \"Windows_NT\"\nExpected in most cases to be identical to `client_info.os`.\n",
+            "mode": "NULLABLE",
+            "name": "system_os_name",
+            "type": "STRING"
+          },
+          {
+            "description": "The Operating System's version, according to sysinfo.\ne.g. \"6.3\"\nExpected in most cases to be identical to `client_info.os_version`.\n",
+            "mode": "NULLABLE",
+            "name": "system_os_version",
+            "type": "STRING"
+          },
+          {
+            "description": "The full application package name without any of the components that might change\nduring the life cycle of the app (such as the version number or the architecture).\nUniquely identifies the application within one Windows installation.\nWindows only.\nOnly included if it begins with \"Mozilla.\" or \"MozillaCorporation.\".\ne.g. \"Mozilla.Firefox_n80bbvh6b1yt2\"\n",
+            "mode": "NULLABLE",
+            "name": "system_win_package_family_name",
+            "type": "STRING"
+          },
+          {
+            "description": "The update channel according to defaults,\nincluding partner bits.\ne.g. \"nightly-cck\"\n",
+            "mode": "NULLABLE",
+            "name": "update_settings_channel",
+            "type": "STRING"
+          },
+          {
             "description": "The AppUpdatePin Enterprise Policy controls the maximum version that the browser can update to. If the policy is set, this probe will report the policy's value. The possible policy values are \"X.\" and \"X.Y.\", where X is the pinned major version and Y is the pinned minor version. This metric was generated to correspond to the Legacy Telemetry scalar update.version_pin.\n",
             "mode": "NULLABLE",
             "name": "update_version_pin",
@@ -35965,6 +37213,12 @@
             "description": "The version of Gtk 3 in use. This metric was generated to correspond to the Legacy Telemetry scalar widget.gtk_version.\n",
             "mode": "NULLABLE",
             "name": "widget_gtk_version",
+            "type": "STRING"
+          },
+          {
+            "description": "A string tag identifying the binary ABI of the current processor and\ncompiler vtable. This is taken from the TARGET_XPCOM_ABI configure\nvariable. It may not be available on all platforms, especially\nunusual processor or compiler combinations.\n\nThe result takes the form <processor>-<compilerABI>, for example:\n  - x86-msvc\n  - ppc-gcc3\n\nThis value should almost always be used in combination with the\noperating system.\n",
+            "mode": "NULLABLE",
+            "name": "xpcom_abi",
             "type": "STRING"
           }
         ],
@@ -35987,6 +37241,56 @@
           {
             "mode": "REPEATED",
             "name": "browser_migration_unmatched_extensions",
+            "type": "STRING"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "intl_accept_languages",
+            "type": "STRING"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "intl_app_locales",
+            "type": "STRING"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "intl_available_locales",
+            "type": "STRING"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "intl_regional_prefs_locales",
+            "type": "STRING"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "intl_requested_locales",
+            "type": "STRING"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "intl_system_locales",
+            "type": "STRING"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "system_cpu_extensions",
+            "type": "STRING"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "windows_security_antispyware",
+            "type": "STRING"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "windows_security_antivirus",
+            "type": "STRING"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "windows_security_firewall",
             "type": "STRING"
           }
         ],
