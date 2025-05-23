@@ -66,6 +66,14 @@ schemas
 │   ├── bmobugs
 │   ├── build
 │   └── hgpush
+├── experimenter-cirrus
+│   ├── baseline
+│   ├── deletion-request
+│   ├── enrollment
+│   ├── enrollment-status
+│   ├── events
+│   ├── metrics
+│   └── startup
 ├── firefox-accounts
 │   ├── activity-flow-metrics
 │   └── amplitude-event
@@ -892,6 +900,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-882 directories
+890 directories
 ```
 
