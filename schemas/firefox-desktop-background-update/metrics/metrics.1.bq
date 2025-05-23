@@ -8183,6 +8183,42 @@
             "type": "RECORD"
           },
           {
+            "description": "port used for local network access\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "networking_local_network_access_port",
+            "type": "RECORD"
+          },
+          {
             "description": "The thickness used to draw a free highlight.\n",
             "fields": [
               {
@@ -17542,6 +17578,24 @@
             ],
             "mode": "REPEATED",
             "name": "networking_https_upgrade_with_https_rr",
+            "type": "RECORD"
+          },
+          {
+            "description": "Whether the request is crossing to a more private addresspace\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_local_network_access",
             "type": "RECORD"
           },
           {
