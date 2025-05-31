@@ -115,6 +115,7 @@ schemas
 │   ├── serp-categorization
 │   ├── spoc
 │   ├── top-sites
+│   ├── update
 │   ├── urlbar-keyword-exposure
 │   ├── urlbar-potential-exposure
 │   ├── usage-deletion-request
@@ -151,6 +152,7 @@ schemas
 │   ├── hang-report
 │   ├── metrics
 │   ├── pageload
+│   ├── update
 │   ├── use-counters
 │   └── user-characteristics
 ├── firefox-installer
@@ -900,6 +902,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-890 directories
+892 directories
 ```
 

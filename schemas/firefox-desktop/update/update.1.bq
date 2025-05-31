@@ -363,9 +363,45 @@
       {
         "fields": [
           {
-            "description": "If `ping_type` is \"fxsuggest-impression\", indicates whether this impression is for a clicked suggestion. If `ping_type` is \"fxsuggest-click\", always `true`.\n",
+            "description": "Whether the app has a package identity.\nWindows only.\n",
             "mode": "NULLABLE",
-            "name": "fx_suggest_is_clicked",
+            "name": "system_has_win_package_id",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether we're in Windows32-on-Windows64 mode.\nWindows only.\n",
+            "mode": "NULLABLE",
+            "name": "system_is_wow_64",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether we're in Windows32-on-WindowsForArm64 mode.\nWindows only.\n",
+            "mode": "NULLABLE",
+            "name": "system_is_wow_arm_64",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether app updates are set to auto-download.\n",
+            "mode": "NULLABLE",
+            "name": "update_settings_auto_download",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether updates can be delivered in the background.\n",
+            "mode": "NULLABLE",
+            "name": "update_settings_background",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether updates are available.\n",
+            "mode": "NULLABLE",
+            "name": "update_settings_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the app was built with the updater binary.\nCorresponds to the value of the `MOZ_UPDATER` define.\n",
+            "mode": "NULLABLE",
+            "name": "updater_available",
             "type": "BOOL"
           }
         ],
@@ -455,15 +491,172 @@
       {
         "fields": [
           {
-            "description": "A unique identifier for a sponsored suggestion. Not set for non-sponsored suggestions.\n",
+            "description": "Extended attribution information.\nMapped to client_info.attribution.ext in datasets.\n* `experiment`: name/id of the enrolled funnel experiment\n* `variation`: name/id of the variation cohort used in the enrolled funnel experiment\n* `ua`: identifier derived from the user agent downloading the installer\n        e.g. chrome, Google Chrome 123\n* `dltoken`: Unique token created at Firefox download time.\n             e.g. c18f86a3-f228-4d98-91bb-f90135c0aa9c\n* `msstoresignedin`: only present if the installation was done through the Microsoft Store,\n                     and was able to retrieve the \"campaign ID\" it was first installed with.\n                     This value is \"true\" if the user was signed into the Microsoft Store\n                     when they first installed, and false otherwise.\n* `dlsource`: identifier that indicate where installations of Firefox originate\n",
             "mode": "NULLABLE",
-            "name": "fx_suggest_block_id",
+            "name": "glean_attribution_ext",
+            "type": "JSON"
+          },
+          {
+            "description": "Extended distribution information.\nMapped to client_info.distribution.ext in datasets.\n* `distributionVersion`: pref `distribution.version`, `null` on failure\n* `partnerId`: pref `mozilla.partner.id`, `null` on failure\n* `distributor`:  pref `app.distributor`, `null` on failure\n* `distributorChannel`: pref `app.distributor.channel`, `null` on failure\n* `partnerNames`: list from prefs `app.partner.<name>=<name>`\n",
+            "mode": "NULLABLE",
+            "name": "glean_distribution_ext",
+            "type": "JSON"
+          },
+          {
+            "description": "Information about the disk the application binary is stored on.\nWindows only.\n* model - The disk's self-reported model string\n* revision - The disk's self-reported revision string\n* diskType - Either \"HDD\" or \"SSD\"\n",
+            "mode": "NULLABLE",
+            "name": "hdd_binary",
+            "type": "JSON"
+          },
+          {
+            "description": "Information about the disk the profile is stored on.\nWindows only.\n* model - The disk's self-reported model string\n* revision - The disk's self-reported revision string\n* diskType - Either \"HDD\" or \"SSD\"\n",
+            "mode": "NULLABLE",
+            "name": "hdd_profile",
+            "type": "JSON"
+          },
+          {
+            "description": "Information about the disk the system files are stored on.\nWindows only.\n* model - The disk's self-reported model string\n* revision - The disk's self-reported revision string\n* diskType - Either \"HDD\" or \"SSD\"\n",
+            "mode": "NULLABLE",
+            "name": "hdd_system",
+            "type": "JSON"
+          },
+          {
+            "description": "The fossilized remains of the Legacy Telemetry Environment's\n`settings.userPrefs` structure.\nA list of pref names and values.\nSome values will be the string \"<user-set>\" to obscure the value.\nDo not add more prefs to this list.\nPrefer instead to instrument your prefs directly with individual metrics.\nSee Environment.sys.mjs' `DEFAULT_ENVIRONMENT_PREFS`.\n",
+            "mode": "NULLABLE",
+            "name": "preferences_user_prefs",
+            "type": "JSON"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "object",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The day the profile was created,\nas determined by checking various file metadata in the profile directory.\nNot considered to be particularly reliable in practice.\nPrefer `client_info.first_run_date` in most cases.\ne.g. 16446\n",
+            "mode": "NULLABLE",
+            "name": "profiles_creation_date",
             "type": "INT64"
           },
           {
-            "description": "The position (1-based) of this suggestion in the full list of suggestions, relative to the top of the awesomebar.\n",
+            "description": "Optional.\nThe day the profile was first used,\nas determined by noticing that `times.json` wasn't present.\nPrefer `client_info.first_run_date` in most cases.\ne.g. 16446\n",
             "mode": "NULLABLE",
-            "name": "fx_suggest_position",
+            "name": "profiles_first_use_date",
+            "type": "INT64"
+          },
+          {
+            "description": "Optional.\nThe day the profile was recovered from backup,\npersisted in `times.json`.\ne.g. 16446\n",
+            "mode": "NULLABLE",
+            "name": "profiles_recovered_from_backup",
+            "type": "INT64"
+          },
+          {
+            "description": "Optional.\nThe day the profile was most recently reset,\npersisted in `times.json`.\ne.g. 16446\n",
+            "mode": "NULLABLE",
+            "name": "profiles_reset_date",
+            "type": "INT64"
+          },
+          {
+            "description": "Big (or Performance) CPU cores.\n",
+            "mode": "NULLABLE",
+            "name": "system_cpu_big_cores",
+            "type": "INT64"
+          },
+          {
+            "description": "CPU family.\n",
+            "mode": "NULLABLE",
+            "name": "system_cpu_family",
+            "type": "INT64"
+          },
+          {
+            "description": "L2 cache size (only on Windows and Mac).\n",
+            "mode": "NULLABLE",
+            "name": "system_cpu_l2_cache",
+            "type": "INT64"
+          },
+          {
+            "description": "L3 cache size.\n",
+            "mode": "NULLABLE",
+            "name": "system_cpu_l3_cache",
+            "type": "INT64"
+          },
+          {
+            "description": "Little (or Efficient) CPU cores.\n",
+            "mode": "NULLABLE",
+            "name": "system_cpu_little_cores",
+            "type": "INT64"
+          },
+          {
+            "description": "Logical CPU cores.\n",
+            "mode": "NULLABLE",
+            "name": "system_cpu_logical_cores",
+            "type": "INT64"
+          },
+          {
+            "description": "Medium CPU cores.\n",
+            "mode": "NULLABLE",
+            "name": "system_cpu_medium_cores",
+            "type": "INT64"
+          },
+          {
+            "description": "CPU model.\n",
+            "mode": "NULLABLE",
+            "name": "system_cpu_model",
+            "type": "INT64"
+          },
+          {
+            "description": "Physical CPU cores.\n",
+            "mode": "NULLABLE",
+            "name": "system_cpu_physical_cores",
+            "type": "INT64"
+          },
+          {
+            "description": "CPU speed in MHz.\n",
+            "mode": "NULLABLE",
+            "name": "system_cpu_speed",
+            "type": "INT64"
+          },
+          {
+            "description": "CPU stepping.\n",
+            "mode": "NULLABLE",
+            "name": "system_cpu_stepping",
+            "type": "INT64"
+          },
+          {
+            "description": "The physical memory size in MB (2^20 bytes).\ne.g. 32211\n",
+            "mode": "NULLABLE",
+            "name": "system_memory",
+            "type": "INT64"
+          },
+          {
+            "description": "The Windows service pack's major version, according to WindowsVersionInfo.\nWindows only.\ne.g. 0\n",
+            "mode": "NULLABLE",
+            "name": "system_os_service_pack_major",
+            "type": "INT64"
+          },
+          {
+            "description": "The Windows service pack's minor version, according to WindowsVersionInfo.\nWindows only.\ne.g. 0\n",
+            "mode": "NULLABLE",
+            "name": "system_os_service_pack_minor",
+            "type": "INT64"
+          },
+          {
+            "description": "The Windows build number, according to WindowsVersionInfo.\nWindows only.\ne.g. 26100\nExpected in most cases to be identical to `client_info.windows_build_number`.\n",
+            "mode": "NULLABLE",
+            "name": "system_os_windows_build_number",
+            "type": "INT64"
+          },
+          {
+            "description": "The Windows update build revision number, according to\n`SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion`.\nWindows only.\ne.g. 3775\n",
+            "mode": "NULLABLE",
+            "name": "system_os_windows_ubr",
+            "type": "INT64"
+          },
+          {
+            "description": "The size of the user-mode portion of the virtual address space of the parent process.\nWindows only.\ne.g. 134217728\n",
+            "mode": "NULLABLE",
+            "name": "system_virtual_memory",
             "type": "INT64"
           }
         ],
@@ -474,33 +667,111 @@
       {
         "fields": [
           {
-            "description": "The name of the advertiser providing the sponsored suggestion\n",
-            "mode": "NULLABLE",
-            "name": "fx_suggest_advertiser",
-            "type": "STRING"
-          },
-          {
-            "description": "Records the home region of the user as determined by MLS, the same used for configuring region specific search providers.\n",
-            "mode": "NULLABLE",
-            "name": "fx_suggest_country",
-            "type": "STRING"
-          },
-          {
-            "description": "The suggestion's advertising category. \"22 - Shopping\" for sponsored suggestions.\nNot set for non-sponsored suggestions.\n",
-            "mode": "NULLABLE",
-            "name": "fx_suggest_iab_category",
-            "type": "STRING"
-          },
-          {
-            "description": "The ping's type. Either \"fxsuggest-click\" or \"fxsuggest-impression\".\n",
-            "mode": "NULLABLE",
-            "name": "fx_suggest_ping_type",
-            "type": "STRING"
-          },
-          {
             "description": "An experimentation identifier derived and provided by the application\nfor the purpose of experimentation enrollment.\n",
             "mode": "NULLABLE",
             "name": "glean_client_annotation_experimentation_id",
+            "type": "STRING"
+          },
+          {
+            "description": "The user readable CPU name. (e.g. \"Intel(R) Core(TM) i9-8950HK CPU @ 2.90GHz\")\n",
+            "mode": "NULLABLE",
+            "name": "system_cpu_name",
+            "type": "STRING"
+          },
+          {
+            "description": "The CPU vendor (e.g. \"GenuineIntel\").\n",
+            "mode": "NULLABLE",
+            "name": "system_cpu_vendor",
+            "type": "STRING"
+          },
+          {
+            "description": "The Operating System's distribution, according to sysinfo.\nLinux only.\ne.g. \"Linuxmint\"\n",
+            "mode": "NULLABLE",
+            "name": "system_os_distro",
+            "type": "STRING"
+          },
+          {
+            "description": "The Operating System's distribution's version, according to sysinfo.\nLinux only.\ne.g. \"22\"\n",
+            "mode": "NULLABLE",
+            "name": "system_os_distro_version",
+            "type": "STRING"
+          },
+          {
+            "description": "The Operating System's local, according to ospreferences.\ne.g. \"en-US\"\n",
+            "mode": "NULLABLE",
+            "name": "system_os_locale",
+            "type": "STRING"
+          },
+          {
+            "description": "The Operating System's name, according to sysinfo.\ne.g. \"Windows_NT\"\nExpected in most cases to be identical to `client_info.os`.\n",
+            "mode": "NULLABLE",
+            "name": "system_os_name",
+            "type": "STRING"
+          },
+          {
+            "description": "The Operating System's version, according to sysinfo.\ne.g. \"6.3\"\nExpected in most cases to be identical to `client_info.os_version`.\n",
+            "mode": "NULLABLE",
+            "name": "system_os_version",
+            "type": "STRING"
+          },
+          {
+            "description": "The full application package name without any of the components that might change\nduring the life cycle of the app (such as the version number or the architecture).\nUniquely identifies the application within one Windows installation.\nWindows only.\nOnly included if it begins with \"Mozilla.\" or \"MozillaCorporation.\".\ne.g. \"Mozilla.Firefox_n80bbvh6b1yt2\"\n",
+            "mode": "NULLABLE",
+            "name": "system_win_package_family_name",
+            "type": "STRING"
+          },
+          {
+            "description": "The Firefox build id the browser is updating from.\nFollows the same format as application.buildId.\nOnly valid for \"update\" pings with reason \"success\".\n",
+            "mode": "NULLABLE",
+            "name": "update_previous_build_id",
+            "type": "STRING"
+          },
+          {
+            "description": "The Firefox channel the profile was on before the update was applied.\nOnly valid for \"update\" pings with reason \"success\".\n",
+            "mode": "NULLABLE",
+            "name": "update_previous_channel",
+            "type": "STRING"
+          },
+          {
+            "description": "The Firefox version the browser is updating from.\nFollows the same format as application.version.\nOnly valid for \"update\" pings with reason \"success\".\n",
+            "mode": "NULLABLE",
+            "name": "update_previous_version",
+            "type": "STRING"
+          },
+          {
+            "description": "The update channel according to defaults,\nincluding partner bits.\ne.g. \"nightly-cck\"\n",
+            "mode": "NULLABLE",
+            "name": "update_settings_channel",
+            "type": "STRING"
+          },
+          {
+            "description": "The Firefox build id the browser is updating to.\nFollows the same format as application.buildId.\nOnly valid for \"update\" pings with reason \"ready\".\n",
+            "mode": "NULLABLE",
+            "name": "update_target_build_id",
+            "type": "STRING"
+          },
+          {
+            "description": "The Firefox channel the update was fetched from.\nOnly valid for \"update\" pings with reason \"ready\".\n",
+            "mode": "NULLABLE",
+            "name": "update_target_channel",
+            "type": "STRING"
+          },
+          {
+            "description": "The Firefox display version the browser is updating to.\nThis may contain a different value than `update.target_version`,\ne.g. for the Beta channel this field will report the beta suffix\nwhile `update.target_version` will only report the version number.\nOnly valid for \"update\" pings with reason \"ready\".\n",
+            "mode": "NULLABLE",
+            "name": "update_target_display_version",
+            "type": "STRING"
+          },
+          {
+            "description": "The Firefox version the browser is updating to.\nFollows the same format as application.version.\nOnly valid for \"update\" pings with reason \"ready\".\n",
+            "mode": "NULLABLE",
+            "name": "update_target_version",
+            "type": "STRING"
+          },
+          {
+            "description": "A string tag identifying the binary ABI of the current processor and\ncompiler vtable. This is taken from the TARGET_XPCOM_ABI configure\nvariable. It may not be available on all platforms, especially\nunusual processor or compiler combinations.\n\nThe result takes the form <processor>-<compilerABI>, for example:\n  - x86-msvc\n  - ppc-gcc3\n\nThis value should almost always be used in combination with the\noperating system.\n",
+            "mode": "NULLABLE",
+            "name": "xpcom_abi",
             "type": "STRING"
           }
         ],
@@ -511,27 +782,13 @@
       {
         "fields": [
           {
-            "description": "If this ping is for a sponsored suggestion, the partner URL for reporting this interaction.\nNot set for non-sponsored suggestions.\n",
-            "mode": "NULLABLE",
-            "name": "fx_suggest_reporting_url",
+            "mode": "REPEATED",
+            "name": "system_cpu_extensions",
             "type": "STRING"
           }
         ],
         "mode": "NULLABLE",
-        "name": "url2",
-        "type": "RECORD"
-      },
-      {
-        "fields": [
-          {
-            "description": "An identifier to identify users for Contextual Services user interaction pings.\n",
-            "mode": "NULLABLE",
-            "name": "fx_suggest_context_id",
-            "type": "STRING"
-          }
-        ],
-        "mode": "NULLABLE",
-        "name": "uuid",
+        "name": "string_list",
         "type": "RECORD"
       }
     ],
