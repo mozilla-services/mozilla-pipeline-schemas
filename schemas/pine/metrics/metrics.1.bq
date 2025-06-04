@@ -19352,6 +19352,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Records the IP address family (IPv4 or IPv6) used when an HTTP transaction is dispatched.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_connection_address_type",
+            "type": "RECORD"
+          },
+          {
             "description": "Counts the number of times a cookie's invalid timestamp was fixed when reading it from the DB.\n",
             "fields": [
               {
@@ -33217,6 +33235,11 @@
           },
           {
             "mode": "REPEATED",
+            "name": "pkcs11_third_party_module_profile_entries",
+            "type": "STRING"
+          },
+          {
+            "mode": "REPEATED",
             "name": "system_cpu_extensions",
             "type": "STRING"
           }
@@ -43798,6 +43821,72 @@
             ],
             "mode": "NULLABLE",
             "name": "javascript_gc_time_between",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time between minor garbage collections (nursery collections) for all runtimes.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "javascript_gc_time_between_minor",
             "type": "RECORD"
           },
           {
