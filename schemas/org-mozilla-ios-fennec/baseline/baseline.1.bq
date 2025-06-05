@@ -308,10 +308,52 @@
         "description": "Results of ISP lookup based on the client's IP address",
         "fields": [
           {
+            "description": "The type of connection. This will be one of the following values: Cable/DSL, Cellular, Corporate, Satellite",
+            "mode": "NULLABLE",
+            "name": "connection_type",
+            "type": "STRING"
+          },
+          {
             "description": "The specific geo ISP database version used for this lookup",
             "mode": "NULLABLE",
             "name": "db_version",
             "type": "STRING"
+          },
+          {
+            "description": "Whether or not the IP address belongs to any sort of anonymous network",
+            "mode": "NULLABLE",
+            "name": "is_anonymous",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether or not the IP address is registered to an anonymous VPN provider",
+            "mode": "NULLABLE",
+            "name": "is_anonymous_vpn",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether or not the IP address belongs to a hosting or VPN provider",
+            "mode": "NULLABLE",
+            "name": "is_hosting_provider",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether or not the IP address belongs to a public proxy",
+            "mode": "NULLABLE",
+            "name": "is_public_proxy",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether or not the IP address is on a suspected anonymizing network and belongs to a residential ISP",
+            "mode": "NULLABLE",
+            "name": "is_residential_proxy",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether or not the IP address is a Tor exit node.",
+            "mode": "NULLABLE",
+            "name": "is_tor_exit_node",
+            "type": "BOOL"
           },
           {
             "description": "The name of the ISP associated with the client's IP address",
@@ -323,6 +365,12 @@
             "description": "The name of a specific business entity associated with the client's IP address when available; otherwise the ISP name",
             "mode": "NULLABLE",
             "name": "organization",
+            "type": "STRING"
+          },
+          {
+            "description": "The user type associated with the IP address, e.g. business, cafe, cellular, college",
+            "mode": "NULLABLE",
+            "name": "user_type",
             "type": "STRING"
           }
         ],
