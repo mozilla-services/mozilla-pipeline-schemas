@@ -363,6 +363,134 @@
       {
         "fields": [
           {
+            "description": "The safety of a page where we see a password field. (0: safe page & safe submit; 1: safe page & unsafe submit; 2: safe page & unknown submit; 3: unsafe page & safe submit; 4: unsafe page & unsafe submit; 5: unsafe page & unknown submit)\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram PWMGR_LOGIN_PAGE_SAFETY.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "pwmgr_login_page_safety",
+            "type": "RECORD"
+          },
+          {
+            "description": "Action taken by user through prompt for creating a login. (0=Prompt displayed [always recorded], 1=Add login, 2=Don't save now, 3=Never save)\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram PWMGR_PROMPT_REMEMBER_ACTION.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "pwmgr_prompt_remember_action",
+            "type": "RECORD"
+          },
+          {
+            "description": "Action taken by user through prompt for modifying a login. (0=Prompt displayed [always recorded], 1=Update login, 2=Don't update, 3=Remove saved login)\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram PWMGR_PROMPT_UPDATE_ACTION.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "pwmgr_prompt_update_action",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "custom_distribution",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "When the sync telemetry session begins (the `SyncTelemetryImpl`\nconstructor runs).\nTypically useful for ordering \"sync\" pings.\n",
+            "mode": "NULLABLE",
+            "name": "syncs_session_start_date",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "datetime",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
             "mode": "NULLABLE",
             "name": "key",
             "type": "STRING"
@@ -543,9 +671,113 @@
       {
         "fields": [
           {
+            "description": "The application-services developers are in the process of oxidizing parts\nof firefox sync and the related data storage code,\nwhich typically requires migrating the old storage into a new database and/or format.\n\nWhen a migration like this occurs,\na record is reported in this list the next time the sync ping is submitted.\n\n```text\n  [{\n    migration_type: Presently this is only ever \"webext-storage\",\n    entries: The number of entries/preferences in the source (legacy) database, including ones we failed to read,\n    entriesSuccessful: he number of entries/preferences (see below) which we have successfully migrated into the destination database,\n    extensions: The number of distinct extensions which have at least one preference in the source (legacy) database,\n    extensionsSuccessful: The number of distinct extensions which have at least one preference in the destination (migrated) database,\n    openFailure: A boolean flag that is true if we hit a read error prior to . This likely indicates complete corruptio",
+            "mode": "NULLABLE",
+            "name": "syncs_migrations",
+            "type": "JSON"
+          },
+          {
+            "description": "Recorded syncs.\nThe \"sync\" ping is not submitted if this is empty.\n```text\n  [{\n    when: integer ms since epoch,\n    took: integer ms duration,\n    didLogin: true if first sync after login,\n    why:\n      - \"startup\" if first sync after browser startup\n      - \"schedule\" if it's been too long since the last sync\n      - \"score\" if one of sync's trackers has a high score value indicating many changes since the last sync\n      - \"user\" if the user manually triggered the sync\n      - \"tabs\" if the user opened the synced tabs sidebar, triggering a sync\n    failureReason: { // if there was an error\n      name: {\"httperror\"|\"networkerror\"|...},\n      code: error code for \"httperror\" and \"networkerror\" only,\n      error: error string for \"othererror\" and \"unexpectederror\" only,\n      from: for \"autherror\" only,\n    },\n    devices: [{ // excluded if we couldn't get a valid uid or local device id\n      os: provided by `Services.appinfo.OS`,\n      version: provided by `Services.appinfo.version`,\n      id: hashed FxA d",
+            "mode": "NULLABLE",
+            "name": "syncs_syncs",
+            "type": "JSON"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "object",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "How many syncs happened which were not reported in detail\ndue to being over the number of syncs we report detailed information for.\n",
+            "mode": "NULLABLE",
+            "name": "syncs_discarded",
+            "type": "INT64"
+          },
+          {
+            "description": "The Windows service pack's major version, according to WindowsVersionInfo.\nWindows only.\ne.g. 0\n",
+            "mode": "NULLABLE",
+            "name": "system_os_service_pack_major",
+            "type": "INT64"
+          },
+          {
+            "description": "The Windows service pack's minor version, according to WindowsVersionInfo.\nWindows only.\ne.g. 0\n",
+            "mode": "NULLABLE",
+            "name": "system_os_service_pack_minor",
+            "type": "INT64"
+          },
+          {
+            "description": "The Windows build number, according to WindowsVersionInfo.\nWindows only.\ne.g. 26100\nExpected in most cases to be identical to `client_info.windows_build_number`.\n",
+            "mode": "NULLABLE",
+            "name": "system_os_windows_build_number",
+            "type": "INT64"
+          },
+          {
+            "description": "The Windows update build revision number, according to\n`SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion`.\nWindows only.\ne.g. 3775\n",
+            "mode": "NULLABLE",
+            "name": "system_os_windows_ubr",
+            "type": "INT64"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "quantity",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
             "description": "An experimentation identifier derived and provided by the application\nfor the purpose of experimentation enrollment.\n",
             "mode": "NULLABLE",
             "name": "glean_client_annotation_experimentation_id",
+            "type": "STRING"
+          },
+          {
+            "description": "Hashed FxA device ID, hex string of 64 characters.\nNot included if the user is not logged in.\nIf this changes between syncs, the \"sync\" ping is submitted with reason \"idchanged\".\n",
+            "mode": "NULLABLE",
+            "name": "syncs_hashed_device_id",
+            "type": "STRING"
+          },
+          {
+            "description": "Hashed FxA unique ID, or string of 32 zeroes.\nIf this changes between syncs, the \"sync\" ping is submitted with reason \"idchanged\".\n",
+            "mode": "NULLABLE",
+            "name": "syncs_hashed_fxa_uid",
+            "type": "STRING"
+          },
+          {
+            "description": "The \"node type\" as reported by the token server.\nThis will not change from sync to sync.\nMay not be present if the token server omits this information.\n",
+            "mode": "NULLABLE",
+            "name": "syncs_sync_node_type",
+            "type": "STRING"
+          },
+          {
+            "description": "The Operating System's distribution, according to sysinfo.\nLinux only.\ne.g. \"Linuxmint\"\n",
+            "mode": "NULLABLE",
+            "name": "system_os_distro",
+            "type": "STRING"
+          },
+          {
+            "description": "The Operating System's distribution's version, according to sysinfo.\nLinux only.\ne.g. \"22\"\n",
+            "mode": "NULLABLE",
+            "name": "system_os_distro_version",
+            "type": "STRING"
+          },
+          {
+            "description": "The Operating System's local, according to ospreferences.\ne.g. \"en-US\"\n",
+            "mode": "NULLABLE",
+            "name": "system_os_locale",
+            "type": "STRING"
+          },
+          {
+            "description": "The Operating System's name, according to sysinfo.\ne.g. \"Windows_NT\"\nExpected in most cases to be identical to `client_info.os`.\n",
+            "mode": "NULLABLE",
+            "name": "system_os_name",
+            "type": "STRING"
+          },
+          {
+            "description": "The Operating System's version, according to sysinfo.\ne.g. \"6.3\"\nExpected in most cases to be identical to `client_info.os_version`.\n",
+            "mode": "NULLABLE",
+            "name": "system_os_version",
             "type": "STRING"
           }
         ],
