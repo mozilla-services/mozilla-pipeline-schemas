@@ -114,6 +114,7 @@ schemas
 │   ├── search-with
 │   ├── serp-categorization
 │   ├── spoc
+│   ├── third-party-modules
 │   ├── top-sites
 │   ├── update
 │   ├── urlbar-keyword-exposure
@@ -782,6 +783,7 @@ schemas
 │   ├── pageload
 │   ├── pseudo-main
 │   ├── spoc
+│   ├── third-party-modules
 │   ├── top-sites
 │   ├── usage-deletion-request
 │   ├── usage-reporting
@@ -902,6 +904,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-892 directories
+894 directories
 ```
 
