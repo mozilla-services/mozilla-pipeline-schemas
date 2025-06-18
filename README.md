@@ -114,6 +114,7 @@ schemas
 │   ├── search-with
 │   ├── serp-categorization
 │   ├── spoc
+│   ├── sync
 │   ├── third-party-modules
 │   ├── top-sites
 │   ├── update
@@ -904,6 +905,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-894 directories
+895 directories
 ```
 
