@@ -453,6 +453,30 @@
             "type": "BOOL"
           },
           {
+            "description": "Whether the allow_url_regex_list pref is set to a non-default value.",
+            "mode": "NULLABLE",
+            "name": "content_analysis_allow_url_regex_list_set",
+            "type": "BOOL"
+          },
+          {
+            "description": "The bypass_for_same_tab_operations pref that is set via enterprise policy.",
+            "mode": "NULLABLE",
+            "name": "content_analysis_bypass_for_same_tab_operations",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the deny_url_regex_list pref is set to a non-default value.",
+            "mode": "NULLABLE",
+            "name": "content_analysis_deny_url_regex_list_set",
+            "type": "BOOL"
+          },
+          {
+            "description": "The show_blocked_result pref that is set via enterprise policy.",
+            "mode": "NULLABLE",
+            "name": "content_analysis_show_blocked_result",
+            "type": "BOOL"
+          },
+          {
             "description": "True if cryptominer blocking is enabled globally at startup. This metric was generated to correspond to the Legacy Telemetry scalar contentblocking.cryptomining_blocking_enabled.\n",
             "mode": "NULLABLE",
             "name": "contentblocking_cryptomining_blocking_enabled",
@@ -1135,6 +1159,30 @@
             "description": "How many certificate trust lookups are performed.\n",
             "mode": "NULLABLE",
             "name": "cert_trust_cache_total",
+            "type": "INT64"
+          },
+          {
+            "description": "Recorded when Firefox attempts to connect to the DLP agent.",
+            "mode": "NULLABLE",
+            "name": "content_analysis_connection_attempt",
+            "type": "INT64"
+          },
+          {
+            "description": "Recorded when Firefox attempts to retry connecting to the DLP agent (because a previous attempt to communicate with the agent failed).",
+            "mode": "NULLABLE",
+            "name": "content_analysis_connection_attempt_retry",
+            "type": "INT64"
+          },
+          {
+            "description": "Recorded when a request is allowed by the allow_url_regex_list.",
+            "mode": "NULLABLE",
+            "name": "content_analysis_request_allowed_by_allow_url",
+            "type": "INT64"
+          },
+          {
+            "description": "Recorded when a request is blocked by the deny_url_regex_list.",
+            "mode": "NULLABLE",
+            "name": "content_analysis_request_blocked_by_deny_url",
             "type": "INT64"
           },
           {
@@ -17857,6 +17905,78 @@
             "type": "RECORD"
           },
           {
+            "description": "Recorded when Firefox fails to connect to the DLP agent. The label is the nsresult that was returned by the connection attempt.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "content_analysis_connection_failure",
+            "type": "RECORD"
+          },
+          {
+            "description": "Recorded when a request is sent to the DLP agent. The label is the analysisType of the request, which corresponds to a value in the AnalysisConnector enum in analysis.proto. (e.g. \"FILE_DOWNLOADED\", \"FILE_ATTACHED\", \"BULK_DATA_ENTRY\", etc.)",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "content_analysis_request_sent_by_analysis_type",
+            "type": "RECORD"
+          },
+          {
+            "description": "Recorded when a request is sent to the DLP agent. The label is the reason of the request, which corresponds to a value in the ContentAnalysisRequest::Reason enum in analysis.proto. (e.g. \"CLIPBOARD_PASTE\", \"DRAG_AND_DROP\", etc.)",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "content_analysis_request_sent_by_reason",
+            "type": "RECORD"
+          },
+          {
+            "description": "Recorded when a response is received from the DLP agent. The label is the action of the response, converted to a string (so \"1\"). The values correspond to nsIContentAnalysisResponse::Action.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "content_analysis_response_action",
+            "type": "RECORD"
+          },
+          {
             "description": "A count of the status of cryptominer blocking per top level page load. ('pageLoad' = There was a page load, 'blocked' = at least one cryptominer was blocked, 'allowed' = at least one cryptominer was detected and allowed.) Note, pageLoad is used as a baseline measurement.\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram CRYPTOMINERS_BLOCKED_COUNT.\n",
             "fields": [
               {
@@ -28187,6 +28307,84 @@
       {
         "fields": [
           {
+            "description": "The time between sending a request to the DLP agent and receiving a response from the agent. The label is the analysisType of the request.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "bucket_count",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "histogram_type",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "overflow",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "REPEATED",
+                    "name": "range",
+                    "type": "FLOAT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "time_unit",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "underflow",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "content_analysis_response_duration_by_analysis_type",
+            "type": "RECORD"
+          },
+          {
             "description": "Time taken (in ms) to open the first DevTools toolbox. This is keyed by tool ID being opened [inspector, webconsole, jsdebugger, styleeditor, performance, memory, netmonitor, storage, dom].\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram DEVTOOLS_COLD_TOOLBOX_OPEN_DELAY_MS.\n",
             "fields": [
               {
@@ -36068,6 +36266,18 @@
             "type": "INT64"
           },
           {
+            "description": "The default_result pref that is set via enterprise policy.",
+            "mode": "NULLABLE",
+            "name": "content_analysis_default_result",
+            "type": "INT64"
+          },
+          {
+            "description": "The timeout_result pref that is set via enterprise policy.",
+            "mode": "NULLABLE",
+            "name": "content_analysis_timeout_result",
+            "type": "INT64"
+          },
+          {
             "description": "This scalar reports the value of the content blocking category pref (0 = \"standard\", 1 = \"strict\", 2 = \"custom\", 3 = some other value, this is not supported). This metric was generated to correspond to the Legacy Telemetry scalar contentblocking.category.\n",
             "mode": "NULLABLE",
             "name": "contentblocking_category",
@@ -37102,6 +37312,18 @@
             "type": "STRING"
           },
           {
+            "description": "The name of the DLP agent that Firefox is connected to. This is set via enterprise policy.",
+            "mode": "NULLABLE",
+            "name": "content_analysis_agent_name",
+            "type": "STRING"
+          },
+          {
+            "description": "The client_signature pref that is set via enterprise policy.",
+            "mode": "NULLABLE",
+            "name": "content_analysis_client_signature",
+            "type": "STRING"
+          },
+          {
             "description": "SHA1 cryptographic hash of the quarantined domains string pref.\n",
             "mode": "NULLABLE",
             "name": "extensions_quarantined_domains_listhash",
@@ -37499,6 +37721,11 @@
           {
             "mode": "REPEATED",
             "name": "browser_migration_unmatched_extensions",
+            "type": "STRING"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "content_analysis_interception_points_turned_off",
             "type": "STRING"
           },
           {

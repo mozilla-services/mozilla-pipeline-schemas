@@ -567,6 +567,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
+│   ├── fx-accounts
 │   ├── fx-suggest
 │   ├── history-sync
 │   ├── logins-sync
@@ -596,6 +597,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
+│   ├── fx-accounts
 │   ├── fx-suggest
 │   ├── history-sync
 │   ├── logins-sync
@@ -625,6 +627,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── first-session
+│   ├── fx-accounts
 │   ├── fx-suggest
 │   ├── history-sync
 │   ├── logins-sync
@@ -905,6 +908,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-895 directories
+898 directories
 ```
 
