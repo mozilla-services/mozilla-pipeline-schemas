@@ -106,6 +106,7 @@ schemas
 │   ├── nimbus-targeting-context
 │   ├── onboarding-opt-out
 │   ├── pageload
+│   ├── pageload-domain
 │   ├── pocket-button
 │   ├── prototype-no-code-events
 │   ├── pseudo-main
@@ -154,6 +155,7 @@ schemas
 │   ├── hang-report
 │   ├── metrics
 │   ├── pageload
+│   ├── pageload-domain
 │   ├── update
 │   ├── use-counters
 │   └── user-characteristics
@@ -316,6 +318,7 @@ schemas
 │   ├── nimbus
 │   ├── onboarding-opt-out
 │   ├── pageload
+│   ├── pageload-domain
 │   ├── play-store-attribution
 │   ├── spoc
 │   ├── startup-timeline
@@ -356,6 +359,7 @@ schemas
 │   ├── nimbus
 │   ├── onboarding-opt-out
 │   ├── pageload
+│   ├── pageload-domain
 │   ├── play-store-attribution
 │   ├── spoc
 │   ├── startup-timeline
@@ -396,6 +400,7 @@ schemas
 │   ├── nimbus
 │   ├── onboarding-opt-out
 │   ├── pageload
+│   ├── pageload-domain
 │   ├── play-store-attribution
 │   ├── spoc
 │   ├── startup-timeline
@@ -436,6 +441,7 @@ schemas
 │   ├── nimbus
 │   ├── onboarding-opt-out
 │   ├── pageload
+│   ├── pageload-domain
 │   ├── play-store-attribution
 │   ├── spoc
 │   ├── startup-timeline
@@ -476,6 +482,7 @@ schemas
 │   ├── nimbus
 │   ├── onboarding-opt-out
 │   ├── pageload
+│   ├── pageload-domain
 │   ├── play-store-attribution
 │   ├── spoc
 │   ├── startup-timeline
@@ -516,6 +523,7 @@ schemas
 │   ├── hang-report
 │   ├── metrics
 │   ├── pageload
+│   ├── pageload-domain
 │   ├── usage-deletion-request
 │   ├── usage-reporting
 │   ├── use-counters
@@ -535,6 +543,7 @@ schemas
 │   ├── hang-report
 │   ├── metrics
 │   ├── pageload
+│   ├── pageload-domain
 │   ├── usage-deletion-request
 │   ├── usage-reporting
 │   ├── use-counters
@@ -554,6 +563,7 @@ schemas
 │   ├── hang-report
 │   ├── metrics
 │   ├── pageload
+│   ├── pageload-domain
 │   ├── usage-deletion-request
 │   ├── usage-reporting
 │   ├── use-counters
@@ -720,6 +730,7 @@ schemas
 │   ├── hang-report
 │   ├── metrics
 │   ├── pageload
+│   ├── pageload-domain
 │   ├── usage-deletion-request
 │   ├── usage-reporting
 │   ├── use-counters
@@ -785,6 +796,7 @@ schemas
 │   ├── newtab-content
 │   ├── onboarding-opt-out
 │   ├── pageload
+│   ├── pageload-domain
 │   ├── pseudo-main
 │   ├── spoc
 │   ├── third-party-modules
@@ -892,6 +904,7 @@ schemas
 │   ├── hang-report
 │   ├── metrics
 │   ├── pageload
+│   ├── pageload-domain
 │   ├── use-counters
 │   └── user-characteristics
 ├── treeherder
@@ -908,6 +921,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-898 directories
+911 directories
 ```
 
