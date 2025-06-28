@@ -1396,6 +1396,12 @@
             "type": "INT64"
           },
           {
+            "description": "Counts the number of times the channel was blocked because it's a LNA load triggered by a tracker\n",
+            "mode": "NULLABLE",
+            "name": "networking_local_network_blocked_tracker",
+            "type": "INT64"
+          },
+          {
             "description": "Counts the number of times the os socket limit was reached. i.e. CanAttachSocket() returned false.\n",
             "mode": "NULLABLE",
             "name": "networking_os_socket_limit_reached",
@@ -2327,6 +2333,42 @@
             "type": "RECORD"
           },
           {
+            "description": "Pinning failures by CA (see KnownRootHashes.txt for names of CAs).\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "cert_pinning_failures_by_ca_2",
+            "type": "RECORD"
+          },
+          {
             "description": "Certificate pinning results by host for Mozilla operational sites\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram CERT_PINNING_MOZ_RESULTS_BY_HOST.\n",
             "fields": [
               {
@@ -2468,6 +2510,42 @@
             ],
             "mode": "NULLABLE",
             "name": "cert_validation_success_by_ca",
+            "type": "RECORD"
+          },
+          {
+            "description": "Successful SSL server cert validations by CA (see KnownRootHashes.txt for names of CAs).\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "cert_validation_success_by_ca_2",
             "type": "RECORD"
           },
           {
@@ -9851,6 +9929,42 @@
             "type": "RECORD"
           },
           {
+            "description": "Number of successfully established TLS connections NOT compliant with the Certificate Transparency Policy, by CA. See KnownRootHashes.txt for names of CAs. range_min: 0\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "ssl_ct_policy_non_compliant_connections_by_ca_2",
+            "type": "RECORD"
+          },
+          {
             "description": "Type of handshake (1=resumption, 2=false started, 3=chose not to false start, 4=not allowed to false start)\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram SSL_HANDSHAKE_TYPE.\n",
             "fields": [
               {
@@ -17050,6 +17164,114 @@
             ],
             "mode": "REPEATED",
             "name": "network_rel_preload_miss_ratio",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the status of fallback requests to addons.mozilla.org\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "network_retried_system_channel_addon_status",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the status of fallback requests to *.addons.mozilla.org\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "network_retried_system_channel_addonversion_status",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the status of fallback requests to other mozilla.org domains\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "network_retried_system_channel_other_status",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the status of fallback requests to firefox.settings.services.mozilla.com\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "network_retried_system_channel_remote_settings_status",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the status of fallback requests to incoming.telemetry.mozilla.org\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "network_retried_system_channel_telemetry_status",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the status of fallback requests to aus5.mozilla.org\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "network_retried_system_channel_update_status",
             "type": "RECORD"
           },
           {
