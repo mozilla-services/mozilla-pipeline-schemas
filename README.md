@@ -307,6 +307,7 @@ schemas
 │   ├── first-session
 │   ├── fog-validation
 │   ├── font-list
+│   ├── fx-accounts
 │   ├── fx-suggest
 │   ├── hang-report
 │   ├── history-sync
@@ -348,6 +349,7 @@ schemas
 │   ├── first-session
 │   ├── fog-validation
 │   ├── font-list
+│   ├── fx-accounts
 │   ├── fx-suggest
 │   ├── hang-report
 │   ├── history-sync
@@ -389,6 +391,7 @@ schemas
 │   ├── first-session
 │   ├── fog-validation
 │   ├── font-list
+│   ├── fx-accounts
 │   ├── fx-suggest
 │   ├── hang-report
 │   ├── history-sync
@@ -430,6 +433,7 @@ schemas
 │   ├── first-session
 │   ├── fog-validation
 │   ├── font-list
+│   ├── fx-accounts
 │   ├── fx-suggest
 │   ├── hang-report
 │   ├── history-sync
@@ -471,6 +475,7 @@ schemas
 │   ├── first-session
 │   ├── fog-validation
 │   ├── font-list
+│   ├── fx-accounts
 │   ├── fx-suggest
 │   ├── hang-report
 │   ├── history-sync
@@ -921,6 +926,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-911 directories
+916 directories
 ```
 
