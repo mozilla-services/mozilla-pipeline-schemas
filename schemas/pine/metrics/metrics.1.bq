@@ -14059,6 +14059,673 @@
       {
         "fields": [
           {
+            "description": "Application reputation remote verdict, keyed by file extension\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram APPLICATION_REPUTATION_SERVER_VERDICT_2.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "application_reputation_server_verdict_2",
+            "type": "RECORD"
+          },
+          {
+            "description": "DNS: lookup algorithm; Keyed by TRR domain\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram DNS_LOOKUP_DISPOSITION3.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dns_lookup_disposition",
+            "type": "RECORD"
+          },
+          {
+            "description": "DNS check for TRR was blocked by blacklist; Keyed by TRR domain\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram DNS_TRR_BLACKLISTED3.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dns_trr_blacklisted",
+            "type": "RECORD"
+          },
+          {
+            "description": "Resolve success rate when in TRR-first and called TRR-disabled (fall-back mode); Keyed by TRR domain\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram DNS_TRR_DISABLED3.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dns_trr_disabled",
+            "type": "RECORD"
+          },
+          {
+            "description": "TRR-first mode distribution. 0=Worked, 1=fell back fine after TRR fail, 2=native worked, 3=both failed; Keyed by TRR domain\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram DNS_TRR_FIRST4.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dns_trr_first",
+            "type": "RECORD"
+          },
+          {
+            "description": "HTTP version used by DoH endpoint\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram DNS_TRR_HTTP_VERSION2.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dns_trr_http_version",
+            "type": "RECORD"
+          },
+          {
+            "description": "TRR managed to verify NS entry; Keyed by TRR domain\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram DNS_TRR_NS_VERFIFIED3.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dns_trr_ns_verfified",
+            "type": "RECORD"
+          },
+          {
+            "description": "How often TRR (Trusted Recursive Resolver) requests are fine, time-out or error. Keyed by TRR domain\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram DNS_TRR_SUCCESS3.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dns_trr_success",
+            "type": "RECORD"
+          },
+          {
+            "description": "True if the first initialization attempt succeeded, keyed by the initialization type.\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram QM_FIRST_INITIALIZATION_ATTEMPT.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dom_quota_first_initialization_attempt",
+            "type": "RECORD"
+          },
+          {
+            "description": "The number of times a browserAction popup is preloaded and results in one of the categories, keyed by addon id.\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram WEBEXT_BROWSERACTION_POPUP_PRELOAD_RESULT_COUNT_BY_ADDONID.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "extensions_counters_browser_action_preload_result_by_addonid",
+            "type": "RECORD"
+          },
+          {
+            "description": "The number of times an event page hit the idle timeout and results in one of the categories, keyed by addon id.\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram WEBEXT_EVENTPAGE_IDLE_RESULT_COUNT_BY_ADDONID.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "extensions_counters_event_page_idle_result_by_addonid",
+            "type": "RECORD"
+          },
+          {
+            "description": "HTTP Cache v2 hit/miss stats keyed by content type.\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram HTTP_CACHE_DISPOSITION_3.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http_cache_disposition",
+            "type": "RECORD"
+          },
+          {
+            "description": "Numbers of HTTP transactions and connections by type. There are some categories separated by labels based on 5 parameters: 1. normal browsing or private browsing 2. system principal or not 3. first party or third party 4. class of service (Leader/Background/Others) 5. tracking classification (Basic/Content/FingerprintingContent).\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram HTTP_TRAFFIC_ANALYSIS_3.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "http_traffic_analysis",
+            "type": "RECORD"
+          },
+          {
+            "description": "Successfully started HTTP channels when HTTP3 is used\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram HTTP3_CHANNEL_ONSTART_SUCCESS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_http3_channel_onstart_success",
+            "type": "RECORD"
+          },
+          {
+            "description": "Upgrading display content Channel Disposition\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram HTTP_CHANNEL_DISPOSITION_UPGRADE.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_http_channel_disposition_upgrade",
+            "type": "RECORD"
+          },
+          {
+            "description": "Page load errors. Match values with type of error in nsDocShellTelemetryUtils.cpp\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram PAGE_LOAD_ERROR.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "page_load_error",
+            "type": "RECORD"
+          },
+          {
+            "description": "Result of the content signature verification keyed by application (certificate fingerprint).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "security_content_signature_verification_errors",
+            "type": "RECORD"
+          },
+          {
+            "description": "What content type did we upgrade, and did it load successfully?\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram HTTPS_ONLY_MODE_UPGRADE_TYPE.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "security_https_only_mode_upgrade_type",
+            "type": "RECORD"
+          },
+          {
+            "description": "The result of attempting to open a sqlite file.\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram SQLITE_STORE_OPEN.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "sqlite_store_open",
+            "type": "RECORD"
+          },
+          {
+            "description": "The result of attempting to query a sqlite file.\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram SQLITE_STORE_QUERY.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "sqlite_store_query",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts of the different ways sending a Telemetry ping can fail per ping type.\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram TELEMETRY_SEND_FAILURE_TYPE_PER_PING.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "telemetry_send_failure_type_per_ping",
+            "type": "RECORD"
+          },
+          {
+            "description": "This metric is recorded every time a gethash lookup is performed, `true` is recorded if the lookup times out. Keyed by provider\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram URLCLASSIFIER_COMPLETE_TIMEOUT2.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "urlclassifier_complete_timeout",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "dual_labeled_counter",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
             "description": "OS high contrast or other accessibility theme is enabled. The result is split into keys which represent the values of browser.display.document_color_use: \"default\", \"always\", or \"never\". This metric was generated to correspond to the Legacy Telemetry scalar a11y.theme.\n",
             "fields": [
               {
@@ -17231,6 +17898,24 @@
             ],
             "mode": "REPEATED",
             "name": "devtools_accessibility_simulation_activated",
+            "type": "RECORD"
+          },
+          {
+            "description": "Records the key-identifiers of error messages when they are displayed in the webconsole of the debugger. Nothing should be recorded unless they are visible on the user screen. The label will be the error message name or \"Unknown\".\nThis metric replaces the Legacy Telemetry boolean histogram DEVTOOLS_JAVASCRIPT_ERROR_DISPLAYED.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "devtools_console_javascript_error_displayed",
             "type": "RECORD"
           },
           {

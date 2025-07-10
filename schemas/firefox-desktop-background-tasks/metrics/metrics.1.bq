@@ -661,6 +661,43 @@
       {
         "fields": [
           {
+            "description": "The submission status when main/plugin/content crashes are submitted. 1 is success, 0 is failure. Keyed on the CrashManager Crash.type.\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram PROCESS_CRASH_SUBMIT_SUCCESS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "crash_submit_success",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "dual_labeled_counter",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
             "description": "Records whether Firefox was the default handler for particular file types or protocols.  The result is split into keys which represent the file extension or scheme: currently, a subset of the file types Firefox registers to handle, namely \".pdf\" and \"mailto\" as protocol. In the future, more file types may be recorded. This metric was generated to correspond to the Legacy Telemetry scalar os.environment.is_default_handler.\n",
             "fields": [
               {

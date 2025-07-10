@@ -179,6 +179,9 @@ schemas
 ├── gleanjs-docs
 │   ├── deletion-request
 │   └── events
+├── mdn-fred
+│   ├── deletion-request
+│   └── events
 ├── mdn-yari
 │   ├── action
 │   ├── deletion-request
@@ -926,6 +929,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-916 directories
+919 directories
 ```
 

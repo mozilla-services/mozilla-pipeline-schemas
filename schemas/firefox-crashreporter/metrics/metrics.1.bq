@@ -462,6 +462,43 @@
       {
         "fields": [
           {
+            "description": "The submission status when main/plugin/content crashes are submitted. 1 is success, 0 is failure. Keyed on the CrashManager Crash.type.\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram PROCESS_CRASH_SUBMIT_SUCCESS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "crash_submit_success",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "dual_labeled_counter",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
             "description": "Collecting XHR channel status on error code when statusCode == 0.\n",
             "fields": [
               {
