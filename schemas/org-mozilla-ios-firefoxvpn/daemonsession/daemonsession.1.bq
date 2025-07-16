@@ -363,6 +363,19 @@
       {
         "fields": [
           {
+            "description": "True if the VPN server's country is the same as the user's actual country.\nWhen using multihop, the exit server is used.",
+            "mode": "NULLABLE",
+            "name": "session_server_in_same_country",
+            "type": "BOOL"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "boolean",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
             "description": "Count of times that the connection health check results\nin no signal.\n\nThe health check counters must not be considered as markers of time.\nThere is a possible situation in the health check (which calls the\ntelemetry) which frequently results in more than one count per second.\nThe situation: A health check is conducted because a network check did not\nreturn, and milliseconds later that network check returns and another\nhealth check is started because of the return.\n",
             "mode": "NULLABLE",
             "name": "connection_health_no_signal_count",
