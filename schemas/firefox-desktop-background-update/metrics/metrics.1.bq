@@ -22895,6 +22895,42 @@
       {
         "fields": [
           {
+            "description": "Events on the startup timeline, in millis since process creation.\nPreviously carried in Legacy \"main\" ping `simpleMeasurements`.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "addons_manager_startup_timeline",
+            "type": "RECORD"
+          },
+          {
+            "description": "Events on the startup timeline, in millis since process creation.\nPreviously carried in the Legacy \"main\" ping `simpleMeasurements`.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_timings_startup_timeline",
+            "type": "RECORD"
+          },
+          {
             "description": "For each recipe ID seen by the Normandy client, its last_modified. This metric was generated to correspond to the Legacy Telemetry scalar normandy.recipe_freshness.\n",
             "fields": [
               {
@@ -22910,6 +22946,42 @@
             ],
             "mode": "REPEATED",
             "name": "normandy_recipe_freshness",
+            "type": "RECORD"
+          },
+          {
+            "description": "Events on the startup timeline across all components,\nin millis since process creation.\nCombination of\n  - `timestamps.startup_timeline`\n  - `addons_manager.startup_timeline`\n  - `browser.timings.startup_timeline`\n  - `session_restore.startup_timeline`\nPreviously instrumented in \"main\" ping `simpleMeasurements`.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "timestamps_global_startup_timeline",
+            "type": "RECORD"
+          },
+          {
+            "description": "Events on the startup timeline, in millis since process creation.\nSee `StartupTimeline.h`\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "timestamps_startup_timeline",
             "type": "RECORD"
           }
         ],
@@ -27898,6 +27970,84 @@
             "mode": "REPEATED",
             "name": "workers_sync_worker_operation",
             "type": "RECORD"
+          },
+          {
+            "description": "How long it took to rebuild the XPI Database\nper reason it was rebuilt.\nPreviously reported in \"main\" ping `simpleMeasurements`.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "bucket_count",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "histogram_type",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "overflow",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "REPEATED",
+                    "name": "range",
+                    "type": "FLOAT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "time_unit",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "underflow",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "xpi_database_rebuilds",
+            "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
@@ -29690,6 +29840,12 @@
             "type": "JSON"
           },
           {
+            "description": "Most recent exception reported by the Addons Manager this app session.\nPreviously reported in the \"main\" ping `simpleMeasurements`.\n```\n{\n  module: string module name,\n  context: string context, like the method name,\n  message: string message of the exception,\n  file: the file that the exception occured in,\n  line: the line number the exception was thrown from,\n}\n```\n",
+            "mode": "NULLABLE",
+            "name": "addons_manager_exception",
+            "type": "JSON"
+          },
+          {
             "description": "The currently active theme.\n\nSome of the addon fields are not available during startup. The fields\nthat will always be present are id, version, updateDay, and scope. All\nthe other fields become present shortly after the\n`sessionstore-windows-restored` observer topic is notified.\n\nThis metric is an echo of the Legacy Telemetry Environment field\naddons.theme. Like its counterpart, it will only have data in Firefox\nDesktop and at times and on platforms where the environment would have\nvalues.\n",
             "mode": "NULLABLE",
             "name": "addons_theme",
@@ -30999,6 +31155,12 @@
             "mode": "NULLABLE",
             "name": "xpcom_abi",
             "type": "STRING"
+          },
+          {
+            "description": "Reason for XPI Database startup error.\nPreviously reported in \"main\" ping `simpleMeasurements`.\n",
+            "mode": "NULLABLE",
+            "name": "xpi_database_startup_error",
+            "type": "STRING"
           }
         ],
         "mode": "NULLABLE",
@@ -31046,6 +31208,11 @@
             "mode": "REPEATED",
             "name": "system_cpu_extensions",
             "type": "STRING"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "xpi_database_startup_load_reasons",
+            "type": "STRING"
           }
         ],
         "mode": "NULLABLE",
@@ -31067,6 +31234,31 @@
         ],
         "mode": "REPEATED",
         "name": "text",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "Stack of XPI Database `asyncLoadDB` call happening while the XPI provider\nis closing.\nPreviously reported in \"main\" ping `simpleMeasurements`.\n",
+            "mode": "NULLABLE",
+            "name": "xpi_database_late_load",
+            "type": "STRING"
+          },
+          {
+            "description": "Stack of XPI Database `saveChanges` call happening while the XPI provider\nis closing.\nPreviously reported in \"main\" ping `simpleMeasurements`.\n",
+            "mode": "NULLABLE",
+            "name": "xpi_database_late_stack",
+            "type": "STRING"
+          },
+          {
+            "description": "Stack of XPI Database `syncLoadDB` call.\nPreviously reported in \"main\" ping `simpleMeasurements`.\n",
+            "mode": "NULLABLE",
+            "name": "xpi_database_sync_stack",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "text2",
         "type": "RECORD"
       },
       {
@@ -55898,6 +56090,72 @@
             ],
             "mode": "NULLABLE",
             "name": "wr_time_to_render_start",
+            "type": "RECORD"
+          },
+          {
+            "description": "How long it took to parse the XPI Database.\nPreviously reported in \"main\" ping `simpleMeasurements`.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "xpi_database_parses",
             "type": "RECORD"
           }
         ],
