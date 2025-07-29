@@ -474,6 +474,18 @@
       {
         "fields": [
           {
+            "mode": "REPEATED",
+            "name": "glean_ping_uploader_capabilities",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "string_list",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
             "description": "Opaque partner identifier for a given ad impression or engagement action,\nunique per market and region.\nPocket\n[proxies requests to ad partners](https://github.com/Pocket/proxy-server/)\nand provides them solely with market, region, and action to generate these\nshims. Thus, though the contents of this field are obscure, they cannot\nidentify clients.\nAt time of writing this information is a comma-separated trio.\nThe first item is an index into the proxy server's list of acceptable http\nendpoints for contacting the ad service. The second item is a\nseveral-hundred-byte base64-encoded JSON-encoded struct with fields for,\namongst other things, market and region. The third is unknown, but appears\nto be a signature or checksum.\nThis shim should not be sent with the client_id.\n",
             "mode": "NULLABLE",
             "name": "pocket_shim",
