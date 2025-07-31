@@ -106,6 +106,7 @@ schemas
 │   ├── nimbus-targeting-context
 │   ├── onboarding-opt-out
 │   ├── pageload
+│   ├── pageload-base-domain
 │   ├── pageload-domain
 │   ├── pocket-button
 │   ├── profiles
@@ -156,6 +157,7 @@ schemas
 │   ├── hang-report
 │   ├── metrics
 │   ├── pageload
+│   ├── pageload-base-domain
 │   ├── pageload-domain
 │   ├── update
 │   ├── use-counters
@@ -323,6 +325,7 @@ schemas
 │   ├── nimbus
 │   ├── onboarding-opt-out
 │   ├── pageload
+│   ├── pageload-base-domain
 │   ├── pageload-domain
 │   ├── play-store-attribution
 │   ├── spoc
@@ -365,6 +368,7 @@ schemas
 │   ├── nimbus
 │   ├── onboarding-opt-out
 │   ├── pageload
+│   ├── pageload-base-domain
 │   ├── pageload-domain
 │   ├── play-store-attribution
 │   ├── spoc
@@ -407,6 +411,7 @@ schemas
 │   ├── nimbus
 │   ├── onboarding-opt-out
 │   ├── pageload
+│   ├── pageload-base-domain
 │   ├── pageload-domain
 │   ├── play-store-attribution
 │   ├── spoc
@@ -449,6 +454,7 @@ schemas
 │   ├── nimbus
 │   ├── onboarding-opt-out
 │   ├── pageload
+│   ├── pageload-base-domain
 │   ├── pageload-domain
 │   ├── play-store-attribution
 │   ├── spoc
@@ -491,6 +497,7 @@ schemas
 │   ├── nimbus
 │   ├── onboarding-opt-out
 │   ├── pageload
+│   ├── pageload-base-domain
 │   ├── pageload-domain
 │   ├── play-store-attribution
 │   ├── spoc
@@ -532,6 +539,7 @@ schemas
 │   ├── hang-report
 │   ├── metrics
 │   ├── pageload
+│   ├── pageload-base-domain
 │   ├── pageload-domain
 │   ├── usage-deletion-request
 │   ├── usage-reporting
@@ -552,6 +560,7 @@ schemas
 │   ├── hang-report
 │   ├── metrics
 │   ├── pageload
+│   ├── pageload-base-domain
 │   ├── pageload-domain
 │   ├── usage-deletion-request
 │   ├── usage-reporting
@@ -572,6 +581,7 @@ schemas
 │   ├── hang-report
 │   ├── metrics
 │   ├── pageload
+│   ├── pageload-base-domain
 │   ├── pageload-domain
 │   ├── usage-deletion-request
 │   ├── usage-reporting
@@ -739,6 +749,7 @@ schemas
 │   ├── hang-report
 │   ├── metrics
 │   ├── pageload
+│   ├── pageload-base-domain
 │   ├── pageload-domain
 │   ├── usage-deletion-request
 │   ├── usage-reporting
@@ -805,6 +816,7 @@ schemas
 │   ├── newtab-content
 │   ├── onboarding-opt-out
 │   ├── pageload
+│   ├── pageload-base-domain
 │   ├── pageload-domain
 │   ├── pseudo-main
 │   ├── spoc
@@ -913,6 +925,7 @@ schemas
 │   ├── hang-report
 │   ├── metrics
 │   ├── pageload
+│   ├── pageload-base-domain
 │   ├── pageload-domain
 │   ├── use-counters
 │   └── user-characteristics
@@ -930,6 +943,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-921 directories
+934 directories
 ```
 
