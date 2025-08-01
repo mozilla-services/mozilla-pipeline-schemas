@@ -411,6 +411,12 @@
             "type": "BOOL"
           },
           {
+            "description": "True if this invocation of the background task was throttled and did not attempt to actually update.\n",
+            "mode": "NULLABLE",
+            "name": "background_update_throttled",
+            "type": "BOOL"
+          },
+          {
             "description": "Per-installation preference \"app.update.auto\": whether to fetch and install updates without user intervention.\n",
             "mode": "NULLABLE",
             "name": "update_auto_download",
@@ -471,6 +477,12 @@
       },
       {
         "fields": [
+          {
+            "description": "The number of debounced background task invocations between this invocation and the last invocation that was not debounced.\n",
+            "mode": "NULLABLE",
+            "name": "background_update_debounced",
+            "type": "INT64"
+          },
           {
             "description": "On macOS, all browser windows can be closed without exiting Firefox. If there is an update pending in that case, and we can install it silently, we restart automatically in order to do so. This probe counts the number of times the browser restarts to silently install a pending update. This metric was generated to correspond to the Legacy Telemetry scalar update.no_window_auto_restarts.\n",
             "mode": "NULLABLE",
@@ -694,6 +706,12 @@
       },
       {
         "fields": [
+          {
+            "description": "The number of days since the default profile was last used for browsing, i.e., since `environment.currentDate` of the default profile's serialized targeting snapshot.\n",
+            "mode": "NULLABLE",
+            "name": "background_update_days_since_last_browsed",
+            "type": "INT64"
+          },
           {
             "description": "The `environment.firefoxVersion` of the default profile's serialized targeting snapshot.  At the time of writing, this version is an integer representing the Firefox major version, e.g., `109`.\n",
             "mode": "NULLABLE",
