@@ -15777,6 +15777,24 @@
             "type": "RECORD"
           },
           {
+            "description": "The count of URI loads triggered in a subsession from the context menu's visual search menuitem, broken down by the originating action.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_engagement_navigation_contextmenu_visual",
+            "type": "RECORD"
+          },
+          {
             "description": "The count URI loads triggered in a subsession from the searchbar, broken down by the originating action. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.navigation.searchbar.\n",
             "fields": [
               {
@@ -15990,6 +16008,24 @@
             ],
             "mode": "REPEATED",
             "name": "browser_search_adclicks_contextmenu",
+            "type": "RECORD"
+          },
+          {
+            "description": "Records clicks of adverts on visual-search SERP pages where the search was started from the context menu. The key format is the same as for the `contextmenu` labeled counter.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_search_adclicks_contextmenu_visual",
             "type": "RECORD"
           },
           {
@@ -16227,6 +16263,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Records counts for in-content visual searches where the search was most likely started from the context menu. The key format is the same as for the `contextmenu` labeled counter.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_search_content_contextmenu_visual",
+            "type": "RECORD"
+          },
+          {
             "description": "Records counts for in-content searches where the search was loaded by reloading the page. The key format is <provider>:[tagged|tagged-follow-on|organic]:[code|other|none] See https://firefox-source-docs.mozilla.org/browser/search/telemetry.html#browser-search-content This metric was generated to correspond to the Legacy Telemetry scalar browser.search.content.reload.\n",
             "fields": [
               {
@@ -16458,6 +16512,24 @@
             ],
             "mode": "REPEATED",
             "name": "browser_search_withads_contextmenu",
+            "type": "RECORD"
+          },
+          {
+            "description": "Records counts of visual-search SERP pages with adverts displayed where the search was started from the context menu. The key format is the same as for the `contextmenu` labeled counter.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_search_withads_contextmenu_visual",
             "type": "RECORD"
           },
           {
@@ -21969,7 +22041,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Counts the number of aborted search suggestion fetches per search engine. Only records app provided engines using their short IDs ('id', not 'identifier') as labels.\n",
+            "description": "Counts the number of aborted search suggestion fetches per search engine. Only records config engines using their short IDs ('id', not 'identifier') as labels.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -21987,7 +22059,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Counts the number of failed search suggestion fetches per search engine. Only records app provided engines using their short IDs ('id', not 'identifier') as labels.\n",
+            "description": "Counts the number of failed search suggestion fetches per search engine. Only records config engines using their short IDs ('id', not 'identifier') as labels.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -22005,7 +22077,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Counts the number of successful search suggestion fetches per search engine. Only records app provided engines using their short IDs ('id', not 'identifier') as labels.\n",
+            "description": "Counts the number of successful search suggestion fetches per search engine. Only records config engines using their short IDs ('id', not 'identifier') as labels.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -34321,7 +34393,7 @@
             "type": "STRING"
           },
           {
-            "description": "A path relating to where the search engine was installed/loaded from.\nFor example:\n  `[app]appDefault` for an app-provided engine.\n  `[addon]<extension id>` for a WebExtension-based engine.\n  `[https]developer.mozilla.org/mdn-web-docs.xml` for an OpenSearch-based\n  engine.\n  `[policy]` for an enteprise policy engine.\n  `[user]` for a search engine defined by the user or generated from a\n  web page.\nNote: this metric is truncated at 100 characters.\n",
+            "description": "A path relating to where the search engine was installed/loaded from.\nFor example:\n  `[app]appDefault` for a config search engine.\n  `[addon]<extension id>` for a WebExtension-based engine.\n  `[https]developer.mozilla.org/mdn-web-docs.xml` for an OpenSearch-based\n  engine.\n  `[policy]` for an enteprise policy engine.\n  `[user]` for a search engine defined by the user or generated from a\n  web page.\nNote: this metric is truncated at 100 characters.\n",
             "mode": "NULLABLE",
             "name": "search_engine_default_load_path",
             "type": "STRING"
@@ -34357,7 +34429,7 @@
             "type": "STRING"
           },
           {
-            "description": "A path relating to where the search engine was installed/loaded from.\nFor example:\n  `[app]appDefault` for an app-provided engine.\n  `[addon]<extension id>` for a WebExtension-based engine.\n  `[https]developer.mozilla.org/mdn-web-docs.xml` for an OpenSearch-based\n  engine.\n  `[policy]` for an enteprise policy engine.\n  `[user]` for a search engine defined by the user or generated from a\n  web page.\nNote: this metric is truncated at 100 characters.\n\nIf this string is an empty string (`\"\"`), this means that one or both of\nthe preferences `browser.search.separatePrivateDefault` and\n`browser.search.separatePrivateDefault.ui.enabled` are set to false.\nIt is possible that the user selects the same private engine as for the\ndefault engine, and hence both versions of these fields will be filled in.\n",
+            "description": "A path relating to where the search engine was installed/loaded from.\nFor example:\n  `[app]appDefault` for a config search engine.\n  `[addon]<extension id>` for a WebExtension-based engine.\n  `[https]developer.mozilla.org/mdn-web-docs.xml` for an OpenSearch-based\n  engine.\n  `[policy]` for an enteprise policy engine.\n  `[user]` for a search engine defined by the user or generated from a\n  web page.\nNote: this metric is truncated at 100 characters.\n\nIf this string is an empty string (`\"\"`), this means that one or both of\nthe preferences `browser.search.separatePrivateDefault` and\n`browser.search.separatePrivateDefault.ui.enabled` are set to false.\nIt is possible that the user selects the same private engine as for the\ndefault engine, and hence both versions of these fields will be filled in.\n",
             "mode": "NULLABLE",
             "name": "search_engine_private_load_path",
             "type": "STRING"
