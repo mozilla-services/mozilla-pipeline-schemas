@@ -873,7 +873,6 @@ schemas
 │   ├── malware-addon-states
 │   ├── mobile-event
 │   ├── mobile-metrics
-│   ├── modules
 │   ├── new-profile
 │   ├── normandy-login-study
 │   ├── optout
@@ -943,6 +942,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-934 directories
+933 directories
 ```
 
