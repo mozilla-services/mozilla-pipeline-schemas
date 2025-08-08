@@ -559,6 +559,18 @@
             "mode": "NULLABLE",
             "name": "tracking_protection_enabled",
             "type": "BOOL"
+          },
+          {
+            "description": "Records if the user has shake to summarize option enabled\n",
+            "mode": "NULLABLE",
+            "name": "user_ai_summarize_shake_gesture_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Records if the user has summarization enabled.\n",
+            "mode": "NULLABLE",
+            "name": "user_ai_summarize_summarization_enabled",
+            "type": "BOOL"
           }
         ],
         "mode": "NULLABLE",
@@ -2588,6 +2600,72 @@
       },
       {
         "fields": [
+          {
+            "description": "Records the total time for generating the summary and showing it to the user.\nStarts when the user triggers summarization.\nEnds when user sees the result or an error.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "ai_summarize_summarization_time",
+            "type": "RECORD"
+          },
           {
             "description": "The time a query against awesomebar took. This helps us understand the performance of the awesomebar in querying history and bookmarks. The query time will also help us verify that we are **not** introducing any performance regressions.\n",
             "fields": [
