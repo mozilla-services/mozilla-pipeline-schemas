@@ -118,6 +118,7 @@ schemas
 │   ├── serp-categorization
 │   ├── spoc
 │   ├── sync
+│   ├── temp-fog-initial-state
 │   ├── third-party-modules
 │   ├── top-sites
 │   ├── update
@@ -159,6 +160,7 @@ schemas
 │   ├── pageload
 │   ├── pageload-base-domain
 │   ├── pageload-domain
+│   ├── temp-fog-initial-state
 │   ├── update
 │   ├── use-counters
 │   └── user-characteristics
@@ -332,6 +334,7 @@ schemas
 │   ├── startup-timeline
 │   ├── sync
 │   ├── tabs-sync
+│   ├── temp-fog-initial-state
 │   ├── topsites-impression
 │   ├── usage-deletion-request
 │   ├── usage-reporting
@@ -375,6 +378,7 @@ schemas
 │   ├── startup-timeline
 │   ├── sync
 │   ├── tabs-sync
+│   ├── temp-fog-initial-state
 │   ├── topsites-impression
 │   ├── usage-deletion-request
 │   ├── usage-reporting
@@ -418,6 +422,7 @@ schemas
 │   ├── startup-timeline
 │   ├── sync
 │   ├── tabs-sync
+│   ├── temp-fog-initial-state
 │   ├── topsites-impression
 │   ├── usage-deletion-request
 │   ├── usage-reporting
@@ -461,6 +466,7 @@ schemas
 │   ├── startup-timeline
 │   ├── sync
 │   ├── tabs-sync
+│   ├── temp-fog-initial-state
 │   ├── topsites-impression
 │   ├── usage-deletion-request
 │   ├── usage-reporting
@@ -504,6 +510,7 @@ schemas
 │   ├── startup-timeline
 │   ├── sync
 │   ├── tabs-sync
+│   ├── temp-fog-initial-state
 │   ├── topsites-impression
 │   ├── usage-deletion-request
 │   ├── usage-reporting
@@ -541,6 +548,7 @@ schemas
 │   ├── pageload
 │   ├── pageload-base-domain
 │   ├── pageload-domain
+│   ├── temp-fog-initial-state
 │   ├── usage-deletion-request
 │   ├── usage-reporting
 │   ├── use-counters
@@ -562,6 +570,7 @@ schemas
 │   ├── pageload
 │   ├── pageload-base-domain
 │   ├── pageload-domain
+│   ├── temp-fog-initial-state
 │   ├── usage-deletion-request
 │   ├── usage-reporting
 │   ├── use-counters
@@ -583,6 +592,7 @@ schemas
 │   ├── pageload
 │   ├── pageload-base-domain
 │   ├── pageload-domain
+│   ├── temp-fog-initial-state
 │   ├── usage-deletion-request
 │   ├── usage-reporting
 │   ├── use-counters
@@ -751,6 +761,7 @@ schemas
 │   ├── pageload
 │   ├── pageload-base-domain
 │   ├── pageload-domain
+│   ├── temp-fog-initial-state
 │   ├── usage-deletion-request
 │   ├── usage-reporting
 │   ├── use-counters
@@ -820,6 +831,7 @@ schemas
 │   ├── pageload-domain
 │   ├── pseudo-main
 │   ├── spoc
+│   ├── temp-fog-initial-state
 │   ├── third-party-modules
 │   ├── top-sites
 │   ├── usage-deletion-request
@@ -926,6 +938,7 @@ schemas
 │   ├── pageload
 │   ├── pageload-base-domain
 │   ├── pageload-domain
+│   ├── temp-fog-initial-state
 │   ├── use-counters
 │   └── user-characteristics
 ├── treeherder
@@ -942,6 +955,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-933 directories
+946 directories
 ```
 

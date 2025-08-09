@@ -1336,6 +1336,24 @@
             "type": "INT64"
           },
           {
+            "description": "Tracks the number of times we need to fallback to restore metadata object by reading metadata-v2 file on disk when performing idle-maintenance on IDB database.\n",
+            "mode": "NULLABLE",
+            "name": "idb_maintenance_fallback_fullrestore_metadata",
+            "type": "INT64"
+          },
+          {
+            "description": "Counts the number of times we failed to load metadata object and had to restore it\n",
+            "mode": "NULLABLE",
+            "name": "idb_maintenance_metadata_restored",
+            "type": "INT64"
+          },
+          {
+            "description": "Increments upon encountering an unknown metadata object when performing idle-maintenance on IDB database. During idle-maintenance, we iterate over idb directories/files and construct a metadata object by calling QuotaManager::GetOriginMetadata or LoadFullOriginMetadataWithRestore. It seems that in some cases, the metadata object we get here can be invalid and this metric is used to track those instances.\n",
+            "mode": "NULLABLE",
+            "name": "idb_maintenance_unknown_metadata",
+            "type": "INT64"
+          },
+          {
             "description": "Increments whenever a request cancellation message is successfully received. This includes cancellations for requests related to either databases or observers.\n",
             "mode": "NULLABLE",
             "name": "localstorage_request_recv_cancel_counter",
@@ -29960,6 +29978,12 @@
             "type": "JSON"
           },
           {
+            "description": "Information about the data directories and files used by FOG.\n\nStructure is an array of objects, each containing the following properties:\n- `dir_name`: The name of the directory. This is the subdirectory name relative to the\n  FOG data directory and should only include \"db\", \"events\", and \"pending_pings\".\n- `dir_exists`: Whether the directory exists. This should only be false on the first\n  run of FOG, or if the directory was deleted.\n- `dir_created`: The creation time of the directory, in seconds since the unix epoch. If\n  the directory does not exist, this will be `null` and if the time cannot be determined,\n  it will default to `0`.\n- `dir_modified`: The last modification time of the directory, in seconds since the unix\n  epoch. If the directory does not exist, this will be `null` and if the time cannot be\n  determined, it will default to `0`.\n- `file_count`: The number of files in the directory. If the directory does not exist,\n  this will be `0`.\n- `files`: An array of objects, each containing:\n  - `fil",
+            "mode": "NULLABLE",
+            "name": "fog_data_directory_info",
+            "type": "JSON"
+          },
+          {
             "description": "Static data recorded to verify the new object metric type end-to-end.\n",
             "mode": "NULLABLE",
             "name": "fog_validation_some_object",
@@ -37237,6 +37261,72 @@
             ],
             "mode": "NULLABLE",
             "name": "fingerprinting_protection_canvas_noise_calculate_time_ns",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time the FOG initializations take.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "fog_initializations",
             "type": "RECORD"
           },
           {
