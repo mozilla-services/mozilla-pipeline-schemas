@@ -121,6 +121,7 @@ schemas
 │   ├── temp-fog-initial-state
 │   ├── third-party-modules
 │   ├── top-sites
+│   ├── unexpected-script-load
 │   ├── update
 │   ├── urlbar-keyword-exposure
 │   ├── urlbar-potential-exposure
@@ -955,6 +956,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-946 directories
+947 directories
 ```
 
