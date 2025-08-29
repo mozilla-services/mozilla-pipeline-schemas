@@ -10553,6 +10553,42 @@
             "type": "RECORD"
           },
           {
+            "description": "Histogram of the number of Signed Certificate Timestamps from tiled logs per TLS connection from all sources (embedded / OCSP Stapling / TLS handshake). Bucket 0 counts the cases when no SCTs from tiled logs were received, or none were extracted due to parsing errors.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "ssl_scts_from_tiled_logs_per_connection",
+            "type": "RECORD"
+          },
+          {
             "description": "Origin of Signed Certificate Timestamps received (1=Embedded, 2=TLS handshake extension, 3=Stapled OCSP response)\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram SSL_SCTS_ORIGIN.\n",
             "fields": [
               {
