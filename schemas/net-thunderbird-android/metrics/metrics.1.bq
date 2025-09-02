@@ -363,25 +363,6 @@
       {
         "fields": [
           {
-            "description": "Reports `true` if the client was successfully migrated from the Android-specific implementation of the Glean SDK to the cross-platform one.",
-            "mode": "NULLABLE",
-            "name": "glean_core_migration_successful",
-            "type": "BOOL"
-          },
-          {
-            "description": "Set to true if the tasks that are queued prior to Glean initialization time out.",
-            "mode": "NULLABLE",
-            "name": "glean_error_preinit_tasks_timeout",
-            "type": "BOOL"
-          }
-        ],
-        "mode": "NULLABLE",
-        "name": "boolean",
-        "type": "RECORD"
-      },
-      {
-        "fields": [
-          {
             "description": "The number of times we encountered an IO error\nwhen writing a pending ping to disk.\n",
             "mode": "NULLABLE",
             "name": "glean_error_io",
@@ -391,12 +372,6 @@
             "description": "The number of tasks that overflowed the pre-initialization buffer.\nOnly sent if the buffer ever overflows.\n\nIn Version 0 this reported the total number of tasks enqueued.\n",
             "mode": "NULLABLE",
             "name": "glean_error_preinit_tasks_overflow",
-            "type": "INT64"
-          },
-          {
-            "description": "Counts the number of times we encountered an invalid timezone offset\nwhen trying to get the current time.\nA timezone offset is invalid if it is outside [-24h, +24h].\nIf invalid a UTC offset is used (+0h).\n",
-            "mode": "NULLABLE",
-            "name": "glean_time_invalid_timezone_offset",
             "type": "INT64"
           },
           {
@@ -421,18 +396,6 @@
             "description": "The total number of pending pings at startup.\nThis does not include deletion-request pings.\n",
             "mode": "NULLABLE",
             "name": "glean_upload_pending_pings",
-            "type": "INT64"
-          },
-          {
-            "description": "This metric counts how many times a dirty bit was detected when starting the Glean SDK, on Android. This dirty bit is set to `true` when Android's lifecycle `ON_START` is hit and flipped back to false on `ON_STOP`. When an application is force-closed, it might not get the `ON_STOP` and so the value would stay `true`. The next time Glean starts, it will increment this counter.",
-            "mode": "NULLABLE",
-            "name": "glean_validation_app_forceclosed_count",
-            "type": "INT64"
-          },
-          {
-            "description": "The number of baseline pings sent during the lifetime of this metrics ping.",
-            "mode": "NULLABLE",
-            "name": "glean_validation_baseline_ping_count",
             "type": "INT64"
           },
           {
@@ -701,12 +664,6 @@
             "description": "If there was an error loading the RKV database, record it.\n",
             "mode": "NULLABLE",
             "name": "glean_database_rkv_load_error",
-            "type": "STRING"
-          },
-          {
-            "description": "The optional reason the ping was submitted.\nThe specific values for reason are specific to each ping, and are\ndocumented in the ping's pings.yaml file.\n",
-            "mode": "NULLABLE",
-            "name": "ping_reason",
             "type": "STRING"
           }
         ],

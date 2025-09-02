@@ -363,19 +363,6 @@
       {
         "fields": [
           {
-            "description": "Set to true if the tasks that are queued prior to Glean initialization time out.",
-            "mode": "NULLABLE",
-            "name": "glean_error_preinit_tasks_timeout",
-            "type": "BOOL"
-          }
-        ],
-        "mode": "NULLABLE",
-        "name": "boolean",
-        "type": "RECORD"
-      },
-      {
-        "fields": [
-          {
             "description": "The number of times we encountered an IO error\nwhen writing a pending ping to disk.\n",
             "mode": "NULLABLE",
             "name": "glean_error_io",
@@ -385,12 +372,6 @@
             "description": "The number of tasks that overflowed the pre-initialization buffer.\nOnly sent if the buffer ever overflows.\n\nIn Version 0 this reported the total number of tasks enqueued.\n",
             "mode": "NULLABLE",
             "name": "glean_error_preinit_tasks_overflow",
-            "type": "INT64"
-          },
-          {
-            "description": "Counts the number of times we encountered an invalid timezone offset\nwhen trying to get the current time.\nA timezone offset is invalid if it is outside [-24h, +24h].\nIf invalid a UTC offset is used (+0h).\n",
-            "mode": "NULLABLE",
-            "name": "glean_time_invalid_timezone_offset",
             "type": "INT64"
           },
           {
@@ -741,12 +722,6 @@
             "description": "If there was an error loading the RKV database, record it.\n",
             "mode": "NULLABLE",
             "name": "glean_database_rkv_load_error",
-            "type": "STRING"
-          },
-          {
-            "description": "The optional reason the ping was submitted.\nThe specific values for reason are specific to each ping, and are\ndocumented in the ping's pings.yaml file.\n",
-            "mode": "NULLABLE",
-            "name": "ping_reason",
             "type": "STRING"
           }
         ],
