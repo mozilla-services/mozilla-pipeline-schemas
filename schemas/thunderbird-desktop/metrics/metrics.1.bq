@@ -14198,6 +14198,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Which data subdirectories suffered an err between is_dir and read_dir\nwhile reporting fog.data_diretory_info.\n(Potentially because they were removed in the interim).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "BOOL"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "fog_subdir_err",
+            "type": "RECORD"
+          },
+          {
             "description": "Which system provider are we using on Linux\n",
             "fields": [
               {
@@ -16272,6 +16290,42 @@
             ],
             "mode": "REPEATED",
             "name": "filelink_uploaded_size",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many dir entries per data subdirectory errored while reporting fog.data_diretory_info.\n(Potentially because they were removed between `read_dir` and the iteration).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "fog_subdir_entry_err",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many dir entries per data subdirectory errored while retrieving their metadata\nwhile reporting fog.data_diretory_info.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "fog_subdir_entry_metadata_err",
             "type": "RECORD"
           },
           {
