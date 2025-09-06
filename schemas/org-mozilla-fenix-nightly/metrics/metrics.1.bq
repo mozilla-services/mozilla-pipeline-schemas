@@ -807,6 +807,12 @@
             "type": "BOOL"
           },
           {
+            "description": "True when isolated content processes are enabled on the runtime.",
+            "mode": "NULLABLE",
+            "name": "preferences_isolated_content_processes_enabled",
+            "type": "BOOL"
+          },
+          {
             "description": "The user has the open links in apps feature enabled.\n\"ask_before_opening\", \"always\" or \"never\".\ndefault: \"never\"\n",
             "mode": "NULLABLE",
             "name": "preferences_open_links_in_app_enabled",
@@ -18254,7 +18260,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Failure occurs when initializing the audio stream. (Migrated from the geckoview metric of the same name).\n",
+            "description": "Failure occurs when initializing the audio stream.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -31253,6 +31259,12 @@
             "description": "Information about connected monitors.\nOn Linux only a single monitor is returned for the primary screen.\n* screenWidth - Screen width in pixels\n* screenHeight - Screen height in pixels\n* defaultCSSScaleFactor - The default number of device pixels per unscaled CSS pixel for this screen.\n* contentsScaleFactor - The number of device pixels per desktop pixel for this screen.\n* refreshRate - (Windows only) The target screen refresh rate, in Hz, or 0 if unknown.\n* pseudoDislay - (Windows only) Whether the screen is a pseudo display.\n",
             "mode": "NULLABLE",
             "name": "gfx_monitors",
+            "type": "JSON"
+          },
+          {
+            "description": "Information about the data directories and files used by FOG.\n\nStructure is an array of objects, each containing the following properties:\n- `dir_name`: The name of the directory. This is the subdirectory name relative to the\n  FOG data directory and should only include \"db\", \"events\", and \"pending_pings\".\n- `dir_exists`: Whether the directory exists. This should only be false on the first\n  run of FOG, or if the directory was deleted.\n- `dir_created`: The creation time of the directory, in seconds since the unix epoch. If\n  the directory does not exist, this will be `null` and if the time cannot be determined,\n  it will default to `0`.\n- `dir_modified`: The last modification time of the directory, in seconds since the unix\n  epoch. If the directory does not exist, this will be `null` and if the time cannot be\n  determined, it will default to `0`.\n- `file_count`: The number of files in the directory. If the directory does not exist,\n  this will be `0`.\n- `files`: An array of objects, each containing:\n  - `fil",
+            "mode": "NULLABLE",
+            "name": "glean_health_data_directory_info",
             "type": "JSON"
           },
           {

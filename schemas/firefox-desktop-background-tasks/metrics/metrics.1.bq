@@ -1205,6 +1205,19 @@
       {
         "fields": [
           {
+            "description": "Information about the data directories and files used by FOG.\n\nStructure is an array of objects, each containing the following properties:\n- `dir_name`: The name of the directory. This is the subdirectory name relative to the\n  FOG data directory and should only include \"db\", \"events\", and \"pending_pings\".\n- `dir_exists`: Whether the directory exists. This should only be false on the first\n  run of FOG, or if the directory was deleted.\n- `dir_created`: The creation time of the directory, in seconds since the unix epoch. If\n  the directory does not exist, this will be `null` and if the time cannot be determined,\n  it will default to `0`.\n- `dir_modified`: The last modification time of the directory, in seconds since the unix\n  epoch. If the directory does not exist, this will be `null` and if the time cannot be\n  determined, it will default to `0`.\n- `file_count`: The number of files in the directory. If the directory does not exist,\n  this will be `0`.\n- `files`: An array of objects, each containing:\n  - `fil",
+            "mode": "NULLABLE",
+            "name": "glean_health_data_directory_info",
+            "type": "JSON"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "object",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
             "description": "How the about:home startup cache functioned on startup.\n0: Result value was never set (error case) 1: Cache did not exist 2: Cache page stream was corrupt / inaccessible 3: Cache script stream was corrupt / inaccessible 4: Cache was invalidated by a version bump 5: Cache was valid, but read too late to be useful. 6: Cache was valid and used. 7: Cache is disabled. 8: User did not load about:home on its own by default. 9: Cache is disabled because about:newtab preloading is disabled.\nThis metric was generated to correspond to the Legacy Telemetry scalar browser.startup.abouthome_cache_result.\n",
             "mode": "NULLABLE",
             "name": "browser_startup_abouthome_cache_result",

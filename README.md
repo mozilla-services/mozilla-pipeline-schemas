@@ -18,6 +18,7 @@ schemas
 │   ├── enrollment
 │   ├── enrollment-status
 │   ├── events
+│   ├── health
 │   ├── metrics
 │   └── startup
 ├── accounts-frontend
@@ -46,6 +47,7 @@ schemas
 │   ├── deletion-request
 │   ├── discovery
 │   ├── events
+│   ├── health
 │   ├── metrics
 │   ├── space-ship-ready
 │   └── starbase46
@@ -72,6 +74,7 @@ schemas
 │   ├── enrollment
 │   ├── enrollment-status
 │   ├── events
+│   ├── health
 │   ├── metrics
 │   └── startup
 ├── firefox-accounts
@@ -82,6 +85,7 @@ schemas
 │   ├── crash
 │   ├── deletion-request
 │   ├── events
+│   ├── health
 │   └── metrics
 ├── firefox-desktop
 │   ├── baseline
@@ -97,6 +101,7 @@ schemas
 │   ├── fog-validation
 │   ├── fx-accounts
 │   ├── hang-report
+│   ├── health
 │   ├── heartbeat
 │   ├── messaging-system
 │   ├── metrics
@@ -134,6 +139,7 @@ schemas
 │   ├── default-agent
 │   ├── deletion-request
 │   ├── events
+│   ├── health
 │   └── metrics
 ├── firefox-desktop-background-tasks
 │   ├── background-tasks
@@ -142,6 +148,7 @@ schemas
 │   ├── default-agent
 │   ├── deletion-request
 │   ├── events
+│   ├── health
 │   ├── heartbeat
 │   ├── metrics
 │   └── nimbus-targeting-context
@@ -157,6 +164,7 @@ schemas
 │   ├── events
 │   ├── fog-validation
 │   ├── hang-report
+│   ├── health
 │   ├── metrics
 │   ├── pageload
 │   ├── pageload-base-domain
@@ -222,6 +230,7 @@ schemas
 │   ├── enrollment
 │   ├── enrollment-status
 │   ├── events
+│   ├── health
 │   ├── metrics
 │   └── startup
 ├── monitor-frontend
@@ -239,6 +248,7 @@ schemas
 │   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
+│   ├── health
 │   ├── history-sync
 │   ├── logins-sync
 │   ├── metrics
@@ -248,6 +258,7 @@ schemas
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
+│   ├── health
 │   ├── metrics
 │   └── usage
 ├── mozillavpn
@@ -256,6 +267,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── extensionsession
+│   ├── health
 │   ├── main
 │   ├── metrics
 │   └── vpnsession
@@ -265,28 +277,33 @@ schemas
 │   ├── enrollment
 │   ├── enrollment-status
 │   ├── events
+│   ├── health
 │   ├── metrics
 │   └── startup
 ├── mozphab
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
+│   ├── health
 │   ├── metrics
 │   └── usage
 ├── net-thunderbird-android
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
+│   ├── health
 │   └── metrics
 ├── net-thunderbird-android-beta
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
+│   ├── health
 │   └── metrics
 ├── net-thunderbird-android-daily
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
+│   ├── health
 │   └── metrics
 ├── org-mozilla-bergamot
 │   ├── custom
@@ -296,6 +313,7 @@ schemas
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
+│   ├── health
 │   └── metrics
 ├── org-mozilla-fenix
 │   ├── activation
@@ -319,6 +337,7 @@ schemas
 │   ├── fx-accounts
 │   ├── fx-suggest
 │   ├── hang-report
+│   ├── health
 │   ├── history-sync
 │   ├── home
 │   ├── installation
@@ -363,6 +382,7 @@ schemas
 │   ├── fx-accounts
 │   ├── fx-suggest
 │   ├── hang-report
+│   ├── health
 │   ├── history-sync
 │   ├── home
 │   ├── installation
@@ -407,6 +427,7 @@ schemas
 │   ├── fx-accounts
 │   ├── fx-suggest
 │   ├── hang-report
+│   ├── health
 │   ├── history-sync
 │   ├── home
 │   ├── installation
@@ -451,6 +472,7 @@ schemas
 │   ├── fx-accounts
 │   ├── fx-suggest
 │   ├── hang-report
+│   ├── health
 │   ├── history-sync
 │   ├── home
 │   ├── installation
@@ -495,6 +517,7 @@ schemas
 │   ├── fx-accounts
 │   ├── fx-suggest
 │   ├── hang-report
+│   ├── health
 │   ├── history-sync
 │   ├── home
 │   ├── installation
@@ -523,6 +546,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── extensionsession
+│   ├── health
 │   ├── main
 │   ├── metrics
 │   └── vpnsession
@@ -530,6 +554,7 @@ schemas
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
+│   ├── health
 │   ├── launch
 │   └── metrics
 ├── org-mozilla-focus
@@ -545,6 +570,7 @@ schemas
 │   ├── events
 │   ├── fog-validation
 │   ├── hang-report
+│   ├── health
 │   ├── metrics
 │   ├── pageload
 │   ├── pageload-base-domain
@@ -567,6 +593,7 @@ schemas
 │   ├── events
 │   ├── fog-validation
 │   ├── hang-report
+│   ├── health
 │   ├── metrics
 │   ├── pageload
 │   ├── pageload-base-domain
@@ -589,6 +616,7 @@ schemas
 │   ├── events
 │   ├── fog-validation
 │   ├── hang-report
+│   ├── health
 │   ├── metrics
 │   ├── pageload
 │   ├── pageload-base-domain
@@ -609,6 +637,7 @@ schemas
 │   ├── first-session
 │   ├── fx-accounts
 │   ├── fx-suggest
+│   ├── health
 │   ├── history-sync
 │   ├── logins-sync
 │   ├── metrics
@@ -639,6 +668,7 @@ schemas
 │   ├── first-session
 │   ├── fx-accounts
 │   ├── fx-suggest
+│   ├── health
 │   ├── history-sync
 │   ├── logins-sync
 │   ├── metrics
@@ -669,6 +699,7 @@ schemas
 │   ├── first-session
 │   ├── fx-accounts
 │   ├── fx-suggest
+│   ├── health
 │   ├── history-sync
 │   ├── logins-sync
 │   ├── metrics
@@ -694,6 +725,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── extensionsession
+│   ├── health
 │   ├── main
 │   ├── metrics
 │   └── vpnsession
@@ -703,6 +735,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── extensionsession
+│   ├── health
 │   ├── main
 │   ├── metrics
 │   └── vpnsession
@@ -711,6 +744,7 @@ schemas
 │   ├── dau-reporting
 │   ├── deletion-request
 │   ├── events
+│   ├── health
 │   ├── metrics
 │   ├── usage-deletion-request
 │   └── usage-reporting
@@ -719,6 +753,7 @@ schemas
 │   ├── dau-reporting
 │   ├── deletion-request
 │   ├── events
+│   ├── health
 │   ├── metrics
 │   ├── usage-deletion-request
 │   └── usage-reporting
@@ -726,6 +761,7 @@ schemas
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
+│   ├── health
 │   └── metrics
 ├── org-mozilla-ios-tiktok-reporter
 │   ├── baseline
@@ -733,6 +769,7 @@ schemas
 │   ├── download-data
 │   ├── email
 │   ├── events
+│   ├── health
 │   ├── metrics
 │   ├── screen-recording
 │   └── tiktok-report
@@ -742,6 +779,7 @@ schemas
 │   ├── download-data
 │   ├── email
 │   ├── events
+│   ├── health
 │   ├── metrics
 │   ├── screen-recording
 │   └── tiktok-report
@@ -758,6 +796,7 @@ schemas
 │   ├── events
 │   ├── fog-validation
 │   ├── hang-report
+│   ├── health
 │   ├── metrics
 │   ├── pageload
 │   ├── pageload-base-domain
@@ -771,6 +810,7 @@ schemas
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
+│   ├── health
 │   ├── metrics
 │   └── usage
 ├── org-mozilla-reference-browser
@@ -778,11 +818,13 @@ schemas
 │   ├── crash
 │   ├── deletion-request
 │   ├── events
+│   ├── health
 │   └── metrics
 ├── org-mozilla-social-nightly
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
+│   ├── health
 │   └── metrics
 ├── org-mozilla-tiktokreporter
 │   ├── baseline
@@ -790,6 +832,7 @@ schemas
 │   ├── download-data
 │   ├── email
 │   ├── events
+│   ├── health
 │   ├── metrics
 │   ├── screen-recording
 │   └── tiktok-report
@@ -797,6 +840,7 @@ schemas
 │   ├── baseline
 │   ├── deletion-request
 │   ├── events
+│   ├── health
 │   └── metrics
 ├── org-mozilla-vrbrowser
 │   ├── addresses-sync
@@ -805,6 +849,7 @@ schemas
 │   ├── creditcards-sync
 │   ├── deletion-request
 │   ├── events
+│   ├── health
 │   ├── history-sync
 │   ├── logins-sync
 │   ├── metrics
@@ -821,6 +866,7 @@ schemas
 │   ├── events
 │   ├── fog-validation
 │   ├── hang-report
+│   ├── health
 │   ├── messaging-system
 │   ├── metrics
 │   ├── new-metric-capture-emulation
@@ -935,6 +981,7 @@ schemas
 │   ├── events
 │   ├── fog-validation
 │   ├── hang-report
+│   ├── health
 │   ├── metrics
 │   ├── pageload
 │   ├── pageload-base-domain
@@ -956,6 +1003,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-947 directories
+994 directories
 ```
 
