@@ -861,6 +861,18 @@
             "type": "BOOL"
           },
           {
+            "description": "Whether or not the user has non sponsor search suggestions enabled\ndefault: true\n",
+            "mode": "NULLABLE",
+            "name": "preferences_show_non_sponsor_suggestions_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether or not the user has sponsor search suggestions enabled\ndefault: true\n",
+            "mode": "NULLABLE",
+            "name": "preferences_show_sponsor_suggestions_enabled",
+            "type": "BOOL"
+          },
+          {
             "description": "Whether or not the user is signed into FxA\ndefault: false\n",
             "mode": "NULLABLE",
             "name": "preferences_signed_in_sync",
@@ -18260,7 +18272,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Failure occurs when initializing the audio stream. (Migrated from the geckoview metric of the same name).\n",
+            "description": "Failure occurs when initializing the audio stream.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -18311,6 +18323,24 @@
             ],
             "mode": "REPEATED",
             "name": "media_decode_error_per_mime_type",
+            "type": "RECORD"
+          },
+          {
+            "description": "Count the amount of the real world codec usage inside Matroska.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "media_mkv_codec_type",
             "type": "RECORD"
           },
           {
