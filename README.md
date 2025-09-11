@@ -94,6 +94,7 @@ schemas
 │   ├── captcha-detection
 │   ├── context-id-deletion-request
 │   ├── crash
+│   ├── data-leak-blocker
 │   ├── dau-reporting
 │   ├── deletion-request
 │   ├── events
@@ -1016,6 +1017,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-1007 directories
+1008 directories
 ```
 
