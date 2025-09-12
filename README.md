@@ -339,6 +339,7 @@ schemas
 │   ├── font-list
 │   ├── fx-accounts
 │   ├── fx-suggest
+│   ├── fx-suggest-api
 │   ├── hang-report
 │   ├── health
 │   ├── history-sync
@@ -385,6 +386,7 @@ schemas
 │   ├── font-list
 │   ├── fx-accounts
 │   ├── fx-suggest
+│   ├── fx-suggest-api
 │   ├── hang-report
 │   ├── health
 │   ├── history-sync
@@ -431,6 +433,7 @@ schemas
 │   ├── font-list
 │   ├── fx-accounts
 │   ├── fx-suggest
+│   ├── fx-suggest-api
 │   ├── hang-report
 │   ├── health
 │   ├── history-sync
@@ -477,6 +480,7 @@ schemas
 │   ├── font-list
 │   ├── fx-accounts
 │   ├── fx-suggest
+│   ├── fx-suggest-api
 │   ├── hang-report
 │   ├── health
 │   ├── history-sync
@@ -523,6 +527,7 @@ schemas
 │   ├── font-list
 │   ├── fx-accounts
 │   ├── fx-suggest
+│   ├── fx-suggest-api
 │   ├── hang-report
 │   ├── health
 │   ├── history-sync
@@ -1017,6 +1022,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-1008 directories
+1013 directories
 ```
 
