@@ -34,9 +34,9 @@ is a great resource.
 
 ### Prerequisites
 
-- [`CMake` (3.0+)](http://cmake.org/cmake/resources/software.html)
+- [`CMake` (3.18+)](http://cmake.org/cmake/resources/software.html)
 - [`jq` (1.5+)](https://github.com/stedolan/jq)
-- `python` (3.6+)
+- `python` (3.8+)
 - Optional: `java 11`, `maven`
 - Optional: [Docker](https://www.docker.com/get-started)
 
