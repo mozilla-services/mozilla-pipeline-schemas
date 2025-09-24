@@ -14171,6 +14171,42 @@
             "type": "RECORD"
           },
           {
+            "description": "SSL Handshake Key Exchange Algorithm (null=0, rsa=1, dh=2, ecdh=4, ecdh_hybrid=8)\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "webrtcdtls_key_exchange_algorithm",
+            "type": "RECORD"
+          },
+          {
             "description": "Websockets Handshake Results (ws-ok-plain, ws-ok-proxy, ws-failed-plain, ws-failed-proxy, wss-ok-plain, wss-ok-proxy, wss-failed-plain, wss-failed-proxy)\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram WEBSOCKETS_HANDSHAKE_TYPE.\n",
             "fields": [
               {
