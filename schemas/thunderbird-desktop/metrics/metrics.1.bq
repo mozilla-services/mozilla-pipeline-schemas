@@ -19767,6 +19767,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Tracking where profiles have been created.  The `legacy_forced` refers to\nusage of `MOZ_LEGACY_HOME=1` while `legacy_existing` is for the case an\nexisting legacy profile was detected. The `xdg_default` accounts for lack\nof `XDG_CONFIG_HOME` value defaulting to `$HOME/.config` when\n`xdg_config` refers to existing `XDG_CONFIG_HOME`.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "profiles_creation_place",
+            "type": "RECORD"
+          },
+          {
             "description": "The result of auto-filling a login form.",
             "fields": [
               {
