@@ -101,6 +101,7 @@ schemas
 │   ├── first-startup
 │   ├── fog-validation
 │   ├── fx-accounts
+│   ├── gecko-trace
 │   ├── hang-report
 │   ├── health
 │   ├── heartbeat
@@ -165,6 +166,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
+│   ├── gecko-trace
 │   ├── hang-report
 │   ├── health
 │   ├── metrics
@@ -340,6 +342,7 @@ schemas
 │   ├── fx-accounts
 │   ├── fx-suggest
 │   ├── fx-suggest-api
+│   ├── gecko-trace
 │   ├── hang-report
 │   ├── health
 │   ├── history-sync
@@ -387,6 +390,7 @@ schemas
 │   ├── fx-accounts
 │   ├── fx-suggest
 │   ├── fx-suggest-api
+│   ├── gecko-trace
 │   ├── hang-report
 │   ├── health
 │   ├── history-sync
@@ -434,6 +438,7 @@ schemas
 │   ├── fx-accounts
 │   ├── fx-suggest
 │   ├── fx-suggest-api
+│   ├── gecko-trace
 │   ├── hang-report
 │   ├── health
 │   ├── history-sync
@@ -481,6 +486,7 @@ schemas
 │   ├── fx-accounts
 │   ├── fx-suggest
 │   ├── fx-suggest-api
+│   ├── gecko-trace
 │   ├── hang-report
 │   ├── health
 │   ├── history-sync
@@ -528,6 +534,7 @@ schemas
 │   ├── fx-accounts
 │   ├── fx-suggest
 │   ├── fx-suggest-api
+│   ├── gecko-trace
 │   ├── hang-report
 │   ├── health
 │   ├── history-sync
@@ -582,6 +589,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
+│   ├── gecko-trace
 │   ├── hang-report
 │   ├── health
 │   ├── metrics
@@ -606,6 +614,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
+│   ├── gecko-trace
 │   ├── hang-report
 │   ├── health
 │   ├── metrics
@@ -630,6 +639,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
+│   ├── gecko-trace
 │   ├── hang-report
 │   ├── health
 │   ├── metrics
@@ -811,6 +821,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
+│   ├── gecko-trace
 │   ├── hang-report
 │   ├── health
 │   ├── metrics
@@ -882,6 +893,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
+│   ├── gecko-trace
 │   ├── hang-report
 │   ├── health
 │   ├── messaging-system
@@ -998,6 +1010,7 @@ schemas
 │   ├── deletion-request
 │   ├── events
 │   ├── fog-validation
+│   ├── gecko-trace
 │   ├── hang-report
 │   ├── health
 │   ├── metrics
@@ -1022,6 +1035,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-1013 directories
+1026 directories
 ```
 
