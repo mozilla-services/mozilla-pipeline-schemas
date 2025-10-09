@@ -801,6 +801,12 @@
             "type": "BOOL"
           },
           {
+            "description": "Measures user retention of the Global Privacy Control (GPC) setting at start-up.",
+            "mode": "NULLABLE",
+            "name": "preferences_global_privacy_control_enabled",
+            "type": "BOOL"
+          },
+          {
             "description": "Whether or not the user has the inactive tabs feature enabled.\ndefault: true\n",
             "mode": "NULLABLE",
             "name": "preferences_inactive_tabs_enabled",
@@ -20410,6 +20416,24 @@
               }
             ],
             "mode": "REPEATED",
+            "name": "power_cpu_ms_per_thread_inference_process",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many miliseconds of CPU time were used. Broken down by thread name for a given process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
             "name": "power_cpu_ms_per_thread_parent_active",
             "type": "RECORD"
           },
@@ -20573,6 +20597,24 @@
             ],
             "mode": "REPEATED",
             "name": "power_wakeups_per_thread_gpu_process",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many times threads woke up and could have woken up a CPU core. Broken down by thread name for a given process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "power_wakeups_per_thread_inference_process",
             "type": "RECORD"
           },
           {
@@ -24099,6 +24141,198 @@
       },
       {
         "fields": [
+          {
+            "description": "Memory used by the garbage-collected JavaScript heap (KB) by process type\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram MEMORY_JS_GC_HEAP.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "memory_js_gc_heap",
+            "type": "RECORD"
+          },
+          {
+            "description": "Resident memory size (KB) by process type\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram MEMORY_RESIDENT_FAST.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "memory_resident_fast",
+            "type": "RECORD"
+          },
+          {
+            "description": "Peak resident memory size (KB) by process type\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram MEMORY_RESIDENT_PEAK.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "memory_resident_peak",
+            "type": "RECORD"
+          },
+          {
+            "description": "Unique Set Size (KB) by process type\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram MEMORY_UNIQUE.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "memory_unique",
+            "type": "RECORD"
+          },
           {
             "description": "Cache size in megabytes keyed by cache capacity calculation type. Numbers are sampled periodically, every time 2GB of data is written to the cache.\nThis metric was generated to correspond to the Legacy Telemetry linear histogram NETWORK_CACHE_SIZE.\n",
             "fields": [
@@ -30181,7 +30415,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Memory used by the garbage-collected JavaScript heap (KB)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram MEMORY_JS_GC_HEAP.\n",
+            "description": "Memory used by the garbage-collected JavaScript heap (KB) by process type\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram MEMORY_JS_GC_HEAP.\n",
             "fields": [
               {
                 "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
@@ -30253,7 +30487,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Resident memory size (KB)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram MEMORY_RESIDENT_FAST.\n",
+            "description": "Resident memory size (KB) by process type\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram MEMORY_RESIDENT_FAST.\n",
             "fields": [
               {
                 "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
@@ -30289,7 +30523,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Peak resident memory size (KB)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram MEMORY_RESIDENT_PEAK.\n",
+            "description": "Peak resident memory size (KB) by process type\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram MEMORY_RESIDENT_PEAK.\n",
             "fields": [
               {
                 "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
@@ -30397,7 +30631,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Unique Set Size (KB)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram MEMORY_UNIQUE.\n",
+            "description": "Unique Set Size (KB) by process type\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram MEMORY_UNIQUE.\n",
             "fields": [
               {
                 "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
@@ -32777,6 +33011,12 @@
             "type": "STRING"
           },
           {
+            "description": "Measures user retention of the DNS over HTTPS (DoH) setting at start-up.\nExample values include: \"Default\", \"Increased\", \"Max\", \"Off\".\n",
+            "mode": "NULLABLE",
+            "name": "preferences_doh_protection_level",
+            "type": "STRING"
+          },
+          {
             "description": "What type of enhanced tracking protection the user has enabled.\n\"standard,\" \"strict,\" \"custom,\" or \"\" (if disabled)\ndefault: \"standard\"\n",
             "mode": "NULLABLE",
             "name": "preferences_enhanced_tracking_protection",
@@ -32786,6 +33026,12 @@
             "description": "The option user has selected in the \"Custom\" mode of the\nEnhanced Tracking Protection settings.\nPossible values:\n- total-protection for “Isolate cross-site cookies”\n- social for “Cross-site and social media trackers”\n- unvisited for “Cookies from unvisited sites”\n- third-party for “All third-party cookies..”\n- all for “All cookies..”\n",
             "mode": "NULLABLE",
             "name": "preferences_etp_custom_cookies_selection",
+            "type": "STRING"
+          },
+          {
+            "description": "Measures user retention of the HTTPS-Only setting at start-up.\nExample values include: \"DISABLED\", \"ENABLED_PRIVATE_ONLY\", \"ENABLED\".\n",
+            "mode": "NULLABLE",
+            "name": "preferences_https_only_mode",
             "type": "STRING"
           },
           {
