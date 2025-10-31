@@ -70,6 +70,7 @@ schemas
 │   └── hgpush
 ├── experimenter-backend
 │   ├── baseline
+│   ├── data-collection-opt-out
 │   ├── deletion-request
 │   ├── events
 │   ├── health
@@ -1042,6 +1043,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-1033 directories
+1034 directories
 ```
 

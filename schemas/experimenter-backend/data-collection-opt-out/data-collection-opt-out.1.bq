@@ -363,73 +363,6 @@
       {
         "fields": [
           {
-            "description": "Does the app need pinning (i.e., is the app not pinned).",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_does_app_need_pin",
-            "type": "BOOL"
-          },
-          {
-            "description": "Whether the profile has any active enterprise policies.",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_has_active_enterprise_policies",
-            "type": "BOOL"
-          },
-          {
-            "description": "Whether the profile has any pinned tabs in any open window.",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_has_pinned_tabs",
-            "type": "BOOL"
-          },
-          {
-            "description": "Whether the current browser is the default browser.",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_is_default_browser",
-            "type": "BOOL"
-          },
-          {
-            "description": "Is this the first startup of the browser on this install? (NB: Must have been explicitly launched with the --first-startup commandline flag.)\n",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_is_first_startup",
-            "type": "BOOL"
-          },
-          {
-            "description": "Whether Firefox Accounts and Sync are enabled.",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_is_fx_a_enabled",
-            "type": "BOOL"
-          },
-          {
-            "description": "Whether the user is logged in to Firefox Accounts.",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_is_fx_a_signed_in",
-            "type": "BOOL"
-          },
-          {
-            "description": "Is this copy of Firefox installed from an MSIX installer?",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_is_msix",
-            "type": "BOOL"
-          },
-          {
-            "description": "Whether the user prefers reduced motion.",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_user_prefers_reduced_motion",
-            "type": "BOOL"
-          },
-          {
-            "description": "Whether the user uses Firefox Sync.",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_uses_firefox_sync",
-            "type": "BOOL"
-          }
-        ],
-        "mode": "NULLABLE",
-        "name": "boolean",
-        "type": "RECORD"
-      },
-      {
-        "fields": [
-          {
             "description": "Counts the number of times a metric was set with an invalid label.\nThe labels are the `category.name` identifier of the metric.\n",
             "fields": [
               {
@@ -500,192 +433,10 @@
             "mode": "REPEATED",
             "name": "glean_error_invalid_value",
             "type": "RECORD"
-          },
-          {
-            "description": "When a metric in `nimbus_targeting_context` cannot be recorded because an exception was thrown during evaluation of the targeting context attribute the name of the attribute is recorded in this metric.\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "INT64"
-              }
-            ],
-            "mode": "REPEATED",
-            "name": "nimbus_targeting_environment_attr_eval_errors",
-            "type": "RECORD"
-          },
-          {
-            "description": "When a pref in `nimbus_targeting_environment.pref_values` cannot be recorded because the type in the metric does not match the type of the pref, it is recorded in this metric.\n",
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "key",
-                "type": "STRING"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "value",
-                "type": "INT64"
-              }
-            ],
-            "mode": "REPEATED",
-            "name": "nimbus_targeting_environment_pref_type_errors",
-            "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
         "name": "labeled_counter",
-        "type": "RECORD"
-      },
-      {
-        "fields": [
-          {
-            "description": "The slugs of the actively enrolled experiments",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_active_experiments",
-            "type": "JSON"
-          },
-          {
-            "description": "The slugs of the actively enrolled rollouts",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_active_rollouts",
-            "type": "JSON"
-          },
-          {
-            "description": "Information about installed addons.",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_addons_info",
-            "type": "JSON"
-          },
-          {
-            "description": "Attribution data.\n",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_attribution_data",
-            "type": "JSON"
-          },
-          {
-            "description": "Information about the browser's update channel.",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_browser_settings",
-            "type": "JSON"
-          },
-          {
-            "description": "Information about the system's default PDF handler.\n",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_default_pdf_handler",
-            "type": "JSON"
-          },
-          {
-            "description": "Information about historic enrollments, including the branches enrolled.\n",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_enrollments_map",
-            "type": "JSON"
-          },
-          {
-            "description": "Information about the user's home page settings.",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_home_page_settings",
-            "type": "JSON"
-          },
-          {
-            "description": "Whether the current browser is registered as the default handler for various filetypes.\n",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_is_default_handler",
-            "type": "JSON"
-          },
-          {
-            "description": "Information about the operating system.",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_os",
-            "type": "JSON"
-          },
-          {
-            "description": "The resolution of the primary display.",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_primary_resolution",
-            "type": "JSON"
-          },
-          {
-            "description": "Information about the user's activity over the last 28 days.",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_user_monthly_activity",
-            "type": "JSON"
-          },
-          {
-            "description": "Values of specific preferences we want to target on.",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_environment_pref_values",
-            "type": "JSON"
-          },
-          {
-            "description": "An array of preferences that are user set.",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_environment_user_set_prefs",
-            "type": "JSON"
-          }
-        ],
-        "mode": "NULLABLE",
-        "name": "object",
-        "type": "RECORD"
-      },
-      {
-        "fields": [
-          {
-            "description": "The number of addresses the user has saved.",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_addresses_saved",
-            "type": "INT64"
-          },
-          {
-            "description": "The architecture of the user's CPU (32-bit or 64-bit)",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_arch_bits",
-            "type": "INT64"
-          },
-          {
-            "description": "The Build ID.",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_build_id",
-            "type": "INT64"
-          },
-          {
-            "description": "The Firefox major version number.",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_firefox_version",
-            "type": "INT64"
-          },
-          {
-            "description": "The amount of system memory, in mebibytes (MiB).",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_memory_mb",
-            "type": "INT64"
-          },
-          {
-            "description": "The UNIX timestamp of when the profile was created.",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_profile_age_created",
-            "type": "INT64"
-          },
-          {
-            "description": "The number of profiles in the current profile group or zero if either the feature is not enabled or the user has not created any profiles.\n",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_profile_group_profile_count",
-            "type": "INT64"
-          },
-          {
-            "description": "The number of bookmarks.",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_total_bookmarks_count",
-            "type": "INT64"
-          }
-        ],
-        "mode": "NULLABLE",
-        "name": "quantity",
         "type": "RECORD"
       },
       {
@@ -697,33 +448,9 @@
             "type": "STRING"
           },
           {
-            "description": "The current date, as an ISO-8601 string.\n",
+            "description": "The id of the user sent to Cirrus to determine enrollments.",
             "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_current_date",
-            "type": "STRING"
-          },
-          {
-            "description": "The installation's distribution ID.\n",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_distribution_id",
-            "type": "STRING"
-          },
-          {
-            "description": "What is the active locale of the browser?",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_locale",
-            "type": "STRING"
-          },
-          {
-            "description": "What region is the browser located in?",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_region",
-            "type": "STRING"
-          },
-          {
-            "description": "The full Firefox version string.",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_context_version",
+            "name": "nimbus_nimbus_user_id",
             "type": "STRING"
           }
         ],
@@ -741,38 +468,6 @@
         ],
         "mode": "NULLABLE",
         "name": "string_list",
-        "type": "RECORD"
-      },
-      {
-        "fields": [
-          {
-            "description": "The entirety of the Nimbus targeting context as a stringified JSON object.\nThis is disabled by default and only intended to be enabled via server knobs to debug recording failures in individual nimbus_targeting_context metric values.\n",
-            "mode": "NULLABLE",
-            "name": "nimbus_targeting_environment_targeting_context_value",
-            "type": "STRING"
-          }
-        ],
-        "mode": "NULLABLE",
-        "name": "text2",
-        "type": "RECORD"
-      },
-      {
-        "fields": [
-          {
-            "description": "The client_id according to Telemetry.\nMight not always have a value due to being too early for it to have\nloaded.\nValue may be the canary client id `c0ffeec0-ffee-c0ff-eec0-ffeec0ffeec0`\nin pings near when the data upload pref is disabled (if Telemetry gets\nto go first), or between when a client_id has been removed and when it\nhas been regenerated.\nDoes not need to be sent in the Glean \"deletion-request\" ping.\n",
-            "mode": "NULLABLE",
-            "name": "legacy_telemetry_client_id",
-            "type": "STRING"
-          },
-          {
-            "description": "The profile_group_id according to Telemetry.\nMight not always have a value due to being too early for it to have\nloaded.\nDoes not need to be sent in the Glean \"deletion-request\" ping.\n",
-            "mode": "NULLABLE",
-            "name": "legacy_telemetry_profile_group_id",
-            "type": "STRING"
-          }
-        ],
-        "mode": "NULLABLE",
-        "name": "uuid",
         "type": "RECORD"
       }
     ],
