@@ -484,6 +484,42 @@
             "type": "RECORD"
           },
           {
+            "description": "Count of different errors that happened when trying to read the `client_id.txt` file from disk.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "glean_health_file_read_error",
+            "type": "RECORD"
+          },
+          {
+            "description": "Count of different errors that happened when trying to write the `client_id.txt` file to disk.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "glean_health_file_write_error",
+            "type": "RECORD"
+          },
+          {
             "description": "Counts the number of ping upload failures, by type of failure.\nThis includes failures for all ping types,\nthough the counts appear in the next successfully sent `metrics` ping.\n",
             "fields": [
               {
@@ -670,6 +706,12 @@
             "description": "If there was an error loading the RKV database, record it.\n",
             "mode": "NULLABLE",
             "name": "glean_database_rkv_load_error",
+            "type": "STRING"
+          },
+          {
+            "description": "An exceptional state was detected upon trying to laod the database.\n\nValid options are:\n  - empty-db\n  - regen-db\n  - c0ffee-in-db\n  - client-id-mismatch\n",
+            "mode": "NULLABLE",
+            "name": "glean_health_exception_state",
             "type": "STRING"
           }
         ],
@@ -1024,6 +1066,19 @@
         ],
         "mode": "NULLABLE",
         "name": "timing_distribution",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "A client_id recovered from a `client_id.txt` file on disk.\nOnly expected to have a value for the exception states `empty-db`, `c0ffee-in-db` and `client-id-mismatch`.\nSee `exception_state` for different exception states when this can happen.\n",
+            "mode": "NULLABLE",
+            "name": "glean_health_recovered_client_id",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "uuid",
         "type": "RECORD"
       }
     ],

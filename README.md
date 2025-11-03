@@ -925,8 +925,6 @@ schemas
 │   └── user-characteristics
 ├── pocket
 │   └── fire-tv-events
-├── regrets-reporter
-│   └── regrets-reporter-update
 ├── regrets-reporter-ucs
 │   ├── deletion-request
 │   ├── events
@@ -976,7 +974,6 @@ schemas
 │   ├── outofdate-notifications-system-addon
 │   ├── pre-account
 │   ├── prio
-│   ├── regrets-reporter-update
 │   ├── saved-session
 │   ├── saved-session-use-counter
 │   ├── searchvol
@@ -1043,6 +1040,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-1034 directories
+1031 directories
 ```
 
