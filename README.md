@@ -797,26 +797,6 @@ schemas
 │   ├── events
 │   ├── health
 │   └── metrics
-├── org-mozilla-ios-tiktok-reporter
-│   ├── baseline
-│   ├── deletion-request
-│   ├── download-data
-│   ├── email
-│   ├── events
-│   ├── health
-│   ├── metrics
-│   ├── screen-recording
-│   └── tiktok-report
-├── org-mozilla-ios-tiktok-reporter-tiktok-reportershare
-│   ├── baseline
-│   ├── deletion-request
-│   ├── download-data
-│   ├── email
-│   ├── events
-│   ├── health
-│   ├── metrics
-│   ├── screen-recording
-│   └── tiktok-report
 ├── org-mozilla-klar
 │   ├── activation
 │   ├── baseline
@@ -862,16 +842,6 @@ schemas
 │   ├── events
 │   ├── health
 │   └── metrics
-├── org-mozilla-tiktokreporter
-│   ├── baseline
-│   ├── deletion-request
-│   ├── download-data
-│   ├── email
-│   ├── events
-│   ├── health
-│   ├── metrics
-│   ├── screen-recording
-│   └── tiktok-report
 ├── org-mozilla-tv-firefox
 │   ├── baseline
 │   ├── deletion-request
@@ -925,13 +895,6 @@ schemas
 │   └── user-characteristics
 ├── pocket
 │   └── fire-tv-events
-├── regrets-reporter-ucs
-│   ├── deletion-request
-│   ├── events
-│   ├── main-events
-│   ├── regret-details
-│   ├── video-data
-│   └── video-index
 ├── relay-backend
 │   └── events
 ├── subscription-platform-backend
@@ -1040,6 +1003,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-1031 directories
+994 directories
 ```
 
