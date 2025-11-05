@@ -365,6 +365,7 @@ schemas
 │   ├── pageload-base-domain
 │   ├── pageload-domain
 │   ├── play-store-attribution
+│   ├── rust-component-errors
 │   ├── spoc
 │   ├── startup-timeline
 │   ├── sync
@@ -413,6 +414,7 @@ schemas
 │   ├── pageload-base-domain
 │   ├── pageload-domain
 │   ├── play-store-attribution
+│   ├── rust-component-errors
 │   ├── spoc
 │   ├── startup-timeline
 │   ├── sync
@@ -461,6 +463,7 @@ schemas
 │   ├── pageload-base-domain
 │   ├── pageload-domain
 │   ├── play-store-attribution
+│   ├── rust-component-errors
 │   ├── spoc
 │   ├── startup-timeline
 │   ├── sync
@@ -509,6 +512,7 @@ schemas
 │   ├── pageload-base-domain
 │   ├── pageload-domain
 │   ├── play-store-attribution
+│   ├── rust-component-errors
 │   ├── spoc
 │   ├── startup-timeline
 │   ├── sync
@@ -557,6 +561,7 @@ schemas
 │   ├── pageload-base-domain
 │   ├── pageload-domain
 │   ├── play-store-attribution
+│   ├── rust-component-errors
 │   ├── spoc
 │   ├── startup-timeline
 │   ├── sync
@@ -1003,6 +1008,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-994 directories
+999 directories
 ```
 
