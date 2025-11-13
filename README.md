@@ -904,6 +904,11 @@ schemas
 │   └── events
 ├── subscription-platform-backend
 │   └── events
+├── subscription-platform-backend-cirrus
+│   ├── enrollment
+│   ├── enrollment-status
+│   ├── events
+│   └── startup
 ├── syncstorage
 │   └── events
 ├── telemetry
@@ -1008,6 +1013,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-999 directories
+1004 directories
 ```
 
