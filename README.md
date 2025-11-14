@@ -68,14 +68,6 @@ schemas
 │   ├── bmobugs
 │   ├── build
 │   └── hgpush
-├── experimenter-backend
-│   ├── baseline
-│   ├── data-collection-opt-out
-│   ├── deletion-request
-│   ├── events
-│   ├── health
-│   ├── metrics
-│   └── page-view
 ├── experimenter-cirrus
 │   ├── baseline
 │   ├── deletion-request
@@ -1013,6 +1005,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-1004 directories
+996 directories
 ```
 
