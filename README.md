@@ -120,6 +120,8 @@ schemas
 │   ├── pageload-base-domain
 │   ├── pageload-domain
 │   ├── pocket-button
+│   ├── post-profile-restore
+│   ├── profile-restore
 │   ├── profiles
 │   ├── prototype-no-code-events
 │   ├── pseudo-main
@@ -1009,6 +1011,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-1000 directories
+1002 directories
 ```
 
