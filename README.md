@@ -92,6 +92,7 @@ schemas
 │   ├── health
 │   └── metrics
 ├── firefox-desktop
+│   ├── addons
 │   ├── baseline
 │   ├── bounce-tracking-protection
 │   ├── broken-site-report
@@ -109,6 +110,7 @@ schemas
 │   ├── hang-report
 │   ├── health
 │   ├── heartbeat
+│   ├── local-network-access
 │   ├── messaging-system
 │   ├── metrics
 │   ├── new-metric-capture-emulation
@@ -162,6 +164,7 @@ schemas
 │   ├── metrics
 │   └── nimbus-targeting-context
 ├── firefox-desktop-background-update
+│   ├── addons
 │   ├── background-update
 │   ├── baseline
 │   ├── bounce-tracking-protection
@@ -175,6 +178,7 @@ schemas
 │   ├── gecko-trace
 │   ├── hang-report
 │   ├── health
+│   ├── local-network-access
 │   ├── metrics
 │   ├── pageload
 │   ├── pageload-base-domain
@@ -328,6 +332,7 @@ schemas
 │   └── metrics
 ├── org-mozilla-fenix
 │   ├── activation
+│   ├── addons
 │   ├── addresses-sync
 │   ├── adjust-attribution
 │   ├── baseline
@@ -354,6 +359,7 @@ schemas
 │   ├── history-sync
 │   ├── home
 │   ├── installation
+│   ├── local-network-access
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
@@ -377,6 +383,7 @@ schemas
 │   └── user-characteristics
 ├── org-mozilla-fenix-nightly
 │   ├── activation
+│   ├── addons
 │   ├── addresses-sync
 │   ├── adjust-attribution
 │   ├── baseline
@@ -403,6 +410,7 @@ schemas
 │   ├── history-sync
 │   ├── home
 │   ├── installation
+│   ├── local-network-access
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
@@ -426,6 +434,7 @@ schemas
 │   └── user-characteristics
 ├── org-mozilla-fennec-aurora
 │   ├── activation
+│   ├── addons
 │   ├── addresses-sync
 │   ├── adjust-attribution
 │   ├── baseline
@@ -452,6 +461,7 @@ schemas
 │   ├── history-sync
 │   ├── home
 │   ├── installation
+│   ├── local-network-access
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
@@ -475,6 +485,7 @@ schemas
 │   └── user-characteristics
 ├── org-mozilla-firefox
 │   ├── activation
+│   ├── addons
 │   ├── addresses-sync
 │   ├── adjust-attribution
 │   ├── baseline
@@ -501,6 +512,7 @@ schemas
 │   ├── history-sync
 │   ├── home
 │   ├── installation
+│   ├── local-network-access
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
@@ -524,6 +536,7 @@ schemas
 │   └── user-characteristics
 ├── org-mozilla-firefox-beta
 │   ├── activation
+│   ├── addons
 │   ├── addresses-sync
 │   ├── adjust-attribution
 │   ├── baseline
@@ -550,6 +563,7 @@ schemas
 │   ├── history-sync
 │   ├── home
 │   ├── installation
+│   ├── local-network-access
 │   ├── logins-sync
 │   ├── metrics
 │   ├── migration
@@ -590,6 +604,7 @@ schemas
 │   └── metrics
 ├── org-mozilla-focus
 │   ├── activation
+│   ├── addons
 │   ├── baseline
 │   ├── bounce-tracking-protection
 │   ├── broken-site-report
@@ -603,6 +618,7 @@ schemas
 │   ├── gecko-trace
 │   ├── hang-report
 │   ├── health
+│   ├── local-network-access
 │   ├── metrics
 │   ├── pageload
 │   ├── pageload-base-domain
@@ -615,6 +631,7 @@ schemas
 │   └── user-characteristics
 ├── org-mozilla-focus-beta
 │   ├── activation
+│   ├── addons
 │   ├── baseline
 │   ├── bounce-tracking-protection
 │   ├── broken-site-report
@@ -628,6 +645,7 @@ schemas
 │   ├── gecko-trace
 │   ├── hang-report
 │   ├── health
+│   ├── local-network-access
 │   ├── metrics
 │   ├── pageload
 │   ├── pageload-base-domain
@@ -640,6 +658,7 @@ schemas
 │   └── user-characteristics
 ├── org-mozilla-focus-nightly
 │   ├── activation
+│   ├── addons
 │   ├── baseline
 │   ├── bounce-tracking-protection
 │   ├── broken-site-report
@@ -653,6 +672,7 @@ schemas
 │   ├── gecko-trace
 │   ├── hang-report
 │   ├── health
+│   ├── local-network-access
 │   ├── metrics
 │   ├── pageload
 │   ├── pageload-base-domain
@@ -802,6 +822,7 @@ schemas
 │   └── metrics
 ├── org-mozilla-klar
 │   ├── activation
+│   ├── addons
 │   ├── baseline
 │   ├── bounce-tracking-protection
 │   ├── broken-site-report
@@ -815,6 +836,7 @@ schemas
 │   ├── gecko-trace
 │   ├── hang-report
 │   ├── health
+│   ├── local-network-access
 │   ├── metrics
 │   ├── pageload
 │   ├── pageload-base-domain
@@ -866,6 +888,7 @@ schemas
 │   ├── sync
 │   └── tabs-sync
 ├── pine
+│   ├── addons
 │   ├── baseline
 │   ├── bounce-tracking-protection
 │   ├── broken-site-report
@@ -877,6 +900,7 @@ schemas
 │   ├── gecko-trace
 │   ├── hang-report
 │   ├── health
+│   ├── local-network-access
 │   ├── messaging-system
 │   ├── metrics
 │   ├── new-metric-capture-emulation
@@ -978,6 +1002,7 @@ schemas
 │   ├── x-contextual-feature-recommendation
 │   └── xfocsp-error-report
 ├── thunderbird-desktop
+│   ├── addons
 │   ├── baseline
 │   ├── bounce-tracking-protection
 │   ├── broken-site-report
@@ -989,6 +1014,7 @@ schemas
 │   ├── gecko-trace
 │   ├── hang-report
 │   ├── health
+│   ├── local-network-access
 │   ├── metrics
 │   ├── pageload
 │   ├── pageload-base-domain
@@ -1011,6 +1037,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-1002 directories
+1028 directories
 ```
 
