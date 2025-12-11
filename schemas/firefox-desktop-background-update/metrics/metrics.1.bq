@@ -13585,6 +13585,66 @@
             "type": "RECORD"
           },
           {
+            "description": "Fingerprinting detection hits by fingerprinter alias (key) and the source(s) used (category). An alias using multiple sources will increment each source individually once, and increment the combination once as well.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "contentblocking_canvas_fingerprinting_type_alias_by_source_per_tab2",
+            "type": "RECORD"
+          },
+          {
+            "description": "Fingerprinting detection hits by known fingerprinting string (key) and source (category).",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "contentblocking_canvas_fingerprinting_type_text_by_source_per_tab2",
+            "type": "RECORD"
+          },
+          {
             "description": "The submission status when main/plugin/content crashes are submitted. 1 is success, 0 is failure. Keyed on the CrashManager Crash.type.\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram PROCESS_CRASH_SUBMIT_SUCCESS.\n",
             "fields": [
               {
@@ -15431,6 +15491,24 @@
             ],
             "mode": "REPEATED",
             "name": "codec_stats_video_preferred_codec",
+            "type": "RECORD"
+          },
+          {
+            "description": "Whether any canvas fingerprinting attempt was detected, as identified by either a known fingerprinting text or a known behavior (alias)\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "contentblocking_canvas_fingerprinting_per_tab2",
             "type": "RECORD"
           },
           {
