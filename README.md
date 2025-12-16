@@ -35,6 +35,7 @@ schemas
 ├── ads-backend
 │   ├── events
 │   ├── interaction
+│   ├── provider-request-stats
 │   └── request-stats
 ├── bedrock
 │   ├── deletion-request
@@ -1037,6 +1038,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-1028 directories
+1029 directories
 ```
 
