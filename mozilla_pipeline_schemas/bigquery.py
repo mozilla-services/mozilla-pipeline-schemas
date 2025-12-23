@@ -91,7 +91,8 @@ def managed_git_state():
     """
     original_ref = run("git rev-parse --abbrev-ref HEAD")
     before_stash_size = git_stash_size()
-    run("git stash")
+    # Use check=False because git stash exits with status 1 when there's nothing to stash
+    run("git stash", check=False)
     should_apply_stash = before_stash_size != git_stash_size()
     if should_apply_stash:
         print(
