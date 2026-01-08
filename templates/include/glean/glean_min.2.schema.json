@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "title": "Ping transport",
+  "description": "Temporary Glean min ping schema for https://mozilla-hub.atlassian.net/browse/DENG-8494\n",
+  "$id": "moz://mozilla.org/schemas/glean-min/ping/2",
+  "type": "object",
+  "mozPipelineMetadata": {
+    "json_object_path_regex": "metrics\\.object\\..*"
+  },
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "enum": [
+        "moz://mozilla.org/schemas/glean/ping/1"
+      ]
+    },
+    "metrics": @GLEAN_METRICS_2_JSON@,
+    "events": {
+      "type": "array",
+      "items": @GLEAN_EVENT_1_JSON@
+    }
+  },
+  "additionalProperties": false
+}
