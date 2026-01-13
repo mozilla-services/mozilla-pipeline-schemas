@@ -970,8 +970,6 @@ schemas
 │   ├── outofdate-notifications-system-addon
 │   ├── pre-account
 │   ├── prio
-│   ├── saved-session
-│   ├── saved-session-use-counter
 │   ├── searchvol
 │   ├── searchvolextra
 │   ├── shield-icq-v1
@@ -1038,6 +1036,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-1029 directories
+1027 directories
 ```
 
