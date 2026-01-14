@@ -15089,6 +15089,36 @@
             "mode": "REPEATED",
             "name": "urlclassifier_complete_timeout",
             "type": "RECORD"
+          },
+          {
+            "description": "The number of times wgpu-hal tried to expose an adapter. Note that a call to `requestAdapter` might result in multiple calls to expose adapter.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "webgpu_expose_adapter",
+            "type": "RECORD"
           }
         ],
         "mode": "NULLABLE",
@@ -31034,7 +31064,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Records the latencies (ms) of search suggestions fetches per search engine. Keys in this histogram are the search engine identifier for configuration provided search engines and 'other' for search engines installed via other methods.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram SEARCH_SUGGESTIONS_LATENCY_MS.\nThis metric was renamed in Gecko 144 from `search.suggestions_latency` and changed to report the search engine identifier rather than the telemetry identifier.\n",
+            "description": "Records the latencies (ms) of search suggestions fetches per search engine. Keys in this histogram are search engine identifiers for built-in search engines and 'other' for non-built-in search engines.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram SEARCH_SUGGESTIONS_LATENCY_MS.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
