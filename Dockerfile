@@ -57,7 +57,7 @@ RUN mkdir -p /usr/share/man/man1 && \
 
 # Install jsonschema-transpiler
 ENV PATH=$PATH:/root/.cargo/bin
-RUN cargo install jsonschema-transpiler --version 1.9.0
+RUN cargo install jsonschema-transpiler --version 1.9.0 --locked
 
 # Configure git for testing
 RUN git config --global user.email "mozilla-pipeline-schemas@mozilla.com"
