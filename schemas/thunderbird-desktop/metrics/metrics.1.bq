@@ -16245,6 +16245,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Outcome of 0-RTT usage for TRR HTTP/3 connections: - \"not_used\": 0RTT was not used - \"succeeded\": 0RTT was used and succeeded - \"rejected\": 0RTT was used but rejected by the server - \"conn_error\": 0RTT was used but connection error occurred - \"conn_closed_by_necko\": 0RTT was used but connection was closed by necko\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dns_trr_http3_0rtt_state",
+            "type": "RECORD"
+          },
+          {
             "description": "Webkit/Blink filesystem used\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram BLINK_FILESYSTEM_USED.\n",
             "fields": [
               {
@@ -24401,6 +24419,84 @@
             ],
             "mode": "REPEATED",
             "name": "devtools_warm_toolbox_open_delay",
+            "type": "RECORD"
+          },
+          {
+            "description": "The time a TRR HTTP/3 connection was in the 0-RTT state before transitioning to a final outcome.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "bucket_count",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "histogram_type",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "overflow",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "REPEATED",
+                    "name": "range",
+                    "type": "FLOAT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "time_unit",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "underflow",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dns_trr_http3_0rtt_state_duration",
             "type": "RECORD"
           },
           {

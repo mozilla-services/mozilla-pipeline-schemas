@@ -140,6 +140,7 @@ schemas
 │   ├── traces
 │   ├── unexpected-script-load
 │   ├── update
+│   ├── url-classifier-harmful-addon
 │   ├── urlbar-keyword-exposure
 │   ├── urlbar-potential-exposure
 │   ├── usage-deletion-request
@@ -187,6 +188,7 @@ schemas
 │   ├── temp-fog-initial-state
 │   ├── traces
 │   ├── update
+│   ├── url-classifier-harmful-addon
 │   ├── use-counters
 │   └── user-characteristics
 ├── firefox-installer
@@ -378,6 +380,7 @@ schemas
 │   ├── temp-fog-initial-state
 │   ├── topsites-impression
 │   ├── traces
+│   ├── url-classifier-harmful-addon
 │   ├── usage-deletion-request
 │   ├── usage-reporting
 │   ├── use-counters
@@ -429,6 +432,7 @@ schemas
 │   ├── temp-fog-initial-state
 │   ├── topsites-impression
 │   ├── traces
+│   ├── url-classifier-harmful-addon
 │   ├── usage-deletion-request
 │   ├── usage-reporting
 │   ├── use-counters
@@ -480,6 +484,7 @@ schemas
 │   ├── temp-fog-initial-state
 │   ├── topsites-impression
 │   ├── traces
+│   ├── url-classifier-harmful-addon
 │   ├── usage-deletion-request
 │   ├── usage-reporting
 │   ├── use-counters
@@ -531,6 +536,7 @@ schemas
 │   ├── temp-fog-initial-state
 │   ├── topsites-impression
 │   ├── traces
+│   ├── url-classifier-harmful-addon
 │   ├── usage-deletion-request
 │   ├── usage-reporting
 │   ├── use-counters
@@ -582,6 +588,7 @@ schemas
 │   ├── temp-fog-initial-state
 │   ├── topsites-impression
 │   ├── traces
+│   ├── url-classifier-harmful-addon
 │   ├── usage-deletion-request
 │   ├── usage-reporting
 │   ├── use-counters
@@ -626,6 +633,7 @@ schemas
 │   ├── pageload-domain
 │   ├── temp-fog-initial-state
 │   ├── traces
+│   ├── url-classifier-harmful-addon
 │   ├── usage-deletion-request
 │   ├── usage-reporting
 │   ├── use-counters
@@ -653,6 +661,7 @@ schemas
 │   ├── pageload-domain
 │   ├── temp-fog-initial-state
 │   ├── traces
+│   ├── url-classifier-harmful-addon
 │   ├── usage-deletion-request
 │   ├── usage-reporting
 │   ├── use-counters
@@ -680,6 +689,7 @@ schemas
 │   ├── pageload-domain
 │   ├── temp-fog-initial-state
 │   ├── traces
+│   ├── url-classifier-harmful-addon
 │   ├── usage-deletion-request
 │   ├── usage-reporting
 │   ├── use-counters
@@ -844,6 +854,7 @@ schemas
 │   ├── pageload-domain
 │   ├── temp-fog-initial-state
 │   ├── traces
+│   ├── url-classifier-harmful-addon
 │   ├── usage-deletion-request
 │   ├── usage-reporting
 │   ├── use-counters
@@ -917,6 +928,7 @@ schemas
 │   ├── third-party-modules
 │   ├── top-sites
 │   ├── traces
+│   ├── url-classifier-harmful-addon
 │   ├── usage-deletion-request
 │   ├── usage-reporting
 │   ├── use-counters
@@ -1020,6 +1032,7 @@ schemas
 │   ├── pageload-domain
 │   ├── temp-fog-initial-state
 │   ├── traces
+│   ├── url-classifier-harmful-addon
 │   ├── use-counters
 │   └── user-characteristics
 ├── treeherder
@@ -1036,6 +1049,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-1027 directories
+1040 directories
 ```
 
