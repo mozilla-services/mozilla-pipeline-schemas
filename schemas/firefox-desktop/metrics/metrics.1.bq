@@ -447,6 +447,12 @@
             "type": "BOOL"
           },
           {
+            "description": "Status of the global AI enhancements setting.\nWhen true, enhancements are blocked.\n",
+            "mode": "NULLABLE",
+            "name": "browser_global_ai_control_is_blocking",
+            "type": "BOOL"
+          },
+          {
             "description": "True if the about:home startup cache was written via the AsyncShutdown blocker. This metric was generated to correspond to the Legacy Telemetry scalar browser.startup.abouthome_cache_shutdownwrite.\n",
             "mode": "NULLABLE",
             "name": "browser_startup_abouthome_cache_shutdownwrite",
@@ -40333,6 +40339,24 @@
             ],
             "mode": "NULLABLE",
             "name": "verification_used_cert_from_tls_handshake",
+            "type": "RECORD"
+          },
+          {
+            "description": "The rate of notification show attempts that are blocked because the origin is on the Safe Browsing blocklist (phishing, malware, etc.). The numerator is the number of blocked attempts, and the denominator is the total number of show attempts that passed the initial permission check.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "web_notification_show_safe_browsing_block",
             "type": "RECORD"
           }
         ],

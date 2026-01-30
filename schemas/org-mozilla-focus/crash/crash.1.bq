@@ -363,19 +363,43 @@
       {
         "fields": [
           {
-            "description": "Indicates that the crash occurred while the garbage collector was running.\n",
+            "description": "Set to 1 when DOM fission is enabled, and subframes are potentially loaded in a separate process.",
+            "mode": "NULLABLE",
+            "name": "crash_dom_fission_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "If true then the JavaScript garbage collector was running when the crash occurred.",
             "mode": "NULLABLE",
             "name": "crash_is_garbage_collecting",
             "type": "BOOL"
           },
           {
-            "description": "If true, the crash occurred during process startup.\n",
+            "description": "If set to 1 then this crash occurred during startup.",
             "mode": "NULLABLE",
             "name": "crash_startup",
             "type": "BOOL"
           },
           {
-            "description": "Whether the app was invoked in headless mode via `--headless` or `--backgroundtask`.\n",
+            "description": "Set to 1 if this crash was intercepted via the Windows Error Reporting runtime exception module.",
+            "mode": "NULLABLE",
+            "name": "crash_windows_error_reporting",
+            "type": "BOOL"
+          },
+          {
+            "description": "Set to 1 if the DLL blocklist could not be initialized.",
+            "mode": "NULLABLE",
+            "name": "dll_blocklist_init_failed",
+            "type": "BOOL"
+          },
+          {
+            "description": "Set to 1 if user32.dll was loaded before we could install the DLL blocklist.",
+            "mode": "NULLABLE",
+            "name": "dll_blocklist_user32_loaded_before",
+            "type": "BOOL"
+          },
+          {
+            "description": "True if the app was invoked in headless mode via `--headless ...` or `--backgroundtask ...`, false otherwise.",
             "mode": "NULLABLE",
             "name": "environment_headless_mode",
             "type": "BOOL"
@@ -388,7 +412,7 @@
       {
         "fields": [
           {
-            "description": "The time at which the crash occurred.\n",
+            "description": "Crash time in seconds since the Epoch.",
             "mode": "NULLABLE",
             "name": "crash_time",
             "type": "STRING"
@@ -480,7 +504,7 @@
       {
         "fields": [
           {
-            "description": "Present when a shutdown blocker failed to respond within a reasonable amount of time.\n",
+            "description": "This annotation is present if a shutdown blocker was not released in time and the browser was crashed instead of waiting for shutdown to finish. The condition that caused the hang is contained in the annotation.",
             "mode": "NULLABLE",
             "name": "crash_async_shutdown_timeout",
             "type": "JSON"
@@ -492,19 +516,19 @@
             "type": "JSON"
           },
           {
-            "description": "Error and stack trace information for a java exception.\n",
+            "description": "JSON structured Java stack trace, only present on Firefox for Android if we encounter an uncaught Java exception.",
             "mode": "NULLABLE",
             "name": "crash_java_exception",
             "type": "JSON"
           },
           {
-            "description": "Contains a list of shutdown steps and status of the quota manager clients.\n",
+            "description": "This annotation is present if the quota manager shutdown (resp. the shutdown of the quota manager clients) was not finished in time and the browser was crashed instead of waiting for the shutdown to finish. The status of objects which were blocking completion of the shutdown when reaching the timeout is contained in the annotation.\nIn the case of IndexedDB, objects are divided into three groups: FactoryOperations, LiveDatabases and DatabaseMaintenances.\nIn the case of LocalStorage, objects are divided into three groups: PrepareDatastoreOperations, Datastores and LiveDatabases.\nIn the case of Cache API, objects are in one group only: Managers.\nEach group is reported separately and contains the number of objects in the group and the status of individual objects in the group (duplicate entries are removed): \"GroupName: N (objectStatus1, objectStatus2, ...)\" where N is the number of objects in the group.\nThe status of individual objects is constructed by taking selected object properties. Properties which contain",
             "mode": "NULLABLE",
             "name": "crash_quota_manager_shutdown_timeout",
             "type": "JSON"
           },
           {
-            "description": "Stack trace and module information of the crashing process.\n",
+            "description": "Stack traces extracted from the crash minidump, if available. These are sent in pings, however they are extracted and transformed into a different format. The field in the extra file is meant only for client use.",
             "mode": "NULLABLE",
             "name": "crash_stack_traces",
             "type": "JSON"
@@ -517,85 +541,85 @@
       {
         "fields": [
           {
-            "description": "Indicates the nesting level of the event loop.\n",
+            "description": "Present only if higher than 0, indicates that we're running in a nested event loop and indicates the nesting level.",
             "mode": "NULLABLE",
             "name": "crash_event_loop_nesting_level",
             "type": "INT64"
           },
           {
-            "description": "The number of times that the GPU process was launched.\n",
+            "description": "Number of times the GPU process was launched.",
             "mode": "NULLABLE",
             "name": "crash_gpu_process_launch",
             "type": "INT64"
           },
           {
-            "description": "Available commit space.\n",
+            "description": "Available commit-space in bytes. - Under Windows, computed from the PERFORMANCE_INFORMATION structure by substracting\n  the CommitTotal field from the CommitLimit field.\n- Under Linux, computed from /proc/meminfo's CommitLimit - Committed_AS. Note that\n  the kernel is not guaranteed to enforce that CommittedLimit >= Committed_AS. If\n  Committed_AS > CommittedLimit, this value is set to 0.\n- Not available on other platforms.",
             "mode": "NULLABLE",
             "name": "memory_available_commit",
             "type": "INT64"
           },
           {
-            "description": "Available physical memory.\n",
+            "description": "Amount of free physical memory in bytes. - Under Windows, populated with the contents of the MEMORYSTATUSEX's structure ullAvailPhys field. - Under macOS, populated with vm_statistics64_data_t::free_count. - Under Linux, populated with /proc/meminfo's MemFree. - Not available on other platforms.",
             "mode": "NULLABLE",
             "name": "memory_available_physical",
             "type": "INT64"
           },
           {
-            "description": "Available swap memory.\n",
+            "description": "Amount of free swap space in bytes. - Under macOS, populated with the contents of\n  sysctl \"vm.swapusage\" :: xsu_avail.\n- Under Linux, populated with /proc/meminfo's SwapFree. - Not available on other platforms.",
             "mode": "NULLABLE",
             "name": "memory_available_swap",
             "type": "INT64"
           },
           {
-            "description": "Available virtual memory.\n",
+            "description": "Amount of free virtual memory in bytes - Under Windows, populated with the contents of the MEMORYSTATUSEX's structure ullAvailVirtual field. - Under Linux, populated with /proc/meminfo's MemAvailable. - Not available on other platforms. - For macOS, see AvailableSwapMemory, AvailablePhysicalMemory and PurgeablePhysicalMemory.",
             "mode": "NULLABLE",
             "name": "memory_available_virtual",
             "type": "INT64"
           },
           {
-            "description": "The number of times the available memory tracker has detected that free physical memory is running low.\n",
+            "description": "Number of times the available memory tracker has detected that free physical memory is running low. This is a Windows-specific annotation.",
             "mode": "NULLABLE",
             "name": "memory_low_physical",
             "type": "INT64"
           },
           {
-            "description": "The size of the allocation that caused on OOM crash.\n",
+            "description": "Size of the allocation that caused an out-of-memory condition.",
             "mode": "NULLABLE",
             "name": "memory_oom_allocation_size",
             "type": "INT64"
           },
           {
-            "description": "The amount of memory that can be deallocated by the OS in case of memory pressure.\n",
+            "description": "macOS only. Amount of physical memory currently allocated but which may be deallocated by the system in case of memory pressure. Populated from vm_statistics64_data_t::purgeable_count * vm_page_size.",
             "mode": "NULLABLE",
             "name": "memory_purgeable_physical",
             "type": "INT64"
           },
           {
-            "description": "The percentage of memory in use.\n",
+            "description": "Windows-only, percentage of physical memory in use. This annotation is populated with the contents of the MEMORYSTATUSEX's structure dwMemoryLoad field.",
             "mode": "NULLABLE",
             "name": "memory_system_use_percentage",
             "type": "INT64"
           },
           {
-            "description": "The amount of memory used in textures.\n",
+            "description": "Amount of memory in bytes consumed by textures.",
             "mode": "NULLABLE",
             "name": "memory_texture",
             "type": "INT64"
           },
           {
-            "description": "The total page file size.\n",
+            "description": "Maximum amount of memory that can be committed without extending the swap/page file. - Under Windows, populated with the contents of the PERFORMANCE_INFORMATION's\n  structure CommitLimit field.\n- Under Linux, populated with /proc/meminfo MemTotal + SwapTotal. The swap file\n  typically cannot be extended, so that's a hard limit.\n- Not available on other systems.",
             "mode": "NULLABLE",
             "name": "memory_total_page_file",
             "type": "INT64"
           },
           {
-            "description": "The total physical memory.\n",
+            "description": "Amount of physical memory in bytes. - Under Windows, populated with the contents of the MEMORYSTATUSEX's structure ullTotalPhys field. - Under macOS, populated with sysctl \"hw.memsize\". - Under Linux, populated with /proc/meminfo's \"MemTotal\". - Not available on other systems.",
             "mode": "NULLABLE",
             "name": "memory_total_physical",
             "type": "INT64"
           },
           {
-            "description": "The total virtual memory.\n",
+            "description": "Size of the virtual address space. - Under Windows, populated with the contents of the MEMORYSTATUSEX's structure\n  ullTotalVirtual field.\n- Not available on other platforms.",
             "mode": "NULLABLE",
             "name": "memory_total_virtual",
             "type": "INT64"
@@ -608,27 +632,33 @@
       {
         "fields": [
           {
-            "description": "The build id of the application. This may differ from `client_info` because a main process crash may be reported later by a different (e.g. updated) client.\n",
+            "description": "Product application's build ID.",
             "mode": "NULLABLE",
             "name": "crash_app_build",
             "type": "STRING"
           },
           {
-            "description": "The release channel of the application. This may differ from `client_info` because a main process crash may be reported later by a different (e.g. updated) client.\n",
+            "description": "Application release channel (e.g. default, beta, ...)",
             "mode": "NULLABLE",
             "name": "crash_app_channel",
             "type": "STRING"
           },
           {
-            "description": "The version of the application. This may differ from `client_info` because a main process crash may be reported later by a different (e.g. updated) client.\n",
+            "description": "Product version.",
             "mode": "NULLABLE",
             "name": "crash_app_display_version",
             "type": "STRING"
           },
           {
-            "description": "The name of the background task if launched as one.\n",
+            "description": "If the app was invoked in background task mode via `--backgroundtask <task name>`, the string \"task name\".",
             "mode": "NULLABLE",
             "name": "crash_background_task_name",
+            "type": "STRING"
+          },
+          {
+            "description": "Application build ID, the format is YYYYMMDDHHMMSS.",
+            "mode": "NULLABLE",
+            "name": "crash_build_id",
             "type": "STRING"
           },
           {
@@ -638,19 +668,37 @@
             "type": "STRING"
           },
           {
-            "description": "The font family name that is being loaded when the crash occurred.\n",
+            "description": "The type of crash that occurred (Android-only).",
+            "mode": "NULLABLE",
+            "name": "crash_crash_type",
+            "type": "STRING"
+          },
+          {
+            "description": "Set before attempting to load a font to help diagnose crashes during loading.",
             "mode": "NULLABLE",
             "name": "crash_font_name",
             "type": "STRING"
           },
           {
-            "description": "The error reason for an ipc-based content crash.\n",
+            "description": "Set if the crash was the result of a hang, with a value which describes the type of hang (e.g. \"ui\" or \"shutdown\").",
+            "mode": "NULLABLE",
+            "name": "crash_hang",
+            "type": "STRING"
+          },
+          {
+            "description": "Set before a content process crashes because of an IPC channel error. Holds a description of the error.",
             "mode": "NULLABLE",
             "name": "crash_ipc_channel_error",
             "type": "STRING"
           },
           {
-            "description": "Name of the currently executing `nsIRunnable` on the main thread. Nightly-only.\n",
+            "description": "Memory PSI (Pressure Stall Information) values from /proc/pressure/memory as comma-separated list: some_avg10,some_avg60,some_avg300,some_total,full_avg10,full_avg60,full_avg300,full_total",
+            "mode": "NULLABLE",
+            "name": "crash_linux_memory_psi",
+            "type": "STRING"
+          },
+          {
+            "description": "Name of the currently executing nsIRunnable on the main thread.",
             "mode": "NULLABLE",
             "name": "crash_main_thread_runnable_name",
             "type": "STRING"
@@ -662,33 +710,63 @@
             "type": "STRING"
           },
           {
-            "description": "Contains the string passed to `MOZ_CRASH()`.\n",
+            "description": "The sha256 hash of the minidump file, if available.",
+            "mode": "NULLABLE",
+            "name": "crash_minidump_sha_256_hash",
+            "type": "STRING"
+          },
+          {
+            "description": "Plaintext description of why Firefox crashed, this is usually set by assertions and the like.",
             "mode": "NULLABLE",
             "name": "crash_moz_crash_reason",
             "type": "STRING"
           },
           {
-            "description": "The type of process that experienced a crash. See the full list of options [here](https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/data/crash-ping.html#process-types).\n",
+            "description": "Type of the process that crashed, the possible values are defined in GeckoProcessTypes.h.",
             "mode": "NULLABLE",
             "name": "crash_process_type",
             "type": "STRING"
           },
           {
-            "description": "The shutdown phase of the profiler.\n",
+            "description": "Application UUID (e.g. ec8030f7-c20a-464f-9b0e-13a3a9e97384).",
+            "mode": "NULLABLE",
+            "name": "crash_product_id",
+            "type": "STRING"
+          },
+          {
+            "description": "Application name (e.g. Firefox).",
+            "mode": "NULLABLE",
+            "name": "crash_product_name",
+            "type": "STRING"
+          },
+          {
+            "description": "When a child process shuts down, this describes if the profiler is running, and the point the profiler shutdown sequence has reached.",
             "mode": "NULLABLE",
             "name": "crash_profiler_child_shutdown_phase",
             "type": "STRING"
           },
           {
-            "description": "Type of the child process, can be set to \"web\", \"file\" or \"extension\" but could also be unavailable.\n",
+            "description": "Type of the content process, can be set to \"web\", \"file\" or \"extension\".",
             "mode": "NULLABLE",
             "name": "crash_remote_type",
             "type": "STRING"
           },
           {
-            "description": "The shutdown phase in which the crash occurred.\n",
+            "description": "Shutdown step at which the browser crashed, can be set to \"quit-application\", \"profile-change-teardown\", \"profile-before-change\", \"xpcom-will-shutdown\" or \"xpcom-shutdown\".",
             "mode": "NULLABLE",
             "name": "crash_shutdown_progress",
+            "type": "STRING"
+          },
+          {
+            "description": "One out of \"Unknown\", \"AppClose\", \"AppRestart\", \"OSForceClose\", \"OSSessionEnd\" or \"OSShutdown\".",
+            "mode": "NULLABLE",
+            "name": "crash_shutdown_reason",
+            "type": "STRING"
+          },
+          {
+            "description": "The HRESULT returned from a Win32 system call leading to termination of the file-dialog utility process. MozCrashReason is expected to provide context for the value.",
+            "mode": "NULLABLE",
+            "name": "crash_windows_file_dialog_error_code",
             "type": "STRING"
           },
           {
@@ -698,15 +776,21 @@
             "type": "STRING"
           },
           {
-            "description": "A large allocation couldn't be satisfied: What was its state when the crash happened.\n",
+            "description": "A large allocation couldn't be satisfied, check the JSOutOfMemory description for the possible values of this annotation.",
             "mode": "NULLABLE",
             "name": "memory_js_large_allocation_failure",
             "type": "STRING"
           },
           {
-            "description": "A small allocation couldn't be satisfied: What was its state when the crash happened.\n",
+            "description": "A small allocation couldn't be satisfied, the annotation may contain the \"Reporting\", \"Reported\" or \"Recovered\" value. The first one means that we crashed while responding to the OOM condition (possibly while running a memory-pressure observers), the second that we crashed after having tried to free some memory, and the last that the GC had managed to free enough memory to satisfy the allocation.",
             "mode": "NULLABLE",
             "name": "memory_js_out_of_memory",
+            "type": "STRING"
+          },
+          {
+            "description": "If running in a Windows package context, the package family name, per https://docs.microsoft.com/en-us/windows/win32/api/appmodel/nf-appmodel-getcurrentpackagefamilyname.\nThe package family name is only included when it is likely to have been produced by Mozilla: it starts \"Mozilla.\" or \"MozillaCorporation.\".",
+            "mode": "NULLABLE",
+            "name": "windows_package_family_name",
             "type": "STRING"
           }
         ],
@@ -718,7 +802,22 @@
         "fields": [
           {
             "mode": "REPEATED",
+            "name": "crash_utility_actors_name",
+            "type": "STRING"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "dll_blocklist_list",
+            "type": "STRING"
+          },
+          {
+            "mode": "REPEATED",
             "name": "environment_experimental_features",
+            "type": "STRING"
+          },
+          {
+            "mode": "REPEATED",
+            "name": "environment_nimbus_enrollments",
             "type": "STRING"
           },
           {
@@ -733,6 +832,42 @@
       },
       {
         "fields": [
+          {
+            "description": "How long the user had been inactive in seconds if the user was inactive at crash.  The value is not set if the user state was active.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "crash_last_interaction_duration",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time in seconds since the last crash occurred.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "crash_time_since_last_crash",
+            "type": "RECORD"
+          },
           {
             "description": "The application uptime. This is equivalent to the legacy crash ping's `UptimeTS` field.\n",
             "fields": [
@@ -752,7 +887,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The start time of the application.\n",
+            "description": "Uptime in seconds. This annotation uses a string instead of an integer because it has a fractional component.",
             "fields": [
               {
                 "mode": "NULLABLE",

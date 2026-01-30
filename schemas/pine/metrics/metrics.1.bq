@@ -417,6 +417,12 @@
             "type": "BOOL"
           },
           {
+            "description": "Status of the global AI enhancements setting.\nWhen true, enhancements are blocked.\n",
+            "mode": "NULLABLE",
+            "name": "browser_global_ai_control_is_blocking",
+            "type": "BOOL"
+          },
+          {
             "description": "True if the about:home startup cache was written via the AsyncShutdown blocker. This metric was generated to correspond to the Legacy Telemetry scalar browser.startup.abouthome_cache_shutdownwrite.\n",
             "mode": "NULLABLE",
             "name": "browser_startup_abouthome_cache_shutdownwrite",
@@ -31340,7 +31346,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Records the latencies (ms) of search suggestions fetches per search engine. Keys in this histogram are search engine identifiers for built-in search engines and 'other' for non-built-in search engines.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram SEARCH_SUGGESTIONS_LATENCY_MS.\n",
+            "description": "Records the latencies (ms) of search suggestions fetches per search engine. Keys in this histogram are the search engine identifier for configuration provided search engines and 'other' for search engines installed via other methods.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram SEARCH_SUGGESTIONS_LATENCY_MS.\nThis metric was renamed in Gecko 144 from `search.suggestions_latency` and changed to report the search engine identifier rather than the telemetry identifier.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -35571,6 +35577,24 @@
             ],
             "mode": "NULLABLE",
             "name": "verification_used_cert_from_tls_handshake",
+            "type": "RECORD"
+          },
+          {
+            "description": "The rate of notification show attempts that are blocked because the origin is on the Safe Browsing blocklist (phishing, malware, etc.). The numerator is the number of blocked attempts, and the denominator is the total number of show attempts that passed the initial permission check.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "web_notification_show_safe_browsing_block",
             "type": "RECORD"
           }
         ],
