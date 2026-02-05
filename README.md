@@ -114,6 +114,7 @@ schemas
 │   ├── local-network-access
 │   ├── messaging-system
 │   ├── metrics
+│   ├── microsurvey
 │   ├── new-metric-capture-emulation
 │   ├── newtab
 │   ├── newtab-content
@@ -1049,6 +1050,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-1040 directories
+1041 directories
 ```
 
