@@ -1258,6 +1258,12 @@
             "type": "INT64"
           },
           {
+            "description": "How many self-hosted cache accesses are performed.\n",
+            "mode": "NULLABLE",
+            "name": "javascript_self_hosted_cache_total",
+            "type": "INT64"
+          },
+          {
             "description": "Increments whenever a request cancellation message is successfully received. This includes cancellations for requests related to either databases or observers.\n",
             "mode": "NULLABLE",
             "name": "localstorage_request_recv_cancel_counter",
@@ -1549,6 +1555,12 @@
             "description": "The count of translation requests.\n",
             "mode": "NULLABLE",
             "name": "translations_requests_count",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of downloads blocked by the WAF.\n",
+            "mode": "NULLABLE",
+            "name": "update_blocked",
             "type": "INT64"
           },
           {
@@ -31453,6 +31465,24 @@
             ],
             "mode": "NULLABLE",
             "name": "httpsfirst_downgraded_on_timer_schemeless",
+            "type": "RECORD"
+          },
+          {
+            "description": "The proportion of self-hosted cache accesses that found an existing entry.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "javascript_self_hosted_cache_hits",
             "type": "RECORD"
           },
           {
