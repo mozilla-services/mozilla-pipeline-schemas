@@ -102,3 +102,5 @@
   `labeled_number`, `labeled_string_list`, `enumeration`, `labeled_enumeration`,
   `labeled_timing_distribution`, `labeled_datetime`, `use_counter`,
   `labeled_use_counter`, `usage`, `labeled_usage`, and `labeled_uuid`.
+
+- The `ping_info` section now includes a `server_knobs_config` field which contains the complete Server Knobs configuration applied via `applyServerKnobsConfig`. This includes the `metrics_enabled`, `pings_enabled`, and `event_threshold` settings.
