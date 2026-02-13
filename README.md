@@ -49,8 +49,6 @@ brew install python
 brew install --cask docker
 ```
 
-On Windows, [Microsoft Visual C++ 2013 Redistributable](https://microsoft.com/download/details.aspx?id=40784) is required.
-
 ### CMake Build Instructions
 
 ```bash
