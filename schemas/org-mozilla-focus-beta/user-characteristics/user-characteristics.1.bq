@@ -1965,6 +1965,54 @@
             "type": "STRING"
           },
           {
+            "description": "SHA256 of allowlisted fonts used to render \"A\" with variant F font list\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_fonts_variant_f_allowlisted",
+            "type": "STRING"
+          },
+          {
+            "description": "SHA256 of non-allowlisted fonts used to render \"A\" with variant F font list\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_fonts_variant_f_nonallowlisted",
+            "type": "STRING"
+          },
+          {
+            "description": "SHA256 of allowlisted fonts used to render emoji (U+1F47E) with variant F font list\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_fonts_variant_g_allowlisted",
+            "type": "STRING"
+          },
+          {
+            "description": "SHA256 of non-allowlisted fonts used to render emoji (U+1F47E) with variant F font list\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_fonts_variant_g_nonallowlisted",
+            "type": "STRING"
+          },
+          {
+            "description": "SHA256 of allowlisted fonts used to render 89 emojis with variant F font list\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_fonts_variant_h_allowlisted",
+            "type": "STRING"
+          },
+          {
+            "description": "SHA256 of non-allowlisted fonts used to render 89 emojis with variant F font list\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_fonts_variant_h_nonallowlisted",
+            "type": "STRING"
+          },
+          {
+            "description": "SHA256 of allowlisted fonts used to render SVG emojis with emoji-specific font list\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_fonts_variant_i_allowlisted",
+            "type": "STRING"
+          },
+          {
+            "description": "SHA256 of non-allowlisted fonts used to render SVG emojis with emoji-specific font list\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_fonts_variant_i_nonallowlisted",
+            "type": "STRING"
+          },
+          {
             "description": "The current FPU (Floating-Point Unit) rounding mode and precision settings. Format depends on architecture: - x86/x86-64: \"std:X;x87:Y;sse:Z;prec:P\" where X,Y,Z are rounding modes (0-3)\n  and P is precision (single/double/extended)\n- ARM: \"std:X;arm:Y\" where X,Y are rounding modes (0-3) Rounding modes: 0=nearest, 1=down/negative, 2=up/positive, 3=toward-zero This helps identify unusual FPU configurations that may cause math variations.\n",
             "mode": "NULLABLE",
             "name": "characteristics_fpu_control_state",
@@ -2328,6 +2376,36 @@
             "description": "Screen(s) scaling/zoom level\n",
             "mode": "NULLABLE",
             "name": "characteristics_scalings",
+            "type": "STRING"
+          },
+          {
+            "description": "JSON object from SVGGraphicsElement.getBBox(). Format: {\"x\":N,\"y\":N,\"w\":N,\"h\":N}. Varies by browser rendering engine.",
+            "mode": "NULLABLE",
+            "name": "characteristics_svg_bbox",
+            "type": "STRING"
+          },
+          {
+            "description": "SVGTextContentElement.getComputedTextLength() for emoji text element. Returns the total length of rendered text, varies by font rendering.",
+            "mode": "NULLABLE",
+            "name": "characteristics_svg_computed_text_length",
+            "type": "STRING"
+          },
+          {
+            "description": "JSON array of emojis with unique rendering dimensions. Tests which emojis render at distinct sizes, varies by OS/font support.",
+            "mode": "NULLABLE",
+            "name": "characteristics_svg_emoji_set",
+            "type": "STRING"
+          },
+          {
+            "description": "JSON object from SVGTextContentElement.getExtentOfChar(0). Format: {\"x\":N,\"y\":N,\"w\":N,\"h\":N}. Varies by emoji rendering.",
+            "mode": "NULLABLE",
+            "name": "characteristics_svg_extent_of_char",
+            "type": "STRING"
+          },
+          {
+            "description": "SVGTextContentElement.getSubStringLength(0, 10) for first 10 characters. Varies by font metrics and text shaping.",
+            "mode": "NULLABLE",
+            "name": "characteristics_svg_substring_length",
             "type": "STRING"
           },
           {
