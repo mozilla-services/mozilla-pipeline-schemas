@@ -368,6 +368,7 @@ schemas
 │   ├── metrics
 │   ├── migration
 │   ├── nimbus
+│   ├── onboarding
 │   ├── onboarding-opt-out
 │   ├── pageload
 │   ├── pageload-base-domain
@@ -420,6 +421,7 @@ schemas
 │   ├── metrics
 │   ├── migration
 │   ├── nimbus
+│   ├── onboarding
 │   ├── onboarding-opt-out
 │   ├── pageload
 │   ├── pageload-base-domain
@@ -472,6 +474,7 @@ schemas
 │   ├── metrics
 │   ├── migration
 │   ├── nimbus
+│   ├── onboarding
 │   ├── onboarding-opt-out
 │   ├── pageload
 │   ├── pageload-base-domain
@@ -524,6 +527,7 @@ schemas
 │   ├── metrics
 │   ├── migration
 │   ├── nimbus
+│   ├── onboarding
 │   ├── onboarding-opt-out
 │   ├── pageload
 │   ├── pageload-base-domain
@@ -576,6 +580,7 @@ schemas
 │   ├── metrics
 │   ├── migration
 │   ├── nimbus
+│   ├── onboarding
 │   ├── onboarding-opt-out
 │   ├── pageload
 │   ├── pageload-base-domain
@@ -1050,6 +1055,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-1041 directories
+1046 directories
 ```
 
