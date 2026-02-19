@@ -1414,6 +1414,12 @@
             "type": "INT64"
           },
           {
+            "description": "Counts the number of expired session resumption tokens encountered during cache lookups. High values may indicate token lifetime issues or long delays between connections to the same host.\n",
+            "mode": "NULLABLE",
+            "name": "network_ssl_token_cache_expired",
+            "type": "INT64"
+          },
+          {
             "description": "Counts how often Entra SSO is used (macOS only).\n",
             "mode": "NULLABLE",
             "name": "network_sso_total_entra_uses",
@@ -18599,6 +18605,24 @@
             ],
             "mode": "REPEATED",
             "name": "network_retried_system_channel_update_status",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts session resumption token cache hits and misses. A 'hit' means a valid cached token was found and can be used for session resumption. A 'miss' means no valid token was available.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "network_ssl_token_cache_hits",
             "type": "RECORD"
           },
           {
@@ -58040,6 +58064,56 @@
         "mode": "NULLABLE",
         "name": "seq",
         "type": "INT64"
+      },
+      {
+        "description": "The Server Knobs configuration applied via applyServerKnobsConfig. Contains the complete configuration including metrics_enabled, pings_enabled, and event_threshold settings.",
+        "fields": [
+          {
+            "description": "Optional threshold for event buffering before an events ping is collected and submitted",
+            "mode": "NULLABLE",
+            "name": "event_threshold",
+            "type": "INT64"
+          },
+          {
+            "description": "Map of metric identifiers (category.name) to boolean values indicating whether the metric is enabled",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "BOOL"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "metrics_enabled",
+            "type": "RECORD"
+          },
+          {
+            "description": "Map of ping names to boolean values indicating whether the ping is enabled",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "BOOL"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "pings_enabled",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "server_knobs_config",
+        "type": "RECORD"
       },
       {
         "mode": "NULLABLE",

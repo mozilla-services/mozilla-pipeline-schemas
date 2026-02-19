@@ -1063,6 +1063,56 @@
         "type": "INT64"
       },
       {
+        "description": "The Server Knobs configuration applied via applyServerKnobsConfig. Contains the complete configuration including metrics_enabled, pings_enabled, and event_threshold settings.",
+        "fields": [
+          {
+            "description": "Optional threshold for event buffering before an events ping is collected and submitted",
+            "mode": "NULLABLE",
+            "name": "event_threshold",
+            "type": "INT64"
+          },
+          {
+            "description": "Map of metric identifiers (category.name) to boolean values indicating whether the metric is enabled",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "BOOL"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "metrics_enabled",
+            "type": "RECORD"
+          },
+          {
+            "description": "Map of ping names to boolean values indicating whether the ping is enabled",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "BOOL"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "pings_enabled",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "server_knobs_config",
+        "type": "RECORD"
+      },
+      {
         "mode": "NULLABLE",
         "name": "start_time",
         "type": "STRING"
