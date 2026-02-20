@@ -368,6 +368,7 @@ schemas
 │   ├── metrics
 │   ├── migration
 │   ├── nimbus
+│   ├── nimbus-targeting-context
 │   ├── onboarding
 │   ├── onboarding-opt-out
 │   ├── pageload
@@ -421,6 +422,7 @@ schemas
 │   ├── metrics
 │   ├── migration
 │   ├── nimbus
+│   ├── nimbus-targeting-context
 │   ├── onboarding
 │   ├── onboarding-opt-out
 │   ├── pageload
@@ -474,6 +476,7 @@ schemas
 │   ├── metrics
 │   ├── migration
 │   ├── nimbus
+│   ├── nimbus-targeting-context
 │   ├── onboarding
 │   ├── onboarding-opt-out
 │   ├── pageload
@@ -527,6 +530,7 @@ schemas
 │   ├── metrics
 │   ├── migration
 │   ├── nimbus
+│   ├── nimbus-targeting-context
 │   ├── onboarding
 │   ├── onboarding-opt-out
 │   ├── pageload
@@ -580,6 +584,7 @@ schemas
 │   ├── metrics
 │   ├── migration
 │   ├── nimbus
+│   ├── nimbus-targeting-context
 │   ├── onboarding
 │   ├── onboarding-opt-out
 │   ├── pageload
@@ -634,6 +639,7 @@ schemas
 │   ├── health
 │   ├── local-network-access
 │   ├── metrics
+│   ├── nimbus-targeting-context
 │   ├── pageload
 │   ├── pageload-base-domain
 │   ├── pageload-domain
@@ -662,6 +668,7 @@ schemas
 │   ├── health
 │   ├── local-network-access
 │   ├── metrics
+│   ├── nimbus-targeting-context
 │   ├── pageload
 │   ├── pageload-base-domain
 │   ├── pageload-domain
@@ -690,6 +697,7 @@ schemas
 │   ├── health
 │   ├── local-network-access
 │   ├── metrics
+│   ├── nimbus-targeting-context
 │   ├── pageload
 │   ├── pageload-base-domain
 │   ├── pageload-domain
@@ -716,6 +724,7 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── nimbus
+│   ├── nimbus-targeting-context
 │   ├── onboarding-opt-out
 │   ├── sync
 │   ├── tabs-sync
@@ -747,6 +756,7 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── nimbus
+│   ├── nimbus-targeting-context
 │   ├── onboarding-opt-out
 │   ├── sync
 │   ├── tabs-sync
@@ -778,6 +788,7 @@ schemas
 │   ├── logins-sync
 │   ├── metrics
 │   ├── nimbus
+│   ├── nimbus-targeting-context
 │   ├── onboarding-opt-out
 │   ├── sync
 │   ├── tabs-sync
@@ -820,6 +831,7 @@ schemas
 │   ├── events
 │   ├── health
 │   ├── metrics
+│   ├── nimbus-targeting-context
 │   ├── usage-deletion-request
 │   └── usage-reporting
 ├── org-mozilla-ios-klar
@@ -829,6 +841,7 @@ schemas
 │   ├── events
 │   ├── health
 │   ├── metrics
+│   ├── nimbus-targeting-context
 │   ├── usage-deletion-request
 │   └── usage-reporting
 ├── org-mozilla-ios-lockbox
@@ -855,6 +868,7 @@ schemas
 │   ├── health
 │   ├── local-network-access
 │   ├── metrics
+│   ├── nimbus-targeting-context
 │   ├── pageload
 │   ├── pageload-base-domain
 │   ├── pageload-domain
@@ -1055,6 +1069,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-1046 directories
+1060 directories
 ```
 
