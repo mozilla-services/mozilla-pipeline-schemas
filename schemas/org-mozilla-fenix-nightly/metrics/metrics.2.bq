@@ -26692,6 +26692,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Rate of clearPrivateBrowsingData() calls that reported at least one observer failure. Denominator is incremented on every call; numerator is incremented when hadFailures is true or the promise rejects. This currently does not keep track of regular PBM teardown (last PBM window exited).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "private_browsing_cleanup_error_rate",
+            "type": "RECORD"
+          },
+          {
             "description": "The proportion of RTCRtpSenders that have thrown an error at least once about a setParameters call that attempted to change the number of encodings.\n",
             "fields": [
               {
@@ -37394,6 +37412,36 @@
             ],
             "mode": "NULLABLE",
             "name": "privacy_sanitize_load_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Wall-clock time from clearPrivateBrowsingData() call start to callback invocation. This currently does not keep track of regular PBM teardown (last PBM window exited).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "private_browsing_cleanup_duration",
             "type": "RECORD"
           },
           {

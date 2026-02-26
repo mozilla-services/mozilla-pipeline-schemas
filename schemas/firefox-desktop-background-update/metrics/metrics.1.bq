@@ -31762,6 +31762,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Rate of clearPrivateBrowsingData() calls that reported at least one observer failure. Denominator is incremented on every call; numerator is incremented when hadFailures is true or the promise rejects. This currently does not keep track of regular PBM teardown (last PBM window exited).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "private_browsing_cleanup_error_rate",
+            "type": "RECORD"
+          },
+          {
             "description": "The proportion of RTCRtpSenders that have thrown an error at least once about a setParameters call that attempted to change the number of encodings.\n",
             "fields": [
               {
@@ -53725,6 +53743,72 @@
             ],
             "mode": "NULLABLE",
             "name": "privacy_sanitize_load_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Wall-clock time from clearPrivateBrowsingData() call start to callback invocation. This currently does not keep track of regular PBM teardown (last PBM window exited).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "private_browsing_cleanup_duration",
             "type": "RECORD"
           },
           {
