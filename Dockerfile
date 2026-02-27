@@ -7,7 +7,7 @@ LABEL maintainer="Mozilla Data Platform"
 ENV RUSTUP_HOME=/usr/local/rustup \
     CARGO_HOME=/usr/local/cargo \
     PATH=/usr/local/cargo/bin:$PATH \
-    RUST_VERSION=1.73.0
+    RUST_VERSION=1.93.1
 
 RUN set -eux; \
     apt-get update; \
@@ -57,7 +57,7 @@ RUN mkdir -p /usr/share/man/man1 && \
 
 # Install jsonschema-transpiler
 ENV PATH=$PATH:/root/.cargo/bin
-RUN cargo install jsonschema-transpiler --version 1.9.0
+RUN cargo install jsonschema-transpiler --version 2.0.1
 
 # Configure git for testing
 RUN git config --global user.email "mozilla-pipeline-schemas@mozilla.com"
