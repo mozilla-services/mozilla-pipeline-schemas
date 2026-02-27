@@ -725,6 +725,7 @@ schemas
 |   |-- metrics
 |   |-- nimbus
 |   |-- nimbus-targeting-context
+|   |-- onboarding
 |   |-- onboarding-opt-out
 |   |-- sync
 |   |-- tabs-sync
@@ -757,6 +758,7 @@ schemas
 |   |-- metrics
 |   |-- nimbus
 |   |-- nimbus-targeting-context
+|   |-- onboarding
 |   |-- onboarding-opt-out
 |   |-- sync
 |   |-- tabs-sync
@@ -789,6 +791,7 @@ schemas
 |   |-- metrics
 |   |-- nimbus
 |   |-- nimbus-targeting-context
+|   |-- onboarding
 |   |-- onboarding-opt-out
 |   |-- sync
 |   |-- tabs-sync
@@ -1069,6 +1072,6 @@ schemas
 `-- webpagetest
     `-- webpagetest-run
 
-1060 directories
+1063 directories
 ```
 
