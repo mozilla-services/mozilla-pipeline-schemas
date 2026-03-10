@@ -125,6 +125,7 @@ schemas
 |   |-- pageload-domain
 |   |-- pocket-button
 |   |-- post-profile-restore
+|   |-- prefs-file-invalid
 |   |-- profile-restore
 |   |-- profiles
 |   |-- prototype-no-code-events
@@ -186,6 +187,7 @@ schemas
 |   |-- pageload
 |   |-- pageload-base-domain
 |   |-- pageload-domain
+|   |-- prefs-file-invalid
 |   |-- temp-fog-initial-state
 |   |-- traces
 |   |-- update
@@ -375,6 +377,7 @@ schemas
 |   |-- pageload-base-domain
 |   |-- pageload-domain
 |   |-- play-store-attribution
+|   |-- prefs-file-invalid
 |   |-- rust-component-errors
 |   |-- spoc
 |   |-- startup-timeline
@@ -429,6 +432,7 @@ schemas
 |   |-- pageload-base-domain
 |   |-- pageload-domain
 |   |-- play-store-attribution
+|   |-- prefs-file-invalid
 |   |-- rust-component-errors
 |   |-- spoc
 |   |-- startup-timeline
@@ -483,6 +487,7 @@ schemas
 |   |-- pageload-base-domain
 |   |-- pageload-domain
 |   |-- play-store-attribution
+|   |-- prefs-file-invalid
 |   |-- rust-component-errors
 |   |-- spoc
 |   |-- startup-timeline
@@ -537,6 +542,7 @@ schemas
 |   |-- pageload-base-domain
 |   |-- pageload-domain
 |   |-- play-store-attribution
+|   |-- prefs-file-invalid
 |   |-- rust-component-errors
 |   |-- spoc
 |   |-- startup-timeline
@@ -591,6 +597,7 @@ schemas
 |   |-- pageload-base-domain
 |   |-- pageload-domain
 |   |-- play-store-attribution
+|   |-- prefs-file-invalid
 |   |-- rust-component-errors
 |   |-- spoc
 |   |-- startup-timeline
@@ -643,6 +650,7 @@ schemas
 |   |-- pageload
 |   |-- pageload-base-domain
 |   |-- pageload-domain
+|   |-- prefs-file-invalid
 |   |-- temp-fog-initial-state
 |   |-- traces
 |   |-- url-classifier-harmful-addon
@@ -672,6 +680,7 @@ schemas
 |   |-- pageload
 |   |-- pageload-base-domain
 |   |-- pageload-domain
+|   |-- prefs-file-invalid
 |   |-- temp-fog-initial-state
 |   |-- traces
 |   |-- url-classifier-harmful-addon
@@ -701,6 +710,7 @@ schemas
 |   |-- pageload
 |   |-- pageload-base-domain
 |   |-- pageload-domain
+|   |-- prefs-file-invalid
 |   |-- temp-fog-initial-state
 |   |-- traces
 |   |-- url-classifier-harmful-addon
@@ -875,6 +885,7 @@ schemas
 |   |-- pageload
 |   |-- pageload-base-domain
 |   |-- pageload-domain
+|   |-- prefs-file-invalid
 |   |-- temp-fog-initial-state
 |   |-- traces
 |   |-- url-classifier-harmful-addon
@@ -945,6 +956,7 @@ schemas
 |   |-- pageload
 |   |-- pageload-base-domain
 |   |-- pageload-domain
+|   |-- prefs-file-invalid
 |   |-- pseudo-main
 |   |-- spoc
 |   |-- temp-fog-initial-state
@@ -1053,6 +1065,7 @@ schemas
 |   |-- pageload
 |   |-- pageload-base-domain
 |   |-- pageload-domain
+|   |-- prefs-file-invalid
 |   |-- temp-fog-initial-state
 |   |-- traces
 |   |-- url-classifier-harmful-addon
@@ -1072,6 +1085,6 @@ schemas
 `-- webpagetest
     `-- webpagetest-run
 
-1063 directories
+1076 directories
 ```
 
