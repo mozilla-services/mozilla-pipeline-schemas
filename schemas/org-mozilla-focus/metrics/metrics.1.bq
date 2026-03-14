@@ -8117,6 +8117,42 @@
             "type": "RECORD"
           },
           {
+            "description": "HTTP3: Records how many congestion events a connection has, with spurious congestion events filtered out. A max range of 180 still gives high granularity in the lower buckets while letting us confirm if we ever actually see connections having very high congestion event counts.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "networking_http_3_congestion_event_count",
+            "type": "RECORD"
+          },
+          {
             "description": "The download throughput for http/3 requests larger than 10MB. Measured in megabits per second, Mbps.\n",
             "fields": [
               {
@@ -8834,6 +8870,78 @@
             ],
             "mode": "NULLABLE",
             "name": "performance_clone_deserialize_items",
+            "type": "RECORD"
+          },
+          {
+            "description": "Distribution of how long after the last site interaction a permission was expired (currentTime - lastInteractionTime). Helps understand typical permission lifetimes before expiration.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "permissions_unused_permission_age_at_expiry",
+            "type": "RECORD"
+          },
+          {
+            "description": "Distribution of how long after the permission was last modified it was expired (currentTime - modificationTime). Helps understand how old permissions are when they get cleaned up.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "permissions_unused_permission_modified_age_at_expiry",
             "type": "RECORD"
           },
           {
@@ -19184,6 +19292,24 @@
             "type": "RECORD"
           },
           {
+            "description": "HTTP3: Records if a loss-based slow start exit undershot, overshot or exactly matches the congestion window size when closing the connection. This mostly exists to confirm the expected assumption that loss-based exit almost always overshoots.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_http_3_slow_start_exit_direction_loss",
+            "type": "RECORD"
+          },
+          {
             "description": "Counts whether an HTTP3 connections exited slow start.\n",
             "fields": [
               {
@@ -20063,6 +20189,24 @@
             ],
             "mode": "REPEATED",
             "name": "perf_startup_startup_type",
+            "type": "RECORD"
+          },
+          {
+            "description": "Count of permissions expired due to inactivity, broken down by permission type (e.g. \"desktop-notification\", \"geo\"). Helps identify which permission types are expired most often.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "permissions_unused_permissions_expired_by_type",
             "type": "RECORD"
           },
           {
@@ -23502,6 +23646,54 @@
             ],
             "mode": "REPEATED",
             "name": "networking_http_3_ecn_ce_ect0_ratio",
+            "type": "RECORD"
+          },
+          {
+            "description": "HTTP3: Absolute congestion window size difference between exiting slow start and closing the connection, as a percentage of the window size when closing the connection. Only recorded for connections that exited slow start. Is used to approximate accuracy of slow start exit per connection. The labels separate slow start exit reasons, because congestion event and heuristic based exits are fundamentally different cases that would obscure each other if mixed. For now only records for congestion event exits while heuristics for exiting slow start are still being implemented.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_http_3_slow_start_exit_accuracy",
             "type": "RECORD"
           },
           {
