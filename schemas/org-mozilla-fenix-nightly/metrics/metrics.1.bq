@@ -15139,6 +15139,126 @@
             "type": "RECORD"
           },
           {
+            "description": "Count of errors surfaced on a media element, keyed by error type and whether the playback is encrypted. Serves as a high-level signal for all media error categories.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "media_error",
+            "type": "RECORD"
+          },
+          {
+            "description": "Count of fatal decode errors for encrypted (EME) media playback, keyed by codec and key system. Only fires when the decoder gives up after exhausting retries.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "media_playback_encrypted_decode_error",
+            "type": "RECORD"
+          },
+          {
+            "description": "Count of decode errors for unencrypted hardware-accelerated media playback, keyed by codec and error name. Only fires when the decoder gives up after exhausting retries. Tracked separately from software errors to measure hw decoder failure rates and inform decisions on whether to retain this probe long-term.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "media_playback_unencrypted_hw_decode_error",
+            "type": "RECORD"
+          },
+          {
+            "description": "Count of decode errors for unencrypted software media playback, keyed by codec and error name. Only fires when the decoder gives up after exhausting retries. Does not cover encrypted (EME) playback; see media.playback.encrypted_decode_error for that.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "media_playback_unencrypted_sw_decode_error",
+            "type": "RECORD"
+          },
+          {
             "description": "Successfully started HTTP channels when HTTP3 is used\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram HTTP3_CHANNEL_ONSTART_SUCCESS.\n",
             "fields": [
               {
@@ -18980,7 +19100,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Failure occurs when initializing the audio stream.\n",
+            "description": "Failure occurs when initializing the audio stream. (Migrated from the geckoview metric of the same name).\n",
             "fields": [
               {
                 "mode": "NULLABLE",
