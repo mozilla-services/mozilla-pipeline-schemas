@@ -98,6 +98,7 @@ schemas
 |   |-- bounce-tracking-protection
 |   |-- broken-site-report
 |   |-- captcha-detection
+|   |-- content-decoding-error
 |   |-- context-id-deletion-request
 |   |-- crash
 |   |-- data-leak-blocker
@@ -174,6 +175,7 @@ schemas
 |   |-- bounce-tracking-protection
 |   |-- broken-site-report
 |   |-- captcha-detection
+|   |-- content-decoding-error
 |   |-- crash
 |   |-- dau-reporting
 |   |-- deletion-request
@@ -347,6 +349,7 @@ schemas
 |   |-- broken-site-report
 |   |-- captcha-detection
 |   |-- client-deduplication
+|   |-- content-decoding-error
 |   |-- cookie-banner-report-site
 |   |-- crash
 |   |-- creditcards-sync
@@ -402,6 +405,7 @@ schemas
 |   |-- broken-site-report
 |   |-- captcha-detection
 |   |-- client-deduplication
+|   |-- content-decoding-error
 |   |-- cookie-banner-report-site
 |   |-- crash
 |   |-- creditcards-sync
@@ -457,6 +461,7 @@ schemas
 |   |-- broken-site-report
 |   |-- captcha-detection
 |   |-- client-deduplication
+|   |-- content-decoding-error
 |   |-- cookie-banner-report-site
 |   |-- crash
 |   |-- creditcards-sync
@@ -512,6 +517,7 @@ schemas
 |   |-- broken-site-report
 |   |-- captcha-detection
 |   |-- client-deduplication
+|   |-- content-decoding-error
 |   |-- cookie-banner-report-site
 |   |-- crash
 |   |-- creditcards-sync
@@ -567,6 +573,7 @@ schemas
 |   |-- broken-site-report
 |   |-- captcha-detection
 |   |-- client-deduplication
+|   |-- content-decoding-error
 |   |-- cookie-banner-report-site
 |   |-- crash
 |   |-- creditcards-sync
@@ -635,6 +642,7 @@ schemas
 |   |-- bounce-tracking-protection
 |   |-- broken-site-report
 |   |-- captcha-detection
+|   |-- content-decoding-error
 |   |-- cookie-banner-report-site
 |   |-- crash
 |   |-- dau-reporting
@@ -665,6 +673,7 @@ schemas
 |   |-- bounce-tracking-protection
 |   |-- broken-site-report
 |   |-- captcha-detection
+|   |-- content-decoding-error
 |   |-- cookie-banner-report-site
 |   |-- crash
 |   |-- dau-reporting
@@ -695,6 +704,7 @@ schemas
 |   |-- bounce-tracking-protection
 |   |-- broken-site-report
 |   |-- captcha-detection
+|   |-- content-decoding-error
 |   |-- cookie-banner-report-site
 |   |-- crash
 |   |-- dau-reporting
@@ -870,6 +880,7 @@ schemas
 |   |-- bounce-tracking-protection
 |   |-- broken-site-report
 |   |-- captcha-detection
+|   |-- content-decoding-error
 |   |-- cookie-banner-report-site
 |   |-- crash
 |   |-- dau-reporting
@@ -939,6 +950,7 @@ schemas
 |   |-- bounce-tracking-protection
 |   |-- broken-site-report
 |   |-- captcha-detection
+|   |-- content-decoding-error
 |   |-- dau-reporting
 |   |-- deletion-request
 |   |-- events
@@ -1053,6 +1065,7 @@ schemas
 |   |-- bounce-tracking-protection
 |   |-- broken-site-report
 |   |-- captcha-detection
+|   |-- content-decoding-error
 |   |-- dau-reporting
 |   |-- deletion-request
 |   |-- events
@@ -1085,6 +1098,6 @@ schemas
 `-- webpagetest
     `-- webpagetest-run
 
-1076 directories
+1089 directories
 ```
 
