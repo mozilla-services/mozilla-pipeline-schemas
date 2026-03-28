@@ -19238,7 +19238,43 @@
             "type": "RECORD"
           },
           {
-            "description": "Result of each attempt to set the default browser with SetDefaultExtensionHandlersUserChoice() for pdf extension\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram BROWSER_SET_DEFAULT_PDF_HANDLER_USER_CHOICE_RESULT.\n",
+            "description": "Result of each attempt to set the default PDF handler by opening modern settings through the ms-settings protocol (ms-settings:defaultapps).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_set_default_pdf_handler_modern_settings_result",
+            "type": "RECORD"
+          },
+          {
+            "description": "Result of each attempt to set the default PDF handler with the undocumented IOpenWithLauncher API for pdfs.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_set_default_pdf_handler_open_with_result",
+            "type": "RECORD"
+          },
+          {
+            "description": "Result of each attempt to set the default browser by setting the user-choice regkey for pdf extension.\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram BROWSER_SET_DEFAULT_PDF_HANDLER_USER_CHOICE_RESULT.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -36396,7 +36432,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Records the latencies (ms) of search suggestions fetches per search engine. Keys in this histogram are the search engine identifier for configuration provided search engines and 'other' for search engines installed via other methods.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram SEARCH_SUGGESTIONS_LATENCY_MS.\nThis metric was renamed in Gecko 144 from `search.suggestions_latency` and changed to report the search engine identifier rather than the telemetry identifier.\n",
+            "description": "Records the latencies (ms) of search suggestions fetches per search engine. Keys in this histogram are search engine identifiers for built-in search engines and 'other' for non-built-in search engines.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram SEARCH_SUGGESTIONS_LATENCY_MS.\n",
             "fields": [
               {
                 "mode": "NULLABLE",

@@ -131,6 +131,7 @@ schemas
 |   |-- profiles
 |   |-- prototype-no-code-events
 |   |-- pseudo-main
+|   |-- pwmgr-origin-failure
 |   |-- quick-suggest
 |   |-- quick-suggest-deletion-request
 |   |-- search-with
@@ -1098,6 +1099,6 @@ schemas
 `-- webpagetest
     `-- webpagetest-run
 
-1089 directories
+1090 directories
 ```
 
