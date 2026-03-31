@@ -992,6 +992,9 @@ schemas
 |   |-- enrollment-status
 |   |-- events
 |   `-- startup
+|-- subscription-platform-frontend
+|   |-- deletion-request
+|   `-- events
 |-- syncstorage
 |   `-- events
 |-- telemetry
@@ -1099,6 +1102,6 @@ schemas
 `-- webpagetest
     `-- webpagetest-run
 
-1090 directories
+1093 directories
 ```
 
