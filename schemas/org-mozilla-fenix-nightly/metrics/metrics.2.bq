@@ -933,6 +933,24 @@
             "type": "BOOL"
           },
           {
+            "description": "Records if the user has shake to summarize gesture option enabled.\n",
+            "mode": "NULLABLE",
+            "name": "user_ai_summarize_gesture_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Records if the user has consented to shake to summarize feature.\n",
+            "mode": "NULLABLE",
+            "name": "user_ai_summarize_summarization_consented",
+            "type": "BOOL"
+          },
+          {
+            "description": "Records if the user has summarization enabled.\n",
+            "mode": "NULLABLE",
+            "name": "user_ai_summarize_summarization_enabled",
+            "type": "BOOL"
+          },
+          {
             "description": "Whether the OS theme is dark. This metric was generated to correspond to the Legacy Telemetry scalar widget.dark_mode.\n",
             "mode": "NULLABLE",
             "name": "widget_dark_mode",
@@ -28745,6 +28763,36 @@
             ],
             "mode": "NULLABLE",
             "name": "a11y_tree_update_timing",
+            "type": "RECORD"
+          },
+          {
+            "description": "Records the total time for generating the summary and showing it to the\nuser. Starts when the user triggers summarization. Ends when user sees\nthe result or an error.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "ai_summarize_duration",
             "type": "RECORD"
           },
           {
