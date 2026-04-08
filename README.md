@@ -1063,6 +1063,13 @@ schemas
 |   |-- voice-feedback
 |   |-- x-contextual-feature-recommendation
 |   `-- xfocsp-error-report
+|-- thunderbird-crashreporter
+|   |-- baseline
+|   |-- crash
+|   |-- deletion-request
+|   |-- events
+|   |-- health
+|   `-- metrics
 |-- thunderbird-desktop
 |   |-- addons
 |   |-- baseline
@@ -1102,6 +1109,6 @@ schemas
 `-- webpagetest
     `-- webpagetest-run
 
-1093 directories
+1100 directories
 ```
 
