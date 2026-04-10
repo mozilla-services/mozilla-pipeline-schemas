@@ -1618,9 +1618,27 @@
             "type": "INT64"
           },
           {
+            "description": "Number of TLS connections (via Get()) that started before the background disk load completed. Each occurrence is also logged as a warning.\n",
+            "mode": "NULLABLE",
+            "name": "network_ssl_token_cache_early_connections",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of TLS session resumption tokens evicted because the in-memory cache exceeded network.ssl_tokens_cache_capacity. Any non-zero value indicates the capacity limit was reached and may need to be increased.\n",
+            "mode": "NULLABLE",
+            "name": "network_ssl_token_cache_evictions",
+            "type": "INT64"
+          },
+          {
             "description": "Counts the number of expired session resumption tokens encountered during cache lookups. High values may indicate token lifetime issues or long delays between connections to the same host.\n",
             "mode": "NULLABLE",
             "name": "network_ssl_token_cache_expired",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of TLS session resumption token records successfully loaded from disk into the cache on startup.\n",
+            "mode": "NULLABLE",
+            "name": "network_ssl_token_cache_persistence_records_loaded",
             "type": "INT64"
           },
           {
@@ -1663,6 +1681,12 @@
             "description": "Counts the number of times the os socket limit was reached. i.e. CanAttachSocket() returned false.\n",
             "mode": "NULLABLE",
             "name": "networking_os_socket_limit_reached",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of HTTP channels that skipped async proxy resolution via the fast path (system proxy reports no proxy configured, no filters registered).\n",
+            "mode": "NULLABLE",
+            "name": "networking_proxy_fast_path_used",
             "type": "INT64"
           },
           {
@@ -32696,7 +32720,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Records the latencies (ms) of search suggestions fetches per search engine. Keys in this histogram are the search engine identifier for configuration provided search engines and 'other' for search engines installed via other methods.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram SEARCH_SUGGESTIONS_LATENCY_MS.\nThis metric was renamed in Gecko 144 from `search.suggestions_latency` and changed to report the search engine identifier rather than the telemetry identifier.\n",
+            "description": "Records the latencies (ms) of search suggestions fetches per search engine. Keys in this histogram are search engine identifiers for built-in search engines and 'other' for non-built-in search engines.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram SEARCH_SUGGESTIONS_LATENCY_MS.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -52106,6 +52130,72 @@
             ],
             "mode": "NULLABLE",
             "name": "network_race_cache_with_network_saved_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Wall-clock time from SSLTokensCache::Init() to the completion of loading cached tokens from disk.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "network_ssl_token_cache_load_time",
             "type": "RECORD"
           },
           {
