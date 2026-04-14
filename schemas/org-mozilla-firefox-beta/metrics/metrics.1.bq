@@ -19376,7 +19376,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Failure occurs when initializing the audio stream. (Migrated from the geckoview metric of the same name).\n",
+            "description": "Failure occurs when initializing the audio stream.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -19949,6 +19949,24 @@
             ],
             "mode": "REPEATED",
             "name": "network_cache_hit_miss_stat_per_cache_size",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of times the cookie DB failed to open at startup, labeled by nsresult error name. Used to diagnose cases where the cookie DB may be incorrectly wiped due to transient I/O errors rather than actual corruption.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "network_cookies_open_error",
             "type": "RECORD"
           },
           {
