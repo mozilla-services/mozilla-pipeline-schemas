@@ -17061,6 +17061,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Counts Bing navigations on Windows that match the Windows Search pattern, using the Bing base domain and `/search` path as heuristic signals. This metric is intended as a proxy for Firefox activations originating from Windows Start menu search.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_engagement_windows_start_search_activation_count",
+            "type": "RECORD"
+          },
+          {
             "description": "Whether Firefox is the system default browser on startup. A true value is also recorded here, and a false value is recorded to set_default_error, if a user clicked 'Use Firefox as my default browser' on an in-product prompt. (Note that on Windows 8+ the latter action opens the right settings dialog but does not actually change the default browser without further user action.) On Windows, 'system default browser' is operationalized as whether Firefox is the default HTTP protocol handler.\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram BROWSER_IS_USER_DEFAULT.\n",
             "fields": [
               {
@@ -32768,7 +32786,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Records the latencies (ms) of search suggestions fetches per search engine. Keys in this histogram are the search engine identifier for configuration provided search engines and 'other' for search engines installed via other methods.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram SEARCH_SUGGESTIONS_LATENCY_MS.\nThis metric was renamed in Gecko 144 from `search.suggestions_latency` and changed to report the search engine identifier rather than the telemetry identifier.\n",
+            "description": "Records the latencies (ms) of search suggestions fetches per search engine. Keys in this histogram are search engine identifiers for built-in search engines and 'other' for non-built-in search engines.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram SEARCH_SUGGESTIONS_LATENCY_MS.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -36013,6 +36031,42 @@
             "description": "Information about the disk the system files are stored on.\nWindows only.\n* model - The disk's self-reported model string\n* revision - The disk's self-reported revision string\n* diskType - Either \"HDD\" or \"SSD\"\n",
             "mode": "NULLABLE",
             "name": "hdd_system",
+            "type": "JSON"
+          },
+          {
+            "description": "The value of the \"nimbus.qa.bool-default\" pref.\n",
+            "mode": "NULLABLE",
+            "name": "nimbus_qa_prefs_bool_default",
+            "type": "JSON"
+          },
+          {
+            "description": "The value of the \"nimbus.qa.bool-user\" pref.\n",
+            "mode": "NULLABLE",
+            "name": "nimbus_qa_prefs_bool_user",
+            "type": "JSON"
+          },
+          {
+            "description": "The value of the \"nimbus.qa.int-default\" pref.\n",
+            "mode": "NULLABLE",
+            "name": "nimbus_qa_prefs_int_default",
+            "type": "JSON"
+          },
+          {
+            "description": "The value of the \"nimbus.qa.int-user\" pref.\n",
+            "mode": "NULLABLE",
+            "name": "nimbus_qa_prefs_int_user",
+            "type": "JSON"
+          },
+          {
+            "description": "The value of the \"nimbus.qa.string-default\" pref.\n",
+            "mode": "NULLABLE",
+            "name": "nimbus_qa_prefs_string_default",
+            "type": "JSON"
+          },
+          {
+            "description": "The value of the \"nimbus.qa.string-user\" pref.\n",
+            "mode": "NULLABLE",
+            "name": "nimbus_qa_prefs_string_user",
             "type": "JSON"
           },
           {

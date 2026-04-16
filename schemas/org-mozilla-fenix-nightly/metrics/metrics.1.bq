@@ -435,6 +435,12 @@
             "type": "BOOL"
           },
           {
+            "description": "Records if the user has the global AI control set to blocked.\n",
+            "mode": "NULLABLE",
+            "name": "browser_global_ai_control_is_blocking",
+            "type": "BOOL"
+          },
+          {
             "description": "True if the Proton default theme is enabled.\n",
             "mode": "NULLABLE",
             "name": "browser_ui_proton_enabled",
@@ -15967,6 +15973,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Records if each AI feature is blocked. Labels are the feature\nidentifiers, e.g. `translations`, `voiceSearch` or `pageSummaries`.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "BOOL"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "genai_ai_controls_features_blocked",
+            "type": "RECORD"
+          },
+          {
             "description": "Which system provider are we using on Linux\n",
             "fields": [
               {
@@ -16745,6 +16769,24 @@
             ],
             "mode": "REPEATED",
             "name": "browser_engagement_total_top_visits",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts Bing navigations on Windows that match the Windows Search pattern, using the Bing base domain and `/search` path as heuristic signals. This metric is intended as a proxy for Firefox activations originating from Windows Start menu search.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_engagement_windows_start_search_activation_count",
             "type": "RECORD"
           },
           {
@@ -19376,7 +19418,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Failure occurs when initializing the audio stream. (Migrated from the geckoview metric of the same name).\n",
+            "description": "Failure occurs when initializing the audio stream.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -33635,6 +33677,42 @@
             "description": "Information about the disk the system files are stored on.\nWindows only.\n* model - The disk's self-reported model string\n* revision - The disk's self-reported revision string\n* diskType - Either \"HDD\" or \"SSD\"\n",
             "mode": "NULLABLE",
             "name": "hdd_system",
+            "type": "JSON"
+          },
+          {
+            "description": "The value of the \"nimbus.qa.bool-default\" pref.\n",
+            "mode": "NULLABLE",
+            "name": "nimbus_qa_prefs_bool_default",
+            "type": "JSON"
+          },
+          {
+            "description": "The value of the \"nimbus.qa.bool-user\" pref.\n",
+            "mode": "NULLABLE",
+            "name": "nimbus_qa_prefs_bool_user",
+            "type": "JSON"
+          },
+          {
+            "description": "The value of the \"nimbus.qa.int-default\" pref.\n",
+            "mode": "NULLABLE",
+            "name": "nimbus_qa_prefs_int_default",
+            "type": "JSON"
+          },
+          {
+            "description": "The value of the \"nimbus.qa.int-user\" pref.\n",
+            "mode": "NULLABLE",
+            "name": "nimbus_qa_prefs_int_user",
+            "type": "JSON"
+          },
+          {
+            "description": "The value of the \"nimbus.qa.string-default\" pref.\n",
+            "mode": "NULLABLE",
+            "name": "nimbus_qa_prefs_string_default",
+            "type": "JSON"
+          },
+          {
+            "description": "The value of the \"nimbus.qa.string-user\" pref.\n",
+            "mode": "NULLABLE",
+            "name": "nimbus_qa_prefs_string_user",
             "type": "JSON"
           },
           {
