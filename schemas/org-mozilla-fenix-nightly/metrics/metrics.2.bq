@@ -23448,6 +23448,174 @@
             "type": "RECORD"
           },
           {
+            "description": "Time spent running JS GC when animating, labeled by process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "javascript_gc_animation",
+            "type": "RECORD"
+          },
+          {
+            "description": "How long a GC slice ran over its budget, labeled by process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "javascript_gc_budget_overrun",
+            "type": "RECORD"
+          },
+          {
+            "description": "Longest GC slice in a GC, labeled by process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "javascript_gc_max_pause",
+            "type": "RECORD"
+          },
+          {
+            "description": "The total time taken by a major collection, labeled by process type. (Migrated from the geckoview metric of the same name.)\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "javascript_gc_total_time",
+            "type": "RECORD"
+          },
+          {
             "description": "Total time spent playing media in milliseconds, keyed by its content (Audio and video, audio only, video only, audio and video but audio inaudible, audio and video but audio muted).\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram MEDIA_PLAY_TIME_MS.\n",
             "fields": [
               {
@@ -32852,7 +33020,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time spent running JS GC when animating.\n",
+            "description": "Time spent running JS GC when animating, labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -32912,7 +33080,7 @@
             "type": "RECORD"
           },
           {
-            "description": "How long a GC slice ran over its budget.\n",
+            "description": "How long a GC slice ran over its budget, labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -33092,7 +33260,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Longest GC slice in a GC.\n",
+            "description": "Longest GC slice in a GC, labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -33362,7 +33530,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The total time taken by a major collection. (Migrated from the geckoview metric of the same name.)\n",
+            "description": "The total time taken by a major collection, labeled by process type. (Migrated from the geckoview metric of the same name.)\n",
             "fields": [
               {
                 "mode": "NULLABLE",
