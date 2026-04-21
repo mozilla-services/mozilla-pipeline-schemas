@@ -104,3 +104,5 @@
   `labeled_use_counter`, `usage`, `labeled_usage`, and `labeled_uuid`.
 
 - The `ping_info` section now includes a `server_knobs_config` field which contains the complete Server Knobs configuration applied via `applyServerKnobsConfig`. This includes the `metrics_enabled`, `pings_enabled`, and `event_threshold` settings.
+
+- Session metadata has been added for Glean events, in a `session_metadata` section.
