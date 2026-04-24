@@ -220,6 +220,9 @@ schemas
 |-- mdn-fred
 |   |-- deletion-request
 |   `-- events
+|-- mdn-mcp
+|   |-- deletion-request
+|   `-- events
 |-- mdn-yari
 |   |-- action
 |   |-- deletion-request
@@ -1109,6 +1112,6 @@ schemas
 `-- webpagetest
     `-- webpagetest-run
 
-1100 directories
+1103 directories
 ```
 

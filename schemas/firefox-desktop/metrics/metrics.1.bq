@@ -603,6 +603,12 @@
             "type": "BOOL"
           },
           {
+            "description": "Recorded when Firefox detects a mozillaonline distribution and ignores it, applying no distribution customizations.\n",
+            "mode": "NULLABLE",
+            "name": "distribution_mozillaonline_ignored",
+            "type": "BOOL"
+          },
+          {
             "description": "Whether a private browsing window has been used in the session. This metric was generated to correspond to the Legacy Telemetry scalar dom.parentprocess.private_window_used.\n",
             "mode": "NULLABLE",
             "name": "dom_parentprocess_private_window_used",
@@ -2221,6 +2227,12 @@
             "description": "Increments each time QuotaManager::RestoreDirectoryMetadata2 is called to restore origin directory metadata. This typically occurs when expected directory metadata is missing or needs to be regenerated. The counter is incremented regardless of whether the restoration ultimately succeeds or fails. This can provide insight into the impacts of specific code changes, including potential optimizations or regressions.\n",
             "mode": "NULLABLE",
             "name": "quotamanager_restore_origin_directory_metadata_counter",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of RTCPeerConnections created with rtcpMuxPolicy set to \"negotiate\". This value was removed from the spec, and we would like to track usage before removing it.\n",
+            "mode": "NULLABLE",
+            "name": "rtcpeerconnection_count_rtcp_mux_policy_negotiate",
             "type": "INT64"
           },
           {
@@ -37164,7 +37176,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Records the latencies (ms) of search suggestions fetches per search engine. Keys in this histogram are search engine identifiers for built-in search engines and 'other' for non-built-in search engines.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram SEARCH_SUGGESTIONS_LATENCY_MS.\n",
+            "description": "Records the latencies (ms) of search suggestions fetches per search engine. Keys in this histogram are the search engine identifier for configuration provided search engines and 'other' for search engines installed via other methods.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram SEARCH_SUGGESTIONS_LATENCY_MS.\nThis metric was renamed in Gecko 144 from `search.suggestions_latency` and changed to report the search engine identifier rather than the telemetry identifier.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
