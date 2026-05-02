@@ -25894,6 +25894,54 @@
       {
         "fields": [
           {
+            "description": "Size of the GC nursery in bytes, labeled by process type.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "javascript_gc_nursery_bytes",
+            "type": "RECORD"
+          },
+          {
             "description": "Memory used by the garbage-collected JavaScript heap (KB) by process type\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram MEMORY_JS_GC_HEAP.\n",
             "fields": [
               {
@@ -26520,7 +26568,7 @@
       {
         "fields": [
           {
-            "description": "Time spent on one asynchronous SnowWhite freeing (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram CYCLE_COLLECTOR_ASYNC_SNOW_WHITE_FREEING.\n",
+            "description": "Time spent on one asynchronous SnowWhite freeing (ms), labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -26598,7 +26646,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Pause time for asynchronous deferred finalization (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram DEFERRED_FINALIZE_ASYNC.\n",
+            "description": "Pause time for asynchronous deferred finalization (ms), labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -26676,7 +26724,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Max time spent on one forget skippable (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram FORGET_SKIPPABLE_MAX.\n",
+            "description": "Max time spent on one forget skippable (ms), labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -26754,7 +26802,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Full pause time for one cycle collection, including preparation (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram CYCLE_COLLECTOR_FULL.\n",
+            "description": "Full pause time for one cycle collection, including preparation (ms), labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -26832,7 +26880,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Longest pause for an individual slice of one cycle collection, including preparation (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram CYCLE_COLLECTOR_MAX_PAUSE.\n",
+            "description": "Longest pause for an individual slice of one cycle collection, including preparation (ms), labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -26910,7 +26958,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time spent on one cycle collection (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram CYCLE_COLLECTOR.\n",
+            "description": "Time spent on one cycle collection (ms), labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -26988,7 +27036,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time spent in between cycle collections (seconds)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram CYCLE_COLLECTOR_TIME_BETWEEN.\n",
+            "description": "Time spent in between cycle collections (seconds), labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -27066,7 +27114,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time spent on one cycle collection in a worker (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram CYCLE_COLLECTOR_WORKER.\n",
+            "description": "Time spent on one cycle collection in a worker (ms), labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -27531,6 +27579,84 @@
             ],
             "mode": "REPEATED",
             "name": "dns_trr_lookup_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time from the beginning of the first slice to the end of the last slice (ms), labeled by process type.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram GC_IN_PROGRESS_MS.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "bucket_count",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "histogram_type",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "overflow",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "REPEATED",
+                    "name": "range",
+                    "type": "FLOAT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "time_unit",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "underflow",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dom_gc_in_progress",
             "type": "RECORD"
           },
           {
@@ -28626,7 +28752,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Requested GC slice budget.\n",
+            "description": "Requested GC slice budget, labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -28782,7 +28908,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The time spent in the compact phase. (Migrated from the geckoview metric of the same name.)\n",
+            "description": "The time spent in the compact phase, labeled by process type. (Migrated from the geckoview metric of the same name.)\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -28860,7 +28986,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time spent marking gray GC objects.\n",
+            "description": "Time spent marking gray GC objects, labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -28938,7 +29064,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The time spent marking GC roots. (Migrated from the geckoview metric of the same name.)\n",
+            "description": "The time spent marking GC roots, labeled by process type. (Migrated from the geckoview metric of the same name.)\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -29016,7 +29142,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The time spent in the mark phase. (Migrated from the geckoview metric of the same name.)\n",
+            "description": "The time spent in the mark phase, labeled by process type. (Migrated from the geckoview metric of the same name.)\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -29094,7 +29220,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time spent marking GC objects held live through weakmaps.\n",
+            "description": "Time spent marking GC objects held live through weakmaps, labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -29250,7 +29376,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The time taked by a minor (nursery) collection. (Migrated from the geckoview metric of the same name.)\n",
+            "description": "The time taked by a minor (nursery) collection, labeled by process type. (Migrated from the geckoview metric of the same name.)\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -29328,7 +29454,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The time spent in the preparation phase. (Migrated from the geckoview metric of the same name.)\n",
+            "description": "The time spent in the preparation phase, labeled by process type. (Migrated from the geckoview metric of the same name.)\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -29406,7 +29532,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The time spent running a GC slice. (Migrated from the geckoview metric of the same name.)\n",
+            "description": "The time spent running a GC slice, labeled by process type. (Migrated from the geckoview metric of the same name.)\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -29484,7 +29610,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The time spent in the sweep phase. (Migrated from the geckoview metric of the same name.)\n",
+            "description": "The time spent in the sweep phase, labeled by process type. (Migrated from the geckoview metric of the same name.)\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -29562,7 +29688,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Delay between queuing a GC task and the task starting.\n",
+            "description": "Delay between queuing a GC task and the task starting, labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -29640,7 +29766,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time spent in between garbage collections for the main runtime.\n",
+            "description": "Time spent in between garbage collections for the main runtime, labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -29718,7 +29844,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time between minor garbage collections (nursery collections) for all runtimes.\n",
+            "description": "Time between minor garbage collections (nursery collections) for all runtimes, labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -29796,7 +29922,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time spent in between garbage collections for the main runtime.\n",
+            "description": "Time spent in between GC slices for the main runtime, labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -34237,7 +34363,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Size of the GC nursery in bytes.\n",
+            "description": "Size of the GC nursery in bytes, labeled by process type.\n",
             "fields": [
               {
                 "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
@@ -39026,7 +39152,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time spent on one asynchronous SnowWhite freeing (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram CYCLE_COLLECTOR_ASYNC_SNOW_WHITE_FREEING.\n",
+            "description": "Time spent on one asynchronous SnowWhite freeing (ms), labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -39092,7 +39218,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Pause time for asynchronous deferred finalization (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram DEFERRED_FINALIZE_ASYNC.\n",
+            "description": "Pause time for asynchronous deferred finalization (ms), labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -39158,7 +39284,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Max time spent on one forget skippable (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram FORGET_SKIPPABLE_MAX.\n",
+            "description": "Max time spent on one forget skippable (ms), labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -39224,7 +39350,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Full pause time for one cycle collection, including preparation (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram CYCLE_COLLECTOR_FULL.\n",
+            "description": "Full pause time for one cycle collection, including preparation (ms), labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -39290,7 +39416,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Longest pause for an individual slice of one cycle collection, including preparation (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram CYCLE_COLLECTOR_MAX_PAUSE.\n",
+            "description": "Longest pause for an individual slice of one cycle collection, including preparation (ms), labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -39356,7 +39482,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time spent on one cycle collection (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram CYCLE_COLLECTOR.\n",
+            "description": "Time spent on one cycle collection (ms), labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -39422,7 +39548,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time spent in between cycle collections (seconds)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram CYCLE_COLLECTOR_TIME_BETWEEN.\n",
+            "description": "Time spent in between cycle collections (seconds), labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -39488,7 +39614,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time spent on one cycle collection in a worker (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram CYCLE_COLLECTOR_WORKER.\n",
+            "description": "Time spent on one cycle collection in a worker (ms), labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -42458,7 +42584,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time from the beginning of the first slice to the end of the last slice (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram GC_IN_PROGRESS_MS.\n",
+            "description": "Time from the beginning of the first slice to the end of the last slice (ms), labeled by process type.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram GC_IN_PROGRESS_MS.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -47606,7 +47732,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Requested GC slice budget.\n",
+            "description": "Requested GC slice budget, labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -47738,7 +47864,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The time spent in the compact phase. (Migrated from the geckoview metric of the same name.)\n",
+            "description": "The time spent in the compact phase, labeled by process type. (Migrated from the geckoview metric of the same name.)\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -47804,7 +47930,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time spent marking gray GC objects.\n",
+            "description": "Time spent marking gray GC objects, labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -47870,7 +47996,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The time spent marking GC roots. (Migrated from the geckoview metric of the same name.)\n",
+            "description": "The time spent marking GC roots, labeled by process type. (Migrated from the geckoview metric of the same name.)\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -47936,7 +48062,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The time spent in the mark phase. (Migrated from the geckoview metric of the same name.)\n",
+            "description": "The time spent in the mark phase, labeled by process type. (Migrated from the geckoview metric of the same name.)\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -48002,7 +48128,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time spent marking GC objects held live through weakmaps.\n",
+            "description": "Time spent marking GC objects held live through weakmaps, labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -48134,7 +48260,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The time taked by a minor (nursery) collection. (Migrated from the geckoview metric of the same name.)\n",
+            "description": "The time taked by a minor (nursery) collection, labeled by process type. (Migrated from the geckoview metric of the same name.)\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -48200,7 +48326,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The time spent in the preparation phase. (Migrated from the geckoview metric of the same name.)\n",
+            "description": "The time spent in the preparation phase, labeled by process type. (Migrated from the geckoview metric of the same name.)\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -48266,7 +48392,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The time spent running a GC slice. (Migrated from the geckoview metric of the same name.)\n",
+            "description": "The time spent running a GC slice, labeled by process type. (Migrated from the geckoview metric of the same name.)\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -48332,7 +48458,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The time spent in the sweep phase. (Migrated from the geckoview metric of the same name.)\n",
+            "description": "The time spent in the sweep phase, labeled by process type. (Migrated from the geckoview metric of the same name.)\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -48398,7 +48524,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Delay between queuing a GC task and the task starting.\n",
+            "description": "Delay between queuing a GC task and the task starting, labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -48464,7 +48590,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time spent in between garbage collections for the main runtime.\n",
+            "description": "Time spent in between garbage collections for the main runtime, labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -48530,7 +48656,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time between minor garbage collections (nursery collections) for all runtimes.\n",
+            "description": "Time between minor garbage collections (nursery collections) for all runtimes, labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -48596,7 +48722,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time spent in between garbage collections for the main runtime.\n",
+            "description": "Time spent in between GC slices for the main runtime, labeled by process type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
