@@ -20132,6 +20132,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Records the items interacted with in the Tabs and browsing section of preferences. See https://firefox-source-docs.mozilla.org/browser/BrowserUsageTelemetry.html\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_ui_interaction_preferences_pane_tabs_browsing",
+            "type": "RECORD"
+          },
+          {
             "description": "Records the items interacted with in any other section of preferences. See https://firefox-source-docs.mozilla.org/browser/BrowserUsageTelemetry.html This metric was generated to correspond to the Legacy Telemetry scalar browser.ui.interaction.preferences_paneUnknown.\n",
             "fields": [
               {
@@ -20147,6 +20165,60 @@
             ],
             "mode": "REPEATED",
             "name": "browser_ui_interaction_preferences_pane_unknown",
+            "type": "RECORD"
+          },
+          {
+            "description": "Records the count of actions taken within the sidebar Bookmarks panel.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_ui_interaction_sidebar_bookmarks",
+            "type": "RECORD"
+          },
+          {
+            "description": "Records the count of actions taken within the sidebar History panel.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_ui_interaction_sidebar_history",
+            "type": "RECORD"
+          },
+          {
+            "description": "Records the count of actions taken within the sidebar Synced Tabs panel.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_ui_interaction_sidebar_synced_tabs",
             "type": "RECORD"
           },
           {
@@ -44696,6 +44768,12 @@
             "description": "Records how Firefox was started on Windows. Currently will be one of \"Desktop\", \"DesktopPrivate\", \"StartMenu\" (including pins), \"StartMenuPrivate\", \"Taskbar\", \"TaskbarPrivate\", \"OtherShortcut\", or \"Other\" This metric was generated to correspond to the Legacy Telemetry scalar os.environment.launch_method.\n",
             "mode": "NULLABLE",
             "name": "os_environment_launch_method",
+            "type": "STRING"
+          },
+          {
+            "description": "The state of the launch-on-login setting at startup. One of: \"enabled\" (launch on login is active), \"disabled\" (not enabled by the user), \"disabled_by_settings\" (blocked by Windows Settings or policy), \"not_supported\" (feature unavailable on this platform), or \"error\" (failed to determine state).\n",
+            "mode": "NULLABLE",
+            "name": "os_environment_launch_on_login_state",
             "type": "STRING"
           },
           {
