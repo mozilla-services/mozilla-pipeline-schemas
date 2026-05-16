@@ -7679,6 +7679,126 @@
             "type": "RECORD"
           },
           {
+            "description": "HTTP3: Records the ratio of SEARCH's first RTT sample to the connection's min_rtt, expressed as an integer percentage (100 = identical, 200 = 2x inflated). Quantifies how much the initial RTT used to set bin_duration is inflated relative to the minimum path RTT.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "networking_http_3_search_first_rtt_vs_min_rtt",
+            "type": "RECORD"
+          },
+          {
+            "description": "HTTP3: Records the ratio of SEARCH's first RTT sample to the second RTT sample, expressed as an integer percentage (100 = identical, 200 = first was 2x the second). Helps evaluate whether using the second RTT sample instead of the first would improve SEARCH initialization.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "networking_http_3_search_first_rtt_vs_second_rtt",
+            "type": "RECORD"
+          },
+          {
+            "description": "HTTP3: Tracks the per connection maximum of lookback bins needed when RTT inflation prevents SEARCH from evaluating. Helps determine if the EXTRA_BINS constant value is sufficient.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "networking_http_3_search_lookback_bins",
+            "type": "RECORD"
+          },
+          {
+            "description": "HTTP3: Tracks the maximum number of passed bins for SEARCH connections that had at least one reset due to stale data. Can help evaluate the aggressiveness of the reset mechanism. Starts at 11, because that is the first value that would trigger a reset.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "networking_http_3_search_max_passed_bins",
+            "type": "RECORD"
+          },
+          {
             "description": "HTTP3: spurious congestion event to loss induced congestion event ratio (10000 scaling factor).\n",
             "fields": [
               {
@@ -17426,6 +17546,24 @@
             "type": "RECORD"
           },
           {
+            "description": "HTTP3: Tracks whether a connection couldn't run the SEARCH evaluation because the RTT inflated past the point where there wasn't enough data for lookback.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_http_3_search_rtt_inflated",
+            "type": "RECORD"
+          },
+          {
             "description": "HTTP3: Records if a heuristic-based slow start exit undershot, overshot or exactly matches the congestion window size when closing the connection. Is used to look for systematic tendencies in slow start exit algorithm accuracy direction. Only records for connections that saw congestion window growth.\n",
             "fields": [
               {
@@ -21714,6 +21852,132 @@
             ],
             "mode": "REPEATED",
             "name": "networking_http_3_hystart_css_rounds_finished",
+            "type": "RECORD"
+          },
+          {
+            "description": "HTTP3: Records the maximum non-exiting value that the scaled, normalized difference between sent and acked bytes ever reached for a connection. Can be used to tune the exit threshold (THRESH). Is capped out at 25, since the current THRESH is 26, so any diff > 25 will exit.\nThe bucket with the 'exited_ce' label is of special interest, since those are connections that then ended up exiting slow start with loss.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_http_3_search_max_norm_diff",
+            "type": "RECORD"
+          },
+          {
+            "description": "HTTP3: Records how many resets due to stale data happened for each SEARCH connection. Is labeled by slow start outcome to help with evaluation (i.e. no resets + not_exited makes sense, since the connection might've been very short).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_http_3_search_reset_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "HTTP3: Records how often SEARCH observes zero bytes sent in the previous RTT. Provides insight into app-limited behavior. Is labeled by slow start outcome to help reason about results.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_http_3_search_zero_bytes_sent",
             "type": "RECORD"
           },
           {
@@ -27715,6 +27979,66 @@
             "type": "RECORD"
           },
           {
+            "description": "HTTP3: Records the BDP estimate with empty buffers at slow start exit when using SEARCH. The SEARCH draft suggests a cwnd drain-phase using this as a target value; We record it for evaluation without implementing the drain-phase.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "networking_http_3_search_empty_buffer_bdp_estimate",
+            "type": "RECORD"
+          },
+          {
+            "description": "HTTP3: Records the BDP estimate with full buffers at slow start exit when using SEARCH. The SEARCH draft suggests a cwnd drain-phase using the empty-buffer version of this as a target value; We record this alternative for evaluation without implementing the drain-phase.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "networking_http_3_search_full_buffer_bdp_estimate",
+            "type": "RECORD"
+          },
+          {
             "description": "HTTP3: congestion window size in bytes when exiting slow start. Only recorded for connections that exited slow start. Also only records connections that grew past the initial congestion window size (new as of Bug 2024352).\n",
             "fields": [
               {
@@ -29723,6 +30047,12 @@
             "type": "STRING"
           },
           {
+            "description": "The original creation source of the profile:\n  firstrun-created-default\n    Matches the meaning in startup.profile_selection_reason\n  firstrun-skipped-default\n    Matches the meaning in startup.profile_selection_reason\n  restart-skipped-default\n    Matches the meaning in startup.profile_selection_reason\n  cmdline\n    Created by the --createprofile command line argument\n  downgrade\n    Created from the profile downgrade UI\n  legacy\n    Created to support versions of Firefox prior to 47\n  aboutprofiles\n    Created from about:profiles\n  profile-manager\n    Created from the legacy startup profile manager\n  selector-startup\n    Created from the selectable profiles profile selector during startup\n  selector-runtime\n    Created from the selectable profiles profile selector at runtime\n  profiles-panel\n    Created from the profiles panel in the application menu\n  main-menu\n    Created from the OS main menu\n  replace-last\n    Created when deleting the last profile in the group of selectable profiles\n  reset\n    Created",
+            "mode": "NULLABLE",
+            "name": "profiles_source",
+            "type": "STRING"
+          },
+          {
             "description": "Records the detected home region of the user. This is the general region of the user's machine.\nIf a machine moves location, there is a minimum 2-week delay before this will be updated.\nSee the [Region documentation](https://firefox-source-docs.mozilla.org/toolkit/modules/toolkit_modules/Region.html) for more information about updates.\n",
             "mode": "NULLABLE",
             "name": "region_home_region",
@@ -29762,6 +30092,12 @@
             "description": "How the profile was selected during startup. One of the following reasons:\n  unknown:\n    Generally should not happen, set as a default in case no other reason\n    occured.\n  profile-manager:\n    The profile was selected by the profile manager.\n  profile-selector:\n    The profile was selected by the profile selector window.\n  profile-reset:\n    The profile was selected for reset, normally this would mean a restart.\n  restart:\n    The user restarted the application, the same profile as previous will\n    be used.\n  argument-profile:\n    The profile was selected by the --profile command line argument.\n  argument-p:\n    The profile was selected by the -p command line argument.\n  firstrun-claimed-default:\n    A first run of a dedicated profiles build chose the old default\n    profile to be the default for this install.\n  firstrun-skipped-default:\n    A first run of a dedicated profiles build skipped over the old default\n    profile and created a new profile.\n  restart-claimed-default:\n    A first run of a dedicate",
             "mode": "NULLABLE",
             "name": "startup_profile_selection_reason",
+            "type": "STRING"
+          },
+          {
+            "description": "Records the status of parsing the profiles.ini file during startup:\n  ok:\n    The ini file parsed correctly\n  ini-failed:\n    Parsing the ini file completely failed, normally this would indicate\n    an out of memory issue.\n  ini-error:\n    The ini parser recorded some kind of failure during parsing\n  missing-name:\n    A profile section was missing the name\n  missing-path:\n    A profile section was missing the path\n  invalid-path:\n    A profile section's path was invalid\nNote that if multiple profile sections contain errors then only the last will be reported.\n",
+            "mode": "NULLABLE",
+            "name": "startup_profiles_ini_status",
             "type": "STRING"
           },
           {
