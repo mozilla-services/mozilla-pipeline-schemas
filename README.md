@@ -117,6 +117,7 @@ schemas
 |   |-- metrics
 |   |-- microsurvey
 |   |-- new-metric-capture-emulation
+|   |-- new-profile
 |   |-- newtab
 |   |-- newtab-content
 |   |-- nimbus-targeting-context
@@ -1112,6 +1113,6 @@ schemas
 `-- webpagetest
     `-- webpagetest-run
 
-1103 directories
+1104 directories
 ```
 
