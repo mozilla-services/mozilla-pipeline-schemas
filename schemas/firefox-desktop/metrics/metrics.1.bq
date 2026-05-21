@@ -40368,6 +40368,84 @@
             "type": "RECORD"
           },
           {
+            "description": "Time elapsed between a backspace-induced autofill block and the user re-integrating the same destination by picking it as a non-autofill history result in the same session. Only samples re-integrations of blocks that were set via consecutive backspaces on an autofilled value, blocks set via the result menu Dismiss action do not contribute samples. Labeled by whether the cleared block was at the origin or page-URL level.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "bucket_count",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "histogram_type",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "overflow",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "REPEATED",
+                    "name": "range",
+                    "type": "FLOAT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "time_unit",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "underflow",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "urlbar_autofill_reintegration_after_backspace",
+            "type": "RECORD"
+          },
+          {
             "description": "Duration from when the client sends a request to Merino to when the client receives a response, labeled by response status code. Labels are dynamic. For non-OHTTP requests, labels are simply the numeric status code, e.g., \"200\". For OHTTP requests, labels are `${status}_ohttp`, e.g., \"200_ohttp\".\n",
             "fields": [
               {
