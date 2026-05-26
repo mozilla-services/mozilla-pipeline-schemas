@@ -58,8 +58,6 @@ schemas
 |   |-- quicksuggest-impression
 |   |-- topsites-click
 |   `-- topsites-impression
-|-- coverage
-|   `-- coverage
 |-- debug-ping-view
 |   |-- deletion-request
 |   `-- events
@@ -1113,6 +1111,6 @@ schemas
 `-- webpagetest
     `-- webpagetest-run
 
-1104 directories
+1102 directories
 ```
 
