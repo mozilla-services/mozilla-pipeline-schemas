@@ -532,6 +532,24 @@
             "type": "RECORD"
           },
           {
+            "description": "The number of pings deleted because a pending pings quota was exceeded,\nlabeled by which quota triggered the deletion.\n\n* `count_quota`: the maximum number of pending pings was reached.\n* `size_quota`: the maximum size of the pending pings directory was reached.\n\nSent on the health ping only; use this metric to verify whether\nthe configured limits are sufficient to survive connectivity outages.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "glean_upload_pending_pings_deleted",
+            "type": "RECORD"
+          },
+          {
             "description": "Counts the number of ping upload failures, by type of failure.\nThis includes failures for all ping types,\nthough the counts appear in the next successfully sent `metrics` ping.\n",
             "fields": [
               {
