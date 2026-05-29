@@ -1822,6 +1822,12 @@
             "type": "INT64"
           },
           {
+            "description": "Counts the number of times a transaction was unexpectedly still found in a connection entry's pending queue when nsHttpConnectionMgr::CheckTransInPendingQueue ran.\n",
+            "mode": "NULLABLE",
+            "name": "networking_trans_found_in_pending_queue",
+            "type": "INT64"
+          },
+          {
             "description": "The number of loads of cross origin opaque resources. This metric was generated to correspond to the Legacy Telemetry scalar opaque.response.blocking.cross_origin_opaque_response_count.\n",
             "mode": "NULLABLE",
             "name": "opaque_response_blocking_cross_origin_opaque_response_count",
@@ -1897,6 +1903,12 @@
             "description": "Record the permissions.sqlite init failure\nThis metric was generated to correspond to the Legacy Telemetry count histogram PERMISSIONS_SQL_CORRUPTED.\n",
             "mode": "NULLABLE",
             "name": "permissions_sql_corrupted",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times a `PlacesConnection` was initialized.\n",
+            "mode": "NULLABLE",
+            "name": "places_manager_connection_initialized",
             "type": "INT64"
           },
           {
@@ -39890,6 +39902,36 @@
             "type": "RECORD"
           },
           {
+            "description": "Time taken to execute `PRAGMA_CHECKPOINT` inside `run_maintenance()`\n\nDuplication of `run_maintenance_chk_pnt_time_temp` for glean-sym testing.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "places_manager_run_maintenance_chk_pnt_time_temp",
+            "type": "RECORD"
+          },
+          {
             "description": "Time taken to execute `PRAGMA optimize` inside `run_maintenance()`",
             "fields": [
               {
@@ -39920,6 +39962,36 @@
             "type": "RECORD"
           },
           {
+            "description": "Time taken to execute `PRAGMA optimize` inside `run_maintenance()`\n\nDuplication of `run_maintenance_optimize_time` for glean-sym testing.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "places_manager_run_maintenance_optimize_time_temp",
+            "type": "RECORD"
+          },
+          {
             "description": "Time taken to execute `prune_older_visits()` inside `run_maintenance()`",
             "fields": [
               {
@@ -39947,6 +40019,36 @@
             ],
             "mode": "NULLABLE",
             "name": "places_manager_run_maintenance_prune_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time taken to execute `prune_older_visits()` inside `run_maintenance()`\n\nDuplication of `run_maintenance_prune_time` for glean-sym testing.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "places_manager_run_maintenance_prune_time_temp",
             "type": "RECORD"
           },
           {
@@ -40007,6 +40109,36 @@
             ],
             "mode": "NULLABLE",
             "name": "places_manager_run_maintenance_vacuum_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time taken to execute `VACUUM` inside `run_maintenance()`\n\nDuplication of `run_maintenance_vacuum_time` for glean-sym testing.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "places_manager_run_maintenance_vacuum_time_temp",
             "type": "RECORD"
           },
           {
