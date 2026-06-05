@@ -41,6 +41,44 @@
         "type": "STRING"
       },
       {
+        "description": "Session metadata attached to this event. Absent for out-of-session events and events from before sessions were introduced.",
+        "fields": [
+          {
+            "description": "Per-session event counter, reset at each new session.",
+            "mode": "NULLABLE",
+            "name": "event_seq",
+            "type": "INT64"
+          },
+          {
+            "description": "The unique UUID for this session.",
+            "mode": "NULLABLE",
+            "name": "session_id",
+            "type": "STRING"
+          },
+          {
+            "description": "The sampling rate in effect for this session.",
+            "mode": "NULLABLE",
+            "name": "session_sample_rate",
+            "type": "FLOAT64"
+          },
+          {
+            "description": "Monotonically increasing session counter, persisted across restarts.",
+            "mode": "NULLABLE",
+            "name": "session_seq",
+            "type": "INT64"
+          },
+          {
+            "description": "Wall-clock timestamp at session start (RFC 3339). Absent on events from before this field was introduced.",
+            "mode": "NULLABLE",
+            "name": "session_start_time",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "session",
+        "type": "RECORD"
+      },
+      {
         "mode": "NULLABLE",
         "name": "timestamp",
         "type": "INT64"
