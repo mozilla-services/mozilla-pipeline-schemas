@@ -14182,7 +14182,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Whether bfcache is used when loading a page from session history\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram BFCACHE_PAGE_RESTORED.\n",
+            "description": "Whether bfcache is used when loading a page from session history. This metric was disabled between bugs 1892551 and 2037998, so the data may have discontinuities over that period.\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram BFCACHE_PAGE_RESTORED.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -23579,6 +23579,48 @@
             ],
             "mode": "REPEATED",
             "name": "devtools_warm_toolbox_open_delay",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time for a completed HTTPS RR (type 65) resolution (msec), keyed by whether it was resolved over DoH/TRR or natively.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dns_https_rr_lookup_time",
             "type": "RECORD"
           },
           {

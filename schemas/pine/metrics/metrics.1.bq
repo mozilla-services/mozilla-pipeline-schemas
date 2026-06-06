@@ -16985,7 +16985,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Whether bfcache is used when loading a page from session history\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram BFCACHE_PAGE_RESTORED.\n",
+            "description": "Whether bfcache is used when loading a page from session history. This metric was disabled between bugs 1892551 and 2037998, so the data may have discontinuities over that period.\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram BFCACHE_PAGE_RESTORED.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -29090,6 +29090,42 @@
             "type": "RECORD"
           },
           {
+            "description": "Records the count of hidden search engines.\n- `oneOff` refers to an engine hidden from only the one-off buttons or\n  the unified search button.\n- `disabled` refers to an engine that has been disabled from the whole\n  application, e.g. removed from the old settings (prior to FF 152) or\n  disabled in the new settings (FF 152 & later).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "search_counts_hidden_engines",
+            "type": "RECORD"
+          },
+          {
+            "description": "Records the type and number of search engines that a user has installed and enabled.\nThe total of all labels is the total count of search engines installed.\n- `appProvidedConfig` refers to the search engine integrations provided by\n  the application.\n- `userInstalledConfig` refers to engines from the application's\n  configuration that the user has chosen to install.\n- `openSearch` refers to an engine installed via a web page providing an\n  \"OpenSearch\" definition.\n- `addon` refers to an engine linked to a particular add-on. - `policy` refers to an engine added by an enterprise policy. - `user` refers to an engine a user has added, e.g. via the settings\n  UI to add an engine, or via right-clicking on a search field on a web\n  page.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "search_counts_totals",
+            "type": "RECORD"
+          },
+          {
             "description": "Windows-only.\nCumulative bytes read by the application according to the OS, per startup\nphase.\n",
             "fields": [
               {
@@ -30049,6 +30085,84 @@
             ],
             "mode": "REPEATED",
             "name": "devtools_warm_toolbox_open_delay",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time for a completed HTTPS RR (type 65) resolution (msec), keyed by whether it was resolved over DoH/TRR or natively.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "bucket_count",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "histogram_type",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "overflow",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "REPEATED",
+                    "name": "range",
+                    "type": "FLOAT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "time_unit",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "underflow",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dns_https_rr_lookup_time",
             "type": "RECORD"
           },
           {
