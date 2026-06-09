@@ -26,9 +26,9 @@ jobs:
   deploy:
     name: Build artifact, upload to GCS, push image to GAR
     runs-on: ubuntu-latest
-    # Must match the SA's iam.workloadIdentityUser binding (see main.tf
-    # in the sandbox project — repo + environment must be allow-listed).
-    environment: dev
+    # No GitHub Environment needed: the SA's iam.workloadIdentityUser binding
+    # now matches on attribute.repository_ref (repo + branch ref), see
+    # locals.gha_branch_members in the sandbox project's main.tf.
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
