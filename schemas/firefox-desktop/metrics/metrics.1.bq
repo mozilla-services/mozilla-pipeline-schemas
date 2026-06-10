@@ -8221,7 +8221,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Happy Eyeballs: number of connection attempts started before one succeeded or all failed.\n",
+            "description": "Happy Eyeballs: number of connection attempts started before one succeeded or all failed, keyed by whether the algorithm ultimately succeeded or failed.\n",
             "fields": [
               {
                 "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
@@ -8257,7 +8257,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Happy Eyeballs: end-to-end time in milliseconds from algorithm start to a successful connection or final failure.\n",
+            "description": "Happy Eyeballs: end-to-end time in milliseconds from algorithm start to a successful connection or final failure, keyed by whether the algorithm ultimately succeeded or failed.\n",
             "fields": [
               {
                 "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
@@ -31205,6 +31205,102 @@
             "type": "RECORD"
           },
           {
+            "description": "Happy Eyeballs: number of connection attempts started before one succeeded or all failed, keyed by whether the algorithm ultimately succeeded or failed.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "netwerk_happy_eyeballs_connection_attempt_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "Happy Eyeballs: end-to-end time in milliseconds from algorithm start to a successful connection or final failure, keyed by whether the algorithm ultimately succeeded or failed.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "netwerk_happy_eyeballs_connection_establishment_time",
+            "type": "RECORD"
+          },
+          {
             "description": "Happy Eyeballs: time in milliseconds to resolve each DNS record type (A, AAAA, HTTPS).\n",
             "fields": [
               {
@@ -39734,7 +39830,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Records the latencies (ms) of search suggestions fetches per search engine. Keys in this histogram are the search engine identifier for configuration provided search engines and 'other' for search engines installed via other methods.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram SEARCH_SUGGESTIONS_LATENCY_MS.\nThis metric was renamed in Gecko 144 from `search.suggestions_latency` and changed to report the search engine identifier rather than the telemetry identifier.\n",
+            "description": "Records the latencies (ms) of search suggestions fetches per search engine. Keys in this histogram are search engine identifiers for built-in search engines and 'other' for non-built-in search engines.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram SEARCH_SUGGESTIONS_LATENCY_MS.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
