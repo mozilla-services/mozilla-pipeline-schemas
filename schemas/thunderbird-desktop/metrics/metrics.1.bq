@@ -15051,7 +15051,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The result of attempting to open a sqlite file.\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram SQLITE_STORE_OPEN.\nInitially this metric also recorded the \"success\" category, but due to the high volume of recording those, only failure categories are now tracked.\n",
+            "description": "The result of attempting to open a SQLite file.\nInitially this metric also recorded the \"success\" category, but due to the high volume of recording those, only failure categories are now tracked.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -15081,7 +15081,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The result of attempting to query a sqlite file.\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram SQLITE_STORE_QUERY.\nInitially this metric also recorded the \"success\" category, but due to the high volume of recording those, only failure categories are now tracked.\n",
+            "description": "The result of attempting to query a SQLite file.\nInitially this metric also recorded the \"success\" category, but due to the high volume of recording those, only failure categories are now tracked.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -17714,6 +17714,24 @@
             ],
             "mode": "REPEATED",
             "name": "geolocation_macos_error_code",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many network geolocation requests received an error response.  The number of successful network geolocation requests should resemble the the values for these labels in the geolocation_service probe, minus these failure counts.  Not all failures can be known.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "geolocation_network_failures",
             "type": "RECORD"
           },
           {
