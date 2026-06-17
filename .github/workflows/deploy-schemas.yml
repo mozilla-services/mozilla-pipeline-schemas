@@ -15,20 +15,21 @@ permissions:
 
 env:
   GCP_PROJECT: moz-fx-dev-whd-svcse-4252
-  GCS_BUCKET: moz-fx-dev-whd-svcse-4252-artifacts
-  GCS_PREFIX: schemas
-  GAR_LOCATION: us-west1
-  GAR_REPOSITORY: artifacts
+  GAR_LOCATION: us
+  GAR_REPOSITORY: mozilla-pipeline-schemas-oci-artifacts
   GAR_IMAGE: schemas
-  SERVICE_ACCOUNT: artifact-writer@moz-fx-dev-whd-svcse-4252.iam.gserviceaccount.com
+  # Generic-format Artifact Registry repo for the bare tarball, read via the
+  # Artifact Registry download API (e.g. by ingestion-beam --schemasLocation).
+  GENERIC_REPOSITORY: mozilla-pipeline-schemas-generic-artifacts
+  SERVICE_ACCOUNT: mps-artifacts-writer@moz-fx-dev-whd-svcse-4252.iam.gserviceaccount.com
 
 jobs:
   deploy:
-    name: Build artifact, upload to GCS, push image to GAR
+    name: Build artifact, push OCI image and generic tarball to GAR
     runs-on: ubuntu-latest
     # No GitHub Environment needed: the SA's iam.workloadIdentityUser binding
-    # now matches on attribute.repository_ref (repo + branch ref), see
-    # locals.gha_branch_members in the sandbox project's main.tf.
+    # matches on attribute.repository_ref (repo + branch ref), see
+    # google_service_account_iam_binding.artifacts_writer_gha in the sandbox main.tf.
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
@@ -41,59 +42,53 @@ jobs:
           create_credentials_file: true
           service_account: ${{ env.SERVICE_ACCOUNT }}
           workload_identity_provider: ${{ vars.GCPV2_GITHUB_WORKLOAD_IDENTITY_PROVIDER }}
-          token_format: access_token
 
       - uses: google-github-actions/setup-gcloud@e427ad8a34f8676edf47cf7d7925499adf3eb74f # v2
 
-      - name: Compute BUILD_ID and build schemas tarball
+      - name: Build schemas tarball and image build context
         id: archive
         run: |
           set -euo pipefail
           SHORT_REF="$(git rev-parse --short=10 HEAD)"
-          COMMIT_TIME="$(git log -n 1 --pretty='format:%cd' --date=format:'%Y%m%d%H%M')"
-          BUILD_ID="${COMMIT_TIME}_${SHORT_REF}"
-          FILENAME="${BUILD_ID}.tar.gz"
-          git archive --format tgz --prefix mozilla-pipeline-schemas/ -o "${FILENAME}" HEAD schemas/
-          cp "${FILENAME}" schemas.tar.gz
-          echo "build_id=${BUILD_ID}" >> "$GITHUB_OUTPUT"
-          echo "filename=${FILENAME}" >> "$GITHUB_OUTPUT"
-
-      - name: Upload tarball to GCS (versioned only)
-        env:
-          FILENAME: ${{ steps.archive.outputs.filename }}
-        run: |
-          set -euo pipefail
-          gcloud storage cp "${FILENAME}" \
-            "gs://${GCS_BUCKET}/${GCS_PREFIX}/${FILENAME}"
-
-      - name: Configure docker auth for GAR
-        run: gcloud auth configure-docker "${GAR_LOCATION}-docker.pkg.dev" --quiet
-
-      - name: Build and push image
-        env:
-          BUILD_ID: ${{ steps.archive.outputs.build_id }}
-        run: |
-          set -euo pipefail
-          IMAGE="${GAR_LOCATION}-docker.pkg.dev/${GCP_PROJECT}/${GAR_REPOSITORY}/${GAR_IMAGE}"
-          cat > Dockerfile.schemas <<'EOF'
+          mkdir -p image-context
+          git archive --format tgz --prefix mozilla-pipeline-schemas/ \
+            -o image-context/schemas.tar.gz HEAD schemas/
+          cat > image-context/Dockerfile <<'EOF'
           FROM scratch
           COPY schemas.tar.gz /schemas.tar.gz
           EOF
-          docker build -f Dockerfile.schemas \
-            -t "${IMAGE}:${BUILD_ID}" \
-            -t "${IMAGE}:${GITHUB_SHA}" \
-            -t "${IMAGE}:latest" .
-          docker push "${IMAGE}:${BUILD_ID}"
-          docker push "${IMAGE}:${GITHUB_SHA}"
-          docker push "${IMAGE}:latest"
+          echo "short_ref=${SHORT_REF}" >> "$GITHUB_OUTPUT"
 
-      - name: Summary
+      - name: Upload tarball to generic Artifact Registry repo
         env:
-          BUILD_ID: ${{ steps.archive.outputs.build_id }}
+          SHORT_REF: ${{ steps.archive.outputs.short_ref }}
         run: |
-          {
-            echo "### Artifact published"
-            echo "- BUILD_ID: \`${BUILD_ID}\`"
-            echo "- GCS: \`gs://${GCS_BUCKET}/${GCS_PREFIX}/${BUILD_ID}.tar.gz\`"
-            echo "- Image: \`${GAR_LOCATION}-docker.pkg.dev/${GCP_PROJECT}/${GAR_REPOSITORY}/${GAR_IMAGE}:${BUILD_ID}\`"
-          } >> "$GITHUB_STEP_SUMMARY"
+          set -euo pipefail
+          gcloud artifacts generic upload \
+            --location="${GAR_LOCATION}" \
+            --project="${GCP_PROJECT}" \
+            --repository="${GENERIC_REPOSITORY}" \
+            --package="${GAR_IMAGE}" \
+            --version="${SHORT_REF}" \
+            --source=image-context/schemas.tar.gz
+
+      - name: Build schemas image
+        id: build
+        uses: mozilla/deploy-actions/docker-build@20256256ac0d19735926dc7975a86dbbb7a06e5f # v6.6.3
+        with:
+          image_name: ${{ env.GAR_IMAGE }}
+          gar_name: ${{ env.GAR_REPOSITORY }}
+          gar_location: ${{ env.GAR_LOCATION }}
+          project_id: ${{ env.GCP_PROJECT }}
+          image_build_context: ./image-context
+          dockerfile_path: ./image-context/Dockerfile
+          should_tag_latest: "true"
+
+      - name: Push schemas image
+        uses: mozilla/deploy-actions/docker-push@20256256ac0d19735926dc7975a86dbbb7a06e5f # v6.6.3
+        with:
+          image_tags: ${{ steps.build.outputs.image_tags }}
+          gar_location: ${{ env.GAR_LOCATION }}
+          project_id: ${{ env.GCP_PROJECT }}
+          service_account_name: mps-artifacts-writer
+          workload_identity_pool_project_number: ${{ vars.GCPV2_WORKLOAD_IDENTITY_POOL_PROJECT_NUMBER }}
