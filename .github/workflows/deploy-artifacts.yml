@@ -1,0 +1,89 @@
+name: Build & publish mozilla-pipeline-schemas artifact
+
+on:
+  push:
+    branches:
+      - generated-schemas
+
+concurrency:
+  group: deploy-schemas-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  GCP_PROJECT: moz-fx-data-artifacts-prod
+  GAR_LOCATION: us
+  GAR_REPOSITORY: mozilla-pipeline-schemas-oci-artifacts
+  GAR_IMAGE: schemas
+  GENERIC_REPOSITORY: mozilla-pipeline-schemas-generic-artifacts
+  SERVICE_ACCOUNT_NAME: mozilla-pipeline-schemas-artif
+
+jobs:
+  deploy:
+    name: Build artifact, push OCI image and generic tarball to GAR
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Authenticate to GCP via OIDC
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3
+        with:
+          create_credentials_file: true
+          service_account: ${{ env.SERVICE_ACCOUNT_NAME }}@${{ env.GCP_PROJECT }}.iam.gserviceaccount.com
+          workload_identity_provider: ${{ vars.GCPV2_GITHUB_WORKLOAD_IDENTITY_PROVIDER }}
+
+      - uses: google-github-actions/setup-gcloud@e427ad8a34f8676edf47cf7d7925499adf3eb74f # v2
+
+      - name: Build schemas tarball and image build context
+        id: archive
+        run: |
+          set -euo pipefail
+          SHORT_REF="$(git rev-parse --short=10 HEAD)"
+          mkdir -p image-context
+          git archive --format tgz --prefix mozilla-pipeline-schemas/ \
+            -o image-context/schemas.tar.gz HEAD schemas/
+          cat > image-context/Dockerfile <<'EOF'
+          FROM scratch
+          COPY schemas.tar.gz /schemas.tar.gz
+          EOF
+          echo "short_ref=${SHORT_REF}" >> "$GITHUB_OUTPUT"
+
+      - name: Upload tarball to generic Artifact Registry repo
+        env:
+          SHORT_REF: ${{ steps.archive.outputs.short_ref }}
+        run: |
+          set -euo pipefail
+          gcloud artifacts generic upload \
+            --location="${GAR_LOCATION}" \
+            --project="${GCP_PROJECT}" \
+            --repository="${GENERIC_REPOSITORY}" \
+            --package="${GAR_IMAGE}" \
+            --version="${SHORT_REF}" \
+            --source=image-context/schemas.tar.gz
+
+      - name: Build schemas image
+        id: build
+        uses: mozilla/deploy-actions/docker-build@20256256ac0d19735926dc7975a86dbbb7a06e5f # v6.6.3
+        with:
+          image_name: ${{ env.GAR_IMAGE }}
+          gar_name: ${{ env.GAR_REPOSITORY }}
+          gar_location: ${{ env.GAR_LOCATION }}
+          project_id: ${{ env.GCP_PROJECT }}
+          image_build_context: ./image-context
+          dockerfile_path: ./image-context/Dockerfile
+          should_tag_latest: "true"
+
+      - name: Push schemas image
+        uses: mozilla/deploy-actions/docker-push@20256256ac0d19735926dc7975a86dbbb7a06e5f # v6.6.3
+        with:
+          image_tags: ${{ steps.build.outputs.image_tags }}
+          gar_location: ${{ env.GAR_LOCATION }}
+          project_id: ${{ env.GCP_PROJECT }}
+          service_account_name: ${{ env.SERVICE_ACCOUNT_NAME }}
+          workload_identity_pool_project_number: ${{ vars.GCPV2_WORKLOAD_IDENTITY_POOL_PROJECT_NUMBER }}
