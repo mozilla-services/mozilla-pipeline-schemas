@@ -646,6 +646,12 @@
             "type": "INT64"
           },
           {
+            "description": "The system font-smoothing type, normalized across platforms: 0 = disabled, 1 = grayscale (standard), 2 = subpixel. On Windows this is the subpixel-vs-grayscale type (SPI_GETFONTSMOOTHINGTYPE), distinct from text_anti_aliasing (which records the ClearType contrast level). On Linux it is the GNOME org.gnome.desktop.interface font-antialiasing setting (rgba/grayscale/none). Not set on macOS (grayscale-only, no subpixel type) or where the value cannot be determined.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_smoothing_type",
+            "type": "INT64"
+          },
+          {
             "description": "The version of OpenGL supported by the user's system.\n",
             "mode": "NULLABLE",
             "name": "characteristics_gl2_version_software",
@@ -1877,6 +1883,12 @@
             "type": "STRING"
           },
           {
+            "description": "The font hinting style. On Linux this is the GNOME org.gnome.desktop.interface font-hinting setting, one of \"none\", \"slight\", \"medium\", or \"full\". Hinting reshapes glyph outlines, so it affects rasterized output including canvas text readback. Not set on other platforms, which expose no comparable per-user setting.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_hinting",
+            "type": "STRING"
+          },
+          {
             "description": "The value of the font.minimum-size.<default language group> pref\n",
             "mode": "NULLABLE",
             "name": "characteristics_font_minimum_size_default_group",
@@ -1922,6 +1934,12 @@
             "description": "The value of the font.name.serif.x-western pref\n",
             "mode": "NULLABLE",
             "name": "characteristics_font_name_serif_western",
+            "type": "STRING"
+          },
+          {
+            "description": "The subpixel (LCD) element order. On Linux this is the GNOME org.gnome.desktop.interface font-rgba-order setting, one of \"rgba\", \"rgb\", \"bgr\", \"vrgb\", or \"vbgr\". On Windows it is the ClearType orientation (SPI_GETFONTSMOOTHINGORIENTATION), normalized to \"rgb\" or \"bgr\" (Windows exposes no vertical variants). Only affects rendering when subpixel antialiasing is active (see font_smoothing_type); it does not affect canvas readback, which is grayscale. Not set on macOS or Android.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_rgba_order",
             "type": "STRING"
           },
           {
