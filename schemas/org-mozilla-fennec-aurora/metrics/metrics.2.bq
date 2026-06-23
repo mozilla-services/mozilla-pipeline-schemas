@@ -1518,6 +1518,30 @@
             "type": "INT64"
           },
           {
+            "description": "The number of times a migration was attempted and failed.\n",
+            "mode": "NULLABLE",
+            "name": "glean_migration_error",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of metrics that failed to deserialize from storage\nwhile iterating the Rkv database for migration.\n",
+            "mode": "NULLABLE",
+            "name": "glean_migration_failed_metrics",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of metrics stored in SQLite after a migration run.\n",
+            "mode": "NULLABLE",
+            "name": "glean_migration_metrics_in_sqlite",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of metrics migrated from Rkv storage to SQLite storage.\n",
+            "mode": "NULLABLE",
+            "name": "glean_migration_migrated_metrics",
+            "type": "INT64"
+          },
+          {
             "description": "The total number of sessions started since the last metrics ping.\nIncremented for every session start, regardless of sampling.\nThis metric is a counter and is out-of-session by default, so it\nis never suppressed by any session sampling which means it can be\nused to validate sampling rates against the events-ping session_start\ncount.\n",
             "mode": "NULLABLE",
             "name": "glean_sessions_seen",
@@ -30229,6 +30253,12 @@
             "type": "STRING"
           },
           {
+            "description": "If there was an error loading the sqlite database, record it.\n",
+            "mode": "NULLABLE",
+            "name": "glean_database_load_error",
+            "type": "STRING"
+          },
+          {
             "description": "If there was an error loading the RKV database, record it.\n",
             "mode": "NULLABLE",
             "name": "glean_database_rkv_load_error",
@@ -34309,6 +34339,36 @@
             ],
             "mode": "NULLABLE",
             "name": "glean_database_write_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "The duration for one full migration run at startup.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "glean_migration_migration_duration",
             "type": "RECORD"
           },
           {
