@@ -17,8 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      # Needed by the post-artifacts job to comment the integration diff on PRs.
-      pull-requests: write
     steps:
       - name: Checkout
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
@@ -68,8 +66,7 @@ jobs:
           path: integration
 
       - name: Write integration report to job summary
-        # Render the schema diff inline on the run page so it is viewable
-        # without downloading the artifact (e.g. for forked pull requests).
+        # Render the schema diff inline on the run page so it is viewable for forked pull requests
         run: scripts/render-integration-report integration >> "$GITHUB_STEP_SUMMARY"
 
   post-artifacts:
