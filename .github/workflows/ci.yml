@@ -1,0 +1,106 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+name: CI tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions: {}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          # bigquery diff checks out base and head refs inside the container, so
+          # the full history and the upstream main ref must be present in .git
+          # before the image is built (the Dockerfile copies the repo into the
+          # image with COPY . /app).
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Checkout upstream
+        run: |
+          git remote add upstream https://github.com/mozilla-services/mozilla-pipeline-schemas.git
+          git fetch --all
+          # Tests need a local main branch so create it if needed
+          git show-ref --verify --quiet refs/heads/main || git branch main origin/main
+
+      - name: Build Docker image
+        run: docker build --pull -t mps .
+
+      - name: Test code
+        run: docker run mps
+
+      - name: Verify that all generated schemas are committed
+        run: docker run -w /app mps scripts/assert-consistent-schemas
+
+      - name: Verify set version in telemetry namespace is correct
+        run: docker run -w /app mps scripts/assert-telemetry-version
+
+      - name: Generate diff artifacts for bigquery
+        run: |
+          # compare a branch against the main branch, or against the previous
+          # commit if we're already on the main branch
+          base=upstream/main
+          if [[ "${GITHUB_REF}" == "refs/heads/main" ]]; then
+            base=HEAD~1
+          fi
+          docker run --name mps -w /app mps \
+            mps bigquery diff --base-ref "$base"
+          docker cp mps:/app/integration ./integration
+
+      - name: Upload integration artifacts
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: integration
+          path: integration
+
+      - name: Write integration report to job summary
+        # Render the schema diff inline on the run page so it is viewable for forked pull requests
+        run: scripts/render-integration-report integration >> "$GITHUB_STEP_SUMMARY"
+
+  post-artifacts:
+    needs: test
+    # Don't comment on forks; can use the diff in the run summary instead
+    if: >-
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          sparse-checkout: scripts/render-integration-report
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+
+      - name: Download integration artifacts
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: integration
+          path: integration
+
+      - name: Post integration report
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          COMMIT_MESSAGE: ${{ github.event.pull_request.title }}
+        run: |
+          report=report.md
+          printf '### Integration report for "%s"\n' "$COMMIT_MESSAGE" > "$report"
+          scripts/render-integration-report integration >> "$report"
+          gh pr comment "$PR_NUMBER" --body-file "$report"

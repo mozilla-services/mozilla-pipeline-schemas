@@ -132,19 +132,13 @@ integration
     └── webpagetest.webpagetest-run.1.bq
 ```
 
-Pushes to the main repo will trigger integration tests in CircleCI that directly
-compare the revision to the `main` branch. These tests do not run for forked PRs
-in order to protect data and credentials, but reviewers can trigger tests to run
-by pushing the PR's revisions to a branch of the main repo. We provide a script for this:
+Every push and pull request runs integration tests in GitHub Actions that
+compare the revision against the `main` branch. The resulting schema diff is
+shown inline in the run's job summary and uploaded as an `integration` artifact
+on the run page. On pull requests opened from this repo, the diff is also posted
+as a comment.
 
-```bash
-# Before running, double check that the PR doesn't make any changes to
-# .circleci/config.yml that could spill sensitive environment variables
-# or data contents to the public CircleCI logs.
-./.github/push-to-trigger-integration <username>:<branchname>
-```
-
-For details on how to compare two arbitrary revisions, refer to the `integration` job in `.circleci/config.yml`. For more documentation, see [mozilla-services/edge-validator](https://github.com/mozilla-services/edge-validator).
+For details on how to compare two arbitrary revisions, refer to the `test` job in `.github/workflows/ci.yml`. For more documentation, see [mozilla-services/edge-validator](https://github.com/mozilla-services/edge-validator).
 
 ### `mps` command-line tool
 
