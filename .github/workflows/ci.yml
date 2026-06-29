@@ -34,6 +34,8 @@ jobs:
         run: |
           git remote add upstream https://github.com/mozilla-services/mozilla-pipeline-schemas.git
           git fetch --all
+          # Tests need a local main branch so create it if needed
+          git show-ref --verify --quiet refs/heads/main || git branch main origin/main
 
       - name: Build Docker image
         run: docker build --pull -t mps .
