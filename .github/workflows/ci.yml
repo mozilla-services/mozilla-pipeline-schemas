@@ -1,0 +1,112 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+name: CI tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions: {}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      # Needed by the post-artifacts job to comment the integration diff on PRs.
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          # bigquery diff checks out base and head refs inside the container, so
+          # the full history and the upstream main ref must be present in .git
+          # before the image is built (the Dockerfile copies the repo into the
+          # image with COPY . /app).
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Checkout upstream
+        run: |
+          git remote add upstream https://github.com/mozilla-services/mozilla-pipeline-schemas.git
+          git fetch --all
+
+      - name: Build Docker image
+        run: docker build --pull -t mps .
+
+      - name: Test code
+        run: docker run mps
+
+      - name: Verify that all generated schemas are committed
+        run: docker run -w /app mps scripts/assert-consistent-schemas
+
+      - name: Verify set version in telemetry namespace is correct
+        run: docker run -w /app mps scripts/assert-telemetry-version
+
+      - name: Generate diff artifacts for bigquery
+        run: |
+          # compare a branch against the main branch, or against the previous
+          # commit if we're already on the main branch
+          base=upstream/main
+          if [[ "${GITHUB_REF}" == "refs/heads/main" ]]; then
+            base=HEAD~1
+          fi
+          docker run --name mps -w /app mps \
+            mps bigquery diff --base-ref "$base"
+          docker cp mps:/app/integration ./integration
+
+      - name: Upload integration artifacts
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: integration
+          path: integration
+
+      - name: Write integration report to job summary
+        # Render the schema diff inline on the run page so it is viewable
+        # without downloading the artifact (e.g. for forked pull requests).
+        run: scripts/render-integration-report integration >> "$GITHUB_STEP_SUMMARY"
+
+  post-artifacts:
+    needs: test
+    # Don't comment on forks; can use the diff in the run summary instead
+    if: >-
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          # This job has pull-requests: write, so it must run trusted code only.
+          # Check out the base ref (this repo's own code) rather than the PR head
+          # so a forked PR cannot alter the rendering script run here. The diff in
+          # the downloaded artifact is still treated as untrusted data.
+          ref: ${{ github.event.pull_request.base.sha }}
+          sparse-checkout: scripts/render-integration-report
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+
+      - name: Download integration artifacts
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: integration
+          path: integration
+
+      - name: Post integration report
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          COMMIT_MESSAGE: ${{ github.event.pull_request.title }}
+        run: |
+          report=report.md
+          printf '### Integration report for "%s"\n' "$COMMIT_MESSAGE" > "$report"
+          scripts/render-integration-report integration >> "$report"
+          gh pr comment "$PR_NUMBER" --body-file "$report"

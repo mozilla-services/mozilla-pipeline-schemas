@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# Render the bigquery integration diff as markdown on stdout. Both the GitHub
+# Actions job summary and the pull request comment use this so the two paths
+# stay in sync.
+#
+# Usage: scripts/render-integration-report <integration-dir>
+
+set -euo pipefail
+
+integration_dir=${1:-integration}
+
+for prefix in bq_schema compact_schema; do
+    diff_file=$(find "$integration_dir" -maxdepth 1 -name "${prefix}*.diff" | head -n1)
+    echo ""
+    if [ -z "$diff_file" ]; then
+        echo "#### \`${prefix}\`"
+        echo "No diff file found."
+    elif [ -s "$diff_file" ]; then
+        echo "#### \`$(basename "$diff_file")\`"
+        echo "<details>"
+        echo "<summary>Click to expand!</summary>"
+        echo ""
+        echo '```diff'
+        cat "$diff_file"
+        echo '```'
+        echo "</details>"
+    else
+        echo "#### \`$(basename "$diff_file")\`"
+        echo "No content detected."
+    fi
+done
