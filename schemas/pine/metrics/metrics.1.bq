@@ -1716,6 +1716,18 @@
             "type": "INT64"
           },
           {
+            "description": "Number of cacheable HTTP responses that carried a No-Vary-Search response header. Only counts responses that reach the cache-write path; headers on non-cacheable responses are not counted.\n",
+            "mode": "NULLABLE",
+            "name": "network_no_vary_search_header_received",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of received No-Vary-Search headers (on cacheable responses) that failed to parse and fell back to exact-match behavior.\n",
+            "mode": "NULLABLE",
+            "name": "network_no_vary_search_parse_error",
+            "type": "INT64"
+          },
+          {
             "description": "Number of TLS connections (via Get()) that started before the background disk load completed. Each occurrence is also logged as a warning.\n",
             "mode": "NULLABLE",
             "name": "network_ssl_token_cache_early_connections",
@@ -22532,6 +22544,60 @@
             ],
             "mode": "REPEATED",
             "name": "network_id_online",
+            "type": "RECORD"
+          },
+          {
+            "description": "Breakdown by variation rule of the cache hits won via No-Vary-Search (the 'matched' outcome of no_vary_search_match). The sum across labels equals no_vary_search_match['matched'].\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "network_no_vary_search_hit_by_rule",
+            "type": "RECORD"
+          },
+          {
+            "description": "Outcome of a No-Vary-Search secondary cache lookup, recorded only when the secondary index had at least one candidate for the request's base path. 'matched' means an equivalent cached entry was found and used as a cache hit that exact-URL matching would have missed; 'not_matched' means candidates existed but none were equivalent.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "network_no_vary_search_match",
+            "type": "RECORD"
+          },
+          {
+            "description": "The parsed variation rule of each received No-Vary-Search header, recorded once per cacheable response. 'exact_match' includes both key-order-only headers and headers that failed to parse.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "network_no_vary_search_rule_type",
             "type": "RECORD"
           },
           {
