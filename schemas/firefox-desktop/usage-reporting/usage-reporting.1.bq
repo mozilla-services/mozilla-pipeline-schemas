@@ -267,6 +267,12 @@
             "type": "INT64"
           },
           {
+            "description": "The number of five-second intervals ('ticks') the user was considered\n'active', counting only non-synthesized events.\n\nThis is a corrected version of `active_ticks` that excludes synthesized\nmouse and pointer events (for example, the synthesized pointer move that\nis dispatched when content shifts under a stationary cursor during\nscrolling, reflow or content insertion). Such synthesized events inflated\n`active_ticks` starting in Firefox 140. Recorded side-by-side with\n`active_ticks` for data continuity while the correction is evaluated.\n",
+            "mode": "NULLABLE",
+            "name": "browser_engagement_active_ticks_non_synthesized",
+            "type": "INT64"
+          },
+          {
             "description": "The number of total non-unique http(s) URIs visited, including page\nreloads, after the session has been restored. URIs on minimized or\nbackground tabs may also be counted. Private browsing uris are included.\n\nMigrated from Telemetry's\n`browser.engagement.total_uri_count_normal_and_private_mode`.\n",
             "mode": "NULLABLE",
             "name": "browser_engagement_uri_count",
