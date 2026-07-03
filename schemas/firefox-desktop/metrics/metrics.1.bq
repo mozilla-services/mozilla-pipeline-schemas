@@ -26176,6 +26176,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Number of times background semantic-history indexing stopped advancing because recent chunks were too slow. The \"failsafe\" label counts the hard brake; the \"soft\" label counts stops gated on the minimum number of embeddings.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "places_semantic_history_indexing_stopped",
+            "type": "RECORD"
+          },
+          {
             "description": "How many miliseconds of CPU time were used. Broken down by thread name for a given process type.\n",
             "fields": [
               {
@@ -44912,6 +44930,12 @@
             "description": "The number of third-party PKCS#11 modules loaded.",
             "mode": "NULLABLE",
             "name": "pkcs11_third_party_modules_loaded",
+            "type": "INT64"
+          },
+          {
+            "description": "PLACES: Number of entries (embeddings) stored in the semantic history database. Reported occasionally (approx after every 40 major updates).\n",
+            "mode": "NULLABLE",
+            "name": "places_database_semantic_history_num_entries",
             "type": "INT64"
           },
           {
