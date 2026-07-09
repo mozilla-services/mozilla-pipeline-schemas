@@ -735,6 +735,7 @@ schemas
 |   |-- addresses-sync
 |   |-- baseline
 |   |-- bookmarks-sync
+|   |-- broken-site-report
 |   |-- creditcards-sync
 |   |-- dau-reporting
 |   |-- deletion-request
@@ -768,6 +769,7 @@ schemas
 |   |-- addresses-sync
 |   |-- baseline
 |   |-- bookmarks-sync
+|   |-- broken-site-report
 |   |-- creditcards-sync
 |   |-- dau-reporting
 |   |-- deletion-request
@@ -801,6 +803,7 @@ schemas
 |   |-- addresses-sync
 |   |-- baseline
 |   |-- bookmarks-sync
+|   |-- broken-site-report
 |   |-- creditcards-sync
 |   |-- dau-reporting
 |   |-- deletion-request
@@ -1111,6 +1114,6 @@ schemas
 `-- webpagetest
     `-- webpagetest-run
 
-1102 directories
+1105 directories
 ```
 
