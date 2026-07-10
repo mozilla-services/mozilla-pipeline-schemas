@@ -401,6 +401,49 @@
       {
         "fields": [
           {
+            "description": "Whether the device reports a touch screen (navigator.maxTouchPoints > 0).\n",
+            "mode": "NULLABLE",
+            "name": "broken_site_report_browser_info_graphics_has_touch_screen",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the reporting device is a tablet (iPad).\n",
+            "mode": "NULLABLE",
+            "name": "broken_site_report_browser_info_system_is_tablet",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the reported tab is in private browsing mode.\n",
+            "mode": "NULLABLE",
+            "name": "broken_site_report_tab_info_antitracking_is_private_browsing",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the FastClick library was detected on the reported page\n(detected via injected JS at report time).\n",
+            "mode": "NULLABLE",
+            "name": "broken_site_report_tab_info_frameworks_fastclick",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the Marfeel framework was detected on the reported page\n(detected via injected JS at report time).\n",
+            "mode": "NULLABLE",
+            "name": "broken_site_report_tab_info_frameworks_marfeel",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the Mobify framework was detected on the reported page\n(detected via injected JS at report time).\n",
+            "mode": "NULLABLE",
+            "name": "broken_site_report_tab_info_frameworks_mobify",
+            "type": "BOOL"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "boolean",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
             "description": "Counts the number of times a metric was set with an invalid label.\nThe labels are the `category.name` identifier of the metric.\n",
             "fields": [
               {
@@ -480,6 +523,43 @@
       {
         "fields": [
           {
+            "description": "Total physical memory of the device, in megabytes.\n",
+            "mode": "NULLABLE",
+            "name": "broken_site_report_browser_info_system_memory",
+            "type": "INT64"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "quantity",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The user-selected reason the site is broken (e.g. \"media\", \"load\",\n\"content\"). Serialized as a single value even though the UI presents a\ntwo-level picker. The option set is UI-driven and may change over time.\n",
+            "mode": "NULLABLE",
+            "name": "broken_site_report_breakage_category",
+            "type": "STRING"
+          },
+          {
+            "description": "The device pixel ratio (screen scale) as a decimal string, e.g. \"3.0\".\n",
+            "mode": "NULLABLE",
+            "name": "broken_site_report_browser_info_graphics_device_pixel_ratio",
+            "type": "STRING"
+          },
+          {
+            "description": "Which content-blocking rule set is active for the tab: a single value,\none of \"basic\" or \"strict\" (not a list of blocked items; those are in\nblocked_origins). Named block_list to match the cross-platform schema.\n",
+            "mode": "NULLABLE",
+            "name": "broken_site_report_tab_info_antitracking_block_list",
+            "type": "STRING"
+          },
+          {
+            "description": "The user's tracking-protection strength setting (\"basic\" or \"strict\").\n",
+            "mode": "NULLABLE",
+            "name": "broken_site_report_tab_info_antitracking_etp_category",
+            "type": "STRING"
+          },
+          {
             "description": "An experimentation identifier derived and provided by the application\nfor the purpose of experimentation enrollment.\n",
             "mode": "NULLABLE",
             "name": "glean_client_annotation_experimentation_id",
@@ -493,6 +573,24 @@
       {
         "fields": [
           {
+            "description": "The app's preferred locale list (e.g. [\"en-US\", \"en\"]).\n",
+            "mode": "REPEATED",
+            "name": "broken_site_report_browser_info_app_default_locales",
+            "type": "STRING"
+          },
+          {
+            "description": "Origins blocked by tracking protection on the reported page. Only\nincluded when the user keeps the \"list of items blocked by tracking\nprotection\" option on.\n",
+            "mode": "REPEATED",
+            "name": "broken_site_report_tab_info_antitracking_blocked_origins",
+            "type": "STRING"
+          },
+          {
+            "description": "The languages the reported page actually saw (navigator.languages),\nread from the page context at report time.\n",
+            "mode": "REPEATED",
+            "name": "broken_site_report_tab_info_languages",
+            "type": "STRING"
+          },
+          {
             "description": "The list of requested uploader capabilities for the ping this is sent in.\nShould be the same as the ones defined for that particular ping.\n\nThis metric is only attached to a ping if it already contains other data.\n",
             "mode": "REPEATED",
             "name": "glean_ping_uploader_capabilities",
@@ -501,6 +599,44 @@
         ],
         "mode": "NULLABLE",
         "name": "string_list",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The app's default user agent string (the app-level UA, distinct from the\nper-page `tab_info.useragent_string`).\n",
+            "mode": "NULLABLE",
+            "name": "broken_site_report_browser_info_app_default_useragent_string",
+            "type": "STRING"
+          },
+          {
+            "description": "Optional free-text \"Additional Details\" entered by the user. May contain\nPII (free-form text).\n",
+            "mode": "NULLABLE",
+            "name": "broken_site_report_description",
+            "type": "STRING"
+          },
+          {
+            "description": "The user agent string the reported page actually saw\n(navigator.userAgent), read from the page context at report time.\n",
+            "mode": "NULLABLE",
+            "name": "broken_site_report_tab_info_useragent_string",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "text2",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The URL of the site the user is reporting. The user may edit this before\nsubmitting. May contain PII.\n",
+            "mode": "NULLABLE",
+            "name": "broken_site_report_url",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "url2",
         "type": "RECORD"
       }
     ],
