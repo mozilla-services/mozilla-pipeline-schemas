@@ -6331,6 +6331,42 @@
             "type": "RECORD"
           },
           {
+            "description": "Percentage of buffer allocator memory (summed across all zones) that holds live data, as opposed to free space or administrative overhead. Recorded after each major GC. This applies to small and medium allocations only; there is no wasted space for large allocations.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "javascript_gc_buffer_alloc_heap_density",
+            "type": "RECORD"
+          },
+          {
             "description": "GC effectiveness, the amount of memory freed divided by main-thread collection time (MB/s)\n",
             "fields": [
               {
@@ -9175,7 +9211,7 @@
             "type": "RECORD"
           },
           {
-            "description": "HTTP3: ECN CE to ECT0 ratio (multiply by 10000) received.\n",
+            "description": "HTTP3: ECN CE to ECT0 ratio (multiply by 10000) received. As of https://bugzilla.mozilla.org/show_bug.cgi?id=2056075, only recorded for connections that observed ECT(0) without ever observing ECT(1), since a CE mark on a connection that saw both cannot be attributed to either type.\n",
             "fields": [
               {
                 "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
@@ -23219,6 +23255,24 @@
             "type": "RECORD"
           },
           {
+            "description": "HTTP3: Which ECN codepoints were observed on received (server->browser) packets, recorded once per connection that completed its handshake. Used to measure how many servers mark ECN on the traffic they send us and, among those, the adoption of ECT(1) (L4S) versus ECT(0) (classic ECN).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_http_3_ecn_ect_received",
+            "type": "RECORD"
+          },
+          {
             "description": "Number of paths known to be ECN capable or not-capable.\n",
             "fields": [
               {
@@ -29358,6 +29412,102 @@
       },
       {
         "fields": [
+          {
+            "description": "Size of retained buffer allocator memory in bytes, labeled by process type. For small and medium allocations only.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "javascript_gc_buffer_alloc_heap_bytes",
+            "type": "RECORD"
+          },
+          {
+            "description": "The maximum mark stack capacity (in bytes) reached by any marker during the marking phase of a major GC.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "javascript_gc_mark_stack_max_capacity",
+            "type": "RECORD"
+          },
           {
             "description": "Size of the GC nursery in bytes, labeled by process type.\n",
             "fields": [
