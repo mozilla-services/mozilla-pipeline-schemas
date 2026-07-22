@@ -579,6 +579,104 @@
       {
         "fields": [
           {
+            "description": "Distribution of the number of consecutive five-second intervals ('ticks')\nthe user was considered 'active' before transitioning to inactive.\n\nEach sample is the length of one uninterrupted run of active ticks,\nrecorded when the run ends. This complements the `active_ticks` counters\n(which only track the total) by capturing how long users stay\ncontinuously engaged, and helps inform whether additional active-tick\nintervals should be introduced in the future.\n\nThe `active_ticks` label mirrors the legacy `active_ticks` counter,\ncounting all events. The `active_ticks_non_synthesized` label mirrors\n`active_ticks_non_synthesized`, excluding synthesized mouse and pointer\nevents. The two labels are recorded side-by-side for easier analysis.\n\nA run still in progress when a ping is submitted is not recorded in that\nping; it is recorded in a later ping once the run ends.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_engagement_consecutive_active_ticks",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "labeled_custom_distribution",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "Distribution of the duration of periods during which the user was\nconsidered 'inactive', measured from when the user goes inactive until\nthe next activity resumes.\n\nCombined with `consecutive_active_ticks`, this helps reason about user\ninteraction patterns more holistically and informs whether additional\nactive-tick intervals (e.g. 20s or 60s) should be introduced in the\nfuture.\n\nThe `active_ticks` label measures inactive periods for the legacy stream\n(all events). The `active_ticks_non_synthesized` label measures them for\nthe corrected stream, which excludes synthesized mouse and pointer\nevents. The two labels are recorded side-by-side for easier analysis.\n\nAn inactive period still in progress when a ping is submitted is not\nrecorded in that ping; it is recorded in a later ping once activity\nresumes.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_engagement_inactive_period_duration",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "labeled_timing_distribution",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
             "description": "The count of maximum number of tabs open during a subsession, across all windows, including tabs in private windows and restored at startup. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.max_concurrent_tab_count.\n",
             "mode": "NULLABLE",
             "name": "browser_engagement_max_concurrent_tab_count",
