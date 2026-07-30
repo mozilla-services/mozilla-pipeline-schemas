@@ -1428,6 +1428,24 @@
             "type": "INT64"
           },
           {
+            "description": "Incremented once per document that accesses `navigator.audioSession` (recorded in the content process, so it counts accessing documents).\n",
+            "mode": "NULLABLE",
+            "name": "media_audio_session_api_used",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times audio-session arbitration inactivates one or more active sessions because another session takes over. Counted once per arbitration pass that displaces a session, not once per displaced session.\n",
+            "mode": "NULLABLE",
+            "name": "media_audio_session_inactivated_by_arbitration",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times the selected audio session changed for a top-level browsing context.\n",
+            "mode": "NULLABLE",
+            "name": "media_audio_session_selected_changed",
+            "type": "INT64"
+          },
+          {
             "description": "The number of times a document hierarchy contained at least one HTMLMediaElement. In addition, the telemetry probe 'MIXED_CONTENT_UNBLOCK_COUNTER' records the total number of loaded top level content documents, which can help us calculate the result of the percentage of documents using media. This metric was generated to correspond to the Legacy Telemetry scalar media.element_in_page_count.\n",
             "mode": "NULLABLE",
             "name": "media_element_in_page_count",
@@ -19210,6 +19228,60 @@
             "type": "RECORD"
           },
           {
+            "description": "Number of audio-session interruptions, by cause.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "media_audio_focus_interrupt_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "Android only: the effective audio-session type Firefox forwards to the embedder to shape the platform audio-focus request, by value. This is the type actually used on the platform, including the source-derived fallback (e.g. ambient for Web Audio, transient for Web Speech) when no page set a type explicitly.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "media_audio_focus_platform_focus_type",
+            "type": "RECORD"
+          },
+          {
+            "description": "When an interruption ends, the number of times each suspended audible source (media element, Web Audio, or Web Speech) was dispatched its resume signal. Sources the interruption never suspended, or that the page took over during the interruption, are not counted.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "media_audio_focus_resume_decision",
+            "type": "RECORD"
+          },
+          {
             "description": "Failure occurs when initializing the audio stream. (Migrated from the geckoview metric of the same name).\n",
             "fields": [
               {
@@ -19225,6 +19297,42 @@
             ],
             "mode": "REPEATED",
             "name": "media_audio_init_failure",
+            "type": "RECORD"
+          },
+          {
+            "description": "The concrete type an `auto`-typed selected session resolves to under the audio-session type priority ranking.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "media_audio_session_effective_auto_type",
+            "type": "RECORD"
+          },
+          {
+            "description": "Number of explicit `audioSession.type` assignments, by value.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "media_audio_session_type_set",
             "type": "RECORD"
           },
           {
