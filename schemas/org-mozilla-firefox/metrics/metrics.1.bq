@@ -16581,6 +16581,36 @@
             "type": "RECORD"
           },
           {
+            "description": "Key Exchange Algorithm for TLS handshake",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "tls_key_exchange_algorithm",
+            "type": "RECORD"
+          },
+          {
             "description": "This metric is recorded every time a gethash lookup is performed, `true` is recorded if the lookup times out. Keyed by provider\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram URLCLASSIFIER_COMPLETE_TIMEOUT2.\n",
             "fields": [
               {
@@ -23632,6 +23662,42 @@
             "type": "RECORD"
           },
           {
+            "description": "Algorithm used to authenticate the full TLS handshake. See SSLAuthType in sslt.h.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "tls_auth_algorithm",
+            "type": "RECORD"
+          },
+          {
+            "description": "ECDSA signature curve for TLS_*_ECDSA_* in full TLS handshake",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "tls_auth_ecdsa_curve",
+            "type": "RECORD"
+          },
+          {
             "description": "Type of handshake completed (resumed, false started, etc.)",
             "fields": [
               {
@@ -23683,6 +23749,60 @@
             ],
             "mode": "REPEATED",
             "name": "tls_handshake_version",
+            "type": "RECORD"
+          },
+          {
+            "description": "ECDHE KEA (TLS_ECDHE_*) curve in full TLS handshake",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "tls_kea_ecdhe_curve",
+            "type": "RECORD"
+          },
+          {
+            "description": "NPN (next protocol negotiation) results",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "tls_npn_type",
+            "type": "RECORD"
+          },
+          {
+            "description": "Collection of reasons we did not false start when libssl would have let us.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "tls_reasons_for_not_false_starting",
             "type": "RECORD"
           },
           {
