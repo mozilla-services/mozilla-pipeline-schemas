@@ -947,6 +947,12 @@
             "type": "BOOL"
           },
           {
+            "description": "Whether the Nova redesign is enabled, i.e. the value of the `browser.nova.enabled` preference. Recorded at startup and again on each daily idle, so that changes made mid-session are picked up. Once Nova is enabled by default this gives us a signal for how many people turn it back off.\n",
+            "mode": "NULLABLE",
+            "name": "nova_enabled",
+            "type": "BOOL"
+          },
+          {
             "description": "Indicates that the process is lauched with Admin privileges but without UAC. This metric was generated to correspond to the Legacy Telemetry scalar os.environment.is_admin_without_uac.\n",
             "mode": "NULLABLE",
             "name": "os_environment_is_admin_without_uac",
@@ -21700,7 +21706,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Whether a probable font fingerprinting attempt was detected\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram FONT_FINGERPRINTING_PER_TAB.\n",
+            "description": "Whether a probable font fingerprinting attempt was detected\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -45941,7 +45947,7 @@
             "type": "INT64"
           },
           {
-            "description": "The Windows build number, according to WindowsVersionInfo.\nWindows only.\ne.g. 26100\nExpected in most cases to be identical to `client_info.windows_build_number`.\n",
+            "description": "The Windows build number, according to 'CurrentBuild' in the Windows registry.\nWindows only.\ne.g. 26100\nExpected in most cases to be identical to `client_info.windows_build_number`.\n",
             "mode": "NULLABLE",
             "name": "system_os_windows_build_number",
             "type": "INT64"
@@ -46563,6 +46569,24 @@
             ],
             "mode": "NULLABLE",
             "name": "urlbar_heuristic_result_missing",
+            "type": "RECORD"
+          },
+          {
+            "description": "A rate recording the fraction of search-mode engagements whose typed string parses as a URL (per nsIURIFixup, the same check the heuristic providers use to decide whether a string should navigate). The denominator is search-mode engagements whose heuristic result is a search result (i.e. cases where changing the behavior to navigate instead of search could actually take effect); the numerator is those whose query is URL-like. Local search modes (bookmarks, history, tabs, actions) have no heuristic result and are therefore excluded. Used to evaluate whether the address bar should navigate to such strings instead of searching them while in search mode (bug 1930861). Temporary decision-making probe.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "urlbar_searchmode_url_like_query",
             "type": "RECORD"
           },
           {
