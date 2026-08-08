@@ -133,6 +133,7 @@ schemas
 |   |-- pwmgr-origin-failure
 |   |-- quick-suggest
 |   |-- quick-suggest-deletion-request
+|   |-- referrals
 |   |-- search-with
 |   |-- serp-categorization
 |   |-- spoc
@@ -1114,6 +1115,6 @@ schemas
 `-- webpagetest
     `-- webpagetest-run
 
-1105 directories
+1106 directories
 ```
 
