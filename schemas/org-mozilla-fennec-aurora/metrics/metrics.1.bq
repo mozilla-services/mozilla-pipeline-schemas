@@ -2202,13 +2202,13 @@
             "type": "INT64"
           },
           {
-            "description": "The number of loads of cross origin opaque resources. This metric was generated to correspond to the Legacy Telemetry scalar opaque.response.blocking.cross_origin_opaque_response_count.\n",
+            "description": "The number of loads of cross origin opaque resources.\n",
             "mode": "NULLABLE",
             "name": "opaque_response_blocking_cross_origin_opaque_response_count",
             "type": "INT64"
           },
           {
-            "description": "The number of times we run the JS validator. This metric was generated to correspond to the Legacy Telemetry scalar opaque.response.blocking.javascript_validation_count.\n",
+            "description": "The number of times we run the JS validator.\n",
             "mode": "NULLABLE",
             "name": "opaque_response_blocking_javascript_validation_count",
             "type": "INT64"
@@ -2415,6 +2415,24 @@
             "description": "How many SCT signature verifications are performed.\n",
             "mode": "NULLABLE",
             "name": "sct_signature_cache_total",
+            "type": "INT64"
+          },
+          {
+            "description": "Count of times the \"did you mean\" alternate-host suggestion was injected into a dnsNotFound error page. Counted on both of the error page implementations that can show it, the legacy about:neterror markup and the net-error-card element used by the Felt Privacy redesign. The suggestion depends on an async DNS lookup that resolves after load_aboutneterror has already recorded, so it cannot be an extra key on that event. This counter is the impression signal instead, and the denominator for click_dns_suggestion_link. Content-free: a count only, never the suggested host.\n",
+            "mode": "NULLABLE",
+            "name": "security_ui_neterror_alternate_host_suggested",
+            "type": "INT64"
+          },
+          {
+            "description": "Count of times the user clicked the online dnsNotFound Search CTA button. Content-free.\n",
+            "mode": "NULLABLE",
+            "name": "security_ui_neterror_search_cta_clicked",
+            "type": "INT64"
+          },
+          {
+            "description": "Count of times the online dnsNotFound Search CTA button was actually shown (gates passed and a default search engine exists). Content-free.\n",
+            "mode": "NULLABLE",
+            "name": "security_ui_neterror_search_cta_shown",
             "type": "INT64"
           },
           {
@@ -4063,7 +4081,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Percent of the cycle collector's forget skippable done during idle time\nThis metric was generated to correspond to the Legacy Telemetry linear histogram FORGET_SKIPPABLE_DURING_IDLE.\n",
+            "description": "Percent of the cycle collector's forget skippable done during idle time\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -4093,7 +4111,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Number of forget skippables occurred during a minute\nThis metric was generated to correspond to the Legacy Telemetry linear histogram FORGET_SKIPPABLE_FREQUENCY.\n",
+            "description": "Number of forget skippables occurred during a minute\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -20428,7 +20446,7 @@
             "type": "RECORD"
           },
           {
-            "description": "If any opaque response was blocked for a given top-level window context.\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram ORB_DID_EVER_BLOCK_RESPONSE.\n",
+            "description": "If any opaque response was blocked for a given top-level window context.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -21469,6 +21487,60 @@
             ],
             "mode": "REPEATED",
             "name": "security_client_auth_cert_usage",
+            "type": "RECORD"
+          },
+          {
+            "description": "The action taken by the online dnsNotFound Search CTA decision, recorded once per eligible page load (gated by browser.netError.searchCTA.enabled). \"keywords\" and \"host\" mean a CTA was shown searching path keywords or the registrable domain respectively; \"none\" means no CTA was shown. Records only the action label, never the URL, keywords, or host.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "security_ui_neterror_search_cta_action",
+            "type": "RECORD"
+          },
+          {
+            "description": "Count of times the user clicked the online dnsNotFound Search CTA button but no search was run. connectivity_lost means the page was online when the CTA was shown, connectivity dropped before the click, and the click was aborted with an offline message shown in the button's place. These clicks are also counted by search_cta_clicked, so searches actually launched = search_cta_clicked minus search_cta_click_aborted. Kept separate from search_cta_reason because that metric describes the page-load decision, one per eligible page load. Content-free.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "security_ui_neterror_search_cta_click_aborted",
+            "type": "RECORD"
+          },
+          {
+            "description": "Why the online dnsNotFound Search CTA reached its action, recorded once per eligible page load, paired with search_cta_action. keywords_found is a keyword query; no_path and no_meaningful_keywords fall back to the host; host_unusable and search_unavailable show no CTA. engine_not_general means a default search engine exists but is special-purpose (e.g. Wikipedia), so the CTA is not shown. connectivity_unconfirmed means we could not confirm we were online at page load: the captive-portal reading was stale and the authoritative re-check came back offline/captive or timed out, so no CTA was shown. Connectivity dropping *after* the CTA was shown is a different thing and is counted by search_cta_click_aborted, not here. Records only the reason label, never content.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "security_ui_neterror_search_cta_reason",
             "type": "RECORD"
           },
           {
@@ -28796,7 +28868,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time (in ms) that it takes for a ORB JavaScript validator to complete a validation, including IPC to the validator actor.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram ORB_JAVASCRIPT_VALIDATION_MS.\n",
+            "description": "Time (in ms) that it takes for a ORB JavaScript validator to complete a validation, including IPC to the validator actor.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -28838,7 +28910,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time (in ms) that it takes to receive data for ORB JavaScript validation, including IPC to the validator actor.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram ORB_RECEIVE_DATA_FOR_VALIDATION_MS.\n",
+            "description": "Time (in ms) that it takes to receive data for ORB JavaScript validation, including IPC to the validator actor.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
