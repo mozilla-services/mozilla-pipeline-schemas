@@ -10195,6 +10195,42 @@
             "type": "RECORD"
           },
           {
+            "description": "The longest run of consecutive probe timeouts (PTOs) an established HTTP/3 connection saw over its lifetime, recorded once when the connection is closed. A long run means the path went dark (a black hole): this is the condition neqo's max_pto black-hole detector acts on, so the distribution shows how often established connections break and, once the detector is enabled, whether it closes them sooner. 0 means the connection saw no PTO.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "networking_http_3_max_consecutive_ptos",
+            "type": "RECORD"
+          },
+          {
             "description": "HTTP3: The minimum round-trip time in milliseconds observed on the connection's primary path, sampled at connection close.\n",
             "fields": [
               {
@@ -21289,6 +21325,24 @@
             ],
             "mode": "REPEATED",
             "name": "browser_ui_interaction_vertical_tabs_container",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts errors encountered when initializing or migrating a Cache API caches.sqlite schema during quota initialization. Labeled by error category: \"future_version\" when the on-disk schema version exceeds the code's latest version (e.g. profile downgrade), \"other\" for all remaining schema errors.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "cache_schema_init_error",
             "type": "RECORD"
           },
           {
