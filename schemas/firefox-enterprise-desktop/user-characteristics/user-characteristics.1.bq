@@ -1,0 +1,3277 @@
+[
+  {
+    "description": "A JSON string containing any payload properties not present in the schema",
+    "mode": "NULLABLE",
+    "name": "additional_properties",
+    "type": "STRING"
+  },
+  {
+    "description": "The document ID specified in the URI when the client sent this message",
+    "mode": "NULLABLE",
+    "name": "document_id",
+    "type": "STRING"
+  },
+  {
+    "fields": [
+      {
+        "mode": "NULLABLE",
+        "name": "category",
+        "type": "STRING"
+      },
+      {
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "key",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "value",
+            "type": "STRING"
+          }
+        ],
+        "mode": "REPEATED",
+        "name": "extra",
+        "type": "RECORD"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "name",
+        "type": "STRING"
+      },
+      {
+        "description": "Session metadata attached to this event. Absent for out-of-session events and events from before sessions were introduced.",
+        "fields": [
+          {
+            "description": "Per-session event counter, reset at each new session.",
+            "mode": "NULLABLE",
+            "name": "event_seq",
+            "type": "INT64"
+          },
+          {
+            "description": "The unique UUID for this session.",
+            "mode": "NULLABLE",
+            "name": "session_id",
+            "type": "STRING"
+          },
+          {
+            "description": "The sampling rate in effect for this session.",
+            "mode": "NULLABLE",
+            "name": "session_sample_rate",
+            "type": "FLOAT64"
+          },
+          {
+            "description": "Monotonically increasing session counter, persisted across restarts.",
+            "mode": "NULLABLE",
+            "name": "session_seq",
+            "type": "INT64"
+          },
+          {
+            "description": "Wall-clock timestamp at session start (RFC 3339). Absent on events from before this field was introduced.",
+            "mode": "NULLABLE",
+            "name": "session_start_time",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "session",
+        "type": "RECORD"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "timestamp",
+        "type": "INT64"
+      }
+    ],
+    "mode": "REPEATED",
+    "name": "events",
+    "type": "RECORD"
+  },
+  {
+    "fields": [
+      {
+        "description": "Results of a geographic lookup based on the client's IP address",
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "city",
+            "type": "STRING"
+          },
+          {
+            "description": "An ISO 3166-1 alpha-2 country code",
+            "mode": "NULLABLE",
+            "name": "country",
+            "type": "STRING"
+          },
+          {
+            "description": "The specific geo database version used for this lookup",
+            "mode": "NULLABLE",
+            "name": "db_version",
+            "type": "STRING"
+          },
+          {
+            "description": "First major country subdivision, typically a state, province, or county",
+            "mode": "NULLABLE",
+            "name": "subdivision1",
+            "type": "STRING"
+          },
+          {
+            "description": "Second major country subdivision; not applicable for most countries",
+            "mode": "NULLABLE",
+            "name": "subdivision2",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "geo",
+        "type": "RECORD"
+      },
+      {
+        "description": "Headers included in the client's HTTP request",
+        "fields": [
+          {
+            "description": "Date HTTP header",
+            "mode": "NULLABLE",
+            "name": "date",
+            "type": "STRING"
+          },
+          {
+            "description": "DNT (Do Not Track) HTTP header",
+            "mode": "NULLABLE",
+            "name": "dnt",
+            "type": "STRING"
+          },
+          {
+            "description": "X-Debug-Id HTTP header",
+            "mode": "NULLABLE",
+            "name": "x_debug_id",
+            "type": "STRING"
+          },
+          {
+            "description": "X-Foxsec-IP-Reputation header (deprecated, https://mozilla-hub.atlassian.net/browse/DENG-10434)",
+            "mode": "NULLABLE",
+            "name": "x_foxsec_ip_reputation",
+            "type": "STRING"
+          },
+          {
+            "description": "X-LB-Tags HTTP header",
+            "mode": "NULLABLE",
+            "name": "x_lb_tags",
+            "type": "STRING"
+          },
+          {
+            "description": "X-PingSender-Version HTTP header",
+            "mode": "NULLABLE",
+            "name": "x_pingsender_version",
+            "type": "STRING"
+          },
+          {
+            "description": "X-Source-Tags HTTP header",
+            "mode": "NULLABLE",
+            "name": "x_source_tags",
+            "type": "STRING"
+          },
+          {
+            "description": "X-Telemetry-Agent HTTP header",
+            "mode": "NULLABLE",
+            "name": "x_telemetry_agent",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "header",
+        "type": "RECORD"
+      },
+      {
+        "description": "Results of ISP lookup based on the client's IP address",
+        "fields": [
+          {
+            "description": "The specific geo ISP database version used for this lookup",
+            "mode": "NULLABLE",
+            "name": "db_version",
+            "type": "STRING"
+          },
+          {
+            "description": "The name of the ISP associated with the client's IP address",
+            "mode": "NULLABLE",
+            "name": "name",
+            "type": "STRING"
+          },
+          {
+            "description": "The name of a specific business entity associated with the client's IP address when available; otherwise the ISP name",
+            "mode": "NULLABLE",
+            "name": "organization",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "isp",
+        "type": "RECORD"
+      },
+      {
+        "description": "Parsed components of the client's user agent string",
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "browser",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "os",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "version",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "user_agent",
+        "type": "RECORD"
+      }
+    ],
+    "mode": "NULLABLE",
+    "name": "metadata",
+    "type": "RECORD"
+  },
+  {
+    "fields": [
+      {
+        "fields": [
+          {
+            "description": "Whether the pref font.name-list.emoji was modified.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_name_list_emoji_modified",
+            "type": "BOOL"
+          },
+          {
+            "description": "What LookAndFeel(InvertedColors) reports.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_inverted_colors",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the user's device is monochrome\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_monochrome",
+            "type": "BOOL"
+          },
+          {
+            "description": "PDF viewer support reported by the navigator\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_pdf_viewer",
+            "type": "BOOL"
+          },
+          {
+            "description": "What LookAndFeel(PrefersReducedMotion) reports.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_prefers_reduced_motion",
+            "type": "BOOL"
+          },
+          {
+            "description": "What LookAndFeel(PrefersReducedTransparency) reports.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_prefers_reduced_transparency",
+            "type": "BOOL"
+          },
+          {
+            "description": "Block pop-up windows (The dom.disable_open_during_load pref)\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_prefs_block_popups",
+            "type": "BOOL"
+          },
+          {
+            "description": "Allow pages to choose their own fonts.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_prefs_browser_display_use_document_fonts",
+            "type": "BOOL"
+          },
+          {
+            "description": "Use autoscrolling\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_prefs_general_autoscroll",
+            "type": "BOOL"
+          },
+          {
+            "description": "Use smooth scrolling\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_prefs_general_smoothscroll",
+            "type": "BOOL"
+          },
+          {
+            "description": "Value of the media.eme.enabled pref.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_prefs_media_eme_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Use overlay scrollbars (or otherwise \"Always show scrollbars\")\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_prefs_overlay_scrollbars",
+            "type": "BOOL"
+          },
+          {
+            "description": "Sending \"do not track\" HTTP header\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_prefs_privacy_donottrackheader_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Sending \"global privacy control\" HTTP header\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_prefs_privacy_globalprivacycontrol_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Text-only zoom enabled (vs. full-zoom)\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_prefs_zoom_text_only",
+            "type": "BOOL"
+          },
+          {
+            "description": "This is the derived PreferenceSheet::Prefs::mUseDocumentColors value.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_use_document_colors",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the user's device is using accelerated canvas\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_using_accelerated_canvas",
+            "type": "BOOL"
+          },
+          {
+            "description": "What LookAndFeel(VideoDynamicRange) reports. Note that CSSVideoDynamicRange has an additional dependency on Color Depth.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_video_dynamic_range",
+            "type": "BOOL"
+          },
+          {
+            "description": "WebGPU adapter isFallbackAdapter property. Indicates whether the adapter is a software renderer (true) or hardware GPU (false).\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_is_fallback_adapter",
+            "type": "BOOL"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "boolean",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "Counts the number of times a metric was set with an invalid label.\nThe labels are the `category.name` identifier of the metric.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "glean_error_invalid_label",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of times a metric was set a value that overflowed.\nThe labels are the `category.name` identifier of the metric.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "glean_error_invalid_overflow",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of times a timing metric was used incorrectly.\nThe labels are the `category.name` identifier of the metric.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "glean_error_invalid_state",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of times a metric was set to an invalid value.\nThe labels are the `category.name` identifier of the metric.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "glean_error_invalid_value",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "labeled_counter",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "Union of pointers available. We apply union to determine if the user have both coarse and fine pointer.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_any_pointer_type",
+            "type": "INT64"
+          },
+          {
+            "description": "Audio sampling rate\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_audio_channels",
+            "type": "INT64"
+          },
+          {
+            "description": "Audio fingerprint of the user. A float number multiplied by 10e7.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_audio_fingerprint",
+            "type": "INT64"
+          },
+          {
+            "description": "Audio frames\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_audio_frames",
+            "type": "INT64"
+          },
+          {
+            "description": "Audio sampling rate\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_audio_rate",
+            "type": "INT64"
+          },
+          {
+            "description": "Count of unique sample values in the OfflineAudioContext audio buffer. This is used by fingerprinting scripts to detect anamolies - they expect 1-3k unique samples, not 5000. We are collecting it to ensure we are behaving as they generally expect non-anomalous browsers to behave.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_audio_unique_samples",
+            "type": "INT64"
+          },
+          {
+            "description": "Available height property\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_avail_height",
+            "type": "INT64"
+          },
+          {
+            "description": "Available left property\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_avail_left",
+            "type": "INT64"
+          },
+          {
+            "description": "Available top property\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_avail_top",
+            "type": "INT64"
+          },
+          {
+            "description": "Available width property\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_avail_width",
+            "type": "INT64"
+          },
+          {
+            "description": "Firefox build's build date in unix time\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_build_date",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of cameras available on the device.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_camera_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The platform Accentcolor returned by LookAndFeel::GetColor with ColorScheme::Light forced and UseStandins::No (see PopulateCSSProperties in nsUserCharacteristics.cpp). On Windows this reports the user's real OS accent color; the AccentColor entry in `css_system_colors` instead reports the Firefox brand color 0060DF because the content path applies a standin gated on widget.non-native-theme.use-theme-accent (default false on Windows), see widget/ThemeColors.h::sDefaultAccent and nsXPLookAndFeel.cpp::ShouldUseStandinsForNativeColorForNonNativeTheme. In Windows High Contrast / forced-colors mode (`use_document_colors`=false) the standin is suppressed and content sees the real accent. The value is the raw nscolor uint32 with R in the low byte and includes the alpha channel; `css_system_colors` also emits 8-char RRGGBBAA.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_color_accentcolor",
+            "type": "INT64"
+          },
+          {
+            "description": "The platform Accentcolortext returned by LookAndFeel::GetColor with ColorScheme::Light forced and UseStandins::No (see PopulateCSSProperties in nsUserCharacteristics.cpp). Same standin semantics as `color_accentcolor`: on Windows the content path (`css_system_colors`) substitutes the Firefox brand AccentColorText while this metric reports the real OS value. The value is the raw nscolor uint32 with R in the low byte and includes the alpha channel; `css_system_colors` also emits 8-char RRGGBBAA.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_color_accentcolortext",
+            "type": "INT64"
+          },
+          {
+            "description": "The Canvas default background from PreferenceSheet::ContentPrefs::ColorsFor(ColorScheme::Light) .mDefaultBackground (see PopulateCSSProperties in nsUserCharacteristics.cpp). This value is forced-Light: for users browsing in dark mode it is still the Light default (typically FFFFFF) and is NOT the canvas the user actually sees rendered (Firefox's dark canvas is 1C1B22). To capture the canvas as it resolves in content with the page color-scheme applied, see the Canvas entry in `css_system_colors`. The value is the raw nscolor uint32 with R in the low byte and includes the alpha channel; `css_system_colors` also emits 8-char RRGGBBAA.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_color_canvas",
+            "type": "INT64"
+          },
+          {
+            "description": "The Canvas default foreground from PreferenceSheet::ContentPrefs::ColorsFor(ColorScheme::Light) .mDefault (see PopulateCSSProperties in nsUserCharacteristics.cpp). Same forced-Light semantics as `color_canvas`: dark-mode users still see the Light default here, while the content-rendered value lives in the CanvasText entry of `css_system_colors`. The value is the raw nscolor uint32 with R in the low byte and includes the alpha channel; `css_system_colors` also emits 8-char RRGGBBAA.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_color_canvastext",
+            "type": "INT64"
+          },
+          {
+            "description": "The Color Depth reported by CSS\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_color_depth",
+            "type": "INT64"
+          },
+          {
+            "description": "The Color Gamut reported by CSS\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_color_gamut",
+            "type": "INT64"
+          },
+          {
+            "description": "The platform Highlight (selection background) returned by LookAndFeel::GetColor with ColorScheme::Light forced and UseStandins::No (see PopulateCSSProperties in nsUserCharacteristics.cpp). This metric preserves the alpha channel: the OS-default highlight is translucent on several platforms (e.g. macOS alpha 0x7F, Android 0x4E); the parallel Highlight entry in `css_system_colors` resolves with the page color-scheme; alpha is preserved where CSS resolution preserves it (mac Highlight 0x7F survives). The value is the raw nscolor uint32 with R in the low byte.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_color_highlight",
+            "type": "INT64"
+          },
+          {
+            "description": "The platform Highlighttext (selection foreground) returned by LookAndFeel::GetColor with ColorScheme::Light forced and UseStandins::No (see PopulateCSSProperties in nsUserCharacteristics.cpp). Includes alpha — on some platforms (e.g. Android) the OS value is a translucent/edge color with no direct equivalent in the content-resolved path; the parallel HighlightText entry in `css_system_colors` resolves with the page color-scheme against a backdrop (the source's alpha is folded into the opaque result, so `css_system_colors` reports the resolved opaque value with a trailing FF, not the original translucent source). The value is the raw nscolor uint32 with R in the low byte.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_color_highlighttext",
+            "type": "INT64"
+          },
+          {
+            "description": "The Color Scheme used for Content, from ContentPrefs() Preference Sheet.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_color_scheme",
+            "type": "INT64"
+          },
+          {
+            "description": "The platform Selecteditem color returned by LookAndFeel::GetColor with ColorScheme::Light forced and UseStandins::No (see PopulateCSSProperties in nsUserCharacteristics.cpp). Same alpha-preservation and forced-Light semantics as `color_highlight`; the parallel SelectedItem entry in `css_system_colors` resolves with the page color-scheme; alpha is preserved where CSS resolution preserves it. The value is the raw nscolor uint32 with R in the low byte.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_color_selecteditem",
+            "type": "INT64"
+          },
+          {
+            "description": "The platform Selecteditemtext color returned by LookAndFeel::GetColor with ColorScheme::Light forced and UseStandins::No (see PopulateCSSProperties in nsUserCharacteristics.cpp). Same alpha-preservation and forced-Light semantics as `color_highlighttext`; the parallel SelectedItemText entry in `css_system_colors` resolves with the page color-scheme; alpha follows the same rules as `color_highlighttext`'s CSS counterpart (translucent sources are resolved to opaque against a backdrop). The value is the raw nscolor uint32 with R in the low byte.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_color_selecteditemtext",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of other modified font.default prefs.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_default_modified",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of other modified font.minimum-size prefs.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_minimum_size_modified",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of modified font.name-list.cursive. prefs.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_name_list_cursive_modified",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of modified font.name-list.monospace. prefs.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_name_list_monospace_modified",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of modified font.name-list.sans-serif. prefs.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_name_list_sans_serif_modified",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of modified font.name-list.serif. prefs.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_name_list_serif_modified",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of other modified font.name.monospace prefs.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_name_monospace_modified",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of other modified font.name.sans-serif prefs.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_name_sans_serif_modified",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of other modified font.name.serif prefs.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_name_serif_modified",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of other modified font.size.monospace prefs.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_size_monospace_modified",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of other modified font.size.variable prefs.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_size_variable_modified",
+            "type": "INT64"
+          },
+          {
+            "description": "The system font-smoothing type, normalized across platforms: 0 = disabled, 1 = grayscale (standard), 2 = subpixel. On Windows this is the subpixel-vs-grayscale type (SPI_GETFONTSMOOTHINGTYPE), distinct from text_anti_aliasing (which records the ClearType contrast level). On Linux it is the GNOME org.gnome.desktop.interface font-antialiasing setting (rgba/grayscale/none). Not set on macOS (grayscale-only, no subpixel type) or where the value cannot be determined.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_smoothing_type",
+            "type": "INT64"
+          },
+          {
+            "description": "The version of OpenGL supported by the user's system.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_version_software",
+            "type": "INT64"
+          },
+          {
+            "description": "The version of OpenGL supported by the user's system.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_version",
+            "type": "INT64"
+          },
+          {
+            "description": "The version of OpenGL supported by the user's system.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_version_software",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of device groups reported by the device.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_group_count",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of device groups without speakers reported by the device.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_group_count_wo_speakers",
+            "type": "INT64"
+          },
+          {
+            "description": "Unique ICE foundations occurrence count\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_ice_order",
+            "type": "INT64"
+          },
+          {
+            "description": "ICE foundation discovery latency standard deviation sum multiplied by 1000\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_ice_sd",
+            "type": "INT64"
+          },
+          {
+            "description": "Inner height of user's browser.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_inner_height",
+            "type": "INT64"
+          },
+          {
+            "description": "Inner width of user's browser.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_inner_width",
+            "type": "INT64"
+          },
+          {
+            "description": "Width of the drawn MathML element\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_mathml1",
+            "type": "INT64"
+          },
+          {
+            "description": "Width of the drawn MathML element\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_mathml10",
+            "type": "INT64"
+          },
+          {
+            "description": "Width of the drawn MathML element\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_mathml2",
+            "type": "INT64"
+          },
+          {
+            "description": "Width of the drawn MathML element\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_mathml3",
+            "type": "INT64"
+          },
+          {
+            "description": "Width of the drawn MathML element\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_mathml4",
+            "type": "INT64"
+          },
+          {
+            "description": "Width of the drawn MathML element\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_mathml5",
+            "type": "INT64"
+          },
+          {
+            "description": "Width of the drawn MathML element\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_mathml6",
+            "type": "INT64"
+          },
+          {
+            "description": "Width of the drawn MathML element\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_mathml7",
+            "type": "INT64"
+          },
+          {
+            "description": "Width of the drawn MathML element\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_mathml8",
+            "type": "INT64"
+          },
+          {
+            "description": "Width of the drawn MathML element\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_mathml9",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of touch points we will report to the web. On Android, this is based on Android's FEATURE_TOUCHSCREEN* constants - Mozilla caps this at 5 as Android stops distinguishing between numbers greater than 5.  On Windows this comes from the SM_MAXIMUMTOUCHES System Metric.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_max_touch_points",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of microphones available on the device.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_microphone_count",
+            "type": "INT64"
+          },
+          {
+            "description": "devicemotion event's decimal places count\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_motion_decimals",
+            "type": "INT64"
+          },
+          {
+            "description": "devicemotion event's frequency\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_motion_freq",
+            "type": "INT64"
+          },
+          {
+            "description": "Orientation angle of the screen\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_orientation_angle",
+            "type": "INT64"
+          },
+          {
+            "description": "deviceorientation event's decimal places count\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_orientation_decimals",
+            "type": "INT64"
+          },
+          {
+            "description": "deviceorientation event's frequency\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_orientation_freq",
+            "type": "INT64"
+          },
+          {
+            "description": "deviceorientationabsolute event's decimal places count\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_orientationabs_decimals",
+            "type": "INT64"
+          },
+          {
+            "description": "deviceorientationabsolute event's frequency\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_orientationabs_freq",
+            "type": "INT64"
+          },
+          {
+            "description": "Outer height of user's browser.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_outer_height",
+            "type": "INT64"
+          },
+          {
+            "description": "Outer width of user's browser.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_outer_width",
+            "type": "INT64"
+          },
+          {
+            "description": "Screen pixel depth property\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_pixel_depth",
+            "type": "INT64"
+          },
+          {
+            "description": "The value of window.devicePixelRatio\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_pixel_ratio",
+            "type": "INT64"
+          },
+          {
+            "description": "Height of user's pointer\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_pointer_height",
+            "type": "INT64"
+          },
+          {
+            "description": "TiltX of user's pointer\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_pointer_tiltx",
+            "type": "INT64"
+          },
+          {
+            "description": "TiltY of user's pointer\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_pointer_tilty",
+            "type": "INT64"
+          },
+          {
+            "description": "Twist of user's pointer\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_pointer_twist",
+            "type": "INT64"
+          },
+          {
+            "description": "Pointer type of the user's primary pointer device.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_pointer_type",
+            "type": "INT64"
+          },
+          {
+            "description": "Width of user's pointer\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_pointer_width",
+            "type": "INT64"
+          },
+          {
+            "description": "window.screen.left value. Provides us the position of the browser and the width of any possible task/menu bar\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_posx",
+            "type": "INT64"
+          },
+          {
+            "description": "window.screen.top value. Provides us the position of the browser and the height of any possible task/menu bar\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_posy",
+            "type": "INT64"
+          },
+          {
+            "description": "What Gecko_MediaFeatures_PrefersContrast reports for a ContentDocument\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_prefers_contrast",
+            "type": "INT64"
+          },
+          {
+            "description": "Value of the network.cookie.cookieBehavior pref.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_prefs_network_cookie_cookiebehavior",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of processors.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_processor_count",
+            "type": "INT64"
+          },
+          {
+            "description": "Screen height from a window.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_screen_height",
+            "type": "INT64"
+          },
+          {
+            "description": "Orientation of the primary screen.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_screen_orientation",
+            "type": "INT64"
+          },
+          {
+            "description": "Screen width from a window.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_screen_width",
+            "type": "INT64"
+          },
+          {
+            "description": "Whether window is maximized, minimized, normal or fullscreen\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_size_mode",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of speakers available on the device.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_speaker_count",
+            "type": "INT64"
+          },
+          {
+            "description": "Storage quota in MB from StorageManager.estimate(), rounded to integer. Acts as a disk-size proxy for fingerprinting entropy analysis.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_storage_quota",
+            "type": "INT64"
+          },
+          {
+            "description": "An incrementing constant that represents the current schema/source of the data present in a ping. By referring to this value in a ping, one can know for certain the provenance of other data present in the ping, and what data may or may not be present.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_submission_schema",
+            "type": "INT64"
+          },
+          {
+            "description": "The target frame rate in frames-per-second.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_target_frame_rate",
+            "type": "INT64"
+          },
+          {
+            "description": "The timezone offset in minutes exposed to web content via getTimezoneOffset()\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_timezone_offset_web",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of speechSynthesis voices available to the user.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_voices_count",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of local speechSynthesis voices available to the user.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_voices_local_count",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit maxBindGroups\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_maxbindgroups",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit maxBindGroupsPlusVertexBuffers\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_maxbindgroupsplusvertexbuffers",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit maxBindingsPerBindGroup\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_maxbindingsperbindgroup",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit maxBufferSize\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_maxbuffersize",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit maxColorAttachmentBytesPerSample\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_maxcolorattachmentbytespersample",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit maxColorAttachments\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_maxcolorattachments",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit maxComputeInvocationsPerWorkgroup\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_maxcomputeinvocationsperworkgroup",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit maxComputeWorkgroupSizeX\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_maxcomputeworkgroupsizex",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit maxComputeWorkgroupSizeY\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_maxcomputeworkgroupsizey",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit maxComputeWorkgroupSizeZ\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_maxcomputeworkgroupsizez",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit maxComputeWorkgroupsPerDimension\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_maxcomputeworkgroupsperdimension",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit maxComputeWorkgroupStorageSize\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_maxcomputeworkgroupstoragesize",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit maxDynamicStorageBuffersPerPipelineLayout\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_maxdynamicstoragebuffersperpipelinelayout",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit maxDynamicUniformBuffersPerPipelineLayout\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_maxdynamicuniformbuffersperpipelinelayout",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit maxInterStageShaderVariables\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_maxinterstageshadervariables",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit maxSampledTexturesPerShaderStage\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_maxsampledtexturespershaderstage",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit maxSamplersPerShaderStage\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_maxsamplerspershaderstage",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit maxStorageBufferBindingSize\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_maxstoragebufferbindingsize",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit maxStorageBuffersPerShaderStage\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_maxstoragebufferspershaderstage",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit maxStorageTexturesPerShaderStage\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_maxstoragetexturespershaderstage",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit maxTextureArrayLayers\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_maxtexturearraylayers",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit maxTextureDimension1D\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_maxtexturedimension1d",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit maxTextureDimension2D\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_maxtexturedimension2d",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit maxTextureDimension3D\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_maxtexturedimension3d",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit maxUniformBufferBindingSize\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_maxuniformbufferbindingsize",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit maxUniformBuffersPerShaderStage\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_maxuniformbufferspershaderstage",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit maxVertexAttributes\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_maxvertexattributes",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit maxVertexBufferArrayStride\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_maxvertexbufferarraystride",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit maxVertexBuffers\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_maxvertexbuffers",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit minStorageBufferOffsetAlignment\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_minstoragebufferoffsetalignment",
+            "type": "INT64"
+          },
+          {
+            "description": "WebGPU limit minUniformBufferOffsetAlignment\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_minuniformbufferoffsetalignment",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of domains the users has a non-default zoom level.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_zoom_count",
+            "type": "INT64"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "quantity",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "WebAudio DynamicsCompressorNode gain reduction value from OfflineAudioContext rendering. This is most likely consistent for all/most users but we wish to verify that experimentally.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_audio_compressor_gain_reduction",
+            "type": "STRING"
+          },
+          {
+            "description": "A second method to calculate an audio fingerprint, used by a different fingerprinter. Hash of audio buffer sample snapshot (100 samples from 4500-4600 range) from OfflineAudioContext rendering.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_audio_fingerprint2",
+            "type": "STRING"
+          },
+          {
+            "description": "Sum of float frequency data from AnalyserNode.getFloatFrequencyData() during OfflineAudioContext rendering. Collected as string to preserve floating-point precision.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_audio_float_frequency_sum",
+            "type": "STRING"
+          },
+          {
+            "description": "Sum of float time domain data from AnalyserNode.getFloatTimeDomainData() during OfflineAudioContext rendering. Collected as string to preserve floating-point precision.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_audio_float_time_domain_sum",
+            "type": "STRING"
+          },
+          {
+            "description": "The device pixel ratio of the canvas rendering context\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvas_dpr",
+            "type": "STRING"
+          },
+          {
+            "description": "Status of and failure id (if failed) of ACCELERATED_CANVAS2D feature\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvas_feature_status",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a simple organge box and used as a control image\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata1",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a font shipped with Firefox rendered with italics, rotation, and shadow-blur.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata10",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a font shipped with Firefox rendered with italics, rotation, and shadow-blur.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata10_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a font shipped with Firefox rendered with italics, rotation, and shadow-blur.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata10software",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a WebGL canvas (instead of Canvas2D). IT is a RGB gradient cube.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata11_webgl",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a WebGL canvas (instead of Canvas2D). IT is a RGB gradient cube.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata11_webgl_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a WebGL canvas (instead of Canvas2D). IT is a RGB gradient cube.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata11_webglsoftware",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas, it is a copy of fingerprintjs' text canvas\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata12_fingerprintjs1",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas, it is a copy of fingerprintjs' text canvas\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata12_fingerprintjs1_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas, it is a copy of fingerprintjs' text canvas\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata12_fingerprintjs1software",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas, it is a copy of fingerprintjs' geometry canvas\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata13_fingerprintjs2",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas, it is a copy of fingerprintjs' geometry canvas\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata13_fingerprintjs2_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas, it is a copy of fingerprintjs' geometry canvas\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata13_fingerprintjs2software",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a simple organge box and used as a control image\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata1_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a simple organge box and used as a control image\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata1software",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a bordered triage, and used to test point interpolation\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata2",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a bordered triage, and used to test point interpolation\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata2_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a bordered triage, and used to test point interpolation\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata2software",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a stretched photographic image, used to test image operations.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata3",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a stretched photographic image, used to test image operations.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata3_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a stretched photographic image, used to test image operations.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata3avif",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a stretched photographic image, used to test image operations.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata3avifsoftware",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a stretched photographic image, used to test image operations.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata3cspsafe",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a stretched photographic image, used to test image operations.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata3cspsafesoftware",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a stretched photographic image, used to test image operations.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata3png",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a stretched photographic image, used to test image operations.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata3pngsoftware",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a stretched photographic image, used to test image operations.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata3software",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a stretched photographic image, used to test image operations.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata3webp",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a stretched photographic image, used to test image operations.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata3webpsoftware",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is two rotated, semi-transparenct overlapping squares, used to test transparency and point interpolation.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata4",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is two rotated, semi-transparenct overlapping squares, used to test transparency and point interpolation.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata4_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is two rotated, semi-transparenct overlapping squares, used to test transparency and point interpolation.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata4software",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a local font rendered normally.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata5",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a local font rendered normally.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata5_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a local font rendered normally.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata5software",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a local font rendered with italics, rotation, and shadow-blur.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata6",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a local font rendered with italics, rotation, and shadow-blur.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata6_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a local font rendered with italics, rotation, and shadow-blur.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata6software",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a system-ui font rendered normally.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata7",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a system-ui font rendered normally.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata7_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a system-ui font rendered normally.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata7software",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a system-ui font rendered with italics, rotation, and shadow-blur.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata8",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a system-ui font rendered with italics, rotation, and shadow-blur.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata8_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a system-ui font rendered with italics, rotation, and shadow-blur.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata8software",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a font shipped with Firefox rendered normally.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata9",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a font shipped with Firefox rendered normally.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata9_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a font shipped with Firefox rendered normally.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata9software",
+            "type": "STRING"
+          },
+          {
+            "description": "Changed media prefs and their values.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_changed_media_prefs",
+            "type": "STRING"
+          },
+          {
+            "description": "Firefox build channel\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_channel",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getBoundingClientRect() for test element 1. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_element_gbcr_01",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getBoundingClientRect() for test element 2. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_element_gbcr_02",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getBoundingClientRect() for test element 3. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_element_gbcr_03",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getBoundingClientRect() for test element 4. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_element_gbcr_04",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getBoundingClientRect() for test element 5. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_element_gbcr_05",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getBoundingClientRect() for test element 6. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_element_gbcr_06",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getBoundingClientRect() for test element 7. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_element_gbcr_07",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getBoundingClientRect() for test element 8. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_element_gbcr_08",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getBoundingClientRect() for test element 9. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_element_gbcr_09",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getBoundingClientRect() for test element 10. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_element_gbcr_10",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getBoundingClientRect() for test element 11. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_element_gbcr_11",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getBoundingClientRect() for test element 12. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_element_gbcr_12",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getClientRects()[0] for test element 1. Element style: border 2.715px, padding 3.98px, margin-left 12.12px. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_element_gcr_01",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getClientRects()[0] for test element 2. Element style: transform skewY(23.1753218deg) rotate3d(10.00099, 90, 0.100000000100009, 60000000000008.00000009deg). Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_element_gcr_02",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getClientRects()[0] for test element 3. Element style: transform skewY(-23.1753218deg) scale(1099.0000000099, 1.89) matrix(1.11, 2.0001, -1.0001, 1.009, 150, 94.4). Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_element_gcr_03",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getClientRects()[0] for test element 4. Element style: transform matrix(1.11, 2.0001, -1.0001, 1.009, 150, 94.4), position absolute. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_element_gcr_04",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getClientRects()[0] for test element 5. Element style: margin-left 42.395pt (point units). Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_element_gcr_05",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getClientRects()[0] for test element 6. Element style: transform perspective(12890px) translateZ(101.5px). Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_element_gcr_06",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getClientRects()[0] for test element 7. Element style: margin-top -350.552px, margin-left 0.9099rem, position absolute. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_element_gcr_07",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getClientRects()[0] for test element 8. Element style: margin-top -150.552px, margin-left 15.9099rem, position absolute. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_element_gcr_08",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getClientRects()[0] for test element 9. Element style: margin-top -110.552px, margin-left 15.9099rem, position absolute. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_element_gcr_09",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getClientRects()[0] for test element 10. Element style: margin-top -315.552px, margin-left 15.9099rem, position absolute. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_element_gcr_10",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getClientRects()[0] for test element 11. Element style: width 10px, height 10px, margin-left 15.0000009099rem. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_element_gcr_11",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getClientRects()[0] for test element 12. Element style: identical to element 11 (for equal-element consistency check). Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_element_gcr_12",
+            "type": "STRING"
+          },
+          {
+            "description": "Bounding rect dimensions for emoji 👾 (alien monster). Format: JSON object with w,h keys.",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_emoji_01",
+            "type": "STRING"
+          },
+          {
+            "description": "Bounding rect dimensions for emoji 🤖 (robot). Format: JSON object with w,h keys.",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_emoji_02",
+            "type": "STRING"
+          },
+          {
+            "description": "Bounding rect dimensions for emoji 🦄 (unicorn). Format: JSON object with w,h keys.",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_emoji_03",
+            "type": "STRING"
+          },
+          {
+            "description": "Bounding rect dimensions for emoji 🎃 (jack-o-lantern). Format: JSON object with w,h keys.",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_emoji_04",
+            "type": "STRING"
+          },
+          {
+            "description": "Bounding rect dimensions for emoji 🎨 (artist palette). Format: JSON object with w,h keys.",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_emoji_05",
+            "type": "STRING"
+          },
+          {
+            "description": "Bounding rect dimensions for emoji 🌈 (rainbow). Format: JSON object with w,h keys.",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_emoji_06",
+            "type": "STRING"
+          },
+          {
+            "description": "The computed font-family used for emoji elements in clientrects measurements.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_emoji_font_family",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON for .rect-ghost element (0x0px, should be all zeros). Non-zero values indicate API tampering or lie detection failure. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_ghost_dimensions",
+            "type": "STRING"
+          },
+          {
+            "description": "Full DOMRect JSON for .rect-known element (100x100px, transform rotate(45deg)). Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_known_dimensions",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getBoundingClientRect() after Range.selectNode() for test element 1. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_range_gbcr_01",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getBoundingClientRect() after Range.selectNode() for test element 2. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_range_gbcr_02",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getBoundingClientRect() after Range.selectNode() for test element 3. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_range_gbcr_03",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getBoundingClientRect() after Range.selectNode() for test element 4. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_range_gbcr_04",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getBoundingClientRect() after Range.selectNode() for test element 5. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_range_gbcr_05",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getBoundingClientRect() after Range.selectNode() for test element 6. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_range_gbcr_06",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getBoundingClientRect() after Range.selectNode() for test element 7. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_range_gbcr_07",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getBoundingClientRect() after Range.selectNode() for test element 8. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_range_gbcr_08",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getBoundingClientRect() after Range.selectNode() for test element 9. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_range_gbcr_09",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getBoundingClientRect() after Range.selectNode() for test element 10. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_range_gbcr_10",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getBoundingClientRect() after Range.selectNode() for test element 11. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_range_gbcr_11",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Element.getBoundingClientRect() after Range.selectNode() for test element 12. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_range_gbcr_12",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Range.getClientRects()[0] after Range.selectNode() for test element 1. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_range_gcr_01",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Range.getClientRects()[0] after Range.selectNode() for test element 2. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_range_gcr_02",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Range.getClientRects()[0] after Range.selectNode() for test element 3. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_range_gcr_03",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Range.getClientRects()[0] after Range.selectNode() for test element 4. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_range_gcr_04",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Range.getClientRects()[0] after Range.selectNode() for test element 5. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_range_gcr_05",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Range.getClientRects()[0] after Range.selectNode() for test element 6. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_range_gcr_06",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Range.getClientRects()[0] after Range.selectNode() for test element 7. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_range_gcr_07",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Range.getClientRects()[0] after Range.selectNode() for test element 8. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_range_gcr_08",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Range.getClientRects()[0] after Range.selectNode() for test element 9. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_range_gcr_09",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Range.getClientRects()[0] after Range.selectNode() for test element 10. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_range_gcr_10",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Range.getClientRects()[0] after Range.selectNode() for test element 11. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_range_gcr_11",
+            "type": "STRING"
+          },
+          {
+            "description": "DOMRect JSON from Range.getClientRects()[0] after Range.selectNode() for test element 12. Format: {\"b\":N,\"h\":N,\"l\":N,\"r\":N,\"t\":N,\"w\":N,\"x\":N,\"y\":N}",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_range_gcr_12",
+            "type": "STRING"
+          },
+          {
+            "description": "The computed font-family used for text elements in clientrects measurements.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_clientrects_text_font_family",
+            "type": "STRING"
+          },
+          {
+            "description": "Arch of the user's device\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_cpu_arch",
+            "type": "STRING"
+          },
+          {
+            "description": "CPU model of the user's device\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_cpu_model",
+            "type": "STRING"
+          },
+          {
+            "description": "Architecture of the Firefox binary itself (not the CPU). This can differ from cpu_arch when running under emulation (e.g., x86-64 Firefox via Rosetta 2 on ARM64 Mac) or when running 32-bit Firefox on 64-bit CPU. Format: \"xpcomabi:<abi>|is64bit:<bool>\" where abi is from XPCOMABI (e.g., \"Darwin_x86_64-gcc3\") and is64bit indicates 64-bit build.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_firefox_binary_arch",
+            "type": "STRING"
+          },
+          {
+            "description": "The value of the font.default.<default language group> pref\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_default_default_group",
+            "type": "STRING"
+          },
+          {
+            "description": "The value of the font.default.x-western pref\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_default_western",
+            "type": "STRING"
+          },
+          {
+            "description": "The font hinting style. On Linux this is the GNOME org.gnome.desktop.interface font-hinting setting, one of \"none\", \"slight\", \"medium\", or \"full\". Hinting reshapes glyph outlines, so it affects rasterized output including canvas text readback. Not set on other platforms, which expose no comparable per-user setting.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_hinting",
+            "type": "STRING"
+          },
+          {
+            "description": "The value of the font.minimum-size.<default language group> pref\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_minimum_size_default_group",
+            "type": "STRING"
+          },
+          {
+            "description": "The value of the font.minimum-size.x-western pref\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_minimum_size_western",
+            "type": "STRING"
+          },
+          {
+            "description": "The value of the font.name.monospace.<default language group> pref\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_name_monospace_default_group",
+            "type": "STRING"
+          },
+          {
+            "description": "The value of the font.name.monospace.x-western pref\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_name_monospace_western",
+            "type": "STRING"
+          },
+          {
+            "description": "The value of the font.name.sans-serif.<default language group> pref\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_name_sans_serif_default_group",
+            "type": "STRING"
+          },
+          {
+            "description": "The value of the font.name.sans-serif.x-western pref\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_name_sans_serif_western",
+            "type": "STRING"
+          },
+          {
+            "description": "The value of the font.name.serif.<default language group> pref\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_name_serif_default_group",
+            "type": "STRING"
+          },
+          {
+            "description": "The value of the font.name.serif.x-western pref\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_name_serif_western",
+            "type": "STRING"
+          },
+          {
+            "description": "The subpixel (LCD) element order. On Linux this is the GNOME org.gnome.desktop.interface font-rgba-order setting, one of \"rgba\", \"rgb\", \"bgr\", \"vrgb\", or \"vbgr\". On Windows it is the ClearType orientation (SPI_GETFONTSMOOTHINGORIENTATION), normalized to \"rgb\" or \"bgr\" (Windows exposes no vertical variants). Only affects rendering when subpixel antialiasing is active (see font_smoothing_type); it does not affect canvas readback, which is grayscale. Not set on macOS or Android.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_rgba_order",
+            "type": "STRING"
+          },
+          {
+            "description": "The value of the font.size.monospace.<default language group> pref\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_size_monospace_default_group",
+            "type": "STRING"
+          },
+          {
+            "description": "The value of the font.size.monospace.x-western pref\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_size_monospace_western",
+            "type": "STRING"
+          },
+          {
+            "description": "The value of the font.size.variable.<default language group> pref\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_size_variable_default_group",
+            "type": "STRING"
+          },
+          {
+            "description": "The value of the font.size.variable.x-western pref\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_font_size_variable_western",
+            "type": "STRING"
+          },
+          {
+            "description": "SHA256 of allowlisted fonts queried by FPJS\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_fonts_fpjs_allowlisted",
+            "type": "STRING"
+          },
+          {
+            "description": "SHA256 of non-allowlisted fonts queried by FPJS\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_fonts_fpjs_nonallowlisted",
+            "type": "STRING"
+          },
+          {
+            "description": "SHA256 of allowlisted fonts queried of variant A\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_fonts_variant_a_allowlisted",
+            "type": "STRING"
+          },
+          {
+            "description": "SHA256 of non-allowlisted fonts queried of variant A\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_fonts_variant_a_nonallowlisted",
+            "type": "STRING"
+          },
+          {
+            "description": "SHA256 of allowlisted fonts queried of variant B\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_fonts_variant_b_allowlisted",
+            "type": "STRING"
+          },
+          {
+            "description": "SHA256 of non-allowlisted fonts queried of variant B\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_fonts_variant_b_nonallowlisted",
+            "type": "STRING"
+          },
+          {
+            "description": "SHA256 of allowlisted fonts queried of variant C\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_fonts_variant_c_allowlisted",
+            "type": "STRING"
+          },
+          {
+            "description": "SHA256 of non-allowlisted fonts queried of variant C\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_fonts_variant_c_nonallowlisted",
+            "type": "STRING"
+          },
+          {
+            "description": "SHA256 of allowlisted fonts queried of variant D\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_fonts_variant_d_allowlisted",
+            "type": "STRING"
+          },
+          {
+            "description": "SHA256 of non-allowlisted fonts queried of variant D\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_fonts_variant_d_nonallowlisted",
+            "type": "STRING"
+          },
+          {
+            "description": "SHA256 of allowlisted fonts queried of variant E\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_fonts_variant_e_allowlisted",
+            "type": "STRING"
+          },
+          {
+            "description": "SHA256 of non-allowlisted fonts queried of variant E\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_fonts_variant_e_nonallowlisted",
+            "type": "STRING"
+          },
+          {
+            "description": "SHA256 of allowlisted fonts used to render \"A\" with variant F font list\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_fonts_variant_f_allowlisted",
+            "type": "STRING"
+          },
+          {
+            "description": "SHA256 of non-allowlisted fonts used to render \"A\" with variant F font list\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_fonts_variant_f_nonallowlisted",
+            "type": "STRING"
+          },
+          {
+            "description": "SHA256 of allowlisted fonts used to render emoji (U+1F47E) with variant F font list\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_fonts_variant_g_allowlisted",
+            "type": "STRING"
+          },
+          {
+            "description": "SHA256 of non-allowlisted fonts used to render emoji (U+1F47E) with variant F font list\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_fonts_variant_g_nonallowlisted",
+            "type": "STRING"
+          },
+          {
+            "description": "SHA256 of allowlisted fonts used to render 89 emojis with variant F font list\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_fonts_variant_h_allowlisted",
+            "type": "STRING"
+          },
+          {
+            "description": "SHA256 of non-allowlisted fonts used to render 89 emojis with variant F font list\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_fonts_variant_h_nonallowlisted",
+            "type": "STRING"
+          },
+          {
+            "description": "SHA256 of allowlisted fonts used to render SVG emojis with emoji-specific font list\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_fonts_variant_i_allowlisted",
+            "type": "STRING"
+          },
+          {
+            "description": "SHA256 of non-allowlisted fonts used to render SVG emojis with emoji-specific font list\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_fonts_variant_i_nonallowlisted",
+            "type": "STRING"
+          },
+          {
+            "description": "The current FPU (Floating-Point Unit) rounding mode and precision settings. Format depends on architecture: - x86/x86-64: \"std:X;x87:Y;sse:Z;prec:P\" where X,Y,Z are rounding modes (0-3)\n  and P is precision (single/double/extended)\n- ARM: \"std:X;arm:Y\" where X,Y are rounding modes (0-3) Rounding modes: 0=nearest, 1=down/negative, 2=up/positive, 3=toward-zero This helps identify unusual FPU configurations that may cause math variations.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_fpu_control_state",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether alpha was granted for the default WebGL2 context.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_alpha",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether alpha was granted for the default WebGL2 context (software rendering).\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_alpha_software",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether antialias was granted for the default WebGL2 context.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_antialias",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether antialias was granted for the default WebGL2 context (software rendering).\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_antialias_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The type of the GL context (EGL, GLX, WGL, etc).\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_context_type",
+            "type": "STRING"
+          },
+          {
+            "description": "The type of the GL context (EGL, GLX, WGL, etc).\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_context_type_software",
+            "type": "STRING"
+          },
+          {
+            "description": "Hash of the transformed source of the fragment shader.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_fragment_shader",
+            "type": "STRING"
+          },
+          {
+            "description": "Hash of the transformed source of the fragment shader.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_fragment_shader_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The OpenGL renderer string.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_renderer",
+            "type": "STRING"
+          },
+          {
+            "description": "The raw OpenGL renderer string.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_renderer_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "The raw OpenGL renderer string.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_renderer_raw_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The OpenGL renderer string.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_renderer_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The OpenGL vendor string.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_vendor",
+            "type": "STRING"
+          },
+          {
+            "description": "The raw OpenGL vendor string.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_vendor_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "The raw OpenGL vendor string.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_vendor_raw_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The OpenGL vendor string.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_vendor_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The raw OpenGL version string.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_version_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "The raw OpenGL version string.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_version_raw_software",
+            "type": "STRING"
+          },
+          {
+            "description": "Hash of the transformed source of the vertex shader.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_vertex_shader",
+            "type": "STRING"
+          },
+          {
+            "description": "Hash of the transformed source of the vertex shader.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_vertex_shader_software",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether alpha was granted for the default WebGL context.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_alpha",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether alpha was granted for the default WebGL context (software rendering).\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_alpha_software",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether antialias was granted for the default WebGL context.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_antialias",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether antialias was granted for the default WebGL context (software rendering).\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_antialias_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The type of the GL context (EGL, GLX, WGL, etc).\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_context_type",
+            "type": "STRING"
+          },
+          {
+            "description": "The type of the GL context (EGL, GLX, WGL, etc).\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_context_type_software",
+            "type": "STRING"
+          },
+          {
+            "description": "Hash of the transformed source of the fragment shader.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_fragment_shader",
+            "type": "STRING"
+          },
+          {
+            "description": "Hash of the transformed source of the fragment shader.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_fragment_shader_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The OpenGL renderer string.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_renderer",
+            "type": "STRING"
+          },
+          {
+            "description": "The raw OpenGL renderer string.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_renderer_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "The raw OpenGL renderer string.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_renderer_raw_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The OpenGL renderer string.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_renderer_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The OpenGL vendor string.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_vendor",
+            "type": "STRING"
+          },
+          {
+            "description": "The raw OpenGL vendor string.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_vendor_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "The raw OpenGL vendor string.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_vendor_raw_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The OpenGL vendor string.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_vendor_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The raw OpenGL version string.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_version_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "The raw OpenGL version string.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_version_raw_software",
+            "type": "STRING"
+          },
+          {
+            "description": "Hash of the transformed source of the vertex shader.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_vertex_shader",
+            "type": "STRING"
+          },
+          {
+            "description": "Hash of the transformed source of the vertex shader.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_vertex_shader_software",
+            "type": "STRING"
+          },
+          {
+            "description": "Locale information provided by Intl\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_intl_locale",
+            "type": "STRING"
+          },
+          {
+            "description": "Name of the current keyboard layout.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_keyboard_layout",
+            "type": "STRING"
+          },
+          {
+            "description": "Languages the user set. Returns intl.accept_languages pref, if it is empty, returns the first matched OS's language or the default language.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_languages",
+            "type": "STRING"
+          },
+          {
+            "description": "Machine model name\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_machine_model_name",
+            "type": "STRING"
+          },
+          {
+            "description": "Width of the drawn MathML element\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_mathml1",
+            "type": "STRING"
+          },
+          {
+            "description": "Width of the drawn MathML element\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_mathml10",
+            "type": "STRING"
+          },
+          {
+            "description": "Width of the drawn MathML element\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_mathml2",
+            "type": "STRING"
+          },
+          {
+            "description": "Width of the drawn MathML element\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_mathml3",
+            "type": "STRING"
+          },
+          {
+            "description": "Width of the drawn MathML element\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_mathml4",
+            "type": "STRING"
+          },
+          {
+            "description": "Width of the drawn MathML element\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_mathml5",
+            "type": "STRING"
+          },
+          {
+            "description": "Width of the drawn MathML element\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_mathml6",
+            "type": "STRING"
+          },
+          {
+            "description": "Width of the drawn MathML element\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_mathml7",
+            "type": "STRING"
+          },
+          {
+            "description": "Width of the drawn MathML element\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_mathml8",
+            "type": "STRING"
+          },
+          {
+            "description": "Width of the drawn MathML element\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_mathml9",
+            "type": "STRING"
+          },
+          {
+            "description": "The family name of the resolved MATH-table font for MathML rendering, as reported by InspectorUtils.getMathFontFamily on a <math> element. Expected values include \"Cambria Math\" on Windows, \"STIX Two Math\" on macOS Ventura+, one of \"Latin Modern Math\" / \"STIX Two Math\" / \"TeX Gyre Pagella Math\" / etc. on Linux depending on installed packages, and the literal sentinel \"(no MATH font)\" on platforms where the layout engine has no MATH-table font available (Android, pre-Ventura macOS). Earlier schema versions of this metric reported the CSS-author font-family value, which was always the literal \"math\" generic due to mathml.css; see kSubmissionSchema to distinguish.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_mathml_diag_font_family",
+            "type": "STRING"
+          },
+          {
+            "description": "MathML prefs that have been modified from defaults. Format is \"shortname=val,...\" (e.g. \"dis=1,fnt=0\"). Empty if no prefs modified. Shortnames: dis=disabled, str=scale_stretchy_operators, spc=mathspace_names, var=mathvariant_styling_fallback, acc=operator_dictionary_accent, leg=legacy_mathvariant_attribute, fnt=font_family_math. Values are 1 (true) or 0 (false).\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_mathml_diag_prefs_modified",
+            "type": "STRING"
+          },
+          {
+            "description": "User's OS distribution, as reported by lsb_release (Linux only, blank otherwise)\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_os_distro",
+            "type": "STRING"
+          },
+          {
+            "description": "User's OS distribution, as reported by MOZ_DISTRIBUTION_ID\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_os_distro_id",
+            "type": "STRING"
+          },
+          {
+            "description": "User's OS distribution version, as reported by lsb_release (Linux only, blank otherwise)\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_os_distro_version",
+            "type": "STRING"
+          },
+          {
+            "description": "User's OS name\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_os_name",
+            "type": "STRING"
+          },
+          {
+            "description": "User's OS version\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_os_version",
+            "type": "STRING"
+          },
+          {
+            "description": "User's OS CPU reported by the navigator\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_oscpu",
+            "type": "STRING"
+          },
+          {
+            "description": "The value of window.devicePixelRatio\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_pixel_ratio",
+            "type": "STRING"
+          },
+          {
+            "description": "Platform reported by the navigator\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_platform",
+            "type": "STRING"
+          },
+          {
+            "description": "Pressure of user's pointer\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_pointer_pressure",
+            "type": "STRING"
+          },
+          {
+            "description": "Tangential Pressure of user's pointer\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_pointer_tangentinal_pressure",
+            "type": "STRING"
+          },
+          {
+            "description": "Value of the intl.accept_languages pref.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_prefs_intl_accept_languages",
+            "type": "STRING"
+          },
+          {
+            "description": "Screen(s) scaling/zoom level\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_scalings",
+            "type": "STRING"
+          },
+          {
+            "description": "JSON object from SVGGraphicsElement.getBBox(). Format: {\"x\":N,\"y\":N,\"w\":N,\"h\":N}. Varies by browser rendering engine.",
+            "mode": "NULLABLE",
+            "name": "characteristics_svg_bbox",
+            "type": "STRING"
+          },
+          {
+            "description": "SVGTextContentElement.getComputedTextLength() for emoji text element. Returns the total length of rendered text, varies by font rendering.",
+            "mode": "NULLABLE",
+            "name": "characteristics_svg_computed_text_length",
+            "type": "STRING"
+          },
+          {
+            "description": "JSON array of emojis with unique rendering dimensions. Tests which emojis render at distinct sizes, varies by OS/font support.",
+            "mode": "NULLABLE",
+            "name": "characteristics_svg_emoji_set",
+            "type": "STRING"
+          },
+          {
+            "description": "JSON object from SVGTextContentElement.getExtentOfChar(0). Format: {\"x\":N,\"y\":N,\"w\":N,\"h\":N}. Varies by emoji rendering.",
+            "mode": "NULLABLE",
+            "name": "characteristics_svg_extent_of_char",
+            "type": "STRING"
+          },
+          {
+            "description": "SVGTextContentElement.getSubStringLength(0, 10) for first 10 characters. Varies by font metrics and text shaping.",
+            "mode": "NULLABLE",
+            "name": "characteristics_svg_substring_length",
+            "type": "STRING"
+          },
+          {
+            "description": "The locale used by the host OS for localization.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_system_locale",
+            "type": "STRING"
+          },
+          {
+            "description": "Font anti aliasing level\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_text_anti_aliasing",
+            "type": "STRING"
+          },
+          {
+            "description": "The the current timezone of the system\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_timezone",
+            "type": "STRING"
+          },
+          {
+            "description": "The timezone offset in minutes exposed to web content via getTimezoneOffset()\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_timezone_offset_web",
+            "type": "STRING"
+          },
+          {
+            "description": "The timezone string reported via the web using Intl API (e.g. America/New_York)\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_timezone_web",
+            "type": "STRING"
+          },
+          {
+            "description": "Rotation angle of user's touch\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_touch_rotation_angle",
+            "type": "STRING"
+          },
+          {
+            "description": "Firefox build version\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_version",
+            "type": "STRING"
+          },
+          {
+            "description": "ssdeep hash of all speechSynthesis voices.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_voices_all_ssdeep",
+            "type": "STRING"
+          },
+          {
+            "description": "The default speechSynthesis voice.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_voices_default",
+            "type": "STRING"
+          },
+          {
+            "description": "ssdeep hash of local speechSynthesis voices.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_voices_local_ssdeep",
+            "type": "STRING"
+          },
+          {
+            "description": "ssdeep hash of non-local speechSynthesis voices.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_voices_nonlocal_ssdeep",
+            "type": "STRING"
+          },
+          {
+            "description": "Missing features of WebGPU as a bitset\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_wgpu_missing_features",
+            "type": "STRING"
+          },
+          {
+            "description": "An experimentation identifier derived and provided by the application\nfor the purpose of experimentation enrollment.\n",
+            "mode": "NULLABLE",
+            "name": "glean_client_annotation_experimentation_id",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "string",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The information of the gamepads inserted on the user device. Each string represents one gamepad. We use a JSON array to describe a gamepad, every value represents one property of the gamepad. Following are the details:\n  index 0: The ID of the game pad\n  index 1: Which hand for the gamepad.\n  index 2: Number of buttons\n  index 3: Number of axes\n  index 4: Number of haptics\n  index 5: Number of lights\n  index 6: Number of touches\n",
+            "mode": "REPEATED",
+            "name": "characteristics_gamepads",
+            "type": "STRING"
+          },
+          {
+            "description": "The list of requested uploader capabilities for the ping this is sent in.\nShould be the same as the ones defined for that particular ping.\n\nThis metric is only attached to a ping if it already contains other data.\n",
+            "mode": "REPEATED",
+            "name": "glean_ping_uploader_capabilities",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "string_list",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "A JSON object containing sample rate and max channel count of every audio device, and output latency of default device\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_audio_devices",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a simple organge box and used as a control image\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata1",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a font shipped with Firefox rendered with italics, rotation, and shadow-blur.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata10",
+            "type": "STRING"
+          },
+          {
+            "description": "Gzip-compressed, base64-encoded raw pixel data from canvasdata10 rendering\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata10_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "Gzip-compressed, base64-encoded raw pixel data from canvasdata10 software rendering\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata10_software_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a WebGL canvas (instead of Canvas2D). IT is a RGB gradient cube.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata11_webgl",
+            "type": "STRING"
+          },
+          {
+            "description": "Gzip-compressed, base64-encoded raw pixel data from canvasdata11_webgl rendering\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata11_webgl_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "Gzip-compressed, base64-encoded raw pixel data from canvasdata11_webgl software rendering\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata11_webgl_software_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas, it is a copy of fingerprintjs' text canvas\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata12_fingerprintjs1",
+            "type": "STRING"
+          },
+          {
+            "description": "Gzip-compressed, base64-encoded raw pixel data from canvasdata12_fingerprintjs1 rendering\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata12_fingerprintjs1_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "Gzip-compressed, base64-encoded raw pixel data from canvasdata12_fingerprintjs1 software rendering\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata12_fingerprintjs1_software_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas, it is a copy of fingerprintjs' geometry canvas\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata13_fingerprintjs2",
+            "type": "STRING"
+          },
+          {
+            "description": "Gzip-compressed, base64-encoded raw pixel data from canvasdata13_fingerprintjs2 rendering\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata13_fingerprintjs2_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "Gzip-compressed, base64-encoded raw pixel data from canvasdata13_fingerprintjs2 software rendering\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata13_fingerprintjs2_software_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "Gzip-compressed, base64-encoded raw pixel data from canvasdata1 rendering\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata1_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "Gzip-compressed, base64-encoded raw pixel data from canvasdata1 software rendering\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata1_software_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a bordered triage, and used to test point interpolation\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata2",
+            "type": "STRING"
+          },
+          {
+            "description": "Gzip-compressed, base64-encoded raw pixel data from canvasdata2 rendering\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata2_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "Gzip-compressed, base64-encoded raw pixel data from canvasdata2 software rendering\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata2_software_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a stretched photographic image, used to test image operations.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata3",
+            "type": "STRING"
+          },
+          {
+            "description": "Gzip-compressed, base64-encoded raw pixel data from canvasdata3 rendering\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata3_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "Gzip-compressed, base64-encoded raw pixel data from canvasdata3 software rendering\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata3_software_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is two rotated, semi-transparenct overlapping squares, used to test transparency and point interpolation.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata4",
+            "type": "STRING"
+          },
+          {
+            "description": "Gzip-compressed, base64-encoded raw pixel data from canvasdata4 rendering\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata4_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "Gzip-compressed, base64-encoded raw pixel data from canvasdata4 software rendering\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata4_software_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a local font rendered normally.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata5",
+            "type": "STRING"
+          },
+          {
+            "description": "Gzip-compressed, base64-encoded raw pixel data from canvasdata5 rendering\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata5_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "Gzip-compressed, base64-encoded raw pixel data from canvasdata5 software rendering\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata5_software_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a local font rendered with italics, rotation, and shadow-blur.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata6",
+            "type": "STRING"
+          },
+          {
+            "description": "Gzip-compressed, base64-encoded raw pixel data from canvasdata6 rendering\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata6_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "Gzip-compressed, base64-encoded raw pixel data from canvasdata6 software rendering\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata6_software_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a system-ui font rendered normally.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata7",
+            "type": "STRING"
+          },
+          {
+            "description": "Gzip-compressed, base64-encoded raw pixel data from canvasdata7 rendering\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata7_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "Gzip-compressed, base64-encoded raw pixel data from canvasdata7 software rendering\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata7_software_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a system-ui font rendered with italics, rotation, and shadow-blur.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata8",
+            "type": "STRING"
+          },
+          {
+            "description": "Gzip-compressed, base64-encoded raw pixel data from canvasdata8 rendering\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata8_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "Gzip-compressed, base64-encoded raw pixel data from canvasdata8 software rendering\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata8_software_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "The sha1 hash of an image rendered on a canvas. The image is a font shipped with Firefox rendered normally.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata9",
+            "type": "STRING"
+          },
+          {
+            "description": "Gzip-compressed, base64-encoded raw pixel data from canvasdata9 rendering\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata9_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "Gzip-compressed, base64-encoded raw pixel data from canvasdata9 software rendering\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_canvasdata9_software_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "JSON array containing CSS system color keywords and their computed values as uppercase 8-char RRGGBBAA hex (without # prefix). System colors (like Canvas, ButtonFace, LinkText, etc.) are CSS keywords that resolve to theme/OS-specific colors and can be used for fingerprinting. This metric collects the computed backgroundColor for each system color keyword. Data format: [{\"Canvas\": \"FFFFFFFF\"}, {\"ButtonFace\": \"E9E9EDFF\"}, ...]. Values here are content-resolved: they respect the page color-scheme (so dark-mode users will see Firefox's dark Canvas 1C1B22FF, etc.) and have content-side standins applied. Alpha is preserved where CSS resolution preserves it (e.g. macOS Highlight comes through with alpha 0x7F); for translucent system colors that CSS resolves against a backdrop (e.g. HighlightText on some platforms), the resolved opaque RGB carries a trailing FF and the source's alpha is no longer recoverable from this metric — see the `color_*` quantities for the raw nscolor values, which preserve alpha unconditional",
+            "mode": "NULLABLE",
+            "name": "characteristics_css_system_colors",
+            "type": "STRING"
+          },
+          {
+            "description": "JSON array containing CSS system font keywords and their computed font properties. System fonts (like caption, icon, menu, etc.) and common font families are tested to determine their rendered fontSize and fontFamily values, which can vary by OS and be used for fingerprinting. This metric collects computed fontSize + fontFamily for each font keyword/name tested. Data format: [{\"caption\": \"11px system-ui\"}, {\"Arial\": \"16px Arial\"}, ...].\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_css_system_fonts",
+            "type": "STRING"
+          },
+          {
+            "description": "Errors occured on C++ side of data collection\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_errors",
+            "type": "STRING"
+          },
+          {
+            "description": "The list of OpenGL extensions supported by the user's system.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_extensions",
+            "type": "STRING"
+          },
+          {
+            "description": "The raw list of OpenGL extensions supported by the user's system.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_extensions_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "The raw list of OpenGL extensions supported by the user's system.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_extensions_raw_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The list of OpenGL extensions supported by the user's system.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_extensions_software",
+            "type": "STRING"
+          },
+          {
+            "description": "Transformed source of the minimal shader.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_minimal_source",
+            "type": "STRING"
+          },
+          {
+            "description": "Transformed source of the minimal shader.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_minimal_source_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The list of GL parameters of GL2.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_params",
+            "type": "STRING"
+          },
+          {
+            "description": "The list of GL parameters of the extensions.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_params_extensions",
+            "type": "STRING"
+          },
+          {
+            "description": "The list of GL parameters of the extensions.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_params_extensions_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The list of GL parameters of GL2.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_params_software",
+            "type": "STRING"
+          },
+          {
+            "description": "Precisions of the fragment shader.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_precision_fragment",
+            "type": "STRING"
+          },
+          {
+            "description": "Precisions of the fragment shader.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_precision_fragment_software",
+            "type": "STRING"
+          },
+          {
+            "description": "Precisions of the vertex shader.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_precision_vertex",
+            "type": "STRING"
+          },
+          {
+            "description": "Precisions of the vertex shader.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl2_precision_vertex_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The list of OpenGL extensions supported by the user's system.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_extensions",
+            "type": "STRING"
+          },
+          {
+            "description": "The raw list of OpenGL extensions supported by the user's system.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_extensions_raw",
+            "type": "STRING"
+          },
+          {
+            "description": "The raw list of OpenGL extensions supported by the user's system.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_extensions_raw_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The list of OpenGL extensions supported by the user's system.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_extensions_software",
+            "type": "STRING"
+          },
+          {
+            "description": "Transformed source of the minimal shader.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_minimal_source",
+            "type": "STRING"
+          },
+          {
+            "description": "Transformed source of the minimal shader.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_minimal_source_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The list of GL parameters of GL1. Parameters: ALIASED_LINE_WIDTH_RANGE, ALIASED_POINT_SIZE_RANGE, IMPLEMENTATION_COLOR_READ_FORMAT, IMPLEMENTATION_COLOR_READ_TYPE, MAX_COMBINED_TEXTURE_IMAGE_UNITS, MAX_CUBE_MAP_TEXTURE_SIZE, MAX_FRAGMENT_UNIFORM_VECTORS, MAX_RENDERBUFFER_SIZE, MAX_TEXTURE_IMAGE_UNITS, MAX_TEXTURE_SIZE, MAX_VARYING_VECTORS, MAX_VERTEX_ATTRIBS, MAX_VERTEX_TEXTURE_IMAGE_UNITS, MAX_VERTEX_UNIFORM_VECTORS, MAX_VIEWPORT_DIMS, SHADING_LANGUAGE_VERSION, STENCIL_BACK_VALUE_MASK, STENCIL_BACK_WRITEMASK, STENCIL_VALUE_MASK, STENCIL_WRITEMASK, SUBPIXEL_BITS.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_params",
+            "type": "STRING"
+          },
+          {
+            "description": "The list of GL parameters of the extensions.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_params_extensions",
+            "type": "STRING"
+          },
+          {
+            "description": "The list of GL parameters of the extensions.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_params_extensions_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The list of GL parameters of GL1.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_params_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The list of GL parameters of GL1.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_params_v1",
+            "type": "STRING"
+          },
+          {
+            "description": "The list of GL parameters of GL1.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_params_v1_software",
+            "type": "STRING"
+          },
+          {
+            "description": "The list of GL parameters of GL2.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_params_v2",
+            "type": "STRING"
+          },
+          {
+            "description": "The list of GL parameters of GL2.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_params_v2_software",
+            "type": "STRING"
+          },
+          {
+            "description": "Precisions of the fragment shader.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_precision_fragment",
+            "type": "STRING"
+          },
+          {
+            "description": "Precisions of the fragment shader.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_precision_fragment_software",
+            "type": "STRING"
+          },
+          {
+            "description": "Precisions of the vertex shader.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_precision_vertex",
+            "type": "STRING"
+          },
+          {
+            "description": "Precisions of the vertex shader.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_gl_precision_vertex_software",
+            "type": "STRING"
+          },
+          {
+            "description": "Unique ICE foundations occurance count and the standard deviation of latencies\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_ice_foundations",
+            "type": "STRING"
+          },
+          {
+            "description": "Errors occured on JavaScript side of data collection\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_js_errors",
+            "type": "STRING"
+          },
+          {
+            "description": "Result of fingerprintable math operations\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_math_ops",
+            "type": "STRING"
+          },
+          {
+            "description": "Windows only fdlibm math operation results\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_math_ops_fdlibm",
+            "type": "STRING"
+          },
+          {
+            "description": "Result of additional fingerprintable math operations, with fdlibm enabled\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_math_ops_fdlibm_2",
+            "type": "STRING"
+          },
+          {
+            "description": "Array of widths from all MathML elements, collected similar to math_ops. Each element represents the getBoundingClientRect().width of a rendered MathML element. The array index corresponds to the element's id number. Format is a JSON stringified array like: [\"123.456\", \"789.012\", ...]\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_mathml_diag_values",
+            "type": "STRING"
+          },
+          {
+            "description": "Which, if any, media types are not supported, and whether they can be run smoothly and power-efficiently.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_media_capabilities",
+            "type": "STRING"
+          },
+          {
+            "description": "Levels of support for H264 codec.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_media_capabilities_h264",
+            "type": "STRING"
+          },
+          {
+            "description": "Which, if any, media types are not power efficient.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_media_capabilities_not_efficient",
+            "type": "STRING"
+          },
+          {
+            "description": "Which, if any, media types are not smooth.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_media_capabilities_not_smooth",
+            "type": "STRING"
+          },
+          {
+            "description": "Which, if any, media types are not supported.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_media_capabilities_unsupported",
+            "type": "STRING"
+          },
+          {
+            "description": "A JSON object containing the number of audio input/output, video input and the number of unique group ids.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_media_devices",
+            "type": "STRING"
+          },
+          {
+            "description": "If a Font List is available for the user's platform, this string_list contains the fonts that are missing from the user's computer.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_missing_fonts",
+            "type": "STRING"
+          },
+          {
+            "description": "JSON string of screen properties\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_screens",
+            "type": "STRING"
+          },
+          {
+            "description": "JSON-stringified SDP codec section from RTCPeerConnection.createOffer(). Contains m-lines, a=rtpmap, a=fmtp, and a=rtcp-fb lines with session-specific values (ICE credentials, DTLS fingerprint) stripped.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_sdp_codec_list",
+            "type": "STRING"
+          },
+          {
+            "description": "User agent string\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_user_agent",
+            "type": "STRING"
+          },
+          {
+            "description": "Available speechSynthesis voices.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_voices",
+            "type": "STRING"
+          },
+          {
+            "description": "Names of 5 sample speechSynthesis voices.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_voices_sample",
+            "type": "STRING"
+          },
+          {
+            "description": "SHA1 hash of all the voices.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_voices_sha1",
+            "type": "STRING"
+          },
+          {
+            "description": "JSON-stringified dictionary from PublicKeyCredential.getClientCapabilities(). Contains boolean values indicating passkey and authenticator support.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_webauthn_capabilities",
+            "type": "STRING"
+          },
+          {
+            "description": "A JSON blob that contains information about the graphics hardware exposed by WebGL.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_webglinfo",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "text2",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "A unique identifier for a user, not the same as the normal Telemetry client_id, but needed so we can deduplicate reports and only take the most recent one per user.\n",
+            "mode": "NULLABLE",
+            "name": "characteristics_client_identifier",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "uuid",
+        "type": "RECORD"
+      }
+    ],
+    "mode": "NULLABLE",
+    "name": "metrics",
+    "type": "RECORD"
+  },
+  {
+    "description": "Set to \"Other\" if this message contained an unrecognized app name",
+    "mode": "NULLABLE",
+    "name": "normalized_app_name",
+    "type": "STRING"
+  },
+  {
+    "description": "Set to \"Other\" if this message contained an unrecognized channel name",
+    "mode": "NULLABLE",
+    "name": "normalized_channel",
+    "type": "STRING"
+  },
+  {
+    "description": "An ISO 3166-1 alpha-2 country code",
+    "mode": "NULLABLE",
+    "name": "normalized_country_code",
+    "type": "STRING"
+  },
+  {
+    "description": "Set to \"Other\" if this message contained an unrecognized OS name",
+    "mode": "NULLABLE",
+    "name": "normalized_os",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "normalized_os_version",
+    "type": "STRING"
+  },
+  {
+    "description": "Hashed version of client_id (if present) useful for partitioning; ranges from 0 to 99",
+    "mode": "NULLABLE",
+    "name": "sample_id",
+    "type": "INT64"
+  },
+  {
+    "description": "Time when the ingestion edge server accepted this message",
+    "mode": "NULLABLE",
+    "name": "submission_timestamp",
+    "type": "TIMESTAMP"
+  }
+]

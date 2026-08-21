@@ -197,6 +197,32 @@ schemas
 |   |-- url-classifier-harmful-addon
 |   |-- use-counters
 |   `-- user-characteristics
+|-- firefox-enterprise-desktop
+|   |-- addons
+|   |-- baseline
+|   |-- bounce-tracking-protection
+|   |-- broken-site-report
+|   |-- captcha-detection
+|   |-- content-decoding-error
+|   |-- crash
+|   |-- dau-reporting
+|   |-- deletion-request
+|   |-- events
+|   |-- fog-validation
+|   |-- gecko-trace
+|   |-- hang-report
+|   |-- health
+|   |-- local-network-access
+|   |-- metrics
+|   |-- pageload
+|   |-- pageload-base-domain
+|   |-- pageload-domain
+|   |-- prefs-file-invalid
+|   |-- temp-fog-initial-state
+|   |-- traces
+|   |-- url-classifier-harmful-addon
+|   |-- use-counters
+|   `-- user-characteristics
 |-- firefox-installer
 |   `-- install
 |-- firefox-launcher-process
@@ -266,6 +292,9 @@ schemas
 |-- moso-mastodon-backend
 |   `-- events
 |-- moso-mastodon-web
+|   |-- deletion-request
+|   `-- events
+|-- moz-backstage
 |   |-- deletion-request
 |   `-- events
 |-- mozilla-lockbox
@@ -1120,6 +1149,6 @@ schemas
 `-- webpagetest
     `-- webpagetest-run
 
-1111 directories
+1140 directories
 ```
 
