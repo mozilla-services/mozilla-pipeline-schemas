@@ -1,0 +1,716 @@
+[
+  {
+    "description": "A JSON string containing any payload properties not present in the schema",
+    "mode": "NULLABLE",
+    "name": "additional_properties",
+    "type": "STRING"
+  },
+  {
+    "description": "The document ID specified in the URI when the client sent this message",
+    "mode": "NULLABLE",
+    "name": "document_id",
+    "type": "STRING"
+  },
+  {
+    "fields": [
+      {
+        "mode": "NULLABLE",
+        "name": "category",
+        "type": "STRING"
+      },
+      {
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "key",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "value",
+            "type": "STRING"
+          }
+        ],
+        "mode": "REPEATED",
+        "name": "extra",
+        "type": "RECORD"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "name",
+        "type": "STRING"
+      },
+      {
+        "description": "Session metadata attached to this event. Absent for out-of-session events and events from before sessions were introduced.",
+        "fields": [
+          {
+            "description": "Per-session event counter, reset at each new session.",
+            "mode": "NULLABLE",
+            "name": "event_seq",
+            "type": "INT64"
+          },
+          {
+            "description": "The unique UUID for this session.",
+            "mode": "NULLABLE",
+            "name": "session_id",
+            "type": "STRING"
+          },
+          {
+            "description": "The sampling rate in effect for this session.",
+            "mode": "NULLABLE",
+            "name": "session_sample_rate",
+            "type": "FLOAT64"
+          },
+          {
+            "description": "Monotonically increasing session counter, persisted across restarts.",
+            "mode": "NULLABLE",
+            "name": "session_seq",
+            "type": "INT64"
+          },
+          {
+            "description": "Wall-clock timestamp at session start (RFC 3339). Absent on events from before this field was introduced.",
+            "mode": "NULLABLE",
+            "name": "session_start_time",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "session",
+        "type": "RECORD"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "timestamp",
+        "type": "INT64"
+      }
+    ],
+    "mode": "REPEATED",
+    "name": "events",
+    "type": "RECORD"
+  },
+  {
+    "fields": [
+      {
+        "description": "Results of a geographic lookup based on the client's IP address",
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "city",
+            "type": "STRING"
+          },
+          {
+            "description": "An ISO 3166-1 alpha-2 country code",
+            "mode": "NULLABLE",
+            "name": "country",
+            "type": "STRING"
+          },
+          {
+            "description": "The specific geo database version used for this lookup",
+            "mode": "NULLABLE",
+            "name": "db_version",
+            "type": "STRING"
+          },
+          {
+            "description": "First major country subdivision, typically a state, province, or county",
+            "mode": "NULLABLE",
+            "name": "subdivision1",
+            "type": "STRING"
+          },
+          {
+            "description": "Second major country subdivision; not applicable for most countries",
+            "mode": "NULLABLE",
+            "name": "subdivision2",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "geo",
+        "type": "RECORD"
+      },
+      {
+        "description": "Headers included in the client's HTTP request",
+        "fields": [
+          {
+            "description": "Date HTTP header",
+            "mode": "NULLABLE",
+            "name": "date",
+            "type": "STRING"
+          },
+          {
+            "description": "DNT (Do Not Track) HTTP header",
+            "mode": "NULLABLE",
+            "name": "dnt",
+            "type": "STRING"
+          },
+          {
+            "description": "X-Debug-Id HTTP header",
+            "mode": "NULLABLE",
+            "name": "x_debug_id",
+            "type": "STRING"
+          },
+          {
+            "description": "X-Foxsec-IP-Reputation header (deprecated, https://mozilla-hub.atlassian.net/browse/DENG-10434)",
+            "mode": "NULLABLE",
+            "name": "x_foxsec_ip_reputation",
+            "type": "STRING"
+          },
+          {
+            "description": "X-LB-Tags HTTP header",
+            "mode": "NULLABLE",
+            "name": "x_lb_tags",
+            "type": "STRING"
+          },
+          {
+            "description": "X-PingSender-Version HTTP header",
+            "mode": "NULLABLE",
+            "name": "x_pingsender_version",
+            "type": "STRING"
+          },
+          {
+            "description": "X-Source-Tags HTTP header",
+            "mode": "NULLABLE",
+            "name": "x_source_tags",
+            "type": "STRING"
+          },
+          {
+            "description": "X-Telemetry-Agent HTTP header",
+            "mode": "NULLABLE",
+            "name": "x_telemetry_agent",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "header",
+        "type": "RECORD"
+      },
+      {
+        "description": "Results of ISP lookup based on the client's IP address",
+        "fields": [
+          {
+            "description": "The specific geo ISP database version used for this lookup",
+            "mode": "NULLABLE",
+            "name": "db_version",
+            "type": "STRING"
+          },
+          {
+            "description": "The name of the ISP associated with the client's IP address",
+            "mode": "NULLABLE",
+            "name": "name",
+            "type": "STRING"
+          },
+          {
+            "description": "The name of a specific business entity associated with the client's IP address when available; otherwise the ISP name",
+            "mode": "NULLABLE",
+            "name": "organization",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "isp",
+        "type": "RECORD"
+      },
+      {
+        "description": "Parsed components of the client's user agent string",
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "browser",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "os",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "version",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "user_agent",
+        "type": "RECORD"
+      }
+    ],
+    "mode": "NULLABLE",
+    "name": "metadata",
+    "type": "RECORD"
+  },
+  {
+    "fields": [
+      {
+        "fields": [
+          {
+            "description": "How often we failed to parse event_context as JSON.\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_event_context_parse_error",
+            "type": "INT64"
+          },
+          {
+            "description": "How often something went awry within\n`AboutWelcome.submitGleanPingForPing`, preventing ping submission.\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_glean_ping_for_ping_failures",
+            "type": "INT64"
+          },
+          {
+            "description": "The sum of all unknown keys counted.\nUseful for testing.\nCan be removed after bug 1600008 is resolved.\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_unknown_key_count",
+            "type": "INT64"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "counter",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "Counts the number of times a metric was set with an invalid label.\nThe labels are the `category.name` identifier of the metric.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "glean_error_invalid_label",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of times a metric was set a value that overflowed.\nThe labels are the `category.name` identifier of the metric.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "glean_error_invalid_overflow",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of times a timing metric was used incorrectly.\nThe labels are the `category.name` identifier of the metric.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "glean_error_invalid_state",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of times a metric was set to an invalid value.\nThe labels are the `category.name` identifier of the metric.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "glean_error_invalid_value",
+            "type": "RECORD"
+          },
+          {
+            "description": "Attribution keys supplied to the messaging system for which\nwe did not have a corresponding metric, and the count of how\noften that happened.\nEither add this key to a list of known attribution keys in\n`AboutWelcomeTelemetry` to suppress or define an appropriate metric in\n`browser/components/newtab/metrics.yaml` to collect.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "microsurvey_attribution_unknown_keys",
+            "type": "RECORD"
+          },
+          {
+            "description": "We received a ping with non-scalar data on a field of this name.\nIf this is existing pre-PingCentre-replacement data, you may need to\naugment the logic in\n`AboutWelcome.submitGleanPingForPing` like the other `handledKeys`.\nIf this is for new, post-PingCentre-replacement data, you should\nprobably prefer a flat structure.\nIf you're unsure, please ask in\n[the #glean channel](https://chat.mozilla.org/#/room/#glean:mozilla.org).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "microsurvey_invalid_nested_data",
+            "type": "RECORD"
+          },
+          {
+            "description": "Ping keys supplied to the messaging system for which\nwe did not have a corresponding metric mapped to how often they attempted\nto be recorded.\nYou may have forgotten to define an appropriate metric in\n`browser/components/newtab/metrics.yaml`.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "microsurvey_unknown_keys",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "labeled_counter",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The conversation log at the time of feedback submission.\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_smart_window_chat",
+            "type": "JSON"
+          },
+          {
+            "description": "Session metadata submitted via the Smart Window feedback modal.\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_smart_window_user_feedback_data",
+            "type": "JSON"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "object",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "A number identifier of the screen index in a sequence of screens\n(e.g. 0 for first message).\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_event_screen_index",
+            "type": "INT64"
+          },
+          {
+            "description": "The optional Windows build number, reported by Windows\n(e.g. 22000) and not set for other platforms.\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_windows_build_number",
+            "type": "INT64"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "quantity",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "An experimentation identifier derived and provided by the application\nfor the purpose of experimentation enrollment.\n",
+            "mode": "NULLABLE",
+            "name": "glean_client_annotation_experimentation_id",
+            "type": "STRING"
+          },
+          {
+            "description": "Used to hold the system addon's version, now is almost certainly an echo of the app's build id.\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_addon_version",
+            "type": "STRING"
+          },
+          {
+            "description": "The build ID of the application. Included because the microsurvey ping\nuses OHTTP and excludes standard client_info metadata.\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_app_build_id",
+            "type": "STRING"
+          },
+          {
+            "description": "The channel the application is being distributed on.\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_app_channel",
+            "type": "STRING"
+          },
+          {
+            "description": "The user visible version string (e.g. \"1.0.3\").\nIf the value was not provided through configuration,\nthis metric gets set to `Unknown`.\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_app_display_version",
+            "type": "STRING"
+          },
+          {
+            "description": "Attribution's campaign, possibly derived from the utm parameter of the\nsame name.\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_attribution_campaign",
+            "type": "STRING"
+          },
+          {
+            "description": "Attribution's content, possibly derived from the utm parameter of the\nsame name.\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_attribution_content",
+            "type": "STRING"
+          },
+          {
+            "description": "Mozilla-specific download \"source\" name. Could be something like\n\"mozillaci\" to identify that the installer came from\n`{archive|ftp}.mozilla.org`.\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_attribution_dlsource",
+            "type": "STRING"
+          },
+          {
+            "description": "String representation of the dltoken identifying the particular\ninstaller used to install this Firefox.\nLikely a UUID, if present.\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_attribution_dltoken",
+            "type": "STRING"
+          },
+          {
+            "description": "Attribution's experiment key.\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_attribution_experiment",
+            "type": "STRING"
+          },
+          {
+            "description": "Attribution's medium, possibly derived from the utm parameter of the same\nname.\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_attribution_medium",
+            "type": "STRING"
+          },
+          {
+            "description": "A string containing the attribution for a Microsoft Store Ads Campaign ID.\nThis differs from a Campaign ID originating from a Microsoft Store URL\ncontaining attribution_\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_attribution_msclkid",
+            "type": "STRING"
+          },
+          {
+            "description": "Either the string \"true\" or the string \"false\" to indicate whether the\nattributed install came from the Microsoft store and, if so, whether the\nuser was signed in at the time.\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_attribution_msstoresignedin",
+            "type": "STRING"
+          },
+          {
+            "description": "Attribution's source, possibly derived from the utm parameter of the same\nname.\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_attribution_source",
+            "type": "STRING"
+          },
+          {
+            "description": "Attribution's ua key.\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_attribution_ua",
+            "type": "STRING"
+          },
+          {
+            "description": "Attribution's variation key.\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_attribution_variation",
+            "type": "STRING"
+          },
+          {
+            "description": "A name shared between multiple messages that may individually be too targeted. e.g. a message that gets shown on specific websites or a message asking about personal information.\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_bucket_id",
+            "type": "STRING"
+          },
+          {
+            "description": "The type of event. Any user defined string (e.g. “IMPRESSION”, “CLICK_BUTTON”, \"INDEXEDDB_OPEN_FAILED\", “SESSION_END”)\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_event",
+            "type": "STRING"
+          },
+          {
+            "description": "The event_context's `page`. Almost always \"about:welcome\".\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_event_page",
+            "type": "STRING"
+          },
+          {
+            "description": "The event_context's `reason`. Likely something like\n\"welcome-window-closed\" or \"app-shut-down\",.\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_event_reason",
+            "type": "STRING"
+          },
+          {
+            "description": "The event_context's `source`. Likely something like \"primary_button\".\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_event_source",
+            "type": "STRING"
+          },
+          {
+            "description": "The locale as supplied to the messaging system by `Services.locale.appLocaleAsBCP47`.\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_locale",
+            "type": "STRING"
+          },
+          {
+            "description": "The name of the operating system.\nPossible values:\nAndroid, iOS, Linux, Darwin, Windows,\nFreeBSD, NetBSD, OpenBSD, Solaris, Unknown\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_os",
+            "type": "STRING"
+          },
+          {
+            "description": "The user-visible version of the operating system (e.g. \"1.2.3\").\nIf the version detection fails, this metric gets set to `Unknown`.\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_os_version",
+            "type": "STRING"
+          },
+          {
+            "description": "Type of event the ping is capturing. e.g. \"cfr\", \"onboarding\"\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_ping_type",
+            "type": "STRING"
+          },
+          {
+            "description": "The source of the interaction described by the other metrics. e.g. \"frecent_links\", \"newtab\", \"CFR\"\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_source",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "string",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The list of requested uploader capabilities for the ping this is sent in.\nShould be the same as the ones defined for that particular ping.\n\nThis metric is only attached to a ping if it already contains other data.\n",
+            "mode": "REPEATED",
+            "name": "glean_ping_uploader_capabilities",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "string_list",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The stringified JSON of `event_context`.\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_event_context",
+            "type": "STRING"
+          },
+          {
+            "description": "Text input by the user in a write-in textarea produced by the textarea\ntile type. Truncated to 8KB (though the textarea tile normally has a\nseparate character limit enforced at display time).\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_event_input_value",
+            "type": "STRING"
+          },
+          {
+            "description": "A string identifier of the message family derived from the message id\n(e.g. MR_WELCOME_DEFAULT).\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_event_screen_family",
+            "type": "STRING"
+          },
+          {
+            "description": "A string identifier of the message screen id\n(e.g. AW_MOBILE_DOWNLOAD).\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_event_screen_id",
+            "type": "STRING"
+          },
+          {
+            "description": "A string identifier of the message screen initials\n(e.g. 'EMAG' for EASY_SETUP, MOBILE_DOWNLOADS, AMO, GRATITUDE).\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_event_screen_initials",
+            "type": "STRING"
+          },
+          {
+            "description": "A string identifier of the message in Activity Stream Router.\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_message_id",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "text2",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The unique impression identifier for a specific client.\n",
+            "mode": "NULLABLE",
+            "name": "microsurvey_impression_id",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "uuid",
+        "type": "RECORD"
+      }
+    ],
+    "mode": "NULLABLE",
+    "name": "metrics",
+    "type": "RECORD"
+  },
+  {
+    "description": "Set to \"Other\" if this message contained an unrecognized app name",
+    "mode": "NULLABLE",
+    "name": "normalized_app_name",
+    "type": "STRING"
+  },
+  {
+    "description": "Set to \"Other\" if this message contained an unrecognized channel name",
+    "mode": "NULLABLE",
+    "name": "normalized_channel",
+    "type": "STRING"
+  },
+  {
+    "description": "An ISO 3166-1 alpha-2 country code",
+    "mode": "NULLABLE",
+    "name": "normalized_country_code",
+    "type": "STRING"
+  },
+  {
+    "description": "Set to \"Other\" if this message contained an unrecognized OS name",
+    "mode": "NULLABLE",
+    "name": "normalized_os",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "normalized_os_version",
+    "type": "STRING"
+  },
+  {
+    "description": "Hashed version of client_id (if present) useful for partitioning; ranges from 0 to 99",
+    "mode": "NULLABLE",
+    "name": "sample_id",
+    "type": "INT64"
+  },
+  {
+    "description": "Time when the ingestion edge server accepted this message",
+    "mode": "NULLABLE",
+    "name": "submission_timestamp",
+    "type": "TIMESTAMP"
+  }
+]

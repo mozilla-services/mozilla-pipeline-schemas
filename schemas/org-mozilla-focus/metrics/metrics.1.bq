@@ -17404,7 +17404,7 @@
             "type": "RECORD"
           },
           {
-            "description": "A count of the status of cryptominer blocking per top level page load. ('pageLoad' = There was a page load, 'blocked' = at least one cryptominer was blocked, 'allowed' = at least one cryptominer was detected and allowed.) Note, pageLoad is used as a baseline measurement.\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram CRYPTOMINERS_BLOCKED_COUNT.\n",
+            "description": "A count of the status of cryptominer blocking per top level page load. ('pageLoad' = There was a page load, 'blocked' = at least one cryptominer was blocked, 'allowed' = at least one cryptominer was detected and allowed.) Note, pageLoad is used as a baseline measurement.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -18319,6 +18319,24 @@
             ],
             "mode": "REPEATED",
             "name": "extensions_startup_cache_read_errors",
+            "type": "RECORD"
+          },
+          {
+            "description": "Whether the native ONNX runtime could be loaded in the inference process, as reported by InferenceSession.isAvailable(). It is recorded at most once per profile, guarded by the browser.ml.onnxNativeAvailabilityReported pref.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "firefox_ai_runtime_onnx_native_availability",
             "type": "RECORD"
           },
           {
@@ -20497,6 +20515,24 @@
             ],
             "mode": "REPEATED",
             "name": "network_retried_system_channel_update_status",
+            "type": "RECORD"
+          },
+          {
+            "description": "Failures touching the persisted TLS token database: 'open' (unopenable, so removed), 'schema' (no usable table), 'read' (unreadable row), 'write' (snapshot not written). Routine removal when persistence is disabled is not counted.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "network_ssl_token_cache_db_errors",
             "type": "RECORD"
           },
           {

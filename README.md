@@ -204,23 +204,50 @@ schemas
 |   |-- broken-site-report
 |   |-- captcha-detection
 |   |-- content-decoding-error
+|   |-- context-id-deletion-request
 |   |-- crash
 |   |-- dau-reporting
 |   |-- deletion-request
+|   |-- enterprise
 |   |-- events
+|   |-- first-startup
 |   |-- fog-validation
+|   |-- fx-accounts
 |   |-- gecko-trace
 |   |-- hang-report
 |   |-- health
+|   |-- heartbeat
 |   |-- local-network-access
+|   |-- messaging-system
 |   |-- metrics
+|   |-- microsurvey
+|   |-- new-profile
+|   |-- newtab
+|   |-- newtab-content
+|   |-- nimbus-targeting-context
+|   |-- onboarding-opt-out
 |   |-- pageload
 |   |-- pageload-base-domain
 |   |-- pageload-domain
+|   |-- post-profile-restore
 |   |-- prefs-file-invalid
+|   |-- profile-restore
+|   |-- profiles
+|   |-- prototype-no-code-events
+|   |-- quick-suggest
+|   |-- quick-suggest-deletion-request
+|   |-- referrals
+|   |-- search-with
+|   |-- serp-categorization
+|   |-- sync
 |   |-- temp-fog-initial-state
+|   |-- third-party-modules
 |   |-- traces
+|   |-- update
 |   |-- url-classifier-harmful-addon
+|   |-- urlbar-keyword-exposure
+|   |-- usage-deletion-request
+|   |-- usage-reporting
 |   |-- use-counters
 |   `-- user-characteristics
 |-- firefox-installer
@@ -1149,6 +1176,6 @@ schemas
 `-- webpagetest
     `-- webpagetest-run
 
-1140 directories
+1167 directories
 ```
 

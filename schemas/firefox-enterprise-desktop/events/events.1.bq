@@ -405,10 +405,89 @@
             "mode": "NULLABLE",
             "name": "policies_is_enterprise",
             "type": "BOOL"
+          },
+          {
+            "description": "Set to `true` if the user's default search engine has been allowed to be\noverridden by a third-party add-on or OpenSearch engine.\n",
+            "mode": "NULLABLE",
+            "name": "search_engine_default_overridden_by_third_party",
+            "type": "BOOL"
+          },
+          {
+            "description": "Set to `true` if the user's default search engine has been allowed to be\noverridden by a third-party add-on or OpenSearch engine.\n",
+            "mode": "NULLABLE",
+            "name": "search_engine_private_overridden_by_third_party",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether Suggest results are shown in the urlbar. Corresponds to the value of the `browser.urlbar.suggest.quicksuggest.all` pref.\n",
+            "mode": "NULLABLE",
+            "name": "urlbar_pref_suggest_all",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether online Suggest is available to the user. Corresponds to the Nimbus variable `quickSuggestOnlineAvailable` and its fallback pref `browser.urlbar.quicksuggest.online.available`. NOTE: \"Online Suggest\" in this context means the new version of online Suggest introduced in 146 with Terms of Use and OHTTP.\n",
+            "mode": "NULLABLE",
+            "name": "urlbar_pref_suggest_online_available",
+            "type": "BOOL"
+          },
+          {
+            "description": "This pref is true for all users by default! You probably want to use this in conjunction with pref_suggest_online_available and/or restrict your analysis to user populations where you know online Suggest is available. Corresponds to `browser.urlbar.quicksuggest.online.enabled`. NOTE: \"Online Suggest\" in this context means the new version of online Suggest introduced in 146 with Terms of Use and OHTTP.\n",
+            "mode": "NULLABLE",
+            "name": "urlbar_pref_suggest_online_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether sponsored quick suggest results are shown in the urlbar. Corresponds to the value of the `browser.urlbar.suggest.quicksuggest.sponsored` pref.\n",
+            "mode": "NULLABLE",
+            "name": "urlbar_pref_suggest_sponsored",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether topsite results are enabled in the urlbar. Corresponds to the value of the `browser.urlbar.suggest.topsites` pref.\n",
+            "mode": "NULLABLE",
+            "name": "urlbar_pref_suggest_topsites",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether Firefox is set as the default browser.\n",
+            "mode": "NULLABLE",
+            "name": "usage_is_default_browser",
+            "type": "BOOL"
           }
         ],
         "mode": "NULLABLE",
         "name": "boolean",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The number of five-second intervals ('ticks') the user was considered\n'active'.\n\n'active' means keyboard or mouse interaction with the application.\nIt doesn't take into account whether or not the window has focus or is in\nthe foreground, only if it is receiving these interaction events.\n\nMigrated from Telemetry's `browser.engagement.active_ticks`.\n",
+            "mode": "NULLABLE",
+            "name": "browser_engagement_active_ticks",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of five-second intervals ('ticks') the user was considered\n'active', counting only non-synthesized events.\n\nThis is a corrected version of `active_ticks` that excludes synthesized\nmouse and pointer events (for example, the synthesized pointer move that\nis dispatched when content shifts under a stationary cursor during\nscrolling, reflow or content insertion). Such synthesized events inflated\n`active_ticks` starting in Firefox 140. Recorded side-by-side with\n`active_ticks` for data continuity while the correction is evaluated.\n",
+            "mode": "NULLABLE",
+            "name": "browser_engagement_active_ticks_non_synthesized",
+            "type": "INT64"
+          },
+          {
+            "description": "The count of tab open events per subsession, across all windows, after the session has been restored. This includes tab open events from private windows and from manual session restorations (i.e. after crashes and from about:home), but excludes tabs opened vertically. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.tab_open_event_count.\n",
+            "mode": "NULLABLE",
+            "name": "browser_engagement_tab_open_event_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of total non-unique http(s) URIs visited, including page\nreloads, after the session has been restored. URIs on minimized or\nbackground tabs may also be counted. Private browsing uris are included.\n\nMigrated from Telemetry's\n`browser.engagement.total_uri_count_normal_and_private_mode`.\n",
+            "mode": "NULLABLE",
+            "name": "browser_engagement_uri_count",
+            "type": "INT64"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "counter",
         "type": "RECORD"
       },
       {
@@ -530,6 +609,142 @@
       {
         "fields": [
           {
+            "description": "Distribution of the number of consecutive five-second intervals ('ticks')\nthe user was considered 'active' before transitioning to inactive.\n\nEach sample is the length of one uninterrupted run of active ticks,\nrecorded when the run ends. This complements the `active_ticks` counters\n(which only track the total) by capturing how long users stay\ncontinuously engaged, and helps inform whether additional active-tick\nintervals should be introduced in the future.\n\nThe `active_ticks` label mirrors the legacy `active_ticks` counter,\ncounting all events. The `active_ticks_non_synthesized` label mirrors\n`active_ticks_non_synthesized`, excluding synthesized mouse and pointer\nevents. The two labels are recorded side-by-side for easier analysis.\n\nA run still in progress when a ping is submitted is not recorded in that\nping; it is recorded in a later ping once the run ends.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_engagement_consecutive_active_ticks",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "labeled_custom_distribution",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "Distribution of the duration of periods during which the user was\nconsidered 'inactive', measured from when the user goes inactive until\nthe next activity resumes.\n\nCombined with `consecutive_active_ticks`, this helps reason about user\ninteraction patterns more holistically and informs whether additional\nactive-tick intervals (e.g. 20s or 60s) should be introduced in the\nfuture.\n\nThe `active_ticks` label measures inactive periods for the legacy stream\n(all events). The `active_ticks_non_synthesized` label measures them for\nthe corrected stream, which excludes synthesized mouse and pointer\nevents. The two labels are recorded side-by-side for easier analysis.\n\nAn inactive period still in progress when a ping is submitted is not\nrecorded in that ping; it is recorded in a later ping once activity\nresumes.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_engagement_inactive_period_duration",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "labeled_timing_distribution",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "Extended attribution information.\nMapped to client_info.attribution.ext in datasets.\n* `experiment`: name/id of the enrolled funnel experiment\n* `variation`: name/id of the variation cohort used in the enrolled funnel experiment\n* `ua`: identifier derived from the user agent downloading the installer\n        e.g. chrome, Google Chrome 123\n* `dltoken`: Unique token created at Firefox download time.\n             e.g. c18f86a3-f228-4d98-91bb-f90135c0aa9c\n* `msstoresignedin`: only present if the installation was done through the Microsoft Store,\n                     and was able to retrieve the \"campaign ID\" it was first installed with.\n                     This value is \"true\" if the user was signed into the Microsoft Store\n                     when they first installed, and false otherwise.\n* `msclkid`: only present if the installation was done through the Microsoft Store, and the\n             install is attributable to a Microsoft Store Ads Campaign ID. This differs\n             from a Campaign ID originating ",
+            "mode": "NULLABLE",
+            "name": "glean_attribution_ext",
+            "type": "JSON"
+          },
+          {
+            "description": "Extended distribution information.\nMapped to client_info.distribution.ext in datasets.\n* `distributionVersion`: pref `distribution.version`, `null` on failure\n* `partnerId`: pref `mozilla.partner.id`, `null` on failure\n* `distributor`:  pref `app.distributor`, `null` on failure\n* `distributorChannel`: pref `app.distributor.channel`, `null` on failure\n* `partnerNames`: list from prefs `app.partner.<name>=<name>`\n",
+            "mode": "NULLABLE",
+            "name": "glean_distribution_ext",
+            "type": "JSON"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "object",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The count of maximum number of tabs open during a subsession, across all windows, including tabs in private windows and restored at startup. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.max_concurrent_tab_count.\n",
+            "mode": "NULLABLE",
+            "name": "browser_engagement_max_concurrent_tab_count",
+            "type": "INT64"
+          },
+          {
+            "description": "Maximum results to show in the Address Bar. Corresponds to the value of the `browser.urlbar.maxRichResults` pref.\n",
+            "mode": "NULLABLE",
+            "name": "urlbar_pref_max_results",
+            "type": "INT64"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "quantity",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
             "description": "An experimentation identifier derived and provided by the application\nfor the purpose of experimentation enrollment.\n",
             "mode": "NULLABLE",
             "name": "glean_client_annotation_experimentation_id",
@@ -539,6 +754,54 @@
             "description": "Records the detected home region of the user. This is the general region of the user's machine.\nIf a machine moves location, there is a minimum 2-week delay before this will be updated.\nSee the [Region documentation](https://firefox-source-docs.mozilla.org/toolkit/modules/toolkit_modules/Region.html) for more information about updates.\n",
             "mode": "NULLABLE",
             "name": "region_home_region",
+            "type": "STRING"
+          },
+          {
+            "description": "The display name of the user's default engine.\n",
+            "mode": "NULLABLE",
+            "name": "search_engine_default_display_name",
+            "type": "STRING"
+          },
+          {
+            "description": "A path relating to where the search engine was installed/loaded from.\n\nFor example:\n- `[app]<config identifier>` for a config search engine.\n- `[addon]<extension id>` for a WebExtension-based engine.\n- `[https]developer.mozilla.org/mdn-web-docs.xml` for an OpenSearch-based engine.\n- `[policy]` for an enteprise policy engine.\n- `[user]` for a search engine defined by the user or generated from a web page.\n\nNote: this metric is truncated at 100 characters.\n",
+            "mode": "NULLABLE",
+            "name": "search_engine_default_load_path",
+            "type": "STRING"
+          },
+          {
+            "description": "The partner code of the user's default search engine, if defined/known,\nthat is being used for the search. Not all search engines have partner\ncodes.\n\nMay be empty for engines that are overridden by a third-party add-on or\nOpenSearch engine.\n",
+            "mode": "NULLABLE",
+            "name": "search_engine_default_partner_code",
+            "type": "STRING"
+          },
+          {
+            "description": "The identifier of the user's default search engine if the search engine is\nan application provided engine. For user installed engines, this value will\nbe `other`.\n",
+            "mode": "NULLABLE",
+            "name": "search_engine_default_provider_id",
+            "type": "STRING"
+          },
+          {
+            "description": "The display name of the user's default engine.\n\nIf this string is an empty string (`\"\"`), this means that one or both of\nthe preferences `browser.search.separatePrivateDefault` and\n`browser.search.separatePrivateDefault.ui.enabled` are set to false.\nIt is possible that the user selects the same private engine as for the\ndefault engine, and hence both versions of these fields will be filled in.\n",
+            "mode": "NULLABLE",
+            "name": "search_engine_private_display_name",
+            "type": "STRING"
+          },
+          {
+            "description": "A path relating to where the search engine was installed/loaded from.\n\nFor example:\n- `[app]<config identifier>` for a config search engine.\n- `[addon]<extension id>` for a WebExtension-based engine.\n- `[https]developer.mozilla.org/mdn-web-docs.xml` for an OpenSearch-based engine.\n- `[policy]` for an enteprise policy engine.\n- `[user]` for a search engine defined by the user or generated from a web page.\n\nNote: this metric is truncated at 100 characters.\n\nIf this string is an empty string (`\"\"`), this means that one or both of\nthe preferences `browser.search.separatePrivateDefault` and\n`browser.search.separatePrivateDefault.ui.enabled` are set to false.\nIt is possible that the user selects the same private engine as for the\ndefault engine, and hence both versions of these fields will be filled in.\n",
+            "mode": "NULLABLE",
+            "name": "search_engine_private_load_path",
+            "type": "STRING"
+          },
+          {
+            "description": "The partner code of the user's default search engine, if defined/known,\nthat is being used for the search. Not all search engines have partner\ncodes.\n\nMay be empty for engines that are overridden by a third-party add-on or\nOpenSearch engine.\n",
+            "mode": "NULLABLE",
+            "name": "search_engine_private_partner_code",
+            "type": "STRING"
+          },
+          {
+            "description": "The identifier of the user's default search engine if the search engine is\nan application provided engine. For user installed engines, this value will\nbe `other`.\n",
+            "mode": "NULLABLE",
+            "name": "search_engine_private_provider_id",
             "type": "STRING"
           }
         ],
@@ -557,6 +820,44 @@
         ],
         "mode": "NULLABLE",
         "name": "string_list",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The submission URL of the default engine. This is only reported in the cases where:\n- The engine is an application provided engine.\n- The engine has the same name as an application provided engine.\n- The engine matches one of a specific list of well known search engines.\n",
+            "mode": "NULLABLE",
+            "name": "search_engine_default_submission_url",
+            "type": "STRING"
+          },
+          {
+            "description": "The submission URL of the default engine. This is only reported in the\ncases where:\n  The engine is an application provided engine.\n  The engine has the same name as an application provided engine.\n  The engine matches one of a specific list of well known search engines.\nIf this string is an empty string (`\"\"`), this means that one or both of\nthe preferences `browser.search.separatePrivateDefault` and\n`browser.search.separatePrivateDefault.ui.enabled` are set to false.\nIt is possible that the user selects the same private engine as for the\ndefault engine, and hence both versions of these fields will be filled in.\n",
+            "mode": "NULLABLE",
+            "name": "search_engine_private_submission_url",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "url2",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The client_id according to Telemetry.\nMight not always have a value due to being too early for it to have\nloaded.\nValue may be the canary client id `c0ffeec0-ffee-c0ff-eec0-ffeec0ffeec0`\nin pings near when the data upload pref is disabled (if Telemetry gets\nto go first), or between when a client_id has been removed and when it\nhas been regenerated.\nDoes not need to be sent in the Glean \"deletion-request\" ping.\n",
+            "mode": "NULLABLE",
+            "name": "legacy_telemetry_client_id",
+            "type": "STRING"
+          },
+          {
+            "description": "The profile_group_id according to Telemetry.\nMight not always have a value due to being too early for it to have\nloaded.\nDoes not need to be sent in the Glean \"deletion-request\" ping.\n",
+            "mode": "NULLABLE",
+            "name": "legacy_telemetry_profile_group_id",
+            "type": "STRING"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "uuid",
         "type": "RECORD"
       }
     ],
