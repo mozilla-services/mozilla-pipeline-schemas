@@ -106,6 +106,7 @@ schemas
 |   |-- first-startup
 |   |-- fog-validation
 |   |-- fx-accounts
+|   |-- fx-accounts-client-info
 |   |-- gecko-trace
 |   |-- hang-report
 |   |-- health
@@ -1176,6 +1177,6 @@ schemas
 `-- webpagetest
     `-- webpagetest-run
 
-1167 directories
+1168 directories
 ```
 
