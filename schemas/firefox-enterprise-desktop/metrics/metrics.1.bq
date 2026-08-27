@@ -1001,7 +1001,7 @@
             "type": "BOOL"
           },
           {
-            "description": "Whether the single-row Top Sites are shown below the Smartbar in Smart Window fullpage mode. Corresponds to the inverse of the `browser.smartwindow.hideTopSites` pref (true when Top Sites are shown).\n",
+            "description": "Whether the single-row Top Sites are shown below the Smartbar in Smart Window fullpage mode. True when the `browser.smartwindow.hideTopSites` pref is false and the `browser.newtabpage.activity-stream.feeds.topsites` pref is true.\n",
             "mode": "NULLABLE",
             "name": "smart_window_topsites_enabled",
             "type": "BOOL"
@@ -1926,7 +1926,7 @@
             "type": "INT64"
           },
           {
-            "description": "The number of times a document hierarchy contained at least one HTMLMediaElement. In addition, the telemetry probe 'MIXED_CONTENT_UNBLOCK_COUNTER' records the total number of loaded top level content documents, which can help us calculate the result of the percentage of documents using media. This metric was generated to correspond to the Legacy Telemetry scalar media.element_in_page_count.\n",
+            "description": "The number of times a document hierarchy contained at least one HTMLMediaElement. This metric was generated to correspond to the Legacy Telemetry scalar media.element_in_page_count.\n",
             "mode": "NULLABLE",
             "name": "media_element_in_page_count",
             "type": "INT64"
@@ -9925,7 +9925,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The safety of a page where we see a password field. (0: safe page & safe submit; 1: safe page & unsafe submit; 2: safe page & unknown submit; 3: unsafe page & safe submit; 4: unsafe page & unsafe submit; 5: unsafe page & unknown submit)\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram PWMGR_LOGIN_PAGE_SAFETY.\n",
+            "description": "The safety of a page where we see a password field. (0: safe page & safe submit; 1: safe page & unsafe submit; 2: safe page & unknown submit; 3: unsafe page & safe submit; 4: unsafe page & unsafe submit; 5: unsafe page & unknown submit)\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -16211,6 +16211,42 @@
             "type": "RECORD"
           },
           {
+            "description": "The count URI loads triggered in a subsession from the search CTA on a network error page, broken down by the originating action.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_engagement_navigation_errorpage",
+            "type": "RECORD"
+          },
+          {
+            "description": "The count URI loads triggered in a subsession from the New Tab search bar, broken down by the originating action.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_engagement_navigation_newtab_searchbar",
+            "type": "RECORD"
+          },
+          {
             "description": "The count URI loads triggered in a subsession from the searchbar, broken down by the originating action. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.navigation.searchbar.\n",
             "fields": [
               {
@@ -18623,7 +18659,7 @@
             "type": "RECORD"
           },
           {
-            "description": "A count of the status of fingerprinter blocking per top level page load. ('pageLoad' = There was a page load, 'blocked' = at least one fingerprinter was blocked, 'allowed' = at least one fingerprinter was detected and allowed.) Note, pageLoad is used as a baseline measurement.\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram FINGERPRINTERS_BLOCKED_COUNT.\n",
+            "description": "A count of the status of fingerprinter blocking per top level page load. ('pageLoad' = There was a page load, 'blocked' = at least one fingerprinter was blocked, 'allowed' = at least one fingerprinter was detected and allowed.) Note, pageLoad is used as a baseline measurement.\n",
             "fields": [
               {
                 "mode": "NULLABLE",

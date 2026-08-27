@@ -706,6 +706,18 @@
             "type": "STRING"
           },
           {
+            "description": "Architecture of the CPU. One of the values described in `system_info.cpu_arch` of https://github.com/rust-minidump/rust-minidump/blob/main/minidump-processor/json-schema.md: \"x86\", \"amd64\", \"ppc\", \"ppc64\", \"sparc\", \"arm\", \"arm64\", or \"unknown\".",
+            "mode": "NULLABLE",
+            "name": "crash_cpu_architecture",
+            "type": "STRING"
+          },
+          {
+            "description": "Information about the CPU, as a string. This typically includes family, model, and stepping.",
+            "mode": "NULLABLE",
+            "name": "crash_cpu_info",
+            "type": "STRING"
+          },
+          {
             "description": "The type of crash that occurred (Android-only).",
             "mode": "NULLABLE",
             "name": "crash_crash_type",
@@ -748,6 +760,18 @@
             "type": "STRING"
           },
           {
+            "description": "IPC shutdown state, can be set to either \"RecvShutdown\" or \"SendFinishShutdown\" by a content process while it's shutting down.",
+            "mode": "NULLABLE",
+            "name": "crash_ipc_shutdown_state",
+            "type": "STRING"
+          },
+          {
+            "description": "The Linux lsb_release description.",
+            "mode": "NULLABLE",
+            "name": "crash_linux_lsb_description",
+            "type": "STRING"
+          },
+          {
             "description": "Memory PSI (Pressure Stall Information) values from /proc/pressure/memory as comma-separated list: some_avg10,some_avg60,some_avg300,some_total,full_avg10,full_avg60,full_avg300,full_total",
             "mode": "NULLABLE",
             "name": "crash_linux_memory_psi",
@@ -775,6 +799,18 @@
             "description": "Plaintext description of why Firefox crashed, this is usually set by assertions and the like.",
             "mode": "NULLABLE",
             "name": "crash_moz_crash_reason",
+            "type": "STRING"
+          },
+          {
+            "description": "The operating system name. One of the values described in `system_info.os` of https://github.com/rust-minidump/rust-minidump/blob/main/minidump-processor/json-schema.md: \"Windows NT\", \"Mac OS X\", \"iOS\", \"Linux\", \"Solaris\", \"Android\", or \"Unknown\".",
+            "mode": "NULLABLE",
+            "name": "crash_os",
+            "type": "STRING"
+          },
+          {
+            "description": "The operating system version number.",
+            "mode": "NULLABLE",
+            "name": "crash_os_version",
             "type": "STRING"
           },
           {
@@ -817,6 +853,12 @@
             "description": "One out of \"Unknown\", \"AppClose\", \"AppRestart\", \"OSForceClose\", \"OSSessionEnd\" or \"OSShutdown\".",
             "mode": "NULLABLE",
             "name": "crash_shutdown_reason",
+            "type": "STRING"
+          },
+          {
+            "description": "User-agent locale.",
+            "mode": "NULLABLE",
+            "name": "crash_useragent_locale",
             "type": "STRING"
           },
           {
@@ -921,6 +963,24 @@
             ],
             "mode": "NULLABLE",
             "name": "crash_last_interaction_duration",
+            "type": "RECORD"
+          },
+          {
+            "description": "The time when Firefox was launched expressed in seconds since the Epoch.",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "crash_startup_time",
             "type": "RECORD"
           },
           {
