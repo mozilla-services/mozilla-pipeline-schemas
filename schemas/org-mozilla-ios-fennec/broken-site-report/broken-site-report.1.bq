@@ -413,6 +413,12 @@
             "type": "BOOL"
           },
           {
+            "description": "Whether tracking content was blocked on the reported page. True when the\ncontent blocker recorded at least one block in the advertising, analytics\nor social categories, matching how Gecko scopes tracking content;\ncryptomining and fingerprinting are excluded and carry their own flags\nthere. Narrower than blocked_origins, which lists every blocked origin\nacross all categories, so the two can disagree. Carries no origins, so it\nis sent independently of the \"list of items blocked by tracking\nprotection\" opt-in.\n",
+            "mode": "NULLABLE",
+            "name": "broken_site_report_tab_info_antitracking_has_tracking_content_blocked",
+            "type": "BOOL"
+          },
+          {
             "description": "Whether the reported tab is in private browsing mode.\n",
             "mode": "NULLABLE",
             "name": "broken_site_report_tab_info_antitracking_is_private_browsing",
@@ -518,6 +524,19 @@
         ],
         "mode": "NULLABLE",
         "name": "labeled_counter",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "Experiments in which the user is actively enrolled, read from Nimbus at\nreport time. List of objects with `branch`, `slug`, and `kind`, sorted by\nslug. For instance,\n`[{\"branch\":\"some-branch\", \"slug\":\"some-experiment\", \"kind\":\"nimbusExperiment\"}]`.\n`kind` is \"nimbusExperiment\" for experiments and \"nimbusRollout\" for\nrollouts, matching how desktop splits the two. Always sent with the ping;\nan empty list means the client was enrolled in nothing at report time.\n",
+            "mode": "NULLABLE",
+            "name": "broken_site_report_browser_info_experiments",
+            "type": "JSON"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "object",
         "type": "RECORD"
       },
       {
