@@ -38044,6 +38044,36 @@
             "type": "RECORD"
           },
           {
+            "description": "When an expired HTTP/3 Alt-Svc mapping is discarded on lookup, how long past its expiry (TTL) it was, i.e. how stale the discarded mapping was.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "http_altsvc_h3_expired_staleness",
+            "type": "RECORD"
+          },
+          {
             "description": "HTTP subitem channel: Page start -> first byte received for subitem reply (ms)\n",
             "fields": [
               {
