@@ -863,6 +863,12 @@
             "type": "BOOL"
           },
           {
+            "description": "Whether this profile holds at least one cookie set by a file:// URL document.\n",
+            "mode": "NULLABLE",
+            "name": "networking_cookie_file_present",
+            "type": "BOOL"
+          },
+          {
             "description": "True if HTTP3 is enabled at the start of a session.\n",
             "mode": "NULLABLE",
             "name": "networking_http3_enabled",
@@ -968,6 +974,12 @@
             "description": "If a primary-password is enabled for this profile. Set soon after browser startup. Does not update if a primary password is added or removed after startup.\n",
             "mode": "NULLABLE",
             "name": "primary_password_enabled",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the selectable profiles feature has been activated by the user creating profiles. Set during initialization.\n",
+            "mode": "NULLABLE",
+            "name": "profiles_active",
             "type": "BOOL"
           },
           {
@@ -36716,6 +36728,12 @@
             "description": "Optional.\nThe day the profile was first used,\nas determined by noticing that `times.json` wasn't present.\nPrefer `client_info.first_run_date` in most cases.\ne.g. 16446\n",
             "mode": "NULLABLE",
             "name": "profiles_first_use_date",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of selectable profiles in the current profile group. Updated during initialization and whenever the database changes.\n",
+            "mode": "NULLABLE",
+            "name": "profiles_profile_count",
             "type": "INT64"
           },
           {
