@@ -453,6 +453,24 @@
             "mode": "NULLABLE",
             "name": "profiles_active",
             "type": "BOOL"
+          },
+          {
+            "description": "Whether the current profile's directory is listed in profiles.ini.\n",
+            "mode": "NULLABLE",
+            "name": "profiles_path_in_profiles_ini",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the current profile's store ID is listed in profiles.ini.\n",
+            "mode": "NULLABLE",
+            "name": "profiles_store_id_in_profiles_ini",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the store ID from ProfilesDatastoreService differs from the store ID on the current profile in profiles.ini.\n",
+            "mode": "NULLABLE",
+            "name": "profiles_store_id_mismatch",
+            "type": "BOOL"
           }
         ],
         "mode": "NULLABLE",
@@ -559,6 +577,19 @@
       {
         "fields": [
           {
+            "description": "Data about other profile directories found on disk, recorded during the first startup of a new profile.\n",
+            "mode": "NULLABLE",
+            "name": "profiles_other_profiles",
+            "type": "JSON"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "object",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
             "description": "Windows only count of the browser profiles on the current system. This\ncounts profiles that have been used across all Windows user accounts on\nmachine since this probe was added. The value persists across installs.\nA value of 0 is reported if there is an error determining the correct\ncount. Unset on other platforms.\n",
             "mode": "NULLABLE",
             "name": "browser_engagement_profile_count",
@@ -623,6 +654,12 @@
             "description": "How the profile was selected during startup. One of the following reasons:\n  unknown:\n    Generally should not happen, set as a default in case no other reason\n    occured.\n  profile-manager:\n    The profile was selected by the profile manager.\n  profile-selector:\n    The profile was selected by the profile selector window.\n  profile-reset:\n    The profile was selected for reset, normally this would mean a restart.\n  restart:\n    The user restarted the application, the same profile as previous will\n    be used.\n  argument-profile:\n    The profile was selected by the --profile command line argument.\n  argument-p:\n    The profile was selected by the -p command line argument.\n  firstrun-claimed-default:\n    A first run of a dedicated profiles build chose the old default\n    profile to be the default for this install.\n  firstrun-skipped-default:\n    A first run of a dedicated profiles build skipped over the old default\n    profile and created a new profile.\n  restart-claimed-default:\n    A first run of a dedicate",
             "mode": "NULLABLE",
             "name": "startup_profile_selection_reason",
+            "type": "STRING"
+          },
+          {
+            "description": "Records the status of parsing the profiles.ini file during startup:\n  ok:\n    The ini file parsed correctly\n  ini-failed:\n    Parsing the ini file completely failed, normally this would indicate\n    an out of memory issue.\n  ini-error:\n    The ini parser recorded some kind of failure during parsing\n  missing-name:\n    A profile section was missing the name\n  missing-path:\n    A profile section was missing the path\n  invalid-path:\n    A profile section's path was invalid\nNote that if multiple profile sections contain errors then only the last will be reported.\n",
+            "mode": "NULLABLE",
+            "name": "startup_profiles_ini_status",
             "type": "STRING"
           }
         ],
