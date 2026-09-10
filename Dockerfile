@@ -1,5 +1,5 @@
 # --platform=linux/amd64 added to prevent pulling ARM images when run on Apple Silicon
-FROM --platform=linux/amd64 python:3.8-slim-bullseye
+FROM --platform=linux/amd64 python:3.11-slim-bookworm
 LABEL maintainer="Mozilla Data Platform"
 
 # copied from library/rust:1.73.0-slim-bullseye to install rust >= 1.65 and cargo >= 0.57 needed to build jsonschema-transpiler
@@ -7,7 +7,7 @@ LABEL maintainer="Mozilla Data Platform"
 ENV RUSTUP_HOME=/usr/local/rustup \
     CARGO_HOME=/usr/local/cargo \
     PATH=/usr/local/cargo/bin:$PATH \
-    RUST_VERSION=1.93.1
+    RUST_VERSION=1.98.1
 
 RUN set -eux; \
     apt-get update; \
@@ -17,15 +17,9 @@ RUN set -eux; \
         libc6-dev \
         wget \
         ; \
-    dpkgArch="$(dpkg --print-architecture)"; \
-    case "${dpkgArch##*-}" in \
-        amd64) rustArch='x86_64-unknown-linux-gnu'; rustupSha256='0b2f6c8f85a3d02fde2efc0ced4657869d73fccfce59defb4e8d29233116e6db' ;; \
-        armhf) rustArch='armv7-unknown-linux-gnueabihf'; rustupSha256='f21c44b01678c645d8fbba1e55e4180a01ac5af2d38bcbd14aa665e0d96ed69a' ;; \
-        arm64) rustArch='aarch64-unknown-linux-gnu'; rustupSha256='673e336c81c65e6b16dcdede33f4cc9ed0f08bde1dbe7a935f113605292dc800' ;; \
-        i386) rustArch='i686-unknown-linux-gnu'; rustupSha256='e7b0f47557c1afcd86939b118cbcf7fb95a5d1d917bdd355157b63ca00fc4333' ;; \
-        *) echo >&2 "unsupported architecture: ${dpkgArch}"; exit 1 ;; \
-    esac; \
-    url="https://static.rust-lang.org/rustup/archive/1.26.0/${rustArch}/rustup-init"; \
+    rustArch='x86_64-unknown-linux-gnu'; \
+    rustupSha256='dda7234360b7f578ca8b0ddcb80145646fa61a67c1720a5abc7051b35c9fcb71' ; \
+    url="https://static.rust-lang.org/rustup/archive/1.29.1/${rustArch}/rustup-init"; \
     wget "$url"; \
     echo "${rustupSha256} *rustup-init" | sha256sum -c -; \
     chmod +x rustup-init; \
@@ -52,7 +46,7 @@ RUN mkdir -p /usr/share/man/man1 && \
         make \
         wget \
         git \
-        openjdk-11-jdk-headless \
+        openjdk-17-jdk-headless \
         maven
 
 # Install jsonschema-transpiler

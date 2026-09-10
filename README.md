@@ -36,8 +36,8 @@ is a great resource.
 
 - [`CMake` (3.18+)](http://cmake.org/cmake/resources/software.html)
 - [`jq` (1.5+)](https://github.com/stedolan/jq)
-- `python` (3.8+)
-- Optional: `java 11`, `maven`
+- `python` (3.11+)
+- Optional: `java 17`, `maven`
 - Optional: [Docker](https://www.docker.com/get-started)
 
 On MacOS, these prerequisites can be installed using [homebrew](https://brew.sh/):
@@ -200,7 +200,7 @@ deployed to production BigQuery tables several times a week.
 - If updating schemas associated with certain restricted-access datasets
   (specified in [`CODEOWNERS`](/CODEOWNERS)), a CODEOWNER (usually
   SRE) will automatically be assigned to review the PR. Please follow
-  additional [change control procedures](https://docs.google.com/document/d/1TTJi4ht7NuzX6BPG_KTr6omaZg70cEpxe9xlpfnHj9k/edit#heading=h.ttegrcfy18ck) 
+  additional [change control procedures](https://docs.google.com/document/d/1TTJi4ht7NuzX6BPG_KTr6omaZg70cEpxe9xlpfnHj9k/edit#heading=h.ttegrcfy18ck)
   for PRs referencing these schemas. The CODEOWNER will be responsible for
   merging the PR once it has been approved.
 - If your PR is associated with a bugzilla bug, please title it `Bug XXX - Description of change`, that way the [Bugzilla PR Linker](https://github.com/mozilla/github-bugzilla-pr-linker) will automatically add an attachment with your PR to bugzilla, for future reference.
