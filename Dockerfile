@@ -1,5 +1,5 @@
 # --platform=linux/amd64 added to prevent pulling ARM images when run on Apple Silicon
-FROM --platform=linux/amd64 python:3.8-slim-bullseye
+FROM --platform=linux/amd64 python:3.11-slim-bookworm
 LABEL maintainer="Mozilla Data Platform"
 
 # copied from library/rust:1.73.0-slim-bullseye to install rust >= 1.65 and cargo >= 0.57 needed to build jsonschema-transpiler
@@ -52,7 +52,7 @@ RUN mkdir -p /usr/share/man/man1 && \
         make \
         wget \
         git \
-        openjdk-11-jdk-headless \
+        openjdk-17-jdk-headless \
         maven
 
 # Install jsonschema-transpiler
