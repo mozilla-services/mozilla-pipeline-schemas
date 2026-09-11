@@ -2730,19 +2730,19 @@
             "type": "INT64"
           },
           {
-            "description": "Tracking whether a DedicatedWorker spawn gets queued due to hitting max workers per domain limit.\nThis metric was generated to correspond to the Legacy Telemetry count histogram DEDICATED_WORKER_SPAWN_GETS_QUEUED.\n",
+            "description": "Tracking whether a DedicatedWorker spawn gets queued due to hitting max workers per domain limit.\n",
             "mode": "NULLABLE",
             "name": "workers_dedicated_worker_spawn_gets_queued",
             "type": "INT64"
           },
           {
-            "description": "Tracking whether a ServiceWorker spawn gets queued due to hitting max workers per domain limit.\nThis metric was generated to correspond to the Legacy Telemetry count histogram SERVICE_WORKER_SPAWN_GETS_QUEUED.\n",
+            "description": "Tracking whether a ServiceWorker spawn gets queued due to hitting max workers per domain limit.\n",
             "mode": "NULLABLE",
             "name": "workers_service_worker_spawn_gets_queued",
             "type": "INT64"
           },
           {
-            "description": "Tracking whether a SharedWorker spawn gets queued due to hitting max workers per domain limit.\nThis metric was generated to correspond to the Legacy Telemetry count histogram SHARED_WORKER_SPAWN_GETS_QUEUED.\n",
+            "description": "Tracking whether a SharedWorker spawn gets queued due to hitting max workers per domain limit.\n",
             "mode": "NULLABLE",
             "name": "workers_shared_worker_spawn_gets_queued",
             "type": "INT64"
@@ -21479,6 +21479,24 @@
             "type": "RECORD"
           },
           {
+            "description": "The session resumption outcome of a connection that had at least one cached token to try. Recorded once per connection. 'rejected' means the TLS stack refused every token. 'not_resumed' means a token was accepted by the stack and sent, but the server declined it. 'resumed' means the server accepted it.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "network_ssl_token_resumption_outcome",
+            "type": "RECORD"
+          },
+          {
             "description": "Counts how often Entra SSO succeeded/failed (macOS only). Labels are ordered in reverse chronological relation to SSO success, meaning the labels higher up are closer to the SSO success. device_headers_missing: only device_headers is missing in the SSO cookie. prt_headers_missing: only prt_headers is missing in the SSO cookie. both_headers_missing: both prt_headers and device_headers are missing in the SSO cookie. invalid_cookie: Failed to parse SSO cookie (could be a null cookie/format is incorrect). no_credential: ASAuthorizationSingleSignOnCredential is not present broker_error: An error from Microsoft's broker. invalid_controller_setup: ASAuthorizationController is setup incorrectly.\n",
             "fields": [
               {
@@ -28224,7 +28242,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The sampled number of simultaneous running ServiceWorkers in a session, sampled once each 10 seconds (lazily on state change)\nThis metric was generated to correspond to the Legacy Telemetry linear histogram SERVICE_WORKER_RUNNING.\n",
+            "description": "The sampled number of simultaneous running ServiceWorkers in a session, sampled once each 10 seconds (lazily on state change)\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -32998,7 +33016,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time (in ms) measured between when the fetch handler finished executing and when we reset the network channel.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram SERVICE_WORKER_FETCH_EVENT_CHANNEL_RESET_MS_2.\n",
+            "description": "Time (in ms) measured between when the fetch handler finished executing and when we reset the network channel.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -33040,7 +33058,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time (in ms) measured between when the fetch event is dispatched by the Service Worker and before we execute the event listeners.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram SERVICE_WORKER_FETCH_EVENT_DISPATCH_MS_2.\n",
+            "description": "Time (in ms) measured between when the fetch event is dispatched by the Service Worker and before we execute the event listeners.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -33082,7 +33100,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time (in ms) measured between when the respondWith promise resolves and when we provide the response through the intercepted channel.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram SERVICE_WORKER_FETCH_EVENT_FINISH_SYNTHESIZED_RESPONSE_MS_2.\n",
+            "description": "Time (in ms) measured between when the respondWith promise resolves and when we provide the response through the intercepted channel.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -33124,7 +33142,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time delta (ms) between when a network request is intercepted in the parent process and the service worker provides a response.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram SERVICE_WORKER_FETCH_INTERCEPTION_DURATION_MS_2.\n",
+            "description": "Time delta (ms) between when a network request is intercepted in the parent process and the service worker provides a response.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -33544,7 +33562,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Tracking how long a Worker thread is blocked when a sync operation is executed on the main-thread.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram SYNC_WORKER_OPERATION.\n",
+            "description": "Tracking how long a Worker thread is blocked when a sync operation is executed on the main-thread.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -48055,7 +48073,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time (ms) for spawning a service worker in an isolated content process.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram SERVICE_WORKER_ISOLATED_LAUNCH_TIME.\n",
+            "description": "Time (ms) for spawning a service worker in an isolated content process.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -48085,7 +48103,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time (ms) for spawning a service worker in the remote content process.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram SERVICE_WORKER_LAUNCH_TIME_2.\n",
+            "description": "Time (ms) for spawning a service worker in the remote content process.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -48115,7 +48133,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Tracking how ServiceWorkerRegistrar loads data before the first content is shown.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram SERVICE_WORKER_REGISTRATION_LOADING.\n",
+            "description": "Tracking how ServiceWorkerRegistrar loads data before the first content is shown.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
