@@ -1608,6 +1608,24 @@
             "type": "INT64"
           },
           {
+            "description": "Number of times stylesheets link from another panel opens the stylesheet in the style editor.\n",
+            "mode": "NULLABLE",
+            "name": "devtools_styleeditor_stylesheets_links_opened_in_style_editor_count",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of unique stylesheets edited in the style editor.\n",
+            "mode": "NULLABLE",
+            "name": "devtools_styleeditor_stylesheets_stylesheets_edited_count",
+            "type": "INT64"
+          },
+          {
+            "description": "Number of times stylesheets have been selected and opened in the style editor.\n",
+            "mode": "NULLABLE",
+            "name": "devtools_styleeditor_stylesheets_stylesheets_opened_count",
+            "type": "INT64"
+          },
+          {
             "description": "Number of times the DevTools toolbox has been opened.\nThis metric was generated to correspond to the Legacy Telemetry count histogram DEVTOOLS_TOOLBOX_OPENED_COUNT.\n",
             "mode": "NULLABLE",
             "name": "devtools_toolbox_opened_count",
@@ -16169,7 +16187,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count URI loads triggered in a subsession from about:home, broken down by the originating action. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.navigation.about_home.\n",
+            "description": "The count of URI loads triggered in a subsession from about:home, broken down by the originating action. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.navigation.about_home.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -16187,7 +16205,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count URI loads triggered in a subsession from about:newtab, broken down by the originating action. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.navigation.about_newtab.\n",
+            "description": "The count of URI loads triggered in a subsession from about:newtab, broken down by the originating action. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.navigation.about_newtab.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -16205,7 +16223,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count URI loads triggered in a subsession from the contextmenu, broken down by the originating action. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.navigation.contextmenu.\n",
+            "description": "The count of URI loads triggered in a subsession from the contextmenu, broken down by the originating action. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.navigation.contextmenu.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -16241,7 +16259,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count URI loads triggered in a subsession from the search CTA on a network error page, broken down by the originating action.\n",
+            "description": "The count of URI loads triggered in a subsession from the search CTA on a network error page, broken down by the originating action.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -16259,7 +16277,25 @@
             "type": "RECORD"
           },
           {
-            "description": "The count URI loads triggered in a subsession from the New Tab search bar, broken down by the originating action.\n",
+            "description": "The count URI loads triggered in a subsession from a search widget on about:newtab, broken down by the originating action.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_engagement_navigation_newtab_search_widget",
+            "type": "RECORD"
+          },
+          {
+            "description": "The count of URI loads triggered in a subsession from the New Tab search bar, broken down by the originating action.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -16277,7 +16313,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count URI loads triggered in a subsession from the searchbar, broken down by the originating action. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.navigation.searchbar.\n",
+            "description": "The count of URI loads triggered in a subsession from the searchbar, broken down by the originating action. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.navigation.searchbar.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -16295,7 +16331,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count URI loads triggered in a subsession from the smartbar, broken down by the originating action.\n",
+            "description": "The count of URI loads triggered in a subsession from the smartbar, broken down by the originating action.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -16313,7 +16349,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count URI loads triggered in a subsession from the AI window assistant search handoff button.\n",
+            "description": "The count of URI loads triggered in a subsession from the AI window assistant search handoff button.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -16331,7 +16367,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count URI loads triggered in a subsession from the urlbar, broken down by the originating action. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.navigation.urlbar.\n",
+            "description": "The count of URI loads triggered in a subsession from the urlbar, broken down by the originating action. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.navigation.urlbar.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -16349,7 +16385,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count URI loads triggered in a subsession from the urlbar via handoff, broken down by the originating action. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.navigation.urlbar_handoff.\n",
+            "description": "The count of URI loads triggered in a subsession from the urlbar via handoff, broken down by the originating action. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.navigation.urlbar_handoff.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -16385,7 +16421,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count URI loads triggered in a subsession from the urlbar's search mode, broken down by the originating action. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.navigation.urlbar_searchmode.\n",
+            "description": "The count of URI loads triggered in a subsession from the urlbar's search mode, broken down by the originating action. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.navigation.urlbar_searchmode.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -16403,7 +16439,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count URI loads triggered in a subsession from a webextension. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.navigation.webextension.\n",
+            "description": "The count of URI loads triggered in a subsession from a webextension. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.navigation.webextension.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -16745,7 +16781,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count URI loads triggered in a subsession from the urlbar via handoff, broken down by the originating action. This metric was generated to correspond to the Legacy Telemetry scalar browser.search.adclicks.urlbar_handoff.\n",
+            "description": "The count of URI loads triggered in a subsession from the urlbar via handoff, broken down by the originating action. This metric was generated to correspond to the Legacy Telemetry scalar browser.search.adclicks.urlbar_handoff.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -17033,7 +17069,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count URI loads triggered in a subsession from the urlbar via handoff, broken down by the originating action. This metric was generated to correspond to the Legacy Telemetry scalar browser.search.content.urlbar_handoff.\n",
+            "description": "The count of URI loads triggered in a subsession from the urlbar via handoff, broken down by the originating action. This metric was generated to correspond to the Legacy Telemetry scalar browser.search.content.urlbar_handoff.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -17321,7 +17357,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count URI loads triggered in a subsession from the urlbar via handoff, broken down by the originating action. This metric was generated to correspond to the Legacy Telemetry scalar browser.search.withads.urlbar_handoff.\n",
+            "description": "The count of URI loads triggered in a subsession from the urlbar via handoff, broken down by the originating action. This metric was generated to correspond to the Legacy Telemetry scalar browser.search.withads.urlbar_handoff.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -19766,6 +19802,24 @@
             ],
             "mode": "REPEATED",
             "name": "geolocation_network_failures",
+            "type": "RECORD"
+          },
+          {
+            "description": "Which network geolocation service each request from the NetworkGeolocationProvider was sent to, determined from the host of the configured geo.provider.network.url.  \"other\" means the URL had a host that is not one of the services listed here, and \"unknown\" means it had no host that could be parsed.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "geolocation_network_provider",
             "type": "RECORD"
           },
           {
@@ -37407,19 +37461,19 @@
             "type": "STRING"
           },
           {
-            "description": "The display name of the user's default engine.\n\nIf this string is an empty string (`\"\"`), this means that one or both of\nthe preferences `browser.search.separatePrivateDefault` and\n`browser.search.separatePrivateDefault.ui.enabled` are set to false.\nIt is possible that the user selects the same private engine as for the\ndefault engine, and hence both versions of these fields will be filled in.\n",
+            "description": "The display name of the user's default engine.\n\nIf this string is an empty string (`\"\"`), this means that one or both of\nthe preferences `browser.search.separatePrivateDefault.enabled` and\n`browser.search.separatePrivateDefault.featureGate` are set to false.\nIt is possible that the user selects the same private engine as for the\ndefault engine, and hence both versions of these fields will be filled in.\n",
             "mode": "NULLABLE",
             "name": "search_engine_private_display_name",
             "type": "STRING"
           },
           {
-            "description": "**Deprecated in Fx 139**, please use `provider_id`, `partner_code`,\n`overridden_by_third_party` and `display_name` instead.\n\nThe telemetry id of the search engine. For example: `google-b-d`.\n\nFor application-provided engines, this is the identifier plus telemetry\nsuffix supplied by the configuration.\nFor other engines, this is `other-<engineName>`.\n\nIf this string is an empty string (`\"\"`), this means that one or both of\nthe preferences `browser.search.separatePrivateDefault` and\n`browser.search.separatePrivateDefault.ui.enabled` are set to false.\nIt is possible that the user selects the same private engine as for the\ndefault engine, and hence both versions of these fields will be filled in.\n",
+            "description": "**Deprecated in Fx 139**, please use `provider_id`, `partner_code`,\n`overridden_by_third_party` and `display_name` instead.\n\nThe telemetry id of the search engine. For example: `google-b-d`.\n\nFor application-provided engines, this is the identifier plus telemetry\nsuffix supplied by the configuration.\nFor other engines, this is `other-<engineName>`.\n\nIf this string is an empty string (`\"\"`), this means that one or both of\nthe preferences `browser.search.separatePrivateDefault.enabled` and\n`browser.search.separatePrivateDefault.featureGate` are set to false.\nIt is possible that the user selects the same private engine as for the\ndefault engine, and hence both versions of these fields will be filled in.\n",
             "mode": "NULLABLE",
             "name": "search_engine_private_engine_id",
             "type": "STRING"
           },
           {
-            "description": "A path relating to where the search engine was installed/loaded from.\n\nFor example:\n- `[app]<config identifier>` for a config search engine.\n- `[addon]<extension id>` for a WebExtension-based engine.\n- `[https]developer.mozilla.org/mdn-web-docs.xml` for an OpenSearch-based engine.\n- `[policy]` for an enteprise policy engine.\n- `[user]` for a search engine defined by the user or generated from a web page.\n\nNote: this metric is truncated at 100 characters.\n\nIf this string is an empty string (`\"\"`), this means that one or both of\nthe preferences `browser.search.separatePrivateDefault` and\n`browser.search.separatePrivateDefault.ui.enabled` are set to false.\nIt is possible that the user selects the same private engine as for the\ndefault engine, and hence both versions of these fields will be filled in.\n",
+            "description": "A path relating to where the search engine was installed/loaded from.\n\nFor example:\n- `[app]<config identifier>` for a config search engine.\n- `[addon]<extension id>` for a WebExtension-based engine.\n- `[https]developer.mozilla.org/mdn-web-docs.xml` for an OpenSearch-based engine.\n- `[policy]` for an enteprise policy engine.\n- `[user]` for a search engine defined by the user or generated from a web page.\n\nNote: this metric is truncated at 100 characters.\n\nIf this string is an empty string (`\"\"`), this means that one or both of\nthe preferences `browser.search.separatePrivateDefault.enabled` and\n`browser.search.separatePrivateDefault.featureGate` are set to false.\nIt is possible that the user selects the same private engine as for the\ndefault engine, and hence both versions of these fields will be filled in.\n",
             "mode": "NULLABLE",
             "name": "search_engine_private_load_path",
             "type": "STRING"
@@ -50456,7 +50510,7 @@
             "type": "STRING"
           },
           {
-            "description": "The submission URL of the default engine. This is only reported in the\ncases where:\n  The engine is an application provided engine.\n  The engine has the same name as an application provided engine.\n  The engine matches one of a specific list of well known search engines.\nIf this string is an empty string (`\"\"`), this means that one or both of\nthe preferences `browser.search.separatePrivateDefault` and\n`browser.search.separatePrivateDefault.ui.enabled` are set to false.\nIt is possible that the user selects the same private engine as for the\ndefault engine, and hence both versions of these fields will be filled in.\n",
+            "description": "The submission URL of the default engine. This is only reported in the\ncases where:\n  The engine is an application provided engine.\n  The engine has the same name as an application provided engine.\n  The engine matches one of a specific list of well known search engines.\nIf this string is an empty string (`\"\"`), this means that one or both of\nthe preferences `browser.search.separatePrivateDefault.enabled` and\n`browser.search.separatePrivateDefault.featureGate` are set to false.\nIt is possible that the user selects the same private engine as for the\ndefault engine, and hence both versions of these fields will be filled in.\n",
             "mode": "NULLABLE",
             "name": "search_engine_private_submission_url",
             "type": "STRING"
