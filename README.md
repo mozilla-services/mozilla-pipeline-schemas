@@ -11,7 +11,8 @@ to [gcp-ingestion](https://github.com/mozilla/gcp-ingestion) and BigQuery.
 schemas
 |-- accounts-backend
 |   |-- accounts-events
-|   `-- events
+|   |-- events
+|   `-- server-deletion-request
 |-- accounts-cirrus
 |   |-- baseline
 |   |-- deletion-request
@@ -36,7 +37,8 @@ schemas
 |   |-- events
 |   |-- interaction
 |   |-- provider-request-stats
-|   `-- request-stats
+|   |-- request-stats
+|   `-- server-deletion-request
 |-- bedrock
 |   |-- deletion-request
 |   |-- events
@@ -70,7 +72,8 @@ schemas
 |-- experimenter-backend
 |   |-- data-collection-opt-out
 |   |-- events
-|   `-- page-view
+|   |-- page-view
+|   `-- server-deletion-request
 |-- experimenter-cirrus
 |   |-- baseline
 |   |-- deletion-request
@@ -305,7 +308,8 @@ schemas
 |-- mobile
 |   `-- activation
 |-- monitor-backend
-|   `-- events
+|   |-- events
+|   `-- server-deletion-request
 |-- monitor-cirrus
 |   |-- baseline
 |   |-- deletion-request
@@ -319,7 +323,8 @@ schemas
 |   |-- deletion-request
 |   `-- events
 |-- moso-mastodon-backend
-|   `-- events
+|   |-- events
+|   `-- server-deletion-request
 |-- moso-mastodon-web
 |   |-- deletion-request
 |   `-- events
@@ -1053,19 +1058,23 @@ schemas
 |-- pocket
 |   `-- fire-tv-events
 |-- relay-backend
-|   `-- events
+|   |-- events
+|   `-- server-deletion-request
 |-- subscription-platform-backend
-|   `-- events
+|   |-- events
+|   `-- server-deletion-request
 |-- subscription-platform-backend-cirrus
 |   |-- enrollment
 |   |-- enrollment-status
 |   |-- events
+|   |-- server-deletion-request
 |   `-- startup
 |-- subscription-platform-frontend
 |   |-- deletion-request
 |   `-- events
 |-- syncstorage
-|   `-- events
+|   |-- events
+|   `-- server-deletion-request
 |-- telemetry
 |   |-- addon-install-blocked
 |   |-- advancedtelemetry
@@ -1178,6 +1187,6 @@ schemas
 `-- webpagetest
     `-- webpagetest-run
 
-1169 directories
+1178 directories
 ```
 
