@@ -7795,6 +7795,42 @@
             "type": "RECORD"
           },
           {
+            "description": "The mean of how much faster than real time the audio chunks in a session were processed, as a multiple of real time times 100: 400 means 4x faster than real time. Under 100 means the recognizer fell behind. One sample is recorded per session in the inference process.\nThe range reaches 100x because hardware that handles this model comfortably sits well above 20x, which would otherwise pile every such session into the top bucket and saturate the high percentiles. These bounds also put a bucket boundary exactly at 100, so \"fell behind real time\" is a clean cut rather than a threshold buried mid-bucket.\n",
+            "fields": [
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "media_speech_recognition_inference_realtime_factor",
+            "type": "RECORD"
+          },
+          {
             "description": "Ratio of compositor dropped frames per total decoded frames scaled by 10,000 between starting and stopping a video\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram VIDEO_DROPPED_COMPOSITOR_FRAMES_PROPORTION_EXPONENTIAL.\n",
             "fields": [
               {
@@ -19468,6 +19504,24 @@
             "type": "RECORD"
           },
           {
+            "description": "The count of URI loads triggered from the actions menu shown when text\nis selected on a page, broken down by the originating action.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_engagement_navigation_text_selection",
+            "type": "RECORD"
+          },
+          {
             "description": "The count of URI loads triggered in a subsession from the urlbar,\nbroken down by the originating action.\nThis metric was generated to correspond to the Legacy Telemetry\nscalar browser.engagement.navigation.urlbar.\n",
             "fields": [
               {
@@ -24577,6 +24631,60 @@
             ],
             "mode": "REPEATED",
             "name": "media_sniffer_mp4_brand_pattern",
+            "type": "RECORD"
+          },
+          {
+            "description": "The number of times SpeechRecognition.available() resolved, keyed by the AvailabilityStatus it resolved with. Shows how often pages find the model missing rather than ready.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "media_speech_recognition_availability",
+            "type": "RECORD"
+          },
+          {
+            "description": "The number of `error` events fired at a SpeechRecognition object, keyed by error code. Only a subset of the codes defined by the spec is currently reachable, so a count on any of the others is itself noteworthy.\nThis does not reconcile with the `error` outcomes of `session_ended`, by construction: an error can be fired before the session reaches [[started]], and such a session records neither `session_started` nor `session_ended`. This metric therefore normally exceeds those outcomes, and `init_failure` accounts for the difference.\nThe codes the spec makes us fire are also coarser than the causes behind them - four distinct causes all surface as `service-not-allowed` - so `init_failure` is what tells those apart.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "media_speech_recognition_error",
+            "type": "RECORD"
+          },
+          {
+            "description": "Why a recognition session failed to start, recorded wherever the cause is still known: the content process for the first three labels, the inference process for the rest. The spec-mandated DOM error code is coarser than this, so this is what tells apart the causes that share one: `concurrent_session`, `language_not_supported`, `model_install_unavailable` and `backend_creation_failed` all reach content as `service-not-allowed`, and every inference-process failure below reaches it as `network`.\n`language_not_supported` is recorded before the session reaches [[started]], so it has no `session_started` and no `session_ended`; it is exactly the count that makes `error` and `session_ended` disagree.\nThe labels name the step that failed rather than a category, so that a spike says where init broke and not merely that it did.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "media_speech_recognition_init_failure",
             "type": "RECORD"
           },
           {
@@ -61549,6 +61657,204 @@
             ],
             "mode": "NULLABLE",
             "name": "ls_preparelsdatabase_processing_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "How long the engine took to load the model, which reads the whole GGUF into memory. Recorded in the inference process.\nOnly recorded when the load succeeds, so read it against `init_failure.model_load_failed` rather than alone.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "media_speech_recognition_model_load_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "The mean end-to-end latency of results in a recognition session, from the capture time of the audio each result covers to the moment the `result` event is dispatched in the content process. One sample per session that produced results.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "media_speech_recognition_result_latency",
+            "type": "RECORD"
+          },
+          {
+            "description": "The duration between start() and the time the model is ready for recognition.\nOnly recorded when init succeeds, so read it against the `init_failure` totals rather than alone: a regression that turns slow inits into outright failures makes this metric look better.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "media_speech_recognition_session_init_time",
             "type": "RECORD"
           },
           {
