@@ -124,6 +124,7 @@ schemas
 |   |-- newtab-content
 |   |-- nimbus-targeting-context
 |   |-- onboarding-opt-out
+|   |-- page-extractor
 |   |-- pageload
 |   |-- pageload-base-domain
 |   |-- pageload-domain
@@ -191,6 +192,7 @@ schemas
 |   |-- health
 |   |-- local-network-access
 |   |-- metrics
+|   |-- page-extractor
 |   |-- pageload
 |   |-- pageload-base-domain
 |   |-- pageload-domain
@@ -231,6 +233,7 @@ schemas
 |   |-- newtab-content
 |   |-- nimbus-targeting-context
 |   |-- onboarding-opt-out
+|   |-- page-extractor
 |   |-- pageload
 |   |-- pageload-base-domain
 |   |-- pageload-domain
@@ -443,6 +446,7 @@ schemas
 |   |-- nimbus-targeting-context
 |   |-- onboarding
 |   |-- onboarding-opt-out
+|   |-- page-extractor
 |   |-- pageload
 |   |-- pageload-base-domain
 |   |-- pageload-domain
@@ -500,6 +504,7 @@ schemas
 |   |-- nimbus-targeting-context
 |   |-- onboarding
 |   |-- onboarding-opt-out
+|   |-- page-extractor
 |   |-- pageload
 |   |-- pageload-base-domain
 |   |-- pageload-domain
@@ -557,6 +562,7 @@ schemas
 |   |-- nimbus-targeting-context
 |   |-- onboarding
 |   |-- onboarding-opt-out
+|   |-- page-extractor
 |   |-- pageload
 |   |-- pageload-base-domain
 |   |-- pageload-domain
@@ -614,6 +620,7 @@ schemas
 |   |-- nimbus-targeting-context
 |   |-- onboarding
 |   |-- onboarding-opt-out
+|   |-- page-extractor
 |   |-- pageload
 |   |-- pageload-base-domain
 |   |-- pageload-domain
@@ -671,6 +678,7 @@ schemas
 |   |-- nimbus-targeting-context
 |   |-- onboarding
 |   |-- onboarding-opt-out
+|   |-- page-extractor
 |   |-- pageload
 |   |-- pageload-base-domain
 |   |-- pageload-domain
@@ -727,6 +735,7 @@ schemas
 |   |-- local-network-access
 |   |-- metrics
 |   |-- nimbus-targeting-context
+|   |-- page-extractor
 |   |-- pageload
 |   |-- pageload-base-domain
 |   |-- pageload-domain
@@ -758,6 +767,7 @@ schemas
 |   |-- local-network-access
 |   |-- metrics
 |   |-- nimbus-targeting-context
+|   |-- page-extractor
 |   |-- pageload
 |   |-- pageload-base-domain
 |   |-- pageload-domain
@@ -789,6 +799,7 @@ schemas
 |   |-- local-network-access
 |   |-- metrics
 |   |-- nimbus-targeting-context
+|   |-- page-extractor
 |   |-- pageload
 |   |-- pageload-base-domain
 |   |-- pageload-domain
@@ -968,6 +979,7 @@ schemas
 |   |-- local-network-access
 |   |-- metrics
 |   |-- nimbus-targeting-context
+|   |-- page-extractor
 |   |-- pageload
 |   |-- pageload-base-domain
 |   |-- pageload-domain
@@ -1040,6 +1052,7 @@ schemas
 |   |-- newtab
 |   |-- newtab-content
 |   |-- onboarding-opt-out
+|   |-- page-extractor
 |   |-- pageload
 |   |-- pageload-base-domain
 |   |-- pageload-domain
@@ -1164,6 +1177,7 @@ schemas
 |   |-- health
 |   |-- local-network-access
 |   |-- metrics
+|   |-- page-extractor
 |   |-- pageload
 |   |-- pageload-base-domain
 |   |-- pageload-domain
@@ -1187,6 +1201,6 @@ schemas
 `-- webpagetest
     `-- webpagetest-run
 
-1178 directories
+1192 directories
 ```
 
