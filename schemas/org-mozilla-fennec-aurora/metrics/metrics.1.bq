@@ -1212,6 +1212,12 @@
             "type": "INT64"
           },
           {
+            "description": "Increments on every EngineView.captureFullPage() call, emitted from\nGeckoEngineView in engine-gecko. Serves as the denominator for the\nfull-page screenshot failure rate.\n",
+            "mode": "NULLABLE",
+            "name": "browser_engine_full_page_capture_attempted",
+            "type": "INT64"
+          },
+          {
             "description": "How many certificate signature verifications are performed.\n",
             "mode": "NULLABLE",
             "name": "cert_signature_cache_total",
@@ -6979,7 +6985,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Number of PHC slots currently allocated\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram MEMORY_PHC_SLOTS_ALLOCATED.\n",
+            "description": "Number of PHC slots currently allocated\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -7009,7 +7015,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Number of PHC slots allocated-then-freed\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram MEMORY_PHC_SLOTS_FREED.\n",
+            "description": "Number of PHC slots allocated-then-freed\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -15730,6 +15736,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Outcome of each full-page screenshot capture. `succeeded` = the engine\nreturned a bitmap; `failed` = the capture was rejected or returned no\nbitmap. Combined with full_page_capture_attempted this gives the\nfull-page screenshot failure rate.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_engine_full_page_capture_result",
+            "type": "RECORD"
+          },
+          {
             "description": "Records clicks of adverts on SERP pages.\nThe key format is\n`<provider-name>.in-content.[sap|sap-follow-on|organic].[code|none](.[channel])?`,\nwhere:\n\n* `provider-name` is the name of the provider,\n* `sap|sap-follow-on|organic` is the search access point,\n* `code` is set when the url matches any of the provider's code prefixes,\n* `channel` is set to the url \"channel\" query parameter.\n",
             "fields": [
               {
@@ -17437,6 +17461,24 @@
             ],
             "mode": "REPEATED",
             "name": "geolocation_network_failures",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many network:link-status-changed notifications, by notification, the NetworkGeolocationProvider request cache saw after it first cached a position.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "geolocation_network_link_change",
             "type": "RECORD"
           },
           {
@@ -30747,7 +30789,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Over-allocation due to PHC's rounding (aka internal fragmentation).  Measured in bytes.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram MEMORY_PHC_SLOP.\n",
+            "description": "Over-allocation due to PHC's rounding (aka internal fragmentation).  Measured in bytes.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -33529,7 +33571,7 @@
             "type": "STRING"
           },
           {
-            "description": "Records the status of parsing the profiles.ini file during startup:\n  ok:\n    The ini file parsed correctly\n  ini-failed:\n    Parsing the ini file completely failed, normally this would indicate\n    an out of memory issue.\n  ini-error:\n    The ini parser recorded some kind of failure during parsing\n  missing-name:\n    A profile section was missing the name\n  missing-path:\n    A profile section was missing the path\n  invalid-path:\n    A profile section's path was invalid\nNote that if multiple profile sections contain errors then only the last will be reported.\n",
+            "description": "Records the status of parsing the profiles.ini file during startup:\n  ok:\n    The ini file parsed correctly\n  ini-failed:\n    Reading or parsing the ini file completely failed. This could\n    indicate an out of memory issue or an inability to read the file\n    from disk.\n  ini-error:\n    The ini parser recorded some kind of failure during parsing\n  missing-name:\n    A profile section was missing the name\n  missing-path:\n    A profile section was missing the path\n  invalid-path:\n    A profile section's path was invalid\nNote that if multiple profile sections contain errors then only the last will be reported.\n",
             "mode": "NULLABLE",
             "name": "startup_profiles_ini_status",
             "type": "STRING"
@@ -33592,6 +33634,12 @@
             "description": "The full application package name without any of the components that might change\nduring the life cycle of the app (such as the version number or the architecture).\nUniquely identifies the application within one Windows installation.\nWindows only.\nOnly included if it begins with \"Mozilla.\" or \"MozillaCorporation.\".\ne.g. \"Mozilla.Firefox_n80bbvh6b1yt2\"\n",
             "mode": "NULLABLE",
             "name": "system_win_package_family_name",
+            "type": "STRING"
+          },
+          {
+            "description": "Whether the weekly privacy report notification can currently be sent\nand if not, which notification setting stops it. Possible values\nare: `available`, `app_notifications_disabled`, `channel_disabled`,\nand `channel_missing`. `channel_missing` indicates an unexpected state\ncaused by a programmer error.\n",
+            "mode": "NULLABLE",
+            "name": "tracking_protection_privacy_report_notification_availability",
             "type": "STRING"
           },
           {

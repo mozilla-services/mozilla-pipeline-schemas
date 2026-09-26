@@ -6859,7 +6859,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Number of PHC slots currently allocated\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram MEMORY_PHC_SLOTS_ALLOCATED.\n",
+            "description": "Number of PHC slots currently allocated\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -6889,7 +6889,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Number of PHC slots allocated-then-freed\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram MEMORY_PHC_SLOTS_FREED.\n",
+            "description": "Number of PHC slots allocated-then-freed\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -20086,6 +20086,24 @@
             "type": "RECORD"
           },
           {
+            "description": "How many network:link-status-changed notifications, by notification, the NetworkGeolocationProvider request cache saw after it first cached a position.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "geolocation_network_link_change",
+            "type": "RECORD"
+          },
+          {
             "description": "Which network geolocation service each request from the NetworkGeolocationProvider was sent to, determined from the host of the configured geo.provider.network.url.  \"other\" means the URL had a host that is not one of the services listed here, and \"unknown\" means it had no host that could be parsed.\n",
             "fields": [
               {
@@ -24316,7 +24334,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Session restore: Counts session files that existed at startup, labelled by whether the file failed to load because it was unreadable or corrupt. Recorded once per candidate file in the load order, so one startup can contribute several samples.\n\"true\" means the file existed but failed to load because of a read error, invalid JSON, or an error Session Restore does not specifically handle. \"false\" means the file existed and was not recognised as corrupt; it includes files rejected for an incompatible format version, so it is not a count of successful loads.\nBefore Firefox 157 a successful load incremented \"false\" twice. Before Firefox 158 errors that Session Restore does not specifically handle incremented \"false\" rather than \"true\".\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram FX_SESSION_RESTORE_CORRUPT_FILE.\n",
+            "description": "Session restore: Counts session files that existed at startup, labelled by whether the file failed to load because it was unreadable, corrupt or an incompatible version. Recorded once per candidate file in the load order, so one startup can contribute several samples.\n\"true\" means the file existed but failed to load because of a read error, invalid JSON, an incompatible format version or an error Session Restore does not specifically handle. \"false\" means the file existed and was not recognised as corrupt.\nBefore Firefox 157 a successful load incremented \"false\" twice. Before Firefox 158 errors that Session Restore does not specifically handle, and files with an incompatible format version, incremented \"false\" rather than \"true\".\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram FX_SESSION_RESTORE_CORRUPT_FILE.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -29644,6 +29662,42 @@
             ],
             "mode": "REPEATED",
             "name": "session_restore_startup_timeline",
+            "type": "RECORD"
+          },
+          {
+            "description": "Number of enabled agentic actions the user currently has, keyed by\nagent type. Set when the monitor store is loaded at startup and after\nevery create, edit, pause, resume and delete, so each metrics ping\ncarries the current count.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "smart_window_agent_active_actions",
+            "type": "RECORD"
+          },
+          {
+            "description": "Number of paused (disabled) agentic actions the user currently has,\nkeyed by agent type. Set when the monitor store is loaded at startup\nand after every create, edit, pause, resume and delete, so each\nmetrics ping carries the current count.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "smart_window_agent_paused_actions",
             "type": "RECORD"
           },
           {
@@ -35079,7 +35133,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Over-allocation due to PHC's rounding (aka internal fragmentation).  Measured in bytes.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram MEMORY_PHC_SLOP.\n",
+            "description": "Over-allocation due to PHC's rounding (aka internal fragmentation).  Measured in bytes.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -38167,7 +38221,7 @@
             "type": "STRING"
           },
           {
-            "description": "Records the status of parsing the profiles.ini file during startup:\n  ok:\n    The ini file parsed correctly\n  ini-failed:\n    Parsing the ini file completely failed, normally this would indicate\n    an out of memory issue.\n  ini-error:\n    The ini parser recorded some kind of failure during parsing\n  missing-name:\n    A profile section was missing the name\n  missing-path:\n    A profile section was missing the path\n  invalid-path:\n    A profile section's path was invalid\nNote that if multiple profile sections contain errors then only the last will be reported.\n",
+            "description": "Records the status of parsing the profiles.ini file during startup:\n  ok:\n    The ini file parsed correctly\n  ini-failed:\n    Reading or parsing the ini file completely failed. This could\n    indicate an out of memory issue or an inability to read the file\n    from disk.\n  ini-error:\n    The ini parser recorded some kind of failure during parsing\n  missing-name:\n    A profile section was missing the name\n  missing-path:\n    A profile section was missing the path\n  invalid-path:\n    A profile section's path was invalid\nNote that if multiple profile sections contain errors then only the last will be reported.\n",
             "mode": "NULLABLE",
             "name": "startup_profiles_ini_status",
             "type": "STRING"

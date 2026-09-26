@@ -7555,7 +7555,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Number of PHC slots currently allocated\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram MEMORY_PHC_SLOTS_ALLOCATED.\n",
+            "description": "Number of PHC slots currently allocated\n",
             "fields": [
               {
                 "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
@@ -7591,7 +7591,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Number of PHC slots allocated-then-freed\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram MEMORY_PHC_SLOTS_FREED.\n",
+            "description": "Number of PHC slots allocated-then-freed\n",
             "fields": [
               {
                 "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
@@ -21536,6 +21536,24 @@
             ],
             "mode": "REPEATED",
             "name": "geolocation_network_failures",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many network:link-status-changed notifications, by notification, the NetworkGeolocationProvider request cache saw after it first cached a position.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "geolocation_network_link_change",
             "type": "RECORD"
           },
           {
@@ -39467,7 +39485,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Over-allocation due to PHC's rounding (aka internal fragmentation).  Measured in bytes.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram MEMORY_PHC_SLOP.\n",
+            "description": "Over-allocation due to PHC's rounding (aka internal fragmentation).  Measured in bytes.\n",
             "fields": [
               {
                 "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
@@ -42549,7 +42567,7 @@
             "type": "STRING"
           },
           {
-            "description": "Records the status of parsing the profiles.ini file during startup:\n  ok:\n    The ini file parsed correctly\n  ini-failed:\n    Parsing the ini file completely failed, normally this would indicate\n    an out of memory issue.\n  ini-error:\n    The ini parser recorded some kind of failure during parsing\n  missing-name:\n    A profile section was missing the name\n  missing-path:\n    A profile section was missing the path\n  invalid-path:\n    A profile section's path was invalid\nNote that if multiple profile sections contain errors then only the last will be reported.\n",
+            "description": "Records the status of parsing the profiles.ini file during startup:\n  ok:\n    The ini file parsed correctly\n  ini-failed:\n    Reading or parsing the ini file completely failed. This could\n    indicate an out of memory issue or an inability to read the file\n    from disk.\n  ini-error:\n    The ini parser recorded some kind of failure during parsing\n  missing-name:\n    A profile section was missing the name\n  missing-path:\n    A profile section was missing the path\n  invalid-path:\n    A profile section's path was invalid\nNote that if multiple profile sections contain errors then only the last will be reported.\n",
             "mode": "NULLABLE",
             "name": "startup_profiles_ini_status",
             "type": "STRING"
