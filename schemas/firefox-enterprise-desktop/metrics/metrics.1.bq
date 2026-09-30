@@ -1158,6 +1158,12 @@
       {
         "fields": [
           {
+            "description": "Number of times the background notification helper woke Firefox to receive push messages, counted when Firefox is launched with --receive-push-messages.\n",
+            "mode": "NULLABLE",
+            "name": "background_notification_helper_wake",
+            "type": "INT64"
+          },
+          {
             "description": "Counts sites purged from BTP that are classified as trackers as part of the following lists: [emailtracking-protection, fingerprinting-protection, socialtracking-protection, tracking-protection]\n",
             "mode": "NULLABLE",
             "name": "bounce_tracking_protection_purge_count_classified_tracker",
@@ -2920,6 +2926,66 @@
             ],
             "mode": "NULLABLE",
             "name": "apz_zoom_pinchsource",
+            "type": "RECORD"
+          },
+          {
+            "description": "Number of push messages that arrived during a single background notification helper wake, recorded once per wake just before Firefox stops receiving. Only messages that got as far as being dispatched count; ones that failed before that are counted by `web_push.error_code` instead.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "background_notification_helper_wake_messages",
+            "type": "RECORD"
+          },
+          {
+            "description": "Number of web notifications shown during a single background notification helper wake, recorded once per wake just before Firefox stops receiving, and counted from the `web-notification-shown` notification. This is not the number of notifications the wake ultimately produced: a service worker shows its notification some time after the push message arrives, and receiving stops on a timer that does not wait for it, so anything shown after that point is missed. Private browsing notifications are never counted, and neither are non-web-content ones.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "background_notification_helper_wake_notifications",
             "type": "RECORD"
           },
           {
@@ -16184,6 +16250,24 @@
             ],
             "mode": "REPEATED",
             "name": "avif_yuv_color_space",
+            "type": "RECORD"
+          },
+          {
+            "description": "Number of times the user turned the background notification helper on or off, labelled with the state it was turned to. This counts the user's own switch only: the Nimbus-owned gate that can withdraw the feature is not a user action and is not counted here, so a client whose helper stops because the gate closed records nothing.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "background_notification_helper_toggled",
             "type": "RECORD"
           },
           {
