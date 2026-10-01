@@ -30,6 +30,29 @@
             },
             "type": "object"
           },
+          "flows": {
+            "description": "The active flow instances this event belongs to, in alphabetical order by flow name. Absent for events that belong to no active flow instance.",
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "name": {
+                  "description": "The flow's name, as declared in the product's flows.yaml.",
+                  "type": "string"
+                },
+                "seq": {
+                  "description": "The instance's sequence number within its session, starting at 0. Together with the event's session_id, identifies the instance.",
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "name",
+                "seq"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
           "name": {
             "type": "string"
           },
