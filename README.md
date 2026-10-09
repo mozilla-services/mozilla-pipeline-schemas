@@ -452,6 +452,7 @@ schemas
 |   |-- pageload-domain
 |   |-- play-store-attribution
 |   |-- prefs-file-invalid
+|   |-- privacy-report-notification
 |   |-- referrals
 |   |-- rust-component-errors
 |   |-- spoc
@@ -510,6 +511,7 @@ schemas
 |   |-- pageload-domain
 |   |-- play-store-attribution
 |   |-- prefs-file-invalid
+|   |-- privacy-report-notification
 |   |-- referrals
 |   |-- rust-component-errors
 |   |-- spoc
@@ -568,6 +570,7 @@ schemas
 |   |-- pageload-domain
 |   |-- play-store-attribution
 |   |-- prefs-file-invalid
+|   |-- privacy-report-notification
 |   |-- referrals
 |   |-- rust-component-errors
 |   |-- spoc
@@ -626,6 +629,7 @@ schemas
 |   |-- pageload-domain
 |   |-- play-store-attribution
 |   |-- prefs-file-invalid
+|   |-- privacy-report-notification
 |   |-- referrals
 |   |-- rust-component-errors
 |   |-- spoc
@@ -684,6 +688,7 @@ schemas
 |   |-- pageload-domain
 |   |-- play-store-attribution
 |   |-- prefs-file-invalid
+|   |-- privacy-report-notification
 |   |-- referrals
 |   |-- rust-component-errors
 |   |-- spoc
@@ -1201,6 +1206,6 @@ schemas
 `-- webpagetest
     `-- webpagetest-run
 
-1192 directories
+1197 directories
 ```
 

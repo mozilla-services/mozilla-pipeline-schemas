@@ -25721,7 +25721,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Results of login import from a CSV/TSV file, by category\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram PWMGR_IMPORT_LOGINS_FROM_FILE_CATEGORICAL.\n",
+            "description": "Results of login import from a CSV/TSV file, by category\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -37177,6 +37177,84 @@
             ],
             "mode": "REPEATED",
             "name": "networking_trr_tls_handshake",
+            "type": "RECORD"
+          },
+          {
+            "description": "Active time the user spent on a page opened from the newtab, in milliseconds, labelled by what was clicked to open it. Measures how long the user was interacting with the browser, anywhere in the window, while that page was the selected tab of the focused window, not how long the tab was open.\nOne sample per opened page. Samples accumulate per client and are submitted with the metrics ping. The distribution in one ping covers every page opened from a newtab since the previous metrics ping, and belongs to no single newtab visit.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "bucket_count",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "histogram_type",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "overflow",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "REPEATED",
+                    "name": "range",
+                    "type": "FLOAT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "time_unit",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "underflow",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "newtab_opened_page_dwell_time",
             "type": "RECORD"
           },
           {
