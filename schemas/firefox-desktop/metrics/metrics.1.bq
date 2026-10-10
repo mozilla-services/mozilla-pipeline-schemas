@@ -17157,6 +17157,36 @@
             "type": "RECORD"
           },
           {
+            "description": "The number of consumers invoked through BrowserUtils.callModulesFromCategory that returned or threw, per category. success + failure is the number of consumer runs, so the failure rate of a category is failure / (success + failure).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "browser_utils_category_consumer_result",
+            "type": "RECORD"
+          },
+          {
             "description": "Fingerprinting detection hits by fingerprinter alias (key) and the source(s) used (category). An alias using multiple sources will increment each source individually once, and increment the combination once as well.\n",
             "fields": [
               {
