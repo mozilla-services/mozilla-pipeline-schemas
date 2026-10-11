@@ -2574,6 +2574,12 @@
             "type": "INT64"
           },
           {
+            "description": "Counts attempts to write the session file. Attempts that are not counted in write_outcome never completed.\n",
+            "mode": "NULLABLE",
+            "name": "session_restore_write_attempts",
+            "type": "INT64"
+          },
+          {
             "description": "Counts number of visits to a supported retailer product page\nwhile enrolled in either the control or treatment branches\nof the shopping experiment.\n",
             "mode": "NULLABLE",
             "name": "shopping_product_page_visits",
@@ -28309,6 +28315,24 @@
             ],
             "mode": "REPEATED",
             "name": "session_restore_shutdown_type",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts completed attempts to write the session file, by outcome. \"failed\" means the session file was not written. \"session_written_backup_failed\" means the session file was written but a later step, such as taking or pruning upgrade backups, failed.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "session_restore_write_outcome",
             "type": "RECORD"
           },
           {
