@@ -1013,6 +1013,12 @@
             "type": "BOOL"
           },
           {
+            "description": "Indicates if the text selection actions menu would show the search action.\n",
+            "mode": "NULLABLE",
+            "name": "selection_menu_search_enabled",
+            "type": "BOOL"
+          },
+          {
             "description": "Whether the browser.sessionstore.newTabOnRestore pref is enabled. Set on startup and updated when the pref changes.\n",
             "mode": "NULLABLE",
             "name": "session_restore_new_tab_on_restore_enabled",
@@ -1212,13 +1218,13 @@
             "type": "INT64"
           },
           {
-            "description": "The count of tab open events per subsession, across all windows, after the session has been restored. This includes tab open events from private windows and from manual session restorations (i.e. after crashes and from about:home), but excludes tabs opened vertically. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.tab_open_event_count.\n",
+            "description": "The count of tab open events, across all windows, after the session has been restored. This includes tab open events from private windows and from manual session restorations (i.e. after crashes and from about:home), but excludes tabs opened vertically. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.tab_open_event_count.\n",
             "mode": "NULLABLE",
             "name": "browser_engagement_tab_open_event_count",
             "type": "INT64"
           },
           {
-            "description": "The count of tab pinned events per subsession, across all windows, after the session has been restored. This includes tab pinned events from private windows. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.tab_pinned_event_count.\n",
+            "description": "The count of tab pinned events, across all windows, after the session has been restored. This includes tab pinned events from private windows. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.tab_pinned_event_count.\n",
             "mode": "NULLABLE",
             "name": "browser_engagement_tab_pinned_event_count",
             "type": "INT64"
@@ -1236,7 +1242,7 @@
             "type": "INT64"
           },
           {
-            "description": "The count of the total non-unique URIs visited in a subsession, not restricted to a specific protocol, including page reloads and about:* pages (other than initial pages such as about:blank, ...), after the session has been restored. This does not include background page requests and URIs from embedded pages or private browsing. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.unfiltered_uri_count.\n",
+            "description": "The count of the total non-unique URIs visited, not restricted to a specific protocol, including page reloads and about:* pages (other than initial pages such as about:blank, ...), after the session has been restored. This does not include background page requests and URIs from embedded pages or private browsing. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.unfiltered_uri_count.\n",
             "mode": "NULLABLE",
             "name": "browser_engagement_unfiltered_uri_count",
             "type": "INT64"
@@ -1248,7 +1254,7 @@
             "type": "INT64"
           },
           {
-            "description": "The count of the total non-unique http(s) URIs visited in a subsession, including page reloads, after the session has been restored. URIs on minimized or background tabs may also be counted towards this. Private browsing is not included in this count. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.total_uri_count.\n",
+            "description": "The count of the total non-unique http(s) URIs visited, including page reloads, after the session has been restored. URIs on minimized or background tabs may also be counted towards this. Private browsing is not included in this count. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.total_uri_count.\n",
             "mode": "NULLABLE",
             "name": "browser_engagement_uri_count_normal_mode",
             "type": "INT64"
@@ -1266,7 +1272,7 @@
             "type": "INT64"
           },
           {
-            "description": "The count of browser window open events per subsession, after the session has been restored. The count includes private windows and the ones from manual session restorations (i.e. after crashes and from about:home). This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.window_open_event_count.\n",
+            "description": "The count of browser window open events, after the session has been restored. The count includes private windows and the ones from manual session restorations (i.e. after crashes and from about:home). This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.window_open_event_count.\n",
             "mode": "NULLABLE",
             "name": "browser_engagement_window_open_event_count",
             "type": "INT64"
@@ -1935,6 +1941,18 @@
             "description": "Recorded when a site exclusion is added.\n",
             "mode": "NULLABLE",
             "name": "ipprotection_exclusion_added",
+            "type": "INT64"
+          },
+          {
+            "description": "Incremented when a site exclusion decides whether a top-level page load is proxied.\n",
+            "mode": "NULLABLE",
+            "name": "ipprotection_exclusions_rule_applied",
+            "type": "INT64"
+          },
+          {
+            "description": "Incremented when a site inclusion decides whether a top-level page load is proxied.\n",
+            "mode": "NULLABLE",
+            "name": "ipprotection_inclusions_rule_applied",
             "type": "INT64"
           },
           {
@@ -2815,7 +2833,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Application reputation local results (0=ALLOW, 1=BLOCK, 2=NONE)\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram APPLICATION_REPUTATION_LOCAL.\n",
+            "description": "Application reputation local results (0=ALLOW, 1=BLOCK, 2=NONE)\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -2845,7 +2863,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Status of the application reputation remote lookup (0=OK, 1=failed, 2=invalid protobuf response)\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram APPLICATION_REPUTATION_SERVER.\n",
+            "description": "Status of the application reputation remote lookup (0=OK, 1=failed, 2=invalid protobuf response)\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -2875,7 +2893,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Application reputation remote verdict (0=SAFE, 1=DANGEROUS, 2=UNCOMMON, 3=POTENTIALLY_UNWANTED, 4=DANGEROUS_HOST, 5=UNKNOWN)\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram APPLICATION_REPUTATION_SERVER_VERDICT.\n",
+            "description": "Application reputation remote verdict (0=SAFE, 1=DANGEROUS, 2=UNCOMMON, 3=POTENTIALLY_UNWANTED, 4=DANGEROUS_HOST, 5=UNKNOWN)\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -3595,7 +3613,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The number of origins that were purged during one run of cookie purging.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram COOKIE_PURGING_ORIGINS_PURGED.\n",
+            "description": "The number of origins that were purged during one run of cookie purging.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -3625,7 +3643,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The number of trackers that had user interaction at the time of purging.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram COOKIE_PURGING_TRACKERS_WITH_USER_INTERACTION.\n",
+            "description": "The number of trackers that had user interaction at the time of purging.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -10465,7 +10483,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Session restore: Number of tabs restored eagerly in the session that has just been restored.\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram FX_SESSION_RESTORE_NUMBER_OF_EAGER_TABS_RESTORED.\n",
+            "description": "Session restore: Number of tabs restored eagerly in the session that has just been restored.\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram FX_SESSION_RESTORE_NUMBER_OF_EAGER_TABS_RESTORED.\nAs of bug 2071519 this is recorded on every restore attempt, including attempts that produced no eagerly-restored tab. Data from earlier versions excludes those startups.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -10495,7 +10513,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Session restore: Number of tabs in the session that has just been restored.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram FX_SESSION_RESTORE_NUMBER_OF_TABS_RESTORED.\n",
+            "description": "Session restore: Number of tabs in the session that has just been restored.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram FX_SESSION_RESTORE_NUMBER_OF_TABS_RESTORED.\nAs of bug 2071519, 0 is recorded and will land in the underflow bucket. Before that, a restore that produced no eagerly-restored tab recorded nothing at all, so data from earlier versions excludes those startups and reads higher than it should.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -10525,7 +10543,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Session restore: Number of windows in the session that has just been restored.\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram FX_SESSION_RESTORE_NUMBER_OF_WINDOWS_RESTORED.\n",
+            "description": "Session restore: Number of windows in the session that has just been restored.\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram FX_SESSION_RESTORE_NUMBER_OF_WINDOWS_RESTORED.\nAs of bug 2071519 this is recorded on every restore attempt, including attempts that produced no eagerly-restored tab. Data from earlier versions excludes those startups.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -13045,7 +13063,7 @@
             "type": "RECORD"
           },
           {
-            "description": "SafeBrowsing v4 hash completion error (0 = success, 1 = parsing failure, 2 = unknown threat type)\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram URLCLASSIFIER_COMPLETION_ERROR.\n",
+            "description": "SafeBrowsing v4 hash completion error (0 = success, 1 = parsing failure, 2 = unknown threat type)\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -13075,7 +13093,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Whether or not an error was encountered while sending a Safe Browsing ThreatHit report. (0=sucess, 1=unknown error, 2=already connected, 3=not connected, 4=connection refused,5=net timeout, 6=offline, 7=port access not allowed, 8=net reset, 9=net interrupt, 10=proxy connection refused, 11=partial transfer, 12=inadequate security, 13=unknown host, 14=dns lookup queue full, 15=unknown proxy host)\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram URLCLASSIFIER_THREATHIT_NETWORK_ERROR.\n",
+            "description": "Whether or not an error was encountered while sending a Safe Browsing ThreatHit report. (0=sucess, 1=unknown error, 2=already connected, 3=not connected, 4=connection refused,5=net timeout, 6=offline, 7=port access not allowed, 8=net reset, 9=net interrupt, 10=proxy connection refused, 11=partial transfer, 12=inadequate security, 13=unknown host, 14=dns lookup queue full, 15=unknown proxy host)\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -13105,7 +13123,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Server HTTP status code from Safe Browsing ThreatHit report. (0=1xx, 1=200, 2=2xx, 3=204, 4=3xx, 5=400, 6=4xx, 7=403, 8=404, 9=408, 10=413, 11=5xx, 12=502|504|511, 13=503, 14=505, 15=Other)\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram URLCLASSIFIER_THREATHIT_REMOTE_STATUS.\n",
+            "description": "Server HTTP status code from Safe Browsing ThreatHit report. (0=1xx, 1=200, 2=2xx, 3=204, 4=3xx, 5=400, 6=4xx, 7=403, 8=404, 9=408, 10=413, 11=5xx, 12=502|504|511, 13=503, 14=505, 15=Other)\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -13135,7 +13153,7 @@
             "type": "RECORD"
           },
           {
-            "description": "URL CLassifier-related (aka Safe Browsing) UI events. See nsIUrlClassifierUITelemetry.idl for the specific values.\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram URLCLASSIFIER_UI_EVENTS.\n",
+            "description": "URL CLassifier-related (aka Safe Browsing) UI events. See nsIUrlClassifierUITelemetry.idl for the specific values.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -14133,7 +14151,7 @@
       {
         "fields": [
           {
-            "description": "Application reputation remote verdict, keyed by file extension\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram APPLICATION_REPUTATION_SERVER_VERDICT_2.\n",
+            "description": "Application reputation remote verdict, keyed by file extension\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -14580,6 +14598,36 @@
             ],
             "mode": "REPEATED",
             "name": "dom_quota_first_initialization_attempt",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts navigator.registerProtocolHandler calls that passed the scheme and URL checks, by the frame they came from and whether it had transient user activation. The site permission gating the prompt is keyed on the top-level origin. Used to judge the web compatibility impact of no longer prompting for calls from cross-origin iframes, or without user activation.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dom_register_protocol_handler_calls",
             "type": "RECORD"
           },
           {
@@ -15213,7 +15261,7 @@
             "type": "RECORD"
           },
           {
-            "description": "This metric is recorded every time a gethash lookup is performed, `true` is recorded if the lookup times out. Keyed by provider\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram URLCLASSIFIER_COMPLETE_TIMEOUT2.\n",
+            "description": "This metric is recorded every time a gethash lookup is performed, `true` is recorded if the lookup times out. Keyed by provider\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -15785,7 +15833,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Whether a binary file examined by download protection is one of the common archive formats.\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram APPLICATION_REPUTATION_BINARY_ARCHIVE.\n",
+            "description": "Whether a binary file examined by download protection is one of the common archive formats.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -15803,7 +15851,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Whether or not the file examined by download protection is a binary type (or it's not possible to tell because the filename is missing).\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram APPLICATION_REPUTATION_BINARY_TYPE.\n",
+            "description": "Whether or not the file examined by download protection is a binary type (or it's not possible to tell because the filename is missing).\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -15821,7 +15869,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The reason application reputation service blocks or allows the download.\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram APPLICATION_REPUTATION_REASON.\n",
+            "description": "The reason application reputation service blocks or allows the download.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -15839,7 +15887,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Recorded when application reputation remote lookup is performed, `true` is recorded if the lookup times out.\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram APPLICATION_REPUTATION_REMOTE_LOOKUP_TIMEOUT.\n",
+            "description": "Recorded when application reputation remote lookup is performed, `true` is recorded if the lookup times out.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -15857,7 +15905,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Network status of the application reputation remote lookup\nThis metric was generated to correspond to the Legacy Telemetry categorical histogram APPLICATION_REPUTATION_SERVER_2.\n",
+            "description": "Network status of the application reputation remote lookup\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -15875,7 +15923,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Overall (local or remote) application reputation verdict (shouldBlock=false is OK).\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram APPLICATION_REPUTATION_SHOULD_BLOCK.\n",
+            "description": "Overall (local or remote) application reputation verdict (shouldBlock=false is OK).\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -16397,7 +16445,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count of URI loads triggered in a subsession from about:home,\nbroken down by the originating action.\nThis metric was generated to correspond to the Legacy Telemetry\nscalar browser.engagement.navigation.about_home.\n",
+            "description": "The count of URI loads triggered from about:home,\nbroken down by the originating action.\nThis metric was generated to correspond to the Legacy Telemetry\nscalar browser.engagement.navigation.about_home.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -16415,7 +16463,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count of URI loads triggered in a subsession from about:newtab,\nbroken down by the originating action.\nThis metric was generated to correspond to the Legacy Telemetry\nscalar browser.engagement.navigation.about_newtab.\n",
+            "description": "The count of URI loads triggered from about:newtab,\nbroken down by the originating action.\nThis metric was generated to correspond to the Legacy Telemetry\nscalar browser.engagement.navigation.about_newtab.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -16433,7 +16481,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count of URI loads triggered in a subsession from the contextmenu,\nbroken down by the originating action.\nThis metric was generated to correspond to the Legacy Telemetry\nscalar browser.engagement.navigation.contextmenu.\n",
+            "description": "The count of URI loads triggered from the contextmenu,\nbroken down by the originating action.\nThis metric was generated to correspond to the Legacy Telemetry\nscalar browser.engagement.navigation.contextmenu.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -16451,7 +16499,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count of URI loads triggered in a subsession from the context menu's\nvisual search menuitem, broken down by the originating action.\n",
+            "description": "The count of URI loads triggered from the context menu's\nvisual search menuitem, broken down by the originating action.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -16469,7 +16517,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count of URI loads triggered in a subsession from the search CTA on\na network error page, broken down by the originating action.\n",
+            "description": "The count of URI loads triggered from the search CTA on\na network error page, broken down by the originating action.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -16487,7 +16535,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count URI loads triggered in a subsession from a search widget on\nabout:newtab, broken down by the originating action.\n",
+            "description": "The count of URI loads triggered from a search widget on\nabout:newtab, broken down by the originating action.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -16505,7 +16553,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count of URI loads triggered in a subsession from the New Tab search\nbar, broken down by the originating action.\n",
+            "description": "The count of URI loads triggered from the New Tab search\nbar, broken down by the originating action.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -16523,7 +16571,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count of URI loads triggered in a subsession from the searchbar,\nbroken down by the originating action.\nThis metric was generated to correspond to the Legacy Telemetry\nscalar browser.engagement.navigation.searchbar.\n",
+            "description": "The count of URI loads triggered from the searchbar,\nbroken down by the originating action.\nThis metric was generated to correspond to the Legacy Telemetry\nscalar browser.engagement.navigation.searchbar.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -16541,7 +16589,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count of URI loads triggered in a subsession from the smartbar,\nbroken down by the originating action.\n",
+            "description": "The count of URI loads triggered from the smartbar,\nbroken down by the originating action.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -16559,7 +16607,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count of URI loads triggered in a subsession from the AI window assistant\nsearch handoff button.\n",
+            "description": "The count of URI loads triggered from the AI window assistant\nsearch handoff button.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -16595,7 +16643,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count of URI loads triggered in a subsession from the urlbar,\nbroken down by the originating action.\nThis metric was generated to correspond to the Legacy Telemetry\nscalar browser.engagement.navigation.urlbar.\n",
+            "description": "The count of URI loads triggered from the urlbar,\nbroken down by the originating action.\nThis metric was generated to correspond to the Legacy Telemetry\nscalar browser.engagement.navigation.urlbar.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -16613,7 +16661,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count of URI loads triggered in a subsession from the urlbar via\nhandoff, broken down by the originating action.\nThis metric was generated to correspond to the Legacy Telemetry\nscalar browser.engagement.navigation.urlbar_handoff.\n",
+            "description": "The count of URI loads triggered from the urlbar via\nhandoff, broken down by the originating action.\nThis metric was generated to correspond to the Legacy Telemetry\nscalar browser.engagement.navigation.urlbar_handoff.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -16631,7 +16679,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count of URI loads triggered in a subsession from the urlbar\nafter the search term was shown in the urlbar, broken down by the\noriginating action.\nThis metric was generated to correspond to the Legacy Telemetry\nscalar browser.engagement.navigation.urlbar_persisted.\n",
+            "description": "The count of URI loads triggered from the urlbar\nafter the search term was shown in the urlbar, broken down by the\noriginating action.\nThis metric was generated to correspond to the Legacy Telemetry\nscalar browser.engagement.navigation.urlbar_persisted.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -16649,7 +16697,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count of URI loads triggered in a subsession from the urlbar's\nsearch mode, broken down by the originating action.\nThis metric was generated to correspond to the Legacy Telemetry\nscalar browser.engagement.navigation.urlbar_searchmode.\n",
+            "description": "The count of URI loads triggered from the urlbar's\nsearch mode, broken down by the originating action.\nThis metric was generated to correspond to the Legacy Telemetry\nscalar browser.engagement.navigation.urlbar_searchmode.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -16667,7 +16715,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count of URI loads triggered in a subsession from a webextension.\nThis metric was generated to correspond to the Legacy Telemetry\nscalar browser.engagement.navigation.webextension.\n",
+            "description": "The count of URI loads triggered from a webextension.\nThis metric was generated to correspond to the Legacy Telemetry\nscalar browser.engagement.navigation.webextension.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -17009,7 +17057,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count of URI loads triggered in a subsession from the urlbar via\nhandoff, broken down by the originating action.\nThis metric was generated to correspond to the Legacy Telemetry\nscalar browser.search.adclicks.urlbar_handoff.\n",
+            "description": "The count of URI loads triggered from the urlbar via\nhandoff, broken down by the originating action.\nThis metric was generated to correspond to the Legacy Telemetry\nscalar browser.search.adclicks.urlbar_handoff.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -17297,7 +17345,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count of URI loads triggered in a subsession from the urlbar via\nhandoff, broken down by the originating action.\nThis metric was generated to correspond to the Legacy Telemetry\nscalar browser.search.content.urlbar_handoff.\n",
+            "description": "The count of URI loads triggered from the urlbar via\nhandoff, broken down by the originating action.\nThis metric was generated to correspond to the Legacy Telemetry\nscalar browser.search.content.urlbar_handoff.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -17585,7 +17633,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The count of URI loads triggered in a subsession from the urlbar via\nhandoff, broken down by the originating action.\nThis metric was generated to correspond to the Legacy Telemetry\nscalar browser.search.withads.urlbar_handoff.\n",
+            "description": "The count of URI loads triggered from the urlbar via\nhandoff, broken down by the originating action.\nThis metric was generated to correspond to the Legacy Telemetry\nscalar browser.search.withads.urlbar_handoff.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -24497,7 +24545,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Records how often the tab strip had to recover from a tab drag that never ended, leaving the toolbar unusable. \"session_live\" means a drag session was still current, i.e. the session outlived the drag; \"session_ended\" means none was left, i.e. the end of the drag never reached the tab strip. The \"_after_drop\" variants mean the drag was dropped and the drop animation is what failed to leave moving-tab mode, so they measure a Firefox shortcoming while the others measure a platform one.\n",
+            "description": "Records how often the tab strip had to recover from a tab drag that never ended, leaving the toolbar unusable. \"session_live\" means a drag session was still current, i.e. the session outlived the drag; \"session_ended\" means none was left, i.e. the end of the drag never reached the tab strip.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -25685,7 +25733,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Whether or not the metadata for a variable-length prefix set loaded from disk is corrupted (true = file corrupted).\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram URLCLASSIFIER_VLPS_METADATA_CORRUPT.\n",
+            "description": "Whether or not the metadata for a variable-length prefix set loaded from disk is corrupted (true = file corrupted).\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -28710,7 +28758,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Server HTTP status code from remote SafeBrowsing gethash lookups. (0=1xx, 1=200, 2=2xx, 3=204, 4=3xx, 5=400, 6=4xx, 7=403, 8=404, 9=408, 10=413, 11=5xx, 12=502|504|511, 13=503, 14=505, 15=Other). Keyed by provider\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram URLCLASSIFIER_COMPLETE_REMOTE_STATUS2.\n",
+            "description": "Server HTTP status code from remote SafeBrowsing gethash lookups. (0=1xx, 1=200, 2=2xx, 3=204, 4=3xx, 5=400, 6=4xx, 7=403, 8=404, 9=408, 10=413, 11=5xx, 12=502|504|511, 13=503, 14=505, 15=Other). Keyed by provider\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -28752,7 +28800,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Whether or not an error was encountered while processing a Safe Browsing update (0 = success, 1 = unspecified error, 2 = addition of an already existing prefix, 3 = parser got into an infinite loop, 4 = removal index out of bounds, 5 = checksum mismatch, 6 = missing checksum, 7 = update while shutdown, 8 = cannot find table, 9 = build prefix failure, 10 = write disk failure, 11 = protocol parser error). Keyed by provider\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram URLCLASSIFIER_UPDATE_ERROR.\n",
+            "description": "Whether or not an error was encountered while processing a Safe Browsing update (0 = success, 1 = unspecified error, 2 = addition of an already existing prefix, 3 = parser got into an infinite loop, 4 = removal index out of bounds, 5 = checksum mismatch, 6 = missing checksum, 7 = update while shutdown, 8 = cannot find table, 9 = build prefix failure, 10 = write disk failure, 11 = protocol parser error). Keyed by provider\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -28794,7 +28842,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Network error from SafeBrowsing database updates. (0=sucess, 1=unknown error, 2=already connected, 3=not connected, 4=connection refused,5=net timeout, 6=offline, 7=port access not allowed, 8=net reset, 9=net interrupt, 10=proxy connection refused,11=partial transfer,12=inadequate security,13=unknown host,14=dns lookup queue full,15=unknown proxy host\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram URLCLASSIFIER_UPDATE_REMOTE_NETWORK_ERROR.\n",
+            "description": "Network error from SafeBrowsing database updates. (0=sucess, 1=unknown error, 2=already connected, 3=not connected, 4=connection refused,5=net timeout, 6=offline, 7=port access not allowed, 8=net reset, 9=net interrupt, 10=proxy connection refused,11=partial transfer,12=inadequate security,13=unknown host,14=dns lookup queue full,15=unknown proxy host\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -28836,7 +28884,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Server HTTP status code from SafeBrowsing database updates. (0=1xx, 1=200, 2=2xx, 3=204, 4=3xx, 5=400, 6=4xx, 7=403, 8=404, 9=408, 10=413, 11=5xx, 12=502|504|511, 13=503, 14=505, 15=Other). Keyed by provider\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram URLCLASSIFIER_UPDATE_REMOTE_STATUS2.\n",
+            "description": "Server HTTP status code from SafeBrowsing database updates. (0=1xx, 1=200, 2=2xx, 3=204, 4=3xx, 5=400, 6=4xx, 7=403, 8=404, 9=408, 10=413, 11=5xx, 12=502|504|511, 13=503, 14=505, 15=Other). Keyed by provider\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -28878,7 +28926,7 @@
             "type": "RECORD"
           },
           {
-            "description": " Whether or not an update timed out (0 = no timeout, 1 = server respond\ntimeout, 2 = overall timeout). Keyed by provider This metric was generated to correspond to the Legacy Telemetry enumerated histogram URLCLASSIFIER_UPDATE_TIMEOUT.\n",
+            "description": " Whether or not an update timed out (0 = no timeout, 1 = server respond\ntimeout, 2 = overall timeout). Keyed by provider\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -33982,7 +34030,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time spent per classifier update (ms), keyed by the name of the provider.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram URLCLASSIFIER_CL_KEYED_UPDATE_TIME.\n",
+            "description": "Time spent per classifier update (ms), keyed by the name of the provider.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -34024,7 +34072,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Server response time to getHash request (ms). Keyed by provider\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram URLCLASSIFIER_COMPLETE_SERVER_RESPONSE_TIME.\n",
+            "description": "Server response time to getHash request (ms). Keyed by provider\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -34066,7 +34114,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Server response time to update request (ms). Keyed by provider\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram URLCLASSIFIER_UPDATE_SERVER_RESPONSE_TIME.\n",
+            "description": "Server response time to update request (ms). Keyed by provider\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -36535,13 +36583,13 @@
             "type": "INT64"
           },
           {
-            "description": "The count of maximum number of tabs open during a subsession, across all windows, including tabs in private windows and restored at startup. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.max_concurrent_tab_count.\n",
+            "description": "The count of maximum number of tabs open, across all windows, including tabs in private windows and restored at startup. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.max_concurrent_tab_count.\n",
             "mode": "NULLABLE",
             "name": "browser_engagement_max_concurrent_tab_count",
             "type": "INT64"
           },
           {
-            "description": "The count of maximum number of pinned tabs open during a subsession. This includes private windows and the ones opened when starting the browser. Starting Firefox 85 this includes number of restored pinned tabs at startup. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.max_concurrent_tab_pinned_count.\n",
+            "description": "The count of maximum number of pinned tabs open. This includes private windows and the ones opened when starting the browser. Starting Firefox 85 this includes number of restored pinned tabs at startup. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.max_concurrent_tab_pinned_count.\n",
             "mode": "NULLABLE",
             "name": "browser_engagement_max_concurrent_tab_pinned_count",
             "type": "INT64"
@@ -36559,7 +36607,7 @@
             "type": "INT64"
           },
           {
-            "description": "The count of maximum number of browser windows open during a subsession. This includes private windows and the ones opened when starting the browser. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.max_concurrent_window_count.\n",
+            "description": "The count of maximum number of browser windows open. This includes private windows and the ones opened when starting the browser. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.max_concurrent_window_count.\n",
             "mode": "NULLABLE",
             "name": "browser_engagement_max_concurrent_window_count",
             "type": "INT64"
@@ -36583,7 +36631,7 @@
             "type": "INT64"
           },
           {
-            "description": "The count of the unique domains visited in a subsession, after the session has been restored. Subdomains under eTLD are aggregated after the first level (i.e. test.example.com and other.example.com are only counted once). This does not include background page requests and domains from embedded pages or private browsing. The count is limited to 100 unique domains. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.unique_domains_count.\n",
+            "description": "The count of the unique domains visited, after the session has been restored. Subdomains under eTLD are aggregated after the first level (i.e. test.example.com and other.example.com are only counted once). This does not include background page requests and domains from embedded pages or private browsing. The count is limited to 100 unique domains. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.unique_domains_count.\n",
             "mode": "NULLABLE",
             "name": "browser_engagement_unique_domains_count",
             "type": "INT64"
@@ -36760,6 +36808,18 @@
             "description": "The number of consecutive unstable launch attempts.\n",
             "mode": "NULLABLE",
             "name": "gpu_process_unstable_launch_attempts",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of site exclusions the user has set.\n",
+            "mode": "NULLABLE",
+            "name": "ipprotection_exclusions_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of site inclusions the user has set.\n",
+            "mode": "NULLABLE",
+            "name": "ipprotection_inclusions_count",
             "type": "INT64"
           },
           {
@@ -38401,7 +38461,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Server response time to remote lookup request (ms).\nThis metric was generated to correspond to the Legacy Telemetry linear histogram APPLICATION_REPUTATION_REMOTE_LOOKUP_RESPONSE_TIME.\n",
+            "description": "Server response time to remote lookup request (ms).\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -39301,7 +39361,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time spent per daily cookie purging activity, in milliseconds. This measures the time for all batch iterations of that day.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram COOKIE_PURGING_DURATION_MS.\n",
+            "description": "Time spent per daily cookie purging activity, in milliseconds. This measures the time for all batch iterations of that day.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -39331,7 +39391,7 @@
             "type": "RECORD"
           },
           {
-            "description": "How much time (in hours) passed between the current cookie purging activity and the one before that (cookie purging is run on 'daily idle')\nThis metric was generated to correspond to the Legacy Telemetry linear histogram COOKIE_PURGING_INTERVAL_HOURS.\n",
+            "description": "How much time (in hours) passed between the current cookie purging activity and the one before that (cookie purging is run on 'daily idle')\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -39361,7 +39421,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The time remaining until expiration per user interaction permissions of trackers at the time of purging, in days (one record per tracker, not averaged).\nThis metric was generated to correspond to the Legacy Telemetry linear histogram COOKIE_PURGING_TRACKERS_USER_INTERACTION_REMAINING_DAYS.\n",
+            "description": "The time remaining until expiration per user interaction permissions of trackers at the time of purging, in days (one record per tracker, not averaged).\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -50101,7 +50161,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time spent per AsyncClassifyLocalWithTables (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram URLCLASSIFIER_ASYNC_CLASSIFYLOCAL_TIME.\n",
+            "description": "Time spent per AsyncClassifyLocalWithTables (ms)\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -50191,7 +50251,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time spent per classifier lookup (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram URLCLASSIFIER_CL_CHECK_TIME.\n",
+            "description": "Time spent per classifier lookup (ms)\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -50221,7 +50281,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time spent per dbservice lookup (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram URLCLASSIFIER_LOOKUP_TIME_2.\n",
+            "description": "Time spent per dbservice lookup (ms)\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -50251,7 +50311,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time spent per dbservice shutdown (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram URLCLASSIFIER_SHUTDOWN_TIME.\n",
+            "description": "Time spent per dbservice shutdown (ms)\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -50281,7 +50341,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time spent constructing Variable-Length PrefixSet from file (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram URLCLASSIFIER_VLPS_CONSTRUCT_TIME.\n",
+            "description": "Time spent constructing Variable-Length PrefixSet from file (ms)\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -50311,7 +50371,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time spent fallocating Variable-Length PrefixSet (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram URLCLASSIFIER_VLPS_FALLOCATE_TIME.\n",
+            "description": "Time spent fallocating Variable-Length PrefixSet (ms)\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -50341,7 +50401,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Time spent loading Variable-Length PrefixSet from file (ms)\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram URLCLASSIFIER_VLPS_FILELOAD_TIME.\n",
+            "description": "Time spent loading Variable-Length PrefixSet from file (ms)\n",
             "fields": [
               {
                 "mode": "NULLABLE",

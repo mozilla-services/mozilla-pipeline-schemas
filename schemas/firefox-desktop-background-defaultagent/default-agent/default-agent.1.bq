@@ -401,6 +401,24 @@
       {
         "fields": [
           {
+            "description": "Whether this installation was installed from an MSI package. Only recorded when `install.installer_type` is \"full\".\n",
+            "mode": "NULLABLE",
+            "name": "install_from_msi",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether this installation is a packaged (MSIX) install, such as one from the Microsoft Store. The same value as `system.has_win_package_id` in the main browser's pings.\n",
+            "mode": "NULLABLE",
+            "name": "install_has_win_package_id",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether this installation was a silent install, as used for managed deployments. Only recorded when `install.installer_type` is \"full\".\n",
+            "mode": "NULLABLE",
+            "name": "install_silent",
+            "type": "BOOL"
+          },
+          {
             "description": "Whether a notification was shown or not. Possible value include \"shown\" and \"error\".\n",
             "mode": "NULLABLE",
             "name": "notification_show_success",
@@ -515,6 +533,18 @@
             "description": "An experimentation identifier derived and provided by the application\nfor the purpose of experimentation enrollment.\n",
             "mode": "NULLABLE",
             "name": "glean_client_annotation_experimentation_id",
+            "type": "STRING"
+          },
+          {
+            "description": "How this installation was installed, with the same values as `installation.first_seen.installer_type` in the main browser's pings: * \"stub\" for the stub installer * \"full\" for the full installer, including MSI installs * \"msix\" for MSIX packages\nNot recorded if it could not be determined, for example because `installation_telemetry.json` is missing from the installation directory.\n",
+            "mode": "NULLABLE",
+            "name": "install_installer_type",
+            "type": "STRING"
+          },
+          {
+            "description": "The Windows package family name of this installation, which identifies the MSIX package it came from, for example the Microsoft Store package. Only recorded for packages published by Mozilla, that is, family names starting with \"Mozilla.\" or \"MozillaCorporation.\", as for `system.win_package_family_name` in the main browser's pings.\n",
+            "mode": "NULLABLE",
+            "name": "install_win_package_family_name",
             "type": "STRING"
           },
           {

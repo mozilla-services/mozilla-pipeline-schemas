@@ -141,6 +141,7 @@ schemas
 |   |-- referrals
 |   |-- search-with
 |   |-- serp-categorization
+|   |-- slow-sql
 |   |-- spoc
 |   |-- sync
 |   |-- temp-fog-initial-state
@@ -197,6 +198,7 @@ schemas
 |   |-- pageload-base-domain
 |   |-- pageload-domain
 |   |-- prefs-file-invalid
+|   |-- slow-sql
 |   |-- temp-fog-initial-state
 |   |-- traces
 |   |-- update
@@ -247,6 +249,7 @@ schemas
 |   |-- referrals
 |   |-- search-with
 |   |-- serp-categorization
+|   |-- slow-sql
 |   |-- sync
 |   |-- temp-fog-initial-state
 |   |-- third-party-modules
@@ -455,6 +458,7 @@ schemas
 |   |-- privacy-report-notification
 |   |-- referrals
 |   |-- rust-component-errors
+|   |-- slow-sql
 |   |-- spoc
 |   |-- startup-timeline
 |   |-- sync
@@ -514,6 +518,7 @@ schemas
 |   |-- privacy-report-notification
 |   |-- referrals
 |   |-- rust-component-errors
+|   |-- slow-sql
 |   |-- spoc
 |   |-- startup-timeline
 |   |-- sync
@@ -573,6 +578,7 @@ schemas
 |   |-- privacy-report-notification
 |   |-- referrals
 |   |-- rust-component-errors
+|   |-- slow-sql
 |   |-- spoc
 |   |-- startup-timeline
 |   |-- sync
@@ -632,6 +638,7 @@ schemas
 |   |-- privacy-report-notification
 |   |-- referrals
 |   |-- rust-component-errors
+|   |-- slow-sql
 |   |-- spoc
 |   |-- startup-timeline
 |   |-- sync
@@ -691,6 +698,7 @@ schemas
 |   |-- privacy-report-notification
 |   |-- referrals
 |   |-- rust-component-errors
+|   |-- slow-sql
 |   |-- spoc
 |   |-- startup-timeline
 |   |-- sync
@@ -745,6 +753,7 @@ schemas
 |   |-- pageload-base-domain
 |   |-- pageload-domain
 |   |-- prefs-file-invalid
+|   |-- slow-sql
 |   |-- temp-fog-initial-state
 |   |-- traces
 |   |-- url-classifier-harmful-addon
@@ -777,6 +786,7 @@ schemas
 |   |-- pageload-base-domain
 |   |-- pageload-domain
 |   |-- prefs-file-invalid
+|   |-- slow-sql
 |   |-- temp-fog-initial-state
 |   |-- traces
 |   |-- url-classifier-harmful-addon
@@ -809,6 +819,7 @@ schemas
 |   |-- pageload-base-domain
 |   |-- pageload-domain
 |   |-- prefs-file-invalid
+|   |-- slow-sql
 |   |-- temp-fog-initial-state
 |   |-- traces
 |   |-- url-classifier-harmful-addon
@@ -989,6 +1000,7 @@ schemas
 |   |-- pageload-base-domain
 |   |-- pageload-domain
 |   |-- prefs-file-invalid
+|   |-- slow-sql
 |   |-- temp-fog-initial-state
 |   |-- traces
 |   |-- url-classifier-harmful-addon
@@ -1063,6 +1075,7 @@ schemas
 |   |-- pageload-domain
 |   |-- prefs-file-invalid
 |   |-- pseudo-main
+|   |-- slow-sql
 |   |-- spoc
 |   |-- temp-fog-initial-state
 |   |-- third-party-modules
@@ -1187,6 +1200,7 @@ schemas
 |   |-- pageload-base-domain
 |   |-- pageload-domain
 |   |-- prefs-file-invalid
+|   |-- slow-sql
 |   |-- temp-fog-initial-state
 |   |-- traces
 |   |-- url-classifier-harmful-addon
@@ -1206,6 +1220,6 @@ schemas
 `-- webpagetest
     `-- webpagetest-run
 
-1197 directories
+1211 directories
 ```
 
