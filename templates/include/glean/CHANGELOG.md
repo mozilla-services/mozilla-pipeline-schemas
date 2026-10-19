@@ -108,3 +108,5 @@
 - Session metadata has been added for Glean events, in a `session` field on each event.
 
 - `session_sample_rate` setting added to `ping_info.server_knobs_config`.
+
+- `events_ping_acceleration_factor` setting added to `ping_info.server_knobs_config`.
