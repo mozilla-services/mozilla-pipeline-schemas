@@ -439,6 +439,31 @@
       {
         "fields": [
           {
+            "description": "Relevance scores sent by the client in the ad request if they exist. Scores are computed on the client with differential privacy and sent over OHTTP, and requests that include scores never include a client identifier. Each value is the decimal score, between 0 and 1, multiplied by 10,000 so that it can be stored as an integer with 4 retained decimal places.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "ad_client_relevance",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "labeled_quantity",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
             "description": "Number of ads filtered by the server, from applying a blocklist for the user, for a placement\n",
             "mode": "NULLABLE",
             "name": "technical_operations_count_filtered",
