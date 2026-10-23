@@ -851,6 +851,18 @@
             "type": "BOOL"
           },
           {
+            "description": "Set to true when a document or frame load served by Akamai is a 403 \"Access Denied\" page from the Akamai WAF (body references errors.edgesuite.net).\n",
+            "mode": "NULLABLE",
+            "name": "network_akamai_waf_blocked",
+            "type": "BOOL"
+          },
+          {
+            "description": "Set to true when a subresource load served by Akamai is a 403 \"Access Denied\" page from the Akamai WAF (body references errors.edgesuite.net).\n",
+            "mode": "NULLABLE",
+            "name": "network_akamai_waf_blocked_subresource",
+            "type": "BOOL"
+          },
+          {
             "description": "True if the Apple fast datapath (sendmsg_x/recvmsg_x) is being used for UDP I/O. This requires the APIs to be available and the probe to succeed. Only recorded on Apple platforms.\n",
             "mode": "NULLABLE",
             "name": "network_apple_fast_datapath_used",
@@ -21533,6 +21545,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Counts document and frame loads served by Akamai, labeled by whether the response was the Akamai WAF \"Access Denied\" page (403 with a body referencing errors.edgesuite.net), a different 403 response, or any other response.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "network_akamai_document_loads",
+            "type": "RECORD"
+          },
+          {
             "description": "Counts the number of times we encountered a mismatched ALPN token and needed to reset the connection. Keyed by the negotiated NPN.\n",
             "fields": [
               {
@@ -24068,6 +24098,24 @@
             ],
             "mode": "REPEATED",
             "name": "sap_impression_counts_contextmenu_visual",
+            "type": "RECORD"
+          },
+          {
+            "description": "Count of impressions of the search action in the text selection menu. The\ncounter's label is the engine's identifier if it's an app-provided\nengine. Otherwise the label is \"none\".\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "sap_impression_counts_text_selection",
             "type": "RECORD"
           },
           {

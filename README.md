@@ -847,6 +847,7 @@ schemas
 |   |-- nimbus-targeting-context
 |   |-- onboarding
 |   |-- onboarding-opt-out
+|   |-- rust-component-errors
 |   |-- sync
 |   |-- tabs-sync
 |   |-- temp-baseline
@@ -881,6 +882,7 @@ schemas
 |   |-- nimbus-targeting-context
 |   |-- onboarding
 |   |-- onboarding-opt-out
+|   |-- rust-component-errors
 |   |-- sync
 |   |-- tabs-sync
 |   |-- temp-baseline
@@ -915,6 +917,7 @@ schemas
 |   |-- nimbus-targeting-context
 |   |-- onboarding
 |   |-- onboarding-opt-out
+|   |-- rust-component-errors
 |   |-- sync
 |   |-- tabs-sync
 |   |-- temp-baseline
@@ -1220,6 +1223,6 @@ schemas
 `-- webpagetest
     `-- webpagetest-run
 
-1211 directories
+1214 directories
 ```
 
