@@ -450,6 +450,12 @@
       {
         "fields": [
           {
+            "description": "Time, in seconds since the Epoch, at which the Windows Shell call currently running on the Jump List thread was started. It is cleared when the call returns, so its presence in a crash report means the call never returned, and CrashTime minus this value is how long it had been blocked. If calls from the normal and private-browsing builders overlap, which in practice only happens at startup, this reflects the most recent one.",
+            "mode": "NULLABLE",
+            "name": "crash_jump_list_shell_call_start",
+            "type": "STRING"
+          },
+          {
             "description": "Crash time in seconds since the Epoch.",
             "mode": "NULLABLE",
             "name": "crash_time",
