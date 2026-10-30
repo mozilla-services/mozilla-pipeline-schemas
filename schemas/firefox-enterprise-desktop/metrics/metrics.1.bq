@@ -34228,6 +34228,48 @@
             "type": "RECORD"
           },
           {
+            "description": "Wall-clock time taken by each individual Windows Shell COM call made by the Jump List builder, labeled by which call it was. Only calls that returned are recorded; a call that never returns leaves the JumpListShellCallStart crash annotation set instead.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "widget_jump_list_shell_call",
+            "type": "RECORD"
+          },
+          {
             "description": "Tracking how long a Worker thread is blocked when a sync operation is executed on the main-thread.\n",
             "fields": [
               {
@@ -36832,6 +36874,18 @@
             "description": "Count at store time how many credit card autofill profiles the user has.\n",
             "mode": "NULLABLE",
             "name": "formautofill_creditcards_autofill_profiles_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of credit cards saved in the store serving them. Read when the store loads at startup and after every change, so it is sent on every metrics ping, unlike autofill_profiles_count, which is only set when a card is added or edited.\n",
+            "mode": "NULLABLE",
+            "name": "formautofill_creditcards_saved_count",
+            "type": "INT64"
+          },
+          {
+            "description": "The number of saved credit cards that have a security code (CVV) saved. Read and sent like saved_count. Reports only the count, never the code or its length.\n",
+            "mode": "NULLABLE",
+            "name": "formautofill_creditcards_saved_cvv_count",
             "type": "INT64"
           },
           {
