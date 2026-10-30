@@ -1,3 +1,18 @@
+# Build the ingestion-sink jars from gcp-ingestion source. `mps bigquery transform`
+# and its tests load them through jnius. Jars are platform independent, so this
+# stage runs natively instead of under amd64 emulation.
+FROM --platform=$BUILDPLATFORM maven:3-eclipse-temurin-11 AS ingestion-sink
+ARG INGESTION_REF=main
+WORKDIR /src
+RUN git init -q && \
+    git remote add origin https://github.com/mozilla/gcp-ingestion.git && \
+    git fetch -q --depth 1 origin "$INGESTION_REF" && \
+    git checkout -q FETCH_HEAD
+WORKDIR /src/ingestion-sink
+RUN mvn -q package -DskipTests -Dspotless.check.skip=true && \
+    mkdir /target && \
+    cp -r target/*.jar target/*.lib /target/
+
 # --platform=linux/amd64 added to prevent pulling ARM images when run on Apple Silicon
 FROM --platform=linux/amd64 python:3.11-slim-bookworm
 LABEL maintainer="Mozilla Data Platform"
@@ -59,7 +74,7 @@ RUN git config --global user.name "Mozilla Pipeline Schemas"
 
 WORKDIR /app
 
-COPY --from=mozilla/ingestion-sink:latest /app/ingestion-sink/target /app/target
+COPY --from=ingestion-sink /target /app/target
 
 # Install python dependencies
 COPY requirements.txt requirements-dev.txt ./
