@@ -5,7 +5,9 @@
 set -ex
 cd "$(dirname "$0")/.."
 
-image=mozilla/ingestion-sink:latest
+# build the ingestion-sink jars from source using the stage in the Dockerfile
+image=mps-ingestion-sink:latest
+docker build --target ingestion-sink -t $image .
 
 # https://stackoverflow.com/a/31316636
 container_id=$(docker create $image)
@@ -13,7 +15,7 @@ container_id=$(docker create $image)
 # default behavior is inconsistent when copying a directory from the container
 # https://docs.docker.com/engine/reference/commandline/cp/
 mkdir -p target
-docker cp "$container_id":/app/ingestion-sink/target ./.
+docker cp "$container_id":/target ./.
 docker rm -v "$container_id"
 
 # now fetch dependencies from maven
