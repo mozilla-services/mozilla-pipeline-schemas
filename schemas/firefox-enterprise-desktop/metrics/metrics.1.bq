@@ -683,6 +683,12 @@
             "type": "BOOL"
           },
           {
+            "description": "Whether saving security codes (CVV) is turned on. Set at startup, so it is sent on every metrics ping. Only set when security codes are supported.\n",
+            "mode": "NULLABLE",
+            "name": "formautofill_creditcards_cvv_saving_enabled",
+            "type": "BOOL"
+          },
+          {
             "description": "Check at startup whether OS Authentication has been enabled for credit cards.\n",
             "mode": "NULLABLE",
             "name": "formautofill_os_auth_enabled",
@@ -21593,6 +21599,24 @@
             "type": "RECORD"
           },
           {
+            "description": "Outcome of the Apple fast datapath (sendmsg_x/recvmsg_x) probe at startup. Only recorded on Apple platforms.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "network_apple_fast_datapath_probe",
+            "type": "RECORD"
+          },
+          {
             "description": "Collect whether the resource is suspended by back pressure. And split by local-ness.\n",
             "fields": [
               {
@@ -28197,6 +28221,48 @@
             ],
             "mode": "REPEATED",
             "name": "netwerk_happy_eyeballs_dns_resolution_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Happy Eyeballs: time in milliseconds from the last positive DNS answer to the first connection attempt of a single algorithm run, i.e. the time spent waiting after happy_eyeballs_dns_answer_spread ends. Recorded once per run.\nLabels describe what ended the wait: - no_wait: No algorithmic wait, or gap below 1 ms; may include processing delay. - address_negative: Negative preferred-family answer ended the wait. - https_negative: Negative HTTPS answer ended the wait. - address_timeout: Timer expired awaiting the preferred address family. - https_timeout: Timer expired awaiting HTTPS. - both_timeout: Timer expired awaiting both.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "netwerk_happy_eyeballs_last_answer_to_attempt",
             "type": "RECORD"
           },
           {

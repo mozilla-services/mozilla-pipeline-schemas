@@ -401,6 +401,12 @@
       {
         "fields": [
           {
+            "description": "The date (YYYY-MM-DD, local time) the app was last opened before the\ncurrent install. The stored date is updated on the first app open of each\napp process. Not set on the first install. Recorded once per\ninstall.\n",
+            "mode": "NULLABLE",
+            "name": "installation_last_seen_date",
+            "type": "STRING"
+          },
+          {
             "description": "The Glean generated date and time of the installation. This is\nunique per app install, though the rest of the data in this\nping is from Adjust and will remain static across installs.\n",
             "mode": "NULLABLE",
             "name": "installation_timestamp",
@@ -546,6 +552,19 @@
         ],
         "mode": "REPEATED",
         "name": "labeled_rate",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "The number of times the app has been installed on this device,\nincluding the current install, across reinstalls. Recorded per install.\n",
+            "mode": "NULLABLE",
+            "name": "installation_install_counter",
+            "type": "INT64"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "quantity",
         "type": "RECORD"
       },
       {
