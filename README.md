@@ -841,6 +841,7 @@ schemas
 |   |-- fx-suggest
 |   |-- health
 |   |-- history-sync
+|   |-- installation
 |   |-- logins-sync
 |   |-- metrics
 |   |-- nimbus
@@ -876,6 +877,7 @@ schemas
 |   |-- fx-suggest
 |   |-- health
 |   |-- history-sync
+|   |-- installation
 |   |-- logins-sync
 |   |-- metrics
 |   |-- nimbus
@@ -911,6 +913,7 @@ schemas
 |   |-- fx-suggest
 |   |-- health
 |   |-- history-sync
+|   |-- installation
 |   |-- logins-sync
 |   |-- metrics
 |   |-- nimbus
@@ -1223,6 +1226,6 @@ schemas
 `-- webpagetest
     `-- webpagetest-run
 
-1214 directories
+1217 directories
 ```
 
