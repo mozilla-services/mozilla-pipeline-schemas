@@ -1,6 +1,8 @@
 # Version 1
 
-- Glean label `maxLength` increased from 71 to 111 
+- `client_info.first_run_date` is now an optional field ([bug 2065466](https://bugzilla.mozilla.org/show_bug.cgi?id=2065466))
+
+- Glean label `maxLength` increased from 71 to 111
 
 - New client_info sections `attribution` and `distribution`, and their fields [Bug 1955428](https://bugzilla.mozilla.org/show_bug.cgi?id=1955428)
 
