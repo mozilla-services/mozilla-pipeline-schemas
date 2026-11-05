@@ -401,6 +401,18 @@
       {
         "fields": [
           {
+            "description": "Whether this app was kept in macOS Dock on startup This metric was generated to correspond to the Legacy Telemetry scalar os.environment.is_kept_in_dock.\n",
+            "mode": "NULLABLE",
+            "name": "os_environment_is_kept_in_dock",
+            "type": "BOOL"
+          },
+          {
+            "description": "Whether the non-Private Browsing version of this app was pinned to taskbar on startup This metric was generated to correspond to the Legacy Telemetry scalar os.environment.is_taskbar_pinned.\n",
+            "mode": "NULLABLE",
+            "name": "os_environment_is_taskbar_pinned",
+            "type": "BOOL"
+          },
+          {
             "description": "Attempt to determine if the user is an enterprise user based on various signals. This metric was generated to correspond to the Legacy Telemetry scalar policies.is_enterprise.\n",
             "mode": "NULLABLE",
             "name": "policies_is_enterprise",
@@ -454,6 +466,30 @@
             "mode": "NULLABLE",
             "name": "browser_engagement_uri_count",
             "type": "INT64"
+          },
+          {
+            "description": "How many times PDF Viewer was used.\n",
+            "mode": "NULLABLE",
+            "name": "pdfjs_used",
+            "type": "INT64"
+          },
+          {
+            "description": "Total CPU time used by all processes in ms.\n",
+            "mode": "NULLABLE",
+            "name": "power_total_cpu_time_ms",
+            "type": "INT64"
+          },
+          {
+            "description": "Total GPU time used by all processes in ms.\n",
+            "mode": "NULLABLE",
+            "name": "power_total_gpu_time_ms",
+            "type": "INT64"
+          },
+          {
+            "description": "How many times threads woke up and could have woken up a CPU core.\n",
+            "mode": "NULLABLE",
+            "name": "power_total_thread_wakeups",
+            "type": "INT64"
           }
         ],
         "mode": "NULLABLE",
@@ -499,6 +535,67 @@
       },
       {
         "fields": [
+          {
+            "description": "Records whether Firefox was the default handler for particular file types or protocols.  The result is split into keys which represent the file extension or scheme: currently, a subset of the file types Firefox registers to handle, namely \".pdf\" and \"mailto\" as protocol. In the future, more file types may be recorded. This metric was generated to correspond to the Legacy Telemetry scalar os.environment.is_default_handler.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "BOOL"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "os_environment_is_default_handler",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "labeled_boolean",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "Which revocation checking mechanisms were used in a TLS handshake?\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "cert_verifier_cert_revocation_mechanisms",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of times different CRLite statuses were returned.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "cert_verifier_crlite_status",
+            "type": "RECORD"
+          },
           {
             "description": "Counts the number of times a metric was set with an invalid label.\nThe labels are the `category.name` identifier of the metric.\n",
             "fields": [
@@ -569,6 +666,132 @@
             ],
             "mode": "REPEATED",
             "name": "glean_error_invalid_value",
+            "type": "RECORD"
+          },
+          {
+            "description": "Records counts for when Firefox was invoked (i.e., was already running and was not launched) to handle a file type or protocol with `-osint -url ...`.  The result is split into keys which represent the file extension: currently, the set of file types Firefox registers to handle, namely \".avif\", \".htm\", \".html\", \".pdf\", \".shtml\", \".xht\", \".xhtml\", \".svg\", \".webp\", and the set of protocol schemes that Firefox registers to handle, namely \"about\", \"http\", \"https\", \"mailto\".  If Firefox was invoked to handle a file type or protocol it does not register to handle by default, the count is recorded as \".<other extension>\" or \"<other protocol>\", respectively (neither of which are valid extension or protocol identifiers). This metric was generated to correspond to the Legacy Telemetry scalar os.environment.invoked_to_handle.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "os_environment_invoked_to_handle",
+            "type": "RECORD"
+          },
+          {
+            "description": "Records counts for when Firefox was launched afresh (i.e., was not already running) to handle a file type or protocol with `-osint -url ...`.  The result is split into keys which represent the file extension: currently, the set of file types Firefox registers to handle, namely \".avif\", \".htm\", \".html\", \".pdf\", \".shtml\", \".xht\", \".xhtml\", \".svg\", \".webp\", and the set of protocol schemes that Firefox registers to handle, namely \"about\", \"http\", \"https\", \"mailto\".  If Firefox was launched to handle a file type or protocol it does not register to handle by default, the count is recorded as \".<other extension>\" or \"<other protocol>\", respectively (neither of which are valid extension or protocol identifiers). This metric was generated to correspond to the Legacy Telemetry scalar os.environment.launched_to_handle.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "os_environment_launched_to_handle",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of times some PDF editing features are used.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "pdfjs_editing",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of times a given kind is used to highlight.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "pdfjs_editing_highlight_kind",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of times the user performs a page organization action (copy, cut, delete, merge, move, paste), exports selected pages, or saves a PDF modified through page organization.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "pdfjs_organize_action",
+            "type": "RECORD"
+          },
+          {
+            "description": "Counts the number of times some PDF editing features are used.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "pdfjs_stamp",
+            "type": "RECORD"
+          },
+          {
+            "description": "A keyed uint recording how many times the user entered a particular\nsearch mode by unified search button.\nThis metric was generated to correspond to the Legacy Telemetry\nscalar urlbar.searchmode.searchbutton.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "urlbar_searchmode_searchbutton",
             "type": "RECORD"
           }
         ],
@@ -677,6 +900,19 @@
       {
         "fields": [
           {
+            "description": "The currently active theme.\n\nSome of the addon fields are not available during startup. The fields\nthat will always be present are id, version, updateDay, and scope. All\nthe other fields become present shortly after the\n`sessionstore-windows-restored` observer topic is notified.\n\nThis metric is an echo of the Legacy Telemetry Environment field\naddons.theme. Like its counterpart, it will only have data in Firefox\nDesktop and at times and on platforms where the environment would have\nvalues.\n\nNOTE: this metric is available in both `metrics` and `addons` pings. However\nthe `addons` ping is the preferred source of data for add-ons related analyses,\nwhereas the `metrics` ping is better suited for analyses that correlates other\nmetrics with the add-ons listed in the `theme` metric.\n",
+            "mode": "NULLABLE",
+            "name": "addons_theme",
+            "type": "JSON"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "object",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
             "description": "The count of maximum number of tabs open, across all windows, including tabs in private windows and restored at startup. This metric was generated to correspond to the Legacy Telemetry scalar browser.engagement.max_concurrent_tab_count.\n",
             "mode": "NULLABLE",
             "name": "browser_engagement_max_concurrent_tab_count",
@@ -693,6 +929,18 @@
             "description": "An experimentation identifier derived and provided by the application\nfor the purpose of experimentation enrollment.\n",
             "mode": "NULLABLE",
             "name": "glean_client_annotation_experimentation_id",
+            "type": "STRING"
+          },
+          {
+            "description": "Records how Firefox was started on Windows. Currently will be one of \"Desktop\", \"DesktopPrivate\", \"StartMenu\" (including pins), \"StartMenuPrivate\", \"Taskbar\", \"TaskbarPrivate\", \"OtherShortcut\", or \"Other\" This metric was generated to correspond to the Legacy Telemetry scalar os.environment.launch_method.\n",
+            "mode": "NULLABLE",
+            "name": "os_environment_launch_method",
+            "type": "STRING"
+          },
+          {
+            "description": "The state of the launch-on-login setting at startup. One of: \"enabled\" (launch on login is active), \"disabled\" (not enabled by the user), \"disabled_by_settings\" (blocked by Windows Settings or policy), \"not_supported\" (feature unavailable on this platform), or \"error\" (failed to determine state).\n",
+            "mode": "NULLABLE",
+            "name": "os_environment_launch_on_login_state",
             "type": "STRING"
           },
           {
@@ -798,6 +1046,12 @@
             "description": "The profile_group_id according to Telemetry.\nMight not always have a value due to being too early for it to have\nloaded.\nDoes not need to be sent in the Glean \"deletion-request\" ping.\n",
             "mode": "NULLABLE",
             "name": "legacy_telemetry_profile_group_id",
+            "type": "STRING"
+          },
+          {
+            "description": "Legacy Telemetry's session identifier.\nSet near startup and stable until shutdown.\n",
+            "mode": "NULLABLE",
+            "name": "legacy_telemetry_session_id",
             "type": "STRING"
           }
         ],
