@@ -1,7 +1,7 @@
 # Build the ingestion-sink jars from gcp-ingestion source. `mps bigquery transform`
 # and its tests load them through jnius. Jars are platform independent, so this
 # stage runs natively instead of under amd64 emulation.
-FROM --platform=$BUILDPLATFORM maven:3-eclipse-temurin-11 AS ingestion-sink
+FROM --platform=$BUILDPLATFORM maven:3.10-eclipse-temurin-17 AS ingestion-sink
 ARG INGESTION_REF=main
 WORKDIR /src
 RUN git init -q && \
