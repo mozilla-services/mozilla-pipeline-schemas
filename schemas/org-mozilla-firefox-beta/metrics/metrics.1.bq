@@ -30290,6 +30290,318 @@
             "type": "RECORD"
           },
           {
+            "description": "Time spent by DOMParser.parseFromString() parsing text/html, including the attempt of the fast path (nsHtml5FragmentFastPath) to parse it. Labeled like dom.fragment_parsing.inner_html. Only a random sample of the calls is timed, see dom.html_fragment_fast_path.telemetry_sample_shift.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "bucket_count",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "histogram_type",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "overflow",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "REPEATED",
+                    "name": "range",
+                    "type": "FLOAT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "time_unit",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "underflow",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dom_fragment_parsing_dom_parser",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time that the fast path (nsHtml5FragmentFastPath) spent on the input of DOMParser.parseFromString() before leaving it to the full parser, labeled like dom.fragment_parsing.inner_html_fast_path_rejected. Only a random sample of the calls is timed, see dom.html_fragment_fast_path.telemetry_sample_shift.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "bucket_count",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "histogram_type",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "overflow",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "REPEATED",
+                    "name": "range",
+                    "type": "FLOAT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "time_unit",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "underflow",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dom_fragment_parsing_dom_parser_fast_path_rejected",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time spent parsing the markup that innerHTML is set to, including the attempt of the fast path (nsHtml5FragmentFastPath) to parse it. Labeled by whether the fast path parsed it (fast), left it to the full parser (fallback) or wasn't tried (full), and by the length of the markup in UTF-16 code units. Short markup without \"<\" or \"&\", which innerHTML doesn't parse, isn't recorded. Only a random sample of the calls is timed, see dom.html_fragment_fast_path.telemetry_sample_shift.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "bucket_count",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "histogram_type",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "overflow",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "REPEATED",
+                    "name": "range",
+                    "type": "FLOAT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "time_unit",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "underflow",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dom_fragment_parsing_inner_html",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time that the innerHTML fast path (nsHtml5FragmentFastPath) spent on markup before leaving it to the full parser, labeled by the length of the markup in UTF-16 code units. Only a random sample of the calls is timed, see dom.html_fragment_fast_path.telemetry_sample_shift.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "bucket_count",
+                    "type": "INT64"
+                  },
+                  {
+                    "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                    "mode": "NULLABLE",
+                    "name": "count",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "histogram_type",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "overflow",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "REPEATED",
+                    "name": "range",
+                    "type": "FLOAT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "sum",
+                    "type": "INT64"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "time_unit",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "underflow",
+                    "type": "INT64"
+                  },
+                  {
+                    "fields": [
+                      {
+                        "mode": "NULLABLE",
+                        "name": "key",
+                        "type": "STRING"
+                      },
+                      {
+                        "mode": "NULLABLE",
+                        "name": "value",
+                        "type": "INT64"
+                      }
+                    ],
+                    "mode": "REPEATED",
+                    "name": "values",
+                    "type": "RECORD"
+                  }
+                ],
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "dom_fragment_parsing_inner_html_fast_path_rejected",
+            "type": "RECORD"
+          },
+          {
             "description": "Time from the beginning of the first slice to the end of the last slice (ms), labeled by process type.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram GC_IN_PROGRESS_MS.\n",
             "fields": [
               {
@@ -39915,6 +40227,24 @@
             ],
             "mode": "NULLABLE",
             "name": "verification_used_cert_from_nss_cert_db",
+            "type": "RECORD"
+          },
+          {
+            "description": "How many successfully-built certificate chains used a certificate from a third-party PKCS#11 module.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "denominator",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "numerator",
+                "type": "INT64"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "verification_used_cert_from_pkcs11_module",
             "type": "RECORD"
           },
           {
