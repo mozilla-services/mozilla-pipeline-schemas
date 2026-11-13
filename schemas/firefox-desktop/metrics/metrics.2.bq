@@ -14355,7 +14355,7 @@
             "type": "RECORD"
           },
           {
-            "description": "The submission status when main/plugin/content crashes are submitted. 1 is success, 0 is failure. Keyed on the CrashManager Crash.type.\nThis metric was generated to correspond to the Legacy Telemetry boolean histogram PROCESS_CRASH_SUBMIT_SUCCESS.\n",
+            "description": "The submission status when main/plugin/content crashes are submitted. 1 is success, 0 is failure. Keyed on the CrashManager Crash.type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -15132,6 +15132,36 @@
             ],
             "mode": "REPEATED",
             "name": "page_load_error",
+            "type": "RECORD"
+          },
+          {
+            "description": "Increments when a database corruption error (as defined by IsDatabaseCorruptionError) propagates during QuotaManager initialization with no recovery path, leaving all storage APIs (localStorage, IndexedDB, Cache API) broken until the next initialization attempt. This covers corruption that passes the initial storage.sqlite open and integrity checks but breaks subsequent operations such as schema upgrades, cache setup, or quota loading. Note in some cases we recover from corruption: this metric is here to record missing cases where we didn't recover. Labeled by the initialization context that failed and by the name of the propagated error, which tells apart real corruption (NS_ERROR_FILE_CORRUPTED) from I/O errors (NS_ERROR_STORAGE_IOERR), which are often transient. See bug 2090041.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "quotamanager_storage_init_corruption_error",
             "type": "RECORD"
           },
           {
@@ -19420,7 +19450,7 @@
             "type": "RECORD"
           },
           {
-            "description": "An attempt to submit a crash. Keyed on the CrashManager Crash.type.\nThis metric was generated to correspond to the Legacy Telemetry count histogram PROCESS_CRASH_SUBMIT_ATTEMPT.\n",
+            "description": "An attempt to submit a crash. Keyed on the CrashManager Crash.type.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -29135,7 +29165,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Error code when a Windows sandboxed process fails to launch, keyed by process type and Windows error code. See https://searchfox.org/mozilla-central/search?q=ResultCode++path%3Asandbox_types.h&redirect=true for definitions of the error codes.\nThis metric was generated to correspond to the Legacy Telemetry enumerated histogram SANDBOX_FAILED_LAUNCH_KEYED.\n",
+            "description": "Error code when a Windows sandboxed process fails to launch, keyed by process type and Windows error code. See https://searchfox.org/mozilla-central/search?q=ResultCode++path%3Asandbox_types.h&redirect=true for definitions of the error codes.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
@@ -35385,7 +35415,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Size (in bytes) of the compressed crash store JSON file.\nThis metric was generated to correspond to the Legacy Telemetry exponential histogram CRASH_STORE_COMPRESSED_BYTES.\n",
+            "description": "Size (in bytes) of the compressed crash store JSON file.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
