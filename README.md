@@ -139,6 +139,7 @@ schemas
 |   |-- quick-suggest
 |   |-- quick-suggest-deletion-request
 |   |-- referrals
+|   |-- rust-component-errors
 |   |-- search-with
 |   |-- serp-categorization
 |   |-- slow-sql
@@ -1226,6 +1227,6 @@ schemas
 `-- webpagetest
     `-- webpagetest-run
 
-1217 directories
+1218 directories
 ```
 
