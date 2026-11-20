@@ -118,6 +118,7 @@ schemas
 |   |-- messaging-system
 |   |-- metrics
 |   |-- microsurvey
+|   |-- network-health
 |   |-- new-metric-capture-emulation
 |   |-- new-profile
 |   |-- newtab
@@ -194,6 +195,7 @@ schemas
 |   |-- health
 |   |-- local-network-access
 |   |-- metrics
+|   |-- network-health
 |   |-- page-extractor
 |   |-- pageload
 |   |-- pageload-base-domain
@@ -231,6 +233,7 @@ schemas
 |   |-- messaging-system
 |   |-- metrics
 |   |-- microsurvey
+|   |-- network-health
 |   |-- new-profile
 |   |-- newtab
 |   |-- newtab-content
@@ -446,6 +449,7 @@ schemas
 |   |-- logins-sync
 |   |-- metrics
 |   |-- migration
+|   |-- network-health
 |   |-- nimbus
 |   |-- nimbus-targeting-context
 |   |-- onboarding
@@ -506,6 +510,7 @@ schemas
 |   |-- logins-sync
 |   |-- metrics
 |   |-- migration
+|   |-- network-health
 |   |-- nimbus
 |   |-- nimbus-targeting-context
 |   |-- onboarding
@@ -566,6 +571,7 @@ schemas
 |   |-- logins-sync
 |   |-- metrics
 |   |-- migration
+|   |-- network-health
 |   |-- nimbus
 |   |-- nimbus-targeting-context
 |   |-- onboarding
@@ -626,6 +632,7 @@ schemas
 |   |-- logins-sync
 |   |-- metrics
 |   |-- migration
+|   |-- network-health
 |   |-- nimbus
 |   |-- nimbus-targeting-context
 |   |-- onboarding
@@ -686,6 +693,7 @@ schemas
 |   |-- logins-sync
 |   |-- metrics
 |   |-- migration
+|   |-- network-health
 |   |-- nimbus
 |   |-- nimbus-targeting-context
 |   |-- onboarding
@@ -748,6 +756,7 @@ schemas
 |   |-- health
 |   |-- local-network-access
 |   |-- metrics
+|   |-- network-health
 |   |-- nimbus-targeting-context
 |   |-- page-extractor
 |   |-- pageload
@@ -781,6 +790,7 @@ schemas
 |   |-- health
 |   |-- local-network-access
 |   |-- metrics
+|   |-- network-health
 |   |-- nimbus-targeting-context
 |   |-- page-extractor
 |   |-- pageload
@@ -814,6 +824,7 @@ schemas
 |   |-- health
 |   |-- local-network-access
 |   |-- metrics
+|   |-- network-health
 |   |-- nimbus-targeting-context
 |   |-- page-extractor
 |   |-- pageload
@@ -1001,6 +1012,7 @@ schemas
 |   |-- health
 |   |-- local-network-access
 |   |-- metrics
+|   |-- network-health
 |   |-- nimbus-targeting-context
 |   |-- page-extractor
 |   |-- pageload
@@ -1072,6 +1084,7 @@ schemas
 |   |-- local-network-access
 |   |-- messaging-system
 |   |-- metrics
+|   |-- network-health
 |   |-- new-metric-capture-emulation
 |   |-- newtab
 |   |-- newtab-content
@@ -1202,6 +1215,7 @@ schemas
 |   |-- health
 |   |-- local-network-access
 |   |-- metrics
+|   |-- network-health
 |   |-- page-extractor
 |   |-- pageload
 |   |-- pageload-base-domain
@@ -1227,6 +1241,6 @@ schemas
 `-- webpagetest
     `-- webpagetest-run
 
-1218 directories
+1232 directories
 ```
 
