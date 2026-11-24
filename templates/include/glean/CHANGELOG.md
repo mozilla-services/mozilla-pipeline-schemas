@@ -110,3 +110,7 @@
 - `session_sample_rate` setting added to `ping_info.server_knobs_config`.
 
 - `events_ping_acceleration_factor` setting added to `ping_info.server_knobs_config`.
+
+- Flow metadata has been added for Glean events, in an optional `flows` field on each event.
+
+- `flows_enabled` setting added to `ping_info.server_knobs_config`.
