@@ -207,6 +207,13 @@ schemas
 │   ├── url-classifier-harmful-addon
 │   ├── use-counters
 │   └── user-characteristics
+├── firefox-enterprise-crashreporter
+│   ├── baseline
+│   ├── crash
+│   ├── deletion-request
+│   ├── events
+│   ├── health
+│   └── metrics
 ├── firefox-enterprise-desktop
 │   ├── addons
 │   ├── baseline
@@ -1240,6 +1247,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-1231 directories
+1238 directories
 ```
 
