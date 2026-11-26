@@ -1722,6 +1722,12 @@
             "type": "INT64"
           },
           {
+            "description": "Counts session resumption tokens that would have been persisted to disk if their resumption secret had been exported in plaintext.\n",
+            "mode": "NULLABLE",
+            "name": "network_ssl_token_cache_wrapped_not_persisted",
+            "type": "INT64"
+          },
+          {
             "description": "Counts how often Entra SSO is used (macOS only).\n",
             "mode": "NULLABLE",
             "name": "network_sso_total_entra_uses",
@@ -16011,6 +16017,36 @@
             "type": "RECORD"
           },
           {
+            "description": "The session resumption outcome of a connection that had at least one cached token to try, by transport and by where the last token tried came from. Recorded at most once per connection; attempts necko abandons before a handshake outcome, other than on a handshake timeout, are not counted.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "value",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "network_ssl_token_resumption",
+            "type": "RECORD"
+          },
+          {
             "description": "Successfully started HTTP channels when HTTP3 is used\n",
             "fields": [
               {
@@ -21094,7 +21130,7 @@
             "type": "RECORD"
           },
           {
-            "description": "Failures touching the persisted TLS token database: 'open' (unopenable, so removed), 'schema' (no usable table), 'read' (unreadable row), 'write' (snapshot not written). Routine removal when persistence is disabled is not counted.\n",
+            "description": "Failures touching the persisted TLS token database: 'open' (unopenable, so removed), 'schema' (no usable table), 'read' (unreadable row), 'write' (snapshot not written), 'delete' (removed tokens not deleted). Routine removal when persistence is disabled is not counted.\n",
             "fields": [
               {
                 "mode": "NULLABLE",
