@@ -1776,6 +1776,12 @@
             "type": "INT64"
           },
           {
+            "description": "How often we're asked to store, load, or clear a key from FOG's `ExternalBackup`\nimplementation that FOG doesn't support.\n\nWe expect this to be zero at all times.\n",
+            "mode": "NULLABLE",
+            "name": "fog_unknown_backup_key",
+            "type": "INT64"
+          },
+          {
             "description": "Count at detection time number of address form sections. A single form can contain more than one address form section. This metric was generated to correspond to the Legacy Telemetry scalar formautofill.addresses.detected_sections_count.\n",
             "mode": "NULLABLE",
             "name": "formautofill_addresses_detected_sections_count",
@@ -22621,6 +22627,42 @@
             ],
             "mode": "REPEATED",
             "name": "networking_dns_native_count",
+            "type": "RECORD"
+          },
+          {
+            "description": "RFC 9462 DDR (Discovery of Designated Resolvers) funnel. Each label counts how many DDR discovery attempts reached that stage:\n  total - a DDR discovery attempt was started\n  svcb_result - a native SVCB record for _dns.resolver.arpa was returned\n  dohpath - the record advertised a usable DoH designated resolver\n            (an HTTP ALPN, a valid RFC 9461 dohpath and a usable\n            TargetName)\n  connection - the test query connected to the designated resolver,\n               including connections whose TLS handshake then failed\n  cert_match - the resolver's TLS certificate covered one of the\n               configured unencrypted resolver IPs\nThe stages are nested (total >= svcb_result >= dohpath >= connection >= cert_match), so ratios between labels give the per-stage success rate.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_doh_ddr_discovery",
+            "type": "RECORD"
+          },
+          {
+            "description": "RFC 9462 DDR (Discovery of Designated Resolvers) outcome. Unlike doh_ddr_discovery (a cumulative funnel), each DDR attempt increments exactly one label here - the last stage it reached:\n  no_native_support - SVCB records can't be resolved with the native\n                      resolver on this platform or configuration\n  no_svcb - no native SVCB record for _dns.resolver.arpa was returned\n  no_dohpath - got an SVCB record but no usable DoH designated resolver\n  no_resolver_addrs - found a designated resolver but the addresses of\n                      the unencrypted resolvers could not be determined,\n                      so it could not be verified\n  no_connection - found a designated resolver but the test query failed\n                  to connect\n  tls_failed - connected but the TLS handshake failed, e.g. because the\n               certificate is untrusted, expired or doesn't cover the\n               resolver's name\n  no_cert_match - connected but the resolver's certificate did not cover\n                  any",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "key",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "INT64"
+              }
+            ],
+            "mode": "REPEATED",
+            "name": "networking_doh_ddr_result",
             "type": "RECORD"
           },
           {
