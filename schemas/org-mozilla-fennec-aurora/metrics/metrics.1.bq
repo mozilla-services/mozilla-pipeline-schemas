@@ -2052,6 +2052,12 @@
             "type": "INT64"
           },
           {
+            "description": "The number of times the system removed a chunk's audio from the cache\ndirectory before the feature was done with it, so that it had to be\nmade again if it was needed.\n",
+            "mode": "NULLABLE",
+            "name": "listen_to_page_chunk_audio_reclaimed",
+            "type": "INT64"
+          },
+          {
             "description": "The number of times the device's thermal status rose to moderate or\nhotter while a page was being read out, on the same devices and over\nthe same part of the session as session_max_thermal_status.\n",
             "mode": "NULLABLE",
             "name": "listen_to_page_thermal_throttling_entered",
@@ -10456,6 +10462,66 @@
             ],
             "mode": "NULLABLE",
             "name": "security_ui_events",
+            "type": "RECORD"
+          },
+          {
+            "description": "Number of characters in one tab's saved engine state, a relative measure\nof how big it is. One sample per valid engine state read from the session\nfile, including tabs then discarded at restore. Also recorded when a tab\nof a collection is read, including all collection tabs during the\none-time migration of collections to tab groups.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "session_storage_engine_state_length",
+            "type": "RECORD"
+          },
+          {
+            "description": "Number of history entries in one tab's saved engine state. One sample\nper valid engine state read from the session file, including tabs then\ndiscarded at restore. Also recorded when a tab of a collection is read,\nincluding all collection tabs during the one-time migration of\ncollections to tab groups. Gecko caps this at 50\n(browser.sessionhistory.max_entries).\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "session_storage_history_entries",
             "type": "RECORD"
           },
           {
@@ -31509,6 +31575,156 @@
             "type": "RECORD"
           },
           {
+            "description": "How much the app's whole cache took up when a listening session started,\nin MB rounded to two significant figures.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "listen_to_page_app_cache_size",
+            "type": "RECORD"
+          },
+          {
+            "description": "How much disk a listening session's audio took up when the session\nended, just before it was cleared.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "listen_to_page_audio_cache_size",
+            "type": "RECORD"
+          },
+          {
+            "description": "The space the system could make available on the storage that holds the\napp's cache directory when a listening session started, in MB rounded to\ntwo significant figures Unlike cache_free_space, it counts cached data\nthe system could clear, the app's own included.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "listen_to_page_cache_allocatable_space",
+            "type": "RECORD"
+          },
+          {
+            "description": "The free space on the storage that holds the app's cache directory when\na listening session started, in MB rounded to two significant figures.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "listen_to_page_cache_free_space",
+            "type": "RECORD"
+          },
+          {
+            "description": "The cache quota the system gave the app when a listening session\nstarted, in MB rounded to two significant figures.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "listen_to_page_cache_quota",
+            "type": "RECORD"
+          },
+          {
             "description": "The size on disk of the audio the speech engine made for each chunk of a\npage after the opening.\n",
             "fields": [
               {
@@ -32376,6 +32592,66 @@
             ],
             "mode": "NULLABLE",
             "name": "places_manager_db_size_after_maintenance",
+            "type": "RECORD"
+          },
+          {
+            "description": "Size of the saved browsing session file after a write, divided by the\nnumber of tabs written to it. Private tabs are not written. One sample per\nsuccessful save.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "session_storage_save_bytes_per_tab",
+            "type": "RECORD"
+          },
+          {
+            "description": "Size of the saved browsing session file after a write. One sample per\nsuccessful save, so sessions that stay open for a long time give more\nsamples.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "session_storage_save_file_size",
             "type": "RECORD"
           },
           {
@@ -47323,6 +47599,36 @@
             ],
             "mode": "NULLABLE",
             "name": "service_worker_registration_loading",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time to write the browsing session to disk. Recorded for each successful\nsave, so the sample count is the number of saves.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "session_storage_save_duration",
             "type": "RECORD"
           },
           {
